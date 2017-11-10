@@ -1,0 +1,23 @@
+IF
+  !Global("#deactivate_script_bbcloud","LOCALS",1)
+  Global("Internal4","LOCALS",2)
+THEN
+  RESPONSE #100
+    SetGlobal("#deactivate_script_bbcloud","LOCALS",1)
+END
+
+IF
+  !Global("#deactivate_script_bbcloud","LOCALS",1)
+  !GlobalTimerNotExpired("#localtimer","LOCALS")
+  See(NearestEnemyOf(Myself))
+  Range(NearestEnemyOf(Myself),7)
+  IsActive(Myself)
+THEN
+  RESPONSE #100
+    IncrementGlobal("Internal4","LOCALS",1)
+    SetGlobalTimer("#localtimer","LOCALS",21)
+    ReallyForceSpellRES("CDGIBOMB",Myself)
+    Wait(2)
+END
+
+

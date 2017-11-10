@@ -1,0 +1,190 @@
+
+
+
+
+/*
+// create zosa self-destruct script for cload spells
+COPY ~iwdification/lib/zosa.baf~ ~iwdification/lib/cdzosa.baf~
+
+COPY_EXISTING_REGEXP GLOB ~^spcl[0-9][0-9][0-9]\.spl$~ ~override~
+                          ~^spin[0-9][0-9][0-9]\.spl$~ ~override~
+                          ~^sppr[0-9][0-9][0-9]\.spl$~ ~override~
+                          ~^spwi[0-9][0-9][0-9]\.spl$~ ~override~
+  READ_LONG  0x64 abil_off
+  READ_SHORT 0x68 abil_num
+  READ_LONG  0x6a fx_off
+  SET append = 0
+  FOR (index = 0 ; index < abil_num ; ++index) BEGIN // fix existing effects
+    READ_SHORT  (abil_off + 0x1e + (0x28 * index)) abil_fx_num
+    READ_SHORT  (abil_off + 0x20 + (0x28 * index)) abil_fx_idx
+    FOR (index2 = 0 ; index2 < abil_fx_num ; ++index2) BEGIN
+      READ_SHORT (fx_off +        (0x30 * (abil_fx_idx + index2))) opcode
+      PATCH_IF (opcode = 273) BEGIN // no-save damage
+        SET append = 1
+        SET index = abil_num
+        SET index2 = abil_fx_num
+        SPRINT spell "%SOURCE_RES%"
+      END
+    END
+  END
+  PATCH_IF append = 1 BEGIN
+    INNER_ACTION BEGIN
+    
+      COPY ~iwdification/lib/cdzosa.baf~ ~iwdification/lib/cdzosa.baf~
+        REPLACE_EVALUATE ~OR(\([0-9]+\))~
+        BEGIN SET "newor" = ("%MATCH1%" + 1) END
+        ~OR(%newor%)
+          SpellCast([ANYONE],%spell%)~
+
+    END
+  END
+  BUT_ONLY
+
+COPY ~iwdification/lib/cdzosa.baf~ ~iwdification/lib/cdzosa.baf~
+  REPLACE_TEXTUALLY ~\(SpellCast(\[ANYONE\],\)spwi~ ~\12~
+  REPLACE_TEXTUALLY ~SpellCast(\[ANYONE\],sppr~ ~SpellCastPriest([ANYONE],1~
+  REPLACE_TEXTUALLY ~SpellCast(\[ANYONE\],spin~ ~SpellCastInnate([ANYONE],3~
+  REPLACE_TEXTUALLY ~SpellCast(\[ANYONE\],spcl~ ~SpellCastInnate([ANYONE],4~
+
+COMPILE ~iwdification/lib/cdzosa.baf~
+*/
+
+COPY ~iwdification/bam/cdabjurh.bam~ ~override~
+     ~iwdification/bam/cdacidh.bam~  ~override~
+     ~iwdification/bam/cdalterh.bam~ ~override~
+     ~iwdification/bam/cdcldama.bam~ ~override~
+     ~iwdification/bam/cdcmdama.bam~ ~override~
+     ~iwdification/bam/cdcoldh.bam~  ~override~
+     ~iwdification/bam/cdconjuh.bam~ ~override~
+     ~iwdification/bam/cddivinh.bam~ ~override~
+     ~iwdification/bam/cdelecth.bam~ ~override~
+     ~iwdification/bam/cdenchah.bam~ ~override~
+     ~iwdification/bam/cdfireh.bam~  ~override~
+     ~iwdification/bam/cdgnench.bam~ ~override~
+     ~iwdification/bam/cdillush.bam~ ~override~
+     ~iwdification/bam/cdinvoch.bam~ ~override~
+     ~iwdification/bam/cdmsum1h.bam~ ~override~
+     ~iwdification/bam/cdmsum1x.bam~ ~override~
+     ~iwdification/bam/cdnecroh.bam~ ~override~
+     ~iwdification/bam/cdparalh.bam~ ~override~
+     ~iwdification/lib/cdstrimm.eff~ ~override~
+     ~iwdification/vvc/cdabjurh.vvc~ ~override~
+     ~iwdification/vvc/cdacidh.vvc~  ~override~
+     ~iwdification/vvc/cdalterh.vvc~ ~override~
+     ~iwdification/vvc/cdcldama.vvc~ ~override~
+     ~iwdification/vvc/cdcmdama.vvc~ ~override~
+     ~iwdification/vvc/cdcoldh.vvc~  ~override~
+     ~iwdification/vvc/cdconjuh.vvc~ ~override~
+     ~iwdification/vvc/cddivinh.vvc~ ~override~
+     ~iwdification/vvc/cdelecth.vvc~ ~override~
+     ~iwdification/vvc/cdenchah.vvc~ ~override~
+     ~iwdification/vvc/cdfireh.vvc~  ~override~
+     ~iwdification/vvc/cdgnench.vvc~ ~override~
+     ~iwdification/vvc/cdillush.vvc~ ~override~
+     ~iwdification/vvc/cdinvoch.vvc~ ~override~
+     ~iwdification/vvc/cdmonsum.vvc~ ~override~
+     ~iwdification/vvc/cdnecroh.vvc~ ~override~
+     ~iwdification/vvc/cdparalh.vvc~ ~override~
+     ~iwdification/wav/cdarem21.wav~ ~override~
+
+DEFINE_PATCH_FUNCTION cd_scroll STR_VAR spell = cdnull BEGIN
+
+  WRITE_ASCIIE 0x3a "%DEST_RES%"
+  WRITE_ASCII  0x41 a #1
+  WRITE_ASCIIE 0x76 "%DEST_RES%"
+  WRITE_ASCII  0x7d a #1
+  PATCH_IF (SOURCE_SIZE > 0xda) BEGIN // only for arcane scrolls that have second header for learning
+    WRITE_ASCIIE 0xae "%DEST_RES%"
+    WRITE_ASCII  0xb5 a #1
+    WRITE_ASCIIE 0xf6 "%spell%" #8
+    WRITE_ASCIIE 0x126 "%spell%" #8
+  END ELSE BEGIN // divine scroll
+    WRITE_ASCIIE 0xbe "%spell%" #8
+  END
+
+END
+
+DEFINE_ACTION_FUNCTION cd_create_cloud INT_VAR cloud_dur = 6 visloop = 5 zosa = 0 STR_VAR code = null BEGIN
+
+  COPY ~iwdification/lib/cloud.eff~ ~override/%code%.eff~
+    WRITE_ASCIIE 0x30 ~%code%M~
+
+  COPY ~iwdification/lib/cloud.cre~ ~override/%code%M.cre~
+       ~iwdification/lib/cloud.cre~ ~override/%code%V.cre~
+    WRITE_ASCIIE 0x248 ~%DEST_RES%~
+    WRITE_ASCIIE 0x280 ~%DEST_RES%~
+
+  EXTEND_TOP ~%code%M.bcs~ ~iwdification/lib/cloudmn.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~%code%V.bcs~ ~iwdification/lib/cloudvs.baf~ EVALUATE_BUFFER
+  
+  ACTION_IF zosa = 1 BEGIN
+  
+    ACTION_IF NOT FILE_EXISTS ~iwdification/lib/cdzosa.baf~ THEN BEGIN // run only once across both components
+  
+      COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
+        READ_LONG  0x64 abil_off
+        READ_SHORT 0x68 abil_num
+        READ_LONG  0x6a fx_off
+        SET delta = 0
+        FOR (index = 0 ; index < abil_num ; ++index) BEGIN
+          READ_SHORT  (abil_off + 0x1e + (0x28 * index)) abil_fx_num
+          WRITE_SHORT  (abil_off + 0x20 + (0x28 * index)) (THIS + delta)
+          READ_SHORT  (abil_off + 0x20 + (0x28 * index)) abil_fx_idx
+          FOR (index2 = 0 ; index2 < abil_fx_num ; ++index2) BEGIN
+            READ_SHORT (fx_off +        (0x30 * (abil_fx_idx + index2))) opcode
+            INSERT_BYTES (fx_off +        (0x30 * (abil_fx_idx + index2))) (48)
+              WRITE_SHORT (fx_off +        (0x30 * (abil_fx_idx + index2))) 265
+              WRITE_BYTE  (fx_off + 0x02 + (0x30 * (abil_fx_idx + index2))) 1
+              WRITE_LONG  (fx_off + 0x04 + (0x30 * (abil_fx_idx + index2))) 1
+              WRITE_BYTE  (fx_off + 0x0c + (0x30 * (abil_fx_idx + index2))) 1
+              WRITE_BYTE  (fx_off + 0x12 + (0x30 * (abil_fx_idx + index2))) 100
+              WRITE_ASCII (fx_off + 0x14 + (0x30 * (abil_fx_idx + index2))) CDZOSA 
+            SET delta += 1
+            WRITE_SHORT  (abil_off + 0x1e + (0x28 * index)) (THIS + 1)
+            SET index2 = abil_fx_num // kill loop
+          END
+        END
+        BUT_ONLY
+      
+      COPY ~iwdification/lib/zosa.baf~ ~iwdification/lib/cdzosa.baf~
+
+      ACTION_FOR_EACH file IN baldur baldur25 BEGIN
+    
+        ACTION_IF FILE_EXISTS_IN_GAME ~%file%.bcs~ THEN BEGIN
+    
+          EXTEND_BOTTOM ~%file%.bcs~ ~iwdification/lib/baldur.baf~
+          
+        END
+      
+      END
+      
+    END
+
+    EXTEND_TOP ~%code%M.bcs~ ~iwdification/lib/cdzosa.baf~
+    EXTEND_TOP ~%code%V.bcs~ ~iwdification/lib/cdzosa.baf~
+
+  END
+
+  ACTION_IF NOT FILE_EXISTS_IN_GAME cdcloudt.spl THEN BEGIN
+    COPY ~iwdification/lib/cdcloudt.spl~ ~override~ // minions go away
+  END
+
+  COPY ~iwdification/lib/cloudv.spl~ ~override/%code%v.spl~
+    SET step = (100 / (visloop + 1))
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 215 target = 1 parameter2 = 2 probability1 = step STR_VAR resource = EVALUATE_BUFFER ~%code%0~ END
+    FOR (index = 1 ; index <= visloop ; ++index) BEGIN
+      READ_BYTE 0xac temp_prob
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 215 target = 1 parameter2 = 2 
+        probability2 = (temp_prob + 1) probability1 = (temp_prob + step) STR_VAR resource = EVALUATE_BUFFER ~%code%%index%~ END
+    END
+    WRITE_BYTE 0xac 100
+
+  OUTER_FOR (index = 0 ; index <= visloop ; ++index) BEGIN
+    COPY ~iwdification/vvc/%code%%index%.vvc~ ~override~
+      WRITE_ASCIIE 0x08 ~%code%V~
+//      WRITE_ASCII  0x78 ~CDFFP111~ #8
+//      WRITE_ASCII  0x80 ~CDAFTP24~ #8
+  END
+  COPY ~iwdification/bam/%code%V.bam~ ~override~
+
+END

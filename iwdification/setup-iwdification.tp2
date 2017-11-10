@@ -1,0 +1,3162 @@
+// whirlwind invis creature briefly visible
+// monster summoning graphic way removed from summons
+
+BACKUP ~iwdification/backup~ // location to store files for uninstall purposes
+
+AUTHOR ~pcamagna@yahoo.com~ // email address displayed if install fails
+
+VERSION ~Beta 2~
+
+README ~iwdification/readme-iwdification.html~
+
+ALWAYS
+  INCLUDE ~iwdification/lib/functions.tpa~
+END
+
+ASK_EVERY_COMPONENT
+
+LANGUAGE ~English~ ~english~ 
+  ~iwdification/languages/english/setup.tra~ // English
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Icewind Dale Casting Graphics                    \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @1000 DESIGNATED 10
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~bg2_tweaks/bg2_tweaks.tp2~ ~70~ @0
+
+COPY ~iwdification/bam/cgabjura.bam~ ~override~
+     ~iwdification/bam/cgaltera.bam~ ~override~
+     ~iwdification/bam/cgconjur.bam~ ~override~
+     ~iwdification/bam/cgdivina.bam~ ~override~
+     ~iwdification/bam/cgenchan.bam~ ~override~
+     ~iwdification/bam/cgillusi.bam~ ~override~
+     ~iwdification/bam/cginvoca.bam~ ~override~
+     ~iwdification/bam/cgnecrom.bam~ ~override~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Commoners use drab colors                        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @2000 DESIGNATED 20
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~bg2_tweaks/bg2_tweaks.tp2~ ~100~ @0
+
+COPY_EXISTING ~randcolr.2da~ ~override~
+  SET_2DA_ENTRY_LATER ~randcolr~  3  9 ~114~ // AthPeasantMajor
+  SET_2DA_ENTRY_LATER ~randcolr~  4  9 ~107~
+  SET_2DA_ENTRY_LATER ~randcolr~  5  9  ~36~
+  SET_2DA_ENTRY_LATER ~randcolr~  6  9  ~37~
+  SET_2DA_ENTRY_LATER ~randcolr~  7  9  ~38~
+  SET_2DA_ENTRY_LATER ~randcolr~  8  9  ~39~
+  SET_2DA_ENTRY_LATER ~randcolr~  9  9  ~40~
+  SET_2DA_ENTRY_LATER ~randcolr~ 10  9  ~41~
+  SET_2DA_ENTRY_LATER ~randcolr~ 11  9  ~42~
+  SET_2DA_ENTRY_LATER ~randcolr~ 12  9  ~43~
+  SET_2DA_ENTRY_LATER ~randcolr~  3 10  ~63~ // AthPeasantMinor
+  SET_2DA_ENTRY_LATER ~randcolr~  4 10  ~64~
+  SET_2DA_ENTRY_LATER ~randcolr~  5 10  ~65~
+  SET_2DA_ENTRY_LATER ~randcolr~  6 10  ~66~
+  SET_2DA_ENTRY_LATER ~randcolr~  7 10  ~87~
+  SET_2DA_ENTRY_LATER ~randcolr~  8 10  ~91~
+  SET_2DA_ENTRY_LATER ~randcolr~  9 10  ~92~
+  SET_2DA_ENTRY_LATER ~randcolr~ 10 10  ~93~
+  SET_2DA_ENTRY_LATER ~randcolr~ 11 10  ~94~
+  SET_2DA_ENTRY_LATER ~randcolr~ 12 10  ~95~
+  SET_2DA_ENTRY_LATER ~randcolr~  3 13 ~114~ // TradePeasantMajor
+  SET_2DA_ENTRY_LATER ~randcolr~  4 13 ~107~
+  SET_2DA_ENTRY_LATER ~randcolr~  5 13  ~36~
+  SET_2DA_ENTRY_LATER ~randcolr~  6 13  ~37~
+  SET_2DA_ENTRY_LATER ~randcolr~  7 13  ~38~
+  SET_2DA_ENTRY_LATER ~randcolr~  8 13  ~39~
+  SET_2DA_ENTRY_LATER ~randcolr~  9 13  ~40~
+  SET_2DA_ENTRY_LATER ~randcolr~ 10 13  ~41~
+  SET_2DA_ENTRY_LATER ~randcolr~ 11 13  ~42~
+  SET_2DA_ENTRY_LATER ~randcolr~ 12 13  ~43~
+  SET_2DA_ENTRY_LATER ~randcolr~  3 14  ~63~ // TradePeasantMinor
+  SET_2DA_ENTRY_LATER ~randcolr~  4 14  ~64~
+  SET_2DA_ENTRY_LATER ~randcolr~  5 14  ~65~
+  SET_2DA_ENTRY_LATER ~randcolr~  6 14  ~66~
+  SET_2DA_ENTRY_LATER ~randcolr~  7 14  ~87~
+  SET_2DA_ENTRY_LATER ~randcolr~  8 14  ~91~
+  SET_2DA_ENTRY_LATER ~randcolr~  9 14  ~92~
+  SET_2DA_ENTRY_LATER ~randcolr~ 10 14  ~93~
+  SET_2DA_ENTRY_LATER ~randcolr~ 11 14  ~94~
+  SET_2DA_ENTRY_LATER ~randcolr~ 12 14  ~95~
+  SET_2DA_ENTRIES_NOW ~randcolr~ 1
+  BUT_ONLY
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// IWD arcane spell pack                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @3000 DESIGNATED 30
+
+/////                                                  \\\\\
+///// common resources                                 \\\\\
+/////                                                  \\\\\
+
+INCLUDE ~iwdification/lib/common_spell.tpa~
+
+/////                                                  \\\\\
+///// decastave                                        \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/decastave.spl~ 2 2 WIZARD_DECASTAVE
+  SAY 0x08 @3001
+  SAY 0x50 @3002
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_DECASTAVE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_DECASTAVE_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia221.itm~
+    SAY 0x0c @3001
+    SAY 0x54 @3002
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_DECASTAVE_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT1) // add enchanter flag
+    WRITE_BYTE  0x7e 5 // target
+    WRITE_SHORT 0x80 1 // range
+  
+  COPY ~iwdification/bam/cdia221a.bam~ ~override~
+       ~iwdification/bam/cdia221b.bam~ ~override~
+       ~iwdification/bam/cdia221c.bam~ ~override~
+       ~iwdification/bam/cdia221i.bam~ ~override~
+       ~iwdification/spl/cdia221.spl~  ~override~
+  
+  COPY ~iwdification/itm/cdia221w.itm~ ~override~
+    SAY 0x08 @3001
+    SAY 0x0c @3001
+    SAY 0x50 @3002
+    SAY 0x54 @3002
+
+END
+
+/////                                                  \\\\\
+///// cats grace                                       \\\\\
+/////                                                  \\\\\
+
+ACTION_IF MOD_IS_INSTALLED ~TOBEX/TOBEX.TP2~ ~100~ THEN BEGIN
+
+  ADD_SPELL ~iwdification/spl/cats_grace.spl~ 2 2 WIZARD_CATS_GRACE
+    SAY 0x08 @3003
+    SAY 0x50 @3004
+    SPRINT temp "%DEST_RES%"
+  
+  ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_CATS_GRACE~)) > 0) THEN BEGIN
+  
+    OUTER_SPRINT WIZARD_CATS_GRACE_RES "%temp%"
+    
+    COPY ~iwdification/lib/blank.itm~ ~override/cdia223.itm~
+      SAY 0x0c @3003
+      SAY 0x54 @3004
+      LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_CATS_GRACE_RES%~ END
+      WRITE_BYTE 0x2f (THIS | BIT6) // add abjurer flag
+      WRITE_SHORT 0x80 1 // range
+  
+    COPY ~iwdification/bam/cdia223a.bam~ ~override~
+         ~iwdification/bam/cdia223b.bam~ ~override~
+         ~iwdification/bam/cdia223c.bam~ ~override~
+
+  END
+
+END
+
+/////                                                  \\\\\
+///// snilloc's snowball swarm                         \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/snillocs_snowball_swarm.spl~ 2 2 WIZARD_SNILLOCS_SNOWBALL_SWARM
+  SAY 0x08 @3005
+  SAY 0x50 @3006
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_SNILLOCS_SNOWBALL_SWARM~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_SNILLOCS_SNOWBALL_SWARM_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdia220.pro~
+  
+  COPY_EXISTING ~%WIZARD_SNILLOCS_SNOWBALL_SWARM_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdia220 END
+  
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia220.itm~
+    SAY 0x0c @3005
+    SAY 0x54 @3006
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_SNILLOCS_SNOWBALL_SWARM_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT1) // add enchanter flag
+    WRITE_SHORT 0xe2 148 // cast-at-point opcode
+    WRITE_BYTE  0xe4   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/bam/cdia220a.bam~ ~override~
+       ~iwdification/bam/cdia220b.bam~ ~override~
+       ~iwdification/bam/cdia220c.bam~ ~override~
+       ~iwdification/bam/cdia220v.bam~ ~override~
+       ~iwdification/wav/cdtra_16.wav~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// icelance                                         \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/icelance.spl~ 2 3 WIZARD_ICELANCE
+  SAY 0x08 @3007
+  SAY 0x50 @3008
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_ICELANCE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_ICELANCE_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdia318.pro~
+
+  COPY_EXISTING ~%WIZARD_ICELANCE_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdia318 END
+  
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia318.itm~
+    SAY 0x0c @3007
+    SAY 0x54 @3008
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_ICELANCE_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT1) // add enchanter flag
+  
+  COPY ~iwdification/bam/cdia318a.bam~ ~override~
+       ~iwdification/bam/cdia318b.bam~ ~override~
+       ~iwdification/bam/cdia318c.bam~ ~override~
+       ~iwdification/bam/cdia318v.bam~ ~override~
+       ~iwdification/wav/cdtra_19.wav~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// lance of disruption                              \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/lance_o_disruption.spl~ 2 3 WIZARD_LANCE_OF_DISRUPTION
+  SAY 0x08 @3009
+  SAY 0x50 @3010
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_LANCE_OF_DISRUPTION~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_LANCE_OF_DISRUPTION_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdia319.pro~
+  
+  COPY_EXISTING ~%WIZARD_LANCE_OF_DISRUPTION_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdia319 END
+  
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia319.itm~
+    SAY 0x0c @3009
+    SAY 0x54 @3010
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_LANCE_OF_DISRUPTION_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT1) // add enchanter flag
+    WRITE_SHORT 0xe2 148 // cast-at-point opcode
+    WRITE_BYTE  0xe4   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/bam/cdia319a.bam~ ~override~
+       ~iwdification/bam/cdia319b.bam~ ~override~
+       ~iwdification/bam/cdia319c.bam~ ~override~
+       ~iwdification/bam/cdia319v.bam~ ~override~
+       ~iwdification/wav/cdtra_59.wav~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Beltyns Burning Blood                            \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/beltyns_burning_blood.spl~ 2 4 WIZARD_BELTYNS_BURNING_BLOOD
+  SAY 0x08 @3011
+  SAY 0x50 @3012
+  LPF SPELL_ALTER_EFFECT INT_VAR opcode = 146 STR_VAR resource = EVALUATE_BUFFER "%DEST_RES%" END
+  SPRINT temp "%DEST_RES%"
+
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_BELTYNS_BURNING_BLOOD~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_BELTYNS_BURNING_BLOOD_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia417.itm~
+    SAY 0x0c @3011
+    SAY 0x54 @3012
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_BELTYNS_BURNING_BLOOD_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT2) // add illusionist flag
+  
+  COPY ~iwdification/bam/cdia417a.bam~ ~override~
+       ~iwdification/bam/cdia417b.bam~ ~override~
+       ~iwdification/bam/cdia417c.bam~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Emotion: hopelessness                            \\\\\
+/////                                                  \\\\\
+
+ADD_PROJECTILE ~iwdification/pro/cdia420.pro~
+
+COPY ~iwdification/spl/emotion_hopelessness.spl~ ~override/spwi411.spl~ // hopelessness
+  SAY 0x08 @3013
+  SAY 0x50 @3014
+  LPF SPELL_ALTER_HEADER INT_VAR projectile = cdia420 END
+
+COPY ~iwdification/lib/blank.itm~ ~override/scrl5h.itm~
+  SAY 0x0c @3013
+  SAY 0x54 @3014
+  LPF cd_scroll STR_VAR spell = spwi411 END
+  WRITE_ASCII 0x3a cdia411a
+  WRITE_ASCII 0x76 cdia411a
+  WRITE_ASCII 0xae cdia411a
+  WRITE_BYTE 0x2d (THIS | BIT3) // add invoker flag
+  WRITE_SHORT 0xe2 148 // cast-at-point opcode
+  WRITE_BYTE  0xe4   1 // target: self
+  WRITE_BYTE  0x7e   4 // target: any point
+
+COPY ~iwdification/bam/cdia411a.bam~ ~override~
+     ~iwdification/bam/cdia411b.bam~ ~override~
+     ~iwdification/bam/cdia411c.bam~ ~override~
+
+/////                                                  \\\\\
+///// Emotion: fear                                    \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/emotion_fear.spl~ 2 4 WIZARD_EMOTION_FEAR
+  SAY 0x08 @3017
+  SAY 0x50 @3018
+  SPRINT temp "%DEST_RES%"
+
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_EMOTION_FEAR~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_EMOTION_FEAR_RES "%temp%"
+  
+  COPY_EXISTING ~%WIZARD_EMOTION_FEAR_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdia420 END
+  
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia420.itm~
+    SAY 0x0c @3017
+    SAY 0x54 @3018
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_EMOTION_FEAR_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT3) // add invoker flag
+    WRITE_SHORT 0xe2 148 // cast-at-point opcode
+    WRITE_BYTE  0xe4   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+
+  COPY ~iwdification/bam/cdia420a.bam~ ~override~
+       ~iwdification/bam/cdia420b.bam~ ~override~
+       ~iwdification/bam/cdia420c.bam~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Emotion: courage                                 \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/emotion_courage.spl~ 2 4 WIZARD_EMOTION_COURAGE
+  SAY 0x08 @3015
+  SAY 0x50 @3016
+  SPRINT temp "%DEST_RES%"
+
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_EMOTION_COURAGE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_EMOTION_COURAGE_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdia419.pro~
+  
+  COPY_EXISTING ~%WIZARD_EMOTION_COURAGE_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdia419 END
+  
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia419.itm~
+    SAY 0x0c @3015
+    SAY 0x54 @3016
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_EMOTION_COURAGE_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT3) // add invoker flag
+    WRITE_SHORT 0xe2 148 // cast-at-point opcode
+    WRITE_BYTE  0xe4   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+
+  COPY ~iwdification/bam/cdia419a.bam~ ~override~
+       ~iwdification/bam/cdia419b.bam~ ~override~
+       ~iwdification/bam/cdia419c.bam~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Emotion: hope                                    \\\\\
+/////                                                  \\\\\
+  
+ADD_SPELL ~iwdification/spl/emotion_hope.spl~ 2 4 WIZARD_EMOTION_HOPE
+  SAY 0x08 @3019
+  SAY 0x50 @3020
+  SPRINT temp "%DEST_RES%"
+
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_EMOTION_HOPE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_EMOTION_HOPE_RES "%temp%"
+  
+  ACTION_IF NOT VARIABLE_IS_SET cdia419 THEN BEGIN
+
+    ADD_PROJECTILE ~iwdification/pro/cdia419.pro~
+    
+  END
+
+  COPY_EXISTING ~%WIZARD_EMOTION_HOPE_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdia419 END
+  
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia421.itm~
+    SAY 0x0c @3019
+    SAY 0x54 @3020
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_EMOTION_HOPE_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT3) // add invoker flag
+    WRITE_SHORT 0xe2 148 // cast-at-point opcode
+    WRITE_BYTE  0xe4   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+
+  COPY ~iwdification/bam/cdia421a.bam~ ~override~
+       ~iwdification/bam/cdia421b.bam~ ~override~
+       ~iwdification/bam/cdia421c.bam~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Vitriolic Sphere                                 \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/vitriolic_sphere.spl~ 2 4 WIZARD_VITRIOLIC_SPHERE
+  SAY 0x08 @3021
+  SAY 0x50 @3022
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_VITRIOLIC_SPHERE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_VITRIOLIC_SPHERE_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdia424.pro~
+  
+  COPY_EXISTING ~%WIZARD_VITRIOLIC_SPHERE_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdia424 END
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia424.itm~
+    SAY 0x0c @3021
+    SAY 0x54 @3022
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_VITRIOLIC_SPHERE_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT0) // add diviner flag
+  
+  COPY ~iwdification/bam/cdia424a.bam~ ~override~
+       ~iwdification/bam/cdia424b.bam~ ~override~
+       ~iwdification/bam/cdia424c.bam~ ~override~
+       ~iwdification/bam/cdia424p.bam~ ~override~
+       ~iwdification/bam/cdia424v.bam~ ~override~
+       ~iwdification/spl/cdia424y.spl~ ~override~
+       ~iwdification/spl/cdia424z.spl~ ~override~
+       ~iwdification/vvc/cdia424.vvc~  ~override~
+       ~iwdification/wav/cdtra_60.wav~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Shadow Monsters                                  \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/shadow_monsters.spl~ 2 4 WIZARD_SHADOW_MONSTERS
+  SAY 0x08 @3023
+  SAY 0x50 @3024
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_SHADOW_MONSTERS~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_SHADOW_MONSTERS_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia418.itm~
+    SAY 0x0c @3023
+    SAY 0x54 @3024
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_SHADOW_MONSTERS_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT4) // add necromancer flag
+    WRITE_SHORT 0xe2 148 // cast-at-point opcode
+    WRITE_BYTE  0xe4   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/2da/cdia418.2da~  ~override~
+       ~iwdification/bam/cdia418a.bam~ ~override~
+       ~iwdification/bam/cdia418b.bam~ ~override~
+       ~iwdification/bam/cdia418c.bam~ ~override~
+       ~iwdification/cre/cds1gob1.cre~ ~override~
+       ~iwdification/cre/cds1gob2.cre~ ~override~
+       ~iwdification/cre/cds1gob3.cre~ ~override~
+       ~iwdification/cre/cds1liz3.cre~ ~override~
+       ~iwdification/cre/cds1liz4.cre~ ~override~
+       ~iwdification/cre/cds1trl6.cre~ ~override~
+       ~iwdification/cre/cds1trl7.cre~ ~override~
+       ~iwdification/cre/cds1trl8.cre~ ~override~
+       ~iwdification/itm/cd1d7sls.itm~ ~override~
+       ~iwdification/itm/cdsumrng.itm~ ~override~
+       ~iwdification/itm/cdtran20.itm~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Shroud of Flame                                  \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/shroud_of_flame.spl~ 2 5 WIZARD_SHROUD_OF_FLAME
+  SAY 0x08 @3025
+  SAY 0x50 @3026
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_SHROUD_OF_FLAME~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_SHROUD_OF_FLAME_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia511.itm~
+    SAY 0x0c @3025
+    SAY 0x54 @3026
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_SHROUD_OF_FLAME_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT1) // add enchanter flag
+  
+  COPY ~iwdification/bam/cdia511a.bam~ ~override~
+       ~iwdification/bam/cdia511b.bam~ ~override~
+       ~iwdification/bam/cdia511c.bam~ ~override~
+       ~iwdification/bam/cdia511v.bam~ ~override~
+       ~iwdification/spl/cdia511a.spl~ ~override~ // main target's flame damage
+       ~iwdification/spl/cdia511b.spl~ ~override~ // splash/contagion damage for creatures near main target
+       ~iwdification/vvc/cdia511v.vvc~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Demi-shadow Monsters                             \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/demishadow_monsters.spl~ 2 5 WIZARD_DEMISHADOW_MONSTERS
+  SAY 0x08 @3027
+  SAY 0x50 @3028
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_DEMISHADOW_MONSTERS~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_DEMISHADOW_MONSTERS_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia512.itm~
+    SAY 0x0c @3027
+    SAY 0x54 @3028
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_DEMISHADOW_MONSTERS_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT4) // add necromancer flag
+    WRITE_SHORT 0xe2 148 // cast-at-point opcode
+    WRITE_BYTE  0xe4   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/2da/cdia512.2da~ ~override~
+       ~iwdification/bam/cdia512a.bam~ ~override~
+       ~iwdification/bam/cdia512b.bam~ ~override~
+       ~iwdification/bam/cdia512c.bam~ ~override~
+       ~iwdification/itm/cdtran40.itm~ ~override~
+  
+  COPY ~iwdification/cre/cds2gob1.cre~ ~override~
+       ~iwdification/cre/cds2gob2.cre~ ~override~
+       ~iwdification/cre/cds2gob3.cre~ ~override~
+    SAY 0x08 @3049
+    SAY 0x0c @3049
+  
+  COPY ~iwdification/cre/cds2liz5.cre~ ~override~
+       ~iwdification/cre/cds2liz6.cre~ ~override~
+       ~iwdification/cre/cds2liz7.cre~ ~override~
+    SAY 0x08 @3050
+    SAY 0x0c @3050
+
+END
+
+/////                                                  \\\\\
+///// Summon Shadow                                    \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/summon_shadow.spl~ 2 5 WIZARD_SUMMON_SHADOW
+  SAY 0x08 @3029
+  SAY 0x50 @3030
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_SUMMON_SHADOW~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_SUMMON_SHADOW_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia513.itm~
+    SAY 0x0c @3029
+    SAY 0x54 @3030
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_SUMMON_SHADOW_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT2) // add illusionist flag
+    WRITE_SHORT 0xe2 148 // cast-at-point opcode
+    WRITE_BYTE  0xe4   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/2da/cdia513.2da~  ~override~
+       ~iwdification/bam/cdia513a.bam~ ~override~
+       ~iwdification/bam/cdia513b.bam~ ~override~
+       ~iwdification/bam/cdia513c.bam~ ~override~
+       ~iwdification/cre/cdia513.cre~  ~override~
+       ~iwdification/eff/cdia513.eff~  ~override~
+       ~iwdification/itm/cdtran60.itm~ ~override~
+       ~iwdification/itm/cdia513w.itm~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Contact other plane                              \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/contact_other_plane.spl~ 2 5 WIZARD_CONTACT_OTHER_PLANE
+  SAY 0x08 @3031
+  SAY 0x50 @3032
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_CONTACT_OTHER_PLANE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_CONTACT_OTHER_PLANE_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia517.itm~
+    SAY 0x0c @3031
+    SAY 0x54 @3032
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_CONTACT_OTHER_PLANE_RES%~ END
+    WRITE_BYTE 0x2f (THIS | BIT7) // add conjurer flag
+    WRITE_BYTE  0x7e 5 // target
+    WRITE_SHORT 0x80 1 // range
+  
+  COPY ~iwdification/bam/cdia517a.bam~ ~override~
+       ~iwdification/bam/cdia517b.bam~ ~override~
+       ~iwdification/bam/cdia517c.bam~ ~override~
+  
+  COPY ~iwdification/cre/cdia517.cre~ ~override~
+    SAY 0x08 @3033
+    SAY 0x0c @3033
+  
+  COMPILE ~iwdification/dlg/cdia517.d~
+
+END
+
+/////                                                  \\\\\
+///// lich touch                                       \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/lich_touch.spl~ 2 6 WIZARD_LICH_TOUCH
+  SAY 0x08 @3035
+  SAY 0x50 @3036
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_LICH_TOUCH~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_LICH_TOUCH_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia610.itm~
+    SAY 0x0c @3035
+    SAY 0x54 @3036
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_LICH_TOUCH_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT2) // add illusionist flag
+    WRITE_BYTE  0x7e 5 // target
+    WRITE_SHORT 0x80 1 // range
+
+  COPY ~iwdification/bam/cdia610a.bam~ ~override~
+       ~iwdification/bam/cdia610b.bam~ ~override~
+       ~iwdification/bam/cdia610c.bam~ ~override~
+       ~iwdification/bam/cdia610w.bam~ ~override~
+  
+  COPY ~iwdification/itm/cdia610w.itm~ ~override~
+    SAY 0x08 @3035
+    SAY 0x0c @3035
+    SAY 0x50 @3035
+    SAY 0x54 @3035
+
+END
+
+/////                                                  \\\\\
+///// antimagic shell                                  \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/antimagic_shell.spl~ 2 6 WIZARD_ANTIMAGIC_SHELL
+  SAY 0x08 @3037
+  SAY 0x50 @3038
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_ANTIMAGIC_SHELL~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_ANTIMAGIC_SHELL_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia601.itm~
+    SAY 0x0c @3037
+    SAY 0x54 @3038
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_ANTIMAGIC_SHELL_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT5) // add transmuter flag
+    WRITE_BYTE  0x7e 5 // target
+    WRITE_SHORT 0x80 1 // range
+  
+  COPY ~iwdification/bam/cdia601a.bam~ ~override~
+       ~iwdification/bam/cdia601b.bam~ ~override~
+       ~iwdification/bam/cdia601c.bam~ ~override~
+       ~iwdification/bam/cdia601v.bam~ ~override~
+       ~iwdification/vvc/cdia601v.vvc~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// monster summoning iv                             \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/monster_summoning_iv.spl~ 2 6 WIZARD_MONSTER_SUMMONING_4
+  SAY 0x08 @3039
+  SAY 0x50 @3040
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_MONSTER_SUMMONING_4~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_MONSTER_SUMMONING_4_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia611.itm~
+    SAY 0x0c @3039
+    SAY 0x54 @3040
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_MONSTER_SUMMONING_4_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT0) // add diviner flag
+    WRITE_SHORT 0xe2 148 // cast-at-point opcode
+    WRITE_BYTE  0xe4   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/2da/cdia611.2da~  ~override~
+       ~iwdification/bam/cdia611a.bam~ ~override~
+       ~iwdification/bam/cdia611b.bam~ ~override~
+       ~iwdification/bam/cdia611c.bam~ ~override~
+       ~iwdification/cre/cdm4ghst.cre~ ~override~
+       ~iwdification/cre/cdm4ogr.cre~  ~override~
+       ~iwdification/eff/cdia611.eff~  ~override~
+  
+  ACTION_IF ((MOD_IS_INSTALLED ~INFINITYANIMATIONS/SETUP-INFINITYANIMATIONS.TP2~ ~550~) AND
+             (IDS_OF_SYMBOL (~animate~ ~TUNDRA_YETI~) > 0) AND
+             (FILE_EXISTS_IN_GAME ~µDAa1.bam~)) THEN BEGIN
+  
+    COPY ~iwdification/cre/cdm4yeti.cre~ ~override~
+      SAY 0x0c @3051
+      SAY 0x0c @3051
+      WRITE_LONG 0x28 IDS_OF_SYMBOL (~animate~ ~TUNDRA_YETI~)
+  
+    APPEND ~cdia611.2da~ ~2 CDM4YETI~
+  
+  END
+
+END
+
+/////                                                  \\\\\
+///// Otiluke's Freezing Sphere                        \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/otilukes_freezing_sphere.spl~ 2 6 WIZARD_OTILUKES_FREEZING_SPHERE
+  SAY 0x08 @3041
+  SAY 0x50 @3042
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_OTILUKES_FREEZING_SPHERE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_OTILUKES_FREEZING_SPHERE_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdia612.pro~
+  
+  COPY_EXISTING ~%WIZARD_OTILUKES_FREEZING_SPHERE_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdia612 END
+  
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia612.itm~
+    SAY 0x0c @3041
+    SAY 0x54 @3042
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_OTILUKES_FREEZING_SPHERE_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT1) // add enchanter flag
+  
+  COPY ~iwdification/bam/cdia612a.bam~ ~override~
+       ~iwdification/bam/cdia612b.bam~ ~override~
+       ~iwdification/bam/cdia612c.bam~ ~override~
+       ~iwdification/bam/cdia612p.bam~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Shades                                           \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/shades.spl~ 2 6 WIZARD_SHADES
+  SAY 0x08 @3043
+  SAY 0x50 @3044
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_SHADES~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_SHADES_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia613.itm~
+    SAY 0x0c @3043
+    SAY 0x54 @3044
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_SHADES_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT4) // add necromancer flag
+    WRITE_SHORT 0xe2 148 // cast-at-point opcode
+    WRITE_BYTE  0xe4   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/2da/cdia613.2da~  ~override~
+       ~iwdification/bam/cdia613a.bam~ ~override~
+       ~iwdification/bam/cdia613b.bam~ ~override~
+       ~iwdification/bam/cdia613c.bam~ ~override~
+       ~iwdification/cre/cds3trl7.cre~ ~override~
+       ~iwdification/cre/cds3trl8.cre~ ~override~
+       ~iwdification/cre/cds3umb8.cre~ ~override~
+       ~iwdification/cre/cds3umb9.cre~ ~override~
+       ~iwdification/itm/cdrg1hp2.itm~ ~override~
+       ~iwdification/itm/cdsumamu.itm~ ~override~
+       ~iwdification/itm/cdtran60.itm~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// darts of bone                                    \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/darts_of_bone.spl~ 2 6 WIZARD_DARTS_OF_BONE
+  SAY 0x08 @3045
+  SAY 0x50 @3046
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_DARTS_OF_BONE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_DARTS_OF_BONE_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia618.itm~
+    SAY 0x0c @3045
+    SAY 0x54 @3046
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_DARTS_OF_BONE_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT2) // add illusionist flag
+    WRITE_BYTE  0x7e 5 // target
+    WRITE_SHORT 0x80 1 // range
+  
+  COPY ~iwdification/bam/cdia618a.bam~ ~override~
+       ~iwdification/bam/cdia618b.bam~ ~override~
+       ~iwdification/bam/cdia618c.bam~ ~override~
+       ~iwdification/bam/cdia618w.bam~ ~override~
+  
+  COPY ~iwdification/itm/cdia618w.itm~  ~override~
+    SAY 0x08 @3045
+    SAY 0x0c @3045
+    SAY 0x50 @3046
+    SAY 0x54 @3046
+
+END
+
+/////                                                  \\\\\
+///// Trollish Fortitude                               \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/trollish_fortitude.spl~ 2 6 WIZARD_TROLLISH_FORTITUDE
+  SAY 0x08 @3047
+  SAY 0x50 @3048
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_TROLLISH_FORTITUDE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_TROLLISH_FORTITUDE_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia620.itm~
+    SAY 0x0c @3047
+    SAY 0x54 @3048
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_TROLLISH_FORTITUDE_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT2) // add illusionist flag
+    WRITE_BYTE  0x7e 5 // target
+    WRITE_SHORT 0x80 1 // range
+
+  COPY ~iwdification/bam/cdia620a.bam~ ~override~
+       ~iwdification/bam/cdia620b.bam~ ~override~
+       ~iwdification/bam/cdia620c.bam~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Monster Summoning V                              \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/monster_summoning_v.spl~ 2 7 WIZARD_MONSTER_SUMMONING_5
+  SAY 0x08 @3052
+  SAY 0x50 @3053
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_MONSTER_SUMMONING_5~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_MONSTER_SUMMONING_5_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia703.itm~
+    SAY 0x0c @3052
+    SAY 0x54 @3053
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_MONSTER_SUMMONING_5_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT0) // add diviner flag
+    WRITE_SHORT 0xe2 148 // cast-at-point opcode
+    WRITE_BYTE  0xe4   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+
+  COPY ~iwdification/2da/cdia703.2da~  ~override~
+       ~iwdification/bam/cdia703a.bam~ ~override~
+       ~iwdification/bam/cdia703b.bam~ ~override~
+       ~iwdification/bam/cdia703c.bam~ ~override~
+       ~iwdification/cre/cdm5gspi.cre~ ~override~ // giant spider
+       ~iwdification/cre/cdm5mino.cre~ ~override~ // minotaur
+       ~iwdification/eff/cdia703.eff~  ~override~
+  
+  COPY ~iwdification/cre/cdm5jzom.cre~ ~override~ // Ju-ju zombie
+    SAY 0x08 @3064
+    SAY 0x0c @3064
+
+END
+
+/////                                                  \\\\\
+///// Malavon's Rage                                   \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/malavons_rage.spl~ 2 7 WIZARD_MALAVONS_RAGE
+  SAY 0x08 @3054
+  SAY 0x50 @3055
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_MALAVONS_RAGE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_MALAVONS_RAGE_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdia707.pro~
+  
+  COPY_EXISTING ~%WIZARD_MALAVONS_RAGE_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdia707 END
+  
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia707.itm~
+    SAY 0x0c @3054
+    SAY 0x54 @3055
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_MALAVONS_RAGE_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT1) // add enchanter flag
+    WRITE_BYTE  0x7e 5 // target
+    WRITE_SHORT 0x80 1 // range
+  
+  COPY ~iwdification/bam/cdia707a.bam~ ~override~
+       ~iwdification/bam/cdia707b.bam~ ~override~
+       ~iwdification/bam/cdia707c.bam~ ~override~
+       ~iwdification/bam/cdia707h.bam~ ~override~
+       ~iwdification/bam/cdia707x.bam~ ~override~
+       ~iwdification/spl/cdia707.spl~  ~override~
+       ~iwdification/vvc/cdia707h.vvc~ ~override~
+       ~iwdification/vvc/cdia707x.vvc~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// acid storm                                       \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/acid_storm.spl~ 2 7 WIZARD_ACID_STORM
+  SAY 0x08 @3056
+  SAY 0x50 @3057
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_ACID_STORM~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_ACID_STORM_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdia708.pro~
+  
+  COPY_EXISTING ~%WIZARD_ACID_STORM_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdia708 END
+  
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia708.itm~
+    SAY 0x0c @3056
+    SAY 0x54 @3057
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_ACID_STORM_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT1) // add enchanter flag
+    WRITE_SHORT 0xe2 148 // cast-at-point opcode
+    WRITE_BYTE  0xe4   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/bam/cdia708a.bam~ ~override~
+       ~iwdification/bam/cdia708b.bam~ ~override~
+       ~iwdification/bam/cdia708c.bam~ ~override~
+       ~iwdification/bam/cdia708v.bam~ ~override~
+       ~iwdification/vvc/cdia7080.vvc~ ~override~
+       ~iwdification/vvc/cdia7081.vvc~ ~override~
+       ~iwdification/vvc/cdia7082.vvc~ ~override~
+       ~iwdification/vvc/cdia7083.vvc~ ~override~
+       ~iwdification/vvc/cdia7084.vvc~ ~override~
+       ~iwdification/vvc/cdia7085.vvc~ ~override~
+       ~iwdification/vvc/cdia7086.vvc~ ~override~
+       ~iwdification/vvc/cdia7087.vvc~ ~override~
+       ~iwdification/vvc/cdia7088.vvc~ ~override~
+       ~iwdification/vvc/cdia7089.vvc~ ~override~
+       ~iwdification/vvc/cdia708x.vvc~ ~override~
+       ~iwdification/vvc/cdia708y.vvc~ ~override~
+       ~iwdification/vvc/cdia708z.vvc~ ~override~
+  
+  COPY ~iwdification/spl/cdia708a.spl~ ~override~ // sub spells that actually do the damage
+       ~iwdification/spl/cdia708b.spl~ ~override~
+       ~iwdification/spl/cdia708c.spl~ ~override~
+    SAY 0x08 @3056
+    SAY 0x50 @3057
+
+END
+
+/////                                                  \\\\\
+///// Suffocate                                        \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/suffocate.spl~ 2 7 WIZARD_SUFFOCATE
+  SAY 0x08 @3058
+  SAY 0x50 @3059
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_SUFFOCATE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_SUFFOCATE_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdia711.pro~
+  
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia711.itm~
+    SAY 0x0c @3058
+    SAY 0x54 @3059
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_SUFFOCATE_RES%~ END
+    WRITE_BYTE 0x2f (THIS | BIT6) // add abjurer flag
+    WRITE_SHORT 0xe2 148 // cast-at-point opcode
+    WRITE_BYTE  0xe4   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  LAUNCH_ACTION_FUNCTION cd_create_cloud INT_VAR visloop = 5 cloud_dur = 60 zosa = 1 STR_VAR code = CDIA711 END
+  
+  APPEND ~clearair.2da~ ~Suffocate %cdia711%~
+
+  COPY ~iwdification/bam/cdia711a.bam~ ~override~
+       ~iwdification/bam/cdia711b.bam~ ~override~
+       ~iwdification/bam/cdia711c.bam~ ~override~
+  
+  COPY ~iwdification/spl/cdia711.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdia711 END
+  
+  COPY ~iwdification/lib/immunity.eff~ ~override/cdim2711.eff~
+    WRITE_ASCII  0x30 CDIA711 #8
+
+END
+
+/////                                                  \\\\\
+///// Monster Summoning VI                             \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/monster_summoning_vi.spl~ 2 8 WIZARD_MONSTER_SUMMONING_6
+  SAY 0x08 @3060
+  SAY 0x50 @3061
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_MONSTER_SUMMONING_6~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_MONSTER_SUMMONING_6_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdsalc.pro~
+  
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia803.itm~
+    SAY 0x0c @3060
+    SAY 0x54 @3061
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_MONSTER_SUMMONING_6_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT0) // add diviner flag
+    WRITE_SHORT 0xe2 148 // cast-at-point opcode
+    WRITE_BYTE  0xe4   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/2da/cdia803.2da~  ~override~
+       ~iwdification/bam/cdia803a.bam~ ~override~
+       ~iwdification/bam/cdia803b.bam~ ~override~
+       ~iwdification/bam/cdia803c.bam~ ~override~
+       ~iwdification/bam/cdsalc.bam~   ~override~
+       ~iwdification/bam/cdsalf.bam~   ~override~
+       ~iwdification/cre/cdm6crwl.cre~ ~override~ // carrion crawler
+       ~iwdification/cre/cdm6pspi.cre~ ~override~ // phase spider
+       ~iwdification/cre/cdm6salc.cre~ ~override~ // frost salamander
+       ~iwdification/cre/cdm6salf.cre~ ~override~ // fire salamander
+       ~iwdification/eff/cdia803.eff~  ~override~
+       ~iwdification/eff/cdsalc.eff~   ~override~
+       ~iwdification/eff/cdsalf.eff~   ~override~
+       ~iwdification/itm/cdsalc.itm~   ~override~
+       ~iwdification/itm/cdsalf.itm~   ~override~
+       ~iwdification/spl/cdsalc.spl~   ~override~
+       ~iwdification/spl/cdsalc1.spl~  ~override~
+       ~iwdification/spl/cdsalc2.spl~  ~override~
+       ~iwdification/spl/cdsalf.spl~   ~override~
+       ~iwdification/spl/cdsalf1.spl~  ~override~
+       ~iwdification/spl/cdsalf2.spl~  ~override~
+       ~iwdification/vvc/cdsalc.vvc~   ~override~
+       ~iwdification/vvc/cdsalf.vvc~   ~override~
+  
+  COPY ~iwdification/spl/cdsalc1.spl~  ~override~
+       ~iwdification/spl/cdsalf1.spl~  ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdsalc END
+  
+  COMPILE ~iwdification/baf/cdsalc.baf~
+          ~iwdification/baf/cdsalf.baf~
+
+END
+
+/////                                                  \\\\\
+///// Mind Blank                                       \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/mind_blank.spl~ 2 8 WIZARD_MIND_BLANK
+  SAY 0x08 @3066
+  SAY 0x50 @3067
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_MIND_BLANK~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_MIND_BLANK_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia804.itm~
+    SAY 0x0c @3066
+    SAY 0x54 @3067
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_MIND_BLANK_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT5) // add transmuter flag
+    WRITE_BYTE  0x7e 5 // target
+    WRITE_SHORT 0x80 1 // range
+  
+  COPY ~iwdification/bam/cdia804a.bam~ ~override~
+       ~iwdification/bam/cdia804b.bam~ ~override~
+       ~iwdification/bam/cdia804c.bam~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// iron body                                        \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/iron_body.spl~ 2 8 WIZARD_IRON_BODY
+  SAY 0x08 @3068
+  SAY 0x50 @3069
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_IRON_BODY~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_IRON_BODY_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia807.itm~
+    SAY 0x0c @3068
+    SAY 0x54 @3069
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_IRON_BODY_RES%~ END
+    WRITE_BYTE 0x2f (THIS | BIT6) // add abjurer flag
+    WRITE_BYTE  0x7e 5 // target
+    WRITE_SHORT 0x80 1 // range
+  
+  COPY ~iwdification/bam/cdia807a.bam~ ~override~
+       ~iwdification/bam/cdia807b.bam~ ~override~
+       ~iwdification/bam/cdia807c.bam~ ~override~
+       ~iwdification/bam/cdia807w.bam~ ~override~
+  
+  COPY ~iwdification/itm/cdia807w.itm~ ~override~
+    SAY 0x08 @3070
+    SAY 0x0c @3070
+    SAY 0x50 @3070
+    SAY 0x54 @3070
+
+END
+
+/////                                                  \\\\\
+///// Monster Summoning VII                            \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/monster_summoning_vii.spl~ 2 9 WIZARD_MONSTER_SUMMONING_7
+  SAY 0x08 @3062
+  SAY 0x50 @3063
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_MONSTER_SUMMONING_7~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT WIZARD_MONSTER_SUMMONING_7_RES "%temp%"
+
+  COPY ~iwdification/lib/blank.itm~ ~override/cdia902.itm~
+    SAY 0x0c @3062
+    SAY 0x54 @3063
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%WIZARD_MONSTER_SUMMONING_7_RES%~ END
+    WRITE_BYTE 0x2d (THIS | BIT0) // add diviner flag
+    WRITE_SHORT 0xe2 148 // cast-at-point opcode
+    WRITE_BYTE  0xe4   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/2da/cdia902.2da~  ~override~
+       ~iwdification/bam/cdia902a.bam~ ~override~
+       ~iwdification/bam/cdia902b.bam~ ~override~
+       ~iwdification/bam/cdia902c.bam~ ~override~
+       ~iwdification/cre/cdm7umbh.cre~ ~override~ // umber hulk
+       ~iwdification/eff/cdia902.eff~  ~override~
+  
+  COPY ~iwdification/cre/cdm7bgrd.cre~ ~override~ // boneguard skeleton
+    SAY 0x08 @3065
+    SAY 0x0c @3065
+
+END
+
+/////                                                  \\\\\
+///// now go through and correct cross-references      \\\\\
+/////                                                  \\\\\
+  
+INCLUDE ~iwdification/lib/cross_patch_arcane.tpa~
+
+/////                                                  \\\\\
+///// add scrolls to game                              \\\\\
+/////                                                  \\\\\
+
+ACTION_IF ((FILE_EXISTS_IN_GAME ~highhedg.sto~) OR
+           (FILE_EXISTS_IN_GAME ~_ighhedg.sto~)) BEGIN // bg/bgt/bgee stores
+
+  COPY_EXISTING_REGEXP GLOB ~^[_h]ighhedg\.sto$~ ~override~  // adds lev 1, 2 scrolls to High Hedge
+                            ~^_?sto0703\.sto$~   ~override~  // adds lev 1, 2 scrolls to Sorcerous Sundries
+    PATCH_IF FILE_EXISTS_IN_GAME cdia220.itm BEGIN ADD_STORE_ITEM ~cdia220~ AFTER ~scrl89 _scrl89~ #1 #0 #0 ~IDENTIFIED~ #2 END // Snilloc's Snowball Swarm
+    PATCH_IF FILE_EXISTS_IN_GAME cdia221.itm BEGIN ADD_STORE_ITEM ~cdia221~ AFTER ~scrl89 _scrl89~ #1 #0 #0 ~IDENTIFIED~ #2 END // decastave
+    PATCH_IF FILE_EXISTS_IN_GAME cdia223.itm BEGIN ADD_STORE_ITEM ~cdia223~ AFTER ~scrl89 _scrl89~ #1 #0 #0 ~IDENTIFIED~ #2 END // cats grace
+    BUT_ONLY
+
+  COPY_EXISTING_REGEXP GLOB ~^_?sto0703\.sto$~ ~override~  // adds lev 3, 4 scrolls to Sorcerous Sundries
+    PATCH_IF FILE_EXISTS_IN_GAME cdia318.itm BEGIN ADD_STORE_ITEM ~cdia318~ AFTER ~scrl1k _scrl1k~ #1 #0 #0 ~IDENTIFIED~ #2 END // Icelance
+    PATCH_IF FILE_EXISTS_IN_GAME cdia319.itm BEGIN ADD_STORE_ITEM ~cdia319~ AFTER ~scrl1k _scrl1k~ #1 #0 #0 ~IDENTIFIED~ #2 END // Lance of Disruption
+    PATCH_IF FILE_EXISTS_IN_GAME cdia417.itm BEGIN ADD_STORE_ITEM ~cdia417~ AFTER ~scrl5i _scrl5i~ #1 #0 #0 ~IDENTIFIED~ #2 END // Beltyn's Burning Blood
+    PATCH_IF FILE_EXISTS_IN_GAME cdia418.itm BEGIN ADD_STORE_ITEM ~cdia418~ AFTER ~scrl5i _scrl5i~ #1 #0 #0 ~IDENTIFIED~ #2 END // Shadow Monsters
+    PATCH_IF FILE_EXISTS_IN_GAME cdia419.itm BEGIN ADD_STORE_ITEM ~cdia419~ AFTER ~scrl5i _scrl5i~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Courage
+    PATCH_IF FILE_EXISTS_IN_GAME cdia420.itm BEGIN ADD_STORE_ITEM ~cdia420~ AFTER ~scrl5i _scrl5i~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Fear
+    PATCH_IF FILE_EXISTS_IN_GAME cdia421.itm BEGIN ADD_STORE_ITEM ~cdia421~ AFTER ~scrl5i _scrl5i~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Hope
+    PATCH_IF FILE_EXISTS_IN_GAME cdia424.itm BEGIN ADD_STORE_ITEM ~cdia424~ AFTER ~scrl5i _scrl5i~ #1 #0 #0 ~IDENTIFIED~ #2 END // Vitriolic Sphere
+    PATCH_IF FILE_EXISTS_IN_GAME cdia512.itm BEGIN ADD_STORE_ITEM ~cdia512~ AFTER ~scrl5k _scrl5k~ #1 #0 #0 ~IDENTIFIED~ #1 END // Demi-Shadow Monsters
+    PATCH_IF FILE_EXISTS_IN_GAME cdia513.itm BEGIN ADD_STORE_ITEM ~cdia513~ AFTER ~scrl5k _scrl5k~ #1 #0 #0 ~IDENTIFIED~ #1 END // Summon Shadow
+    BUT_ONLY
+
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~scrolls.sto~ BEGIN // soa stores
+
+  COPY_EXISTING ~scrolls.sto~  ~override~ // yuth
+    PATCH_IF FILE_EXISTS_IN_GAME cdia220.itm BEGIN ADD_STORE_ITEM ~cdia220~ AFTER ~scrl93~ #1 #0 #0 ~IDENTIFIED~ #2 END // Snilloc's Snowball Swarm
+    PATCH_IF FILE_EXISTS_IN_GAME cdia221.itm BEGIN ADD_STORE_ITEM ~cdia221~ AFTER ~scrl93~ #1 #0 #0 ~IDENTIFIED~ #2 END // decastave
+    PATCH_IF FILE_EXISTS_IN_GAME cdia223.itm BEGIN ADD_STORE_ITEM ~cdia223~ AFTER ~scrl93~ #1 #0 #0 ~IDENTIFIED~ #2 END // cats grace
+    PATCH_IF FILE_EXISTS_IN_GAME cdia318.itm BEGIN ADD_STORE_ITEM ~cdia318~ AFTER ~scrl1e~ #1 #0 #0 ~IDENTIFIED~ #2 END // Icelance
+    PATCH_IF FILE_EXISTS_IN_GAME cdia319.itm BEGIN ADD_STORE_ITEM ~cdia319~ AFTER ~scrl1e~ #1 #0 #0 ~IDENTIFIED~ #2 END // Lance of Disruption
+    PATCH_IF FILE_EXISTS_IN_GAME cdia417.itm BEGIN ADD_STORE_ITEM ~cdia417~ AFTER ~scrl1y~ #1 #0 #0 ~IDENTIFIED~ #3 END // Beltyn's Burning Blood
+    PATCH_IF FILE_EXISTS_IN_GAME cdia418.itm BEGIN ADD_STORE_ITEM ~cdia418~ AFTER ~scrl1y~ #1 #0 #0 ~IDENTIFIED~ #2 END // Shadow Monsters
+    PATCH_IF FILE_EXISTS_IN_GAME cdia419.itm BEGIN ADD_STORE_ITEM ~cdia419~ AFTER ~scrl1y~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Courage
+    PATCH_IF FILE_EXISTS_IN_GAME cdia420.itm BEGIN ADD_STORE_ITEM ~cdia420~ AFTER ~scrl1y~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Fear
+    PATCH_IF FILE_EXISTS_IN_GAME cdia421.itm BEGIN ADD_STORE_ITEM ~cdia421~ AFTER ~scrl1y~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Hope
+    PATCH_IF FILE_EXISTS_IN_GAME cdia424.itm BEGIN ADD_STORE_ITEM ~cdia424~ AFTER ~scrl1y~ #1 #0 #0 ~IDENTIFIED~ #2 END // Vitriolic Sphere
+    PATCH_IF FILE_EXISTS_IN_GAME cdia511.itm BEGIN ADD_STORE_ITEM ~cdia511~ AFTER ~scrl6v~ #1 #0 #0 ~IDENTIFIED~ #4 END // Shroud of Flame
+    PATCH_IF FILE_EXISTS_IN_GAME cdia512.itm BEGIN ADD_STORE_ITEM ~cdia512~ AFTER ~scrl6v~ #1 #0 #0 ~IDENTIFIED~ #3 END // Demi-Shadow Monsters
+    PATCH_IF FILE_EXISTS_IN_GAME cdia513.itm BEGIN ADD_STORE_ITEM ~cdia513~ AFTER ~scrl6v~ #1 #0 #0 ~IDENTIFIED~ #2 END // Summon Shadow
+    PATCH_IF FILE_EXISTS_IN_GAME cdia517.itm BEGIN ADD_STORE_ITEM ~cdia517~ AFTER ~scrl6v~ #1 #0 #0 ~IDENTIFIED~ #2 END // Contact Other Plane
+    PATCH_IF FILE_EXISTS_IN_GAME cdia601.itm BEGIN ADD_STORE_ITEM ~cdia601~ AFTER ~scrlal~ #1 #0 #0 ~IDENTIFIED~ #2 END // Antimagic Shell
+    PATCH_IF FILE_EXISTS_IN_GAME cdia610.itm BEGIN ADD_STORE_ITEM ~cdia610~ AFTER ~scrlal~ #1 #0 #0 ~IDENTIFIED~ #2 END // Lich Touch
+    PATCH_IF FILE_EXISTS_IN_GAME cdia611.itm BEGIN ADD_STORE_ITEM ~cdia611~ AFTER ~scrlal~ #1 #0 #0 ~IDENTIFIED~ #2 END // Monster Summoning IV
+    PATCH_IF FILE_EXISTS_IN_GAME cdia612.itm BEGIN ADD_STORE_ITEM ~cdia612~ AFTER ~scrlal~ #1 #0 #0 ~IDENTIFIED~ #3 END // Otiluke's Freezing Sphere
+    PATCH_IF FILE_EXISTS_IN_GAME cdia613.itm BEGIN ADD_STORE_ITEM ~cdia613~ AFTER ~scrlal~ #1 #0 #0 ~IDENTIFIED~ #2 END // Shades
+    PATCH_IF FILE_EXISTS_IN_GAME cdia618.itm BEGIN ADD_STORE_ITEM ~cdia618~ AFTER ~scrlal~ #1 #0 #0 ~IDENTIFIED~ #3 END // Darts of Bone
+    PATCH_IF FILE_EXISTS_IN_GAME cdia620.itm BEGIN ADD_STORE_ITEM ~cdia620~ AFTER ~scrlal~ #1 #0 #0 ~IDENTIFIED~ #2 END // Trollish Fortitude
+    PATCH_IF FILE_EXISTS_IN_GAME cdia703.itm BEGIN ADD_STORE_ITEM ~cdia703~ AFTER ~scrlal~ #1 #0 #0 ~IDENTIFIED~ #2 END // Monster Summoning V
+    PATCH_IF FILE_EXISTS_IN_GAME cdia707.itm BEGIN ADD_STORE_ITEM ~cdia707~ AFTER ~scrlal~ #1 #0 #0 ~IDENTIFIED~ #2 END // Malavon's Rage
+    PATCH_IF FILE_EXISTS_IN_GAME cdia708.itm BEGIN ADD_STORE_ITEM ~cdia708~ AFTER ~scrlal~ #1 #0 #0 ~IDENTIFIED~ #3 END // Acid Storm
+    PATCH_IF FILE_EXISTS_IN_GAME cdia711.itm BEGIN ADD_STORE_ITEM ~cdia711~ AFTER ~scrlal~ #1 #0 #0 ~IDENTIFIED~ #2 END // Suffocate
+    PATCH_IF FILE_EXISTS_IN_GAME cdia803.itm BEGIN ADD_STORE_ITEM ~cdia803~ AFTER ~scrlan~ #1 #0 #0 ~IDENTIFIED~ #2 END // Monster Summoning VI
+    PATCH_IF FILE_EXISTS_IN_GAME cdia804.itm BEGIN ADD_STORE_ITEM ~cdia804~ AFTER ~scrlan~ #1 #0 #0 ~IDENTIFIED~ #3 END // Mind Blank
+    PATCH_IF FILE_EXISTS_IN_GAME cdia807.itm BEGIN ADD_STORE_ITEM ~cdia807~ AFTER ~scrlan~ #1 #0 #0 ~IDENTIFIED~ #2 END // Iron Body
+    PATCH_IF FILE_EXISTS_IN_GAME cdia902.itm BEGIN ADD_STORE_ITEM ~cdia902~ AFTER ~scrlan~ #1 #0 #0 ~IDENTIFIED~ #2 END // Monster Summoning VII
+
+  COPY_EXISTING ~shop08.sto~  ~override~ // galoomp
+    PATCH_IF FILE_EXISTS_IN_GAME cdia220.itm BEGIN ADD_STORE_ITEM ~cdia220~ AFTER ~scrl93~ #1 #0 #0 ~IDENTIFIED~ #4 END // Snilloc's Snowball Swarm
+    PATCH_IF FILE_EXISTS_IN_GAME cdia221.itm BEGIN ADD_STORE_ITEM ~cdia221~ AFTER ~scrl93~ #1 #0 #0 ~IDENTIFIED~ #2 END // decastave
+    PATCH_IF FILE_EXISTS_IN_GAME cdia223.itm BEGIN ADD_STORE_ITEM ~cdia223~ AFTER ~scrl93~ #1 #0 #0 ~IDENTIFIED~ #2 END // cats grace
+    PATCH_IF FILE_EXISTS_IN_GAME cdia318.itm BEGIN ADD_STORE_ITEM ~cdia318~ AFTER ~scrl1e~ #1 #0 #0 ~IDENTIFIED~ #2 END // Icelance
+    PATCH_IF FILE_EXISTS_IN_GAME cdia319.itm BEGIN ADD_STORE_ITEM ~cdia319~ AFTER ~scrl1e~ #1 #0 #0 ~IDENTIFIED~ #2 END // Lance of Disruption
+    PATCH_IF FILE_EXISTS_IN_GAME cdia417.itm BEGIN ADD_STORE_ITEM ~cdia417~ AFTER ~scrl6r~ #1 #0 #0 ~IDENTIFIED~ #2 END // Beltyn's Burning Blood
+    PATCH_IF FILE_EXISTS_IN_GAME cdia418.itm BEGIN ADD_STORE_ITEM ~cdia418~ AFTER ~scrl6r~ #1 #0 #0 ~IDENTIFIED~ #3 END // Shadow Monsters
+    PATCH_IF FILE_EXISTS_IN_GAME cdia419.itm BEGIN ADD_STORE_ITEM ~cdia419~ AFTER ~scrl6r~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Courage
+    PATCH_IF FILE_EXISTS_IN_GAME cdia420.itm BEGIN ADD_STORE_ITEM ~cdia420~ AFTER ~scrl6r~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Fear
+    PATCH_IF FILE_EXISTS_IN_GAME cdia421.itm BEGIN ADD_STORE_ITEM ~cdia421~ AFTER ~scrl6r~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Hope
+    PATCH_IF FILE_EXISTS_IN_GAME cdia424.itm BEGIN ADD_STORE_ITEM ~cdia424~ AFTER ~scrl6r~ #1 #0 #0 ~IDENTIFIED~ #3 END // Vitriolic Sphere
+    PATCH_IF FILE_EXISTS_IN_GAME cdia511.itm BEGIN ADD_STORE_ITEM ~cdia511~ AFTER ~scrl5q~ #1 #0 #0 ~IDENTIFIED~ #3 END // Shroud of Flame
+    PATCH_IF FILE_EXISTS_IN_GAME cdia512.itm BEGIN ADD_STORE_ITEM ~cdia512~ AFTER ~scrl5q~ #1 #0 #0 ~IDENTIFIED~ #2 END // Demi-Shadow Monsters
+    PATCH_IF FILE_EXISTS_IN_GAME cdia513.itm BEGIN ADD_STORE_ITEM ~cdia513~ AFTER ~scrl5q~ #1 #0 #0 ~IDENTIFIED~ #2 END // Summon Shadow
+    PATCH_IF FILE_EXISTS_IN_GAME cdia517.itm BEGIN ADD_STORE_ITEM ~cdia517~ AFTER ~scrl5q~ #1 #0 #0 ~IDENTIFIED~ #1 END // Contact Other Plane
+
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~25spell.sto~ BEGIN // tob stores
+
+  COPY_EXISTING ~25spell.sto~  ~override~ // arcana archives
+                ~25spell2.sto~ ~override~
+    PATCH_IF FILE_EXISTS_IN_GAME cdia220.itm BEGIN ADD_STORE_ITEM ~cdia220~ AFTER ~scrl93~ #1 #0 #0 ~IDENTIFIED~ #2 END // Snilloc's Snowball Swarm
+    PATCH_IF FILE_EXISTS_IN_GAME cdia221.itm BEGIN ADD_STORE_ITEM ~cdia221~ AFTER ~scrl93~ #1 #0 #0 ~IDENTIFIED~ #2 END // decastave
+    PATCH_IF FILE_EXISTS_IN_GAME cdia223.itm BEGIN ADD_STORE_ITEM ~cdia223~ AFTER ~scrl93~ #1 #0 #0 ~IDENTIFIED~ #2 END // cats grace
+    PATCH_IF FILE_EXISTS_IN_GAME cdia318.itm BEGIN ADD_STORE_ITEM ~cdia318~ AFTER ~scrl1e~ #1 #0 #0 ~IDENTIFIED~ #2 END // Icelance
+    PATCH_IF FILE_EXISTS_IN_GAME cdia319.itm BEGIN ADD_STORE_ITEM ~cdia319~ AFTER ~scrl1e~ #1 #0 #0 ~IDENTIFIED~ #2 END // Lance of Disruption
+    PATCH_IF FILE_EXISTS_IN_GAME cdia417.itm BEGIN ADD_STORE_ITEM ~cdia417~ AFTER ~scrl6r~ #1 #0 #0 ~IDENTIFIED~ #2 END // Beltyn's Burning Blood
+    PATCH_IF FILE_EXISTS_IN_GAME cdia418.itm BEGIN ADD_STORE_ITEM ~cdia418~ AFTER ~scrl6r~ #1 #0 #0 ~IDENTIFIED~ #2 END // Shadow Monsters
+    PATCH_IF FILE_EXISTS_IN_GAME cdia419.itm BEGIN ADD_STORE_ITEM ~cdia419~ AFTER ~scrl6r~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Courage
+    PATCH_IF FILE_EXISTS_IN_GAME cdia420.itm BEGIN ADD_STORE_ITEM ~cdia420~ AFTER ~scrl6r~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Fear
+    PATCH_IF FILE_EXISTS_IN_GAME cdia421.itm BEGIN ADD_STORE_ITEM ~cdia421~ AFTER ~scrl6r~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Hope
+    PATCH_IF FILE_EXISTS_IN_GAME cdia424.itm BEGIN ADD_STORE_ITEM ~cdia424~ AFTER ~scrl6r~ #1 #0 #0 ~IDENTIFIED~ #2 END // Vitriolic Sphere
+    PATCH_IF FILE_EXISTS_IN_GAME cdia511.itm BEGIN ADD_STORE_ITEM ~cdia511~ AFTER ~scrl5q~ #1 #0 #0 ~IDENTIFIED~ #2 END // Shroud of Flame
+    PATCH_IF FILE_EXISTS_IN_GAME cdia512.itm BEGIN ADD_STORE_ITEM ~cdia512~ AFTER ~scrl5q~ #1 #0 #0 ~IDENTIFIED~ #2 END // Demi-Shadow Monsters
+    PATCH_IF FILE_EXISTS_IN_GAME cdia513.itm BEGIN ADD_STORE_ITEM ~cdia513~ AFTER ~scrl5q~ #1 #0 #0 ~IDENTIFIED~ #2 END // Summon Shadow
+    PATCH_IF FILE_EXISTS_IN_GAME cdia517.itm BEGIN ADD_STORE_ITEM ~cdia517~ AFTER ~scrl5q~ #1 #0 #0 ~IDENTIFIED~ #2 END // Contact Other Plane
+    PATCH_IF FILE_EXISTS_IN_GAME cdia601.itm BEGIN ADD_STORE_ITEM ~cdia601~ AFTER ~scrl7p~ #1 #0 #0 ~IDENTIFIED~ #2 END // Antimagic Shell
+    PATCH_IF FILE_EXISTS_IN_GAME cdia610.itm BEGIN ADD_STORE_ITEM ~cdia610~ AFTER ~scrl7p~ #1 #0 #0 ~IDENTIFIED~ #2 END // Lich Touch
+    PATCH_IF FILE_EXISTS_IN_GAME cdia611.itm BEGIN ADD_STORE_ITEM ~cdia611~ AFTER ~scrl7p~ #1 #0 #0 ~IDENTIFIED~ #2 END // Monster Summoning IV
+    PATCH_IF FILE_EXISTS_IN_GAME cdia612.itm BEGIN ADD_STORE_ITEM ~cdia612~ AFTER ~scrl7p~ #1 #0 #0 ~IDENTIFIED~ #2 END // Otiluke's Freezing Sphere
+    PATCH_IF FILE_EXISTS_IN_GAME cdia613.itm BEGIN ADD_STORE_ITEM ~cdia613~ AFTER ~scrl7p~ #1 #0 #0 ~IDENTIFIED~ #2 END // Shades
+    PATCH_IF FILE_EXISTS_IN_GAME cdia618.itm BEGIN ADD_STORE_ITEM ~cdia618~ AFTER ~scrl7p~ #1 #0 #0 ~IDENTIFIED~ #2 END // Darts of Bone
+    PATCH_IF FILE_EXISTS_IN_GAME cdia620.itm BEGIN ADD_STORE_ITEM ~cdia620~ AFTER ~scrl7p~ #1 #0 #0 ~IDENTIFIED~ #2 END // Trollish Fortitude
+    PATCH_IF FILE_EXISTS_IN_GAME cdia703.itm BEGIN ADD_STORE_ITEM ~cdia703~ AFTER ~scrl8p~ #1 #0 #0 ~IDENTIFIED~ #2 END // Monster Summoning V
+    PATCH_IF FILE_EXISTS_IN_GAME cdia707.itm BEGIN ADD_STORE_ITEM ~cdia707~ AFTER ~scrl8p~ #1 #0 #0 ~IDENTIFIED~ #2 END // Malavon's Rage
+    PATCH_IF FILE_EXISTS_IN_GAME cdia708.itm BEGIN ADD_STORE_ITEM ~cdia708~ AFTER ~scrl8p~ #1 #0 #0 ~IDENTIFIED~ #2 END // Acid Storm
+    PATCH_IF FILE_EXISTS_IN_GAME cdia711.itm BEGIN ADD_STORE_ITEM ~cdia711~ AFTER ~scrl8p~ #1 #0 #0 ~IDENTIFIED~ #2 END // Suffocate
+    PATCH_IF FILE_EXISTS_IN_GAME cdia803.itm BEGIN ADD_STORE_ITEM ~cdia803~ AFTER ~scrlap~ #1 #0 #0 ~IDENTIFIED~ #2 END // Monster Summoning VI
+    PATCH_IF FILE_EXISTS_IN_GAME cdia804.itm BEGIN ADD_STORE_ITEM ~cdia804~ AFTER ~scrlap~ #1 #0 #0 ~IDENTIFIED~ #2 END // Mind Blank
+    PATCH_IF FILE_EXISTS_IN_GAME cdia807.itm BEGIN ADD_STORE_ITEM ~cdia807~ AFTER ~scrlap~ #1 #0 #0 ~IDENTIFIED~ #2 END // Iron Body
+    PATCH_IF FILE_EXISTS_IN_GAME cdia902.itm BEGIN ADD_STORE_ITEM ~cdia902~ AFTER ~scrlb4~ #1 #0 #0 ~IDENTIFIED~ #2 END // Monster Summoning VII
+
+
+END
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// IWD divine spell pack                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @4000 DESIGNATED 40
+
+/////                                                  \\\\\
+///// common resources                                 \\\\\
+/////                                                  \\\\\
+
+INCLUDE ~iwdification/lib/common_spell.tpa~
+
+/////                                                  \\\\\
+///// Curse                                            \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/curse.spl~ 1 1 CLERIC_CURSE
+  SAY 0x08 @4001
+  SAY 0x50 @4002
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CURSE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_CURSE_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdid111.pro~
+  
+  COPY_EXISTING ~%CLERIC_CURSE_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid111 END
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid111.itm~
+    SAY 0x0c @4001
+    SAY 0x54 @4002
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_CURSE_RES%~ END
+    WRITE_SHORT 0xaa 148 // cast-at-point opcode
+    WRITE_BYTE  0xac   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+
+  COPY ~iwdification/bam/cdarea1x.bam~ ~override~
+       ~iwdification/bam/cdcurseh.bam~ ~override~
+       ~iwdification/bam/cdid111a.bam~ ~override~
+       ~iwdification/bam/cdid111b.bam~ ~override~
+       ~iwdification/bam/cdid111c.bam~ ~override~
+       ~iwdification/vvc/cdbless.vvc~  ~override~
+       ~iwdification/vvc/cdcurseh.vvc~ ~override~
+       ~iwdification/wav/cdeffp32.wav~ ~override~
+       ~iwdification/wav/cdeffp99.wav~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Cause Light Wounds                               \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/cause_light_wounds.spl~ 1 1 CLERIC_CAUSE_LIGHT_WOUNDS
+  SAY 0x08 @4003
+  SAY 0x50 @4004
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CAUSE_LIGHT_WOUNDS~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_CAUSE_LIGHT_WOUNDS_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid112.itm~
+    SAY 0x0c @4003
+    SAY 0x54 @4004
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_CAUSE_LIGHT_WOUNDS_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT12 + BIT21 + BIT30)) // cleric only - add fighter/druid, ranger, and druid flags
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdid112a.bam~ ~override~
+       ~iwdification/bam/cdid112b.bam~ ~override~
+       ~iwdification/bam/cdid112c.bam~ ~override~
+  
+  COPY ~iwdification/lib/immunity.eff~ ~override/cdim1112.eff~
+    WRITE_ASCIIE 0x30 ~%CLERIC_CAUSE_LIGHT_WOUNDS_RES%~ #8
+
+END
+
+/////                                                  \\\\\
+///// Sunscorch                                        \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/sunscorch.spl~ 1 1 CLERIC_SUNSCORCH
+  SAY 0x08 @4005
+  SAY 0x50 @4006
+  LPF SPELL_ALTER_EFFECT INT_VAR opcode = 206 STR_VAR resource = EVALUATE_BUFFER "%DEST_RES%" END
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SUNSCORCH~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_SUNSCORCH_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid113.itm~
+    SAY 0x0c @4005
+    SAY 0x54 @4006
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_SUNSCORCH_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+  
+  COPY ~iwdification/bam/cdid113a.bam~ ~override~
+       ~iwdification/bam/cdid113b.bam~ ~override~
+       ~iwdification/bam/cdid113c.bam~ ~override~
+       ~iwdification/bam/cdid113v.bam~ ~override~
+       ~iwdification/vvc/cdid1131.vvc~ ~override~
+       ~iwdification/vvc/cdid1132.vvc~ ~override~
+       ~iwdification/vvc/cdid1133.vvc~ ~override~
+       ~iwdification/vvc/cdid1134.vvc~ ~override~
+       ~iwdification/wav/cdeffp39.wav~ ~override~
+  
+  COPY ~iwdification/lib/immunity.eff~ ~override/cdim1113.eff~
+    WRITE_ASCIIE 0x30 ~%CLERIC_SUNSCORCH_RES%~ #8
+  
+  OUTER_FOR (index = 1 ; index < 16 ; ++index) BEGIN
+  
+    COPY ~iwdification/eff/cdfire1.eff~ ~override/cdfire%index%.eff~
+      WRITE_LONG 0x1c index
+  
+  END
+
+END
+
+/////                                                  \\\\\
+///// Alicorn Lance                                    \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/alicorn_lance.spl~ 1 2 CLERIC_ALICORN_LANCE
+  SAY 0x08 @4007
+  SAY 0x50 @4008
+  SAY 0x2ae @4075
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_ALICORN_LANCE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_ALICORN_LANCE_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdid216.pro~
+  
+  COPY_EXISTING ~%CLERIC_ALICORN_LANCE_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid216 END
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid216.itm~
+    SAY 0x0c @4007
+    SAY 0x54 @4008
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_ALICORN_LANCE_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+  
+  COPY ~iwdification/bam/cdid216a.bam~ ~override~
+       ~iwdification/bam/cdid216b.bam~ ~override~
+       ~iwdification/bam/cdid216c.bam~ ~override~
+       ~iwdification/bam/cdid216v.bam~ ~override~
+       ~iwdification/wav/cdtra_57.wav~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Beast Claw                                       \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/beast_claw.spl~ 1 2 CLERIC_BEAST_CLAW
+  SAY 0x08 @4009
+  SAY 0x50 @4010
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_BEAST_CLAW~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_BEAST_CLAW_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid217.itm~
+    SAY 0x0c @4009
+    SAY 0x54 @4010
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_BEAST_CLAW_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+    WRITE_BYTE  0x7e  5 // target
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdid217a.bam~ ~override~
+       ~iwdification/bam/cdid217b.bam~ ~override~
+       ~iwdification/bam/cdid217c.bam~ ~override~
+       ~iwdification/bam/cdid217i.bam~ ~override~
+  
+  COPY ~iwdification/itm/cdid217w.itm~ ~override~
+    SAY 0x08 @4009
+    SAY 0x0c @4009
+    SAY 0x50 @4010
+    SAY 0x54 @4010
+
+END
+
+/////                                                  \\\\\
+///// Cause Moderate Wounds                            \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/cause_moderate_wounds.spl~ 1 2 CLERIC_CAUSE_MODERATE_WOUNDS
+  SAY 0x08 @4011
+  SAY 0x50 @4012
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CAUSE_MODERATE_WOUNDS~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_CAUSE_MODERATE_WOUNDS_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid218.itm~
+    SAY 0x0c @4011
+    SAY 0x54 @4012
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_CAUSE_MODERATE_WOUNDS_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT12 + BIT21 + BIT30)) // cleric only - add fighter/druid, ranger, and druid flags
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdid218a.bam~ ~override~ // missing
+       ~iwdification/bam/cdid218b.bam~ ~override~
+       ~iwdification/bam/cdid218c.bam~ ~override~
+  
+  COPY ~iwdification/lib/immunity.eff~ ~override/cdim1218.eff~
+    WRITE_ASCIIE 0x30 ~%CLERIC_CAUSE_MODERATE_WOUNDS_RES%~ #8
+
+END
+
+/////                                                  \\\\\
+///// Cure Moderate Wounds                             \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/cure_moderate_wounds.spl~ 1 2 CLERIC_CURE_MODERATE_WOUNDS
+  SAY 0x08 @4079
+  SAY 0x50 @4080
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CURE_MODERATE_WOUNDS~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_CURE_MODERATE_WOUNDS_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid214.itm~
+    SAY 0x0c @4079
+    SAY 0x54 @4080
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_CURE_MODERATE_WOUNDS_RES%~ END
+    WRITE_SHORT 0x80  1 // range
+
+  COPY ~iwdification/bam/cdid214a.bam~ ~override~ // missing
+       ~iwdification/bam/cdid214b.bam~ ~override~
+       ~iwdification/bam/cdid214c.bam~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Prayer                                           \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/prayer.spl~ 1 3 CLERIC_PRAYER
+  SAY 0x08 @4013
+  SAY 0x50 @4014
+  READ_LONG 0x08 string
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_PRAYER~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_PRAYER_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid313.itm~
+    SAY 0x0c @4013
+    SAY 0x54 @4014
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_PRAYER_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT12 + BIT21 + BIT30)) // cleric only - add fighter/druid, ranger, and druid flags
+    WRITE_BYTE  0x7e  5 // target
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdid313a.bam~ ~override~
+       ~iwdification/bam/cdid313b.bam~ ~override~
+       ~iwdification/bam/cdid313c.bam~ ~override~
+       ~iwdification/bam/cdprayrh.bam~ ~override~
+       ~iwdification/vvc/cdprayrh.vvc~ ~override~
+  
+  COPY ~iwdification/spl/cdid313b.spl~ ~override~
+       ~iwdification/spl/cdid313g.spl~ ~override~
+    LPF SPELL_ALTER_EFFECT INT_VAR opcode = 139 parameter1 = string END
+
+END
+
+/////                                                  \\\\\
+///// Cause Disease                                    \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/cause_disease.spl~ 1 3 CLERIC_CAUSE_DISEASE
+  SAY 0x08 @4015
+  SAY 0x50 @4016
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CAUSE_DISEASE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_CAUSE_DISEASE_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid315.itm~
+    SAY 0x0c @4015
+    SAY 0x54 @4016
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_CAUSE_DISEASE_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT2 + BIT12 + BIT21 + BIT30)) // non-good cleric only - add good, fighter/druid, ranger, and druid flags
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cddiseah.bam~ ~override~
+       ~iwdification/bam/cdid315a.bam~ ~override~
+       ~iwdification/bam/cdid315b.bam~ ~override~
+       ~iwdification/bam/cdid315c.bam~ ~override~
+       ~iwdification/vvc/cddiseah.vvc~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Exaltation                                       \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/exaltation.spl~ 1 3 CLERIC_EXALTATION
+  SAY 0x08 @4017
+  SAY 0x50 @4018
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_EXALTATION~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_EXALTATION_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid316.itm~
+    SAY 0x0c @4017
+    SAY 0x54 @4018
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_EXALTATION_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT12 + BIT21 + BIT30)) // cleric only - add fighter/druid, ranger, and druid flags
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdexalth.bam~ ~override~
+       ~iwdification/bam/cdid316a.bam~ ~override~
+       ~iwdification/bam/cdid316b.bam~ ~override~
+       ~iwdification/bam/cdid316c.bam~ ~override~
+       ~iwdification/vvc/cdexalth.vvc~ ~override~
+       ~iwdification/wav/cdffp106.wav~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Moonblade                                        \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/moonblade.spl~ 1 3 CLERIC_MOONBLADE
+  SAY 0x08 @4019
+  SAY 0x50 @4020
+  SPRINT temp "%DEST_RES%"
+
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_MOONBLADE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_MOONBLADE_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid318.itm~
+    SAY 0x0c @4019
+    SAY 0x54 @4020
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_MOONBLADE_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+    WRITE_BYTE  0x7e  5 // target
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdid318a.bam~ ~override~
+       ~iwdification/bam/cdid318b.bam~ ~override~
+       ~iwdification/bam/cdid318c.bam~ ~override~
+       ~iwdification/bam/cdid318i.bam~ ~override~
+       ~iwdification/eff/cdid318.eff~  ~override~
+  
+  COPY ~iwdification/itm/cdid318w.itm~ ~override~
+    SAY 0x08 @4019
+    SAY 0x0c @4019
+    SAY 0x50 @4020
+    SAY 0x54 @4020
+
+END
+
+/////                                                  \\\\\
+///// Circle of Bones                                  \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/circle_of_bones.spl~ 1 3 CLERIC_CIRCLE_OF_BONES
+  SAY 0x08 @4021
+  SAY 0x50 @4022
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CIRCLE_OF_BONES~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_CIRCLE_OF_BONES_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid319.itm~
+    SAY 0x0c @4021
+    SAY 0x54 @4022
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_CIRCLE_OF_BONES_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT2 + BIT12 + BIT21 + BIT30)) // non-good cleric only - add good, fighter/druid, ranger, and druid flags
+    WRITE_BYTE  0x7e  5 // target
+    WRITE_SHORT 0x80  1 // range
+
+  COPY ~iwdification/bam/cdbonh1.bam~  ~override~
+       ~iwdification/bam/cdbonh2.bam~  ~override~
+       ~iwdification/bam/cdid319a.bam~ ~override~
+       ~iwdification/bam/cdid319b.bam~ ~override~
+       ~iwdification/bam/cdid319c.bam~ ~override~
+       ~iwdification/vvc/cdbonh1.vvc~  ~override~
+       ~iwdification/vvc/cdbonh2.vvc~  ~override~
+       ~iwdification/wav/cdaftp22.wav~ ~override~
+       ~iwdification/wav/cdarep21.wav~ ~override~
+  
+  COPY ~iwdification/spl/cdid319.spl~ ~override~
+    SAY 0x08 @4021
+    SAY 0x50 @4022
+
+END
+
+/////                                                  \\\\\
+///// Spike Growth                                     \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/spike_growth.spl~ 1 3 CLERIC_SPIKE_GROWTH
+  SAY 0x08 @4023
+  SAY 0x50 @4024
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SPIKE_GROWTH~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_SPIKE_GROWTH_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdid320.pro~
+  
+  COPY_EXISTING ~%CLERIC_SPIKE_GROWTH_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid320 END
+  
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid320.itm~
+    SAY 0x0c @4023
+    SAY 0x54 @4024
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_SPIKE_GROWTH_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+    WRITE_SHORT 0xaa 148 // cast-at-point opcode
+    WRITE_BYTE  0xac   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/bam/cdid320a.bam~ ~override~
+       ~iwdification/bam/cdid320b.bam~ ~override~
+       ~iwdification/bam/cdid320c.bam~ ~override~
+       ~iwdification/bam/cdid320x.bam~ ~override~
+       ~iwdification/bam/cdid320z.bam~ ~override~
+       ~iwdification/vvc/cdid320x.vvc~ ~override~
+       ~iwdification/vvc/cdid320z.vvc~ ~override~ // #sgroa
+       ~iwdification/wav/cdaftp24.wav~ ~override~
+  
+  COPY ~iwdification/spl/cdid320.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid320 END
+  
+  LAUNCH_ACTION_FUNCTION cd_create_cloud INT_VAR visloop = 5 cloud_dur = 60 STR_VAR code = cdid320 END
+
+END
+
+/////                                                  \\\\\
+///// Cloudburst                                       \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/cloudburst.spl~ 1 3 CLERIC_CLOUDBURST
+  SAY 0x08 @4025
+  SAY 0x50 @4026
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CLOUDBURST~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_CLOUDBURST_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdid321.pro~
+  
+  COPY_EXISTING ~%CLERIC_CLOUDBURST_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid321 END
+  
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid321.itm~
+    SAY 0x0c @4025
+    SAY 0x54 @4026
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_CLOUDBURST_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+    WRITE_SHORT 0xaa 148 // cast-at-point opcode
+    WRITE_BYTE  0xac   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/bam/cdcloubh.bam~ ~override~
+       ~iwdification/bam/cdid321a.bam~ ~override~
+       ~iwdification/bam/cdid321b.bam~ ~override~
+       ~iwdification/bam/cdid321c.bam~ ~override~
+       ~iwdification/eff/cdid321c.eff~ ~override~
+       ~iwdification/vvc/cdcloubh.vvc~ ~override~
+       ~iwdification/vvc/cdid321x.vvc~ ~override~
+       ~iwdification/wav/cdarep24.wav~ ~override~
+  
+  COPY ~iwdification/spl/cdid321.spl~ ~override~ // protect from shroud of flame
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid321 END
+  
+  LAUNCH_ACTION_FUNCTION cd_create_cloud INT_VAR visloop = 1 cloud_dur = 12 zosa = 1 STR_VAR code = cdid321 END
+
+END
+
+/////                                                  \\\\\
+///// storm shell                                      \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/storm_shell.spl~ 1 3 CLERIC_STORM_SHELL
+  SAY 0x08 @4027
+  SAY 0x50 @4028
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_STORM_SHELL~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_STORM_SHELL_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid323.itm~
+    SAY 0x0c @4027
+    SAY 0x54 @4028
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_STORM_SHELL_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+    WRITE_BYTE  0x7e  5 // target
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdid323a.bam~ ~override~
+       ~iwdification/bam/cdid323b.bam~ ~override~
+       ~iwdification/bam/cdid323c.bam~ ~override~
+       ~iwdification/bam/cdid323v.bam~ ~override~
+       ~iwdification/vvc/cdid323v.vvc~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Giant Insect                                     \\\\\
+/////                                                  \\\\\
+
+ACTION_IF ((MOD_IS_INSTALLED ~INFINITYANIMATIONS/SETUP-INFINITYANIMATIONS.TP2~ ~500~) AND
+           (IDS_OF_SYMBOL (~animate~ ~BEETLE_BLACK~) > 0) AND
+           (FILE_EXISTS_IN_GAME ~mbeta1.bam~)) THEN BEGIN
+  
+  ADD_SPELL ~iwdification/spl/giant_insect.spl~ 1 4 CLERIC_GIANT_INSECT
+    SAY 0x08 @4029
+    SAY 0x50 @4030
+    SPRINT temp "%DEST_RES%"
+
+  ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_GIANT_INSECT~)) > 0) THEN BEGIN
+  
+    OUTER_SPRINT CLERIC_GIANT_INSECT_RES "%temp%"
+  
+    ADD_PROJECTILE ~iwdification/pro/cdgibomb.pro~
+    
+    COPY ~iwdification/lib/blankpr.itm~ ~override/cdid410.itm~
+      SAY 0x0c @4029
+      SAY 0x54 @4030
+      LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_GIANT_INSECT_RES%~ END
+      WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+      WRITE_SHORT 0xaa 148 // cast-at-point opcode
+      WRITE_BYTE  0xac   1 // target: self
+      WRITE_BYTE  0x7e   4 // target: any point
+  
+    COPY ~iwdification/2da/cdid410.2da~  ~override~
+         ~iwdification/bam/cdanisum.bam~ ~override~
+         ~iwdification/bam/cdid410a.bam~ ~override~
+         ~iwdification/bam/cdid410b.bam~ ~override~
+         ~iwdification/bam/cdid410c.bam~ ~override~
+         ~iwdification/eff/cdid410.eff~  ~override~
+         ~iwdification/itm/cdgibomb.itm~ ~override~
+         ~iwdification/itm/s5-20.itm~    ~override~
+         ~iwdification/vvc/cdanisum.vvc~ ~override~
+         ~iwdification/wav/cdeffm47.wav~ ~override~
+  
+    COPY ~iwdification/cre/cdgibomb.cre~ ~override~
+      SAY 0x0c @4076
+      SAY 0x0c @4076
+      WRITE_LONG 0x28 IDS_OF_SYMBOL (~animate~ ~BEETLE_BLACK~)
+  
+    COPY ~iwdification/cre/cdgiborb.cre~ ~override~
+      SAY 0x0c @4077
+      SAY 0x0c @4077
+      WRITE_LONG 0x28 IDS_OF_SYMBOL (~animate~ ~BEETLE_BLACK~)
+  
+    COPY ~iwdification/spl/cdgibomb.spl~ ~override~ // add in 206 vs. iwd bard songs
+      LPF SPELL_ALTER_HEADER INT_VAR projectile = cdgibomb END
+    
+    COMPILE ~iwdification/baf/cdgibomb.baf~
+
+  END
+
+END
+
+/////                                                  \\\\\
+///// Produce Fire                                     \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/produce_fire.spl~ 1 4 CLERIC_PRODUCE_FIRE
+  SAY 0x08 @4031
+  SAY 0x50 @4032
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_PRODUCE_FIRE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_PRODUCE_FIRE_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdid411.pro~
+  
+  COPY_EXISTING ~%CLERIC_PRODUCE_FIRE_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid411 END
+  
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid411.itm~
+    SAY 0x0c @4031
+    SAY 0x54 @4032
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_PRODUCE_FIRE_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+    WRITE_SHORT 0xaa 148 // cast-at-point opcode
+    WRITE_BYTE  0xac   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/bam/cdid411a.bam~ ~override~
+       ~iwdification/bam/cdid411b.bam~ ~override~
+       ~iwdification/bam/cdid411c.bam~ ~override~
+       ~iwdification/bam/cdid411v.bam~ ~override~
+       ~iwdification/vvc/cdid411v.vvc~ ~override~
+       ~iwdification/wav/cdarep03.wav~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Static Charge                                    \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/static_charge.spl~ 1 4 CLERIC_STATIC_CHARGE
+  SAY 0x08 @4033
+  SAY 0x50 @4034
+  LPF SPELL_ALTER_EFFECT INT_VAR opcode = 146 duration = 60 STR_VAR resource = EVALUATE_BUFFER "%DEST_RES%" END
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_STATIC_CHARGE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_STATIC_CHARGE_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid412.itm~
+    SAY 0x0c @4033
+    SAY 0x54 @4034
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_STATIC_CHARGE_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+  
+  COPY ~iwdification/bam/cdid412a.bam~ ~override~
+       ~iwdification/bam/cdid412b.bam~ ~override~
+       ~iwdification/bam/cdid412c.bam~ ~override~
+       ~iwdification/bam/cdid412v.bam~ ~override~
+       ~iwdification/vvc/cdid412v.vvc~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// recitation                                       \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/recitation.spl~ 1 4 CLERIC_RECITATION
+  SAY 0x08 @4035
+  SAY 0x50 @4036
+  READ_LONG 0x08 string
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_RECITATION~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_RECITATION_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid414.itm~
+    SAY 0x0c @4035
+    SAY 0x54 @4036
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_RECITATION_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT12 + BIT21 + BIT30)) // cleric only - add fighter/druid, ranger, and druid flags
+    WRITE_BYTE  0x7e  5 // target
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdid414a.bam~ ~override~
+       ~iwdification/bam/cdid414b.bam~ ~override~
+       ~iwdification/bam/cdid414c.bam~ ~override~
+       ~iwdification/bam/cdrecith.bam~ ~override~
+       ~iwdification/vvc/cdrecith.vvc~ ~override~
+       ~iwdification/wav/cdeffe03.wav~ ~override~
+       ~iwdification/wav/cdeffp44.wav~ ~override~
+  
+  COPY ~iwdification/spl/cdid414b.spl~ ~override~
+       ~iwdification/spl/cdid414g.spl~ ~override~
+    LPF SPELL_ALTER_EFFECT INT_VAR opcode = 139 parameter1 = string END
+
+END
+
+/////                                                  \\\\\
+///// Blood Rage                                       \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/blood_rage.spl~ 1 4 CLERIC_BLOOD_RAGE
+  SAY 0x08 @4037
+  SAY 0x50 @4038
+  LPF SPELL_ALTER_EFFECT INT_VAR opcode = 210 opcode_new = 206 STR_VAR resource = EVALUATE_BUFFER ~%DEST_RES%~ END // adds immunity to self in last effect
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_BLOOD_RAGE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_BLOOD_RAGE_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid415.itm~
+    SAY 0x0c @4037
+    SAY 0x54 @4038
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_BLOOD_RAGE_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT4 + BIT12 + BIT21 + BIT30)) // non-lawful cleric only - add lawful, fighter/druid, ranger, and druid flags
+  
+  COPY ~iwdification/bam/cdid415a.bam~ ~override~
+       ~iwdification/bam/cdid415b.bam~ ~override~
+       ~iwdification/bam/cdid415c.bam~ ~override~
+  
+  COPY ~iwdification/lib/immunity.eff~ ~override/cdim1415.eff~
+    WRITE_ASCIIE 0x30 ~%CLERIC_BLOOD_RAGE_RES%~ #8
+
+END
+
+/////                                                  \\\\\
+///// cloud of pestilence                              \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/cloud_of_pestilence.spl~ 1 4 CLERIC_CLOUD_OF_PESTILENCE
+  SAY 0x08 @4039
+  SAY 0x50 @4040
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CLOUD_OF_PESTILENCE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_CLOUD_OF_PESTILENCE_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdid417.pro~
+  
+  COPY_EXISTING ~%CLERIC_CLOUD_OF_PESTILENCE_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid417 END
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid417.itm~
+    SAY 0x0c @4039
+    SAY 0x54 @4040
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_CLOUD_OF_PESTILENCE_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT2 + BIT3 + BIT12 + BIT21 + BIT30)) // evil cleric only - add good, g/e neutral, fighter/druid, ranger, and druid flags
+    WRITE_SHORT 0xaa 148 // cast-at-point opcode
+    WRITE_BYTE  0xac   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/bam/cdid417a.bam~ ~override~
+       ~iwdification/bam/cdid417b.bam~ ~override~
+       ~iwdification/bam/cdid417c.bam~ ~override~
+       ~iwdification/wav/cdarep25.wav~ ~override~
+  
+  COPY ~iwdification/spl/cdid417.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid417 END
+  
+  COPY ~iwdification/lib/immunity.eff~ ~override/cdim1417.eff~
+    WRITE_ASCII  0x30 cdid417 #8
+  
+  LAUNCH_ACTION_FUNCTION cd_create_cloud INT_VAR visloop = 9 cloud_dur = 24 zosa = 1 STR_VAR code = cdid417 END
+
+END
+
+/////                                                  \\\\\
+///// Unfailing Endurance                              \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/unfailing_endurance.spl~ 1 4 CLERIC_UNFAILING_ENDURANCE
+  SAY 0x08 @4041
+  SAY 0x50 @4042
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_UNFAILING_ENDURANCE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_UNFAILING_ENDURANCE_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid419.itm~
+    SAY 0x0c @4041
+    SAY 0x54 @4042
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_UNFAILING_ENDURANCE_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT12 + BIT21 + BIT30)) // cleric only - add fighter/druid, ranger, and druid flags
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdid419a.bam~ ~override~
+       ~iwdification/bam/cdid419b.bam~ ~override~
+       ~iwdification/bam/cdid419c.bam~ ~override~
+       ~iwdification/wav/cdffp112.wav~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Star Metal Cudgel                                \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/star_metal_cudgel.spl~ 1 4 CLERIC_STAR_METAL_CUDGEL
+  SAY 0x08 @4043
+  SAY 0x50 @4044
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_STAR_METAL_CUDGEL~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_STAR_METAL_CUDGEL_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid420.itm~
+    SAY 0x0c @4043
+    SAY 0x54 @4044
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_STAR_METAL_CUDGEL_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+    WRITE_BYTE  0x7e  5 // target
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdid420a.bam~ ~override~
+       ~iwdification/bam/cdid420b.bam~ ~override~
+       ~iwdification/bam/cdid420c.bam~ ~override~
+       ~iwdification/bam/cdid420i.bam~ ~override~
+       ~iwdification/eff/cdid420.eff~  ~override~
+  
+  COPY ~iwdification/itm/cdid420w.itm~ ~override~
+    SAY 0x08 @4043
+    SAY 0x0c @4043
+    SAY 0x50 @4044
+    SAY 0x54 @4044
+
+END
+
+/////                                                  \\\\\
+///// Thorn Spray                                      \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/thorn_spray.spl~ 1 4 CLERIC_THORN_SPRAY
+  SAY 0x08 @4045
+  SAY 0x50 @4046
+  SPRINT temp "%DEST_RES%"
+
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_THORN_SPRAY~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_THORN_SPRAY_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdid422.pro~
+  
+  COPY_EXISTING ~%CLERIC_THORN_SPRAY_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid422 END
+  
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid422.itm~
+    SAY 0x0c @4045
+    SAY 0x54 @4046
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_THORN_SPRAY_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+    WRITE_SHORT 0xaa 148 // cast-at-point opcode
+    WRITE_BYTE  0xac   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/bam/cdid422a.bam~ ~override~
+       ~iwdification/bam/cdid422b.bam~ ~override~
+       ~iwdification/bam/cdid422c.bam~ ~override~
+       ~iwdification/wav/cdtra_61.wav~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Righteous Wrath of the Faithful                  \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/righteous_wrath_of_the_faithful.spl~ 1 5 CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL
+  SAY 0x08 @4047
+  SAY 0x50 @4048
+  LPF SPELL_ALTER_EFFECT INT_VAR opcode = 215 timing = 0 duration = 3 END
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid511.itm~
+    SAY 0x0c @4047
+    SAY 0x54 @4048
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT12 + BIT21 + BIT30)) // cleric only - add fighter/druid, ranger, and druid flags
+    WRITE_SHORT 0xaa 148 // cast-at-point opcode
+    WRITE_BYTE  0xac   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/bam/cdid511a.bam~ ~override~
+       ~iwdification/bam/cdid511b.bam~ ~override~
+       ~iwdification/bam/cdid511c.bam~ ~override~
+       ~iwdification/bam/cdrwofah.bam~ ~override~
+       ~iwdification/eff/cdid5110.eff~ ~override~
+       ~iwdification/vvc/cdrwofah.vvc~ ~override~
+  
+  COPY ~iwdification/spl/cdid5110.spl~ ~override~
+    SAY 0x08 @4047
+    SAY 0x50 @4048
+  
+  COPY ~iwdification/eff/cdid5111.eff~ ~override/cdid5111.eff~
+       ~iwdification/eff/cdid5111.eff~ ~override/cdid5112.eff~
+       ~iwdification/eff/cdid5111.eff~ ~override/cdid5113.eff~
+       ~iwdification/eff/cdid5111.eff~ ~override/cdid5114.eff~
+       ~iwdification/eff/cdid5111.eff~ ~override/cdid5115.eff~
+       ~iwdification/eff/cdid5111.eff~ ~override/cdid5116.eff~
+       ~iwdification/eff/cdid5111.eff~ ~override/cdid5117.eff~
+       ~iwdification/eff/cdid5111.eff~ ~override/cdid5118.eff~
+       ~iwdification/eff/cdid5111.eff~ ~override/cdid5119.eff~
+    WRITE_ASCIIE 0x30 "%DEST_RES%" #8
+  
+  COPY ~iwdification/spl/cdid5111.spl~ ~override/cdid5111.spl~
+    WRITE_LONG 0x9e 17
+  
+  COPY ~iwdification/spl/cdid5111.spl~ ~override/cdid5112.spl~
+    WRITE_LONG 0x9e 33
+  
+  COPY ~iwdification/spl/cdid5111.spl~ ~override/cdid5113.spl~
+    WRITE_LONG 0x9e 49
+  
+  COPY ~iwdification/spl/cdid5111.spl~ ~override/cdid5114.spl~
+    WRITE_LONG 0x9e 18
+  
+  COPY ~iwdification/spl/cdid5111.spl~ ~override/cdid5115.spl~
+    WRITE_LONG 0x9e 34
+  
+  COPY ~iwdification/spl/cdid5111.spl~ ~override/cdid5116.spl~
+    WRITE_LONG 0x9e 50
+  
+  COPY ~iwdification/spl/cdid5111.spl~ ~override/cdid5117.spl~
+    WRITE_LONG 0x9e 19
+  
+  COPY ~iwdification/spl/cdid5111.spl~ ~override/cdid5118.spl~
+    WRITE_LONG 0x9e 35
+  
+  COPY ~iwdification/spl/cdid5111.spl~ ~override/cdid5119.spl~
+    WRITE_LONG 0x9e 51
+
+END
+
+/////                                                  \\\\\
+///// Spike Stones                                     \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/spike_stones.spl~ 1 5 CLERIC_SPIKE_STONES
+  SAY 0x08 @4049
+  SAY 0x50 @4050
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SPIKE_STONES~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_SPIKE_STONES_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdid512.pro~
+  
+  COPY_EXISTING ~%CLERIC_SPIKE_STONES_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid512 END
+  
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid512.itm~
+    SAY 0x0c @4049
+    SAY 0x54 @4050
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_SPIKE_STONES_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+    WRITE_SHORT 0xaa 148 // cast-at-point opcode
+    WRITE_BYTE  0xac   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/bam/cdid512a.bam~ ~override~
+       ~iwdification/bam/cdid512b.bam~ ~override~
+       ~iwdification/bam/cdid512c.bam~ ~override~
+       ~iwdification/bam/cdid512v.bam~ ~override~ // sstonea
+       ~iwdification/vvc/cdid512v.vvc~ ~override~ // #sston
+  //     ~iwdification/vvc/cdaftp24.wav~ ~override~ already added by spike growth
+       ~iwdification/wav/cdcrep03.wav~ ~override~
+       ~iwdification/wav/cdffp111.wav~ ~override~
+  
+  COPY ~iwdification/spl/cdid512.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid512 END
+  
+  LAUNCH_ACTION_FUNCTION cd_create_cloud INT_VAR visloop = 5 cloud_dur = 72 STR_VAR code = cdid512 END
+
+END
+
+/////                                                  \\\\\
+///// Shield of Lathander                              \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/shield_of_lathander.spl~ 1 5 CLERIC_SHIELD_OF_LATHANDER
+  SAY 0x08 @4051
+  SAY 0x50 @4052
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SHIELD_OF_LATHANDER~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_SHIELD_OF_LATHANDER_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid514.itm~
+    SAY 0x0c @4051
+    SAY 0x54 @4052
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_SHIELD_OF_LATHANDER_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT1 + BIT12 + BIT21 + BIT30)) // non-evil cleric only - add evil, fighter/druid, ranger, and druid flags
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdid514a.bam~ ~override~
+       ~iwdification/bam/cdid514b.bam~ ~override~
+       ~iwdification/bam/cdid514c.bam~ ~override~
+       ~iwdification/bam/cdid514y.bam~ ~override~
+       ~iwdification/bam/cdid514z.bam~ ~override~
+       ~iwdification/vvc/cdid514y.vvc~ ~override~
+       ~iwdification/vvc/cdid514z.vvc~ ~override~
+  
+  COPY ~iwdification/lib/immunity.eff~ ~override/cdim1514.eff~
+    WRITE_ASCIIE 0x30 ~%CLERIC_SHIELD_OF_LATHANDER_RES%~ #8
+
+END
+
+/////                                                  \\\\\
+///// Undead Ward                                      \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/undead_ward.spl~ 1 5 CLERIC_UNDEAD_WARD
+  SAY 0x08 @4053
+  SAY 0x50 @4054
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_UNDEAD_WARD~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_UNDEAD_WARD_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid516.itm~
+    SAY 0x0c @4053
+    SAY 0x54 @4054
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_UNDEAD_WARD_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT12 + BIT21 + BIT30)) // cleric only - add fighter/druid, ranger, and druid flags
+    WRITE_BYTE  0x7e  5 // target
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdid516a.bam~ ~override~
+       ~iwdification/bam/cdid516b.bam~ ~override~
+       ~iwdification/bam/cdid516c.bam~ ~override~
+       ~iwdification/bam/cduwardx.bam~ ~override~
+       ~iwdification/vvc/cduwardx.vvc~ ~override~
+       ~iwdification/wav/cdaftp27.wav~ ~override~
+       ~iwdification/wav/cdarep28.wav~ ~override~
+  
+  COMPILE ~iwdification/baf/cdid516.baf~
+  
+  OUTER_FOR (index = 1 ; index < 23 ; ++index) BEGIN
+  
+    COPY ~iwdification/eff/cduwar1.eff~ ~override/cduwar%index%.eff~
+      WRITE_ASCIIE 0x30 "%DEST_RES%" #8
+  
+    COPY ~iwdification/cre/cduwar1.cre~ ~override/cduwar%index%.cre~
+      WRITE_BYTE 0x234 (index + 8)
+  
+  END
+
+END
+
+/////                                                  \\\\\
+///// Animal Rage                                      \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/animal_rage.spl~ 1 5 CLERIC_ANIMAL_RAGE
+  SAY 0x08 @4055
+  SAY 0x50 @4056
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_ANIMAL_RAGE~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_ANIMAL_RAGE_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid517.itm~
+    SAY 0x0c @4055
+    SAY 0x54 @4056
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_ANIMAL_RAGE_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdid517a.bam~ ~override~
+       ~iwdification/bam/cdid517b.bam~ ~override~
+       ~iwdification/bam/cdid517c.bam~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Whirlwind                                        \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/whirlwind.spl~ 1 6 CLERIC_WHIRLWIND
+  SAY 0x08 @4057
+  SAY 0x50 @4058
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_WHIRLWIND~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_WHIRLWIND_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdid613.pro~
+  
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid613.itm~
+    SAY 0x0c @4057
+    SAY 0x54 @4058
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_WHIRLWIND_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+    WRITE_SHORT 0xaa 148 // cast-at-point opcode
+    WRITE_BYTE  0xac   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/bam/cdid613a.bam~ ~override~
+       ~iwdification/bam/cdid613b.bam~ ~override~
+       ~iwdification/bam/cdid613c.bam~ ~override~
+       ~iwdification/bam/cdid613v.bam~ ~override~
+       ~iwdification/cre/cdid613.cre~  ~override~
+       ~iwdification/eff/cdid613.eff~  ~override~
+       ~iwdification/eff/cdid613b.eff~ ~override~
+       ~iwdification/vvc/cdid613v.vvc~ ~override~
+       ~iwdification/wav/cdffp105.wav~ ~override~
+  
+  COPY ~iwdification/spl/cdid613b.spl~ ~override~
+    SAY 0x08 @4057
+    SAY 0x50 @4058
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid613 END
+  
+  COMPILE ~iwdification/baf/cdid613.baf~
+
+END
+
+/////                                                  \\\\\
+///// entropy shield                                   \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/entropy_shield.spl~ 1 6 CLERIC_ENTROPY_SHIELD // revisit for projectiles
+  SAY 0x08 @4059
+  SAY 0x50 @4060
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_ENTROPY_SHIELD~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_ENTROPY_SHIELD_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid609.itm~
+    SAY 0x0c @4059
+    SAY 0x54 @4060
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_ENTROPY_SHIELD_RES%~ END
+    WRITE_BYTE  0x7e  5 // target
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdid609a.bam~ ~override~
+       ~iwdification/bam/cdid609b.bam~ ~override~
+       ~iwdification/bam/cdid609c.bam~ ~override~
+       ~iwdification/bam/cdid609v.bam~ ~override~
+       ~iwdification/vvc/cdid609v.vvc~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Symbol of Pain                                   \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/symbol_of_pain.spl~ 1 7 CLERIC_SYMBOL_OF_PAIN
+  SAY 0x08 @4061
+  SAY 0x50 @4062
+  SAY 0x46e @4078
+  READ_LONG 0x46e string
+  LPF SPELL_ALTER_EFFECT INT_VAR opcode = 139 parameter1 = string END
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SYMBOL_OF_PAIN~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_SYMBOL_OF_PAIN_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid714.itm~
+    SAY 0x0c @4061
+    SAY 0x54 @4062
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_SYMBOL_OF_PAIN_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT12 + BIT21 + BIT30)) // cleric only - add fighter/druid, ranger, and druid flags
+    WRITE_SHORT 0xaa 148 // cast-at-point opcode
+    WRITE_BYTE  0xac   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/bam/cdid714a.bam~ ~override~
+       ~iwdification/bam/cdid714b.bam~ ~override~
+       ~iwdification/bam/cdid714c.bam~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Symbol of Hopelessness                           \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/symbol_of_hopelessness.spl~ 1 7 CLERIC_SYMBOL_OF_HOPELESSNESS
+  SAY 0x08 @4063
+  SAY 0x50 @4064
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SYMBOL_OF_HOPELESSNESS~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_SYMBOL_OF_HOPELESSNESS_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdid715.pro~
+  
+  COPY_EXISTING ~%CLERIC_SYMBOL_OF_HOPELESSNESS_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid715 END
+  
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid715.itm~
+    SAY 0x0c @4063
+    SAY 0x54 @4064
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_SYMBOL_OF_HOPELESSNESS_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT12 + BIT21 + BIT30)) // cleric only - add fighter/druid, ranger, and druid flags
+    WRITE_SHORT 0xaa 148 // cast-at-point opcode
+    WRITE_BYTE  0xac   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/bam/cdid715a.bam~ ~override~
+       ~iwdification/bam/cdid715b.bam~ ~override~
+       ~iwdification/bam/cdid715c.bam~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Impervious Sanctity of Mind                      \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/impervious_sanctity_of_mind.spl~ 1 7 CLERIC_IMPERVIOUS_SANCTITY_OF_MIND
+  SAY 0x08 @4065
+  SAY 0x50 @4066
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_IMPERVIOUS_SANCTITY_OF_MIND~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_IMPERVIOUS_SANCTITY_OF_MIND_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid716.itm~
+    SAY 0x0c @4065
+    SAY 0x54 @4066
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_IMPERVIOUS_SANCTITY_OF_MIND_RES%~ END
+    WRITE_BYTE  0x7e  5 // target
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdid716a.bam~ ~override~
+       ~iwdification/bam/cdid716b.bam~ ~override~
+       ~iwdification/bam/cdid716c.bam~ ~override~
+
+END
+
+/////                                                  \\\\\
+///// Destruction                                      \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/destruction.spl~ 1 7 CLERIC_DESTRUCTION
+  SAY 0x08 @4067
+  SAY 0x50 @4068
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_DESTRUCTION~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_DESTRUCTION_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid717.itm~
+    SAY 0x0c @4067
+    SAY 0x54 @4068
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_DESTRUCTION_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT2 + BIT3 + BIT12 + BIT21 + BIT30)) // evil cleric only - add good, g/e neutral, fighter/druid, ranger, and druid flags
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cddestrh.bam~ ~override~
+       ~iwdification/bam/cdid717a.bam~ ~override~
+       ~iwdification/bam/cdid717b.bam~ ~override~
+       ~iwdification/bam/cdid717c.bam~ ~override~
+       ~iwdification/vvc/cddestrh.vvc~ ~override~
+       ~iwdification/wav/cdffp113.wav~ ~override~
+  
+  COPY ~iwdification/lib/immunity.eff~ ~override/cdim1717.eff~
+    WRITE_ASCIIE 0x30 ~%CLERIC_DESTRUCTION_RES%~ #8
+
+END
+
+/////                                                  \\\\\
+///// Greater Shield of Lathander                      \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/greater_shield_of_lathander.spl~ 1 7 CLERIC_GREATER_SHIELD_OF_LATHANDER
+  SAY 0x08 @4069
+  SAY 0x50 @4070
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_GREATER_SHIELD_OF_LATHANDER~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_GREATER_SHIELD_OF_LATHANDER_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid718.itm~
+    SAY 0x0c @4069
+    SAY 0x54 @4070
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_GREATER_SHIELD_OF_LATHANDER_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT1 = BIT3 + BIT12 + BIT21 + BIT30)) // good cleric only - add evil, g/e neutral, fighter/druid, ranger, and druid flags
+    WRITE_SHORT 0x80  1 // range
+  
+  COPY ~iwdification/bam/cdid718a.bam~ ~override~
+       ~iwdification/bam/cdid718b.bam~ ~override~
+       ~iwdification/bam/cdid718c.bam~ ~override~
+       ~iwdification/bam/cdid718y.bam~ ~override~
+       ~iwdification/bam/cdid718z.bam~ ~override~
+       ~iwdification/vvc/cdid718y.vvc~ ~override~
+       ~iwdification/vvc/cdid718z.vvc~ ~override~
+  
+  COPY ~iwdification/lib/immunity.eff~ ~override/cdim1718.eff~
+    WRITE_ASCIIE 0x30 ~%CLERIC_GREATER_SHIELD_OF_LATHANDER_RES%~ #8
+
+END
+
+/////                                                  \\\\\
+///// Mist of Eldath                                   \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/mist_of_eldath.spl~ 1 7 CLERIC_MIST_OF_ELDATH
+  SAY 0x08 @4071
+  SAY 0x50 @4072
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_MIST_OF_ELDATH~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_MIST_OF_ELDATH_RES "%temp%"
+
+  ADD_PROJECTILE ~iwdification/pro/cdid720.pro~
+  
+  COPY_EXISTING ~%CLERIC_MIST_OF_ELDATH_RES%.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid720 END
+  
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid720.itm~
+    SAY 0x0c @4071
+    SAY 0x54 @4072
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_MIST_OF_ELDATH_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+    WRITE_SHORT 0xaa 148 // cast-at-point opcode
+    WRITE_BYTE  0xac   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/bam/cdid720a.bam~ ~override~
+       ~iwdification/bam/cdid720b.bam~ ~override~
+       ~iwdification/bam/cdid720c.bam~ ~override~
+       ~iwdification/bam/cdid720v.bam~ ~override~
+       ~iwdification/wav/cdffp104.wav~ ~override~
+  
+  LAUNCH_ACTION_FUNCTION cd_create_cloud INT_VAR visloop = 7 cloud_dur = 6 zosa = 1 STR_VAR code = cdid720 END
+  
+  COPY ~iwdification/spl/cdid720.spl~ ~override~
+    LPF SPELL_ALTER_HEADER INT_VAR projectile = cdid720 END
+
+END
+
+/////                                                  \\\\\
+///// Stalker                                          \\\\\
+/////                                                  \\\\\
+
+ADD_SPELL ~iwdification/spl/stalker.spl~ 1 7 CLERIC_STALKER
+  SAY 0x08 @4073
+  SAY 0x50 @4074
+  SPRINT temp "%DEST_RES%"
+  
+ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_STALKER~)) > 0) THEN BEGIN
+
+  OUTER_SPRINT CLERIC_STALKER_RES "%temp%"
+
+  COPY ~iwdification/lib/blankpr.itm~ ~override/cdid723.itm~
+    SAY 0x0c @4073
+    SAY 0x54 @4074
+    LPF cd_scroll STR_VAR spell = EVALUATE_BUFFER ~%CLERIC_STALKER_RES%~ END
+    WRITE_LONG 0x1e (THIS | (BIT7 + BIT8 + BIT9 + BIT14 + BIT15 + BIT20 + BIT29)) // druid only - add cleric, c/m, c/t, f/c, f/m/c, paladin and monk flags
+    WRITE_SHORT 0xaa 148 // cast-at-point opcode
+    WRITE_BYTE  0xac   1 // target: self
+    WRITE_BYTE  0x7e   4 // target: any point
+  
+  COPY ~iwdification/bam/cdid723a.bam~ ~override~
+       ~iwdification/bam/cdid723b.bam~ ~override~
+       ~iwdification/bam/cdid723c.bam~ ~override~
+       ~iwdification/itm/cdid723w.itm~ ~override~
+
+  ACTION_IF FILE_EXISTS_IN_GAME smoundsu.cre THEN BEGIN
+    COPY_EXISTING ~smoundsu.cre~ ~override/cdid723.cre~
+  END ELSE BEGIN
+    COPY ~iwdification/cre/cdid723.cre~ ~override~
+  END
+  
+  COPY_EXISTING ~cdid723.cre~ ~override~
+    REPLACE_CRE_ITEM cdid723w #0 #0 #0 NONE WEAPON1 EQUIP
+
+END
+
+/////                                                  \\\\\
+///// update joinable npc spellbooks                   \\\\\
+/////                                                  \\\\\
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+  READ_LONG 0x1cc bio ELSE 0
+  PATCH_IF (bio > 0) BEGIN
+    READ_BYTE 0x273 class ELSE 0
+    READ_LONG 0x2a4 known ELSE 0
+    SET level_cleric = 0
+    SET level_druid = 0
+    PATCH_IF ((class = 3) OR (class = 14) OR (class = 15)) BEGIN // trueclass cleric, c/m, c/t
+      READ_BYTE 0x234 level_cleric
+    END ELSE
+    PATCH_IF (class = 6) BEGIN // paladin
+      READ_BYTE 0x234 level_cleric
+      SET level_cleric -= 8    // spells start at level 9
+    END ELSE
+    PATCH_IF (class = 8) BEGIN // f/c
+      READ_BYTE 0x235 level_cleric
+    END
+    PATCH_IF (class = 11) BEGIN // trueclass druid
+      READ_BYTE 0x234 level_druid
+    END ELSE
+    PATCH_IF (class = 12) BEGIN // trueclass ranger
+      READ_BYTE 0x234 level_druid
+      SET level_druid -= 7    // spells start at level 8
+    END ELSE
+    PATCH_IF (class = 16) BEGIN // f/d
+      READ_BYTE 0x235 level_druid
+    END ELSE
+    PATCH_IF (class = 17) BEGIN // f/m/c
+      READ_BYTE 0x236 level_cleric
+    END ELSE
+    PATCH_IF (class = 18) BEGIN // c/r
+      READ_BYTE 0x234 level_cleric
+      READ_BYTE 0x235 level_druid
+    END
+    PATCH_IF ((level_cleric > 0) AND (known > 0)) BEGIN // level 1 spells, known > 0 excludes inquisitors
+      READ_BYTE 0x27b align // used for various restriction checks below
+      PATCH_IF VARIABLE_IS_SET CLERIC_CURSE_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_CURSE_RES%~ #0 ~priest~ END
+      PATCH_IF VARIABLE_IS_SET CLERIC_CAUSE_LIGHT_WOUNDS_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_CAUSE_LIGHT_WOUNDS_RES%~ #0 ~priest~ END
+      PATCH_IF (level_cleric > 2) BEGIN // level  spells
+        PATCH_IF VARIABLE_IS_SET CLERIC_CURE_MODERATE_WOUNDS_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_CURE_MODERATE_WOUNDS_RES%~ #1 ~priest~ END
+        PATCH_IF VARIABLE_IS_SET CLERIC_CAUSE_MODERATE_WOUNDS_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_CAUSE_MODERATE_WOUNDS_RES%~ #1 ~priest~ END
+        PATCH_IF (level_cleric > 4) BEGIN // level 3 spells
+          PATCH_IF VARIABLE_IS_SET CLERIC_PRAYER_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_PRAYER_RES%~ #2 ~priest~ END
+          PATCH_IF VARIABLE_IS_SET CLERIC_EXALTATION_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_EXALTATION_RES%~ #2 ~priest~ END
+          PATCH_IF ((align != 17) AND (align != 33) AND (align != 49)) BEGIN // not lg, ng, cg
+            PATCH_IF VARIABLE_IS_SET CLERIC_CAUSE_DISEASE_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_CAUSE_DISEASE_RES%~ #2 ~priest~ END // restrict from good
+            PATCH_IF VARIABLE_IS_SET CLERIC_CIRCLE_OF_BONES_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_CIRCLE_OF_BONES_RES%~ #2 ~priest~ END // restrict from good
+          END
+          PATCH_IF (level_cleric > 6) BEGIN // level 4 spells
+            PATCH_IF VARIABLE_IS_SET CLERIC_RECITATION_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_RECITATION_RES%~ #3 ~priest~ END
+            PATCH_IF VARIABLE_IS_SET CLERIC_UNFAILING_ENDURANCE_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_UNFAILING_ENDURANCE_RES%~ #3 ~priest~ END
+            PATCH_IF ((align != 17) AND (align != 18) AND (align != 19)) BEGIN // not lg, ln, le
+              PATCH_IF VARIABLE_IS_SET CLERIC_BLOOD_RAGE_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_BLOOD_RAGE_RES%~ #3 ~priest~ END // restrict from lawful
+            END
+            PATCH_IF ((align = 19) OR (align = 35) OR (align = 51)) BEGIN // le, ne, ce only
+              PATCH_IF VARIABLE_IS_SET CLERIC_CLOUD_OF_PESTILENCE_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_CLOUD_OF_PESTILENCE_RES%~ #3 ~priest~ END // evil-only
+            END
+            PATCH_IF ((level_cleric > 8) AND (class != 6)) BEGIN // level 5 spells; exclude paladins from here on
+              PATCH_IF VARIABLE_IS_SET CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL_RES%~ #4 ~priest~ END
+              PATCH_IF VARIABLE_IS_SET CLERIC_UNDEAD_WARD_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_UNDEAD_WARD_RES%~ #4 ~priest~ END
+              PATCH_IF ((align != 19) AND (align != 35) AND (align != 51)) BEGIN // not le, ne, ce
+                PATCH_IF VARIABLE_IS_SET CLERIC_SHIELD_OF_LATHANDER_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_SHIELD_OF_LATHANDER_RES%~ #4 ~priest~ END // restrict from evil
+              END
+              PATCH_IF (level_cleric > 10) BEGIN // level 6 spells
+                PATCH_IF VARIABLE_IS_SET CLERIC_ENTROPY_SHIELD_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_ENTROPY_SHIELD_RES%~ #5 ~priest~ END
+                PATCH_IF (level_cleric > 13) BEGIN // level 7 spells
+                  PATCH_IF VARIABLE_IS_SET CLERIC_SYMBOL_OF_PAIN_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_SYMBOL_OF_PAIN_RES%~ #6 ~priest~ END
+                  PATCH_IF VARIABLE_IS_SET CLERIC_SYMBOL_OF_HOPELESSNESS_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_SYMBOL_OF_HOPELESSNESS_RES%~ #6 ~priest~ END
+                  PATCH_IF VARIABLE_IS_SET CLERIC_IMPERVIOUS_SANCTITY_OF_MIND_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_IMPERVIOUS_SANCTITY_OF_MIND_RES%~ #6 ~priest~ END
+                  PATCH_IF ((align = 19) OR (align = 35) OR (align = 51)) BEGIN // le, ne, ce only
+                    PATCH_IF VARIABLE_IS_SET CLERIC_DESTRUCTION_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_DESTRUCTION_RES%~ #6 ~priest~ END // evil only
+                  END
+                  PATCH_IF ((align = 17) OR (align = 33) OR (align = 49)) BEGIN // lg, ng, cg only
+                    PATCH_IF VARIABLE_IS_SET CLERIC_GREATER_SHIELD_OF_LATHANDER_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_GREATER_SHIELD_OF_LATHANDER_RES%~ #6 ~priest~ END // good only
+                  END
+                END
+              END
+            END
+          END
+        END
+      END
+    END
+    PATCH_IF (level_druid > 0) BEGIN // level 1 spells
+      PATCH_IF VARIABLE_IS_SET CLERIC_CURSE_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_CURSE_RES%~ #0 ~priest~ END
+      PATCH_IF VARIABLE_IS_SET CLERIC_SUNSCORCH_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_SUNSCORCH_RES%~ #0 ~priest~ END
+      PATCH_IF (level_druid > 2) BEGIN // level 2 spells
+        PATCH_IF VARIABLE_IS_SET CLERIC_CURE_MODERATE_WOUNDS_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_CURE_MODERATE_WOUNDS_RES%~ #1 ~priest~ END
+        PATCH_IF VARIABLE_IS_SET CLERIC_ALICORN_LANCE_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_ALICORN_LANCE_RES%~ #1 ~priest~ END
+        PATCH_IF VARIABLE_IS_SET CLERIC_BEAST_CLAW_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_BEAST_CLAW_RES%~ #1 ~priest~ END
+        PATCH_IF (level_druid > 4) BEGIN // level 3 spells
+          PATCH_IF VARIABLE_IS_SET CLERIC_MOONBLADE_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_MOONBLADE_RES%~ #2 ~priest~ END
+          PATCH_IF VARIABLE_IS_SET CLERIC_SPIKE_GROWTH_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_SPIKE_GROWTH_RES%~ #2 ~priest~ END
+          PATCH_IF VARIABLE_IS_SET CLERIC_CLOUDBURST_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_CLOUDBURST_RES%~ #2 ~priest~ END
+          PATCH_IF VARIABLE_IS_SET CLERIC_STORM_SHELL_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_STORM_SHELL_RES%~ #2 ~priest~ END
+          PATCH_IF ((level_druid > 6) AND (class != 12)) BEGIN // level 4 spells; exclude trueclass rangers from here on
+            PATCH_IF VARIABLE_IS_SET CLERIC_GIANT_INSECT_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_GIANT_INSECT_RES%~ #3 ~priest~ END
+            PATCH_IF VARIABLE_IS_SET CLERIC_PRODUCE_FIRE_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_PRODUCE_FIRE_RES%~ #3 ~priest~ END
+            PATCH_IF VARIABLE_IS_SET CLERIC_STATIC_CHARGE_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_STATIC_CHARGE_RES%~ #3 ~priest~ END
+            PATCH_IF VARIABLE_IS_SET CLERIC_STAR_METAL_CUDGEL_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_STAR_METAL_CUDGEL_RES%~ #3 ~priest~ END
+            PATCH_IF VARIABLE_IS_SET CLERIC_THORN_SPRAY_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_THORN_SPRAY_RES%~ #3 ~priest~ END
+            PATCH_IF (level_druid > 8) BEGIN // level 5 spells
+              PATCH_IF VARIABLE_IS_SET CLERIC_SPIKE_STONES_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_SPIKE_STONES_RES%~ #4 ~priest~ END
+              PATCH_IF VARIABLE_IS_SET CLERIC_ANIMAL_RAGE_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_ANIMAL_RAGE_RES%~ #4 ~priest~ END
+              PATCH_IF (level_druid > 10) BEGIN // level 6 spells
+                PATCH_IF VARIABLE_IS_SET CLERIC_WHIRLWIND_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_WHIRLWIND_RES%~ #5 ~priest~ END
+                PATCH_IF VARIABLE_IS_SET CLERIC_ENTROPY_SHIELD_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_ENTROPY_SHIELD_RES%~ #5 ~priest~ END
+                PATCH_IF (level_druid > 13) BEGIN // level 7 spells
+                  PATCH_IF VARIABLE_IS_SET CLERIC_IMPERVIOUS_SANCTITY_OF_MIND_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_IMPERVIOUS_SANCTITY_OF_MIND_RES%~ #6 ~priest~ END
+                  PATCH_IF VARIABLE_IS_SET CLERIC_MIST_OF_ELDATH_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_MIST_OF_ELDATH_RES%~ #6 ~priest~ END
+                  PATCH_IF VARIABLE_IS_SET CLERIC_STALKER_RES BEGIN ADD_KNOWN_SPELL ~%CLERIC_STALKER_RES%~ #6 ~priest~ END
+                END
+              END
+            END
+          END
+        END
+      END
+    END
+  END
+  BUT_ONLY
+
+ACTION_IF FILE_EXISTS_IN_GAME cdlv3na.spl THEN BEGIN // fixpack spell for removing spells from alignment-changing priests
+
+  ACTION_IF VARIABLE_IS_SET CLERIC_CAUSE_DISEASE_RES BEGIN
+
+    COPY_EXISTING ~cdrmv313.eff~ ~override/cdrmi315.eff~
+      WRITE_ASCIIE 0x30 "%CLERIC_CAUSE_DISEASE_RES%" #8
+    
+    COPY_EXISTING ~cdlv3na.spl~ ~override~
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 8 timing = 9
+        parameter1 =  1 STR_VAR resource = cdrmi315 END // remove cause disease from good
+  
+  END
+
+  ACTION_IF VARIABLE_IS_SET CLERIC_CIRCLE_OF_BONES_RES BEGIN
+  
+    COPY_EXISTING ~cdrmv313.eff~ ~override/cdrmi319.eff~
+      WRITE_ASCIIE 0x30 "%CLERIC_CIRCLE_OF_BONES_RES%" #8
+    
+    COPY_EXISTING ~cdlv3na.spl~ ~override~
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 8 timing = 9
+        parameter1 =  1 STR_VAR resource = cdrmi319 END // remove circle of bones from good
+  
+  END
+
+  ACTION_IF VARIABLE_IS_SET CLERIC_BLOOD_RAGE_RES BEGIN
+  
+    COPY_EXISTING ~cdrmv313.eff~ ~override/cdrmi415.eff~
+      WRITE_ASCIIE 0x30 "%CLERIC_BLOOD_RAGE_RES%" #8
+    
+    COPY_EXISTING ~cdlv3na.spl~ ~override~
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 8 timing = 9
+        parameter1 = 16 STR_VAR resource = cdrmi415 END // remove blood rage from lawful
+  
+  END
+
+  ACTION_IF VARIABLE_IS_SET CLERIC_SHIELD_OF_LATHANDER_RES BEGIN
+  
+    COPY_EXISTING ~cdrmv313.eff~ ~override/cdrmi514.eff~
+      WRITE_ASCIIE 0x30 "%CLERIC_SHIELD_OF_LATHANDER_RES%" #8
+    
+    COPY_EXISTING ~cdlv3na.spl~ ~override~
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 8 timing = 9
+        parameter1 =  3 STR_VAR resource = cdrmi514 END // remove shield of lathander from evil
+  
+  END
+
+  ACTION_IF VARIABLE_IS_SET CLERIC_DESTRUCTION_RES BEGIN
+  
+    COPY_EXISTING ~cdrmv313.eff~ ~override/cdrmi717.eff~
+      WRITE_ASCIIE 0x30 "%CLERIC_DESTRUCTION_RES%" #8
+    
+    COPY_EXISTING ~cdlv3na.spl~ ~override~
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 8 timing = 9
+        parameter1 =  1 STR_VAR resource = cdrmi717 END // remove greater shield of lathander from good
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 8 timing = 9
+        parameter1 =  2 STR_VAR resource = cdrmi717 END // remove greater shield of lathander from g/e neutral
+  
+  END
+
+  ACTION_IF VARIABLE_IS_SET CLERIC_GREATER_SHIELD_OF_LATHANDER_RES BEGIN
+  
+    COPY_EXISTING ~cdrmv313.eff~ ~override/cdrmi718.eff~
+      WRITE_ASCIIE 0x30 "%CLERIC_GREATER_SHIELD_OF_LATHANDER_RES%" #8
+    
+    COPY_EXISTING ~cdlv3na.spl~ ~override~
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 8 timing = 9
+        parameter1 =  3 STR_VAR resource = cdrmi718 END // remove shield of lathander from evil
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 8 timing = 9
+        parameter1 =  2 STR_VAR resource = cdrmi718 END // remove greater shield of lathander from g/e neutral
+  
+  END
+
+END
+
+/////                                                  \\\\\
+///// now go through and correct cross-references      \\\\\
+/////                                                  \\\\\
+  
+INCLUDE ~iwdification/lib/cross_patch_divine.tpa~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Icewind Dale Casting Graphics                    \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @5000 DESIGNATED 50
+
+APPEND ~clabba01.2da~ ~ABILITYX AP_CDIBAR0 **** GA_CDIBAR1 **** **** **** **** **** **** **** **** CDREPLACE
+ABILITYY **** **** GA_CDIBAR2 **** GA_CDIBAR3 **** GA_CDIBAR4 **** GA_CDIBAR5 **** GA_CDIBAR6 CDREPLACE~
+
+COPY_EXISTING ~clabba01.2da~ ~override~
+  COUNT_2DA_COLS cols
+  FOR (index = 13 ; index < cols ; ++index) BEGIN
+    REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
+  END
+  REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
+  SET "ability" = 0
+  REPLACE_EVALUATE ~^\(ABILITY[0-9A-Z]+\)[ %TAB%]~ BEGIN
+    SET "ability" = ("%ability%" + 1)
+  END
+  ~ABILITY%ability% ~
+  PRETTY_PRINT_2DA
+
+ACTION_IF FILE_EXISTS_IN_GAME luba0.2da THEN BEGIN
+
+  COPY_EXISTING ~luba0.2da~ ~override~ // remove enhanced bard song from HLAs
+    REPLACE_TEXTUALLY ~^\([0-9]+[ %TAB%]+AP_SPCL920[ %TAB%]+\*[ %TAB%]+\*[ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+\)\*\([ %TAB%]+\*[ %TAB%]+\*\)~
+      ~\1SPCL920\2~ // create self-reference, never allowing it to be selected
+    PRETTY_PRINT_2DA
+
+END
+
+COPY ~iwdification/bam/cdibara.bam~ ~override~
+     ~iwdification/bam/cdibarb.bam~ ~override~
+     ~iwdification/bam/cdibarc.bam~ ~override~
+     ~iwdification/bam/cdibard.bam~ ~override~
+     ~iwdification/bam/cdibare.bam~ ~override~
+     ~iwdification/bam/cdibarf.bam~ ~override~
+     ~iwdification/spl/cdibar0.spl~ ~override~
+
+COPY ~iwdification/spl/cdibar0.spl~ ~override~
+     ~iwdification/spl/cdibar1.spl~ ~override~ // The Ballad of Three Heroes - Combat Bonuses
+     ~iwdification/spl/cdibara.spl~ ~override~
+  SAY 0x08 @5001
+  SAY 0x0c @5001
+  SAY 0x50 @5001
+  SAY 0x54 @5001
+
+COPY ~iwdification/spl/cdibar2.spl~ ~override~ // The Tale of Curran Strongheart - Immunity Fear
+     ~iwdification/spl/cdibarb.spl~ ~override~
+  SAY 0x08 @5002
+  SAY 0x0c @5002
+  SAY 0x50 @5002
+  SAY 0x54 @5002
+
+COPY ~iwdification/spl/cdibar3.spl~ ~override~ // Tymora's Melody - Luck and Skill Bonuses
+     ~iwdification/spl/cdibarc.spl~ ~override~
+  SAY 0x08 @5003
+  SAY 0x0c @5003
+  SAY 0x50 @5003
+  SAY 0x54 @5003
+
+COPY ~iwdification/spl/cdibar4.spl~ ~override~ // The Song of Kaudies - Resistant to Sound Attacks
+     ~iwdification/spl/cdibard.spl~ ~override~ // includes immunity to dire charm to prevent sirine charm
+  SAY 0x08 @5004
+  SAY 0x0c @5004
+  SAY 0x50 @5004
+  SAY 0x54 @5004
+
+COPY ~iwdification/spl/cdibar5.spl~ ~override~ // The Siren's Yearning - Enthralls Creatures
+     ~iwdification/spl/cdibare.spl~ ~override~
+  SAY 0x08 @5005
+  SAY 0x0c @5005
+  SAY 0x50 @5005
+  SAY 0x54 @5005
+
+COPY_EXISTING ~cdibare.spl~ ~override~
+  SAY 0x3ce @5007
+
+COPY ~iwdification/spl/cdibar6.spl~ ~override~ // War Chant of Sith - Armor Bonuses and Regeneration
+     ~iwdification/spl/cdibarf.spl~ ~override~
+  SAY 0x08 @5006
+  SAY 0x0c @5006
+  SAY 0x50 @5006
+  SAY 0x54 @5006
+
+COPY ~iwdification/lib/immunity.eff~ ~override/cdibara.eff~
+     ~iwdification/lib/immunity.eff~ ~override/cdibarb.eff~
+     ~iwdification/lib/immunity.eff~ ~override/cdibarc.eff~
+     ~iwdification/lib/immunity.eff~ ~override/cdibard.eff~
+     ~iwdification/lib/immunity.eff~ ~override/cdibare.eff~
+     ~iwdification/lib/immunity.eff~ ~override/cdibarf.eff~
+  WRITE_ASCIIE 0x30 "%DEST_RES%" #8
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// add two-handed axes                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @6000 DESIGNATED 60
+
+ACTION_IF ((FILE_EXISTS_IN_GAME ~oh1000.are~) OR (FILE_EXISTS_IN_GAME ~oh3000.are~)) THEN BEGIN // bgee or bg2ee
+//  LOAD_TRA
+END
+
+COPY ~iwdification/bam/cdax2h1i.bam~ ~override~
+     ~iwdification/bam/cdax2h2i.bam~ ~override~
+     ~iwdification/bam/cdax2h3i.bam~ ~override~
+     ~iwdification/bam/cdax2h4i.bam~ ~override~
+     ~iwdification/bam/cdax2h5i.bam~ ~override~
+     ~iwdification/bam/cdax2h5i.bam~ ~override~
+     ~iwdification/bam/cdax2h5i.bam~ ~override~
+     ~iwdification/bam/cdax2h5s.bam~ ~override~
+     ~iwdification/bam/cdax2h6i.bam~ ~override~
+     ~iwdification/spl/cdax2h5b.spl~ ~override~
+
+COPY ~iwdification/itm/cdax2h1.itm~ ~override~ // generic 2h axe
+  SAY 0x08 @6001
+  SAY 0x0c @6001
+  SAY 0x50 @6002
+  SAY 0x54 @6002
+
+COPY ~iwdification/itm/cdax2h2.itm~ ~override~ // +1 axe
+  SAY 0x08 @6001
+  SAY 0x0c @6003
+  SAY 0x50 @6002
+  SAY 0x54 @6004
+
+COPY ~iwdification/itm/cdax2h3.itm~ ~override~ // +2 axe
+  SAY 0x08 @6001
+  SAY 0x0c @6005
+  SAY 0x50 @6002
+  SAY 0x54 @6006
+
+COPY ~iwdification/itm/cdax2h4.itm~ ~override~ // +3 axe
+  SAY 0x08 @6001
+  SAY 0x0c @6007
+  SAY 0x50 @6002
+  SAY 0x54 @6008
+
+COPY ~iwdification/itm/cdax2h5.itm~ ~override~ // +4 axe
+  SAY 0x08 @6001
+  SAY 0x0c @6009
+  SAY 0x50 @6002
+  SAY 0x54 @6010
+
+COPY ~iwdification/itm/cdax2h6.itm~ ~override~ // +5 axe
+  SAY 0x08 @6001
+  SAY 0x0c @6011
+  SAY 0x50 @6002
+  SAY 0x54 @6012
+
+COPY ~iwdification/spl/cdax2h5g.spl~ ~override~
+  SAY 0x08 @6013
+  SAY 0x0c @6013
+  SAY 0x50 @6013
+  SAY 0x54 @6013
+  READ_LONG 0x08 string1
+
+COPY ~iwdification/spl/cdax2h6g.spl~ ~override~
+  SAY 0x08 @6014
+  SAY 0x0c @6014
+  SAY 0x50 @6014
+  SAY 0x54 @6014
+  READ_LONG 0x08 string2
+  
+APPEND ~tooltip.2da~ ~cdax2h5 15529 %string1% -1
+cdax2h5 15529 %string2% -1~
+
+COPY_EXISTING ~tooltip.2da~ ~override~
+  PRETTY_PRINT_2DA
+
+/////                                                  \\\\\
+///// places axes in game                              \\\\\
+/////                                                  \\\\\
+
+// add generic 2h axes to any store that sells generic 1h axes; same with +1 models
+COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~
+  READ_LONG 0x34 sale_off ELSE 0
+  READ_LONG 0x38 sale_num ELSE 0
+  SET ax_idx = 0
+  SET ax1_idx = 0
+  SET delta = 0
+  FOR (index = 0 ; index < sale_num ; ++index) BEGIN
+    READ_ASCII (sale_off +        (index * 0x1c)) item
+    PATCH_IF (("%item%" STRING_COMPARE_CASE "ax1h01" = 0) OR ("%item%" STRING_COMPARE_CASE "_ax1h01" = 0)) BEGIN // 1h axe
+      READ_ASCII (sale_off +        (index * 0x1c)) clone (28) // read entry
+      SET ax_idx = (index + 1) // sets right after as insert point
+    END ELSE
+    PATCH_IF (("%item%" STRING_COMPARE_CASE "ax1h02" = 0) OR ("%item%" STRING_COMPARE_CASE "_ax1h02" = 0)) BEGIN // 1h axe +1
+      READ_ASCII (sale_off +        (index * 0x1c)) clone1 (28) // read entry
+      SET ax1_idx = (index + 1) // sets right after as insert point
+    END
+  END
+  PATCH_IF (ax1_idx > 0) BEGIN // if 1h axes present, add in 2h axes
+    INSERT_BYTES   (sale_off + (ax1_idx * 0x1c)) 28
+      WRITE_ASCIIE (sale_off + (ax1_idx * 0x1c)) ~%clone1%~    // clones 1h axe +1 entry
+      WRITE_ASCII  (sale_off + (ax1_idx * 0x1c)) ~cdax2h2~ #8 // change to 2h axe +1
+    SET delta += 1
+  END
+  PATCH_IF (ax_idx > 0) BEGIN // if 1h axes present, add in 2h axes
+    INSERT_BYTES   (sale_off + (ax_idx * 0x1c)) 28
+      WRITE_ASCIIE (sale_off + (ax_idx * 0x1c)) ~%clone%~    // clones 1h axe entry
+      WRITE_ASCII  (sale_off + (ax_idx * 0x1c)) ~cdax2h1~ #8 // change to 2h axe
+    SET delta += 1
+  END
+  PATCH_IF (delta > 0) BEGIN
+    WRITE_LONG 0x38 (sale_num + delta)
+    PATCH_FOR_EACH offset IN 0x2c 0x4c 0x70 BEGIN
+      READ_LONG offset off
+      PATCH_IF (off > sale_off) BEGIN
+        WRITE_LONG offset (THIS + (delta * 0x1c))
+      END
+    END
+  END
+  BUT_ONLY
+
+ACTION_IF ((FILE_EXISTS_IN_GAME ~garkla.cre~) OR (FILE_EXISTS_IN_GAME ~_garkla.cre~)) THEN BEGIN // bgt/bgee/tutu
+
+  COPY_EXISTING_REGEXP GLOB ~_?garkla.cre~ ~override~ // garclax at the bandit camp
+    REPLACE_CRE_ITEM ~cdax2h3~ #0 #0 #0 ~NONE~ ~WEAPON1~ EQUIP TWOHANDED // add +2 axe to garclax in bandit camp
+
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~ar0602.bcs~ THEN BEGIN // soa
+
+  EXTEND_BOTTOM ~ar0602.bcs~ ~iwdification/baf/ar0602.baf~ // add generic 2H axe to CI
+  
+  COPY_EXISTING ~hlolaf.cre~ ~override~
+    REPLACE_CRE_ITEM ~cdax2h3~ #0 #0 #0 ~NONE~ ~WEAPON1~ EQUIP TWOHANDED // add +2 axe to olaf at guarded compound
+
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~botsmith.bcs~ THEN BEGIN // tob
+
+  EXTEND_BOTTOM ~ar3017.bcs~ ~iwdification/baf/ar3017.baf~ // add generic 2H axe to wk (pile of normal weapons for magic golems)
+
+  EXTEND_BOTTOM ~botsmith.bcs~ ~iwdification/baf/botsmith.baf~ // cespy's upgrade of the +4 axe to +5
+  COMPILE ~iwdification/dlg/botsmith.d~
+
+  // add +3 2h axes to any store that sells generic +3 1h axes (opening stores in ToB)
+  COPY_EXISTING ~amsmug01.sto~ ~override~
+                ~amsmug02.sto~ ~override~
+    ADD_STORE_ITEM ~cdax2h4~ AFTER ~ax1h17~ #0 #0 #0 ~IDENTIFIED~ #1 // +3 2h axe
+
+  // add +3 2h axes to any store that sells generic +3 1h axes (opening stores in ToB)
+  COPY_EXISTING ~sarbar01.sto~ ~override~
+    ADD_STORE_ITEM ~cdax2h4~ AFTER ~ax1h17~ #0 #0 #0 ~IDENTIFIED~ #3 // +3 2h axe
+  
+  COPY_EXISTING ~gromg04.cre~ ~override~
+    REPLACE_CRE_ITEM ~cdax2h5~ #2 #2 #2 ~NONE~ ~WEAPON1~ EQUIP TWOHANDED // add +4 axe to one of gromnir's bodyguards
+
+END

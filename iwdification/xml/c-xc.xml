@@ -1,0 +1,26 @@
+<game_days>
+	<event_date date="20130830">
+		<event id="1721504" local_time="TBA" eastern_time="TBA" eastern_date="20130830" hc="" vc="kty" hn="" vn="Kentucky" hs="" vs="" event_name="Belmont Opener" tournament=""/>
+	</event_date>
+	<event_date date="20130914">
+		<event id="1721505" local_time="9:30 AM ET" eastern_time="09:30" eastern_date="20130914" hc="kty" vc="" hn="Kentucky" vn="" hs="" vs="" event_name="Bluegrass Cross Country Invitational" tournament=""/>
+	</event_date>
+	<event_date date="20130928">
+		<event id="1721506" local_time="TBA" eastern_time="TBA" eastern_date="20130928" hc="" vc="kty" hn="" vn="Kentucky" hs="" vs="" event_name="Cowboy Jamboree" tournament=""/>
+	</event_date>
+	<event_date date="20131005">
+		<event id="1721507" local_time="TBA" eastern_time="TBA" eastern_date="20131005" hc="" vc="kty" hn="" vn="Kentucky" hs="" vs="" event_name="Kentucky @ " tournament=""/>
+	</event_date>
+	<event_date date="20131019">
+		<event id="1721508" local_time="TBA" eastern_time="TBA" eastern_date="20131019" hc="" vc="kty" hn="" vn="Kentucky" hs="" vs="" event_name="Pre-NCAA Invitational" tournament=""/>
+	</event_date>
+	<event_date date="20131101">
+		<event id="1721509" local_time="TBA" eastern_time="TBA" eastern_date="20131101" hc="" vc="kty" hn="" vn="Kentucky" hs="" vs="" event_name="SEC Championships" tournament=""/>
+	</event_date>
+	<event_date date="20131108">
+		<event id="1721510" local_time="TBA" eastern_time="TBA" eastern_date="20131108" hc="" vc="kty" hn="" vn="Kentucky" hs="" vs="" event_name="NCAA Southeast Regional Championships" tournament=""/>
+	</event_date>
+	<event_date date="20131123">
+		<event id="1721511" local_time="TBA" eastern_time="TBA" eastern_date="20131123" hc="" vc="kty" hn="" vn="Kentucky" hs="" vs="" event_name="Kentucky @ " tournament=""/>
+	</event_date>
+</game_days>

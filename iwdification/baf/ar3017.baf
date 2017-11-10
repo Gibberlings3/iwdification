@@ -1,0 +1,7 @@
+IF
+	Global("CDIWDItems","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("CDIWDItems","MYAREA",1)
+		ActionOverride("Container14",CreateItem("cdax2h1",0,0,0))
+END

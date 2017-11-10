@@ -1,0 +1,82 @@
+/////                                                  \\\\\
+///// arcane-divine cross-patching                     \\\\\
+/////                                                  \\\\\
+  
+// look up various spells in the table
+OUTER_SET NUM_EMOTION_COURAGE             = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_EMOTION_COURAGE~)) - 2000)
+OUTER_SET NUM_EMOTION_FEAR                = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_EMOTION_FEAR~)) - 2000)
+OUTER_SET NUM_EMOTION_HOPE                = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_EMOTION_HOPE~)) - 2000)
+OUTER_SET NUM_MIND_BLANK                  = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_MIND_BLANK~)) - 2000)
+OUTER_SET NUM_BLOOD_RAGE                  = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_BLOOD_RAGE~)) - 1000)
+OUTER_SET NUM_IMPERVIOUS_SANCTITY_OF_MIND = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_IMPERVIOUS_SANCTITY_OF_MIND~)) - 1000)
+OUTER_SET NUM_SYMBOL_OF_HOPELESSNESS      = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SYMBOL_OF_HOPELESSNESS~)) - 1000)
+OUTER_SET NUM_UNFAILING_ENDURANCE         = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_UNFAILING_ENDURANCE~)) - 1000)
+OUTER_SET NUM_ICELANCE                    = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_ICELANCE~)) - 2000)
+OUTER_SET NUM_ENTROPY_SHIELD              = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_ENTROPY_SHIELD~)) - 1000)
+
+ACTION_IF NUM_BLOOD_RAGE > 0 BEGIN
+
+  COPY_EXISTING ~sppr%NUM_BLOOD_RAGE%.spl~ ~override~ // add immunity to emotion series to blood rage
+    PATCH_IF NUM_EMOTION_COURAGE > 0 BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 4 opcode = 206 target = 2 power = 4 resist_dispel = 3 duration = 120
+        STR_VAR resource = EVALUATE_BUFFER "spwi%NUM_EMOTION_COURAGE%" END
+    END
+    PATCH_IF NUM_EMOTION_FEAR > 0 BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 4 opcode = 206 target = 2 power = 4 resist_dispel = 3 duration = 120
+        STR_VAR resource = EVALUATE_BUFFER "spwi%NUM_EMOTION_FEAR%" END
+    END
+    PATCH_IF NUM_EMOTION_HOPE > 0 BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 4 opcode = 206 target = 2 power = 4 resist_dispel = 3 duration = 120
+        STR_VAR resource = EVALUATE_BUFFER "spwi%NUM_EMOTION_HOPE%" END
+    END
+    BUT_ONLY
+
+END
+
+ACTION_IF NUM_IMPERVIOUS_SANCTITY_OF_MIND > 0 BEGIN
+
+  COPY_EXISTING ~sppr%NUM_IMPERVIOUS_SANCTITY_OF_MIND%.spl~ ~override~ // add immunity to emotion series to impervious sanctity of mind
+    FOR (index = 1 ; index < 18 ; ++index) BEGIN
+      PATCH_IF NUM_EMOTION_COURAGE > 0 BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR header = index insert_point = 0 opcode = 206 target = 1 power = 7 resist_dispel = 3
+          duration = ((60 * index) + 780) STR_VAR resource = EVALUATE_BUFFER "spwi%NUM_EMOTION_COURAGE%" END
+      END
+      PATCH_IF NUM_EMOTION_FEAR > 0 BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR header = index insert_point = 0 opcode = 206 target = 1 power = 7 resist_dispel = 3
+          duration = ((60 * index) + 780) STR_VAR resource = EVALUATE_BUFFER "spwi%NUM_EMOTION_FEAR%" END
+      END
+      PATCH_IF NUM_EMOTION_HOPE > 0 BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR header = index insert_point = 0 opcode = 206 target = 1 power = 7 resist_dispel = 3
+          duration = ((60 * index) + 780) STR_VAR resource = EVALUATE_BUFFER "spwi%NUM_EMOTION_HOPE%" END
+      END
+    END
+
+END
+
+ACTION_IF ((NUM_MIND_BLANK > 0) AND
+           (NUM_SYMBOL_OF_HOPELESSNESS > 0)) BEGIN
+
+  COPY_EXISTING ~spwi%NUM_MIND_BLANK%.spl~ ~override~ // add immunity to symbol of hopelessness to mind blank
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 206 target = 1 power = 8 resist_dispel = 3 duration = 7200
+      STR_VAR resource = EVALUATE_BUFFER "sppr%NUM_SYMBOL_OF_HOPELESSNESS%" END
+
+END
+
+ACTION_IF ((FILE_EXISTS_IN_GAME cdia807w.itm) AND
+           (NUM_UNFAILING_ENDURANCE > 0)) BEGIN
+  
+  COPY_EXISTING ~cdia807w.itm~ ~override~ // iron body: add immunity to unfailing endurance
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 206 target = 1 timing = 2 STR_VAR resource = EVALUATE_BUFFER "SPPR%NUM_UNFAILING_ENDURANCE%" END
+
+END
+
+ACTION_IF ((NUM_ENTROPY_SHIELD > 0) AND
+           (NUM_ICELANCE > 0)) BEGIN
+  
+  COPY_EXISTING ~sppr%NUM_ENTROPY_SHIELD%.spl~ ~override~ // add immunity to emotion series to impervious sanctity of mind
+    FOR (index = 1 ; index < 21 ; ++index) BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR header = index insert_point = 0 opcode = 206 target = 1 power = 6 resist_dispel = 3
+        duration = ((6 * index) + 60) STR_VAR resource = EVALUATE_BUFFER "spwi%NUM_ICELANCE%" END
+    END
+
+END

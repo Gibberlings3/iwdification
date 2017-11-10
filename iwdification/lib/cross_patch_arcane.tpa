@@ -1,0 +1,17 @@
+ACTION_IF ((FILE_EXISTS_IN_GAME ~cdia807w.itm~) AND
+           (VARIABLE_IS_SET WIZARD_BELTYNS_BURNING_BLOOD_RES)) THEN BEGIN
+
+  COPY_EXISTING ~cdia807w.itm~ ~override~  // add immunity to beltyns burning blood to iron body
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 206 target = 1 timing = 2 STR_VAR resource = EVALUATE_BUFFER "%WIZARD_BELTYNS_BURNING_BLOOD_RES%" END
+
+END
+
+/////                                                  \\\\\
+///// arcane-divine cross-patching                     \\\\\
+/////                                                  \\\\\
+
+ACTION_IF MOD_IS_INSTALLED ~IWDIFICATION/SETUP-IWDIFICATION.TP2~ ~40~ THEN BEGIN
+
+  INCLUDE ~iwdification/lib/cross_patch_both.tpa~
+  
+END

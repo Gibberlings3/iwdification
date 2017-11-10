@@ -1,0 +1,10 @@
+IF
+  !GlobalTimerNotExpired("CDSALC","LOCALS")
+  IsActive(Myself)
+THEN
+  RESPONSE #100
+    ReallyForceSpellRES("CDSALC",Myself)
+    SetGlobalTimer("CDSALC","LOCALS",ONE_DAY)
+END
+
+

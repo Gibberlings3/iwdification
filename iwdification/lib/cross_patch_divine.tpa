@@ -1,0 +1,35 @@
+ACTION_IF VARIABLE_IS_SET CLERIC_BLOOD_RAGE_RES BEGIN
+
+  COPY_EXISTING ~%CLERIC_BLOOD_RAGE_RES%.spl~ ~override~
+    PATCH_IF VARIABLE_IS_SET CLERIC_SYMBOL_OF_PAIN_RES BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 3 opcode = 206 target = 2 power = 4 resist_dispel = 3 duration = 120
+        STR_VAR resource = EVALUATE_BUFFER "%CLERIC_SYMBOL_OF_PAIN_RES%" END
+    END
+    PATCH_IF VARIABLE_IS_SET CLERIC_SYMBOL_OF_PAIN_RES BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 3 opcode = 206 target = 2 power = 4 resist_dispel = 3 duration = 120
+        STR_VAR resource = EVALUATE_BUFFER "%CLERIC_SYMBOL_OF_HOPELESSNESS_RES%" END
+    END
+    BUT_ONLY
+
+END
+
+ACTION_IF ((VARIABLE_IS_SET CLERIC_IMPERVIOUS_SANCTITY_OF_MIND_RES) AND
+           (VARIABLE_IS_SET CLERIC_SYMBOL_OF_HOPELESSNESS_RES)) BEGIN
+
+  COPY_EXISTING ~%CLERIC_IMPERVIOUS_SANCTITY_OF_MIND_RES%.spl~ ~override~
+    FOR (index = 1 ; index < 18 ; ++index) BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR header = index insert_point = 0 opcode = 206 target = 1 power = 7 resist_dispel = 3 duration = ((index * 60) + 780)
+        STR_VAR resource = EVALUATE_BUFFER "%CLERIC_SYMBOL_OF_HOPELESSNESS_RES%" END
+    END
+
+END
+
+/////                                                  \\\\\
+///// arcane-divine cross-patching                     \\\\\
+/////                                                  \\\\\
+
+ACTION_IF MOD_IS_INSTALLED ~IWDIFICATION/SETUP-IWDIFICATION.TP2~ ~30~ THEN BEGIN
+
+  INCLUDE ~iwdification/lib/cross_patch_both.tpa~
+  
+END

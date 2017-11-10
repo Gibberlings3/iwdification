@@ -1,0 +1,11 @@
+IF
+  Global("cdax2h5","LOCALS",1)
+  Global("ImpForgeStuff","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("cdax2h5","LOCALS",0)
+    SetGlobal("ImpForgeStuff","GLOBAL",0)
+    GiveItemCreate("cdax2h6",Player1,0,0,0) // enhanced battle standard
+    SetGlobal("ItemMaker","GLOBAL",1)       // this just allows cespy to pick up his usual post-forge dialogue
+    StartDialogueNoSet(Player1)
+END

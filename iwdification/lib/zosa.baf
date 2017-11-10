@@ -1,0 +1,18 @@
+/*
+IF
+  OR(1)
+    InMyArea("cdid613")
+THEN
+  RESPONSE #100
+    DestroySelf()
+END
+*/
+
+IF
+  OR(2)
+    InMyArea("cdid613")
+    !Global("CDZOSA","GLOBAL",0)
+THEN
+  RESPONSE #100
+    DestroySelf()
+END

@@ -1,0 +1,67 @@
+<game_days>
+	<event_date date="20130831">
+		<event id="1661803" local_time="7:00 PM ET" eastern_time="19:00" eastern_date="20130831" hc="wky" vc="kty" hn="Western Kentucky" vn="Kentucky" hs="" vs="" event_name="Kentucky @ Western Kentucky" tournament=""/>
+	</event_date>
+	<event_date date="20130907">
+		<event id="1661805" local_time="12:00 PM ET" eastern_time="12:00" eastern_date="20130907" hc="kty" vc="mioh" hn="Kentucky" vn="Miami (Ohio)" hs="" vs="" event_name="Miami (Ohio) @ Kentucky" tournament=""/>
+	</event_date>
+	<event_date date="20130914">
+		<event id="1661806" local_time="12:00 PM ET" eastern_time="12:00" eastern_date="20130914" hc="kty" vc="lou" hn="Kentucky" vn="Louisville" hs="" vs="" event_name="Louisville @ Kentucky" tournament=""/>
+	</event_date>
+	<event_date date="20130928">
+		<event id="1661807" local_time="TBA" eastern_time="TBA" eastern_date="20130928" hc="kty" vc="fla" hn="Kentucky" vn="Florida" hs="" vs="" event_name="Florida @ Kentucky" tournament=""/>
+	</event_date>
+	<event_date date="20131005">
+		<event id="1661808" local_time="TBA" eastern_time="TBA" eastern_date="20131005" hc="scar" vc="kty" hn="South Carolina" vn="Kentucky" hs="" vs="" event_name="Kentucky @ South Carolina" tournament=""/>
+	</event_date>
+	<event_date date="20131012">
+		<event id="1661809" local_time="TBA" eastern_time="TBA" eastern_date="20131012" hc="kty" vc="alab" hn="Kentucky" vn="Alabama" hs="" vs="" event_name="Alabama @ Kentucky" tournament=""/>
+	</event_date>
+	<event_date date="20131024">
+		<event id="1699623" local_time="7:30 PM ET" eastern_time="19:30" eastern_date="20131024" hc="msst" vc="kty" hn="Mississippi State" vn="Kentucky" hs="" vs="" event_name="Kentucky @ Mississippi State" tournament=""/>
+	</event_date>
+	<event_date date="20131102">
+		<event id="1661811" local_time="TBA" eastern_time="TBA" eastern_date="20131102" hc="kty" vc="alst" hn="Kentucky" vn="Alabama State" hs="" vs="" event_name="Alabama State @ Kentucky" tournament=""/>
+	</event_date>
+	<event_date date="20131109">
+		<event id="1661812" local_time="TBA" eastern_time="TBA" eastern_date="20131109" hc="kty" vc="miss" hn="Kentucky" vn="Missouri" hs="" vs="" event_name="Missouri @ Kentucky" tournament=""/>
+	</event_date>
+	<event_date date="20131116">
+		<event id="1661813" local_time="TBA" eastern_time="TBA" eastern_date="20131116" hc="vand" vc="kty" hn="Vanderbilt" vn="Kentucky" hs="" vs="" event_name="Kentucky @ Vanderbilt" tournament=""/>
+	</event_date>
+	<event_date date="20131123">
+		<event id="1661815" local_time="TBA" eastern_time="TBA" eastern_date="20131123" hc="geo" vc="kty" hn="Georgia" vn="Kentucky" hs="" vs="" event_name="Kentucky @ Georgia" tournament=""/>
+	</event_date>
+	<event_date date="20131130">
+		<event id="1661817" local_time="TBA" eastern_time="TBA" eastern_date="20131130" hc="kty" vc="tenn" hn="Kentucky" vn="Tennessee" hs="" vs="" event_name="Tennessee @ Kentucky" tournament=""/>
+	</event_date>
+	<record hide="0">
+		<conf_games>8</conf_games>
+		<neutral_site_games>1</neutral_site_games>
+		<overall>
+			<wins>0</wins>
+			<losses>0</losses>
+			<ties>0</ties>
+		</overall>
+		<conference>
+			<wins>0</wins>
+			<losses>0</losses>
+			<ties>0</ties>
+		</conference>
+		<home>
+			<wins>0</wins>
+			<losses>0</losses>
+			<ties>0</ties>
+		</home>
+		<away>
+			<wins>0</wins>
+			<losses>0</losses>
+			<ties>0</ties>
+		</away>
+		<neutral>
+			<wins>0</wins>
+			<losses>0</losses>
+			<ties>0</ties>
+		</neutral>
+	</record>
+</game_days>

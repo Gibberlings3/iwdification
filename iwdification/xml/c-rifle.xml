@@ -1,0 +1,59 @@
+<game_days>
+	<event_date date="20131019">
+		<event id="1724533" local_time="All Day" eastern_time="All Day" eastern_date="20131019" hc="kty" vc="ole" hn="Kentucky" vn="Ole Miss" hs="" vs="" event_name="Ole Miss @ Kentucky" tournament=""/>
+	</event_date>
+	<event_date date="20131025">
+		<event id="1724547" local_time="All Day" eastern_time="All Day" eastern_date="20131025" hc="kty" vc="ncst" hn="Kentucky" vn="NC State" hs="" vs="" event_name="NC State @ Kentucky" tournament=""/>
+	</event_date>
+	<event_date date="20131027">
+		<event id="1724562" local_time="All Day" eastern_time="All Day" eastern_date="20131027" hc="kty" vc="mem" hn="Kentucky" vn="Memphis" hs="" vs="" event_name="Memphis @ Kentucky" tournament=""/>
+	</event_date>
+	<event_date date="20131102">
+		<event id="1724569" local_time="All Day" eastern_time="All Day" eastern_date="20131102" hc="tcu" vc="kty" hn="TCU" vn="Kentucky" hs="" vs="" event_name="Kentucky @ TCU" tournament=""/>
+	</event_date>
+	<event_date date="20131109">
+		<event id="1724573" local_time="All Day" eastern_time="TBA" eastern_date="20131109" hc="kty" vc="navy" hn="Kentucky" vn="Navy" hs="" vs="" event_name="Navy @ Kentucky" tournament=""/>
+	</event_date>
+	<event_date date="20131123">
+		<event id="1724587" local_time="All Day" eastern_time="All Day" eastern_date="20131123" hc="alaf" vc="kty" hn="Alaska" vn="Kentucky" hs="" vs="" event_name="Kentucky @ Alaska" tournament=""/>
+	</event_date>
+	<event_date date="20131124">
+		<event id="1724591" local_time="All Day" eastern_time="All Day" eastern_date="20131124" hc="alaf" vc="kty" hn="Alaska" vn="Kentucky" hs="" vs="" event_name="Kentucky @ Alaska" tournament=""/>
+	</event_date>
+	<event_date date="20140111">
+		<event id="1724599" local_time="All Day" eastern_time="All Day" eastern_date="20140111" hc="osu" vc="kty" hn="Ohio State" vn="Kentucky" hs="" vs="" event_name="Kentucky @ Ohio State" tournament=""/>
+	</event_date>
+	<event_date date="20140118">
+		<event id="1724608" local_time="All Day" eastern_time="All Day" eastern_date="20140118" hc="kty" vc="must" hn="Kentucky" vn="Murray State" hs="" vs="" event_name="Murray State @ Kentucky" tournament=""/>
+	</event_date>
+	<event_date date="20140119">
+		<event id="1724617" local_time="All Day" eastern_time="08:00" eastern_date="20140119" hc="army" vc="kty" hn="Army" vn="Kentucky" hs="" vs="" event_name="Kentucky @ Army" tournament=""/>
+	</event_date>
+	<event_date date="20140124">
+		<event id="1724626" local_time="All Day" eastern_time="All Day" eastern_date="20140124" hc="kty" vc="NLST" hn="Kentucky" vn="Withrow Invitational" hs="" vs="" event_name=" @ Kentucky" tournament=""/>
+	</event_date>
+	<event_date date="20140202">
+		<event id="1724630" local_time="All Day" eastern_time="All Day" eastern_date="20140202" hc="kty" vc="neb" hn="Kentucky" vn="Nebraska" hs="" vs="" event_name="Nebraska @ Kentucky" tournament=""/>
+	</event_date>
+	<event_date date="20140208">
+		<event id="1724639" local_time="All Day" eastern_time="All Day" eastern_date="20140208" hc="wvir" vc="kty" hn="West Virginia" vn="Kentucky" hs="" vs="" event_name="Kentucky @ West Virginia" tournament=""/>
+	</event_date>
+	<event_date date="20140222">
+		<event id="1724641" local_time="All Day" eastern_time="All Day" eastern_date="20140222" hc="kty" vc="NLST" hn="Kentucky" vn="NCAA Qualifier" hs="" vs="" event_name="NCAA Qualifier" tournament=""/>
+	</event_date>
+	<event_date date="20140223">
+		<event id="1724643" local_time="All Day" eastern_time="All Day" eastern_date="20140223" hc="kty" vc="NLST" hn="Kentucky" vn="NCAA Qualifier" hs="" vs="" event_name="NCAA Qualifier" tournament=""/>
+	</event_date>
+	<event_date date="20140301">
+		<event id="1724645" local_time="All Day" eastern_time="All Day" eastern_date="20140301" hc="kty" vc="NLST" hn="Kentucky" vn="GARC Championships" hs="" vs="" event_name="GARC Championships" tournament=""/>
+	</event_date>
+	<event_date date="20140302">
+		<event id="1724646" local_time="All Day" eastern_time="All Day" eastern_date="20140302" hc="kty" vc="NLST" hn="Kentucky" vn="GARC Championships" hs="" vs="" event_name="GARC Championships" tournament=""/>
+	</event_date>
+	<event_date date="20140315">
+		<event id="1724647" local_time="All Day" eastern_time="All Day" eastern_date="20140315" hc="kty" vc="NLST" hn="Kentucky" vn="NCAA Championships" hs="" vs="" event_name="NCAA Championships" tournament=""/>
+	</event_date>
+	<event_date date="20140316">
+		<event id="1724651" local_time="All Day" eastern_time="All Day" eastern_date="20140316" hc="kty" vc="NLST" hn="Kentucky" vn="NCAA Championships" hs="" vs="" event_name="NCAA Championships" tournament=""/>
+	</event_date>
+</game_days>
