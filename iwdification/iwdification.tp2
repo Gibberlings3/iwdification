@@ -3,7 +3,8 @@
 
 BACKUP ~iwdification/backup~ // location to store files for uninstall purposes
 
-AUTHOR ~pcamagna@yahoo.com~ // email address displayed if install fails
+//AUTHOR ~pcamagna@yahoo.com~ // email address displayed if install fails
+SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=185~
 
 VERSION ~Beta 3~
 
