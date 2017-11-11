@@ -5,7 +5,7 @@ BACKUP ~iwdification/backup~ // location to store files for uninstall purposes
 
 AUTHOR ~pcamagna@yahoo.com~ // email address displayed if install fails
 
-VERSION ~Beta 2~
+VERSION ~Beta 3~
 
 README ~iwdification/readme-iwdification.html~
 
@@ -741,7 +741,7 @@ ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~WIZARD_MONSTER_SUMMONING_4~)) > 0) THEN BEGI
              (FILE_EXISTS_IN_GAME ~µDAa1.bam~)) THEN BEGIN
   
     COPY ~iwdification/cre/cdm4yeti.cre~ ~override~
-      SAY 0x0c @3051
+      SAY 0x08 @3051
       SAY 0x0c @3051
       WRITE_LONG 0x28 IDS_OF_SYMBOL (~animate~ ~TUNDRA_YETI~)
   
@@ -1889,12 +1889,12 @@ ACTION_IF ((MOD_IS_INSTALLED ~INFINITYANIMATIONS/SETUP-INFINITYANIMATIONS.TP2~ ~
          ~iwdification/wav/cdeffm47.wav~ ~override~
   
     COPY ~iwdification/cre/cdgibomb.cre~ ~override~
-      SAY 0x0c @4076
+      SAY 0x08 @4076
       SAY 0x0c @4076
       WRITE_LONG 0x28 IDS_OF_SYMBOL (~animate~ ~BEETLE_BLACK~)
   
     COPY ~iwdification/cre/cdgiborb.cre~ ~override~
-      SAY 0x0c @4077
+      SAY 0x08 @4077
       SAY 0x0c @4077
       WRITE_LONG 0x28 IDS_OF_SYMBOL (~animate~ ~BEETLE_BLACK~)
   
@@ -3134,10 +3134,10 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~ar0602.bcs~ THEN BEGIN // soa
 
   EXTEND_BOTTOM ~ar0602.bcs~ ~iwdification/baf/ar0602.baf~ // add generic 2H axe to CI
-  
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~hlolaf.cre~ THEN BEGIN // Olaf Rasmussen  
   COPY_EXISTING ~hlolaf.cre~ ~override~
     REPLACE_CRE_ITEM ~cdax2h3~ #0 #0 #0 ~NONE~ ~WEAPON1~ EQUIP TWOHANDED // add +2 axe to olaf at guarded compound
-
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~botsmith.bcs~ THEN BEGIN // tob
