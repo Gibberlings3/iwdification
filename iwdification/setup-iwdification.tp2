@@ -2494,30 +2494,39 @@ END
 
 COPY_EXISTING_REGEXP GLOB ~^[_h]ighhedg\.sto$~ ~override~  // adds lev 1, 2 scrolls to High Hedge
                           ~^_?sto0703\.sto$~   ~override~  // adds lev 1, 2 scrolls to Sorcerous Sundries
+                          ~^bdsorcsc\.sto$~    ~override~  // adds lev 1, 2 scrolls to SoD Sorcerous Sundries
+                          ~^bdbeleg3\.sto$~    ~override~  // adds lev 1, 2 scrolls to SoD Quartermaster
+                          ~^bpding01\.sto$~    ~override~  // adds lev 1, 2 scrolls to Dinguer the Mad (Black Pits)
   PATCH_IF FILE_EXISTS_IN_GAME cdia126.itm BEGIN ADD_STORE_ITEM ~cdia126~ AFTER ~scrl84 _scrl84~ #1 #0 #0 ~IDENTIFIED~ #2 END // expeditious retreat
   PATCH_IF FILE_EXISTS_IN_GAME cdia204.itm BEGIN ADD_STORE_ITEM ~cdia204~ AFTER ~scrl89 _scrl89~ #1 #0 #0 ~IDENTIFIED~ #2 END // Snilloc's Snowball Swarm
   PATCH_IF FILE_EXISTS_IN_GAME cdia216.itm BEGIN ADD_STORE_ITEM ~cdia216~ AFTER ~scrl89 _scrl89~ #1 #0 #0 ~IDENTIFIED~ #2 END // decastave
   PATCH_IF FILE_EXISTS_IN_GAME cdia225.itm BEGIN ADD_STORE_ITEM ~cdia225~ AFTER ~scrl89 _scrl89~ #1 #0 #0 ~IDENTIFIED~ #2 END // cats grace
   BUT_ONLY IF_EXISTS
 
-COPY_EXISTING_REGEXP GLOB ~^_?sto0703\.sto$~ ~override~  // adds lev 3, 4 scrolls to Sorcerous Sundries
+COPY_EXISTING_REGEXP GLOB ~^_?sto0703\.sto$~ ~override~  // adds lev 3, 4, 5 scrolls to Sorcerous Sundries
+                          ~^bdsorcsc\.sto$~  ~override~  // adds lev 3, 4, 5 scrolls to SoD Sorcerous Sundries
+                          ~^bdbeleg3\.sto$~  ~override~  // adds lev 3, 4, 5 scrolls to SoD Quartermaster
+                          ~^bpding01\.sto$~  ~override~  // adds lev 3, 4, 5 scrolls to Dinguer the Mad (Black Pits)
   PATCH_IF FILE_EXISTS_IN_GAME cdia327.itm BEGIN ADD_STORE_ITEM ~cdia327~ AFTER ~scrl1k _scrl1k~ #1 #0 #0 ~IDENTIFIED~ #2 END // Icelance
   PATCH_IF FILE_EXISTS_IN_GAME cdia328.itm BEGIN ADD_STORE_ITEM ~cdia328~ AFTER ~scrl1k _scrl1k~ #1 #0 #0 ~IDENTIFIED~ #2 END // Lance of Disruption
-  PATCH_IF FILE_EXISTS_IN_GAME cdia422.itm BEGIN ADD_STORE_ITEM ~cdia422~ AFTER ~scrl5i _scrl5i~ #1 #0 #0 ~IDENTIFIED~ #2 END // Beltyn's Burning Blood
-  PATCH_IF FILE_EXISTS_IN_GAME cdia426.itm BEGIN ADD_STORE_ITEM ~cdia426~ AFTER ~scrl5i _scrl5i~ #1 #0 #0 ~IDENTIFIED~ #2 END // Shadow Monsters
-  PATCH_IF FILE_EXISTS_IN_GAME cdia427.itm BEGIN ADD_STORE_ITEM ~cdia427~ AFTER ~scrl5i _scrl5i~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Courage
-  PATCH_IF FILE_EXISTS_IN_GAME cdia428.itm BEGIN ADD_STORE_ITEM ~cdia428~ AFTER ~scrl5i _scrl5i~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Fear
-  PATCH_IF FILE_EXISTS_IN_GAME cdia429.itm BEGIN ADD_STORE_ITEM ~cdia429~ AFTER ~scrl5i _scrl5i~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Hope
-  PATCH_IF FILE_EXISTS_IN_GAME cdia430.itm BEGIN ADD_STORE_ITEM ~cdia430~ AFTER ~scrl5i _scrl5i~ #1 #0 #0 ~IDENTIFIED~ #2 END // mordenkainen's force missiles
-  PATCH_IF FILE_EXISTS_IN_GAME cdia432.itm BEGIN ADD_STORE_ITEM ~cdia432~ AFTER ~scrl5i _scrl5i~ #1 #0 #0 ~IDENTIFIED~ #2 END // Vitriolic Sphere
+  PATCH_IF FILE_EXISTS_IN_GAME cdia422.itm BEGIN ADD_STORE_ITEM ~cdia422~ AFTER ~scrl5g _scrl5g~ #1 #0 #0 ~IDENTIFIED~ #2 END // Beltyn's Burning Blood
+  PATCH_IF FILE_EXISTS_IN_GAME cdia426.itm BEGIN ADD_STORE_ITEM ~cdia426~ AFTER ~scrl5g _scrl5g~ #1 #0 #0 ~IDENTIFIED~ #2 END // Shadow Monsters
+  PATCH_IF FILE_EXISTS_IN_GAME cdia427.itm BEGIN ADD_STORE_ITEM ~cdia427~ AFTER ~scrl5g _scrl5g~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Courage
+  PATCH_IF FILE_EXISTS_IN_GAME cdia428.itm BEGIN ADD_STORE_ITEM ~cdia428~ AFTER ~scrl5g _scrl5g~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Fear
+  PATCH_IF FILE_EXISTS_IN_GAME cdia429.itm BEGIN ADD_STORE_ITEM ~cdia429~ AFTER ~scrl5g _scrl5g~ #1 #0 #0 ~IDENTIFIED~ #2 END // Emotion: Hope
+  PATCH_IF FILE_EXISTS_IN_GAME cdia430.itm BEGIN ADD_STORE_ITEM ~cdia430~ AFTER ~scrl5g _scrl5g~ #1 #0 #0 ~IDENTIFIED~ #2 END // mordenkainen's force missiles
+  PATCH_IF FILE_EXISTS_IN_GAME cdia432.itm BEGIN ADD_STORE_ITEM ~cdia432~ AFTER ~scrl5g _scrl5g~ #1 #0 #0 ~IDENTIFIED~ #2 END // Vitriolic Sphere
   PATCH_IF FILE_EXISTS_IN_GAME cdia524.itm BEGIN ADD_STORE_ITEM ~cdia524~ AFTER ~scrl5k _scrl5k~ #1 #0 #0 ~IDENTIFIED~ #1 END // shroud of flame
   PATCH_IF FILE_EXISTS_IN_GAME cdia525.itm BEGIN ADD_STORE_ITEM ~cdia525~ AFTER ~scrl5k _scrl5k~ #1 #0 #0 ~IDENTIFIED~ #1 END // Demi-Shadow Monsters
   PATCH_IF FILE_EXISTS_IN_GAME cdia526.itm BEGIN ADD_STORE_ITEM ~cdia526~ AFTER ~scrl5k _scrl5k~ #1 #0 #0 ~IDENTIFIED~ #1 END // Summon Shadow
   PATCH_IF FILE_EXISTS_IN_GAME cdia528.itm BEGIN ADD_STORE_ITEM ~cdia528~ AFTER ~scrl5k _scrl5k~ #1 #0 #0 ~IDENTIFIED~ #1 END // contact other plane
+  PATCH_IF FILE_EXISTS_IN_GAME cdia533.itm BEGIN ADD_STORE_ITEM ~cdia533~ AFTER ~scrl5k _scrl5k~ #1 #0 #0 ~IDENTIFIED~ #1 END // Conjure water elemental
   BUT_ONLY IF_EXISTS
 
 COPY_EXISTING ~25spell.sto~  ~override~ // arcana archives
               ~25spell2.sto~ ~override~ // arcana archives
+              ~ohbmhsm.sto~  ~override~ // Book Merchant (BG2EE Black Pits 2)
+              ~ohnmhsm.sto~  ~override~ // Book Merchant (BG2EE Neera's Quest)
   PATCH_IF FILE_EXISTS_IN_GAME cdia126.itm BEGIN ADD_STORE_ITEM ~cdia126~ AFTER ~scrl84~ #1 #0 #0 ~IDENTIFIED~ #2 END // expeditious retreat
   PATCH_IF FILE_EXISTS_IN_GAME cdia204.itm BEGIN ADD_STORE_ITEM ~cdia204~ AFTER ~scrl93~ #1 #0 #0 ~IDENTIFIED~ #2 END // Snilloc's Snowball Swarm
   PATCH_IF FILE_EXISTS_IN_GAME cdia216.itm BEGIN ADD_STORE_ITEM ~cdia216~ AFTER ~scrl93~ #1 #0 #0 ~IDENTIFIED~ #2 END // decastave
