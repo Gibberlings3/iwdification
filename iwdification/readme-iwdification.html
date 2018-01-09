@@ -1,797 +1,256 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>IWDification, a Gibberlings Three Mod</title>
+<title>IWDification</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="stylesheet" href="style/g3readme_cam.css" type="text/css" />
-<link href="style/g3.ico" rel="icon" type="image/bmp" />
+<link rel="stylesheet" href="style/g3readme_cam_022916.css" type="text/css" />
+<link href="style/g3icon.ico" rel="icon" type="image/bmp" />
 </head>
 <body>
-<h1><acronym title="Icewind Dale">IWD</acronym>ification</h1>
-<div class="section">
-  <p><a href="http://www.gibberlings3.net/"><strong>A Gibberlings Three Mod</strong></a><strong><br />
-    Authors: <a href="http://forums.gibberlings3.net/index.php?showuser=8">CamDawg</a> and <a href="http://forums.gibberlings3.net/index.php?showuser=1067">DavidW</a> <br />
-    On the web: <a href="http://www.gibberlings3.net/iwdification/">Home page</a> and <a href="http://forums.gibberlings3.net/index.php?showforum=185">discussion
-    forum</a></strong></p>
-  <p><strong> Version Beta 3 - <a href="http://forums.gibberlings3.net/index.php?app=downloads&amp;showcat=77">Check
-    for the most recent version</a></strong><br />
-    <strong> Languages:</strong> English<br />
-    <strong>Platforms: </strong>Windows,  Mac OS X, Linux</p>
+<div id="container">
+  <div class="ribbon_menu">
+    <ul>
+      <li><a href="#Overview">Overview</a></li>
+      <li><a href="#Compatibility">Compatibility</a></li>
+      <li><a href="#Bugs">Bug Reporting</a></li>
+      <li><a href="#Installation">Installation</a></li>
+      <li><a href="#Contents">Contents</a></li>
+      <li><a href="#Contact">Contact</a></li>
+      <li><a href="#Thanks">Thanks</a></li>
+      <li><a href="#Credits">Credits</a></li>
+      <li><a href="#History">History</a></li>
+    </ul>
+    <span><img src="style/logo.gif" width="305" height="83" alt="G3" /></span> </div>
+  <div class="ribbon_bubble">
+    <div class="ribbon_rectangle">
+      <h1>IWDification</h1>
+    </div>
+    <div class="ribbon_triangle-l"></div>
+    <div class="ribbon_triangle-r"></div>
+    <div class="section">
+      <p><strong><a href="http://www.gibberlings3.net/">A Gibberlings Three Mod</a><br />
+       Authors:</strong> <a href="http://gibberlings3.net/forums/index.php?showuser=8">CamDawg</a> and <a href="http://gibberlings3.net/forums/index.php?showuser=1067">DavidW</a></p>
+      <p><strong>Version Beta 4<!-- - <a href="http://www.gibberlings3.net/forums/index.php?app=downloads&amp;showcat=36">Check
+        for the most recent version</a>--></strong><br />
+        <strong> Languages:</strong> English<br />
+        <strong>Platforms: </strong>Windows, Mac <acronym title="Operating System 10">OS X</acronym>, and Linux<br />
+        <strong>GitHub: </strong><a href="https://github.com/Gibberlings3/iwdification">Gibberlings3/iwdification</a></p>
+    </div>
+    <div class="ribbon_rectangle_h2"><a id="Overview" name="Overview"></a>
+      <h2>Overview</h2>
+    </div>
+    <div class="ribbon_triangle_h2-l"></div>
+    <div class="ribbon_triangle_h2-r"></div>
+    <div class="section">
+      <div>
+        <p><acronym title="Icewind Dale">IWD</acronym>ification is a mod to   bring some of the elements of Icewind Dale into the Baldur's Gate series   of games. A lot of this project is based upon the work of the <a href="http://gibberlings3.net/forums/index.php?showforum=155"><acronym title="Icewind Dale">IWD</acronym>-in-<acronym title="Baldur's Gate II">BG2</acronym></a> conversion project, which later formed the backbone of IWDEE. </p>
+        <p>The mod is currently an open beta so expect some bugs here and there. Please report them on the <a href="http://gibberlings3.net/forums/index.php?showforum=185">forums</a> so that they can be addressed. </p>
+      </div>
+      <p>&nbsp;</p>
+    </div>
+    <div class="ribbon_rectangle_h2"><a id="Compatibility" name="Compatibility"></a>
+      <h2>Compatibility</h2>
+    </div>
+    <div class="ribbon_triangle_h2-l"></div>
+    <div class="ribbon_triangle_h2-r"></div>
+    <div class="section">
+      <div>
+        <p><acronym title="Icewind Dale">IWD</acronym>ification  works on all <acronym title="Infinity Engine">IE</acronym> games that use the Baldur's Gate II engine, which includes the original   Baldur's Gate II (Shadows of Amn with or without  Throne of Bhaal), the   two major Baldur's Gate conversion mods (Tutu and <acronym title="Baldur's Gate Trilogy">BGT</acronym>),   and the Enhanced Editions of Baldur's Gate and Baldur's Gate II. Content will be adjusted as   appropriate for the detected platform--e.g. no +5 items or ninth level   spells will be added to a Tutu or <acronym title="Baldur's Gate: Enhanced Edition">BGEE</acronym> game. </p>
+        <p><strong>For EE games:</strong></p>
+        <p> 
+          All arcane and divine spells are available. In addition, the animations from IWD will be used for various summons--e.g. the shadows summoned by the spell Shades will use the IWD 'large shadow' animation, umber hulks and trolls from Monster Summoning will look like IWD hulks and trolls, etc. </p>
+        <p><strong>For non-EE games: </strong></p>
+        <p><a href="http://www.spellholdstudios.net/ie/tobex">TobEx</a> is   highly recommended for players using the spell packs on the original games. Without TobEx,   spell selection screens during character creation are limited to 24   spells, as are spellbook pages. Since there are more than 24 spells   available at some levels you will not be able to see all spells   available or be able to select them. Cat's Grace, a second-level arcane   spell, relies on functionality provided by TobEx and will be skipped if   it's not detected. </p>
+        <p>The fourth-level divine spell Giant Insect relies on <a href="http://www.spellholdstudios.net/ie/infinityanimations">Infinity Animations</a>, as the beetles summoned by the spell do not have animations in the original <acronym title="Baldur's Gate II">BG2</acronym>,   and will be skipped without the mod being installed. One of the summons   (yeti) for the sixth-level arcane spell Monster Summoning IV will not   be available without Infinity Animations, though the spell will   otherwise work with the other two summon options. Polymorph Self will also have an additional option, Boring Beetle, if IA is installed. If IWD animations are detected, they will be used for varous summons, as they are for EE games.</p>
+      </div>
+    </div>
+    <div class="ribbon_rectangle_h2"><a id="Bugs" name="Bugs"></a>
+      <h2>Bug Reporting</h2>
+    </div>
+    <div class="ribbon_triangle_h2-l"></div>
+    <div class="ribbon_triangle_h2-r"></div>
+    <div class="section">
+      <p>If you should encounter any bugs, please report them to the authors at the <a href="http://gibberlings3.net/forums/index.php?showforum=185">IWDification</a> forum. In addition, IWDification is <a href="https://github.com/Gibberlings3/iwdification">available on GitHub</a>, so fixes and changes can be submitted by the community. </p>
+      <h3>Known Issues</h3>
+<p>Two-handed axes use the same combat and paperdoll animations as halberds. </p>
+      <p>Contact Other Plane has no dialogue written, and is therefore unavailable at present. </p>
+      <p>Arcane spell scrolls are only available in stores, and the new arcane and divine spells are currently not utilized by enemies. This is something that future versions will address. </p>
+      <h3>Known Issues (Non-EE Games)</h3>
+      <p>Many of the cosmetic effects for the new spells are too transparent; a review is planned for the next version. </p>
+      <p>The Cat's Grace spell (part of the Arcane Spell Pack) requires <a href="http://www.spellholdstudios.net/ie/tobex">TobEx</a> for its unique dexterity modifications. Giant Insect (part of the Divine Spell Pack) requires the beetle animation, part of <a href="http://www.spellholdstudios.net/ie/infinityanimations">Infinity Animations</a>.   In addition, Monster Summoning IV (Arcane Spell Pack) will have yetis   as a summoning option if the yeti animation and Infinity Animations is   installed; otherwise the spell will still work with the other summoning   options. </p>
+      <p>Just like <acronym title="Icewind Dale">IWD</acronym>-in-<acronym title="Baldur's Gate II">BG2</acronym>,   a small number of spells cannot currently be converted at all. The     current list is: Seven Eyes, Soul Eater, (Great) Shout, Mordenkainen's     Force Missiles, Spiritual Wrath, Mold Touch, Wall of Moonlight, and     Smashing Wave. A few other spells are converted a bit suboptimally, and   don't work   quite the way they did in <acronym title="Icewind Dale">IWD</acronym>. The current list is Blood Rage, Animal Rage, Static   Charge, and Whirlwind. Spells which use cloud (or cloud-like) projectiles are simulated in a very roundabout fashion; the upshot is that the visuals don't always reflect their actual area of effect and don't look as nice as they do in IWD or in the EE engine. </p>
 </div>
-<h2>Overview</h2>
-<div class="section">
-  <p><acronym title="Icewind Dale">IWD</acronym>ification is a mod to bring some of the elements of Icewind Dale into the Baldur's Gate series of games. A lot of this project is based upon the work of the <a href="http://forums.gibberlings3.net/index.php?showforum=155"><acronym title="Icewind Dale">IWD</acronym>-in-<acronym title="Baldur's Gate II">BG2</acronym></a> conversion project. </p>
-  <p>The mod is currently an open beta so expect some bugs here and there. Please report them on the <a href="http://forums.gibberlings3.net/index.php?showforum=185">forums</a> so that they can be addressed. </p>
+    <div class="ribbon_rectangle_h2"><a id="Installation" name="Installation"></a>
+      <h2>Installation</h2>
+    </div>
+    <div class="ribbon_triangle_h2-l"></div>
+    <div class="ribbon_triangle_h2-r"></div>
+    <div class="section">
+      <p><strong>Special Note for Siege of Dragonspear from Steam/GOG<br />
+      </strong>Good Old Games (GOG) and Steam both package the additional content for Siege of Dragonspear in a method that WeiDU, the tool used to install this mod, cannot access. You must  run a program called <a href="https://forums.beamdog.com/discussion/50441/modmerge-merge-your-steam-gog-zip-based-dlc-into-something-weidu-nearinfinity-dltcep-can-use/p1">Modmerge</a> on your SoD installation  before you can install this or any other WeiDU-based mod.      </p>
+      <p><strong>Enhanced Editions Note</strong><br />
+      The Enhanced Editions are actively supported games. Please note that every   patch update will wipe your current mod setup! If in the middle of a   modded game you might want to delay the patch update (if possible) as   even after reinstalling the mods, you might not be able to continue with   your old savegames. Alternatively, copy the whole game's folder into a   new one that can be modded and will stay untouched by game patches. It is important that you install the mod to the language   version you are playing the game in. Otherwise, the dialogues of the mod   will not show but give error messages. </p>
+      <p><strong>Windows</strong><br />
+        IWDification for Windows is distributed as a self-extracting   archive and includes a WeiDU installer. To install, simply double-click   the archive and follow the instructions on screen.</p>
+      <p>Alternatively, the files can be extracted into your game directory using <a href="http://www.7-zip.org/download.html">7zip</a> or <a href="http://www.rarlab.com/download.htm">WinRAR</a>. When properly extracted, your game directory will contain <strong>setup-iwdification.exe</strong> and the folder<strong>iwdification</strong>. To install, double-click <strong>setup-iwdification.exe</strong> and follow the instructions on screen.</p>
+      <p>You can run <strong>setup-iwdification.exe</strong> in your game folder to reinstall, uninstall or otherwise change components.</p>
+      <p><strong>Mac OS X</strong><br />
+        IWDification for Mac OS X is distributed as a compressed tarball and includes a WeiDU installer.</p>
+      <p>First, extract the files from the tarball into your game directory. When properly extracted, your game directory will contain <strong>setup-iwdification</strong>, <strong>setup-iwdification.command</strong>, and the folder<strong>iwdification</strong>. To install, double-click <strong>setup-iwdification.command</strong> and follow the instructions on screen.</p>
+      <p>You can run <strong>setup-iwdification.command</strong> in your game folder to reinstall, uninstall or otherwise change components.</p>
+      <p><strong>Linux</strong><br />
+        IWDification for Linux is distributed as a compressed tarball and does not include a WeiDU installer.</p>
+      <p>Extract the contents of the mod to the folder of the game you wish to modify.</p>
+      <p>Download the latest version of WeiDU for Linux from <a href="http://www.weidu.org/%7Ethebigg/">WeiDU.org</a> and copy WeiDU and WeInstall to /usr/bin. Following that, open a terminal, cd to your game installation directory, run tolower   and answer Y to both queries. You can avoid running the second option   (linux.ini) if you've already ran it once in the same directory. To save   time, the archive is already tolowered, so there's no need to run the   first option (lowercasing file names) either if you've extracted only   this mod since the last time you lowercased file names. If you're   unsure, running tolower and choosing both options is the safe bet.</p>
+      <p>To install, run WeInstall iwdification in your game folder. Then run wine BGMain.exe and start playing. </p>
+      <p><strong> Note for Complete Uninstallation</strong><br />
+        In addition to the methods above for removing individual components, you can completely uninstall the mod using setup-iwdification --uninstall at the command line to remove all components without wading through prompts.</p>
+    </div>
+    <div class="ribbon_rectangle_h2"><a id="Known" name="Known"></a>
+      <h2>Contents</h2>
+    </div>
+    <div class="ribbon_triangle_h2-l"></div>
+    <div class="ribbon_triangle_h2-r"></div>
+    <div class="section">
+      <p><acronym title="Icewind Dale">IWD</acronym>ification has several      components, which can be installed completely independently of one another. </p>
+      <p><strong>Icewind Dale Casting Graphics (Andyr)</strong><br />
+      <em>Also available in the Tweaks Anthology mod </em></p>
+<p> When your character casts a spell, you get a pretty sequence of colors swirling      around their hand depending on the school the spell cast came from. A necromantic      spell, for example, looks quite different from creating an illusion. The      Baldur's Gate and Icewind Dale games use different sets of animations for      the schools. This component changes the spellcasting animations to those      of Icewind Dale. Note that this is purely a cosmetic change--the spells      themselves function exactly as before. Screenshots for comparison are available      in the <a href="http://gibberlings3.net/forums/index.php?app=gallery&amp;album=27">Tweaks      gallery</a>. </p>
+      <p><strong>Commoners Use Drab Colors</strong><br />
+      <em>Also available in the Tweaks Anthology mod </em></p>
+<p> Unlike Icewind Dale, commoners in <acronym title="Baldur's Gate II">BG2</acronym> wear      brightly colored clothes. This tweak changes the random selections of colors      for commoners to a drab palette. The dress of noblemen and noblewomen are      not affected. </p>
+      <p><strong>Arcane Spell Pack</strong></p>
+      <p> This component adds more than 30 arcane spells from Icewind Dale. This component does not alter existing <acronym title="Baldur's Gate II">BG2</acronym> spells to match their <acronym title="Icewind Dale">IWD</acronym> counterparts, except as noted below. <a href="http://www.gibberlings3.net/iwdification/arcane.php">Complete descriptions</a> are available on the project pages. </p>
+      <ul>
+        <li><strong>Updated: </strong>Emotion, Hopelessness is updated to its IWD counterpart to match the other three new spells in the Emotion series. Polymorph Self gains two new forms, Polar Bear and Winter Wolf, and possibly a third, Boring Beetle, depending on your game. The fifth level elemental conjuring series is updated to its IWD counterpart to facilitate the addition of the water elemental spell. </li>
+        <li><strong>Level 1: </strong>Expeditious Retreat</li>
+        <li><strong>Level 2: </strong>Cat's Grace<sup>2</sup>, Decastave, Snilloc's Snowball Swarm</li>
+        <li><strong>Level 3: </strong>Icelance, Lance of Disruption</li>
+        <li><strong>Level 4: </strong>Beltyn's Burning Blood; Emotion, Courage; Emotion, Fear; Emotion, Hope; Mordenkainen's Force Missiles<sup>1</sup>; Shadow Monsters; Shout<sup>1</sup>; Vitriolic Sphere</li>
+        <li><strong>Level 5: </strong>Conjure Water Elemental, Demi-Shadow Monsters, Shroud of Flame, Summon Shadow</li>
+        <li><strong>Level 6: </strong>Antimagic Shell, Darts of Bone, Lich Touch, Monster Summoning IV, Otiluke's Freezing Sphere, Shades, Soul Eater<sup>1</sup>, Trollish Fortitude</li>
+        <li><strong>Level 7: </strong>Acid Storm, Malavon's Rage, Monster Summoning V, Seven Eyes<sup>1</sup>, Suffocate</li>
+        <li><strong>Level 8:</strong> Great Shout, Iron Body<sup>1</sup>, Mind Blank, Monster Summoning VI</li>
+        <li><strong>Level 9: </strong>Monter Summoning VII</li>
+      </ul>
+      <p><sup>1</sup> Only available for EE games<br />
+      <sup>2</sup> Only available for EE games OR vanilla games with TobEx installed</p>
+<p><strong>Divine Spell Pack </strong></p>
+      <p> This component adds more than 40 divine spells from Icewind Dale and does not alter existing <acronym title="Baldur's Gate II">BG2</acronym> spells to match their <acronym title="Icewind Dale">IWD</acronym> counterparts. Divine spellcasters will receive these spells, as appropriate, in their spellbooks as they level up. Joinable <acronym title="Non-Player Characters">NPCs</acronym> also receive updates to their spellbooks to account for the new spells. <a href="http://www.gibberlings3.net/iwdification/divine.php">Complete descriptions</a> are available on the project pages. </p>
+      <ul>
+        <li><strong>Level 1:</strong> Cause Light Wounds, Curse, Sunscorch</li>
+        <li><strong>Level 2: </strong>Alicorn Lance, Beast Claw, Cause Moderate Wounds, Cure Moderate Wounds</li>
+        <li><strong>Level 3: </strong>Cause Disease, Cause Medium Wounds, Circle of Bones, Cloudburst, Exaltation, Favor of Ilmater<sup>1</sup>, Mold Touch<sup>1</sup>, Moonblade, Prayer, Spike Growth</li>
+        <li><strong>Level 4: </strong>Blood Rage, Cloud of Pestilence, Giant Insect<sup>2</sup>, Produce Fire, Recitation, Smashing Wave<sup>1</sup>, Star Metal Cudgel, Static Charge, Thorn Spray, Unfailing Endurance, Wall of Moonlight<sup>1</sup></li>
+        <li><strong>Level 5: </strong>Animal Rage, Mass Cause Light Wounds, Righteous Wrath of the Faithful, Shield of Lathander, Spike Stones, Undead Ward</li>
+        <li><strong>Level 6: </strong>Entropy Shield, Spiritual Wrath<sup>1</sup>, Whirlwind</li>
+        <li><strong>Level 7: </strong>Destruction; Energy Drain; Greater Shield of Lathander; Impervious Sanctity of Mind; Mist of Eldath; Stalker; Symbol, Hopelessness; Symbol, Pain</li>
+      </ul>
+      <p><sup>1</sup> Only available for EE games<br />
+      <sup>2</sup> Only available for EE games OR vanilla games with Infinity Animations installed</p>
+<p><strong>Bard Song</strong></p>
+      <p>Bards in Icewind Dale gained different bard songs as they leveled:</p>
+      <ul>
+        <li>The Ballad of Three Heroes - Available at level one, this   provides all allies with +1 to hit, +1 damage, and +1 to saving throws.</li>
+        <li>The Tale of Curran Strongheart - Available at level three, this   song protects the party from fear and removes any current fear effects.</li>
+        <li>Tymora's Melody - Available at level five, the party gains +1 luck, +3 to all saves, and +10 to lore and thieving skills.</li>
+        <li>The Song of Kaudies - Available at level seven, this provides a   50% resistance to sound-based attacks and spells such as power words,   sirine charm, silence, and others.</li>
+        <li>The Siren's Yearning - Available at level nine, this song   enthralls your foes, preventing action for five rounds on a failed save   vs. spell.</li>
+        <li>War Chant of the Sith - Available at level 11, this provides +2 <acronym title="Armor Class">AC</acronym>, regeneration of two <acronym title="Hit Points">HP</acronym>/round, and 10% resistance to all crushing, missile, piercing, and slashing damage.</li>
+      </ul>
+      <p>As the songs become available to the bard, the ability to freely   switch between them is available. This component only affects trueclass   bards, as the available kits use variants of <acronym title="Baldur's Gate II">BG2</acronym> bard song for kit advantages and/or disadvantages. Bards with these new songs will not be able to pick Enhanced Bard Song as a high-level ability. </p>
+      <p><strong>Two Handed Axes</strong></p>
+      <p>Icewind Dale also featured two-handed axes, as opposed to the   strictly one-handed variety found in the Baldur's Gate series. This   component scatters normal and magical two-handed axes throughout the   game to make them available for players. Two-handed axes use the axe   proficiency and have base stats of 9 speed and <acronym title="1 roll of a 10-sided die">1d10</acronym> damage. Spoilers about their <a href="http://gibberlings3.net/forums/index.php?showtopic=29150&amp;p=258090">precise locations</a> are available on the forums. </p>
 </div>
-<h2>Compatibility</h2>
-<div class="section">
-  <p><acronym title="Icewind Dale">IWD</acronym>ification  works on all <acronym title="Infinity Engine">IE</acronym> games that use the Baldur's Gate II engine, which includes the original Baldur's Gate II (Shadows of Amn with or without  Throne of Bhaal), the two major Baldur's Gate conversion mods (Tutu and <acronym title="Baldur's Gate Trilogy">BGT</acronym>), and the Baldur's Gate: Enhanced Edition. Content will be adjusted as appropriate for the detected platform--e.g. no +5 items or ninth level spells will be added to a Tutu or <acronym title="Baldur's Gate: Enhanced Edition">BGEE</acronym> game. The Throne of Bhaal expansion is not required. </p>
-  <p><a href="http://www.spellholdstudios.net/ie/tobex">TobEx</a> is highly recommended for players using the spell packs. Without TobEx, spell selection screens during character creation are limited to 24 spells, as are spellbook pages. Since there are more than 24 spells available at some levels you will not be able to see all spells available or be able to select them. Cat's Grace, a second-level arcane spell, relies on functionality provided by TobEx and will be skipped if it's not detected. </p>
-  <p>The fourth-level divine spell Giant Insect relies on <a href="http://www.spellholdstudios.net/ie/infinityanimations">Infinity Animations</a>, as the beetles summoned by the spell do not have animations in <acronym title="Baldur's Gate II">BG2</acronym>, and will be skipped without the mod being installed. One of the summons (yeti) for the sixth-level arcane spell Monster Summoning IV will not be available without Infinity Animations, though the spell will otherwise work with the other two summon options. </p>
-</div>
-<h2>Known Issues</h2>
-<div class="section">
-  <p>Two-handed axes use the same combat and paperdoll animations as halberds.  </p>
-  <p>Contact Other Plane has no dialogue written, so summoning the spirit is fairly pointless at present. </p>
-  <p>The Cat's Grace spell (part of the Arcane Spell Pack) requires <a href="http://www.spellholdstudios.net/ie/tobex">TobEx</a> for its unique dexterity modifications. Giant Insect (part of the Divine Spell Pack) requires the beetle animation, part of <a href="http://www.spellholdstudios.net/ie/infinityanimations">Infinity Animations</a>. In addition, Monster Summoning IV (Arcane Spell Pack) will have yetis as a summoning option if the yeti animation and Infinity Animations is installed; otherwise the spell will still work with the other summoning options. </p>
-  <p>Just like <acronym title="Icewind Dale">IWD</acronym>-in-<acronym title="Baldur's Gate II">BG2</acronym>, a small number of spells cannot currently be converted at all. The   current list is: Seven Eyes, Soul Eater, (Great) Shout, Mordenkainen's   Force Missiles, Spiritual Wrath, Mold Touch, Wall of Moonlight, and   Smashing Wave. A few other spells are converted a bit suboptimally, and don't work   quite the way they did in <acronym title="Icewind Dale">IWD</acronym>. The current list is Blood Rage, Animal Rage, Static   Charge, and Whirlwind.</p>
-</div>
-<h2>Installation</h2>
-<div class="section">
-  <p><strong>Windows</strong><br />
-    <acronym title="Icewind Dale">IWD</acronym>ification is packaged
-    and installed with <acronym title="Weimer Dialogue Utility">WeiDU</acronym> and
-    is distributed as a self-extracting archive. To install, simply double-click
-    the archive and follow the instructions on screen.</p>
-  <p>Alternatively the files can be extracted from the archive using <a href="http://www.rarlab.com/">WinRAR</a>.
-    If properly extracted, you should have an iwdification folder and setup-iwdification.exe
-    in your <acronym title="Baldur's Gate II">BG2</acronym> folder. To install,
-    simply double-click setup-iwdification.exe and follow the instructions on screen.</p>
-  <p>Please run setup-iwdification.exe in your <acronym title="Baldur's Gate II">BG2</acronym> folder
-    to reinstall, uninstall or otherwise change components.</p>
-  <p><strong>Mac OS X</strong><br />
-    <em>If the mod was previously installed, uninstall it before extracting the
-    new version.</em> <acronym title="Icewind Dale">IWD</acronym>ification is packaged and installed with <acronym title="Weimer Dialogue Utility">WeiDU</acronym>.
-    To install, simply extract the contents of the mod into your <acronym title="Baldur's Gate II">BG2</acronym> folder.
-    If properly extracted, you should have an iwdification folder, setup-iwdification,
-    and setup-iwdification.command in your <acronym title="Baldur's Gate II">BG2</acronym> folder.
-    To install, simply double-click <strong>setup-iwdification.command</strong> and
-    follow the instructions on screen.</p>
-  <p><strong>Linux</strong><br />
-    Download the latest version of <acronym title="Weimer Dialogue Utility">WeiDU</acronym> for
-    Linux from <a href="http://www.weidu.org/~thebigg">weidu.org</a> and extract
-    (at least) the <acronym title="Weimer Dialogue Utility">WeiDU</acronym>,
-    weinstall and tolower executables in a $PATH directory (E.G. /usr/bin). Following that, open a terminal, cd to your <acronym title="Baldur's Gate II">BG2</acronym> installation directory, run `tolower' and answer Y to both queries.</p>
-  <p> You can avoid running the second option (linux.ini)
-    if you've already ran it once in the same directory. To save time, the
-    archive is already tolowered, so there's no need to run the first option
-    (lowercasing file names) either if you've extracted only this mod since
-    the last time you lower cased file name. If you're unsure, running tolower and choosing both
-    options is the safe bet.</p>
-  <p> After that, run 'weinstall iwdification from your game installation directory
-    to install or uninstall the mod. </p>
-</div>
-<h2>Contents</h2>
-<div class="section">
-  <p><acronym title="Icewind Dale">IWD</acronym>ification has several
-    components, which can be installed completely independently of one another. </p>
-  <h3>Icewind Dale Casting Graphics (Andyr) </h3>
-  <p><em>Also available in the <acronym title="Baldur's Gate II">BG2</acronym> Tweaks mod </em></p>
-  <p> When your character casts a spell, you get a pretty sequence of colors swirling
-    around their hand depending on the school the spell cast came from. A necromantic
-    spell, for example, looks quite different from creating an illusion. The
-    Baldur's Gate and Icewind Dale games use different sets of animations for
-    the schools. This component changes the spellcasting animations to those
-    of Icewind Dale. Note that this is purely a cosmetic change--the spells
-    themselves function exactly as before. Screenshots for comparison are available
-    in the <a href="http://forums.gibberlings3.net/index.php?app=gallery&amp;album=27">Tweaks
-    gallery</a>. </p>
-  <h3>Commoners Use Drab Colors</h3>
-  <p><em>Also available in the <acronym title="Baldur's Gate II">BG2</acronym> Tweaks mod </em></p>
-  <p> Unlike Icewind Dale, commoners in <acronym title="Baldur's Gate II">BG2</acronym> wear
-    brightly colored clothes. This tweak changes the random selections of colors
-    for commoners to a drab palette. The dress of noblemen and noblewomen are
-    not affected. </p>
-  <h3>Arcane Spell Pack</h3>
-  <p> This component adds about 30 arcane spells from Icewind Dale. This component does not alter existing <acronym title="Baldur's Gate II">BG2</acronym> spells to match their <acronym title="Icewind Dale">IWD</acronym> counterparts, with one exception: <acronym title="Baldur's Gate II">BG2</acronym>'s standalone Emotion spell becomes <acronym title="Icewind Dale">IWD</acronym>'s Emotion: Hopelessness so that the full series of Emotion spells can be made available. </p>
-  <p class="spell_description">Decastave<br />
-    (Evocation)<br />
-    Level: 2<br />
-    Range: Caster <br />
-    Duration: 1 round/level <br />
-    Casting Time: 2<br />
-    Area of Effect: Caster<br />
-    Saving Throw: None<br />
-    This spell creates a staff of force in the caster's hand. It is treated as a magical weapon, doing 1-6 hit points of damage per hit, and it can hit creatures immune to normal weapons. It is a staff, however, so if the caster does not have a proficiency in staff weapons, then the Decastave is used at a penalty. The staff also has the power to drain a target of 1-2 hit points on the first strike. These hit points are added to the caster's, but they can only heal damage the caster has taken; they will not raise his hit points beyond his normal maximum.</p>
-  <p class="spell_description">Cat's Grace (Alteration)<br />
-    Level: 2<br />
-    Range: Touch <br />
-    Duration: 1 hour/level <br />
-    Casting Time: 2<br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: None <br />
-    This spell magically increases a target's dexterity.  The amount depends on the target's class:  Thieves gain <acronym title="1 roll of an 8-sided die">1d8</acronym> points, Fighters and Mages gain <acronym title="1 roll of a 6-sided die">1d6</acronym> points, and Clerics gain <acronym title="1 roll of a 4-sided die">1d4</acronym> points.  Cat's Grace cannot raise a target's dexterity past 20.</p>
-  <p>Cat's Grace requires TobEx to be installed, otherwise it will be skipped.</p>
-  <p class="spell_description">Snilloc's Snowball Swarm<br />
-    (Evocation)<br />
-    Level: 2<br />
-    Range: Sight of Caster <br />
-    Duration: Instantaneous<br />
-    Casting Time: 2<br />
-    Area of Effect: 25-foot radius<br />
-    Saving Throw: 1/2 damage<br />
-    This spell causes a flurry of snowballs to erupt from a point within range. These snowballs will hit everything within the area of effect, doing 1-3 hit points/level, up to a maximum of 8-24 hit points at level 8. Against fire-using or fire-dwelling creatures, it inflicts 1-6 hit points/level.</p>
-  <p class="spell_description">Icelance (Evocation)<br />
-    Level: 3<br />
-    Range: Sight of Caster<br />
-    Duration: Instantaneous <br />
-    Casting Time: 3<br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: Special<br />
-    This spell fires a magical lance of ice at a target of the caster's choosing.  It automatically hits, inflicting 5-30 points of damage and forcing the target to make a saving throw vs. spell or be stunned for 1-4 rounds.</p>
-  <p class="spell_description">Lance of Disruption (Invocation)<br />
-    Level: 3<br />
-    Range: 60 feet<br />
-    Duration: Instantaneous<br />
-    Casting Time: 3<br />
-    Area of Effect: Special<br />
-    Saving Throw: 1/2<br />
-    This spell creates a lance of force, extending from the caster to a specified point 60 feet in the distance.  Any creatures in the lance's path take <acronym title="5 rolls of a 4-sided die">5d4</acronym> points of bludgeoning damage, +2 points of damage per level of the caster (maximum of +30).  Victims can save vs. spell for half damage.</p>
-  <p class="spell_description">Beltyn's Burning Blood<br />
-    (Necromancy)<br />
-    Level: 4<br />
-    Range: Sight of Caster<br />
-    Duration: 1 round/2 levels<br />
-    Casting Time: 4<br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: Neg.<br />
-    This spell turns a target's blood to flame, doing 3-12 hit points of damage every round and driving the victim berserk with pain. The target gets to save vs. spell every round; if successful, the damage and berserk state are negated.  This spell does not work against undead or extraplanar creatures that do not have blood (such as elementals). If the creature is resistant to fire, this resistance will lower or nullify the damage from this spell.</p>
-  <p class="spell_description">Emotion: Hopelessness<br />
-    (Enchantment/Charm)<br />
-    Level: 4<br />
-    Range: Sight of Caster<br />
-    Duration: 1 turn<br />
-    Casting Time: 4<br />
-    Area of Effect: 10-foot radius<br />
-    Saving Throw: Neg.<br />
-    This spell creates the emotion of hopelessness within the area of effect. All creatures affected by the spell just stand and do nothing for the duration of the spell.</p>
-  <p>Emotion: Hopelessness will replace the existing Emotion spell in Baldur's Gate II.</p>
-  <p class="spell_description">Emotion: Courage<br />
-    (Enchantment/Charm)<br />
-    Level: 4<br />
-    Range: Sight of Caster<br />
-    Duration: 5 turns<br />
-    Casting Time: 4<br />
-    Area of Effect: 10-foot radius<br />
-    Saving Throw: Neg.<br />
-    This spell creates the emotion of courage within the area of effect. All creatures affected by the spell gain +1 to hit, +3 to their damage rolls, and +5 temporary hit points (which can put them above their maximum hit points). This spell nullifies all fear effects within the area of effect at the time of casting.</p>
-  <p class="spell_description">Emotion: Fear<br />
-    (Enchantment/Charm)<br />
-    Level: 4<br />
-    Range: Sight of Caster<br />
-    Duration: 5 rounds<br />
-    Casting Time: 4<br />
-    Area of Effect: 10-foot radius<br />
-    Saving Throw: Neg.<br />
-    This spell creates the emotion of fear within the area of effect. All creatures affected by the spell flee for 5 rounds.</p>
-  <p class="spell_description">Emotion: Hope<br />
-    (Enchantment/Charm)<br />
-    Level: 4<br />
-    Range: Sight of Caster<br />
-    Duration: 5 turns<br />
-    Casting Time: 4<br />
-    Area of Effect: 10-foot radius<br />
-    Saving Throw: Neg.<br />
-    This spell creates the emotion of hope within the area of effect. All creatures affected by the spell gain a morale boost, and +2 on their saving throws, attack rolls and damage rolls. </p>
-  <p class="spell_description">Vitriolic Sphere (Conjuration)<br />
-    Level: 4<br />
-    Range: Sight of Caster<br />
-    Duration: Special<br />
-    Casting Time: 4<br />
-    Area of Effect: Special<br />
-    Saving Throw: Special<br />
-    This spell conjures a sphere of glowing emerald acid that the caster can direct to strike any target within range.  When it reaches its target, the sphere explodes and drenches the victim in potent acid.  The victim suffers <acronym title="1 roll of a 4-sided die">1d4</acronym> points of acid damage per caster level, to a maximum of <acronym title="12 rolls of a 4-sided die">12d4</acronym> points of damage.  After the initial damage, the victim must make a saving throw to avoid more damage.  If unsuccessful, the victim continues to suffer acid damage in the following rounds, sustaining two less dice of damage each round.  For example, an 8th-level wizard inflicts <acronym title="8 rolls of a 4-sided die">8d4</acronym> damage with this spell on the first round, <acronym title="6 rolls of a 4-sided die">6d4</acronym> on the second round, <acronym title="4 rolls of a 4-sided die">4d4</acronym> on the third round, <acronym title="2 rolls of a 4-sided die">2d4</acronym> on the fourth round, and the spell ends on the fifth round.  Each round the victim is entitled to a saving throw vs. spell to avoid further damage.  The vitriolic sphere also splashes acid in a 5-foot radius around the primary target.  Any creatures within the splash radius must save vs. polymorph/paralyzation or suffer a splash hit that inflicts <acronym title="1 roll of a 4-sided die">1d4</acronym> points of damage per every five levels of the caster.  Splash hits do not cause continuing damage.</p>
-  <p class="spell_description">Shadow Monsters<br />
-    (Illusion/Phantasm)<br />
-    Level: 4<br />
-    Range: Sight of Caster <br />
-    Duration: 1 round/level<br />
-    Casting Time: 4<br />
-    Area of Effect: 20-foot cube<br />
-    Saving Throw: Special<br />
-    This spell shapes material from the Demiplane of Shadow into illusionary monsters. These monsters are randomly summoned one by one with Hit Dice between 1 and the level of the spellcaster, until the summoned creatures' Hit Dice total the spellcaster's level. (For example, a 15th level wizard could summon a 10th level creature one round, then the next round the next creature appearing would have 1 through 5 Hit Dice, and so on.) These shadowy creatures have only 20% of the hit points of their real-world counterparts, although their attacks do full damage.</p>
-  <p class="spell_description">Shroud of Flame (Invocation)<br />
-    Level: 5<br />
-    Range: Sight of Caster <br />
-    Duration: 1 round/2 levels (special)<br />
-    Casting Time: 5<br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: Neg.<br />
-    This spell causes a creature to burst into flames if it fails a saving throw vs. spell. The creature will burn for <acronym title="2 rolls of a 6-sided die">2d6</acronym> points of damage every round, and gouts of flame erupt from the burning target, causing any creatures within ten feet of the target to take <acronym title="1 roll of a 4-sided die">1d4</acronym> points of damage from the flames.  Anyone hit by the victim's flames must also make a saving throw vs. spell to avoid contracting the shroud themselves.  The shroud of flame dissipates if the caster and target are no longer in the same area.  This spell is particularly useful in dispersing packs of trolls and frost salamanders.</p>
-  <p class="spell_description">Demi-Shadow Monsters<br />
-    (Illusion/Phantasm)<br />
-    Level: 5<br />
-    Range: Sight of Caster<br />
-    Duration: 1 round/level<br />
-    Casting Time: 5<br />
-    Area of Effect: 20-foot cube<br />
-    Saving Throw: None<br />
-    This spell is similar to the 4th level wizard spell, Shadow Monsters, except the summoned creatures are much more powerful, with 40% of the hit points of their real-world counterpart.</p>
-  <p class="spell_description">Summon Shadow<br />
-    (Conjuration/Summoning, Necromancy)<br />
-    Level: 5<br />
-    Range: Sight of Caster<br />
-    Duration: 1 round + 1 round/level <br />
-    Casting Time: 5<br />
-    Area of Effect: 10-foot cube<br />
-    Saving Throw: None<br />
-    This spell summons one shadow for every three levels of the caster. This shadow will obey the orders of the caster, attacking his enemies or performing tasks until the spell expires or the shadows are slain.</p>
-  <p class="spell_description">Contact Other Plane (Divination)<br />
-    Level: 5<br />
-    Range: Caster<br />
-    Duration: Instantaneous<br />
-    Casting Time: 1 round<br />
-    Area of Effect: Caster<br />
-    Saving Throw: None<br />
-    This spell allows the wizard to contact powers from other planes of existence in order to receive advice and information.  The nature of the divination is oriented around knowledge of powerful foes, magic items, and spells.</p>
-  <p class="spell_description">Lich Touch<br />
-    (Necromancy)<br />
-    Level: 6<br />
-    Range: Touch <br />
-    Duration: 1 round/level <br />
-    Casting Time: 6<br />
-    Area of Effect: Caster<br />
-    Saving Throw: Special<br />
-    This spell confers the powers of a lich's touch and a lich's immunities upon the caster. The wizard gains immunity to paralysis and fear while the spell is in effect, and his hands glow with an unearthly green radiance that does 1-10 hit points of damage to a target and paralyzes them unless a saving throw vs. paralyzation is made. This spell has no effect on undead.</p>
-  <p class="spell_description">Antimagic Shell<br />
-    (Abjuration)<br />
-    Level: 6<br />
-    Range: Caster <br />
-    Duration: 1 turn/level<br />
-    Casting Time: 1<br />
-    Area of Effect: Caster<br />
-    Saving Throw: None<br />
-    This spell surrounds the caster with an invisible barrier that moves with him. This barrier makes the wizard immune to any magical attacks, but it prevents the wizard from casting spells out of the shell.</p>
-  <p class="spell_description">Monster Summoning IV<br />
-    (Conjuration/Summoning) <br />
-    Level: 6<br />
-    Range: 40 yards <br />
-    Duration: 5 rounds + 1 round/level<br />
-    Casting Time: 6<br />
-    Area of Effect: Special <br />
-    Saving Throw: None <br />
-    With the casting of this spell the wizard summons 1-3 4th level monsters.  These appear within spell range and may be commanded to attack the caster's opponents until the spell duration expires or the monsters are slain.</p>
-  <p>Yeti will be available for Monster Summoning IV if the animation has been added by Infinity Animations.</p>
-  <p class="spell_description">Otiluke's Freezing Sphere<br />
-    (Alteration, Evocation)<br />
-    Level: 6<br />
-    Range: Sight of Caster <br />
-    Duration: Instantaneous<br />
-    Casting Time: 6<br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: Neg.<br />
-    This spell fires an orb of cold at a creature that inflicts 3-6 points of cold damage/level of the caster. If the target makes its saving throw, however, they have dodged the orb and avoided all damage.</p>
-  <p class="spell_description">Shades (Illusion/Phantasm)<br />
-    Level: 6<br />
-    Range: Sight of Caster <br />
-    Duration: 1 round/level <br />
-    Casting Time: 6<br />
-    Area of Effect: 20-foot cube<br />
-    Saving Throw: None<br />
-    Shades is similar to Shadow Monsters and Demishadow Monsters - it allows the caster to shape material from the Demiplane of Shadow into illusionary creatures. These shadows are tougher than the shadows summoned by Shadow Monsters and Demishadow Monsters, and they will obey the caster until the spell expires or they are slain.</p>
-  <p class="spell_description">Darts of Bone (Necromancy)<br />
-    Level: 6<br />
-    Range: Caster<br />
-    Duration: 5 rounds<br />
-    Casting Time: 5<br />
-    Area of Effect: Caster<br />
-    Saving Throw: None<br />
-    This spell creates nine darts that can be used by the caster and cannot be unequipped so long as the spell is in effect.  The darts are +3, do <acronym title="1 roll of a 4-sided die">1d4</acronym> damage, and a creature struck by a dart must save vs. death or take another <acronym title="2 rolls of a 6-sided die">2d6</acronym> damage and have its strength reduced by 3 for 5 rounds.  The caster's weapon proficiency with darts (or lack thereof) has no effect on the darts' chances to hit a target.</p>
-  <p class="spell_description">Trollish Fortitude (Necromancy)<br />
-    Level: 6<br />
-    Range: Caster<br />
-    Duration: 2 turns<br />
-    Casting Time: 6<br />
-    Area of Effect: Caster<br />
-    Saving Throw: None<br />
-    This spell imbues the caster with the resilience of a troll, allowing the caster to regenerate 5 hit points per round up to his/her maximum hit points.</p>
-  <p class="spell_description">Monster Summoning V<br />
-    (Conjuration/Summoning) <br />
-    Level: 7<br />
-    Range: 40 yards <br />
-    Duration: 6 rounds + 1 round/level<br />
-    Casting Time: 6<br />
-    Area of Effect: Special <br />
-    Saving Throw: None <br />
-    With the casting of this spell the wizard summons 1-3 5th level monsters.  These appear within spell range and may be commanded to attack the caster's opponents until the spell duration expires or the monsters are slain.</p>
-  <p class="spell_description">Malavon's Rage<br />
-    (Evocation)<br />
-    Level: 7<br />
-    Range: Caster<br />
-    Duration: Instantaneous<br />
-    Casting Time: 1<br />
-    Area of Effect: 15-foot radius<br />
-    Saving Throw: 1/2<br />
-    Malavon's Rage was created by the dark elf sorcerer Malavon.  It shoots darts of pure energy out from the caster's body in all directions, harming friend and foe alike.  The small wedges of magic do 20-80 points of piercing damage to everything caught in their path.  This spell is especially useful when a mage is surrounded by enemies.</p>
-  <p class="spell_description">Acid Storm<br />
-    (Evocation)<br />
-    Level: 7<br />
-    Range: Sight of Caster<br />
-    Duration: 1 round/level<br />
-    Casting Time: 7<br />
-    Area of Effect: 20-foot radius<br />
-    Saving Throw: 1/2<br />
-    This spell unleashes an acidic downpour on the area of effect, doing 1-4 hit points of damage each round for the first three rounds, 1-6 hit points for the next three rounds, and 1-8 hit points for each round thereafter. Moving out of the area of effect does not stop the damage - the acid adheres to the skin, and any creatures in the area of effect when the Acid Storm is cast continue to suffer damage as long as the spell duration lasts. Creatures make a saving throw vs. spell every round after they have been hit by the cloud - if successful, they only take half-damage (for that round only).</p>
-  <p class="spell_description">Suffocate (Alteration)<br />
-    Level: 7<br />
-    Range: Sight of Caster<br />
-    Duration: 4 rounds<br />
-    Casting Time: 7<br />
-    Area of Effect: 10-foot radius<br />
-    Saving Throw: 1/2<br />
-    This spell draws the breath out of all creatures within the area of effect. Creatures that do not breathe are unaffected. Suffocating creatures suffer -4 to armor class, -4 to hit, -6 to dexterity, one less attack per round, half movement rate, and take 4d8 points of damage per round. A successful saving throw negates all effects but <acronym title="2 rolls of an 8-sided die">2d8</acronym> points of damage for one round. The effects begin to fade when the creature moves out of the area of effect, although it may take a round for a character to catch their second wind.</p>
-  <p class="spell_description">Monster Summoning VI<br />
-    (Conjuration/Summoning) <br />
-    Level: 8<br />
-    Range: 40 yards <br />
-    Duration: 7 rounds + 1 round/level<br />
-    Casting Time: 8<br />
-    Area of Effect: Special <br />
-    Saving Throw: None <br />
-    With the casting of this spell the wizard summons 1-3 6th level monsters.  These appear within spell range and may be commanded to attack the caster's opponents until the spell duration expires or the monsters are slain.</p>
-  <p class="spell_description">Monster Summoning VII<br />
-    (Conjuration/Summoning)<br />
-    Level: 9<br />
-    Range: Special <br />
-    Duration: 7 rounds + 1 round/level <br />
-    Casting Time: 9<br />
-    Area of Effect: 80 yard radius<br />
-    Saving Throw: None<br />
-    With the casting of this spell the wizard summons 1-2 7th or 8th level monsters.  These appear within spell range and may be commanded to attack the caster's opponents until the spell duration expires or the monsters are slain.</p>
-  <p class="spell_description">Mind Blank (Abjuration)<br />
-    Level: 8<br />
-    Range: Caster<br />
-    Duration: 1 Day <br />
-    Casting Time: 1<br />
-    Area of Effect: Caster<br />
-    Saving Throw: None<br />
-    In the interests of one's self-control and privacy, Mind Blank shields a creature's mind from almost any mental effect - Charm, Command, Domination, Fear, Feeblemind, and any scrying by crystal balls or other divination methods.</p>
-  <p class="spell_description">Iron Body (Alteration)<br />
-    Level: 8<br />
-    Range: Caster<br />
-    Duration: 2 turns<br />
-    Casting Time: 8<br />
-    Area of Effect: Caster<br />
-    Saving Throw: None<br />
-    This spell transforms the caster's body into living iron, granting him several powerful resistances and abilities.  While the spell is in effect, the caster is 100% resistant to electricity, 50% resistant to fire, and 25% resistant to crushing damage.  Spells that affect respiration or the physiology of the caster are ignored.  In addition, the caster's strength is raised to 25, and the caster can attack twice per round with iron fists for <acronym title="2 rolls of a 4-sided die">2d4</acronym> points of damage + appropriate strength bonuses.  Unfortunately, the caster's movement becomes slow and awkward, setting his movement rate to 25% of his normal, and he/she cannot cast spells while Iron Body is in effect.</p>
-  <h3>Divine Spell Pack </h3>
-  <p> This component adds about 35 divine spells from Icewind Dale and does not alter existing <acronym title="Baldur's Gate II">BG2</acronym> spells to match their <acronym title="Icewind Dale">IWD</acronym> counterparts. Divine spellcasters will receive these spells, as appropriate, in their spellbooks as they level up. Joinable <acronym title="Non-Player Characters">NPCs</acronym> also receive updates to their spellbooks to account for the new spells.</p>
-  <p class="spell_description">Curse (Conjuration/Summoning)<br />
-    Level: 1<br />
-    Sphere: All<br />
-    Range: Sight of Caster<br />
-    Duration: 6 rounds <br />
-    Casting Time: 1 round<br />
-    Area of Effect: 25-foot radius<br />
-    Saving Throw: None<br />
-    When the Curse spell is uttered, the caster lowers the morale of enemy creatures and penalizes their saving throws and attack rolls by -1. At the instant the spell is completed, it affects all creatures in a 50-foot cube centered on the point selected by the caster (thus, affected creatures leaving the area are still subject to the spell's effect; those entering the area after the casting is completed are not).</p>
-  <p class="spell_description_cleric">Cause Light Wounds (Necromancy)<br />
-    Level: 1<br />
-    Sphere: Healing <br />
-    Range: Touch <br />
-    Duration: Permanent <br />
-    Casting Time: 5 <br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: 1/2<br />
-    When casting this spell and touching a creature, the priest deals 8 points of damage (save for half damage) to the creature's body.  This spell has no effect on undead, constructs, or extraplanar creatures.  Cause Light Wounds cannot be cast by good characters.</p>
-  <p class="spell_description_druid">Sunscorch (Invocation)<br />
-    Level: 1<br />
-    Sphere: Sun<br />
-    Range: Sight of Caster<br />
-    Duration: Instantaneous<br />
-    Casting Time: 4<br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: 1/2<br />
-    When this spell is cast, a brilliant ray of scorching heat slants down from the sky and strikes one target of the caster's choice.  The victim is allowed a saving throw vs. spell to take half damage.  Any creature struck by the ray sustains <acronym title="1 roll of a 6-sided die">1d6</acronym> points of damage, plus 1 point per caster level.  Undead creatures and monsters vulnerable to bright light sustain <acronym title="1 roll of a 6-sided die">1d6</acronym> points of damage, plus 2 points per level of the caster.  In addition to sustaining damage, victims are also blinded for 3 rounds by the spell.</p>
-  <p class="spell_description_druid">Alicorn Lance<br />
-    (Invocation)<br />
-    Level: 2<br />
-    Sphere: Combat<br />
-    Range: Sight of Caster<br />
-    Duration: Instantaneous<br />
-    Casting Time: 5<br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: 1/2<br />
-    This spell creates a silver-hued, partially ethereal lance shaped in the form of an alicorn (a unicorn horn).  The spellcaster chooses a target and the alicorn lance instantaneously fires at it, inflicting <acronym title="3 rolls of a 6-sided die">3d6</acronym> points of piercing damage, with a saving throw for half damage.  Although the alicorn lance dissipates after it strikes, it leaves a silvery radiance around the target that makes it easier to see and hit, giving it a -2 penalty to its <acronym title="Armor Class">AC</acronym> for 3 rounds.</p>
-  <p class="spell_description_druid">Beast Claw<br />
-    (Alteration)<br />
-    Level: 2<br />
-    Sphere: Combat<br />
-    Range: Caster<br />
-    Duration: 1 turn<br />
-    Casting Time: 5<br />
-    Area of Effect: Caster<br />
-    Saving Throw: None<br />
-    This spell transforms the caster's arms into the claws of a mighty beast, giving the caster 18/72 strength and the ability to rake an opponent for <acronym title="2 rolls of a 4-sided die">2d4</acronym> (+ strength bonus) points of slashing damage.  The caster can attack twice per round with the beast claws, with a +2 bonus to hit.</p>
-  <p class="spell_description">Cure Moderate Wounds<br />
-    (Necromancy)<br />
-    Sphere: Healing<br />
-    Level: 2<br />
-    Range: Touch <br />
-    Duration: Instantaneous <br />
-    Casting Time: 5<br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: None<br />
-  A stronger version of the 1st level priest spell Cure Light Wounds, Cure Moderate Wounds heals 11 points of damage to a living creature.</p>
-  <p class="spell_description_cleric">Cause Moderate Wounds (Necromancy)<br />
-    Level: 2<br />
-    Sphere: Healing <br />
-    Range: Touch <br />
-    Duration: Permanent <br />
-    Casting Time: 5 <br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: 1/2<br />
-  When casting this spell and touching a creature, the priest deals 11 points of damage (save for half damage) to the creature's body.  This spell has no effect on undead, constructs, or extraplanar creatures.  Cause Moderate Wounds cannot be cast by good characters.</p>
-  <p class="spell_description_cleric">Prayer (Conjuration/Summoning)<br />
-    Level: 3<br />
-    Sphere: Combat<br />
-    Range: Caster<br />
-    Duration: 1 round/level <br />
-    Casting Time: 6<br />
-    Area of Effect: 60-foot radius<br />
-    Saving Throw: None<br />
-    Prayer bestows favor on the priest and his allies, and curses their enemies. All attacks, damage, and saving throws by friendly characters gain +1, while enemy attacks, damage rolls and saves are all penalized by 1. Any creatures caught in the area of effect when the spell is cast will continue to be affected by the spell when they leave the area, so if the fighters want to chase down that fleeing goblin, the effects of the Prayer will follow him.</p>
-  <p class="spell_description_cleric">Cause Disease (Necromancy)<br />
-    Level: 3<br />
-    Sphere: Healing<br />
-    Range: Touch<br />
-    Duration: 8 hours<br />
-    Casting Time: 1 round<br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: Neg.<br />
-    This spell afflicts one creature the priest touches with a disease that saps the target of 5-20 points of strength.  A saving throw vs. spell will negate the effects.  This spell has no effect on undead, constructs, or extraplanar creatures.  Cause Disease cannot be cast by good characters.</p>
-  <p class="spell_description_cleric">Exaltation (Abjuration)<br />
-    Level: 3<br />
-    Sphere: Healing<br />
-    Range: Touch<br />
-    Duration: 1 turn<br />
-    Casting Time: 1 round<br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: None<br />
-    This spell enables a priest to aid and protect any one being other than the priest.  By touch, the caster removes the effects of fear, sleep, feeblemindedness, unconsciousness, intoxication, as well as berserk and confused states of mind.  In addition, the recipient is protected against spells and other attacks that cause these effects for the duration of the spell.</p>
-  <div class="spell_description_druid">
-    <p>Moonblade (Invocation)<br />
-      Level: 3<br />
-      Sphere: Combat, Sun<br />
-      Range: Caster<br />
-      Duration: 2 turns<br />
-      Casting Time: 6<br />
-      Area of Effect: Caster<br />
-      Saving Throw: None<br />
-      This spell summons forth a silent, weightless sword-like construct made of moonlight that extends 4 feet from the caster's hand.  The moonblade is considered a +4 weapon for determining what creatures it can damage, though the bonus does not apply to <acronym title="To-Hit Armor Class 0">THAC0</acronym>.  In addition, due to the insubstantial nature of the moonblade, melee bonuses from strength do not apply.</p>
-    <p>The strike of a moonblade drains a target's vitality, inflicting <acronym title="1 roll of a 12-sided die">1d12</acronym>+4 points of damage, and an additional <acronym title="1 roll of a 12-sided die">1d12</acronym> points to undead, who are particularly susceptible.  A successful strike also temporarily scrambles magic, causing any spells the target casts in the next round to fail.</p>
+    <div class="ribbon_rectangle_h2"><a id="Contact" name="Contact"></a>
+      <h2>Contact Information</h2>
+    </div>
+    <div class="ribbon_triangle_h2-l"></div>
+    <div class="ribbon_triangle_h2-r"></div>
+    <div class="section">
+      <p>IWDification is the hard work of CamDawg and DavidW. For issues, suggestions and
+        general feedback, the <a href="http://gibberlings3.net/forums/index.php?showforum=185">IWDification
+        forums</a> are the best resource. Visit the <a href="http://www.gibberlings3.net/forums/">Gibberlings
+        Three Forums</a> for information on this and any other Gibberlings Three
+        mods on which we may be working.</p>
+    </div>
+    <div class="ribbon_rectangle_h2"><a id="Thanks" name="Thanks"></a>
+      <h2>Thanks and Acknowledgements</h2>
+    </div>
+    <div class="ribbon_triangle_h2-l"></div>
+    <div class="ribbon_triangle_h2-r"></div>
+    <div class="section">
+<p><a href="mailto:webmaster@gibberlings3.net">CamDawg</a> created this mod, based primarily on the hard work of <a href="http://gibberlings3.net/forums/index.php?showuser=1067">DavidW</a> on <acronym title="Icewind Dale">IWD</acronym>-in-<acronym title="Baldur's Gate II">BG2</acronym>, and furthered by the Beamdog team for IWDEE. You can find out more about <acronym title="Icewind Dale">IWD</acronym>ification by visiting the <a href="http://gibberlings3.net/forums/index.php?showforum=185">mod forum</a> or the <a href="http://www.gibberlings3.net/iwdification/">project page</a>. </p>
+      <p>Since this mod, and in particular the spell packs, draw heavily upon the work in <acronym title="Icewind Dale">IWD</acronym>-in-<acronym title="Baldur's Gate II">BG2</acronym>,   the same thanks and acknowledgements apply. In particular thanks to    Nythrun, who helped immensely with the conversion of the spells. Thanks   to Andyr for the development of the <acronym title="Icewind Dale">IWD</acronym> casting graphics, lifted entirely from the  Tweaks Anthology. </p>
+<p><strong>Tools Used in Creation</strong></p>
+      <ul>
+        <li><a href="http://www.weidu.org/">WeiDU</a> by
+        Wes Weimer, the bigg, and Wisp</li>
+        <li> <a href="https://github.com/Argent77/NearInfinity">Near Infinity</a> by Jon Olav Hauglid, FredSRichardson, and argent77</li>
+        <li> <a href="http://www.contexteditor.org/">ConTEXT Text Editor</a> by Eden Kirin</li>
+        <li> <a href="http://www.gibberlings3.net/tools/dltcep.php"> DLTCEP</a> by
+        Avenger</li>
+        <li> <a href="https://gibberlings3.github.io/iesdp/"> IESDP</a> maintained
+        by igi</li>
+        <li> BAM Workshop by
+        Glenn Flansburg</li>
+        <li> <a href="http://www.gibberlings3.net/tools/weidu.php">WeiDU ConTEXT
+        Highlighters </a> by Idobek, updated by cmorgan </li>
+      </ul>
+    </div>
+    <div class="ribbon_rectangle_h2"><a id="Credits" name="Credits"></a>
+      <h2>Credits and Copyright Information</h2>
+    </div>
+    <div class="ribbon_triangle_h2-l"></div>
+    <div class="ribbon_triangle_h2-r"></div>
+    <div class="section">
+      <p> The modding community for the Infinity Engine has been going strong for
+        more than 10 years now, and is the culmination of thousands of unpaid modding
+        hours by fellow fans of the game. Modders produce their best work and players
+        get the best, well-supported mods when we all work together. </p>
+      <p> There are two big ways to upset this harmony. One is to claim someone else's
+        work as your own. The second is to host and redistribute a mod without permission
+        from the author(s). </p>
+      <p> Be kind to your fellow players and modders. Don't do either. </p>
+    </div>
+    <div class="ribbon_rectangle_h2"><a id="History" name="History"></a>
+      <h2>Version History</h2>
+    </div>
+    <div class="ribbon_triangle_h2-l"></div>
+    <div class="ribbon_triangle_h2-r"></div>
+    <div class="section">
+      <div>
+        <p><strong>Version Beta 4 - January 8, 2018</strong></p>
+        <ul>
+          <li>Completely rebuilt the spell components upon the work of  IWDEE. As such, all spells work for the EE engine and were backported (again) to the vanilla engine, with a lot of bugfixes along the way. Several spells which were heretofore unavailable--such as Seven Eyes or Wall of Moonlight--now work for the EE engine.</li>
+          <li>Two-handed axes now use halberds for their description images</li>
+          <li>The icon for Battle Standard's ability is now properly transparent</li>
+          <li>Updated the code for Commoners Use Drab Colors to the more robust version from Tweaks Anthology</li>
+        </ul>
+        <p><strong>Version Beta 3 - August 28, 2013</strong></p>
+        <ul>
+          <li>Cure Moderate Wounds had an incorrect icon reference, which could cause crashes when you tried to memorize the spell</li>
+        </ul>
+        <p><strong>Version Beta 2 - August 18, 2013</strong></p>
+        <ul>
+          <li>Made a first pass at having the new spell icons blend in</li>
+          <li>Added lore and prices to Two-Handed Axes</li>
+          <li>Cat's Grace wasn't being added to any stores</li>
+          <li>Added Cure Moderate Wounds</li>
+          <li>Shambling mounds summoned by Stalker no longer drop their paws</li>
+          <li>Entropy Shield wasn't blocking Icelance </li>
+          <li>Emotion: Hopelessness scroll now has icon</li>
+          <li>Blood Rage had an extraneous effect that would kill the target</li>
+          <li>Alicorn Lance now uses a nicer glow on the target</li>
+          <li>Static Charge's initial charge worked, but not its followup damage</li>
+        </ul>
+        <p><strong>Version Beta 1 - July 18, 2013</strong></p>
+        <ul>
+          <li>Initial release. Let's see what breaks.</li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <p class="spell_description_cleric">Circle of Bones (Necromancy)<br />
-    Level: 3<br />
-    Sphere: Guardian/Creation<br />
-    Range: Caster<br />
-    Duration: 3 rounds<br />
-    Casting Time: 3<br />
-    Area of Effect: 3-foot radius<br />
-    Saving Throw: None<br />
-    This spell conjures forth a barrier of floating bones that spin rapidly around the caster.  Anyone entering their path takes <acronym title="1 roll of a 6-sided die">1d6</acronym> crushing damage and <acronym title="1 roll of a 6-sided die">1d6</acronym> slashing damage per round.  The caster cannot move for the duration of the spell.  Circle of Bones cannot be cast by good characters.</p>
-  <p class="spell_description_druid">Spike Growth (Alteration)<br />
-    Level: 3<br />
-    Sphere: Elemental (Earth)<br />
-    Range: Sight of Caster <br />
-    Duration: 1 turn<br />
-    Casting Time: 6<br />
-    Area of Effect: 15-foot radius<br />
-    Saving Throw: None<br />
-    This spell transforms the surrounding terrain into spiky plants.  Any creature entering the area takes <acronym title="1 roll of a 4-sided die">1d4</acronym> points of piercing damage and <acronym title="1 roll of a 4-sided die">1d4</acronym> points of slashing damage every round until the spell expires.</p>
-  <p class="spell_description_druid">Cloudburst (Invocation)<br />
-    Level: 3<br />
-    Sphere: Elemental (Water)<br />
-    Range: Sight of Caster<br />
-    Duration: 2 rounds<br />
-    Casting Time: 6<br />
-    Area of Effect: 30-foot radius<br />
-    Saving Throw: None<br />
-    This spell brings forth a magical rain that saturates the area of effect.  All cold and fire-using/dwelling creatures take <acronym title="2 rolls of a 3-sided die">2d3</acronym> points of damage per round.  In addition, all creatures in the area have a 50% chance per round of being struck by bolts of lightning that deal <acronym title="2 rolls of a 6-sided die">2d6</acronym> damage, with a saving throw for half damage.  Flame Blade spells, Shroud of Flame, and salamander auras are extinguished by Cloudburst.</p>
-  <p class="spell_description_druid">Storm Shell (Abjuration)<br />
-    Level: 3<br />
-    Sphere: Protection, Weather<br />
-    Range: Caster<br />
-    Duration: 1 turn<br />
-    Casting Time: 6<br />
-    Area of Effect: Caster<br />
-    Saving Throw: None<br />
-    This spell surrounds the caster with a dark sphere of disruptive energy that moves with him.  The storm shell reduces all fire, cold, and electrical damage to the caster by 50%.</p>
-  <p class="spell_description_druid">Giant Insect (Alteration)<br />
-    Level: 4<br />
-    Sphere: Animal<br />
-    Range: Sight of Caster<br />
-    Duration: 8 hours <br />
-    Casting Time: 7<br />
-    Area of Effect: 1-6 insects<br />
-    Saving Throw: None<br />
-    This spell summons small insects to the caster, then enlarges them to giant size, turning them into fearsome allies. The strength and kind of the insects varies according to the caster's level; the higher level the caster, the stronger insects that are summoned.</p>
-  <p>Giant Insect requires beetle animations added by Infinity Animations, and will  be skipped without them. </p>
-  <p class="spell_description_druid">Produce Fire (Alteration)<br />
-    Level: 4<br />
-    Sphere: Elemental (Fire)<br />
-    Range: Sight of Caster<br />
-    Duration: 1 round <br />
-    Casting Time: 7<br />
-    Area of Effect: 6-foot radius<br />
-    Saving Throw: None<br />
-    When cast, flames erupt from the target point, doing 1-4 hit points of fire damage plus 1 point per level of the caster to all creatures within the area of effect.</p>
-  <p class="spell_description_druid">Static Charge (Alteration)<br />
-    Level: 4<br />
-    Sphere: Weather<br />
-    Range: Caster<br />
-    Duration: 1 turn/level <br />
-    Casting Time: 1 round<br />
-    Area of Effect: Sight of Caster<br />
-    Saving Throw: 1/2<br />
-    Static Charge is similar to call lightning except it can be used indoors. This spell allows the caster to generate a static charge around any creature within the area of effect, doing 2-16 points of electrical damage, plus an additional 1-8 points for each of the caster's experience levels. The charge keeps going off, once every turn, for the duration of the spell.</p>
-  <p class="spell_description_cleric">Recitation<br />
-    (Abjuration, Invocation/Evocation)<br />
-    Level: 4<br />
-    Sphere: Combat<br />
-    Range: Caster <br />
-    Duration: 1 round/level<br />
-    Casting Time: 7<br />
-    Area of Effect: 60-foot radius<br />
-    Saving Throw: None<br />
-    By reciting a sacred passage or declaration, the priest invokes his deity's blessing upon himself and his allies, while sowing confusion and weakness among his enemies. The priest's allies gain a +2 bonus to their attack and saving throws, and enemies of the priest receive a -2 penalty to their attacks and saving throws. This spell does not nullify a prayer spell - the two may be cast in tandem, and the effects are cumulative.</p>
-  <p class="spell_description_cleric">Blood Rage (Alteration)<br />
-    Level: 4<br />
-    Sphere: Combat<br />
-    Range: Sight of Caster<br />
-    Duration: 2 turns<br />
-    Casting Time: 7<br />
-    Area of Effect: 1 allied creature<br />
-    Saving Throw: None<br />
-    This spell works only on player characters or allied creatures.  When cast, the target of this spell goes berserk, attacking the nearest creature until that creature is dead, then moving to the next target.  While under Blood Rage, the target is immune to charm, sleep, fear, hold, stunning, confusion, emotion, symbol spells, and related effects.  In addition, the target gains +2 to hit, +3 to damage, +2 strength, 10 extra hit points, and a bonus to his/her movement rate.  The spell has several disadvantages, however.  The hit points of the target are masked for the duration of the spell, and the target cannot benefit from any effect that heals hit points.  At the end of the spell's duration, the target becomes fatigued and their Strength drops to 3 for 2 turns.  Blood Rage cannot affect creatures of lawful alignment and cannot be cast by lawful characters.</p>
-  <p class="spell_description_cleric">Cloud of Pestilence (Alteration)<br />
-    Level: 4<br />
-    Sphere: Combat, Elemental (Air)<br />
-    Range: Sight of Caster<br />
-    Duration: 4 rounds<br />
-    Casting Time: 7<br />
-    Area of Effect: 20-foot radius<br />
-    Saving Throw: Neg.<br />
-    This spell transforms the air in a 20-foot radius into sickening, grayish mists.  The caster and non-living creatures are immune to the effects of the cloud.  Every round of exposure to the disease-ridden air causes the loss of 3 points of strength and dexterity, 3 points of damage, and blindness.  These effects last 1 turn.  Cloud of Pestilence can only be cast by evil characters.</p>
-  <p class="spell_description_cleric">Unfailing Endurance (Necromancy)<br />
-    Level: 4<br />
-    Sphere: Necromantic<br />
-    Range: Touch<br />
-    Duration: Instantaneous<br />
-    Casting Time: 1 round<br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: None<br />
-    This spell restores the stamina of the creature touched, bringing back the energy lost from a day and a half of exertion.  Note that this may not be sufficient to bring a character out of the &quot;fatigued&quot; state.</p>
-  <p class="spell_description_druid">Star Metal Cudgel (Conjuration)<br />
-    Level: 4<br />
-    Sphere: Combat<br />
-    Range: Caster<br />
-    Duration: 3 turns<br />
-    Casting Time: 7<br />
-    Area of Effect: Caster<br />
-    Saving Throw: None<br />
-    This spell creates a meteoric iron magical club that is +2 to hit and damage, and treated as a +4 weapon for purposes of what it can hit.  Proficiency, strength, and specialization bonuses and penalties apply.  It does an additional <acronym title="2 rolls of a 6-sided die">2d6</acronym> points of crushing damage against unnatural creatures (undead, elementals, golems, outer planar creatures, etc.)</p>
-  <p class="spell_description_druid">Thorn Spray (Alteration)<br />
-    Level: 4<br />
-    Sphere: Plant<br />
-    Range: Special<br />
-    Duration: Instantaneous<br />
-    Casting Time: 3<br />
-    Area of Effect: 30-foot long, 25-foot wide cone<br />
-    Saving Throw: 1/2<br />
-    By means of this spell, the caster can cause a spray of barbs, spikes, thorns, and spines to spring forth from his hand.  The thorn spray covers a 30-foot long, 60-foot wide cone, inflicting <acronym title="2 rolls of a 10-sided die">2d10</acronym> points of piercing damage to all creatures within the area of effect, or <acronym title="1 roll of a 10-sided die">1d10</acronym> points of damage if a saving throw vs. death is successful.</p>
-  <p class="spell_description_cleric">Righteous Wrath of the Faithful<br />
-    (Enchantment/Charm)<br />
-    Level: 5<br />
-    Sphere: Combat<br />
-    Range: Caster<br />
-    Duration: 1 round/level <br />
-    Casting Time: 8<br />
-    Area of Effect: 30-foot radius<br />
-    Saving Throw: None<br />
-    This spells bestows a form of divine madness upon the priest's allies, improving their combat skills. All the priest's allies in the area of effect gain a +1 to attack rolls and saving throws, plus 1-8 bonus hit points for the duration of the spell (these hit points can take a target beyond their hit point maximum). All creatures of the same alignment, however, gain an extra attack every round and a +2 to their attacks, damage rolls, and saving throws.  Anyone affected by Righteous Wrath of the Faithful will suffer fatigue when the spell wears off.</p>
-  <p class="spell_description_druid">Spike Stones<br />
-    (Alteration, Enchantment)<br />
-    Level: 5<br />
-    Sphere: Elemental (Earth)<br />
-    Range: Sight of Caster <br />
-    Duration: 12 rounds<br />
-    Casting Time: 6<br />
-    Area of Effect: 15-foot radius<br />
-    Saving Throw: None<br />
-    This spell warps the surrounding rock, reshaping the terrain into spiked projections that blend into the background. Any creature entering the area takes <acronym title="2 rolls of a 4-sided die">2d4</acronym> hit points of piercing damage per round and must make a save vs. spell or have its movement rate reduced by 30%.</p>
-  <p class="spell_description_cleric">Shield of Lathander<br />
-    (Conjuration)<br />
-    Level: 5<br />
-    Sphere: Guardian<br />
-    Range: Touch<br />
-    Duration: 2 rounds<br />
-    Casting Time: 8<br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: None<br />
-    This spell grants a target immunity to damage for the duration of the spell.  Evil creatures cannot be protected by a Shield of Lathander.  Only non-evil characters can cast a Shield of Lathander.</p>
-  <p class="spell_description_cleric">Undead Ward (Necromancy)<br />
-    Level: 5<br />
-    Sphere: Wards<br />
-    Range: Caster<br />
-    Duration: 1 turn<br />
-    Casting Time: 7<br />
-    Area of Effect: 20-foot radius<br />
-    Saving Throw: None<br />
-    This spell amplifies the influence a priest has over undead, though it is tied to the area surrounding the priest where cast and does not move.  Any undead creature entering the area of effect is affected as if turned by the priest that cast this spell.  If the turning fails, the undead creature is immune to further turning attempts by the spell unless it leaves and reenters the area of effect.</p>
-  <p class="spell_description_druid">Animal Rage (Enchantment)<br />
-    Level: 5<br />
-    Sphere: Combat<br />
-    Range: Touch<br />
-    Duration: 15 rounds<br />
-    Casting Time: 8<br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: None<br />
-    This spell imbues the target creature with animal ferocity. The target creature gains a strength of 19, +20 hit points, +20% movement, and +2 to all saving throws.  The target loses the ability to cast spells while Animal Rage is in effect.  He or she can be controlled normally unless enemies are within sight, at which time the target immediately attacks in melee, using whatever is in hand.  There is a 5% chance per round that the target will go berserk, attacking friend and foe alike.</p>
-  <div class="spell_description_druid">
-    <p>Whirlwind<br />
-      Level: 6<br />
-      Range: 35 Yards<br />
-      Duration: 5 rounds<br />
-      Casting Time: 9<br />
-      Area of Effect: 20' radius area<br />
-      Saving Throw: Special</p>
-    <p>This spell creates a small whirlwind, which the caster can direct to a location within his sight. This newly formed whirlwind starts to randomly wander around the target area, hurling away every creature in its path, be it friend or foe. Those who cannot escape automatically suffer <acronym title="2 rolls of an 8-sided die">2d8</acronym> crushing and <acronym title="2 rolls of an 8-sided die">2d8</acronym> slashing damage, and must save vs. breath or fall unconscious   for two rounds. The whirlwind instantly kills creatures with less than 3 Hit Dice.</p>
-    <p>Once a whirlwind has been summoned the druid has no control over these raging winds, so this spell must be used with caution.</p>
-  </div>
-  <p class="spell_description">Entropy Shield (Abjuration)<br />
-    Level: 6<br />
-    Sphere: Protection<br />
-    Range: Caster<br />
-    Duration: 1 round/level <br />
-    Casting Time: 9<br />
-    Area of Effect: Caster<br />
-    Saving Throw: None<br />
-    When cast, this spell surrounds the caster with a defensive maelstrom of energy that blocks or deflects many attacks. This gives the priest a +6 bonus to armor class and a 50% resistance to most attack forms: electricity, fire, cold, and so on. It also gives the caster +2 to all his/her saving throws and immunity to all missile-based attacks.</p>
-  <p class="spell_description_cleric">Symbol of Pain<br />
-    (Conjuration/Summoning)<br />
-    Level: 7<br />
-    Sphere: Guardian<br />
-    Range: Sight of Caster<br />
-    Duration: 2-20 turns<br />
-    Casting Time: 3<br />
-    Area of Effect: 60-foot radius<br />
-    Saving Throw: Neg.<br />
-    All creatures within 60 feet of the Symbol of Pain when it's invoked must make a saving throw vs. spell. If failed, they are overwhelmed by pain, suffering a -4 to their attack rolls, a -2 to Dexterity and a -2 to their Armor Class.</p>
-  <p class="spell_description_cleric">Symbol of Hopelessness<br />
-    (Conjuration/Summoning)<br />
-    Level: 7<br />
-    Sphere: Guardian<br />
-    Range: Sight of Caster<br />
-    Duration: 2 turns<br />
-    Casting Time: 3<br />
-    Area of Effect: 60-foot radius<br />
-    Saving Throw: Neg.<br />
-    All creatures within 60 feet of the symbol of hopelessness when it's invoked must make a saving throw vs. spell with a -2 penalty. If failed, they will stand in place, overwhelmed by dejection and surrender. They will make no move to defend themselves from attack.</p>
-  <p class="spell_description">Impervious Sanctity of Mind<br />
-    (Abjuration)<br />
-    Level: 7<br />
-    Sphere: Protection<br />
-    Range: Caster<br />
-    Duration: 1 turn/level<br />
-    Casting Time: 1 round<br />
-    Area of Effect: Caster<br />
-    Saving Throw: None<br />
-    This spell steels the caster's mind against any outside influence. Charm, Command, Confusion, Domination, Fear, Feeblemind, Hold, Sleep and any psionic attack directed at the caster will fail as long as this spell is in effect.</p>
-  <p class="spell_description_cleric">Destruction (Necromancy)<br />
-    Level: 7<br />
-    Sphere: Healing<br />
-    Range: Touch<br />
-    Duration: Instantaneous<br />
-    Casting Time: 1 round<br />
-    Area of Effect: Caster<br />
-    Saving Throw: Special<br />
-    This spell instantly destroys a target, blasting them into small chunks.  The victim is allowed a save vs. death at -4; if successful, the target takes <acronym title="8 rolls of a 6-sided die">8d6</acronym> points of damage instead of being destroyed.  Destruction can only be cast by evil characters.  Note that a character struck with a Destruction spell cannot be raised from the dead with a Raise Dead or Resurrection spell.</p>
-  <p class="spell_description_cleric">Greater Shield of Lathander<br />
-    (Conjuration)<br />
-    Level: 7<br />
-    Sphere: Guardian<br />
-    Range: Touch<br />
-    Duration: 3 rounds<br />
-    Casting Time: 1 round<br />
-    Area of Effect: 1 creature<br />
-    Saving Throw: None<br />
-    This spell grants a target 100% magic resistance and immunity to damage for the duration of the spell.  Evil creatures cannot be protected by a Greater Shield of Lathander.  This spell can only be cast by good characters.</p>
-  <p class="spell_description_druid">Mist of Eldath (Invocation)<br />
-    Level: 7<br />
-    Sphere: Elemental<br />
-    Range: Sight of Caster<br />
-    Duration: 1 round<br />
-    Casting Time: 1 round<br />
-    Area of Effect: 10-foot radius<br />
-    Saving Throw: None<br />
-    This spell blankets the area of effect with a silver-blue mist - any creature within the mist will be cured of disease, poison, and healed of 25 points of damage.</p>
-  <p class="spell_description_druid">Stalker (Conjuration)<br />
-    Level: 7<br />
-    Sphere: Plant<br />
-    Range: Sight of Caster<br />
-    Duration: 8 hours<br />
-    Casting Time: 1 round<br />
-    Area of Effect: Special<br />
-    Saving Throw: None<br />
-    This spell creates two shambling mounds.  These creatures willingly aid the caster in combat or whatever other duties they are assigned and have the capability to carry out.</p>
-  <h3>Bard Song</h3>
-  <p>Bards in Icewind Dale gained different bard songs as they leveled:</p>
-  <ul>
-    <li>The Ballad of Three Heroes - Available at level one, this provides all allies with +1 to hit, +1 damage, and +1 to saving throws.</li>
-    <li>The Tale of Curran Strongheart - Available at level three, this song protects the party from fear and removes any current fear effects.</li>
-    <li>Tymora's Melody - Available at level five, the party gains +1 luck, +3 to all saves, and +10 to lore and thieving skills.</li>
-    <li>The Song of Kaudies - Available at level seven, this provides a 50% resistance to sound-based attacks and spells such as power words, sirine charm, silence, and others.</li>
-    <li>The Siren's Yearning - Available at level nine, this song enthralls your foes, preventing action for five rounds on a failed save vs. spell.</li>
-    <li>War Chant of the Sith - Available at level 11, this provides +2 <acronym title="Armor Class">AC</acronym>, regeneration of two <acronym title="Hit Points">HP</acronym>/round, and 10% resistance to all crushing, missile, piercing, and slashing damage.</li>
-  </ul>
-  <p>As the songs become available to the bard, the ability to freely switch between them is available. This component only affects trueclass bards, as the available kits use variants of <acronym title="Baldur's Gate II">BG2</acronym> bard song for kit advantages and/or disadvantages.</p>
-  <h3>Two Handed Axes</h3>
-  <p>Icewind Dale also featured two-handed axes, as opposed to the strictly one-handed variety found in the Baldur's Gate series. This component scatters normal and magical two-handed axes throughout the game to make them available for players. Two-handed axes use the axe proficiency and have base stats of 9 speed and <acronym title="1 roll of a 10-sided die">1d10</acronym> damage.</p>
-</div>
-<h2>Contact, Thanks and Acknowledgements</h2>
-<div class="section">
-  <p><a href="mailto:webmaster@gibberlings3.net">CamDawg</a> created this mod, based primarily on the hard work of <a href="http://forums.gibberlings3.net/index.php?showuser=1067">DavidW</a> on <acronym title="Icewind Dale">IWD</acronym>-in-<acronym title="Baldur's Gate II">BG2</acronym>. You can find out more about <acronym title="Icewind Dale">IWD</acronym>ification by visiting the <a href="http://www.gibberlings3.net/index.php?showforum=34">mod forum</a> or the <a href="http://www.gibberlings3.net/bg2tweaks/">project page</a>. Visit the <a href="http://forums.gibberlings3.net/">Gibberlings Three Forums</a> for information on this and any other Gibberlings Three
-    mods on which we may be working.</p>
-  <p>Since this mod, and in particular the spell packs, draw heavily upon the work in <acronym title="Icewind Dale">IWD</acronym>-in-<acronym title="Baldur's Gate II">BG2</acronym>, the same thanks and acknowledgements apply. In particular thanks to  Nythrun, who helped immensely with the conversion of the spells. Thanks to Andyr for the development of the <acronym title="Icewind Dale">IWD</acronym> casting graphics, lifted entirely from the <acronym title="Baldur's Gate II">BG2</acronym> Tweak Pack. </p>
-  <p><strong>Tools Used in Creation</strong><br />
-    <a href="http://www.weidu.org/"><acronym title="Weimer Dialogue Utility">WeiDU</acronym></a> by
-    Wes Weimer and the bigg <br />
-    <a href="http://www.idi.ntnu.no/~joh/ni/">Near Infinity</a> by Jon Olav Hauglid<br />
-    <a href="http://www.context.cx/">ConTEXT Text Editor</a> by Eden Kirin<br />
-    <a href="http://www.gibberlings3.net/tools/weidu.php"><acronym title="Weimer Dialogue Utility">WeiDU</acronym> ConTEXT
-    Highlighters </a> by Idobek, updated by cmorgan <br />
-    <a href="http://iesdp.gibberlings3.net/"> <acronym title="Infinity Engine Structures Description Project">IESDP</acronym></a> maintained
-    by igi<br />
-    <a href="http://www.gibberlings3.net/tools/dltcep.php"> <acronym title="Dragonlance Total Conversion Editor Pro">DLTCEP</acronym></a> by
-    Avenger<br />
-    <a href="http://teambg.eu/index.php?page=tools&amp;cat=32">BAM Workshop</a> by
-    Glenn Flansburg</p>
-</div>
-<h2>Credits and Copyright Information</h2>
-<div class="section">
-  <p>The modding community for the Infinity Engine has been going strong for
-    more than 10 years now, and is the culmination of thousands of unpaid modding
-    hours by fellow fans of the game. Modders produce their best work and players
-    get the best, well-supported mods when we all work together. </p>
-  <p> There are two big ways to upset this harmony. One is to claim someone else's
-    work as your own. The second is to host or redistribute a mod without permission
-    from the author(s). </p>
-  <p> Be kind to your fellow players and modders. Don't do either. </p>
-</div>
-<h2>Version History</h2>
-<div class="section">
-  <p><strong>Version Beta 3 - August 28, 2013</strong> </p>
-  <ul>
-    <li>Cure Moderate Wounds had an incorrect icon reference, which could cause crashes when you tried to memorize the spell</li>
-  </ul>
-  <p><strong>Version Beta 2 - August 18, 2013</strong> </p>
-  <ul>
-    <li>Made a first pass at having the new spell icons blend in</li>
-    <li>Added lore and prices to Two-Handed Axes</li>
-    <li>Cat's Grace wasn't being added to any stores</li>
-    <li>Added Cure Moderate Wounds</li>
-    <li>Shambling mounds summoned by Stalker no longer drop their paws</li>
-    <li>Entropy Shield wasn't blocking Icelance </li>
-    <li>Emotion: Hopelessness scroll now has icon</li>
-    <li>Blood Rage had an extraneous effect that would kill the target</li>
-    <li>Alicorn Lance now uses a nicer glow on the target</li>
-    <li>Static Charge's initial charge worked, but not its followup damage</li>
-  </ul>
-  <p><strong>Version Beta 1 - July 18, 2013</strong> </p>
-  <ul>
-    <li>Initial release. Let's see what breaks.</li>
-  </ul>
 </div>
 </body>
 </html>

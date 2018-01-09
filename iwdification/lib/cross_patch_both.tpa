@@ -1,82 +1,163 @@
-/////                                                  \\\\\
-///// arcane-divine cross-patching                     \\\\\
-/////                                                  \\\\\
+OUTER_SET NUM_a327 = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_ICELANCE~)) - 2000)
+OUTER_SET NUM_a411 = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_EMOTION_HOPELESSNESS~)) - 2000)
+OUTER_SET NUM_a427 = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_EMOTION_COURAGE~)) - 2000)
+OUTER_SET NUM_a428 = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_EMOTION_FEAR~)) - 2000)
+OUTER_SET NUM_a429 = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_EMOTION_HOPE~)) - 2000)
+OUTER_SET NUM_a524 = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_SHROUD_OF_FLAME~)) - 2000)
+OUTER_SET NUM_a610 = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_ANTIMAGIC_SHELL~)) - 2000)
+OUTER_SET NUM_a802 = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_MIND_BLANK~)) - 2000)
+OUTER_SET NUM_a814 = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_IRON_BODY~)) - 2000)
+OUTER_SET NUM_d324 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SPIKE_GROWTH~)) - 1000)
+OUTER_SET NUM_d325 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CLOUDBURST~)) - 1000)
+OUTER_SET NUM_d326 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_MOLD_TOUCH~)) - 1000)
+OUTER_SET NUM_d419 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_PRODUCE_FIRE~)) - 1000)
+OUTER_SET NUM_d420 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_STATIC_CHARGE~)) - 1000)
+OUTER_SET NUM_d422 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_BLOOD_RAGE~)) - 1000)
+OUTER_SET NUM_d423 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CLOUD_OF_PESTILENCE~)) - 1000)
+OUTER_SET NUM_d424 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_UNFAILING_ENDURANCE~)) - 1000)
+OUTER_SET NUM_d426 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SMASHING_WAVE~)) - 1000)
+OUTER_SET NUM_d427 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_THORN_SPRAY~)) - 1000)
+OUTER_SET NUM_d428 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_WALL_OF_MOONLIGHT~)) - 1000)
+OUTER_SET NUM_d519 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SPIKE_STONES~)) - 1000)
+OUTER_SET NUM_d603 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_BLADE_BARRIER~)) - 1000)
+OUTER_SET NUM_d615 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_ENTROPY_SHIELD~)) - 1000)
+OUTER_SET NUM_d617 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_WHIRLWIND~)) - 1000)
+OUTER_SET NUM_d716 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SYMBOL_OF_HOPELESSNESS~)) - 1000)
+OUTER_SET NUM_d733 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_IMPERVIOUS_SANCTITY_OF_MIND~)) - 1000)
+OUTER_SET NUM_d734 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_DESTRUCTION~)) - 1000)
+OUTER_SET NUM_d736 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_MIST_OF_ELDATH~)) - 1000)
+OUTER_SET NUM_d738 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_HEAVENLY_INFERNO~)) - 1000)
+
+COPY_EXISTING ~7eyes.2da~    ~%path%/2da/7eyes.2da~
+  REPLACE_TEXTUALLY ~cdid716~ ~sppr%NUM_d716%~
+  REPLACE_TEXTUALLY ~cdid734~ ~sppr%NUM_d734%~
+  BUT_ONLY IF_EXISTS
   
-// look up various spells in the table
-OUTER_SET NUM_EMOTION_COURAGE             = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_EMOTION_COURAGE~)) - 2000)
-OUTER_SET NUM_EMOTION_FEAR                = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_EMOTION_FEAR~)) - 2000)
-OUTER_SET NUM_EMOTION_HOPE                = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_EMOTION_HOPE~)) - 2000)
-OUTER_SET NUM_MIND_BLANK                  = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_MIND_BLANK~)) - 2000)
-OUTER_SET NUM_BLOOD_RAGE                  = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_BLOOD_RAGE~)) - 1000)
-OUTER_SET NUM_IMPERVIOUS_SANCTITY_OF_MIND = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_IMPERVIOUS_SANCTITY_OF_MIND~)) - 1000)
-OUTER_SET NUM_SYMBOL_OF_HOPELESSNESS      = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SYMBOL_OF_HOPELESSNESS~)) - 1000)
-OUTER_SET NUM_UNFAILING_ENDURANCE         = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_UNFAILING_ENDURANCE~)) - 1000)
-OUTER_SET NUM_ICELANCE                    = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_ICELANCE~)) - 2000)
-OUTER_SET NUM_ENTROPY_SHIELD              = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_ENTROPY_SHIELD~)) - 1000)
+ACTION_IF ((NUM_a429 > 0) AND (NUM_d716 > 0)) BEGIN
 
-ACTION_IF NUM_BLOOD_RAGE > 0 BEGIN
+  COPY_EXISTING ~spwi%NUM_a429%.spl~ ~override~
+    LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid716 resource = EVAL ~sppr%NUM_d716%~ END
+    BUT_ONLY
 
-  COPY_EXISTING ~sppr%NUM_BLOOD_RAGE%.spl~ ~override~ // add immunity to emotion series to blood rage
-    PATCH_IF NUM_EMOTION_COURAGE > 0 BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 4 opcode = 206 target = 2 power = 4 resist_dispel = 3 duration = 120
-        STR_VAR resource = EVALUATE_BUFFER "spwi%NUM_EMOTION_COURAGE%" END
+END
+
+ACTION_IF NUM_a610 > 0 BEGIN
+
+  COPY_EXISTING ~spwi%NUM_a610%.spl~ ~override~
+    PATCH_IF NUM_d738 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid738 resource = EVAL ~sppr%NUM_d738%~ END
     END
-    PATCH_IF NUM_EMOTION_FEAR > 0 BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 4 opcode = 206 target = 2 power = 4 resist_dispel = 3 duration = 120
-        STR_VAR resource = EVALUATE_BUFFER "spwi%NUM_EMOTION_FEAR%" END
+    PATCH_IF NUM_d736 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid736 resource = EVAL ~sppr%NUM_d736%~ END
     END
-    PATCH_IF NUM_EMOTION_HOPE > 0 BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 4 opcode = 206 target = 2 power = 4 resist_dispel = 3 duration = 120
-        STR_VAR resource = EVALUATE_BUFFER "spwi%NUM_EMOTION_HOPE%" END
+    PATCH_IF NUM_d617 > 0 BEGIN
+      PATCH_IF !ee_game BEGIN
+        LPF CLONE_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid617 resource = cdid617b END
+      END
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid617 resource = EVAL ~sppr%NUM_d617%~ END
+    END
+    PATCH_IF NUM_d519 > 0 AND ee_game BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid519 resource = EVAL ~sppr%NUM_d519%~ END
+    END
+    PATCH_IF NUM_d428 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid428 resource = EVAL ~sppr%NUM_d428%~ END
+    END
+    PATCH_IF NUM_d427 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid427 resource = EVAL ~sppr%NUM_d427%~ END
+    END
+    PATCH_IF NUM_d426 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid426 resource = EVAL ~sppr%NUM_d426%~ END
+    END
+    PATCH_IF NUM_d423 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid423 resource = EVAL ~sppr%NUM_d423%~ END
+    END
+    PATCH_IF NUM_d420 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid420 resource = EVAL ~sppr%NUM_d420%~ END
+    END
+    PATCH_IF NUM_d419 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid419 resource = EVAL ~sppr%NUM_d419%~ END
+    END
+    PATCH_IF NUM_d326 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid326 resource = EVAL ~sppr%NUM_d326%~ END
+    END
+    PATCH_IF NUM_d324 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid324 resource = EVAL ~sppr%NUM_d324%~ END
     END
     BUT_ONLY
 
 END
 
-ACTION_IF NUM_IMPERVIOUS_SANCTITY_OF_MIND > 0 BEGIN
+ACTION_IF NUM_a802 > 0 BEGIN
 
-  COPY_EXISTING ~sppr%NUM_IMPERVIOUS_SANCTITY_OF_MIND%.spl~ ~override~ // add immunity to emotion series to impervious sanctity of mind
-    FOR (index = 1 ; index < 18 ; ++index) BEGIN
-      PATCH_IF NUM_EMOTION_COURAGE > 0 BEGIN
-        LPF ADD_SPELL_EFFECT INT_VAR header = index insert_point = 0 opcode = 206 target = 1 power = 7 resist_dispel = 3
-          duration = ((60 * index) + 780) STR_VAR resource = EVALUATE_BUFFER "spwi%NUM_EMOTION_COURAGE%" END
-      END
-      PATCH_IF NUM_EMOTION_FEAR > 0 BEGIN
-        LPF ADD_SPELL_EFFECT INT_VAR header = index insert_point = 0 opcode = 206 target = 1 power = 7 resist_dispel = 3
-          duration = ((60 * index) + 780) STR_VAR resource = EVALUATE_BUFFER "spwi%NUM_EMOTION_FEAR%" END
-      END
-      PATCH_IF NUM_EMOTION_HOPE > 0 BEGIN
-        LPF ADD_SPELL_EFFECT INT_VAR header = index insert_point = 0 opcode = 206 target = 1 power = 7 resist_dispel = 3
-          duration = ((60 * index) + 780) STR_VAR resource = EVALUATE_BUFFER "spwi%NUM_EMOTION_HOPE%" END
-      END
+  COPY_EXISTING ~spwi%NUM_a610%.spl~ ~override~
+    PATCH_IF NUM_d422 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid422 resource = EVAL ~sppr%NUM_d422%~ END
+    END
+    PATCH_IF NUM_d716 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid716 resource = EVAL ~sppr%NUM_d716%~ END
+    END
+    BUT_ONLY
+
+END
+
+ACTION_IF NUM_a814 > 0 BEGIN
+
+  COPY_EXISTING ~spwi%NUM_a610%.spl~ ~override~
+    PATCH_IF NUM_d736 > 0 AND ee_game BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid736 resource = EVAL ~sppr%NUM_d736%~ END
+    END
+    PATCH_IF NUM_d424 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid424 resource = EVAL ~sppr%NUM_d424%~ END
+    END
+    PATCH_IF NUM_d423 > 0 AND ee_game BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid423 resource = EVAL ~sppr%NUM_d423%~ END
+    END
+    PATCH_IF NUM_d326 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdid326 resource = EVAL ~sppr%NUM_d326%~ END
     END
 
 END
 
-ACTION_IF ((NUM_MIND_BLANK > 0) AND
-           (NUM_SYMBOL_OF_HOPELESSNESS > 0)) BEGIN
+ACTION_IF NUM_d422 > 0 BEGIN
 
-  COPY_EXISTING ~spwi%NUM_MIND_BLANK%.spl~ ~override~ // add immunity to symbol of hopelessness to mind blank
-    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 206 target = 1 power = 8 resist_dispel = 3 duration = 7200
-      STR_VAR resource = EVALUATE_BUFFER "sppr%NUM_SYMBOL_OF_HOPELESSNESS%" END
-
-END
-
-ACTION_IF ((FILE_EXISTS_IN_GAME cdia807w.itm) AND
-           (NUM_UNFAILING_ENDURANCE > 0)) BEGIN
-  
-  COPY_EXISTING ~cdia807w.itm~ ~override~ // iron body: add immunity to unfailing endurance
-    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 206 target = 1 timing = 2 STR_VAR resource = EVALUATE_BUFFER "SPPR%NUM_UNFAILING_ENDURANCE%" END
-
-END
-
-ACTION_IF ((NUM_ENTROPY_SHIELD > 0) AND
-           (NUM_ICELANCE > 0)) BEGIN
-  
-  COPY_EXISTING ~sppr%NUM_ENTROPY_SHIELD%.spl~ ~override~ // add immunity to emotion series to impervious sanctity of mind
-    FOR (index = 1 ; index < 21 ; ++index) BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR header = index insert_point = 0 opcode = 206 target = 1 power = 6 resist_dispel = 3
-        duration = ((6 * index) + 60) STR_VAR resource = EVALUATE_BUFFER "spwi%NUM_ICELANCE%" END
+  COPY_EXISTING ~sppr%NUM_d422%.spl~ ~override~
+    PATCH_IF NUM_a411 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdia411 resource = EVAL ~spwi%NUM_a411%~ END
     END
+    PATCH_IF NUM_a427 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdia427 resource = EVAL ~spwi%NUM_a437%~ END
+    END
+    PATCH_IF NUM_a428 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdia428 resource = EVAL ~spwi%NUM_a428%~ END
+    END
+    PATCH_IF NUM_a429 > 0 BEGIN
+      LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdia429 resource = EVAL ~spwi%NUM_a429%~ END
+    END
+    BUT_ONLY
+
+END
+  
+ACTION_IF ((NUM_a524 > 0) AND (NUM_d325 > 0)) BEGIN
+
+  COPY_EXISTING ~sppr%NUM_d325%.spl~ ~override~
+    LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdia524  resource = EVAL ~spwi%NUM_a524%~  END
+    LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdia524b resource = EVAL ~spwi%NUM_a524%b~ END
+    BUT_ONLY
+
+END
+
+ACTION_IF ((NUM_a327 > 0) AND (NUM_d615 > 0)) BEGIN
+
+  COPY_EXISTING ~sppr%NUM_d615%.spl~ ~override~
+    LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdia327 resource = EVAL ~spwi%NUM_a327%~ END
+    BUT_ONLY
+
+END
+
+ACTION_IF ((NUM_a411 > 0) AND (NUM_d733 > 0)) BEGIN
+
+  COPY_EXISTING ~sppr%NUM_d733%.spl~ ~override~
+    LPF ALTER_EFFECT INT_VAR silent = 1 STR_VAR match_resource = cdia411 resource = EVAL ~spwi%NUM_a411%~ END
+    BUT_ONLY
 
 END

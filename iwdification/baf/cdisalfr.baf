@@ -1,0 +1,10 @@
+IF
+  !Global("SAFROST_inactive","LOCALS",1)
+  !Global("CREATURE_STATE_VARBit19","LOCALS",1)
+THEN
+  RESPONSE #100
+    ReallyForceSpellRES("cdisalfr",Myself) // spin193
+    SetGlobal("CREATURE_STATE_VARBit19","LOCALS",1)
+    SetGlobal("SAFROST_inactive","LOCALS",1)
+END
+
