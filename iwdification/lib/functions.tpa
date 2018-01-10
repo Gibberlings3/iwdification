@@ -27,6 +27,8 @@ OUTER_SET string_poison      = 14017
 OUTER_SET string_poisoned    = 14662
 OUTER_SET string_pspider     = 9369
 OUTER_SET string_rthinking   = 14791
+OUTER_SET string_silence     = 14002
+OUTER_SET string_silenced    = 14676
 OUTER_SET string_skelly      = 8765
 OUTER_SET string_sleep       = 14001
 OUTER_SET string_slow        = 14000
@@ -35,12 +37,14 @@ OUTER_SET string_stun        = 14043
 OUTER_SET string_uncon       = 20438
 OUTER_SET string_wwolf       = 8774
 
+
 ACTION_IF GAME_IS ~bgee~ BEGIN
 
   OUTER_SET string_diseased    = 31238
   OUTER_SET string_dominated   = 26206
   OUTER_SET string_entangled   = 25144
   OUTER_SET string_goblin      = 27641
+  OUTER_SET string_ineffective = 24534
   OUTER_SET string_shadow      = 25764
   OUTER_SET string_stricken    = 26453
   OUTER_SET string_stunned     = 26050
@@ -52,6 +56,7 @@ END ELSE BEGIN
   OUTER_SET string_dominated   = 8364
   OUTER_SET string_entangled   = 47835
   OUTER_SET string_goblin      = 2511
+  OUTER_SET string_ineffective = 4742
   OUTER_SET string_shadow      = 3080
   OUTER_SET string_stricken    = 39752
   OUTER_SET string_stunned     = 1280

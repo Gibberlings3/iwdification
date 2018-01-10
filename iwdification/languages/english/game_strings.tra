@@ -1,6 +1,7 @@
 // strings in this file will be overridden by strings in game_strings_ee for EE games.
 // this file is ANSI, and will be converted to UTF-8 for EE games.
-// many of the spell and item descriptions can be pulled directly from (original) IWD.
+// use the IWDification translator tool on the G3 forums to automatically translate most of these.
+
   @3001 = ~Emotion, Hopelessness~
   @3002 = ~Emotion, Hopelessness
 (Enchantment/Charm)
@@ -93,8 +94,28 @@ Special Abilities:
 – Fire Resistance: -25%
 
 The Druid is healed 12 Hit Points after using this ability.~
-  @3013 = ~Boring Beetle~
-  @3014 = ~^\(Level[ %TAB%]*:?[ %TAB%]*\)[0-9]~
+  @3013 = ~Boring Beetle~  
+  @3014 = ~Polymorph Self
+(Alteration)
+
+Level: 4
+Range: 0
+Duration: 1 turn + 3 rounds/level
+Casting Time: 4
+Area of Effect: The caster
+Saving Throw: None
+
+When this spell is cast, the wizard is able to assume the form of another creature. The caster also gains the physical mode of locomotion and breathing as well. This spell does not give the new form's other abilities such as special attacks and magic, nor does it run the risk of the wizard changing personality and mentality.
+
+For the duration of the spell, the caster may transform into any of the new forms at any time, and as many times as <PRO_HESHE> wishes. The caster gains the natural attacks of the new form in some cases and may use weapons in others. The mental attributes of the wizard remain the same, but all the physical attributes are obtained from the new form. Also, any natural protections that the new form offers are conferred to the wizard, such as the resistance to missile and crushing weapons possessed by the slime form.
+
+The possible forms given by Polymorph Self are:
+  Flind: wields a magical halberd (+1 fire damage and strikes as a +3 weapon)
+  Mustard Jelly: capable of poisoning or slowing opponents (if they fail a Save vs. Death when hit)
+  Ogre: capable of causing massive damage with its fists
+  Spider: causes poison damage when it hits an opponent
+
+In addition, the caster may choose the form of brown bear, black bear, wolf, polar bear, or winter wolf.~
   @3015 = ~Polar Bear~
   @3020 = ~Snilloc's Snowball Swarm~
   @3021 = ~Snilloc's Snowball Swarm
@@ -230,7 +251,7 @@ Casting Time: 4
 Area of Effect: 2-ft. radius
 Saving Throw: Special
 
-This spell creates a brilliant globe of magical energy that streaks forth from the caster's hand to unerringly strike its target, much like a Magic Missile spell. The wizard creates one missile at 7th level and an additional missile at every third level after 7th—in other words, two missiles at 10th level, three at 13th, four at 16th, and so on, to a maximum of seven missiles at 25th level. Each missile inflicts 2d4 points of damage to the target and then bursts in a 2-ft. radius concussive blast that inflicts 1 point of damage per level of the caster—for example, a 12th-level wizard could conjure two force missiles, each of which strikes for 2d4+12 points of magic damage. Creatures taking damage can attempt a Save vs. Spell to negate the concussion damage, but the impact of the missile itself allows no Saving Throw. The 1st-level wizard spell Shield will absorb the force missiles harmlessly, including the concussion damage.~
+This spell creates a brilliant globe of magical energy that streaks forth from the caster's hand to unerringly strike its target, much like a Magic Missile spell. The wizard creates one missile at 7th level and an additional missile at every third level after 7th-in other words, two missiles at 10th level, three at 13th, four at 16th, and so on, to a maximum of seven missiles at 25th level. Each missile inflicts 2d4 points of damage to the target and then bursts in a 2-ft. radius concussive blast that inflicts 1 point of damage per level of the caster-for example, a 12th-level wizard could conjure two force missiles, each of which strikes for 2d4+12 points of magic damage. Creatures taking damage can attempt a Save vs. Spell to negate the concussion damage, but the impact of the missile itself allows no Saving Throw. The 1st-level wizard spell Shield will absorb the force missiles harmlessly, including the concussion damage.~
   @3130 = ~Shout~
   @3131 = ~Shout
 (Invocation)
@@ -422,7 +443,7 @@ Casting Time: 6
 Area of Effect: Special
 Saving Throw: None
 
-Shades is similar to Shadow Monsters and Demi-Shadow Monsters—it allows the caster to shape material from the Demiplane of Shadow into illusionary creatures. These shadows are tougher than the shadows summoned by Shadow Monsters and Demi-Shadow Monsters, and they will obey the caster until the spell expires or they are slain.~
+Shades is similar to Shadow Monsters and Demi-Shadow Monsters-it allows the caster to shape material from the Demiplane of Shadow into illusionary creatures. These shadows are tougher than the shadows summoned by Shadow Monsters and Demi-Shadow Monsters, and they will obey the caster until the spell expires or they are slain.~
   @3272 = ~Umber Hulk~
   @3273 = ~Umber Hulk Gaze~
   @3280 = ~Darts of Bone~
@@ -499,7 +520,7 @@ Casting Time: 7
 Area of Effect: 12-ft. radius
 Saving Throw: 1/2
 
-This spell unleashes an acidic downpour on the area of effect, doing 1d4 points of acid damage each round for the first three rounds, 1d6 points for the next three rounds, and 1d8 points for each round thereafter. Moving out of the area of effect does not stop the damage—the acid adheres to the skin, and any creatures in the area of effect when Acid Storm is cast continue to suffer acid damage as long as the spell duration lasts. Creatures make a Save vs. Spell every round after they have been hit by the cloud—if successful, they only take half damage (for that round only).~
+This spell unleashes an acidic downpour on the area of effect, doing 1d4 points of acid damage each round for the first three rounds, 1d6 points for the next three rounds, and 1d8 points for each round thereafter. Moving out of the area of effect does not stop the damage-the acid adheres to the skin, and any creatures in the area of effect when Acid Storm is cast continue to suffer acid damage as long as the spell duration lasts. Creatures make a Save vs. Spell every round after they have been hit by the cloud-if successful, they only take half damage (for that round only).~
   @3340 = ~Seven Eyes~
   @3341 = ~Seven Eyes
 (Abjuration)
@@ -612,7 +633,7 @@ Casting Time: 1
 Area of Effect: The caster
 Saving Throw: None
 
-In the interests of one's self-control and privacy, Mind Blank shields a creature's mind from almost any mental effect—charm, maze, feeblemind, confusion, fear, intoxication, berserk, hold, and petrification.~
+In the interests of one's self-control and privacy, Mind Blank shields a creature's mind from almost any mental effect-charm, maze, feeblemind, confusion, fear, intoxication, berserk, hold, and petrification.~
   @3400 = ~Great Shout~
   @3401 = ~Great Shout
 (Invocation)
@@ -962,7 +983,7 @@ Casting Time: 7
 Area of Effect: 25-ft. radius
 Saving Throw: None
 
-By reciting a sacred passage or declaration, the priest invokes <PRO_HISHER> deity's blessing upon <PRO_HIMHER>self and <PRO_HISHER> allies while sowing confusion and weakness among <PRO_HISHER> enemies. The priest's allies gain a +2 bonus to their attack rolls and Saving Throws, and the priest's enemies receive a -2 penalty to the same. Recitation does not nullify a Prayer spell—the two can be cast in tandem, and the effects are cumulative.~
+By reciting a sacred passage or declaration, the priest invokes <PRO_HISHER> deity's blessing upon <PRO_HIMHER>self and <PRO_HISHER> allies while sowing confusion and weakness among <PRO_HISHER> enemies. The priest's allies gain a +2 bonus to their attack rolls and Saving Throws, and the priest's enemies receive a -2 penalty to the same. Recitation does not nullify a Prayer spell-the two can be cast in tandem, and the effects are cumulative.~
   @4230 = ~Blood Rage~
   @4231 = ~Blood Rage
 (Alteration)
@@ -975,7 +996,7 @@ Casting Time: 7
 Area of Effect: 1 creature
 Saving Throw: None
 
-This spell works only on player characters or allied creatures. When cast, the target of this spell goes berserk, attacking the nearest creature until that creature is dead, then moving on to the next target. While under Blood Rage, the target is immune to charm, sleep, fear, hold, stunning, confusion, emotion, symbol spells, and related effects. In addition, the target gains +2 to hit, +3 to damage, +2 to Strength, +10 to maximum Hit Points, and +2 to <PRO_HISHER> movement rate. The spell has several disadvantages, however: The Hit Points of the target are masked for the duration of the spell, and the target cannot benefit from any effect that heals Hit Points. At the end of the spell's duration, the target becomes fatigued and <PRO_HISHER> Strength drops to 3 for 2 turns. Blood Rage cannot affect—and cannot be cast by—creatures of lawful alignment.~
+This spell works only on player characters or allied creatures. When cast, the target of this spell goes berserk, attacking the nearest creature until that creature is dead, then moving on to the next target. While under Blood Rage, the target is immune to charm, sleep, fear, hold, stunning, confusion, emotion, symbol spells, and related effects. In addition, the target gains +2 to hit, +3 to damage, +2 to Strength, +10 to maximum Hit Points, and +2 to <PRO_HISHER> movement rate. The spell has several disadvantages, however: The Hit Points of the target are masked for the duration of the spell, and the target cannot benefit from any effect that heals Hit Points. At the end of the spell's duration, the target becomes fatigued and <PRO_HISHER> Strength drops to 3 for 2 turns. Blood Rage cannot affect-and cannot be cast by-creatures of lawful alignment.~
   @4240 = ~Cloud of Pestilence~
   @4241 = ~Cloud of Pestilence
 (Alteration)
@@ -1250,7 +1271,7 @@ Casting Time: 9
 Area of Effect: 7-ft. radius
 Saving Throw: None
 
-This spell blankets the area of effect with a silver-blue mist—any creature within the mist will be cured of disease and poison and healed 25 Hit Points.~
+This spell blankets the area of effect with a silver-blue mist-any creature within the mist will be cured of disease and poison and healed 25 Hit Points.~
   @4450 = ~Stalker~
   @4451 = ~Stalker
 (Conjuration)
@@ -1280,13 +1301,42 @@ Saving Throw: None
 Casting this spell opens a channel between the caster's plane and the Negative Energy Plane. The caster acts as a conduit between the two planes, sucking life from a victim and transferring it to the Negative Energy Plane, draining <PRO_HIMHER> of 2 levels of experience. The target of this spell loses levels, Hit Dice, Hit Points, and abilities permanently. These levels can only be restored by a priest's Restoration spell. This spell has no effect on undead, constructs, or extraplanar creatures. It can only be cast by evil-aligned characters.~
   @4462 = ~Two Levels Drained~
   @5001 = ~The Ballad of Three Heroes - Combat Bonuses~
-  @5002 = ~The Tale of Curran Strongheart - Immunity Fear~
-  @5003 = ~Tymora's Melody - Luck and Skill Bonuses~
-  @5004 = ~The Song of Kaudies - Resistant to Sound Attacks~
-  @5005 = ~The Siren's Yearning - Enthralls Creatures~
-  @5006 = ~War Chant of Sith - Armor Bonuses and Regeneration~
-  @5007 = ~Enthralled~
-
+  @5002 = ~The Ballad of Three Heroes~
+  @5003 = ~All allies gain +1 to hit, +1 to damage, and +1 to all their Saving Throws.~
+  @5004 = ~The Tale of Curran Strongheart - Immunity Fear~
+  @5005 = ~The Tale of Curran Strongheart~
+  @5006 = ~All allies gain immunity to fear effects for as long as the song lasts, and any fear effects currently on them are removed.~
+  @5007 = ~Tymora's Melody - Luck and Skill Bonuses~
+  @5008 = ~Tymora's Melody~
+  @5009 = ~All allies gain +1 to luck, +3 to Saving Throws, +10 to lore, and a +10% bonus to all of their thieving skills.~
+  @5010 = ~The Song of Kaudies - Resistant to Sound Attacks~
+  @5011 = ~The Song of Kaudies~
+  @5012 = ~All allies have a 50% chance to shrug off the effects of spells such as Silence, Shout, Great Shout, Command, Greater Command, or any other sound-based attack.~
+  @5013 = ~The Siren's Yearning - Enthralls Creatures~
+  @5014 = ~The Siren's Yearning~
+  @5015 = ~All enemies within 15 ft. must save vs. Spell or become enthralled, unable to take action until 1 round passes or they take damage.~
+  @5016 = ~Enthralled~
+  @5017 = ~War Chant of Sith - Armor Bonuses and Regeneration~
+  @5018 = ~War Chant of Sith~
+  @5019 = ~All allies gain a +2 bonus to Armor Class, +10% resistance to slashing, piercing, crushing, and missile damage, and the ability to regenerate 2 Hit Points per round.~
+  @5020 = ~BARD: The Bard is a rogue, but <PRO_HESHE> is very different from the Thief. The Bard's strength is <PRO_HISHER> pleasant and charming personality. With it and <PRO_HISHER> wits, <PRO_HESHE> makes <PRO_HISHER> way through the world. A Bard is a talented musician and a walking storehouse of gossip, tall tales, and lore; <PRO_HESHE> learns a little bit about everything that crosses <PRO_HISHER> path and is a jack-of-all-trades but master of none. While many Bards are scoundrels, their stories and songs are welcome almost everywhere.
+CLASS FEATURES:
+- May not wear armor heavier than chain mail. (Spells cannot be cast while wearing armor.)
+- May not equip shields larger than bucklers.
+- May only become Proficient (one slot) in any weapon class.
+- May only become Proficient (one slot) in any fighting style.
+- Thieving abilities: Pick Pockets.
+- Increased Lore score.
+- May cast arcane spells starting at 2nd level.
+- May use Bard Song ability to play any song from <PRO_HISHER> repertoire:
+  1st level: Can play "The Ballad of Three Heroes." All allies within 30 ft. gain +1 to hit, +1 to damage, and +1 to all their Saving Throws.
+  3rd level: Can play "The Tale of Curran Strongheart." All allies within 30 ft. gain immunity to fear effects for as long as the song lasts, and any fear effects currently on them are removed.
+  5th level: Can play "Tymora's Melody." All allies within 30 ft. gain +1 to luck, +3 to Saving Throws, +10 to lore, and a +10% bonus to all of their thieving skills.
+  7th level: Can play "The Song of Kaudies." All allies within 30 ft. have a 50% chance to shrug off the effects of spells such as Silence, Shout, Great Shout, Command, Greater Command, or any other sound-based attack.
+  9th level: Can play "The Siren's Yearning." All enemies within 30 ft. must save vs. Spell or become enthralled, unable to take action until 1 round passes or they take damage.
+  11th level: Can play "War Chant of Sith." All allies within 30 ft. gain a +2 bonus to Armor Class, +10% resistance to slashing, piercing, crushing, and missile damage, and the ability to regenerate 2 Hit Points per round.
+- Alignment restricted to any neutral.
+- Hit Die: d6~
   @6001 = ~Two Handed Axe~
   @6002 = ~This mighty weapon consists of a haft several feet long, topped with a heavy blade.  The axe may be double-bitted, with blades on both sides of the haft, or it may only have a single blade.  It is an unwieldy weapon, but a skilled warrior can strike blows of tremendous strength with it.
 
