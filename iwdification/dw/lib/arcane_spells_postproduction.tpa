@@ -1,0 +1,39 @@
+DEFINE_ACTION_FUNCTION arcane_spells_postproduction STR_VAR tra="" BEGIN
+
+          PRINT "%tra% is tra"
+          LAF include STR_VAR file=summoned_monsters.tpa location="%iwdspells_lib%" END
+       
+          ACTION_IF "%tra%" STRING_EQUAL_CASE "" BEGIN
+              LAF summoned_monsters_arcane END
+              LAF run STR_VAR file=elemental_summoning location="%iwdspells_lib%" END
+              LAF force_blade END
+          END ELSE BEGIN
+            WITH_TRA "%tra%" BEGIN
+              LAF summoned_monsters_arcane END
+              LAF run STR_VAR file=elemental_summoning location="%iwdspells_lib%" END
+              LAF force_blade END
+            END
+          END
+
+END
+
+DEFINE_ACTION_FUNCTION force_blade BEGIN
+
+    COPY_EXISTING "%WIZARD_MORDENKAINENS_SWORD_IWD%.SPL" override
+        READ_STRREF NAME1 old_name
+        SPRINT new_name @10
+        SAY NAME1 "%new_name%"
+        READ_STRREF 0x50 old_desc
+        INNER_PATCH_SAVE new_desc "%old_desc%" BEGIN
+           REPLACE_TEXTUALLY "%old_name%" "%new_name%"
+        END
+        SAY 0x50 "%new_desc%"
+    BUT_ONLY
+
+    COPY_EXISTING "%WIZARD_MORDENKAINENS_SWORD_IWD_SCROLL%.ITM" override
+        SAY NAME2 "%new_name%"
+        SAY DESC "%new_desc%"
+    BUT_ONLY
+
+END
+
