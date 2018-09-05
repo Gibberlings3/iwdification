@@ -47,9 +47,9 @@ Number of Attacks: 1
 Attack Damage: 5d4 slashing
 
 Special Abilities:
-â€“ Slashing Resistance: 50%
-â€“ Piercing Resistance: 50%
-â€“ Missile Resistance: 50%
+– Slashing Resistance: 50%
+– Piercing Resistance: 50%
+– Missile Resistance: 50%
 
 The Druid is healed 12 Hit Points after using this ability.~
   @3007 = ~Shapeshift: Polar Bear~
@@ -63,8 +63,8 @@ Number of Attacks: 3
 Attack Damage: 1d12 slashing
 
 Special Abilities:
-â€“ Cold Resistance: 75%
-â€“ Fire Resistance: -25%
+– Cold Resistance: 75%
+– Fire Resistance: -25%
 
 The Druid is healed 12 Hit Points after using this ability.~
   @3009 = ~Shapeshift: Winter Wolf~
@@ -90,8 +90,8 @@ Number of Attacks: 2
 Attack Damage: 1d6 slashing
 
 Special Abilities:
-â€“ Cold Resistance: 75%
-â€“ Fire Resistance: -25%
+– Cold Resistance: 75%
+– Fire Resistance: -25%
 
 The Druid is healed 12 Hit Points after using this ability.~
   @3013 = ~Boring Beetle~  
