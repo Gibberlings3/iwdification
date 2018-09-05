@@ -1,0 +1,596 @@
+TRIGGER=AttackedByPlayer
+    OR(14)
+      AttackedBy([GOODCUTOFF.0.0.0.0.SUMMONED],DEFAULT)
+      AttackedBy([PC],DEFAULT)
+      AttackedBy([FAMILIAR],DEFAULT)
+      AttackedBy([ALLY],DEFAULT)
+      AttackedBy([CONTROLLED],DEFAULT)
+      AttackedBy([CHARMED],DEFAULT)
+      SpellCastOnMe([GOODCUTOFF.0.0.0.0.SUMMONED],0)
+      SpellCastOnMe([GOODCUTOFF],WIZARD_BLINDNESS)
+      SpellCastOnMe([GOODCUTOFF],WIZARD_FEEBLEMIND)
+      SpellCastOnMe([GOODCUTOFF],WIZARD_CHARM_PERSON)
+      SpellCastOnMe([GOODCUTOFF],WIZARD_DIRE_CHARM)
+      SpellCastOnMe([GOODCUTOFF],CLERIC_CHARM_PERSON)
+      SpellCastOnMe([GOODCUTOFF],CLERIC_MENTAL_DOMINATION)
+      SpellCastOnMe([GOODCUTOFF],WIZARD_RAY_OF_ENFEEBLEMENT)
+TRIGGER=PlayersInRange
+	OR(6)
+	     Range(Player1,40)
+	     Range(Player2,40)
+	     Range(Player3,40)
+	     Range(Player4,40)
+	     Range(Player5,40)
+	     Range(Player6,40)
+TRIGGER=PlayersInShortRange
+	OR(6)
+	     Range(Player1,20)
+	     Range(Player2,20)
+	     Range(Player3,20)
+	     Range(Player4,20)
+	     Range(Player5,20)
+	     Range(Player6,20)
+TRIGGER=Silence
+        True()
+TRIGGER=SpellTurn
+		!CheckStatGT(scstarget,0,WIZARD_SPELL_DEFLECTION)
+		!CheckStatGT(scstarget,0,WIZARD_SPELL_TURNING)
+		!CheckStatGT(scstarget,0,WIZARD_SPELL_TRAP)
+		!CheckStat(scstarget,1,CLERIC_SHIELD_OF_THE_ARCHONS)
+TRIGGER=SpellTurnNarrow
+		!CheckStatGT(scstarget,0,WIZARD_SPELL_TURNING)
+		!CheckStatGT(scstarget,0,WIZARD_SPELL_TRAP)
+		!CheckStat(scstarget,1,CLERIC_SHIELD_OF_THE_ARCHONS)
+TRIGGER=BackstabSafe
+	!StateCheck(scstarget,STATE_MIRRORIMAGE)
+	!CheckStatGT(scstarget,0,STONESKINS)
+TRIGGER=ArrowSafe
+	OR(2)
+		!CheckStat(scstarget,1,WIZARD_PROTECTION_FROM_NORMAL_MISSILES)
+		GlobalTimerNotExpired("DMWWseePNM","LOCALS")
+	OR(2)
+		!CheckStatGT(scstarget,0,CLERIC_PHYSICAL_MIRROR)
+		GlobalTimerNotExpired("DMWWseePNM","LOCALS")
+	OR(2)
+		!HasItemEquiped("shld24",scstarget)
+		GlobalTimerNotExpired("DMWWseePNM","LOCALS")
+TRIGGER=ArrowSafeBG1
+	OR(2)
+		!CheckStat(scstarget,1,WIZARD_PROTECTION_FROM_NORMAL_MISSILES)
+		GlobalTimerNotExpired("DMWWseePNM","LOCALS")
+TRIGGER=Enemy
+	Allegiance(Myself,ENEMY)
+	!Allegiance(scstarget,ENEMY)
+TRIGGER=Helpless
+	!StateCheck(scstarget,STATE_IMMOBILE)
+	!CheckStatGT(scstarget,0,HELD)
+TRIGGER=Disabled
+	!StateCheck(scstarget,STATE_DISABLED)
+	!CheckStatGT(scstarget,0,HELD)
+TRIGGER=Confused
+	!StateCheck(scstarget,STATE_CONFUSED)
+TRIGGER=ConfuseProof
+         !CheckStatGT(scstarget,0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckSpellState(scstarget,STATE_ENRAGED)
+	!General(scstarget,UNDEAD)
+TRIGGER=Paralyse
+	!Kit(scstarget,UNDEADHUNTER)
+	!Kit(scstarget,INQUISITOR)
+	!CheckStatGT(scstarget,0,CLERIC_FREE_ACTION)
+	!General(scstarget,UNDEAD)
+TRIGGER=FreeAction
+TRIGGER=Poison
+	\* blank *\
+TRIGGER=Charm
+        !Kit(scstarget,CAVALIER)
+	!Kit(scstarget,INQUISITOR)
+	!Race(scstarget,ELF)
+	!CheckStatGT(scstarget,0,CLERIC_CHAOTIC_COMMANDS)
+	!General(scstarget,UNDEAD)
+	!CheckSpellState(scstarget,STATE_ENRAGED)
+TRIGGER=Stun
+	!CheckStatGT(scstarget,0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckSpellState(scstarget,STATE_ENRAGED)
+TRIGGER=Slow
+       \* blank *\
+TRIGGER=Panic	
+	!Kit(scstarget,CAVALIER)
+	!CheckStatGT(scstarget,0,WIZARD_RESIST_FEAR)
+	!General(scstarget,UNDEAD)
+	!CheckSpellState(scstarget,STATE_ENRAGED)
+TRIGGER=Stoneskin
+	!CheckStatGT(scstarget,0,STONESKINS)
+TRIGGER=Sleep
+	!Race(scstarget,ELF)
+	!CheckStatGT(scstarget,0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckSpellState(scstarget,STATE_ENRAGED)
+TRIGGER=MirrorImage
+	!StateCheck(scstarget,STATE_MIRRORIMAGE)
+TRIGGER=ResistAcid
+	!CheckStatGT(scstarget,50,RESISTACID)
+TRIGGER=ResistMagicDamage
+	!CheckStatGT(scstarget,30,MAGICDAMAGERESISTANCE)
+TRIGGER=ResistMagicDamage100
+	!CheckStatGT(scstarget,99,MAGICDAMAGERESISTANCE)
+TRIGGER=ResistFire
+	!CheckStatGT(scstarget,50,RESISTFIRE)
+TRIGGER=ResistCold
+	!CheckStatGT(scstarget,50,RESISTCOLD)
+TRIGGER=ResistCold100
+	!CheckStatGT(scstarget,99,RESISTCOLD)
+TRIGGER=ResistElectric
+	!CheckStatGT(scstarget,50,RESISTELECTRICITY)
+TRIGGER=ResistElectric65
+	!CheckStatGT(scstarget,65,RESISTELECTRICITY)
+TRIGGER=MR
+	!CheckStatGT(scstarget,50,RESISTMAGIC)
+TRIGGER=MR100
+	!CheckStatGT(scstarget,99,RESISTMAGIC)
+TRIGGER=MRTouch
+	/* blank */
+TRIGGER=MR100Touch
+	/* blank */
+TRIGGER=Slay
+        !CheckSpellState(scstarget,DEATH_WARD)
+TRIGGER=Disintegrate
+        !CheckSpellState(scstarget,DEATH_WARD)
+TRIGGER=Hold
+	!Kit(scstarget,UNDEADHUNTER)
+	!Kit(scstarget,INQUISITOR)
+	!CheckStatGT(scstarget,0,CLERIC_FREE_ACTION)
+	!CheckSpellState(scstarget,STATE_ENRAGED)
+TRIGGER=Petrify
+	!CheckStatGT(scstarget,0,WIZARD_PROTECTION_FROM_PETRIFICATION)
+TRIGGER=Maze
+	!CheckStatGT(scstarget,0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckSpellState(scstarget,STATE_ENRAGED)
+TRIGGER=Elven
+	!Race(scstarget,ELF)
+TRIGGER=MinorGlobe
+	!CheckStatGT(scstarget,0,MINORGLOBE)
+TRIGGER=TruesightSafe
+	!CheckStatGT(Player1,0,TRUE_SIGHT)
+	!CheckStatGT(Player2,0,TRUE_SIGHT)
+	!CheckStatGT(Player3,0,TRUE_SIGHT)
+	!CheckStatGT(Player4,0,TRUE_SIGHT)
+	!CheckStatGT(Player5,0,TRUE_SIGHT)
+	!CheckStatGT(Player6,0,TRUE_SIGHT)
+	!CheckStatGT(NearestEnemyOf(Myself),0,TRUE_SIGHT)
+	!CheckStatGT(SecondNearestEnemyOf(Myself),0,TRUE_SIGHT)
+	!CheckStatGT(ThirdNearestEnemyOf(Myself),0,TRUE_SIGHT)
+TRIGGER=MagicMissile
+	!CheckSpellState(scstarget,WIZARD_SHIELD)
+TRIGGER=SlashingSafe
+        CheckStatLT(scstarget,75,RESISTSLASHING)
+TRIGGER=PiercingSafe
+        CheckStatLT(scstarget,75,RESISTPIERCING)
+TRIGGER=CrushingSafe
+        CheckStatLT(scstarget,75,RESISTCRUSHING)
+TRIGGER=MissileSafe
+        CheckStatLT(scstarget,75,RESISTMISSILE)
+TRIGGER=NullSafe
+    /* blank */
+TRIGGER=MultipleDamageTypeSafe
+        OR(3)
+            CheckStatLT(scstarget,75,RESISTCRUSHING)
+            CheckStatLT(scstarget,75,RESISTPIERCING)
+            CheckStatLT(scstarget,75,RESISTSLASHING)
+TRIGGER=PsiBlast
+	True()
+TRIGGER=PsiMaze
+	!CheckStatGT(scstarget,0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckSpellState(Myself,STATE_ENRAGED)
+TRIGGER=PsiDom
+	!Kit(scstarget,INQUISITOR)
+	!CheckStatGT(scstarget,0,CLERIC_CHAOTIC_COMMANDS)
+TRIGGER=EgoWhip
+	!CheckStatGT(scstarget,0,CLERIC_CHAOTIC_COMMANDS)
+TRIGGER=ProjectForce
+    /* blank */
+TRIGGER=L1safe
+    /* blank */
+TRIGGER=L2safe
+    /* blank */
+TRIGGER=LevelDrain
+	!Kit(scstarget,UNDEADHUNTER)
+	!CheckSpellState(scstarget,NEGATIVE_PLANE_PROTECTION)
+	!CheckSpellState(scstarget,STATE_ENRAGED)
+TARGET=PlayersInRandomOrder
+	Player4
+	Player5
+	Player6
+	Player3
+	Player2
+	Player1
+TARGET=PlayersInOrder
+	Player1
+	Player2
+	Player3
+	Player4
+	Player5
+	Player6
+TARGET=EnemiesInReverseOrder
+	EighthNearestEnemyOf(Myself)
+	SeventhNearestEnemyOf(Myself)
+	SixthNearestEnemyOf(Myself)
+	FifthNearestEnemyOf(Myself)
+	FourthNearestEnemyOf(Myself)
+	ThirdNearestEnemyOf(Myself)
+	SecondNearestEnemyOf(Myself)
+	NearestEnemyOf(Myself)
+TARGET=EnemiesInOrder
+	NearestEnemyOf(Myself)
+	SecondNearestEnemyOf(Myself)
+	ThirdNearestEnemyOf(Myself)
+	FourthNearestEnemyOf(Myself)
+	FifthNearestEnemyOf(Myself)
+	SixthNearestEnemyOf(Myself)
+	SeventhNearestEnemyOf(Myself)
+	EighthNearestEnemyOf(Myself)
+TARGET=EnemiesInOrderShort
+	NearestEnemyOf(Myself)
+	SecondNearestEnemyOf(Myself)
+	ThirdNearestEnemyOf(Myself)
+TARGET=DistantEnemies
+        FarthestEnemyOf(Myself)
+        SecondFarthestEnemyOf(Myself)
+        ThirdFarthestEnemyOf(Myself)
+        FourthFarthestEnemyOf(Myself)
+        FifthFarthestEnemyOf(Myself)
+        SixthFarthestEnemyOf(Myself)
+TARGET=PCsInOrder
+	[PC]
+	SecondNearest([PC])
+	ThirdNearest([PC])
+	FourthNearest([PC])
+	FifthNearest([PC])
+	SixthNearest([PC])
+TARGET=PCsInOrderShort
+	[PC]
+	SecondNearest([PC])
+	ThirdNearest([PC])
+TARGET=PCsInReverseOrder
+	SixthNearest([PC])
+	FifthNearest([PC])
+	FourthNearest([PC])
+	ThirdNearest([PC])
+	SecondNearest([PC])
+	[PC]
+TARGET=PCsPreferringStrong
+	[PC.0.0.FIGHTER]
+	[PC.0.0.RANGER]
+	[PC.0.0.PALADIN]
+	[PC.0.0.FIGHTER_THIEF]
+	[PC.0.0.BARD]
+	[PC.0.0.THIEF]
+	[PC]
+	SecondNearest([PC])
+	ThirdNearest([PC])
+TARGET=PCsPreferringWeak
+	[PC.0.0.MAGE]
+	[PC.0.0.MAGE_THIEF]
+	[PC.0.0.MAGE_ALL]
+	[PC.0.0.THIEF]
+	[PC.0.0.BARD]
+	[PC.0.0.THIEF_ALL]
+	[PC.0.0.CLERIC]
+	[PC]
+	SecondNearest([PC])
+	ThirdNearest([PC])
+TARGET=PCSpellcasters
+	[PC.0.0.MAGE_ALL]
+	[PC.0.0.CLERIC_ALL]
+	[PC.0.0.DRUID_ALL]
+	[PC.0.0.BARD]
+TARGET=PCMages
+	[PC.0.0.MAGE_ALL]
+	SecondNearest([PC.0.0.MAGE_ALL])
+	ThirdNearest([PC.0.0.MAGE_ALL])
+	[PC.0.0.BARD]
+TARGET=CloseEnemies
+	NearestEnemyOf(Myself)
+	SecondNearestEnemyOf(Myself)
+	ThirdNearestEnemyOf(Myself)
+TARGET=LastAttacker
+	LastAttackerOf(Myself)
+TARGET=NearestPC
+	[PC]
+TARGET=NearestEnemy
+	NearestEnemyOf(Myself)
+TARGET=Summons
+	[GOODCUTOFF.0.0.0.0.SUMMONED]
+	SecondNearest([GOODCUTOFF.0.0.0.0.SUMMONED])
+	ThirdNearest([GOODCUTOFF.0.0.0.0.SUMMONED])
+	FourthNearest([GOODCUTOFF.0.0.0.0.SUMMONED])
+	FifthNearest([GOODCUTOFF.0.0.0.0.SUMMONED])
+	SixthNearest([GOODCUTOFF.0.0.0.0.SUMMONED])
+TARGET=Beholders
+	[0.0.BEHOLDER]
+	SecondNearest([0.0.BEHOLDER])
+	ThirdNearest([0.0.BEHOLDER])
+	FourthNearest([0.0.BEHOLDER])
+	FifthNearest([0.0.BEHOLDER])
+TARGET=VillainsInOrder
+	[ENEMY]
+	SecondNearest([ENEMY])
+	ThirdNearest([ENEMY])
+	FourthNearest([ENEMY])
+	FifthNearest([ENEMY])
+TARGET=HumanoidVillains
+	[ENEMY.HUMANOID]
+	SecondNearest([ENEMY.HUMANOID])
+	ThirdNearest([ENEMY.HUMANOID])
+	FourthNearest([ENEMY.HUMANOID])
+	FifthNearest([ENEMY.HUMANOID])
+TARGET=Celestials
+	[GOODCUTOFF.0.0.0.182]
+TARGET=PCMages
+	[PC.0.0.MAGE_ALL]
+	SecondNearest([PC.0.0.MAGE_ALL])
+	ThirdNearest([PC.0.0.MAGE_ALL])
+	[PC.0.0.BARD]
+TARGET=PCFighters
+	[PC.0.0.FIGHTER_ALL]
+	SecondNearest([PC.0.0.FIGHTER_ALL])
+	[PC.0.0.PALADIN]
+	SecondNearest([PC.0.0.PALADIN])
+	[PC.0.0.RANGER_ALL]
+	SecondNearest([PC.0.0.RANGER_ALL])
+TRIGGER=DirectDamageSafe
+       /* blank */
+TRIGGER=NotUndead
+	!General(Myself,UNDEAD)
+	!Class(Myself,SKELETON_WARRIOR)
+TRIGGER=Imprisonment
+	!CheckSpellState(scstarget,STATE_ENRAGED)
+TRIGGER=ProtectionFromMagicEnergy
+                CheckStatGT(scstarget,0,PROTECTION_FROM_MAGIC_ENERGY)
+TRIGGER=PriorityBreach
+	CheckSpellState(scstarget,PRIORITY_BREACH)
+TRIGGER=ResistMagicTarget
+	!CheckStatLT(scstarget,40,RESISTMAGIC)
+TRIGGER=SpellProtectionTarget
+	CheckSpellState(scstarget,BUFF_PRO_SPELLS)
+TRIGGER=SpellShieldTarget
+                CheckStatGT(scstarget,0,WIZARD_SPELL_SHIELD)
+TRIGGER=AvoidDispel
+		!StateCheck(Player1,STATE_DISABLED)
+		!CheckStatGT(Player1,0,CLERIC_INSECT_PLAGUE)
+		!Allegiance(Player1,ENEMY)
+		!StateCheck(Player2,STATE_DISABLED)
+		!CheckStatGT(Player2,0,CLERIC_INSECT_PLAGUE)
+		!Allegiance(Player2,ENEMY)
+		!StateCheck(Player3,STATE_DISABLED)
+		!CheckStatGT(Player3,0,CLERIC_INSECT_PLAGUE)
+		!Allegiance(Player3,ENEMY)
+		!StateCheck(Player4,STATE_DISABLED)
+		!CheckStatGT(Player4,0,CLERIC_INSECT_PLAGUE)
+		!Allegiance(Player4,ENEMY)
+		!StateCheck(Player5,STATE_DISABLED)
+		!CheckStatGT(Player5,0,CLERIC_INSECT_PLAGUE)
+		!Allegiance(Player5,ENEMY)
+		!StateCheck(Player6,STATE_DISABLED)
+		!CheckStatGT(Player6,0,CLERIC_INSECT_PLAGUE)
+		!Allegiance(Player6,ENEMY)
+TRIGGER=AvoidDispelIgnoreInsects
+		!StateCheck(Player1,STATE_DISABLED)
+		!Allegiance(Player1,ENEMY)
+		!StateCheck(Player2,STATE_DISABLED)
+		!Allegiance(Player2,ENEMY)
+		!StateCheck(Player3,STATE_DISABLED)
+		!Allegiance(Player3,ENEMY)
+		!StateCheck(Player4,STATE_DISABLED)
+		!Allegiance(Player4,ENEMY)
+		!StateCheck(Player5,STATE_DISABLED)
+		!Allegiance(Player5,ENEMY)
+		!StateCheck(Player6,STATE_DISABLED)
+		!Allegiance(Player6,ENEMY)
+TRIGGER=AvoidDispellingMalison
+                !CheckStatGT(Player1,0,WIZARD_GREATER_MALISON)
+                !CheckStatGT(Player2,0,WIZARD_GREATER_MALISON)
+                !CheckStatGT(Player3,0,WIZARD_GREATER_MALISON)
+                !CheckStatGT(Player4,0,WIZARD_GREATER_MALISON)
+                !CheckStatGT(Player5,0,WIZARD_GREATER_MALISON)
+                !CheckStatGT(Player6,0,WIZARD_GREATER_MALISON)
+TRIGGER=SpellTrap
+             CheckStat(scstarget,1,WIZARD_SPELL_TRAP)
+TRIGGER=SpellImmunity
+             CheckStatGT(scstarget,0,WIZARD_SPELL_IMMUNITY)
+TRIGGER=BreachTarget
+	OR(4)
+	CheckSpellState(scstarget,BUFF_PRO_WEAPONS)
+	CheckSpellState(scstarget,BUFF_PRO_DAMAGE)
+	CheckSpellState(scstarget,BUFF_ENHANCEMENT)
+	CheckSpellState(scstarget,BUFF_PRO_EFFECT)
+TRIGGER=MalisonSafe
+           !CheckStatGT(Player1,0,WIZARD_GREATER_MALISON)
+           !CheckStatGT(Player2,0,WIZARD_GREATER_MALISON)
+           !CheckStatGT(Player3,0,WIZARD_GREATER_MALISON)
+           !CheckStatGT(Player4,0,WIZARD_GREATER_MALISON)
+           !CheckStatGT(Player5,0,WIZARD_GREATER_MALISON)
+           !CheckStatGT(Player6,0,WIZARD_GREATER_MALISON)
+TRIGGER=ILackSpellTurning
+	!CheckStatGT(Myself,0,WIZARD_SPELL_TURNING)
+	!CheckStatGT(Myself,0,WIZARD_SPELL_TRAP)
+	!CheckStatGT(Myself,0,WIZARD_SPELL_DEFLECTION)
+TRIGGER=ILackStoneskin
+	!CheckStatGT(Myself,0,STONESKINS)
+TRIGGER=ILackImprovedHaste
+        !CheckStatGT(Myself,0,IMPROVEDHASTE)
+TRIGGER=ILackRighteousMagic
+	!CheckStatGT(Myself,0,SCRIPTINGSTATE6)
+TRIGGER=ILackHolyMight
+	!CheckStatGT(Myself,0,SCRIPTINGSTATE6)
+TRIGGER=StoneskinFailing
+	!CheckStatGT(Myself,1,STONESKINS)
+TRIGGER=ILackSpellProtection
+	!CheckStatGT(Myself,0,WIZARD_SPELL_TURNING)
+	!CheckStatGT(Myself,0,WIZARD_SPELL_TRAP)
+	!CheckStatGT(Myself,0,WIZARD_SPELL_DEFLECTION)
+TRIGGER=ILackWeaponProtection
+        !CheckStatGT(Myself,0,PROTECTION_FROM_MAGIC_WEAPONS)
+TRIGGER=ILackDefensiveHarmony
+	CheckStat(Myself,0,CLERIC_DEFENSIVE_HARMONY)
+TRIGGER=NotMalisoned
+	!CheckStatGT(scstarget,0,WIZARD_GREATER_MALISON)
+TRIGGER=LowerMRTarget
+        CheckStatGT(scstarget,39,RESISTMAGIC)
+TRIGGER=ProtectionFromMagicScroll
+        CheckSpellState(scstarget,SCROLL_OF_PROTECTION_FROM_MAGIC)
+TRIGGER=TruesightAlreadyCast
+	!CheckStatGT(FourthNearest([ENEMY]),0,TRUE_SIGHT)
+	!CheckStatGT(ThirdNearest([ENEMY]),0,TRUE_SIGHT)
+	!CheckStatGT(SecondNearest([ENEMY]),0,TRUE_SIGHT)
+	!CheckStatGT([ENEMY],0,TRUE_SIGHT)
+	!CheckStatGT(Myself,0,TRUE_SIGHT)
+TRIGGER=IllusionTarget
+	OR(4)
+		StateCheck(scstarget,STATE_MIRRORIMAGE)
+		Gender(scstarget,ILLUSIONARY)
+		StateCheck(scstarget,STATE_IMPROVEDINVISIBILITY)
+		StateCheck(scstarget,STATE_INVISIBLE)
+TRIGGER=SpellDeflectionBruteForce
+       !CheckStat(scstarget,0,WIZARD_SPELL_DEFLECTION)
+TRIGGER=SpellTurningBruteForce
+          OR(2)
+              CheckStatGT(scstarget,0,WIZARD_SPELL_DEFLECTION)
+              CheckStatGT(scstarget,0,WIZARD_SPELL_TURNING)
+TRIGGER=Domination
+        !CheckStatGT(scstarget,0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckSpellState(scstarget,STATE_ENRAGED)
+TRIGGER=ChaoticCommands
+        !CheckStatGT(scstarget,0,CLERIC_CHAOTIC_COMMANDS)
+TRIGGER=DeathWard
+   CheckStat(scstarget,0,SCRIPTINGSTATE2)
+TRIGGER=ILackBladeBarrier
+        !CheckStatGT(Myself,0,CLERIC_BLADE_BARRIER)
+TRIGGER=ProtectionFromMagicWeapons
+	!CheckSpellState(scstarget,PROTECTION_FROM_MAGICAL_WEAPONS)
+TRIGGER=BeholderNeedingHelp
+	OR(4)
+		StateCheck(scstarget,STATE_BLIND)
+		StateCheck(scstarget,STATE_CONFUSED)
+		StateCheck(scstarget,STATE_CHARMED)
+		CheckStatGT(scstarget,0,CLERIC_INSECT_PLAGUE)
+	Race(scstarget,BEHOLDER)
+TRIGGER=Balduran
+	OR(2)
+		!GlobalTimerExpired("SeeBounce","LOCALS")
+		!HasItem("wa2shiel",scstarget)
+TRIGGER=BeholderEyestalkDefences
+	OR(4)
+		CheckStatGT(scstarget,0,CLERIC_PHYSICAL_MIRROR)
+		CheckStatGT(scstarget,0,CLERIC_CHAOTIC_COMMANDS)
+		CheckStatGT(scstarget,0,WIZARD_PROTECTION_FROM_PETRIFICATION)
+		CheckStatGT(scstarget,0,SCRIPTINGSTATE2)
+TRIGGER=BeholderAntimagicTarget
+	OR(8)
+		CheckStatGT(scstarget,0,STONESKINS)
+		CheckStatGT(scstarget,0,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+		StateCheck(scstarget,STATE_INVISIBLE)
+		StateCheck(scstarget,STATE_IMPROVEDINVISIBILITY)
+		StateCheck(scstarget,STATE_BLESS)
+		StateCheck(scstarget,STATE_CHANT)
+		StateCheck(scstarget,STATE_HASTED)
+		StateCheck(scstarget,STATE_MIRRORIMAGE)
+TRIGGER=HiveMotherAntimagicTarget
+	OR(12)
+		CheckStatGT(scstarget,0,STONESKINS)
+		CheckStatGT(scstarget,0,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+		CheckStatGT(scstarget,0,MINORGLOBE)
+		StateCheck(scstarget,STATE_INVISIBLE)
+		StateCheck(scstarget,STATE_IMPROVEDINVISIBILITY)
+		StateCheck(scstarget,STATE_BLESS)
+		StateCheck(scstarget,STATE_CHANT)
+		StateCheck(scstarget,STATE_HASTED)
+		StateCheck(scstarget,STATE_MIRRORIMAGE)
+		CheckStatGT(scstarget,0,WIZARD_SPELL_TURNING)
+		CheckStatGT(scstarget,0,WIZARD_SPELL_DEFLECTION)
+		CheckStatGT(scstarget,0,WIZARD_SPELL_TRAP)
+TRIGGER=Doomed
+	!CheckSpellState(Myself,DOOM)
+TRIGGER=IAmNotRaging
+	!CheckSpellState(Myself,STATE_ENRAGED)
+TRIGGER=ILackKai
+	!CheckSpellState(Myself,KENSAI_KIA)
+TRIGGER=ILackGreaterWhirlwind
+	!CheckStat(Myself,5,SCRIPTINGSTATE4)
+TRIGGER=ILackWhirlwind
+	!CheckStatGT(Myself,3,SCRIPTINGSTATE4)
+TRIGGER=ILackSmite
+	!CheckStat(Myself,5,SCRIPTINGSTATE4)
+TRIGGER=ILackPrecisionStrike
+	!CheckStat(Myself,3,SCRIPTINGSTATE4)
+	!CheckStat(Myself,5,SCRIPTINGSTATE4)
+TRIGGER=ILackPowerAttack
+	!CheckStat(Myself,2,SCRIPTINGSTATE4)
+TRIGGER=ILackAssassination
+	!CheckStat(Myself,4,SCRIPTINGSTATE4)
+TRIGGER=ILackPoison
+	!CheckSpellState(Myself,POISON_WEAPON)
+TRIGGER=ILackQuiveringPalm
+	!CheckStatGT(Myself,0,SCRIPTINGSTATE4)
+TRIGGER=ILackFireShieldRed
+	!CheckSpellState(Myself,RED_FIRESHIELD)
+TRIGGER=ILackShield
+	!CheckSpellState(Myself,WIZARD_SHIELD)
+TRIGGER=ILackCalledShot
+	!CheckSpellState(Myself,ARCHER_CALL_SHOT)
+TRIGGER=PoisonOrInvisible
+	OR(2)
+            StateCheck(Myself,STATE_INVISIBLE)
+	    CheckSpellState(Myself,POISON_WEAPON)
+TRIGGER=NoInsects
+	!CheckStatGT(scstarget,0,CLERIC_INSECT_PLAGUE)
+TRIGGER=SpellProtectionTargetSpellThrust
+        CheckSpellState(scstarget,PRO_SPELLS_LEVEL_FIVE_MINUS)
+	!CheckStatGT(scstarget,0,MINORGLOBE)
+TRIGGER=SpellProtectionTargetSecretWord
+	OR(2)
+	     CheckSpellState(scstarget,PRO_SPELLS_LEVEL_FIVE_MINUS)
+	     CheckSpellState(scstarget,PRO_SPELLS_LEVEL_SIX_SEVEN_EIGHT)
+TRIGGER=SpellProtectionTargetPierceMagic
+	OR(3)
+		CheckStatGT(scstarget,0,WIZARD_SPELL_TURNING)
+		CheckStatGT(scstarget,0,WIZARD_SPELL_DEFLECTION)
+		CheckStatGT(scstarget,0,MINORGLOBE)
+TRIGGER=Imprison
+	!CheckSpellState(scstarget,STATE_ENRAGED)
+TRIGGER=AoEFireball
+        NextTriggerObject(scstarget)
+        Range(NearestAllyOf(Myself),15)
+        NextTriggerObject(scstarget)
+        OR(3)
+           !Range(NearestEnemyOfType([0.HUMANOID]),22)
+           CheckStatGT(NearestEnemyOfType([0.HUMANOID]),59,RESISTFIRE)
+           CheckStatGT(NearestEnemyOfType([0.HUMANOID]),0,MINORGLOBE)
+TRIGGER=AoEFriendly
+        NextTriggerObject(scstarget)
+        Range(NearestAllyOf(Myself),15)
+TRIGGER=AoEDisabled
+        !StateCheck(scstarget,STATE_DISABLED)
+        NextTriggerObject(scstarget)
+        Range(NearestAllyOf(Myself),15)
+        NextTriggerObject(scstarget)
+        OR(2)
+          !StateCheck(NearestAllyOf(Myself),STATE_DISABLED)
+          !StateCheck(SecondNearestAllyOf(Myself),STATE_DISABLED)
+        NextTriggerObject(scstarget)
+        OR(2)
+          !StateCheck(NearestAllyOf(Myself),STATE_DISABLED)
+          Range(SecondNearestAllyOf(Myself),15)
+TRIGGER=AoEHelpless
+        !StateCheck(scstarget,STATE_HELPLESS)
+        NextTriggerObject(scstarget)
+        Range(NearestAllyOf(Myself),15)
+        NextTriggerObject(scstarget)
+        OR(2)
+          !StateCheck(NearestAllyOf(Myself),STATE_HELPLESS)
+          !StateCheck(SecondNearestAllyOf(Myself),STATE_HELPLESS)
+        NextTriggerObject(scstarget)
+        OR(2)
+          !StateCheck(NearestAllyOf(Myself),STATE_HELPLESS)
+          Range(SecondNearestAllyOf(Myself),15)
+
+
+
