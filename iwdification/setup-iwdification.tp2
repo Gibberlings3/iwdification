@@ -1,7 +1,7 @@
 BACKUP ~iwdification/backup~ // location to store files for uninstall purposes
 SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=185~ 
 
-VERSION ~Beta 5~
+VERSION ~Beta 6~
 
 README ~iwdification/readme-iwdification-%LANGUAGE%.html~ ~iwdification/readme-iwdification.html~
 

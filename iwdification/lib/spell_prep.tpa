@@ -19,7 +19,7 @@ OUTER_SET anim_skeleton_fiend = 60192
 OUTER_SET anim_wwolf = 31491
 */
 
-ACTION_IF ee_game AND !VARIABLE_IS_SET anim_btroll BEGIN // don't repeat if you don't have to
+ACTION_IF ee_game BEGIN // don't repeat if you don't have to
 
   OUTER_SET anim_beetle    = 57888 // beetle
   OUTER_SET anim_btroll    = 57520 // iwd blue troll
