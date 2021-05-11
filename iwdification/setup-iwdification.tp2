@@ -1111,7 +1111,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_CONJURE_FIRE_ELEMENTAL~)
     SAY 0x54 @3191
     LPF cd_scroll INT_VAR unusable1 = (BIT0 + BIT3) target_hdr = 4 range = 20 opcode = 148 target_eff = 1 price = 1500 STR_VAR spell = EVAL ~%current_spell_res%~ END
 
-  LAF cd_animation STR_VAR code = 5038 END // 57932 MELF elemental_fire_iwd
+  LAF cd_animation STR_VAR code = e24c END // 57932 MELF elemental_fire_iwd
   COPY ~iwdification/cre/cdi8fire.cre~ ~override~
     SAY 0x08 @3192
     SAY 0x0c @3192
@@ -1163,7 +1163,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_CONJURE_EARTH_ELEMENTAL~
     SAY 0x54 @3201
     LPF cd_scroll INT_VAR unusable1 = (BIT0 + BIT3) target_hdr = 4 range = 20 opcode = 148 target_eff = 1 price = 1500 STR_VAR spell = EVAL ~%current_spell_res%~ END
 
-  LAF cd_animation STR_VAR code = 5037 END // 57931 MELE elemental_earth_iwd
+  LAF cd_animation STR_VAR code = e24b END // 57931 MELE elemental_earth_iwd
   COPY ~iwdification/cre/cdi8erth.cre~ ~override~
     SAY 0x08 @3202
     SAY 0x0c @3202
@@ -1214,7 +1214,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_CONJURE_WATER_ELEMENTAL~
     SAY 0x54 @3221
     LPF cd_scroll INT_VAR unusable1 = BIT0 + BIT3 target_hdr = 4 range = 20 opcode = 148 target_eff = 1 price = 1500 STR_VAR spell = EVAL ~%current_spell_res%~ END
 
-  LAF cd_animation STR_VAR code = 5039 END // 57933 MELW elemental_water
+  LAF cd_animation STR_VAR code = e24d END // 57933 MELW elemental_water
   COPY ~iwdification/cre/cdi8watr.cre~ ~override~
     SAY 0x08 @3222
     SAY 0x0c @3222
@@ -1431,9 +1431,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_MONSTER_SUMMONING_4~) OR
     COPY ~iwdification/cre/cdi4yeti.cre~ ~override~
       SAY 0x08 @3252
       SAY 0x0c @3252
-	  PATCH_IF !ee_game BEGIN
-	    WRITE_SHORT 0x28 21131
-	  END
+	  WRITE_SHORT 0x28 anim_yeti
 
   END
 
