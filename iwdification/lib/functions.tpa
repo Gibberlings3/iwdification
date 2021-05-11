@@ -141,7 +141,15 @@ DEFINE_ACTION_FUNCTION cd_new_portrait_icon
   
     APPEND ~statdesc.2da~ ~%icon% %string% %bam_file%~
 
-  END
+  END ELSE BEGIN
+
+    COPY_EXISTING ~statdesc.2da~ ~override~
+      COUNT_2DA_ROWS 2 count
+      READ_2DA_ENTRY (count - 1) 0 2 icon
+      SET icon += 1
+  
+    APPEND ~statdesc.2da~ ~%icon% %string%~
+  END	
 
 END
 

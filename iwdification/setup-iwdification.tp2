@@ -1,7 +1,7 @@
 BACKUP ~iwdification/backup~ // location to store files for uninstall purposes
 SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=185~ 
 
-VERSION ~Beta 6~
+VERSION ~Beta 6 SD & TK rev 1~
 
 README ~iwdification/readme-iwdification-%LANGUAGE%.html~ ~iwdification/readme-iwdification.html~
 
@@ -135,6 +135,10 @@ COPY_EXISTING ~randcolr.2da~ ~override~
 BEGIN @3000 DESIGNATED 30
 
 INCLUDE ~iwdification/lib/spell_prep.tpa~
+ACTION_IF !ee_game AND NOT MOD_IS_INSTALLED ~setup-IWDIFICATION.tp2~ ~40~ BEGIN
+  COPY ~iwdification/bam/STATES.bam~ ~override~ //introdiuce new portraits icon with ref if arcane spell pack is first
+	 ~iwdification/bam/STATES.bam~ ~override/STATES2.bam~
+END
 
 /////                                                  \\\\\
 ///// WIZARD_EMOTION_HOPELESSNESS                      \\\\\
@@ -351,6 +355,8 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_SNILLOCS_SNOWBALL_SWARM~
   
   END
 
+  OUTER_SET $arcane_aoe_spell(~WIZARD_SNILLOCS_SNOWBALL_SWARM~)=1
+
 END
 
 /////                                                  \\\\\
@@ -410,6 +416,7 @@ ACTION_IF ((ee_game OR tobex_game) AND (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WI
       LPF ALTER_EFFECT STR_VAR match_resource = cdia225 resource = EVAL ~%DEST_RES%~ END
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 185 parameter2 = icon END
     END ELSE BEGIN
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 185 parameter2 = icon END
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
       LPF DELETE_EFFECT INT_VAR match_opcode = 328 END
       LPF CLONE_EFFECT INT_VAR match_opcode = 15 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%DEST_RES%~ END
@@ -521,7 +528,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_BELTYNS_BURNING_BLOOD~) 
       LPF ALTER_EFFECT STR_VAR match_resource = cdia422 resource = EVAL ~%DEST_RES%~ END
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 66 parameter2 = icon END
     END ELSE BEGIN
-      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 66 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 66 parameter2 = icon END
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
       LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  9 opcode = 177 parameter1 = 145 parameter2 = 4 STR_VAR resource = cdixa422 END // race = elemental
       LPF CLONE_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 55 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdixa422 END // race = golem
@@ -646,7 +653,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_EMOTION_COURAGE~) OR ove
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 187 parameter2 = icon END
     END ELSE BEGIN
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
-      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 187 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 187 parameter2 = icon END
       LPF CLONE_EFFECT INT_VAR match_opcode = 54 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%DEST_RES%~ END
     END
 
@@ -700,6 +707,8 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_EMOTION_FEAR~) OR overri
        ~iwdification/wav/cdiee05.wav~  ~override~
        ~iwdification/wav/cdiem05.wav~  ~override~
 
+  OUTER_SET $arcane_aoe_spell(~WIZARD_EMOTION_FEAR~)=1
+
 END
 
 /////                                                  \\\\\
@@ -722,7 +731,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_EMOTION_HOPE~) OR overri
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 186 parameter2 = icon END
       LPF ALTER_EFFECT STR_VAR match_resource = cdia429 resource = EVAL ~%DEST_RES%~ END
     END ELSE BEGIN
-      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 186 parameter2 = 22 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 186 parameter2 = icon END
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
       LPF CLONE_EFFECT INT_VAR match_opcode = 54 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%DEST_RES%~ END
     END
@@ -751,9 +760,12 @@ ACTION_IF (ee_game AND (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_MORDENKAINE
 
   ADD_PROJECTILE ~iwdification/pro/cdimfm.pro~
   ADD_PROJECTILE ~iwdification/pro/cdimfm2.pro~
+  COPY_EXISTING ~cdimfm2.pro~ ~override~
+	WRITE_BYTE 0x0a 20		
+	WRITE_LONG 0x2c BIT5 + BIT10
 
   // ADD_PROJECTILE won't add multiple versions of the same projectile, but it's needed for MFM's special projectile chain - do it manually
-  OUTER_FOR (index = (cdimfm2 + 1) ; index < (cdimfm2 + 10) ; ++index) BEGIN
+  OUTER_FOR (index = (cdimfm2) ; index < (cdimfm2 + 10) ; ++index) BEGIN
   
     APPEND ~projectl.ids~ ~%index% cdimfm2~
   
@@ -823,6 +835,8 @@ ACTION_IF (ee_game AND (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_SHOUT~) OR 
        ~iwdification/wav/cdiem100.wav~ ~override~
        ~iwdification/wav/cditra08.wav~ ~override~
 
+  OUTER_SET $arcane_aoe_spell(~WIZARD_SHOUT~)=1
+
 END
 
 /////                                                  \\\\\
@@ -887,7 +901,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_SHROUD_OF_FLAME~) OR ove
       LPF ALTER_EFFECT INT_VAR match_opcode = 333 STR_VAR resource = cdia524b END
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 94 parameter2 = icon END
     END ELSE BEGIN
-      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 94 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 94 parameter2 = icon END
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
       LPF DELETE_EFFECT INT_VAR match_opcode = 328 END
       LPF CD_CONVERT_333 STR_VAR 333spell = cdia524b END
@@ -1097,7 +1111,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_CONJURE_FIRE_ELEMENTAL~)
     SAY 0x54 @3191
     LPF cd_scroll INT_VAR unusable1 = (BIT0 + BIT3) target_hdr = 4 range = 20 opcode = 148 target_eff = 1 price = 1500 STR_VAR spell = EVAL ~%current_spell_res%~ END
 
-  LAF cd_animation STR_VAR code = e24c END // 57932 MELF elemental_fire_iwd
+  LAF cd_animation STR_VAR code = 5038 END // 57932 MELF elemental_fire_iwd
   COPY ~iwdification/cre/cdi8fire.cre~ ~override~
     SAY 0x08 @3192
     SAY 0x0c @3192
@@ -1149,7 +1163,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_CONJURE_EARTH_ELEMENTAL~
     SAY 0x54 @3201
     LPF cd_scroll INT_VAR unusable1 = (BIT0 + BIT3) target_hdr = 4 range = 20 opcode = 148 target_eff = 1 price = 1500 STR_VAR spell = EVAL ~%current_spell_res%~ END
 
-  LAF cd_animation STR_VAR code = e24b END // 57931 MELE elemental_earth_iwd
+  LAF cd_animation STR_VAR code = 5037 END // 57931 MELE elemental_earth_iwd
   COPY ~iwdification/cre/cdi8erth.cre~ ~override~
     SAY 0x08 @3202
     SAY 0x0c @3202
@@ -1200,7 +1214,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_CONJURE_WATER_ELEMENTAL~
     SAY 0x54 @3221
     LPF cd_scroll INT_VAR unusable1 = BIT0 + BIT3 target_hdr = 4 range = 20 opcode = 148 target_eff = 1 price = 1500 STR_VAR spell = EVAL ~%current_spell_res%~ END
 
-  LAF cd_animation STR_VAR code = e24d END // 57933 MELW elemental_water
+  LAF cd_animation STR_VAR code = 5039 END // 57933 MELW elemental_water
   COPY ~iwdification/cre/cdi8watr.cre~ ~override~
     SAY 0x08 @3222
     SAY 0x0c @3222
@@ -1295,7 +1309,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_ANTIMAGIC_SHELL~) OR ove
     PATCH_IF ee_game BEGIN
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 93 parameter2 = icon END
     END ELSE BEGIN
-      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 93 parameter2 = 83 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 93 parameter2 = icon END
     END
 
   COPY ~iwdification/itm/blank.itm~ ~override/cdia610.itm~
@@ -1413,10 +1427,13 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_MONSTER_SUMMONING_4~) OR
 
   ACTION_IF anim_yeti BEGIN // yeti animation (e.g. ee or vanilla bg2 w/ infinity animations)
 
-    LAF cd_animation STR_VAR code = e25d END // 57949 MYET tundra_yeti
+    LAF cd_animation STR_VAR code = e25d END // 21131 MYET tundra_yeti
     COPY ~iwdification/cre/cdi4yeti.cre~ ~override~
       SAY 0x08 @3252
       SAY 0x0c @3252
+	  PATCH_IF !ee_game BEGIN
+	    WRITE_SHORT 0x28 21131
+	  END
 
   END
 
@@ -1640,6 +1657,8 @@ ACTION_IF (ee_game AND (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_SOUL_EATER~
        ~iwdification/wav/cdiarm18.wav~ ~override~
        ~iwdification/wav/cdiem104.wav~ ~override~
 
+  OUTER_SET $arcane_aoe_spell(~WIZARD_SOUL_EATER~)=1
+
 END
 
 /////                                                  \\\\\
@@ -1763,6 +1782,8 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_MALAVONS_RAGE~) OR overr
        ~iwdification/vvc/cdimalrg.vvc~ ~override~
        ~iwdification/vvc/cdimrage.vvc~ ~override~
 
+  OUTER_SET $arcane_aoe_spell(~WIZARD_MALAVONS_RAGE~)=1
+
 END
 
 /////                                                  \\\\\
@@ -1826,6 +1847,8 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_ACID_STORM~) OR override
          ~iwdification/vvc/cdia724z.vvc~ ~override~
 
   END
+
+  OUTER_SET $arcane_aoe_spell(~WIZARD_ACID_STORM~)=1
 
 END
 
@@ -2137,7 +2160,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_MIND_BLANK~) OR override
     PATCH_IF ee_game BEGIN
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 166 parameter2 = icon END
     END ELSE BEGIN
-      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 166 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 166 parameter2 = icon END
     END
 
   COPY ~iwdification/itm/blank.itm~ ~override/cdia802.itm~
@@ -2186,6 +2209,8 @@ ACTION_IF (ee_game AND (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_GREAT_SHOUT
        ~iwdification/bam/cdigshou.bam~ ~override~
        ~iwdification/wav/cdiem101.wav~ ~override~
        ~iwdification/wav/cditra08.wav~ ~override~
+
+  OUTER_SET $arcane_aoe_spell(~WIZARD_GREAT_SHOUT~)=1
 
 END
 
@@ -2240,7 +2265,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_IRON_BODY~) OR override_
       PATCH_FOR_EACH op IN 321 111 174 BEGIN
         LPF DELETE_EFFECT INT_VAR match_opcode = op END
       END
-      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 172 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 172 parameter2 = icon END
       LPF DELETE_EFFECT INT_VAR match_opcode = 1 multi_match = 1 END
       LPF ALTER_EFFECT INT_VAR match_opcode = 318 opcode = 206 parameter1 = 0 END
       LPF ALTER_EFFECT INT_VAR timing = 2 END
@@ -2580,6 +2605,88 @@ COPY_EXISTING ~shop08.sto~  ~override~ // galoomp
   PATCH_IF FILE_EXISTS_IN_GAME cdia533.itm BEGIN ADD_STORE_ITEM ~cdia533~ AFTER ~scrl2f~ #1 #0 #0 ~IDENTIFIED~ #2 END // Conjure water elemental
   BUT_ONLY IF_EXISTS
 
+
+ACTION_IF MOD_IS_INSTALLED ~spell_rev.tp2~ ~55~ BEGIN
+
+ ACTION_PHP_EACH arcane_aoe_spell AS spell_name => r2 BEGIN
+  
+  OUTER_SET spell_num = (IDS_OF_SYMBOL (~spell~ ~%spell_name%~))
+  ACTION_IF spell_num > 0 BEGIN
+	OUTER_SNPRINT 1 spell_type ~%spell_num%~
+	OUTER_SNPRINT (0 - 3) type_num ~%spell_num%~
+	ACTION_IF spell_type = 2 BEGIN
+      OUTER_SPRINT i2 ~spwi%type_num%~
+
+	  OUTER_SET found=0
+	  OUTER_SPRINT letter ~d~
+	  ACTION_FOR_EACH char_check IN d e f g h i j k l m BEGIN
+	    ACTION_IF found=0 BEGIN
+	      ACTION_IF NOT FILE_EXISTS_IN_GAME ~%i2%%char_check%.spl~ BEGIN
+	        OUTER_SET found=1
+	        OUTER_SPRINT letter ~%char_check%~
+	      END
+	    END
+	  END
+
+	  ACTION_IF found && r2 && (FILE_EXISTS_IN_GAME ~%i2%.spl~) BEGIN
+		PRINT ~%i2% is arcane AoE~
+	    COPY_EXISTING ~%i2%.spl~ ~override/%i2%%letter%.spl~ // cloning original into the secondary spell
+	      WRITE_ASCII 0x8 ~~ (8) // clearing out the name
+	      GET_OFFSET_ARRAY headers 0x64 4 0x68 2 0 0 0x28
+	      PHP_EACH headers AS i => r BEGIN
+	        WRITE_SHORT (r+0x0c) 1 // target = creature
+	        WRITE_SHORT (r+0x26) 1 // projectile = none
+	      END
+	    BUT_ONLY
+
+	    COPY_EXISTING ~%i2%.spl~ ~override~        // modifying the original
+	      READ_LONG 0x34  level
+	      READ_LONG 0x64  ab_off
+	      READ_SHORT 0x68 ab_num
+	      READ_LONG 0x6a  ef_off
+	      READ_SHORT 0x70 cast_num // global effects aka casting features
+
+	      total_eff=cast_num
+	      FOR (i=0;i<ab_num;i+=1) BEGIN
+	        READ_SHORT  (ab_off+i*0x28+0x1e) ef_num  // effect number
+	        READ_SHORT  (ab_off+i*0x28+0x20) ef_ind  // effect index
+	        total_eff+=ef_num
+	      END
+
+	      DELETE_BYTES ef_off ((total_eff - 1)*0x30)
+	      DELETE_BYTES ab_off ((ab_num - 1)*0x28)
+	      WRITE_SHORT 0x68 1
+	      WRITE_LONG 0x6a  (ef_off - (ab_num - 1)*0x28)
+	      WRITE_SHORT 0x70 0
+	      WRITE_SHORT (ab_off+0x1e) 1
+	      WRITE_SHORT (ab_off+0x20) 0
+
+      // ability header
+	      WRITE_SHORT (ab_off+0x10) 1 // level required
+
+      // effect
+	      offset=(ef_off - (ab_num - 1)*0x28)
+	      WRITE_SHORT (offset+0x00) 146   // opcode = cast spell on creature
+	      WRITE_BYTE  (offset+0x02) 2     // target = pre-target
+	      WRITE_BYTE  (offset+0x03) level   // power level = spell level
+	      WRITE_LONG  (offset+0x04) 0     // parameter 1 = caster's level
+	      WRITE_LONG  (offset+0x08) 1     // parameter 2 = instant
+	      WRITE_BYTE  (offset+0x0c) 1     // timing mode = permanent
+	      WRITE_ASCII (offset+0x0d) ~~ (5)  // clearing out the space
+	      WRITE_BYTE  (offset+0x12) 100   // probability 1 = 100%
+	      WRITE_BYTE  (offset+0x13) 0     // probability 2 = 0%
+	      WRITE_ASCIIE (offset+0x14) ~%i2%%letter%~ (8) // resource
+	      WRITE_ASCII (offset+0x1c) ~~ (20) // clearing out the space
+	    BUT_ONLY
+    
+	  END
+	END
+  END
+ END // ACTION_PHP_EACH
+
+END
+
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -2591,6 +2698,11 @@ COPY_EXISTING ~shop08.sto~  ~override~ // galoomp
 BEGIN @4000 DESIGNATED 40
 
 INCLUDE ~iwdification/lib/spell_prep.tpa~
+
+ACTION_IF !ee_game AND NOT MOD_IS_INSTALLED ~setup-IWDIFICATION.tp2~ ~30~ BEGIN
+  COPY ~iwdification/bam/STATES3.bam~ ~override/STATES.bam~ //introdiuce new portraits icon with ref if divine spell pack is first
+	 ~iwdification/bam/STATES3.bam~ ~override/STATES2.bam~
+END
 
 /////                                                  \\\\\
 ///// CLERIC_CURSE                                     \\\\\
@@ -2628,6 +2740,8 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_CURSE~) OR override_divi
        ~iwdification/wav/cdiee04.wav~  ~override~
        ~iwdification/wav/cdiep32.wav~  ~override~
        ~iwdification/wav/cdiep99.wav~  ~override~
+
+  OUTER_SET $divine_aoe_spell(~CLERIC_CURSE~)=1
 
 END
 
@@ -2763,14 +2877,23 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_CURE_MODERATE_WOUNDS~) O
        ~iwdification/wav/cdiep26.wav~  ~override~
     
   // add as option to temples that offer cure light wounds
-  OUTER_SET desc = RESOLVE_STR_REF(@4042)
-  APPEND ~speldesc.2da~ ~sppr217 %desc%~
+  OUTER_SET desc = RESOLVE_STR_REF(@4041)
+  APPEND ~speldesc.2da~ ~%current_spell_res% %desc%~
   COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~
     READ_LONG 0x70 cure_off
+	READ_LONG 0x70 cure_off401
     READ_LONG 0x74 cure_num
+	READ_LONG 0x74 cure_num401
     SET insert_cost = 0
+	SET cost_SPPR401 = 0
     SET insert_off = 0
-    FOR (index = 0 ; index < cure_num ; ++index) BEGIN
+    FOR (index1 = 0 ; index1 < cure_num401 ; ++index1) BEGIN
+      READ_ASCII (cure_off401 +        (index1 * 0x0c)) spell401
+        PATCH_IF ("%spell401%" STRING_COMPARE_CASE "sppr401" = 0) BEGIN
+          READ_LONG (cure_off401 + 0x08 + (index1 * 0x0c)) cost_SPPR401
+        END
+    END	
+	FOR (index = 0 ; index < cure_num ; ++index) BEGIN
       READ_ASCII (cure_off +        (index * 0x0c)) spell
       PATCH_IF ("%spell%" STRING_COMPARE_REGEXP "sppr1[0-9][0-9]" = 0) BEGIN
         SET insert_off =  (cure_off +        ((index + 1) * 0x0c))
@@ -2782,7 +2905,11 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_CURE_MODERATE_WOUNDS~) O
     PATCH_IF insert_off AND insert_cost BEGIN
       INSERT_BYTES   (insert_off       ) 0x0c
         WRITE_ASCIIE (insert_off       ) ~%current_spell_res%~ #8
-        WRITE_LONG   (insert_off + 0x08) (insert_cost * 2)
+		PATCH_IF !cost_SPPR401 = 0 BEGIN 
+          WRITE_LONG   (insert_off + 0x08) ((insert_cost + cost_SPPR401) / 2)
+		END ELSE BEGIN
+		  WRITE_LONG   (insert_off + 0x08) (insert_cost * 2)
+		END
       WRITE_LONG 0x74 (THIS + 1)
       PATCH_FOR_EACH off IN 0x2c 0x34 0x4c BEGIN // item, sale, drink offsets
         READ_LONG off val                        // read offset
@@ -2936,7 +3063,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_PRAYER~) OR override_div
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 183 parameter2 = icon END
     END ELSE BEGIN
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
-      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 183 parameter2 = 18 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 183 parameter2 = icon END
       LPF CLONE_EFFECT INT_VAR match_opcode = 54 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = cdid316g END
       LPF CD_CONVERT_9_255 END
     END
@@ -3015,7 +3142,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_EXALTATION~) OR override
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 174 parameter2 = icon END
     END ELSE BEGIN
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
-      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 174 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 174 parameter2 = icon END
       LPF ALTER_EFFECT INT_VAR match_opcode = 324 opcode = 206 target = 1 parameter1 = 0 parameter2 = 0 END // prevent self-cast
     END
 
@@ -3161,6 +3288,8 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_SPIKE_GROWTH~) OR overri
 
   END
 
+  OUTER_SET $divine_aoe_spell(~CLERIC_SPIKE_GROWTH~)=1
+
 END
 
 /////                                                  \\\\\
@@ -3279,7 +3408,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_STORM_SHELL~) OR overrid
     PATCH_IF ee_game BEGIN
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 140 parameter2 = icon END
     END ELSE BEGIN
-      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 140 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 140 parameter2 = icon END
     END
 
   COPY ~iwdification/itm/blankpr.itm~ ~override/cdid327.itm~
@@ -3480,6 +3609,8 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_PRODUCE_FIRE~) OR overri
   
   END
 
+  OUTER_SET $divine_aoe_spell(~CLERIC_PRODUCE_FIRE~)=1
+
 END
 
 /////                                                  \\\\\
@@ -3507,7 +3638,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_STATIC_CHARGE~) OR overr
     END ELSE BEGIN
       LPF ALTER_SPELL_HEADER INT_VAR target = 1 projectile = 1 range = 30 END
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
-      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 42 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 42 parameter2 = icon END
       LPF ALTER_EFFECT INT_VAR target = 2 dicenumber = 0 dicesize = 0 END
       LPF CD_CONVERT_333 STR_VAR 333spell = cdid420b END
     END
@@ -3583,7 +3714,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_RECITATION~) OR override
     PATCH_IF ee_game BEGIN
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 175 parameter2 = icon END
     END ELSE BEGIN
-      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 175 parameter2 = 18 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 175 parameter2 = icon END
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
       LPF CLONE_EFFECT INT_VAR match_opcode = 54 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = cdid421g END
       LPF CD_CONVERT_9_255 END
@@ -3639,9 +3770,9 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_BLOOD_RAGE~) OR override
       LPF DELETE_EFFECT INT_VAR match_opcode = 324 END
       LPF DELETE_EFFECT INT_VAR match_opcode = 328 END
       LPF ALTER_EFFECT INT_VAR match_opcode = 318 opcode = 206 parameter1 = 0 parameter2 = 0 END
-      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 176 parameter2 = 4 END
-      PATCH_FOR_EACH ea IN 0 1 28 29 30 31 126 128 199 200 201 202 254 255 BEGIN // all ea values except charmed, controlled, ally, familiar, pc
-        LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 2 power = 4 parameter1 = ea parameter2 = 2 resist_dispel = 3 duration = 120 insert_point = 0 STR_VAR resource = cdixd422 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 176 parameter2 = icon END
+    PATCH_FOR_EACH ea IN /*0*/ 1 28 29 /*30*/ 31 127 128 /*199 200 201 202 254 255*/   BEGIN // all ea values except charmed, controlled, ally, familiar, pc
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 2 power = 4 parameter1 = ea parameter2 = 2 resist_dispel = 3 duration = 120 insert_point = 0 STR_VAR resource = cdixd422 END
       END
       LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 2 power = 4 parameter1 = 16 parameter2 = 8 resist_dispel = 3 duration = 120 insert_point = 0 STR_VAR resource = cdixd422 END // lawful
     END
@@ -3734,6 +3865,8 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_CLOUD_OF_PESTILENCE~) OR
 
   END
 
+  OUTER_SET $divine_aoe_spell(~CLERIC_CLOUD_OF_PESTILENCE~)=1
+
 END
 
 /////                                                  \\\\\
@@ -3824,6 +3957,8 @@ ACTION_IF (ee_game AND (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_SMASHING_WA
        ~iwdification/wav/cdiep110.wav~ ~override~
        ~iwdification/wav/cditra56.wav~ ~override~
 
+  OUTER_SET $divine_aoe_spell(~CLERIC_SMASHING_WAVE~)=1
+
 END
 
 /////                                                  \\\\\
@@ -3861,6 +3996,8 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_THORN_SPRAY~) OR overrid
       WRITE_BYTE 0x218 0
   
   END
+
+  OUTER_SET $divine_aoe_spell(~CLERIC_THORN_SPRAY~)=1
 
 END
 
@@ -3934,7 +4071,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_RIGHTEOUS_WRATH_OF_THE_F
     PATCH_IF ee_game BEGIN
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 184 parameter2 = icon END
     END ELSE BEGIN // in non-ee, characters will get 00 AND 99 if matching alignment, so need to strip out anything already covered in 99
-      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 184 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 184 parameter2 = icon END
       PATCH_FOR_EACH op IN 321 8 174 215 18 93 BEGIN // cosmetics, sound, fatigue, hp bonus
         LPF DELETE_EFFECT INT_VAR match_opcode = op END
       END
@@ -3949,7 +4086,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_RIGHTEOUS_WRATH_OF_THE_F
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 184 parameter2 = icon END
     END ELSE BEGIN
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
-      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 184 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 184 parameter2 = icon END
       LPF CLONE_EFFECT INT_VAR match_opcode = 54 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = cdirwf99 END
       LPF CD_CONVERT_9_255 END
     END
@@ -4045,6 +4182,8 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_SPIKE_STONES~) OR overri
 
   END
 
+  OUTER_SET $divine_aoe_spell(~CLERIC_SPIKE_STONES~)=1
+
 END
 
 /////                                                  \\\\\
@@ -4063,7 +4202,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_SHIELD_OF_LATHANDER~) OR
       LPF ALTER_EFFECT INT_VAR match_opcode = 324 STR_VAR resource = EVAL ~%DEST_RES%~ END
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 164 parameter2 = icon END
     END ELSE BEGIN
-      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 164 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 164 parameter2 = icon END
       LPF ALTER_EFFECT INT_VAR match_opcode = 324 opcode = 177 parameter1 = 3 parameter2 = 8 STR_VAR resource = cdixd520 END
     END
 
@@ -4174,7 +4313,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_ANIMAL_RAGE~) OR overrid
       LPF ALTER_EFFECT INT_VAR match_opcode = 333 STR_VAR resource = cdid522b END
     END ELSE BEGIN
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
-      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 173 parameter2 = 83 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 173 parameter2 = icon END
       LPF CLONE_EFFECT INT_VAR match_opcode = 33 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%DEST_RES%~ END
       LPF CD_CONVERT_333 STR_VAR 333spell = cdid522b END
       LPF CD_CONVERT_9_255 END
@@ -4232,6 +4371,8 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_MASS_CAUSE_LIGHT_WOUNDS~
 
   END
 
+  OUTER_SET $divine_aoe_spell(~CLERIC_MASS_CAUSE_LIGHT_WOUNDS~)=1
+
 END
 
 /////                                                  \\\\\
@@ -4251,7 +4392,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_ENTROPY_SHIELD~) OR over
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 56 parameter2 = icon END
     END ELSE BEGIN
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
-      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 56 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 56 parameter2 = icon END
       LPF ALTER_EFFECT INT_VAR match_opcode = 318 opcode = 206 END
       LPF CLONE_EFFECT INT_VAR match_opcode = 30 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%DEST_RES%~ END
       // iwdee/bgee/bg2ee/vanilla all match in projectiles until the 1pp slots for EE, so remove 1pp refs for vanilla (EEs all match, fortunately)
@@ -4356,6 +4497,8 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_WHIRLWIND~) OR override_
 
   END
 
+  OUTER_SET $divine_aoe_spell(~CLERIC_WHIRLWIND~)=1
+
 END
 
 /////                                                  \\\\\
@@ -4389,17 +4532,19 @@ ACTION_IF (ee_game AND (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_SPIRITUAL_W
        ~iwdification/vvc/cdiinvoc.vvc~ ~override~
        ~iwdification/wav/cdiep05.wav~  ~override~
 
+  OUTER_SET $divine_aoe_spell(~CLERIC_SPIRITUAL_WRATH~)=1
+
 END
 
 /////                                                  \\\\\
 ///// CLERIC_SYMBOL_OF_PAIN                            \\\\\
 /////                                                  \\\\\
 
-ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_SYMBOL_OF_PAIN~) OR override_divine) BEGIN
+ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_SYMBOL_PAIN~) OR override_divine) BEGIN
 
   LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@4393) STR_VAR bam_file = cdid714d RET icon END
 
-  ADD_SPELL ~iwdification/spl/cdid714.spl~ 1 7 CLERIC_SYMBOL_OF_PAIN
+  ADD_SPELL ~iwdification/spl/cdid714.spl~ 1 7 CLERIC_SYMBOL_PAIN
     SPRINT current_spell_res "%DEST_RES%"
     SAY 0x08 @4390 // name
     SAY 0x50 @4391 // descript
@@ -4432,11 +4577,11 @@ END
 ///// CLERIC_SYMBOL_OF_HOPELESSNESS                    \\\\\
 /////                                                  \\\\\
 
-ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_SYMBOL_OF_HOPELESSNESS~) OR override_divine) BEGIN
+ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_SYMBOL_HOPELESSNESS~) OR override_divine) BEGIN
 
   ADD_PROJECTILE ~iwdification/pro/cdi277.pro~
 
-  ADD_SPELL ~iwdification/spl/cdid716.spl~ 1 7 CLERIC_SYMBOL_OF_HOPELESSNESS
+  ADD_SPELL ~iwdification/spl/cdid716.spl~ 1 7 CLERIC_SYMBOL_HOPELESSNESS
     SPRINT current_spell_res "%DEST_RES%"
     SAY 0x08 @4400 // name
     SAY 0x50 @4401 // descript
@@ -4493,7 +4638,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_IMPERVIOUS_SANCTITY_OF_M
     PATCH_IF ee_game BEGIN
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 170 parameter2 = icon END
     END ELSE BEGIN
-      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 170 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 170 parameter2 = icon END
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
       LPF ALTER_EFFECT INT_VAR match_opcode = 318 opcode = 206 parameter1 = 0 parameter2 = 0 END
     END
@@ -4567,7 +4712,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~CLERIC_GREATER_SHIELD_OF_LATHAN
       LPF ALTER_EFFECT STR_VAR match_resource = cdid735 resource = EVAL ~%DEST_RES%~ END
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 165 parameter2 = icon END
     END ELSE BEGIN
-      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 165 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 165 parameter2 = icon END
       LPF ALTER_EFFECT INT_VAR match_opcode = 324 opcode = 177 parameter1 = 3 parameter2 = 8 STR_VAR resource = cdixd735 END // evil are immune
     END
 
@@ -4784,8 +4929,8 @@ OUTER_SET NUM_d523 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_MASS_CAUSE_LIGHT_WOUNDS~))
 OUTER_SET NUM_d615 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_ENTROPY_SHIELD~)) - 1000)
 OUTER_SET NUM_d617 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_WHIRLWIND~)) - 1000)
 OUTER_SET NUM_d618 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SPIRITUAL_WRATH~)) - 1000)
-OUTER_SET NUM_d714 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SYMBOL_OF_PAIN~)) - 1000)
-OUTER_SET NUM_d716 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SYMBOL_OF_HOPELESSNESS~)) - 1000)
+OUTER_SET NUM_d714 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SYMBOL_PAIN~)) - 1000)
+OUTER_SET NUM_d716 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_SYMBOL_HOPELESSNESS~)) - 1000)
 OUTER_SET NUM_d733 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_IMPERVIOUS_SANCTITY_OF_MIND~)) - 1000)
 OUTER_SET NUM_d734 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_DESTRUCTION~)) - 1000)
 OUTER_SET NUM_d735 = ((IDS_OF_SYMBOL (~spell~ ~CLERIC_GREATER_SHIELD_OF_LATHANDER~)) - 1000)
@@ -4874,6 +5019,87 @@ ACTION_IF MOD_IS_INSTALLED ~IWDIFICATION/SETUP-IWDIFICATION.TP2~ ~30~ THEN BEGIN
 
 END
 
+ACTION_IF MOD_IS_INSTALLED ~spell_rev.tp2~ ~55~ BEGIN
+
+ ACTION_PHP_EACH divine_aoe_spell AS spell_name => r2 BEGIN
+
+  OUTER_SET spell_num = (IDS_OF_SYMBOL (~spell~ ~%spell_name%~))
+  ACTION_IF spell_num > 0 BEGIN
+	OUTER_SNPRINT 1 spell_type ~%spell_num%~
+	OUTER_SNPRINT (0 - 3) type_num ~%spell_num%~
+	ACTION_IF spell_type = 1 BEGIN
+      OUTER_SPRINT i2 ~sppr%type_num%~
+
+	  OUTER_SET found=0
+	  OUTER_SPRINT letter ~d~
+	  ACTION_FOR_EACH char_check IN d e f g h i j k l m BEGIN
+	    ACTION_IF found=0 BEGIN
+	      ACTION_IF NOT FILE_EXISTS_IN_GAME ~%i2%%char_check%.spl~ BEGIN
+	        OUTER_SET found=1
+	        OUTER_SPRINT letter ~%char_check%~
+	      END
+	    END
+	  END
+
+	  ACTION_IF found && r2 && (FILE_EXISTS_IN_GAME ~%i2%.spl~) BEGIN
+		PRINT ~%i2% is divine AoE~
+	    COPY_EXISTING ~%i2%.spl~ ~override/%i2%%letter%.spl~ // cloning original into the secondary spell
+	      WRITE_ASCII 0x8 ~~ (8) // clearing out the name
+	      GET_OFFSET_ARRAY headers 0x64 4 0x68 2 0 0 0x28
+	      PHP_EACH headers AS i => r BEGIN
+	        WRITE_SHORT (r+0x0c) 1 // target = creature
+	        WRITE_SHORT (r+0x26) 1 // projectile = none
+	      END
+	    BUT_ONLY
+
+	    COPY_EXISTING ~%i2%.spl~ ~override~        // modifying the original
+	      READ_LONG 0x34  level
+	      READ_LONG 0x64  ab_off
+	      READ_SHORT 0x68 ab_num
+	      READ_LONG 0x6a  ef_off
+	      READ_SHORT 0x70 cast_num // global effects aka casting features
+
+	      total_eff=cast_num
+	      FOR (i=0;i<ab_num;i+=1) BEGIN
+	        READ_SHORT  (ab_off+i*0x28+0x1e) ef_num  // effect number
+	        READ_SHORT  (ab_off+i*0x28+0x20) ef_ind  // effect index
+	        total_eff+=ef_num
+	      END
+
+	      DELETE_BYTES ef_off ((total_eff - 1)*0x30)
+	      DELETE_BYTES ab_off ((ab_num - 1)*0x28)
+	      WRITE_SHORT 0x68 1
+	      WRITE_LONG 0x6a  (ef_off - (ab_num - 1)*0x28)
+	      WRITE_SHORT 0x70 0
+	      WRITE_SHORT (ab_off+0x1e) 1
+	      WRITE_SHORT (ab_off+0x20) 0
+
+      // ability header
+	      WRITE_SHORT (ab_off+0x10) 1 // level required
+
+      // effect
+	      offset=(ef_off - (ab_num - 1)*0x28)
+	      WRITE_SHORT (offset+0x00) 146   // opcode = cast spell on creature
+	      WRITE_BYTE  (offset+0x02) 2     // target = pre-target
+	      WRITE_BYTE  (offset+0x03) level   // power level = spell level
+	      WRITE_LONG  (offset+0x04) 0     // parameter 1 = caster's level
+	      WRITE_LONG  (offset+0x08) 1     // parameter 2 = instant
+	      WRITE_BYTE  (offset+0x0c) 1     // timing mode = permanent
+	      WRITE_ASCII (offset+0x0d) ~~ (5)  // clearing out the space
+	      WRITE_BYTE  (offset+0x12) 100   // probability 1 = 100%
+	      WRITE_BYTE  (offset+0x13) 0     // probability 2 = 0%
+	      WRITE_ASCIIE (offset+0x14) ~%i2%%letter%~ (8) // resource
+	      WRITE_ASCII (offset+0x1c) ~~ (20) // clearing out the space
+	    BUT_ONLY
+    
+	  END
+	END
+  END
+ END // ACTION_PHP_EACH
+
+END
+
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -4903,6 +5129,8 @@ COPY_EXISTING ~clabba01.2da~ ~override~
 ACTION_IF FILE_EXISTS_IN_GAME luba0.2da THEN BEGIN
 
   COPY_EXISTING ~luba0.2da~ ~override~ // remove enhanced bard song from HLAs
+    REPLACE_TEXTUALLY ~^\([0-9]+[ %TAB%]+AP_RR#BDF03[ %TAB%]+\*[ %TAB%]+\*[ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+\)\*\([ %TAB%]+\*[ %TAB%]+\*\)~
+      ~\1RR#BDF03\2~ // create self-reference, never allowing it to be selected for Rogue Rebalancing
     REPLACE_TEXTUALLY ~^\([0-9]+[ %TAB%]+AP_SPCL920[ %TAB%]+\*[ %TAB%]+\*[ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+\)\*\([ %TAB%]+\*[ %TAB%]+\*\)~
       ~\1SPCL920\2~ // create self-reference, never allowing it to be selected
     PRETTY_PRINT_2DA
@@ -4910,14 +5138,14 @@ ACTION_IF FILE_EXISTS_IN_GAME luba0.2da THEN BEGIN
 END
 
 ADD_PROJECTILE ~iwdification/pro/cdivrnp.pro~ // visual range, non-party for siren's yearning
-
+ACTION_IF ee_game BEGIN
 LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@5002) STR_VAR bam_file = cdibar0 RET cdibarap = icon END
 LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@5005) STR_VAR bam_file = cdibar0 RET cdibarbp = icon END
 LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@5008) STR_VAR bam_file = cdibar0 RET cdibarcp = icon END
 LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@5011) STR_VAR bam_file = cdibar0 RET cdibardp = icon END
 LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@5014) STR_VAR bam_file = cdibar0 RET cdibarep = icon END
 LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@5018) STR_VAR bam_file = cdibar0 RET cdibarfp = icon END
-
+END
 COPY ~iwdification/bam/cdibar0.bam~  ~override~
      ~iwdification/bam/cdibara.bam~  ~override~
      ~iwdification/bam/cdibarb.bam~  ~override~
@@ -4927,9 +5155,9 @@ COPY ~iwdification/bam/cdibar0.bam~  ~override~
      ~iwdification/bam/cdibarf.bam~  ~override~
      ~iwdification/spl/cdibar0.spl~  ~override~
 
-ACTION_IF ee_game BEGIN
+STRING_SET 9562 @5020
 
-  STRING_SET 9562 @5020
+ACTION_IF ee_game BEGIN
 
   COPY ~iwdification/bam/cdibar0.bam~  ~override~
        ~iwdification/spl/cdibare0.spl~ ~override~
