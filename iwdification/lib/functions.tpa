@@ -197,6 +197,7 @@ DEFINE_PATCH_FUNCTION cd_scroll
     price = 54321
   STR_VAR 
     spell = cdnull
+	icon  = EVAL "%DEST_RES%"
   BEGIN
 
   WRITE_LONG  0x1e (THIS | unusable0) // class/alignment flags
@@ -206,14 +207,14 @@ DEFINE_PATCH_FUNCTION cd_scroll
   WRITE_BYTE  0x7e target_hdr         // target: any point
   WRITE_SHORT 0x80 range              // range
 
-  WRITE_ASCIIE 0x3a "%DEST_RES%"
+  WRITE_ASCIIE 0x3a "%icon%"
   WRITE_ASCII  0x41 a #1
-  WRITE_ASCIIE 0x76 "%DEST_RES%"
+  WRITE_ASCIIE 0x76 "%icon%"
   WRITE_ASCII  0x7d a #1
   PATCH_IF (SOURCE_SIZE > 0xda) BEGIN // only for arcane scrolls that have second header for learning
     WRITE_SHORT  0xe2 opcode          // cast-at-point opcode
     WRITE_BYTE   0xe4 target_eff      // target: self
-    WRITE_ASCIIE 0xae "%DEST_RES%"
+    WRITE_ASCIIE 0xae "%icon%"
     WRITE_ASCII  0xb5 a #1
     WRITE_ASCIIE 0xf6 "%spell%" #8
     WRITE_ASCIIE 0x126 "%spell%" #8

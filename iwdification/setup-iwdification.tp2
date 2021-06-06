@@ -1109,7 +1109,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_CONJURE_FIRE_ELEMENTAL~)
   COPY ~iwdification/itm/blank.itm~ ~override/scrl6x.itm~
     SAY 0x0c @3190
     SAY 0x54 @3191
-    LPF cd_scroll INT_VAR unusable1 = (BIT0 + BIT3) target_hdr = 4 range = 20 opcode = 148 target_eff = 1 price = 1500 STR_VAR spell = EVAL ~%current_spell_res%~ END
+    LPF cd_scroll INT_VAR unusable1 = (BIT0 + BIT3) target_hdr = 4 range = 20 opcode = 148 target_eff = 1 price = 1500 STR_VAR spell = EVAL ~%current_spell_res%~ icon = "CDia531" END
 
   LAF cd_animation STR_VAR code = e24c END // 57932 MELF elemental_fire_iwd
   COPY ~iwdification/cre/cdi8fire.cre~ ~override~
@@ -1161,7 +1161,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_CONJURE_EARTH_ELEMENTAL~
   COPY ~iwdification/itm/blank.itm~ ~override/scrl7c.itm~
     SAY 0x0c @3200
     SAY 0x54 @3201
-    LPF cd_scroll INT_VAR unusable1 = (BIT0 + BIT3) target_hdr = 4 range = 20 opcode = 148 target_eff = 1 price = 1500 STR_VAR spell = EVAL ~%current_spell_res%~ END
+    LPF cd_scroll INT_VAR unusable1 = (BIT0 + BIT3) target_hdr = 4 range = 20 opcode = 148 target_eff = 1 price = 1500 STR_VAR spell = EVAL ~%current_spell_res%~ icon = "CDia532" END
 
   LAF cd_animation STR_VAR code = e24b END // 57931 MELE elemental_earth_iwd
   COPY ~iwdification/cre/cdi8erth.cre~ ~override~
@@ -1212,7 +1212,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_CONJURE_WATER_ELEMENTAL~
   COPY ~iwdification/itm/blank.itm~ ~override/cdia533.itm~
     SAY 0x0c @3220
     SAY 0x54 @3221
-    LPF cd_scroll INT_VAR unusable1 = BIT0 + BIT3 target_hdr = 4 range = 20 opcode = 148 target_eff = 1 price = 1500 STR_VAR spell = EVAL ~%current_spell_res%~ END
+    LPF cd_scroll INT_VAR unusable1 = BIT0 + BIT3 target_hdr = 4 range = 20 opcode = 148 target_eff = 1 price = 1500 STR_VAR spell = EVAL ~%current_spell_res%~ icon = "CDia533" END
 
   LAF cd_animation STR_VAR code = e24d END // 57933 MELW elemental_water
   COPY ~iwdification/cre/cdi8watr.cre~ ~override~
@@ -1267,7 +1267,7 @@ ACTION_IF (!FILE_CONTAINS_EVALUATED(~spell.ids~ ~WIZARD_CONJURE_AIR_ELEMENTAL~) 
   COPY ~iwdification/itm/blank.itm~ ~override/scrl7b.itm~
     SAY 0x0c @3210
     SAY 0x54 @3211
-    LPF cd_scroll INT_VAR unusable1 = (BIT0 + BIT3) target_hdr = 4 range = 20 opcode = 148 target_eff = 1 price = 1500 STR_VAR spell = EVAL ~%current_spell_res%~ END
+    LPF cd_scroll INT_VAR unusable1 = (BIT0 + BIT3) target_hdr = 4 range = 20 opcode = 148 target_eff = 1 price = 1500 STR_VAR spell = EVAL ~%current_spell_res%~ icon = "CDia534" END
 
 //  LAF cd_animation STR_VAR code = 7320 END // 29472 MAIR elemental_air
   COPY ~iwdification/cre/cdi8air.cre~ ~override~
