@@ -178,7 +178,8 @@ END
 /////                                                  \\\\\
 
 // these generally 'clean out' the poly self subspells
-COPY_EXISTING ~bhaal4a.spl~  ~override~ // resurrection
+COPY_EXISTING ~#rdremov.spl~ ~override~ // resurrection subspell (2.6)
+              ~bhaal4a.spl~  ~override~ // resurrection
               ~ohbraise.spl~ ~override~ // nsi
               ~slayerw3.itm~ ~override~ // slater weapon
               ~spja01.spl~   ~override~ // harper's call
@@ -188,10 +189,10 @@ COPY_EXISTING ~bhaal4a.spl~  ~override~ // resurrection
               ~sppr729.spl~  ~override~ // mass raise dead
               ~spwish10.spl~ ~override~ // mass raise dead
   PATCH_IF anim_beetle BEGIN
-    LPF CLONE_EFFECT STR_VAR match_resource = spwi499 resource = cdia480 END // boring beetle
+    LPF CLONE_EFFECT INT_VAR silent = 1 STR_VAR match_resource = spwi499 resource = cdia480 END // boring beetle
   END
-  LPF CLONE_EFFECT STR_VAR match_resource = spwi499 resource = cdia481 END // polar bear
-  LPF CLONE_EFFECT STR_VAR match_resource = spwi499 resource = cdia482 END // winter wolf
+  LPF CLONE_EFFECT INT_VAR silent = 1 STR_VAR match_resource = spwi499 resource = cdia481 END // polar bear
+  LPF CLONE_EFFECT INT_VAR silent = 1 STR_VAR match_resource = spwi499 resource = cdia482 END // winter wolf
   BUT_ONLY IF_EXISTS
 
 // add new forms to poly self
