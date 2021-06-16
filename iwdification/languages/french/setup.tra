@@ -1,7 +1,7 @@
 // this file contains strings only used by the WeiDU installer and does not get converted to UTF-8 for EE games.
 
-@0    = ~Les fonctionnalites de ce composant sont deja installees par un autre mod.~
-@1    = ~Il est necessaire d'utiliser Modmerge avant d'installer des mods pour ce jeu. Consultez le readme pour plus d'informations et pour trouver un lien pour telecharger Modmerge.~
+@998  = ~Les fonctionnalites de ce composant sont deja installees par un autre mod.~
+@999  = ~Il est necessaire d'utiliser Modmerge avant d'installer des mods pour ce jeu. Consultez le readme pour plus d'informations et pour trouver un lien pour telecharger Modmerge.~
 
 @1000 = ~Incantation des sorts style Icewind Dale (Andyr)~
 

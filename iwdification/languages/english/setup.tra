@@ -1,7 +1,7 @@
 // this file contains strings only used by the WeiDU installer and does not get converted to UTF-8 for EE games.
 
-@0    = ~This functionality is already installed by another mod.~
-@1    = ~Modmerge is required before mods can be installed on this game. Check the readme for more information and a link to download Modmerge.~
+@998  = ~This functionality is already installed by another mod.~
+@999  = ~Modmerge is required before mods can be installed on this game. Check the readme for more information and a link to download Modmerge.~
 
 @1000 = ~Icewind Dale Casting Graphics (Andyr)~
 

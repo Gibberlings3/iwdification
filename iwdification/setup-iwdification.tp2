@@ -7,7 +7,7 @@ README ~iwdification/readme-iwdification-%LANGUAGE%.html~ ~iwdification/readme-i
 
 ALWAYS
 
-  ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN FAIL @1 END // Modmerge check
+  ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN FAIL @999 END // Modmerge check
 
   ACTION_IF !VARIABLE_IS_SET ee_game THEN BEGIN
   
@@ -59,7 +59,7 @@ LANGUAGE ~French~ ~french~ ~iwdification/languages/english/setup.tra~        // 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @1000 DESIGNATED 10
-REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~70~ @0
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~70~ @998
 
 ACTION_FOR_EACH file IN cgabjura cgaltera cgconjur cgdivina cgenchan cgillusi cginvoca cgnecrom BEGIN
 
@@ -76,7 +76,7 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @2000 DESIGNATED 20
-REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~100~ @0
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~100~ @998
 
 COPY_EXISTING ~randcolr.2da~ ~override~
   REPLACE_TEXTUALLY ~HairSet1~ ~CD_DELETE_ME HairSet1~
