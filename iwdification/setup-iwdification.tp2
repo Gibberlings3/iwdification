@@ -7,7 +7,7 @@ README ~iwdification/readme-iwdification-%LANGUAGE%.html~ ~iwdification/readme-i
 
 ALWAYS
 
-  ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN FAIL @999 END // Modmerge check
+  ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN FAIL @999 END // DLC Merger check
 
   ACTION_IF !VARIABLE_IS_SET ee_game THEN BEGIN
   
