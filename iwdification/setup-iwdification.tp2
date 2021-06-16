@@ -15,8 +15,6 @@ ALWAYS
 
     OUTER_SET tobex_game = 0
     OUTER_SET ee_game = 0
-    OUTER_SET override_arcane = 1
-    OUTER_SET override_divine = 1
   
     ACTION_IF GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ THEN BEGIN
   
@@ -42,13 +40,13 @@ END
 
 ASK_EVERY_COMPONENT
 
-LANGUAGE ~English~ ~english~ ~iwdification/languages/english/setup.tra~        // installer strings
-                             ~iwdification/languages/english/game_strings.tra~ // strings for the tlk
+LANGUAGE ~English~ ~english~ ~iwdification/languages/en_us/setup.tra~        // installer strings
+                             ~iwdification/languages/en_us/game_strings.tra~ // strings for the tlk
 
-LANGUAGE ~French~ ~french~ ~iwdification/languages/english/setup.tra~        // installer strings
-                           ~iwdification/languages/french/setup.tra~        // installer strings
-                           ~iwdification/languages/english/game_strings.tra~ // strings for the tlk
-                           ~iwdification/languages/french/game_strings.tra~ // strings for the tlk
+LANGUAGE ~French~ ~french~ ~iwdification/languages/en_us/setup.tra~        // installer strings
+                           ~iwdification/languages/fr_fr/setup.tra~        // installer strings
+                           ~iwdification/languages/en_us/game_strings.tra~ // strings for the tlk
+                           ~iwdification/languages/fr_fr/game_strings.tra~ // strings for the tlk
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -5104,8 +5102,6 @@ COPY ~iwdification/bam/cdax2h1i.bam~ ~override~
      ~iwdification/bam/cdax2h3i.bam~ ~override~
      ~iwdification/bam/cdax2h4i.bam~ ~override~
      ~iwdification/bam/cdax2h5i.bam~ ~override~
-     ~iwdification/bam/cdax2h5i.bam~ ~override~
-     ~iwdification/bam/cdax2h5i.bam~ ~override~
      ~iwdification/bam/cdax2h5s.bam~ ~override~
      ~iwdification/bam/cdax2h6i.bam~ ~override~
      ~iwdification/spl/cdax2h5b.spl~ ~override~
@@ -5246,5 +5242,22 @@ ACTION_IF FILE_EXISTS_IN_GAME ~botsmith.bcs~ THEN BEGIN // tob
   
   COPY_EXISTING ~gromg04.cre~ ~override~
     REPLACE_CRE_ITEM ~cdax2h5~ #2 #2 #2 ~NONE~ ~WEAPON1~ EQUIP TWOHANDED // add +4 axe to one of gromnir's bodyguards
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Icewind Dale Casting Graphics                    \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @1000 DESIGNATED 10
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~70~ @998
+
+ACTION_FOR_EACH file IN cgabjura cgaltera cgconjur cgdivina cgenchan cgillusi cginvoca cgnecrom BEGIN
+
+  COPY ~iwdification/bam/%file%.bam~ ~override~
 
 END
