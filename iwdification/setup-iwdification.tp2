@@ -184,7 +184,11 @@ END
 // these generally 'clean out' the poly self subspells
 COPY_EXISTING ~bhaal4a.spl~  ~override~ // resurrection
               ~ohbraise.spl~ ~override~ // nsi
-              ~slayerw3.itm~ ~override~ // slater weapon
+              ~slayerw3.itm~ ~override~ // slayer weapon
+			  ~slayerw2.spl~ ~override~ // slayer transformation (Ascension)
+			  ~slayerw3.spl~ ~override~ // slayer transformation (Ascension)
+			  ~slayerw4.spl~ ~override~ // slayer transformation (Ascension)
+			  ~spin823.spl~ ~override~  // slayer transformation
               ~spja01.spl~   ~override~ // harper's call
               ~sppr504.spl~  ~override~ // raise dead
               ~sppr550.spl~  ~override~ // recall spirit
@@ -219,7 +223,7 @@ COPY ~iwdification/spl/cdia482.spl~ ~override~ // winter wolf
 
 COPY_EXISTING ~cdia481.spl~ ~override~
               ~cdia482.spl~ ~override~
-  PATCH_FOR_EACH res IN spin122 spin123 spin124 spin150 spin151 spin160 spin160 spin160 spin529 spin667 spin718 spinhum spmdslay spwi489 spwi490 spwi491 BEGIN
+  PATCH_FOR_EACH res IN spin122 spin123 spin124 spin150 spin151 spin160 spin529 spin667 spin718 spinhum spmdslay spwi489 spwi490 spwi491 BEGIN
     LPF CLONE_EFFECT INT_VAR match_opcode = 172 STR_VAR match_resource = spin974 resource = EVAL ~%res%~ END
   END
   LPF ALTER_EFFECT INT_VAR match_opcode = 135 opcode = 171 timing = 1 STR_VAR resource = spwi490 END // move polymorph ops to the claws
@@ -258,7 +262,7 @@ ACTION_IF anim_beetle BEGIN
   COPY ~iwdification/spl/cdia480.spl~ ~override~ // boring beetle
     SAY 0x08 @3005
     SAY 0x50 @3006
-    PATCH_FOR_EACH res IN spin122 spin123 spin124 spin150 spin151 spin160 spin160 spin160 spin529 spin667 spin718 spinhum spmdslay spwi489 spwi490 spwi491 BEGIN
+    PATCH_FOR_EACH res IN spin122 spin123 spin124 spin150 spin151 spin160 spin529 spin667 spin718 spinhum spmdslay spwi489 spwi490 spwi491 BEGIN
       LPF CLONE_EFFECT INT_VAR match_opcode = 172 STR_VAR match_resource = spin974 resource = EVAL ~%res%~ END
     END
     LPF ALTER_EFFECT INT_VAR match_opcode = 135 opcode = 171 timing = 1 STR_VAR resource = spwi490 END // move polymorph ops to the claws
@@ -284,6 +288,45 @@ ACTION_IF anim_beetle BEGIN
 
 END
 
+//patch others shapeshifts to prevent bugs
+
+COPY_EXISTING ~spwi493.spl~ ~override~ // Flind
+			  ~spwi494.spl~ ~override~ // Ogre
+			  ~spwi495.spl~ ~override~ // Spider
+			  ~spwi496.spl~ ~override~ // Mustard Jelly
+			  ~spwi497.spl~ ~override~ // Brown Bear
+			  ~spwi498.spl~ ~override~ // Black Bear
+			  ~spwi499.spl~ ~override~ // Wolf
+    PATCH_FOR_EACH res IN spin974 spwi491 spwi490 spwi489 spmdslay spinhum spin718 spin667 spin529 spin160 spin151 spin150 spin124 spin123 spin122 BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 172 target = 1 timing = 1 resist_dispel = 2 STR_VAR resource = EVAL ~%res%~ END
+    END
+    LPF CLONE_EFFECT INT_VAR match_opcode = 172 STR_VAR insert = below match_resource = spin974 resource = EVAL ~%DEST_RES%~ END
+	LPF ALTER_EFFECT INT_VAR match_opcode = 135 opcode = 171 timing = 1 STR_VAR resource = spwi490 END // move polymorph ops to the claws
+    LPF DELETE_EFFECT INT_VAR match_opcode = 144 END // move delete button to claws, too			
+	LPF DELETE_EFFECT INT_VAR match_opcode = 112 END // delete remove Item opcode
+
+COPY_EXISTING ~spwi498.spl~ ~override~ // Black Bear
+	LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = PLYBEAR2 END
+
+COPY_EXISTING ~PLYFLIND.ITM~ ~override~ // Flind
+			  ~PLYSPID.ITM~ ~override~ // Spider
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 144 target = 1 parameter2 = 7 timing = 2 END
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 135 target = 1 timing = 2 STR_VAR resource = EVAL ~%DEST_RES%~ END
+COPY_EXISTING ~PLYJELLY.ITM~ ~override~ // Mustard Jelly
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 144 target = 1 parameter2 = 7 timing = 2 END
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 135 target = 1 timing = 2 STR_VAR resource = JELLMU END
+COPY_EXISTING ~PLYMSTAR.ITM~ ~override~ // Ogre	
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 144 target = 1 parameter2 = 7 timing = 2 END
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 135 target = 1 timing = 2 STR_VAR resource = PLYOGRE END
+COPY_EXISTING ~PLYBEAR1.ITM~ ~override~ // Brown Bear
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 144 target = 1 parameter2 = 7 timing = 2 END
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 135 target = 1 timing = 2 STR_VAR resource = BEARBR END
+COPY_EXISTING ~PLYBEAR1.ITM~ ~override/PLYBEAR2.ITM~ // Black Bear
+    LPF ALTER_EFFECT INT_VAR match_opcode = 135 STR_VAR resource = BEARBL END
+COPY_EXISTING ~PLYWOLF1.ITM~ ~override~ // Wolf	
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 144 target = 1 parameter2 = 7 timing = 2 END
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 135 target = 1 timing = 2 STR_VAR resource = PLYWOLF END
+	
 /////                                                  \\\\\
 ///// WIZARD_EXPEDITIOUS_RETREAT                       \\\\\
 /////                                                  \\\\\
