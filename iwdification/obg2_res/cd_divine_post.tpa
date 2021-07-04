@@ -181,7 +181,7 @@ ACTION_PHP_EACH cd_monster_summoning_script AS file => script BEGIN
     LPF ALTER_CREATURE_ITEM INT_VAR flag_unstealable = 1 flag_undroppable = 1 STR_VAR match_item = all END // summons shouldn't drop items
     BUT_ONLY IF_EXISTS
     
-END  
+END 
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1030,3 +1030,104 @@ opcodes to oBG2 counterparts.
     LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 104 opcode = 177                  parameter2 = 4 STR_VAR resource = EVAL ~%eff%~ END // race = parameter1
   
 END   
+  
+/////                                                  \\\\\
+///// compatibility w/ SR NWN-style Deflection         \\\\\
+/////                                                  \\\\\
+
+// courtesy of subtledoctor
+OUTER_SET $divine_aoe_spell(~CLERIC_CURSE~)=1
+OUTER_SET $divine_aoe_spell(~CLERIC_SPIKE_GROWTH~)=1
+OUTER_SET $divine_aoe_spell(~CLERIC_PRODUCE_FIRE~)=1
+OUTER_SET $divine_aoe_spell(~CLERIC_CLOUD_OF_PESTILENCE~)=1  
+OUTER_SET $divine_aoe_spell(~CLERIC_THORN_SPRAY~)=1   
+OUTER_SET $divine_aoe_spell(~CLERIC_SPIKE_STONES~)=1  
+OUTER_SET $divine_aoe_spell(~CLERIC_MASS_CAUSE_LIGHT_WOUNDS~)=1  
+OUTER_SET $divine_aoe_spell(~CLERIC_WHIRLWIND~)=1     
+
+ACTION_IF enhanced_edition BEGIN  
+   
+  OUTER_SET $divine_aoe_spell(~CLERIC_SMASHING_WAVE~)=1   
+  OUTER_SET $divine_aoe_spell(~CLERIC_SPIRITUAL_WRATH~)=1    
+
+END
+
+ACTION_IF MOD_IS_INSTALLED ~spell_rev.tp2~ ~55~ BEGIN
+
+  ACTION_PHP_EACH divine_aoe_spell AS spell_name => r2 BEGIN
+
+  OUTER_SET spell_num = (IDS_OF_SYMBOL (~spell~ ~%spell_name%~))
+    ACTION_IF spell_num > 0 BEGIN
+      OUTER_SNPRINT 1 spell_type ~%spell_num%~
+      OUTER_SNPRINT (0 - 3) type_num ~%spell_num%~
+      ACTION_IF spell_type = 1 BEGIN
+        OUTER_SPRINT i2 ~sppr%type_num%~
+
+        OUTER_SET found=0
+        OUTER_SPRINT letter ~d~
+        ACTION_FOR_EACH char_check IN d e f g h i j k l m BEGIN
+          ACTION_IF found=0 BEGIN
+            ACTION_IF NOT FILE_EXISTS_IN_GAME ~%i2%%char_check%.spl~ BEGIN
+              OUTER_SET found=1
+              OUTER_SPRINT letter ~%char_check%~
+            END
+          END
+        END
+
+        ACTION_IF found && r2 && (FILE_EXISTS_IN_GAME ~%i2%.spl~) BEGIN
+          PRINT ~%i2% is divine AoE~
+          COPY_EXISTING ~%i2%.spl~ ~override/%i2%%letter%.spl~ // cloning original into the secondary spell
+            WRITE_ASCII 0x8 ~~ (8) // clearing out the name
+            GET_OFFSET_ARRAY headers 0x64 4 0x68 2 0 0 0x28
+            PHP_EACH headers AS i => r BEGIN
+              WRITE_SHORT (r+0x0c) 1 // target = creature
+              WRITE_SHORT (r+0x26) 1 // projectile = none
+            END
+            BUT_ONLY
+
+          COPY_EXISTING ~%i2%.spl~ ~override~        // modifying the original
+            READ_LONG 0x34  level
+            READ_LONG 0x64  ab_off
+            READ_SHORT 0x68 ab_num
+            READ_LONG 0x6a  ef_off
+            READ_SHORT 0x70 cast_num // global effects aka casting features
+
+            total_eff=cast_num
+            FOR (i=0;i<ab_num;i+=1) BEGIN
+              READ_SHORT  (ab_off+i*0x28+0x1e) ef_num  // effect number
+              READ_SHORT  (ab_off+i*0x28+0x20) ef_ind  // effect index
+              total_eff+=ef_num
+            END
+
+            DELETE_BYTES ef_off ((total_eff - 1)*0x30)
+            DELETE_BYTES ab_off ((ab_num - 1)*0x28)
+            WRITE_SHORT 0x68 1
+            WRITE_LONG 0x6a  (ef_off - (ab_num - 1)*0x28)
+            WRITE_SHORT 0x70 0
+            WRITE_SHORT (ab_off+0x1e) 1
+            WRITE_SHORT (ab_off+0x20) 0
+
+            // ability header
+            WRITE_SHORT (ab_off+0x10) 1 // level required
+
+            // effect
+            offset=(ef_off - (ab_num - 1)*0x28)
+            WRITE_SHORT (offset+0x00) 146   // opcode = cast spell on creature
+            WRITE_BYTE  (offset+0x02) 2     // target = pre-target
+            WRITE_BYTE  (offset+0x03) level   // power level = spell level
+            WRITE_LONG  (offset+0x04) 0     // parameter 1 = caster's level
+            WRITE_LONG  (offset+0x08) 1     // parameter 2 = instant
+            WRITE_BYTE  (offset+0x0c) 1     // timing mode = permanent
+            WRITE_ASCII (offset+0x0d) ~~ (5)  // clearing out the space
+            WRITE_BYTE  (offset+0x12) 100   // probability 1 = 100%
+            WRITE_BYTE  (offset+0x13) 0     // probability 2 = 0%
+            WRITE_ASCIIE (offset+0x14) ~%i2%%letter%~ (8) // resource
+            WRITE_ASCII (offset+0x1c) ~~ (20) // clearing out the space
+            BUT_ONLY
+
+        END
+      END
+    END
+  END // ACTION_PHP_EACH
+
+END
