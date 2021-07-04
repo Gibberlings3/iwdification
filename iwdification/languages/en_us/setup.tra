@@ -1,5 +1,6 @@
 // this file contains strings only used by the WeiDU installer and does not get converted to UTF-8 for EE games.
 
+@997  = ~This component is onyl available on EE games~
 @998  = ~This functionality is already installed by another mod.~
 @999  = ~DLC Merger is required before mods can be installed on this game. Check the readme for more information and a link to download DLC Merger.~
 
@@ -14,3 +15,5 @@
 @5000 = ~IWD Bard Song~
 
 @6000 = ~Two Handed Axe Item Pack~
+
+@7000 = ~Allow Elves to be Druids~

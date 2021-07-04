@@ -1,0 +1,128 @@
+// not used in live code, but the ssl base for ogremasu.baf
+
+BEGIN_ACTION_DEFINITION
+	Name(AttackIfEmpty)
+	TRIGGER
+		!StateCheck(scstarget,STATE_INVISIBLE)
+		ActionListEmpty()
+	ACTION
+		RESPONSE #scsprob1
+		EquipMostDamagingMelee()
+		SetGlobal("melee","LOCALS",1)
+		AttackOneRound(scstarget)
+END
+
+BEGIN_ACTION_DEFINITION
+	Name(Spell)
+	TRIGGER
+		!GlobalTimerNotExpired("castspell","LOCALS")
+                HaveSpell(scsargument1)
+		!StateCheck(scstarget,STATE_NOT_TARGETABLE)
+		!CheckStatGT(scstarget,0,SANCTUARY)
+		CheckStatLT(Myself,60,SPELLFAILUREMAGE)
+		!CheckSpellState(scstarget,DO_NOT_TARGET_SPELLS)
+	ACTION
+		RESPONSE #scsprob1
+		SetGlobalTimer("castspell","LOCALS",6)
+		Spell(scstarget,scsargument1)
+END
+
+BEGIN_ACTION_DEFINITION
+	Name(SpellMyself)
+	TRIGGER
+		!GlobalTimerNotExpired("castspell","LOCALS")
+		HaveSpell(scsargument1)
+		CheckStatLT(Myself,60,SPELLFAILUREMAGE)
+	ACTION
+		RESPONSE #scsprob1
+		SetGlobalTimer("castspell","LOCALS",6)
+		Spell(Myself,scsargument1)
+END
+
+BEGIN_ACTION_DEFINITION
+	Name(SpellMarker)
+	TRIGGER
+                !GlobalTimerNotExpired("castspell","LOCALS")
+                HaveSpell(scsargument1)
+		!StateCheck(scstarget,STATE_NOT_TARGETABLE)
+		!CheckStatGT(scstarget,0,SANCTUARY)
+		CheckStatLT(Myself,60,SPELLFAILUREMAGE)
+		!CheckSpellState(scstarget,DO_NOT_TARGET_SPELLS)
+	ACTION
+		RESPONSE #scsprob1
+		SetGlobalTimer("castspell","LOCALS",6)
+		ApplySpellRES("%scsargument2%",scstarget)
+		Spell(scstarget,scsargument1)
+END
+
+IF TRIGGER
+     OR(2)
+	 ActionListEmpty()
+         !Allegiance(Myself,ENEMY)
+THEN DO
+    Action(SpellMyself,WIZARD_GHOST_ARMOR)
+END
+
+IF TRIGGER
+     OR(2)
+	 ActionListEmpty()
+         !Allegiance(Myself,ENEMY)
+    OR(2)
+       Range(NearestEnemyOf(Myself),15)
+       HPPercentLT(Myself,80)
+THEN DO
+    Action(SpellMyself,WIZARD_MIRROR_IMAGE)
+END
+
+IF TRIGGER
+     OR(2)
+	 ActionListEmpty()
+         !Allegiance(Myself,ENEMY)
+     TargetBlock(EnemiesInOrderShort)
+     TriggerBlock(MinorGlobe|Helpless)
+THEN DO
+     Action(Spell,WIZARD_LIGHTNING_BOLT|100|100)
+END
+
+IF TRIGGER
+     OR(2)
+	 ActionListEmpty()
+         !Allegiance(Myself,ENEMY)
+     TargetBlock(EnemiesInOrderShort)
+     Range(scstarget,5)
+THEN DO
+     Action(Spell,WIZARD_BURNING_HANDS|100|100)
+END
+
+IF TRIGGER
+     Allegiance(Myself,ENEMY)
+     TargetBlock(PCSpellcasters)
+     TriggerBlock(MinorGlobe|Helpless|SpellTurn)
+THEN DO
+     Action(Spell,WIZARD_MELF_ACID_ARROW|100|50)
+END
+
+IF TRIGGER
+     ActionListEmpty()
+     !Allegiance(Myself,ENEMY)
+     TargetBlock(EnemiesInOrderShort)
+     TriggerBlock(MinorGlobe|Helpless|SpellTurn)
+THEN DO
+     Action(Spell,WIZARD_MELF_ACID_ARROW|100|50)
+END
+
+IF TRIGGER
+     OR(2)
+	 ActionListEmpty()
+         !Allegiance(Myself,ENEMY)
+     TargetBlock(EnemiesInOrderShort)
+     TriggerBlock(MinorGlobe|Helpless|MagicMissile|SpellTurn)
+     OR(2)
+          !CheckSpellState(scstarget,ITEM_MM)
+          !CheckSpellState(scstarget,ITEM_MM_SEEN)
+THEN DO
+     Action(SpellMarker,WIZARD_MAGIC_MISSILE,ITEM_MM_SEEN|100|50)
+END
+
+
+

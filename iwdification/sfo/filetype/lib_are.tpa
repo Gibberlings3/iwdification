@@ -1,0 +1,1181 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               overarching clone
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_ACTION_FUNCTION clone_area
+    INT_VAR allow_missing=0 silent=0
+    STR_VAR
+           area=""
+           edits=""
+           editstring=""
+    BEGIN
+         LAUNCH_ACTION_FUNCTION clone_template
+                  INT_VAR allow_missing silent
+                  STR_VAR file_list= ~%area%~
+                          file_ext=~ARE~
+                          edits
+                          editstring
+
+         END
+END
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               overarching edit
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_ACTION_FUNCTION edit_area
+    INT_VAR allow_missing=0 silent=0
+    STR_VAR
+           area=""
+           edits=""
+           editstring=""
+    BEGIN
+         LAUNCH_ACTION_FUNCTION edit_template
+                  INT_VAR allow_missing silent
+                  STR_VAR file_list= ~%area%~
+                          file_ext=~ARE~
+                          edits editstring
+         END
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               overarching install
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_ACTION_FUNCTION install_area
+    INT_VAR allow_missing=0 silent=0
+    STR_VAR
+           area=""
+           edits=""
+           editstring=""
+           location=""
+           locbase=""
+           locabs=""
+    BEGIN
+         LAUNCH_ACTION_FUNCTION install_template
+                  INT_VAR allow_missing silent 
+                  STR_VAR file_list=~%area%~
+                          file_ext=~ARE~
+                          edits editstring location locbase locabs
+         END
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               overarching regexp
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_ACTION_FUNCTION edit_all_areas
+    STR_VAR
+           edits=""
+           editstring=""
+    BEGIN
+         LAUNCH_ACTION_FUNCTION regexp_template
+                   STR_VAR       file_ext=~ARE~
+                          edits
+                          editstring
+         END
+END
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               offsets
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+<<<<<<<< area_offsets.2da
+TYPE       offset_loc      offset_length       entrynum_loc  entrynum_length   entry_length
+actor      0x54            4                   0x58          2                 0x110
+trigger    0x5c            4                   0x5a          2                 0xc4
+spawn      0x60            4                   0x64          4                 0xc8
+entrance   0x68            4                   0x6c          4                 0x68
+container  0x70            4                   0x74          2                 0xc0
+item       0x78            4                   0x76          2                 0x14
+vertex     0x7c            4                   0x80          2                 0x4
+ambient    0x84            4                   0x82          2                 0xd4
+variable   0x88            4                   0x8c          4                 0x50
+explored   0xa0            4                   0x9c          4                 0
+door       0xa8            4                   0xa4          4                 0xc8
+animation  0xb0            4                   0xac          4                 0x4c
+tiles      0xb8            4                   0xb4          4                 0
+songs      0xbc            4                   0x0           0                 0
+restspawn  0xc0            4                   0x0           0                 0
+mapnote    0xc4            4                   0xc8          4                 0x34
+projectile 0xcc            4                   0xd0          4                 0x1c
+>>>>>>>>
+OUTER_SPRINT has_secondaries_ARE_trigger ""
+OUTER_SPRINT has_secondaries_ARE_container ""
+OUTER_SPRINT has_secondaries_ARE_door ""
+
+OUTER_SPRINT ~offset_readin_lookup_2da~ ~area_offsets~
+OUTER_SPRINT ~offset_readin_file_ext~ ~ARE~
+LAUNCH_ACTION_MACRO read_in_offsets
+
+OUTER_SET $lookup_ARE_trigger_vertex_ind_loc(0)=0x2c
+OUTER_SET $lookup_ARE_trigger_vertex_ind_length(0)=4
+OUTER_SET $lookup_ARE_trigger_vertex_num_loc(0)=0x2a
+OUTER_SET $lookup_ARE_trigger_vertex_num_length(0)=2
+
+OUTER_SET $lookup_ARE_container_vertex_ind_loc(0)=0x50
+OUTER_SET $lookup_ARE_container_vertex_ind_length(0)=4
+OUTER_SET $lookup_ARE_container_vertex_num_loc(0)=0x54
+OUTER_SET $lookup_ARE_container_vertex_num_length(0)=2
+
+OUTER_SET $lookup_ARE_container_item_ind_loc(0)=0x40
+OUTER_SET $lookup_ARE_container_item_ind_length(0)=4
+OUTER_SET $lookup_ARE_container_item_num_loc(0)=0x44
+OUTER_SET $lookup_ARE_container_item_num_length(0)=4
+
+OUTER_SET $lookup_ARE_door_vertex_ind_loc(0)=0x2c
+OUTER_SET $lookup_ARE_door_vertex_ind_loc(1)=0x34
+OUTER_SET $lookup_ARE_door_vertex_ind_loc(2)=0x48
+OUTER_SET $lookup_ARE_door_vertex_ind_loc(3)=0x50
+OUTER_SET $lookup_ARE_door_vertex_num_loc(0)=0x30
+OUTER_SET $lookup_ARE_door_vertex_num_loc(1)=0x32
+OUTER_SET $lookup_ARE_door_vertex_num_loc(2)=0x4c
+OUTER_SET $lookup_ARE_door_vertex_num_loc(3)=0x4e
+OUTER_FOR (i=0;i<4;i+=1) BEGIN
+   OUTER_SET $lookup_ARE_door_vertex_ind_length("%i%")=4
+   OUTER_SET $lookup_ARE_door_vertex_num_length("%i%")=2
+END
+
+OUTER_SPRINT $ARE_virtual_type_parent(item) container
+OUTER_SPRINT $ARE_virtual_type_child(item) item
+OUTER_SET $ARE_virtual_type_index(item)=0
+
+OUTER_SPRINT $ARE_virtual_type_parent(trigger_vertex) trigger
+OUTER_SPRINT $ARE_virtual_type_child(trigger_vertex) vertex
+OUTER_SET $ARE_virtual_type_index(trigger_vertex)=0
+
+OUTER_SPRINT $ARE_virtual_type_parent(container_vertex) container
+OUTER_SPRINT $ARE_virtual_type_child(container_vertex) vertex
+OUTER_SET $ARE_virtual_type_index(container_vertex)=0
+
+OUTER_SPRINT $ARE_virtual_type_parent(door_vertex_open) door
+OUTER_SPRINT $ARE_virtual_type_child(door_vertex_open) vertex
+OUTER_SET $ARE_virtual_type_index(door_vertex_open)=0
+
+OUTER_SPRINT $ARE_virtual_type_parent(door_vertex_closed) door
+OUTER_SPRINT $ARE_virtual_type_child(door_vertex_closed) vertex
+OUTER_SET $ARE_virtual_type_index(door_vertex_closed)=1
+
+OUTER_SPRINT $ARE_virtual_type_parent(door_vertex_open_impeded) door
+OUTER_SPRINT $ARE_virtual_type_child(door_vertex_open_impeded) vertex
+OUTER_SET $ARE_virtual_type_index(door_vertex_open_impeded)=2
+
+OUTER_SPRINT $ARE_virtual_type_parent(door_vertex_closed_impeded) door
+OUTER_SPRINT $ARE_virtual_type_child(door_vertex_closed_impeded) vertex
+OUTER_SET $ARE_virtual_type_index(door_vertex_closed_impeded)=3
+
+OUTER_SPRINT $ARE_vertex_secondaries_follow(container) trigger
+OUTER_SPRINT $ARE_vertex_secondaries_follow(door) container
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               simple data-field edits - absolute
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY are_fields_absolute BEGIN
+     rain_probability=>~0x4a,SHORT~
+     snow_probability=>~0x4c,SHORT~
+     fog_probability=>~0x4e,SHORT~
+     lightning_probability=>~0x50,SHORT~
+     area_script=>~0x94,ASCII~
+     wed=>~0x8,ASCII~
+     to_north=>~0x18,ASCII~
+     to_east=>~0x24,ASCII~
+     to_west=>~0x3c,ASCII~
+     to_south=>~0x30,ASCII~
+     restmovie_day=>~0xd4,ASCII~
+     restmove_night=>~0xdc,ASCII~
+END
+
+LAUNCH_ACTION_FUNCTION build_simple_data_field_editors STR_VAR lookup_table=are_fields_absolute function_prefix=ARE END
+
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY are_bit_fields_absolute BEGIN
+      outdoor=>~0x48,0~
+      day_night=>~0x48,1~
+      weather=>~0x48,2~
+      city=>~0x48,3~
+      forest=>~0x48,4~
+      dungeon=>~0x48,5~
+      extended_night=>~0x48,6~
+      rest_indoors=>~0x48,7~
+END
+
+LAF build_flag_data_field_editors STR_VAR lookup_table=are_bit_fields_absolute function_prefix=ARE  END
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               simple data-field edits - relative to offsets
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY are_fields BEGIN
+   actorname => ~0x0,ASCII20~
+   actor_name => ~0x0,ASCII20~
+   script_override=>~0x50,ASCII~
+   script_class => ~0x60,ASCII~
+   script_race => ~0x68,ASCII~
+   script_general => ~0x58,ASCII~
+   script_default => ~0x70,ASCII~
+   script_specifics => ~0x78,ASCII~
+   crefile => ~0x80,ASCII~
+   actor_resource => ~0x80,ASCII~
+   actor_x_coord_start => ~0x20,SHORT~
+   actor_y_coord_start => ~0x22,SHORT~
+   actor_x_coord_dest => ~0x24,SHORT~
+   actor_y_coord_dest => ~0x26,SHORT~
+   actor_removal_timer => ~0x38,LONG~
+   dialog => ~0x48,ASCII~
+   door_name=>~0x0,ASCII20~
+   door_id=>~0x20,ASCII~
+   door_icon=>~0x7c,LONG~
+   door_script=>~0x80,ASCII~
+   door_dialog=>~0xb8,ASCII~
+   door_lock_difficulty=>~0x8c,LONG~
+   door_trap_detection_difficulty=>~0x6c,SHORT~
+   door_trap_removal_difficulty=>~0x6e,SHORT~
+   door_is_trapped=>~0x70,SHORT~
+   door_open_bb_left=>~0x38,SHORT~
+   door_open_bb_top=>~0x3a,SHORT~
+   door_open_bb_right=>~0x3c,SHORT~
+   door_open_bb_bottom=>~0x3e,SHORT~ 
+   door_closed_bb_left=>~0x40,SHORT~
+   door_closed_bb_top=>~0x42,SHORT~
+   door_closed_bb_right=>~0x44,SHORT~
+   door_closed_bb_bottom=>~0x46,SHORT~    
+   container_name=>~0x0,ASCII20~
+   container_xloc=>~0x20,SHORT~
+   container_yloc=>~0x22,SHORT~
+   container_type=>~0x24,SHORT~
+   container_lock_difficulty=>~0x26,SHORT~
+   container_trap_detection_difficulty=>~0x2c, SHORT~
+   container_trap_removal_difficulty=>~0x2e, SHORT~
+   container_trapped=>~0x30,SHORT~
+   container_trap_detected=>~0x32,SHORT~
+   container_trap_xloc=>~0x34,SHORT~
+   container_trap_yloc=>~0x36,SHORT~
+   // inaccurate legacy names
+   container_top_left=>~0x38,SHORT~
+   container_top_right=>~0x3a,SHORT~
+   container_bottom_right=>~0x3c,SHORT~
+   container_bottom_left=>~0x3e,SHORT~
+   
+   container_bb_left=>~0x38,SHORT~
+   container_bb_top=>~0x3a,SHORT~
+   container_bb_right=>~0x3c,SHORT~
+   container_bb_bottom=>~0x3e,SHORT~
+   
+   container_script=>~0x48,ASCII~
+   container_key=>~0x78,ASCII~
+   container_lockpick_strref=>~0x84,LONG~
+   entrance_name=>~0x0,ASCII20~
+   entrance_xloc=>~0x20,SHORT~
+   entrance_yloc=>~0x22,SHORT~
+   entrance_orientation=>~0x24,SHORT~
+   trigger_name=>~0x0,ASCII20~
+   destination=>~0x38,ASCII~
+   trigger_type =>~0x20,SHORT~
+   trigger_cursor=>~0x34,LONG~
+   trigger_info=>~0x64,LONG~
+   trigger_script=>~0x7c,ASCII~
+   trigger_dest=>~0x38,ASCII~
+   trigger_entrance=>~0x40,ASCII20~
+   trigger_bbleft=>~0x22,SHORT~
+   trigger_bbtop=>~0x24,SHORT~
+   trigger_bbright=>~0x26,SHORT~
+   trigger_bbbottom=>~0x28,SHORT~
+   trigger_flags=>~0x60,LONG~
+   is_trapped=>~0x6c,SHORT~
+   trap_detected=>~0x6e,SHORT~
+   trap_detection_difficulty=>~0x68,SHORT~
+   trap_removal_difficulty=>~0x6a,SHORT~
+   trigger_trap_xloc=>~0x70,SHORT~
+   trigger_trap_yloc=>~0x72,SHORT~
+   trigger_alt_xloc=>~0x84,SHORT~
+   trigger_alt_yloc=>~0x86,SHORT~
+   spawn_name=>~0x0,ASCII20~
+   spawn_xloc=>~0x20,SHORT~
+   spawn_yloc=>~0x22,SHORT~
+   spawn_creature1=>~0x24,ASCII~
+   spawn_creature2=>~0x2c,ASCII~
+   spawn_creature3=>~0x34,ASCII~
+   spawn_creature4=>~0x3c,ASCII~
+   spawn_creature5=>~0x44,ASCII~
+   spawn_creature6=>~0x4c,ASCII~
+   spawn_creature7=>~0x54,ASCII~
+   spawn_creature8=>~0x5c,ASCII~
+   spawn_creature9=>~0x64,ASCII~
+   spawn_creature10=>~0x6c,ASCII~
+   spawn_count=>~0x74,SHORT~
+   spawn_base_number=>~0x76,SHORT~
+   spawn_frequency=>~0x78,SHORT~
+   spawn_method=>~0x7a,SHORT~
+   spawn_maximum=>~0x84,SHORT~
+   spawn_probability_day=>~0x8c,SHORT~
+   spawn_probability_night=>~0x8e,SHORT~
+   spawn_ee_weight1=>~0x98,BYTE~
+   spawn_ee_weight2=>~0x99,BYTE~
+   spawn_ee_weight3=>~0x9a,BYTE~
+   spawn_ee_weight4=>~0x9b,BYTE~
+   spawn_ee_weight5=>~0x9c,BYTE~
+   spawn_ee_weight6=>~0x9d,BYTE~
+   spawn_ee_weight7=>~0x9e,BYTE~
+   spawn_ee_weight8=>~0x9f,BYTE~
+   spawn_ee_weight9=>~0xa0,BYTE~
+   spawn_ee_weight10=>~0xa1,BYTE~
+   restspawn_strref1=>~0x20,LONG~
+   restspawn_strref2=>~0x24,LONG~
+   restspawn_strref3=>~0x28,LONG~
+   restspawn_strref4=>~0x2c,LONG~
+   restspawn_strref5=>~0x30,LONG~
+   restspawn_strref6=>~0x34,LONG~
+   restspawn_strref7=>~0x38,LONG~
+   restspawn_strref8=>~0x3c,LONG~
+   restspawn_strref9=>~0x40,LONG~
+   restspawn_strref10=>~0x44,LONG~
+   restspawn_count=>~0x98,SHORT~
+   restspawn_creature1=>~0x48,ASCII~
+   restspawn_creature2=>~0x50,ASCII~
+   restspawn_creature3=>~0x58,ASCII~
+   restspawn_creature4=>~0x60,ASCII~
+   restspawn_creature5=>~0x68,ASCII~
+   restspawn_creature6=>~0x70,ASCII~
+   restspawn_creature7=>~0x78,ASCII~
+   restspawn_creature8=>~0x80,ASCII~
+   restspawn_creature9=>~0x88,ASCII~
+   restspawn_creature10=>~0x90,ASCII~
+   restspawn_probability_day=>~0xa8,SHORT~
+   restspawn_probability_night=>~0xaa,SHORT~
+   restspawn_max_number=>~0xa4,SHORT~
+   restspawn_enabled=>~0xa6,SHORT~
+   restspawn_removal=>~0x9c,LONG~
+   restspawn_maximum=>~0xa4,SHORT~
+   restspawn_difficulty=>~0x9a,SHORT~
+   restspawn_wander=>~0xa0,SHORT~
+   restspawn_follow=>~0xa2,SHORT~
+   animation_name=> ~0x0,ASCII20~
+   animation_resource=> ~0x28,ASCII~
+   animation_height=> ~0x38,SHORT~
+   animation_xloc=>"0x20,SHORT"
+   animation_yloc=>"0x22,SHORT"
+   animation_active=>"0x24,LONG"
+   ambient_name=> ~0x0,ASCII20~
+   ambient_xloc=>"0x20,SHORT"
+   ambient_yloc=>"0x22,SHORT"
+   ambient_radius=>"0x24,SHORT"
+   ambient_base_time=>"0x84,LONG"
+   ambient_time_deviation=>"0x88,LONG"
+   ambient_volume=>"0x2e,SHORT"
+   ambient_sound1=>"0x30,ASCII"
+   ambient_sound2=>"0x38,ASCII"
+   ambient_sound3=>"0x40,ASCII"
+   ambient_sound4=>"0x48,ASCII"
+   ambient_sound5=>"0x50,ASCII"
+   ambient_sound6=>"0x58,ASCII"
+   ambient_sound7=>"0x60,ASCII"
+   ambient_sound8=>"0x68,ASCII"
+   ambient_sound9=>"0x70,ASCII"
+   ambient_sound10=>"0x78,ASCII"
+   ambient_sound_number=>"0x80,SHORT"
+   ambient_active=>"0x8c,LONG"
+   mapnote_xloc=>"0x0,SHORT"
+   mapnote_yloc=>"0x2,SHORT"
+   mapnote_text=>"0x4,LONG"
+   mapnote_text_loc=>"0x8,SHORT"
+   mapnote_color=>"0xa,SHORT"
+END
+LAUNCH_ACTION_FUNCTION build_simple_data_field_editors STR_VAR lookup_table=are_fields offset_base=yes function_prefix=ARE END
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY are_child_fields BEGIN
+   item_resource => ~0x0,ASCII~
+   item_charges_1 => ~0xa,SHORT~
+   item_charges_2 => ~0xc,SHORT~
+   item_charges_3 => ~0xe,SHORT~
+   vertex_xloc=>"0x0,SHORT"
+   vertex_yloc=>"0x2,SHORT"
+END
+LAF build_simple_data_field_editors STR_VAR lookup_table=are_child_fields offset_base=yes function_prefix=ARE secondary="yes" END
+
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY are_bit_fields BEGIN
+
+
+	  // exits / triggers
+      trap_undetectable => ~0x60,0~
+      reset_trap => ~0x60,1~
+      party_required => ~0x60,2~
+      trap_detectable => ~0x60,3~
+      trap_set_off_by_NPC => ~0x60,6~
+      trigger_deactivated => ~0x61,0~
+      impassable_by_NPC => ~0x61,1~
+	  use_activation_point => ~0x61,2~
+      // ambients
+      ambient_enabled=>~0x90,0~
+      ambient_looping=>~0x90,1~
+      ambient_ignore_radius=>~0x90,2~
+      ambient_random_order=>~0x90,3~
+      // animations
+      animation_enabled =>~0x34,0~
+      animation_transparent_black=>~0x34,1~
+      animation_non_self_illumination=>~0x34,2~
+      animation_partial=>~0x34,3~
+      animation_synchronised=>~0x34,4~
+      animation_wall_does_not_hide=>~0x34,6~
+      animation_invisible_in_dark=>~0x34,7~
+      animation_not_cover=>~0x35,0~
+      animation_play_all_frames=>~0x35,1~
+      animation_palette=>~0x35,2~
+      animation_mirrored=>~0x35,3~
+      animation_show_in_combat=>~0x35,4~
+      // actors
+      actor_present_0=>~0x40,0~
+      actor_present_1=>~0x40,1~
+      actor_present_2=>~0x40,2~
+      actor_present_3=>~0x40,3~
+      actor_present_4=>~0x40,4~
+      actor_present_5=>~0x40,5~
+      actor_present_6=>~0x40,6~
+      actor_present_7=>~0x40,7~
+      actor_present_8=>~0x41,0~
+      actor_present_9=>~0x41,1~
+      actor_present_10=>~0x41,2~
+      actor_present_11=>~0x41,3~
+      actor_present_12=>~0x41,4~
+      actor_present_13=>~0x41,5~
+      actor_present_14=>~0x41,6~
+      actor_present_15=>~0x41,7~
+      actor_present_16=>~0x42,0~
+      actor_present_17=>~0x42,1~
+      actor_present_18=>~0x42,2~
+      actor_present_19=>~0x42,3~
+      actor_present_20=>~0x42,4~
+      actor_present_21=>~0x42,5~
+      actor_present_22=>~0x42,6~
+      actor_present_23=>~0x42,7~
+      // baseline
+      save_not_allowed=>~0x14,0~
+	  player1_can_die=>~0x14,4~
+	  // containers
+	  container_disabled=>~0x28,5~
+	  container_locked=>~0x28,0~
+      // doors
+	  door_open=>~0x28,0~
+      door_locked=>~0x28,1~
+      override_script_name=>~0x28,3~ // also for actors
+      invulnerable=>~0x28,2~
+	  dont_block_line_of_sight=>~0x29,2~
+
+END
+
+LAF build_flag_data_field_editors STR_VAR lookup_table=are_bit_fields offset_base=yes function_prefix=ARE  END
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               IDS-based data-field edits
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY ~are_ids_fields~ BEGIN
+     actor_animation=>~0x30,LONG,ANIMATE~
+END
+
+LAUNCH_ACTION_FUNCTION build_IDS_data_field_editors STR_VAR lookup_table=are_ids_fields function_prefix=ARE END
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               composite data-field edits
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION ARE_actor_orientation
+      STR_VAR arguments=""
+BEGIN
+   PATCH_IF IS_AN_INT arguments BEGIN
+      WRITE_SHORT (0x34 + offset_base) arguments
+   END ELSE BEGIN
+      WRITE_SHORT (0x34 + offset_base) IDS_OF_SYMBOL (dir "%arguments%")
+   END
+END
+
+DEFINE_PATCH_FUNCTION ARE_reset_edge_flags
+      STR_VAR arguments=""
+BEGIN
+   WRITE_LONG 0x20 0
+   WRITE_LONG 0x2c 0
+   WRITE_LONG 0x38 0
+   WRITE_LONG 0x44 0
+END
+
+DEFINE_PATCH_FUNCTION ARE_wipe_rest_block
+      STR_VAR arguments=""
+BEGIN
+   READ_LONG 0xc0 offset
+   WRITE_ASCII offset "" (0xe4)
+END
+
+
+
+DEFINE_PATCH_FUNCTION ARE_actor_defaults
+      STR_VAR arguments=""
+BEGIN
+      LPF ARE_read_actor_resource RET actorname=value END
+      PATCH_IF FILE_EXISTS_IN_GAME "%actorname%.cre" BEGIN
+         INNER_ACTION BEGIN
+            COPY_EXISTING "%actorname%.cre" override
+                  READ_LONG 0x28 animation
+            BUT_ONLY
+         END
+         WRITE_LONG (0x30+offset_base) animation
+      END
+      LPF ARE_actor_present_always END
+      WRITE_LONG (offset_base+0x38) "-1"
+END
+
+DEFINE_PATCH_FUNCTION ARE_actor_x_coord
+      STR_VAR arguments=""
+BEGIN
+      LAUNCH_PATCH_FUNCTION ARE_actor_x_coord_start  STR_VAR arguments END
+      LAUNCH_PATCH_FUNCTION ARE_actor_x_coord_dest  STR_VAR arguments END
+END
+
+DEFINE_PATCH_FUNCTION ARE_actor_y_coord
+      STR_VAR arguments=""
+BEGIN
+      LAUNCH_PATCH_FUNCTION ARE_actor_y_coord_start  STR_VAR arguments END
+      LAUNCH_PATCH_FUNCTION ARE_actor_y_coord_dest  STR_VAR arguments END
+END
+DEFINE_PATCH_FUNCTION ARE_wipe_spawns
+BEGIN
+     WRITE_ASCII 0x24+offset_base ~~ (0x50)
+END
+
+DEFINE_PATCH_FUNCTION ARE_actor_present_always
+      STR_VAR arguments=""
+BEGIN
+      WRITE_BYTE (offset_base + 0x40) "-1"
+      WRITE_BYTE (offset_base + 0x41) "-1"
+      WRITE_BYTE (offset_base + 0x42) "-1"
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               baseline data - for adding actors
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION ARE_actor_baseline
+BEGIN
+         WRITE_LONG offset_base + 0x28 9 // CRE loaded=unknown [seems to be default]
+         WRITE_LONG offset_base + 0x40 0xffffffff // present at all times
+         WRITE_LONG offset_base + 0x38 "-1" // never remove actor
+         WRITE_LONG offset_base + 0x30 "57376" // default animation
+
+END
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               looks for a script anywhere and returns 1 if true
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION ARE_match_script
+     STR_VAR
+         arguments=""
+     RET
+         value
+BEGIN
+   SET value=0
+   PATCH_FOR_EACH script IN override class race general default specifics BEGIN
+      LPF ~ARE_read_script_%script%~ RET scriptvalue=value END
+      PATCH_IF ~%scriptvalue%~ STRING_EQUAL_CASE ~%arguments%~ BEGIN
+         SET value=1
+      END
+   END
+END
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               swaps a script
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+DEFINE_PATCH_FUNCTION ARE_swap_scripts
+     STR_VAR
+        arguments=""
+BEGIN
+   LPF return_first_pair STR_VAR list= ~%arguments%~ RET oldscript=key newscript=value END
+   PATCH_IF "%newscript%" STRING_EQUAL_CASE null BEGIN
+      SPRINT newscript ""
+   END
+   PATCH_FOR_EACH script IN override class race general default specifics BEGIN
+      LPF ~ARE_read_script_%script%~ RET scriptvalue=value END
+      PATCH_IF ~%scriptvalue%~ STRING_EQUAL_CASE ~%oldscript%~ BEGIN
+           LPF ~ARE_script_%script%~ STR_VAR arguments= ~%newscript%~ END
+      END
+   END
+END
+OUTER_SPRINT $SFO_do_not_parse_arguments("ARE_swap_scripts") ""
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               reorders scripts so that identified script (which should be in the allocated scripts) is at the bottom
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION ARE_move_script_to_bottom
+    STR_VAR arguments=""
+BEGIN
+    CLEAR_ARRAY temp_array
+    WHILE "%arguments%" STRING_COMPARE_CASE "" BEGIN
+       LPF return_first_entry STR_VAR list="%arguments%" RET entry arguments=list END
+       TO_LOWER entry
+       SPRINT $temp_array("%entry%") ""
+    END
+    READ_ASCII offset_base actorname (0x20)
+    READ_ASCII (offset_base+0x80) actorresource
+    SET found_script=0
+    SET lowest_slot=0
+    SET last_slot=0
+    FOR (slot=0;slot<6;slot+=1) BEGIN
+      READ_ASCII (offset_base + 0x50 + 8*slot) script
+      TO_LOWER script
+      PATCH_IF "%script%" STRING_COMPARE_CASE "" BEGIN
+       PATCH_IF found_script BEGIN
+          WRITE_ASCIIE (offset_base + 0x50 + 8*last_slot) "%script%" (8)
+          WRITE_ASCIIE (offset_base + 0x50 + 8*slot) "%lower_script%" (8)
+          SET last_slot=slot
+       END ELSE BEGIN
+          PATCH_IF VARIABLE_IS_SET $temp_array("%script%") BEGIN
+             SET found_script=1
+             SET last_slot=slot
+             SPRINT lower_script "%script%"
+          END
+       END
+      END
+    END
+END
+OUTER_SPRINT $SFO_do_not_parse_arguments("ARE_move_script_to_bottom") ""
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               gets the area script (and allocates one if needed)
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+DEFINE_ACTION_FUNCTION get_area_script
+    STR_VAR area=""
+    RET script
+BEGIN
+   COPY_EXISTING ~%area%.are~ ~override~
+       LPF ARE_read_area_script RET script=value END
+       PATCH_IF (~%script%~ STRING_EQUAL_CASE ~none~ || ~%script%~ STRING_EQUAL_CASE ~~) BEGIN
+          INNER_PATCH_SAVE ~script~ ~%area%~ BEGIN
+             READ_ASCII 0x0 fwcheck (2)
+             PATCH_IF ~%fwcheck%~ STRING_EQUAL_CASE ~FW~ BEGIN
+                INSERT_BYTES 0x0 1
+                WRITE_ASCII 0x0 ~_AR~
+             END
+          END
+          LPF ARE_area_script STR_VAR arguments= ~%script%~ END
+       END
+   BUT_ONLY
+   ACTION_IF !FILE_EXISTS_IN_GAME ~%script%.bcs~ BEGIN
+                <<<<<<<< %script%.baf
+                >>>>>>>>
+                COMPILE ~%script%.baf~
+   END
+
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               extends the area script
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_ACTION_FUNCTION extend_area_script
+   STR_VAR area=""
+           top=""
+           bottom=""
+           location=""
+           variables=""
+           inline="no"
+           ssl="no"
+BEGIN
+   ACTION_IF ~%area%~ STRING_COMPARE ~~ BEGIN
+      ACTION_IF "%top%%bottom%" STRING_EQUAL "" BEGIN
+         LAF warning STR_VAR warning="extend_area_script called on area %area% with empty argument" END
+      END
+      LAF return_first_entry STR_VAR list= ~%area%~ RET entry=entry area=list END
+      LAF get_area_script STR_VAR area= ~%entry%~ RET file=script END
+      LAF extend STR_VAR file top bottom location inline ssl variables END
+      LAF extend_area_script STR_VAR area top bottom location inline ssl variables END
+   END
+END
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////              swap an item
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION ARE_swap_items
+          STR_VAR arguments=""
+BEGIN
+         PATCH_IF ~%arguments%~ STRING_COMPARE_CASE ~~ BEGIN
+             LPF return_first_pair STR_VAR list= ~%arguments%~ RET old=key new=value arguments=list END
+             REPLACE_TEXTUALLY CASE_INSENSITIVE ~%old%~ ~%new%~ (8)
+             LPF ARE_swap_items STR_VAR arguments END
+         END
+END
+OUTER_SPRINT $SFO_do_not_parse_arguments("ARE_swap_items") ""
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////              set trigger info
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION ARE_say_trigger_info
+   STR_VAR arguments="" 
+BEGIN
+   WRITE_LONG (offset_base+0x64) RESOLVE_STR_REF ((AT arguments))
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////              swap scripts of area creatures (we do this quite a lot, so hardcode it)
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_ACTION_FUNCTION swap_are_cre_script
+   STR_VAR area=""
+           creature=""
+           script=""
+BEGIN
+   LAF return_first_pair STR_VAR list="%script%" RET script_old=key script_new=value END
+   COPY_EXISTING "%area%.are" override
+     GET_OFFSET_ARRAY offset_arr ARE_V10_ACTORS
+     PHP_EACH offset_arr AS ind=>offset BEGIN
+        READ_ASCII (offset+0x80) cre_here
+        PATCH_IF "%cre_here%" STRING_EQUAL_CASE "%creature%" BEGIN
+           FOR (offset_here=offset+0x50;offset_here<offset+0x80;offset_here+=8) BEGIN
+              READ_ASCII offset_here script_here
+              PATCH_IF "%script_here%" STRING_EQUAL_CASE "%script_old%" BEGIN
+                 WRITE_ASCIIE offset_here "%script_new%" (8)
+              END
+           END
+        END
+     END
+   BUT_ONLY
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////               Functions for cropping an area
+/////////////
+/////////////               These functions presume background values (xmin,xmax) and (ymin,ymax);
+/////////////               They also require the 'point_in_bounds' patch function defined in lib_wed
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION ARE_actor_out_of_bounds
+RET value
+BEGIN
+      READ_SSHORT (0x20 + offset_base) x
+      READ_SSHORT (0x22 + offset_base) y
+      LPF point_in_bounds INT_VAR x xmin xmax y ymin ymax RET in_bounds_1=in_bounds END
+      READ_SSHORT (0x24 + offset_base) x
+      READ_SSHORT (0x26 + offset_base) y
+      LPF point_in_bounds INT_VAR x xmin xmax y ymin ymax RET in_bounds_2=in_bounds END
+      value = !in_bounds_1 || !in_bounds_2
+END
+
+DEFINE_PATCH_FUNCTION ARE_generic_out_of_bounds // applies to spawn points, entrances, ambients, animations
+RET value
+BEGIN
+      READ_SSHORT (0x20 + offset_base) x
+      READ_SSHORT (0x22 + offset_base) y
+      LPF point_in_bounds INT_VAR x xmin xmax y ymin ymax RET in_bounds_1=in_bounds END
+      value = !in_bounds_1
+END
+
+DEFINE_PATCH_FUNCTION ARE_trigger_out_of_bounds
+RET value
+BEGIN
+      READ_SSHORT (0x22 + offset_base) x
+      READ_SSHORT (0x24 + offset_base) y
+      LPF point_in_bounds INT_VAR x xmin xmax y ymin ymax RET in_bounds_1=in_bounds END
+      READ_SSHORT (0x26 + offset_base) x
+      READ_SSHORT (0x28 + offset_base) y
+      LPF point_in_bounds INT_VAR x xmin xmax y ymin ymax RET in_bounds_2=in_bounds END
+      value = !in_bounds_1 || !in_bounds_2
+
+      READ_SSHORT (0x70 + offset_base) x
+      READ_SSHORT (0x72 + offset_base) y
+	  PATCH_IF (x>0 || y>0) && x>=0 && y>=0  BEGIN
+		LPF point_in_bounds INT_VAR x xmin xmax y ymin ymax RET in_bounds_3=in_bounds END
+	  END ELSE BEGIN
+		in_bounds_3=1
+	  END
+      READ_SSHORT (0x84 + offset_base) x
+      READ_SSHORT (0x86 + offset_base) y
+      PATCH_IF (x>0 || y>0) && x>=0 && y>=0 BEGIN // almost always 0,0
+
+         LPF point_in_bounds INT_VAR x xmin xmax y ymin ymax RET in_bounds_4=in_bounds END
+      END ELSE BEGIN
+         in_bounds_4=1
+      END
+      value = ! (in_bounds_1 * in_bounds_2 * in_bounds_3 * in_bounds_4 )
+      READ_ASCII offset_base name (0x20)
+END
+
+DEFINE_PATCH_FUNCTION ARE_slide_trigger
+BEGIN
+  PATCH_FOR_EACH offset IN 0x22 0x26 0x70 BEGIN
+   SET x=SSHORT_AT (offset + offset_base)
+   SET y=SSHORT_AT (offset + offset_base +2)
+   PATCH_IF (x>=0 || y>=0) BEGIN
+      WRITE_SHORT (offset + offset_base) (x - xmin)
+      WRITE_SHORT (offset + offset_base +2) (y - ymin)
+   END
+  END
+END
+
+DEFINE_PATCH_FUNCTION ARE_container_out_of_bounds
+RET value
+BEGIN
+      READ_SSHORT (0x38 + offset_base) x
+      READ_SSHORT (0x3a + offset_base) y
+      LPF point_in_bounds INT_VAR x xmin xmax y ymin ymax RET in_bounds_1=in_bounds END
+      READ_SSHORT (0x3c + offset_base) x
+      READ_SSHORT (0x3e + offset_base) y
+      LPF point_in_bounds INT_VAR x xmin xmax y ymin ymax RET in_bounds_2=in_bounds END
+      value = !in_bounds_1 || !in_bounds_2
+END
+
+DEFINE_PATCH_FUNCTION ARE_door_out_of_bounds
+RET value
+BEGIN
+      READ_SSHORT (0x38 + offset_base) x
+      READ_SSHORT (0x3a + offset_base) y
+      LPF point_in_bounds INT_VAR x xmin xmax y ymin ymax RET in_bounds_1=in_bounds END
+      READ_SSHORT (0x3c + offset_base) x
+      READ_SSHORT (0x3e + offset_base) y
+      LPF point_in_bounds INT_VAR x xmin xmax y ymin ymax RET in_bounds_2=in_bounds END
+      READ_SSHORT (0x40 + offset_base) x
+      READ_SSHORT (0x42 + offset_base) y
+      LPF point_in_bounds INT_VAR x xmin xmax y ymin ymax RET in_bounds_3=in_bounds END
+      READ_SSHORT (0x44 + offset_base) x
+      READ_SSHORT (0x46 + offset_base) y
+      LPF point_in_bounds INT_VAR x xmin xmax y ymin ymax RET in_bounds_4=in_bounds END
+      READ_SSHORT (0x74 + offset_base) x
+      READ_SSHORT (0x76 + offset_base) y
+      LPF point_in_bounds INT_VAR x xmin xmax y ymin ymax RET in_bounds_5=in_bounds END
+      value = ! (in_bounds_1 * in_bounds_2 * in_bounds_3 * in_bounds_4 * in_bounds_5)
+END
+
+DEFINE_PATCH_FUNCTION ARE_slide_door
+BEGIN
+  PATCH_FOR_EACH offset IN 0x38 0x3c 0x40 0x44 0x74 0x90 0x94 BEGIN
+   SET x=SHORT_AT (offset + offset_base)
+   PATCH_IF x>=0 BEGIN
+      WRITE_SHORT (offset + offset_base) (x - xmin)
+   END
+   SET y=SHORT_AT (offset + offset_base +2)
+   PATCH_IF y>=0 BEGIN
+      WRITE_SHORT (offset + offset_base +2) (y - ymin)
+   END  
+  END
+END
+
+DEFINE_PATCH_FUNCTION ARE_mapnote_out_of_bounds
+RET value
+BEGIN
+      READ_SSHORT (offset_base) x
+      READ_SSHORT (0x2 + offset_base) y
+      LPF point_in_bounds INT_VAR x xmin xmax y ymin ymax RET in_bounds_1=in_bounds END
+      value = !in_bounds_1
+END
+
+DEFINE_PATCH_FUNCTION slide_x
+      STR_VAR arguments=0
+RET value
+BEGIN
+      PATCH_IF arguments<0 BEGIN
+         value=arguments
+      END ELSE BEGIN
+         value=arguments - xmin
+      END
+END
+
+DEFINE_PATCH_FUNCTION searchmap_slide_x
+      STR_VAR arguments=0
+RET value
+BEGIN
+      PATCH_IF arguments<0 BEGIN
+         value=arguments
+      END ELSE BEGIN
+         value=arguments - (xmin * 4) / 64
+      END
+END
+
+
+DEFINE_PATCH_FUNCTION slide_y
+      STR_VAR arguments=0
+RET value
+BEGIN
+      PATCH_IF arguments<0 BEGIN
+         value=arguments
+      END ELSE BEGIN
+         value=arguments - ymin
+      END
+END
+
+DEFINE_PATCH_FUNCTION searchmap_slide_y
+      STR_VAR arguments=0
+RET value
+BEGIN
+      PATCH_IF arguments<0 BEGIN
+         value=arguments
+      END ELSE BEGIN
+         value=arguments - (ymin * 5) / 64
+      END
+END
+
+
+
+
+DEFINE_PATCH_FUNCTION ARE_edit_restspawn
+   STR_VAR arguments=""
+BEGIN
+   READ_LONG 0xc0 offset_base
+   WHILE "%arguments%" STRING_COMPARE "" BEGIN
+      LPF return_first_pair STR_VAR list="%arguments%" RET key value arguments=list END
+      LPF "ARE_%key%" STR_VAR arguments="%value%" END
+
+   END
+END
+OUTER_SPRINT $SFO_do_not_parse_arguments("ARE_edit_restspawn") ""
+
+DEFINE_PATCH_FUNCTION ARE_adjust_actor_xloc
+   STR_VAR arguments=""
+BEGIN
+   adjust=arguments
+   LPF ARE_read_actor_x_coord_start RET value END
+   arguments=value+adjust
+   LPF ARE_actor_x_coord_start STR_VAR arguments END
+   LPF ARE_read_actor_x_coord_dest RET value END
+   arguments=value+adjust
+   LPF ARE_actor_x_coord_dest STR_VAR arguments END
+END
+DEFINE_PATCH_FUNCTION ARE_adjust_actor_yloc
+   STR_VAR arguments=""
+BEGIN
+   adjust=arguments
+   LPF ARE_read_actor_y_coord_start RET value END
+   arguments=value+adjust
+   LPF ARE_actor_y_coord_start STR_VAR arguments  END
+   LPF ARE_read_actor_y_coord_dest RET value END
+   arguments=value+adjust
+   LPF ARE_actor_y_coord_dest STR_VAR arguments END
+END
+
+DEFINE_PATCH_FUNCTION ARE_add_pile
+    STR_VAR arguments=""
+BEGIN
+    LPF return_first_entry STR_VAR list="%arguments%" separator="," RET fj_name=entry list END
+	LPF return_first_entry STR_VAR list separator="," RET fj_loc_x=entry fj_loc_y=list END
+	LPF fj_are_structure
+		INT_VAR fj_type=4
+				fj_loc_x
+				fj_loc_y
+				fj_box_left = fj_loc_x - 8
+				fj_box_right = fj_loc_x + 8
+				fj_box_top = fj_loc_y - 6
+				fj_box_bottom = fj_loc_y + 6
+		STR_VAR fj_structure_type=container
+				fj_name
+	END
+	LPF fix_are_container_index END
+END
+OUTER_SPRINT $SFO_do_not_parse_arguments("ARE_add_pile") ""
+
+
+/////////////////////////////////////////////////////////////////////
+/// FJ_ARE_STRUCTURE hook to add a trigger or container
+/////////////////////////////////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION get_data_fj
+	STR_VAR vertices=""
+	RET bb_top bb_bottom bb_left bb_right x_est y_est vertex_string
+BEGIN
+	ind=0
+	bb_top=10000
+	bb_bottom=0
+	bb_left=10000
+	bb_right=0
+	SPRINT vertex_string ""
+	WHILE "%vertices%" STRING_COMPARE "" BEGIN
+		LPF return_first_entry STR_VAR list="%vertices%" RET vertex=entry vertices=list END
+		LPF return_first_entry STR_VAR list="%vertex%" separator="," RET x=entry y=list END
+		PATCH_IF (!IS_AN_INT x) || (!IS_AN_INT y) BEGIN
+			PATCH_FAIL "ARE_add_trigger_fj/add_container_fj error: vertex list is not in format 'x1,y1 x2,y2 x3,y3 ...' "
+		END
+		SPRINT vertex_string "%vertex_string% fj_vertex_%ind%=%x% + (%y% << 16)"
+		ind+=1
+		bb_top = (bb_top < y)? bb_top:y
+		bb_bottom = (bb_bottom>y)?bb_bottom:y
+		bb_left = (bb_left <x)? bb_left:x
+		bb_right = (bb_right >x)?bb_right:x
+	END
+	// estimate values for activation and launch, if not set
+	x_est = ( bb_left + bb_right ) / 2
+	y_est = ( bb_top + bb_bottom ) / 2
+END
+
+DEFINE_PATCH_FUNCTION ARE_add_trigger_fj
+	INT_VAR	activation_x="-1"
+			activation_y="-1"
+			launch_x="-1"
+			launch_y="-1"
+	STR_VAR type=""
+			name=""
+			script=""
+			vertices=""
+BEGIN
+	// get the vertices and bounds
+	LPF get_data_fj STR_VAR vertices RET bb_top bb_bottom bb_left bb_right x_est y_est vertex_string END
+	activation_x = (activation_x <0 )? x_est : activation_x
+	activation_y = (activation_y <0 )? y_est : activation_y
+	launch_x = (launch_x<0)? x_est : launch_x
+	launch_y = (launch_y<0)? y_est : launch_y
+	// get trigger type
+	PATCH_MATCH "%type%" WITH
+		info information 1 BEGIN
+			type_num=1
+		END
+		trap proximity 0 BEGIN
+			type_num=0
+		END
+		travel 2 BEGIN
+			type_num=2
+		END
+		DEFAULT
+			PATCH_FAIL "ARE_add_trigger_fj error: trigger type %type% unrecognised"
+	END
+	// make string
+	SPRINT input "LPF fj_are_structure INT_VAR fj_type=%type_num% fj_box_left=%bb_left% fj_box_right=%bb_right% fj_box_top=%bb_top% fj_box_bottom=%bb_bottom% fj_loc_x=%launch_x% fj_loc_y=%launch_y% fj_alt_x=%activation_x% fj_alt_y=%activation_y% %vertex_string% STR_VAR fj_name=~%name%~ fj_reg_script=~%script%~ fj_structure_type=region END"
+	LPF reinclude_this STR_VAR input END
+
+END
+
+DEFINE_PATCH_FUNCTION ARE_add_container_fj
+	INT_VAR	loc_x="-1"
+			loc_y="-1"
+			launch_x="-1"
+			launch_y="-1"
+	STR_VAR type=""
+			name=""
+			vertices=""
+BEGIN
+	// get the vertices and bounds
+	LPF get_data_fj STR_VAR vertices RET bb_top bb_bottom bb_left bb_right x_est y_est vertex_string END
+	loc_x = (loc_x <0 )? x_est : loc_x
+	loc_y = (loc_y <0 )? y_est : loc_y
+	launch_x = (launch_x<0)? x_est : launch_x
+	launch_y = (launch_y<0)? y_est : launch_y
+	// get trigger type
+	PATCH_MATCH "%type%" WITH
+		bag 1 BEGIN
+			type_num=1
+		END
+		chest 2 BEGIN
+			type_num=2
+		END
+		drawer 3 BEGIN
+			type_num=3
+		END
+		pile 4 BEGIN
+			type_num=4
+		END
+		table 5 BEGIN
+			type_num=5
+		END
+		shelf 6 BEGIN
+			type_num=6
+		END
+		altar 7 BEGIN
+			type_num=7
+		END
+		nonvisible invisible 8 BEGIN
+			type_num=8
+		END
+		book spellbook 9 BEGIN
+			type_num=9
+		END
+		body corpse 10 BEGIN
+			type_num=10
+		END
+		barrel 11 BEGIN
+			type_num=11
+		END
+		crate 12 BEGIN
+			type_num=12
+		END
+		DEFAULT
+			PATCH_FAIL "ARE_add_container_fj error: container type %type% unrecognised"
+	END
+	// make string
+	SPRINT input "LPF fj_are_structure INT_VAR fj_type=%type_num% fj_box_left=%bb_left% fj_box_right=%bb_right% fj_box_top=%bb_top% fj_box_bottom=%bb_bottom% fj_loc_x=%loc_x% fj_loc_y=%loc_y% fj_trap_loc_x=%launch_x% fj_trap_loc_y=%launch_y% %vertex_string% STR_VAR fj_name=~%name%~ fj_structure_type=container END"
+	LPF reinclude_this STR_VAR input END
+
+END
+
+/////////////////////////////////////
+// Set trigger text of the current trigger to a TRA entry
+/////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION ARE_trigger_says
+	STR_VAR arguments=""
+BEGIN
+	strref=RESOLVE_STR_REF ( (AT %arguments%) )
+	LPF ARE_trigger_info STR_VAR arguments="%strref%" END
+
+
+END
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////              say mapnote text
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION ARE_say_mapnote_text
+   STR_VAR arguments=""
+BEGIN
+   WRITE_LONG (offset_base+0x04) RESOLVE_STR_REF ((AT arguments))
+END
+
+

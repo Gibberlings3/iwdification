@@ -1,0 +1,23 @@
+// since this is meant to be run after both arcane & bard components, we cannot rely on 
+// e.g. %WIZARD_MIND_BLANK% being set. so it's a bit tedious, but use spell.ids lookups instead
+
+OUTER_SET NUM_b117 = ((IDS_OF_SYMBOL (~spell~ ~BARD_SONG_KAUDIES~)) - 4000)
+OUTER_SET NUM_a431 = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_SHOUT~)) - 2000)
+OUTER_SET NUM_a806 = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_GREAT_SHOUT~)) - 2000)
+  
+OUTER_SET op_318 = 206
+OUTER_SET op_321 = 206
+ACTION_IF enhanced_edition BEGIN OUTER_SET op_318 = 318 OUTER_SET op_321 = 321 END 
+  
+ACTION_IF NUM_b117 > 0 BEGIN // song of kaudies
+
+  // shout, great shout
+  COPY_EXISTING ~spcl%NUM_b117%.spl~ ~override~ 
+    PATCH_FOR_EACH var IN ~%NUM_a431%~ ~%NUM_a806%~ BEGIN               
+      PATCH_IF var > 0 BEGIN 
+        LPF CLONE_EFFECT INT_VAR match_opcode = op_318 STR_VAR match_resource = sppr211 resource = EVAL ~spwi%var%~ END
+      END  
+    END 
+    BUT_ONLY   
+
+END 
