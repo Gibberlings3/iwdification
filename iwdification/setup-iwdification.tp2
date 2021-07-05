@@ -385,6 +385,8 @@ COPY ~iwdification/icons/icons.2da~ ~iwdification/icons/icons.2da~
       // identify and patch IDS references...
       ACTION_IF !IS_AN_INT ~%ids_ref%~ BEGIN
         OUTER_SET num = IDS_OF_SYMBOL (~spell~ ~%ids_ref%~)
+        ACTION_IF num > 3999 BEGIN OUTER_SET num -= 4000 OUTER_SPRINT prefix spcl END
+        ACTION_IF num > 2999 BEGIN OUTER_SET num -= 3000 OUTER_SPRINT prefix spin END
         ACTION_IF num > 1999 BEGIN OUTER_SET num -= 2000 OUTER_SPRINT prefix spwi END
         ACTION_IF num >  999 BEGIN OUTER_SET num -= 1000 OUTER_SPRINT prefix sppr END
         
