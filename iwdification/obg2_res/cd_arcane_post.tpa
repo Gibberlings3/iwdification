@@ -70,7 +70,7 @@ COPY_EXISTING ~%WIZARD_EXPEDITIOUS_RETREAT%.spl~ ~override~
 
 COPY_EXISTING ~%WIZARD_EMOTION_HOPE%.spl~ ~override~
   LPF DELETE_EFFECT INT_VAR match_opcode = 321 STR_VAR match_resource = ~##in115~ END // blocking mournful wail
-  LPF DELETE_EFFECT INT_VAR match_opcode = 321 STR_VAR match_resource = ~##pr716~ END // blocking CLERIC_SYMBOL_OF_HOPELESSNESS
+  LPF DELETE_EFFECT INT_VAR match_opcode = 321 STR_VAR match_resource = ~##pr716~ END // blocking CLERIC_SYMBOL_HOPELESSNESS
   
 COPY_EXISTING ~%WIZARD_IRON_BODY%.spl~ ~override~ 
   PATCH_FOR_EACH res IN ~##wi904~ ~##wi035~ ~##wi030~ ~##in143~ ~##pr736~ ~##pr424~ ~##pr423~ ~##pr326~ BEGIN
@@ -534,9 +534,6 @@ opcodes to oBG2 counterparts.
   // hope also protects against hoplessness  
   COPY_EXISTING ~%WIZARD_EMOTION_HOPE%.spl~ ~override~
     LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR resource = EVAL ~%WIZARD_EMOTION_HOPELESSNESS%~ END 
-//    PATCH_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_SYMBOL_HOPELESSNESS") BEGIN
-//      LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = EVAL ~%WIZARD_EMOTION_HOPE%~ resource = EVAL ~%CLERIC_SYMBOL_HOPELESSNESS%~ END 
-//    END 
 
 /////                                                  \\\\\
 ///// WIZARD_EMOTION_FEAR                              \\\\\

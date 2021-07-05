@@ -651,7 +651,7 @@ opcodes to oBG2 counterparts.
     LPF DELETE_EFFECT INT_VAR match_opcode = 328 END
     LPF ALTER_EFFECT INT_VAR match_opcode = 318 opcode = 206 parameter1 = 0 parameter2 = 0 END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 2 power = 4 parameter1 = 16 parameter2 = 8 resist_dispel = 3 duration = 120 insert_point = 0 STR_VAR resource = cdixd422 END // lawful
-    PATCH_FOR_EACH ea IN 0 1 28 29 30 31 126 128 199 200 201 202 254 255 BEGIN // all ea values except charmed, controlled, ally, familiar, pc
+    PATCH_FOR_EACH ea IN 1 28 29 30 31 126 128 BEGIN // all ea values except charmed, controlled, ally, familiar, pc
       LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 2 power = 4 parameter1 = ea parameter2 = 2 resist_dispel = 3 duration = 120 insert_point = 0 STR_VAR resource = cdixd42 END
     END  
 
