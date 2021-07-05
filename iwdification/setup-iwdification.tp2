@@ -319,6 +319,130 @@ LAF install_iwd_spell_resources
     style_old="%iwdspells_data%/spell_styles_iwd.2da"
     style_new="%iwdspells_data%/spell_styles_bg.2da"
 END
+  
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// obg2 portrait icons                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @8000 DESIGNATED 80
+//REQUIRE_PREDICATE ((GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~) AND
+//                   ((MOD_IS_INSTALLED ~IWDIFICATION/SETUP-IWDIFICATION.TP2~ ~30~ OR 
+//                     MOD_IS_INSTALLED ~IWDIFICATION/SETUP-IWDIFICATION.TP2~ ~40~ OR 
+//                     MOD_IS_INSTALLED ~IWDIFICATION/SETUP-IWDIFICATION.TP2~ ~50~))) @996
+  
+COPY ~iwdification/icons/states.bam~ ~override/states.bam~  
+     ~iwdification/icons/states.bam~ ~override/states2.bam~   
+
+
+WITH_TRA ~iwdification/dw_iwdspells_resource/tra/%LANGUAGE%/iwdspells.tra~ BEGIN
+     
+  COPY ~iwdification/icons/statdesc.2da~ ~override~
+    REPLACE ~iron_body~ @350 
+    REPLACE ~mind_blank~ @344 
+    REPLACE ~cats_grace~ @357 
+    REPLACE ~emotion_hope~ @358 
+    REPLACE ~emotion_courage~ @359 
+    REPLACE ~shroud_of_flame~ @46 
+    REPLACE ~beltyn~ @25 
+    REPLACE ~antimagic_shell~ @161 
+    REPLACE ~pain~ @347 
+    REPLACE ~isom~ @348 
+    REPLACE ~exaltation~ @352 
+    REPLACE ~static_charge~ @242 
+    REPLACE ~entropy_shield~ @278 
+    REPLACE ~shield_lathander~ @270 
+    REPLACE ~blood_rage~ @354 
+    REPLACE ~animal_rage~ @351 
+    REPLACE ~recitation~ @353 
+    REPLACE ~prayer~ @355 
+    REPLACE ~rwotf~ @356 
+    REPLACE ~bard_heroes~ @323 
+    REPLACE ~bard_curran~ @326 
+    REPLACE ~bard_tymora~ @329 
+    REPLACE ~bard_kaudies~ @332 
+    REPLACE ~bard_siren~ @335 
+    REPLACE ~bard_sith~ @339 
+    PRETTY_PRINT_2DA     
+
+END
+
+COPY ~iwdification/icons/icons.2da~ ~iwdification/icons/icons.2da~
+  COUNT_2DA_ROWS 7 rows
+  FOR (row = 1 ; row < rows ; ++row) BEGIN
+    READ_2DA_ENTRY row 0 7 icon_text
+    READ_2DA_ENTRY row 1 7 icon_tra
+    READ_2DA_ENTRY row 2 7 icon
+    READ_2DA_ENTRY row 3 7 existing
+    READ_2DA_ENTRY row 4 7 clone
+    READ_2DA_ENTRY row 5 7 resource
+    READ_2DA_ENTRY row 6 7 ids_ref
+    INNER_ACTION BEGIN
+      
+      // identify and patch IDS references...
+      ACTION_IF !IS_AN_INT ~%ids_ref%~ BEGIN
+        OUTER_SET num = IDS_OF_SYMBOL (~spell~ ~%ids_ref%~)
+        ACTION_IF num > 1999 BEGIN OUTER_SET num -= 2000 OUTER_SPRINT prefix spwi END
+        ACTION_IF num >  999 BEGIN OUTER_SET num -= 1000 OUTER_SPRINT prefix sppr END
+        
+        COPY_EXISTING ~%prefix%%num%.spl~  ~override~
+                      ~%prefix%%num%a.spl~ ~override~
+                      ~%prefix%%num%b.spl~ ~override~
+                      ~%prefix%%num%c.spl~ ~override~
+          PATCH_IF existing BEGIN
+            LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 142 match_parameter2 = existing parameter2 = icon END
+          END ELSE BEGIN
+            LPF CLONE_EFFECT INT_VAR silent = 1 multi_match = 1 match_opcode = clone opcode = 142 parameter1 = 0 parameter2 = icon END
+          END  
+          BUT_ONLY IF_EXISTS            
+                      
+      END ELSE BEGIN // or just patch a resource directly
+        
+        COPY_EXISTING ~%resource%~  ~override~
+          PATCH_IF existing BEGIN
+            LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 142 match_parameter2 = existing parameter2 = icon END
+          END ELSE BEGIN
+            LPF CLONE_EFFECT INT_VAR silent = 1 multi_match = 1 match_opcode = clone opcode = 142 parameter1 = 0 parameter2 = icon END
+          END  
+          BUT_ONLY IF_EXISTS 
+          
+      END
+        
+    END // end inner_action
+  END // end for loop
+  BUT_ONLY
+
+// shroud of flame has no easy op to clone, so deal with it manually
+OUTER_SET num = (IDS_OF_SYMBOL (~spell~ ~WIZARD_SHROUD_OF_FLAME~) - 2000)
+ACTION_IF num >  0 BEGIN 
+          
+  COPY_EXISTING ~spwi%num%.spl~   ~override~
+                ~spwi%num%c.spl~  ~override~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 142 target = 2 power = 5 parameter2 = 169 duration = 6 savingthrow = BIT0 END
+
+END 
+
+// static charge has no easy op to clone, so deal with it manually
+OUTER_SET num = (IDS_OF_SYMBOL (~spell~ ~CLERIC_STATIC_CHARGE~) - 1000)
+ACTION_IF num >  0 BEGIN 
+          
+  COPY_EXISTING ~sppr%num%.spl~   ~override~
+                ~sppr%num%b.spl~  ~override~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 142 target = 2 power = 4 parameter2 = 175 duration = 60 END
+
+END  
+
+// greater shield should re-use shield of lathander icon
+OUTER_SET num = (IDS_OF_SYMBOL (~spell~ ~CLERIC_GREATER_SHIELD_OF_LATHANDER~) - 1000)
+ACTION_IF num >  0 BEGIN 
+          
+  COPY_EXISTING ~sppr%num%.spl~   ~override~
+    LPF CLONE_EFFECT INT_VAR match_opcode = 101 opcode = 142 parameter1 = 0 parameter2 = 177 END
+
+END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
