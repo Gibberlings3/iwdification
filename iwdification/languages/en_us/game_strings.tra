@@ -116,3 +116,95 @@ Not Usable By:
   @6015 = ~Ooh, big axe! Gots some woods to chop? Shiny, shiny!~
   @6016 = ~Recipe can make Battle Standard more Standard. 5,000 gold will do it.~
   @6017 = ~Let's see what else you got then.~
+  
+
+  @9001 = ~Boring Beetle~  
+  @9002 = ~Polymorph Self
+(Alteration)
+
+Level: 4
+Range: 0
+Duration: 1 turn + 3 rounds/level
+Casting Time: 4
+Area of Effect: The caster
+Saving Throw: None
+
+When this spell is cast, the wizard is able to assume the form of another creature. The caster also gains the physical mode of locomotion and breathing as well. This spell does not give the new form's other abilities such as special attacks and magic, nor does it run the risk of the wizard changing personality and mentality.
+
+For the duration of the spell, the caster may transform into any of the new forms at any time, and as many times as <PRO_HESHE> wishes. The caster gains the natural attacks of the new form in some cases and may use weapons in others. The mental attributes of the wizard remain the same, but all the physical attributes are obtained from the new form. Also, any natural protections that the new form offers are conferred to the wizard, such as the resistance to missile and crushing weapons possessed by the slime form.
+
+The possible forms given by Polymorph Self are:
+  Flind: wields a magical halberd (+1 fire damage and strikes as a +3 weapon)
+  Mustard Jelly: capable of poisoning or slowing opponents (if they fail a Save vs. Death when hit)
+  Ogre: capable of causing massive damage with its fists
+  Spider: causes poison damage when it hits an opponent
+
+In addition, the caster may choose the form of brown bear, black bear, wolf, polar bear, or winter wolf.~
+  @9003 = ~Polar Bear~
+  @9004 = ~Polymorph Self
+(Alteration)
+
+Level: 4
+Range: 0
+Duration: 1 turn + 3 rounds/level
+Casting Time: 4
+Area of Effect: The caster
+Saving Throw: None
+
+When this spell is cast, the wizard is able to assume the form of another creature. The caster also gains the physical mode of locomotion and breathing as well. This spell does not give the new form's other abilities such as special attacks and magic, nor does it run the risk of the wizard changing personality and mentality.
+
+For the duration of the spell, the caster may transform into any of the new forms at any time, and as many times as <PRO_HESHE> wishes. The caster gains the natural attacks of the new form in some cases and may use weapons in others. The mental attributes of the wizard remain the same, but all the physical attributes are obtained from the new form. Also, any natural protections that the new form offers are conferred to the wizard, such as the resistance to missile and crushing weapons possessed by the slime form.
+
+The possible forms given by Polymorph Self are:
+  Flind: wields a magical halberd (+1 fire damage and strikes as a +3 weapon)
+  Mustard Jelly: capable of poisoning or slowing opponents (if they fail a Save vs. Death when hit)
+  Ogre: capable of causing massive damage with its fists
+  Spider: causes poison damage when it hits an opponent
+
+In addition, the caster may choose the form of brown bear, black bear, wolf, boring beetle, polar bear, or winter wolf.~
+  @9005 = ~Shapeshift: Boring Beetle~
+  @9006 = ~Shapeshift: Boring Beetle
+
+Strength: 18/51
+Dexterity: 7
+
+Base Armor Class: -2
+Number of Attacks: 1
+Attack Damage: 5d4 slashing
+
+Special Abilities:
+– Slashing Resistance: 50%
+– Piercing Resistance: 50%
+– Missile Resistance: 50%
+
+The Druid is healed 12 Hit Points after using this ability.~
+  @9007 = ~Shapeshift: Polar Bear~
+  @9008 = ~Shapeshift: Polar Bear
+
+Strength: 18/00
+Dexterity: 10
+
+Base Armor Class: 4
+Number of Attacks: 3
+Attack Damage: 1d12 slashing
+
+Special Abilities:
+– Cold Resistance: 75%
+– Fire Resistance: -25%
+
+The Druid is healed 12 Hit Points after using this ability.~
+  @9009 = ~Shapeshift: Winter Wolf~
+  @9010 = ~Shapeshift: Winter Wolf
+
+Strength: 18
+Dexterity: 13
+
+Base Armor Class: 2
+Number of Attacks: 2
+Attack Damage: 1d6 slashing
+
+Special Abilities:
+– Cold Resistance: 75%
+– Fire Resistance: -25%
+
+The Druid is healed 12 Hit Points after using this ability.~  

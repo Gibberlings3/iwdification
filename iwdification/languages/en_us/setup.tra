@@ -1,8 +1,11 @@
 // this file contains strings only used by the WeiDU installer and does not get converted to UTF-8 for EE games.
-@996  = ~This component is only available on non-EE games~
-@997  = ~This component is only available on EE games~
-@998  = ~This functionality is already installed by another mod.~
-@999  = ~DLC Merger is required before mods can be installed on this game. Check the readme for more information and a link to download DLC Merger.~
+ @993 = ~Additional Spells~
+ @994 = ~Miscellaneous Changes~
+ @995 = ~Class Updates~
+ @996 = ~This component is only available on non-EE games~
+ @997 = ~This component is only available on EE games~
+ @998 = ~This functionality is already installed by another mod.~
+ @999 = ~DLC Merger is required before mods can be installed on this game. Check the readme for more information and a link to download DLC Merger.~
 
 @1000 = ~Icewind Dale Casting Graphics (Andyr)~
 
@@ -12,10 +15,12 @@
 
 @4000 = ~IWD Divine Spell Pack~
 
-@5000 = ~IWD Bard Song~
+@5000 = ~IWD CLass Updates: Bard~
 
 @6000 = ~Two Handed Axe Item Pack~
 
 @7000 = ~Allow Elves to be Druids~
 
 @8000 = ~Additional Portrait Icons~
+
+@9000 = ~Expanded Polymorph Self~

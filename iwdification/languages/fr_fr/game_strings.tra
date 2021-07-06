@@ -4,6 +4,8 @@
 
 // strings in this file will be overridden by strings in game_strings_ee for EE games.
 // this file is ANSI, and will be converted to UTF-8 for EE games.
+
+
   @6001 = ~Hache à deux mains~
   @6002 = ~Cette arme puissante consiste en un manche de 1,20 mètre à 1,50 mètre de long, au bout duquel a été fixée une lourde lame, laquelle peut être simple ou double (une lame de chaque côté du manche). C'est une arme difficile à manier, mais un combattant aguerri peut s'en servir pour assener de terribles coups.
 
@@ -137,3 +139,89 @@ Non utilisable par :
   @6015 = ~Ooh, une grosse hache ! T'as du petit bois à couper ? Brillante, brillante !~
   @6016 = ~J'ai une recette qui peut rendre Étendard de bataille encore plus batailleur. 5 000 pièces d'or et il est à toi.~
   @6017 = ~Alors, voyons voir ce que tu as d'autre.~
+  
+
+  @9001 = ~Scarabée scolyte~
+  @9002 = ~Métamorphose
+(Transmutation)
+
+Niveau : 4
+Portée : personnelle
+Durée : 1 tour + 3 rounds par niveau
+Temps d'incantation : 4
+Zone d'effet : le lanceur
+Jet de sauvegarde : aucun
+
+Une fois ce sort jeté, le personnage est capable de prendre la forme d'une autre créature. Il acquiert également le mode physique de locomotion et de respiration de sa nouvelle forme. Mais celle-ci n'acquiert pas d'aptitudes supplémentaires (attaques spéciales ou magiques), et le magicien ne risque pas de changer de personnalité ni de mentalité.
+Une fois le sort jeté, et pendant la durée de son effet, le jeteur de sorts peut prendre toutes ces nouvelles formes à tout moment et à volonté. Dans certains cas, il acquiert les moyens d'attaque naturels de la nouvelle forme, dans d'autres, il peut utiliser des armes. Quant au magicien, ses attributs mentaux restent les mêmes, mais tous ses attributs physiques sont affectés par la nouvelle forme, dont il acquiert aussi toutes les protections naturelles (par exemple, résistance aux projectiles et armes contondantes du limon).
+Les formes qu'il est possible d'adopter sont les suivantes :
+- loup
+- loup arctique
+- ours brun
+- ours noir
+- ours polaire
+- gnoll (manie une hallebarde magique qui inflige +1 point de dégât de feu et frappe comme une arme +3)
+- gelée moutarde (ralentit les adversaires qui ratent un jet de sauvegarde contre la pétrification/métamorphose)
+- ogre (peut causer des dégâts massifs à l'aide de ses points)
+- araignée (empoisonne les adversaires touchés au corps-à-corps)~ // ~copy contents of @9004 and remove the reference to boring beetle in the last line~
+  @9003 = ~Ours polaire~
+  @9004 = ~Métamorphose
+(Transmutation)
+
+Niveau : 4
+Portée : personnelle
+Durée : 1 tour + 3 rounds par niveau
+Temps d'incantation : 4
+Zone d'effet : le lanceur
+Jet de sauvegarde : aucun
+
+Une fois ce sort jeté, le personnage est capable de prendre la forme d'une autre créature. Il acquiert également le mode physique de locomotion et de respiration de sa nouvelle forme. Mais celle-ci n'acquiert pas d'aptitudes supplémentaires (attaques spéciales ou magiques), et le magicien ne risque pas de changer de personnalité ni de mentalité.
+Une fois le sort jeté, et pendant la durée de son effet, le jeteur de sorts peut prendre toutes ces nouvelles formes à tout moment et à volonté. Dans certains cas, il acquiert les moyens d'attaque naturels de la nouvelle forme, dans d'autres, il peut utiliser des armes. Quant au magicien, ses attributs mentaux restent les mêmes, mais tous ses attributs physiques sont affectés par la nouvelle forme, dont il acquiert aussi toutes les protections naturelles (par exemple, résistance aux projectiles et armes contondantes du limon).
+Les formes qu'il est possible d'adopter sont les suivantes :
+- loup
+- loup arctique
+- ours brun
+- ours noir
+- ours polaire
+- scarabée scolyte
+- gnoll (manie une hallebarde magique qui inflige +1 point de dégât de feu et frappe comme une arme +3)
+- gelée moutarde (ralentit les adversaires qui ratent un jet de sauvegarde contre la pétrification/métamorphose)
+- ogre (peut causer des dégâts massifs à l'aide de ses points)
+- araignée (empoisonne les adversaires touchés au corps-à-corps)~
+  @9005 = ~Métamorphose en scarabée scolyte~
+  @9006 = ~Métamorphose en scarabée scolyte
+Force : 18/51
+Dextérité : 7
+Classe d'armure de base : -2
+Attaques par round : 1
+Dégâts : 5d4 (tranchant)
+Capacités spéciales :
+- résistance aux dégâts tranchants : 50 %
+- résistance aux dégâts perforants : 50 %
+- résistance aux dégâts projectiles : 50 %
+
+Le druide récupère 12 points de vie après l'utilisation de cette capacité.~
+  @9007 = ~Métamorphose en ours polaire~
+  @9008 = ~Métamorphose en ours polaire
+Force : 18/00
+Dextérité : 10
+Classe d'armure de base : 4
+Attaques par round : 3
+Dégâts : 1d12 (tranchant)
+Capacités spéciales :
+- résistance au froid : 75 %
+- résistance au feu : -25 %
+
+Le druide récupère 12 points de vie après l'utilisation de cette capacité.~
+  @9009 = ~Métamorphose en loup arctique~
+  @9010 = ~Métamorphose en loup arctique
+Force : 18
+Dextérité : 13
+Classe d'armure de base : 2
+Attaques par round : 2
+Dégâts : 1d6 (tranchant)
+Capacités spéciales :
+- résistance au froid : 75 %
+- résistance au feu : -25 %
+
+Le druide récupère 12 points de vie après l'utilisation de cette capacité.~  
