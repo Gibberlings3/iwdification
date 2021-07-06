@@ -1,0 +1,43 @@
+
+DEFINE_ACTION_FUNCTION cd_add_evasion
+  STR_VAR 2da_file = null
+BEGIN
+
+  COPY ~%2da_file%~ ~%2da_file%~
+    COUNT_2DA_ROWS 6 rows
+    FOR (row = 1 ; row < rows ; ++row) BEGIN
+      READ_2DA_ENTRY row 0 6 block
+      READ_2DA_ENTRY row 1 6 new_op
+      READ_2DA_ENTRY row 2 6 placement
+      READ_2DA_ENTRY row 3 6 clone_op
+      READ_2DA_ENTRY row 4 6 subspell
+      READ_2DA_ENTRY row 5 6 file
+      INNER_ACTION BEGIN  
+
+        ACTION_IF IS_AN_INT block BEGIN
+          OUTER_SET num = IDS_OF_SYMBOL (~spell~ ~%file%~)
+          ACTION_IF num > 3999 BEGIN OUTER_SET num -= 4000 OUTER_SPRINT prefix spcl END
+          ACTION_IF num > 2999 BEGIN OUTER_SET num -= 3000 OUTER_SPRINT prefix spin END
+          ACTION_IF num > 1999 BEGIN OUTER_SET num -= 2000 OUTER_SPRINT prefix spwi END
+          ACTION_IF num >  999 BEGIN OUTER_SET num -= 1000 OUTER_SPRINT prefix sppr END
+          ACTION_IF num > 0 BEGIN
+            ACTION_IF IS_AN_INT subspell BEGIN OUTER_SPRINT subspell ~~ END
+            OUTER_SPRINT file  ~%prefix%%num%%subspell%.spl~
+            OUTER_SPRINT block ~%prefix%%num%%subspell%~
+          END
+        END
+        
+        ACTION_IF !IS_AN_INT block BEGIN // is an IDS reference and not found, block will still be 0
+        
+          COPY_EXISTING ~%file%~ ~override~ // clone so as to inherit target and power
+            LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = clone_op opcode = new_op parameter1 = 0 parameter2 = 63 timing = 0 duration = 0 probability1 = 100 
+              probability2 = 0  dicenum = 0 dicesize = 0 savingthrow = 0 special = 0 STR_VAR resource = EVAL ~%block%~ insert = EVAL ~%placement%~ END
+            BUT_ONLY IF_EXISTS 
+        
+        END    
+        
+      END // inner_action
+    END // for loop    
+    BUT_ONLY
+
+END    

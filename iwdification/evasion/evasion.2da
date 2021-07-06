@@ -97,25 +97,4 @@
        SPPR725D         324      first         12          0   SPPR725D.SPL                         // Globe of Blades             
         SPWI957         324      first         12          0   SPWI957.SPL                          // Fireball                    
         SPWI997         324      first         12          0   SPWI997.SPL                          // Lightning Bolt              
-         WAND06         324      first         12          0   WAND06.ITM                           // Wand of Frost               
-                                                                                                   
-               0        318      first         12          d   CLERIC_CIRCLE_OF_BONES               // circle of bones subspell    
-               0        324      first         12          0   CLERIC_SPIKE_GROWTH                  // Spike Growth                
-               0        324      first         12          0   CLERIC_CLOUDBURST                    // Cloudburst                  
-               0        324      first         12          0   CLERIC_PRODUCE_FIRE                  // Produce Fire                
-               0        324      first         12          b   CLERIC_STATIC_CHARGE                 // static charge subspell      
-               0        324      first         12          0   CLERIC_SMASHING_WAVE                 // Smashing Wave               
-               0        324      above         12          0   CLERIC_THORN_SPRAY                   // Thorn Spray                 
-               0        324      first         12          0   CLERIC_SPIKE_STONES                  // Spike Stones                
-               0        324      first         12          0   CLERIC_MASS_CAUSE_LIGHT_WOUNDS       // Mass Cause Light Wounds     
-               0        324      first         12          0   CLERIC_WHIRLWIND                     // Whirlwind                   
-               0        324      first         12          0   CLERIC_SPIRITUAL_WRATH               // Spiritual Wrath             
-               0        324      first        326          0   WIZARD_SNILLOCS_SNOWBALL_SWARM       // Snilloc's Snowball Swarm    
-               0        324      first         12          0   WIZARD_ICELANCE                      // Icelance                    
-               0        324      first         12          0   WIZARD_LANCE_OF_DISRUPTION           // Lance of Disruption         
-               0        324      first         12          0   WIZARD_SHOUT                         // Shout                       
-               0        318      first         12          y   WIZARD_VITRIOLIC_SPHERE              // vitriolic sphere splash dama
-               0        318      first         12          b   WIZARD_SHROUD_OF_FLAME               // shroud of flame subspell    
-               0        324      above         12          0   WIZARD_MALAVONS_RAGE                 // Malavon's Rage              
-               0        324      first         12          0   WIZARD_ACID_STORM                    // Acid Storm                  
-               0        324      first         13          0   WIZARD_GREAT_SHOUT                   // Great Shout                 
+         WAND06         324      first         12          0   WAND06.ITM                           // Wand of Frost  
