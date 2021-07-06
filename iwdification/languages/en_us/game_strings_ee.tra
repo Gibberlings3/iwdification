@@ -87,3 +87,12 @@ Requires:
  10 Strength
 
 Weight: 5~
+
+@12001 = ~Gained Passive Ability: Evasion~ // string 40024 in IWDEE
+@12002 = ~– 7th level: Gains the Evasion ability.
+
+EVASION: When a Thief is hit by a spell that can be evaded (Fireball, Lightning Bolt, etc.), the Thief is allowed a Save vs. Breath to completely avoid the effects. If the Saving Throw is failed, the spell works normally, including a save for half damage if the spell allows for it. A helpless Thief (e.g. held, stunned, or asleep) cannot use Evasion.
+
+~ // keep these extra linebreaks
+@12003 = ~Disadvantages:~ // match this exactly to a kit description, as this is used as a text-match
+@12004 = ~– Alignment restricted to any except lawful good.~ // match this exactly to main thief description (strref 9561), as this is used as a text-match

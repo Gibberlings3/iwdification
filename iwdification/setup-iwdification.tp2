@@ -730,12 +730,13 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// bard song                                        \\\\\
+///// IWD CLass Updates: Bard                          \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @5000 DESIGNATED 50
+BEGIN @5000 DESIGNATED 50 // aka add new bard songs
+GROUP @995
 
 /////                                                  \\\\\
 ///// begin generated from iwdspells                   \\\\\
@@ -764,16 +765,29 @@ LAF install_iwd_spell_resources
     style_old="%iwdspells_data%/spell_styles_iwd.2da"
     style_new="%iwdspells_data%/spell_styles_bg.2da"
 END
+  
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// IWD CLass Updates: Druid                         \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// druid shapeshiftigng & abilities                 \\\\\
+/////                                                  \\\\\
+
+//BEGIN @5000 DESIGNATED 70 // Use IWD Shapeshifting and Ability Progression
+//SUBCOMPONENT @7000 // IWD CLass Updates: Druid
+//GROUP @995
+
 /////                                                  \\\\\
 ///// Elven Druids                                     \\\\\
 /////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @7000 DESIGNATED 70
+BEGIN @7100 DESIGNATED 71
+//SUBCOMPONENT @7000 // IWD CLass Updates: Druid
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @997
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
@@ -782,3 +796,196 @@ COPY_EXISTING ~clsrcreq.2da~ ~override~
   END
   PRETTY_PRINT_2DA
   BUT_ONLY
+
+/////                                                  \\\\\
+///// do both                                          \\\\\
+/////                                                  \\\\\
+
+//BEGIN @7300 DESIGNATED 73
+//SUBCOMPONENT @7000 // IWD CLass Updates: Druid
+//REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @997
+  
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// IWD CLass Updates: Paladin                       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+//BEGIN @10000 DESIGNATED 100
+//GROUP @995
+  
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// IWD CLass Updates: Ranger                        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+//BEGIN @11000 DESIGNATED 110
+//GROUP @995
+  
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// IWD CLass Updates: Thief                         \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @12000 DESIGNATED 120
+REQUIRE_PREDICATE !GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ @997
+GROUP @995
+
+OUTER_SET default_thief = 9561
+ACTION_CLEAR_ARRAY  cd_thief_clabs
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_thief_clabs BEGIN // start with base class tables
+  ~%default_thief%~ => clabth01 // generic thief abilities
+END
+  
+// add kit tables dynamically by reading kitlist
+COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_ROWS 9 rows
+  FOR (index = 2 ; index < rows ; ++index) BEGIN // skip reserve row
+    READ_2DA_ENTRY index 8 9 class
+    PATCH_IF class = 4 BEGIN
+      READ_2DA_ENTRY index 4 9 desc
+      READ_2DA_ENTRY index 5 9 clab
+      DEFINE_ASSOCIATIVE_ARRAY cd_thief_clabs BEGIN "%desc%" => "%clab%" END
+    END  
+  END
+  
+ACTION_PHP_EACH cd_thief_clabs AS desc_strref => file BEGIN
+  
+  ACTION_IF FILE_EXISTS_IN_GAME ~%file%.2da~ BEGIN 
+
+    APPEND ~%file%.2da~ ~ABILITYX **** **** **** **** **** **** AP_CDIEVADE CDREPLACE~ UNLESS ~AP_CDIEVADE~
+
+    COPY_EXISTING ~%file%.2da~ ~override~
+      COUNT_2DA_COLS cols
+      FOR (index = 9 ; index < cols ; ++index) BEGIN
+        REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
+      END
+      REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
+      PRETTY_PRINT_2DA
+      BUT_ONLY
+  
+  END
+ 
+	ACTION_GET_STRREF desc_strref desc
+	OUTER_PATCH_SAVE desc "%desc%" BEGIN
+    PATCH_IF desc_strref = default_thief BEGIN
+      SPRINT old @12004 // main thief descript doesn't have 'disadvantages' line
+    END ELSE BEGIN  
+      SPRINT old @12003
+    END  
+    SPRINT new @12002
+		REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
+		REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
+  END
+	STRING_SET_EVALUATE desc_strref "%desc%"  
+
+END
+
+COPY ~iwdification/spl/cdievade.spl~ ~override~
+  SAY 0x9e @12001
+  
+COPY ~iwdification/2da/evasion.2da~ ~iwdification/2da/evasion.2da~
+  COUNT_2DA_ROWS 6 rows
+  FOR (row = 1 ; row < rows ; ++row) BEGIN
+    READ_2DA_ENTRY row 0 6 block
+    READ_2DA_ENTRY row 1 6 new_op
+    READ_2DA_ENTRY row 2 6 placement
+    READ_2DA_ENTRY row 3 6 clone_op
+    READ_2DA_ENTRY row 4 6 subspell
+    READ_2DA_ENTRY row 5 6 file
+    INNER_ACTION BEGIN  
+
+      ACTION_IF IS_AN_INT block BEGIN
+        OUTER_SET num = IDS_OF_SYMBOL (~spell~ ~%file%~)
+        ACTION_IF num > 3999 BEGIN OUTER_SET num -= 4000 OUTER_SPRINT prefix spcl END
+        ACTION_IF num > 2999 BEGIN OUTER_SET num -= 3000 OUTER_SPRINT prefix spin END
+        ACTION_IF num > 1999 BEGIN OUTER_SET num -= 2000 OUTER_SPRINT prefix spwi END
+        ACTION_IF num >  999 BEGIN OUTER_SET num -= 1000 OUTER_SPRINT prefix sppr END
+        ACTION_IF num > 0 BEGIN
+          ACTION_IF IS_AN_INT subspell BEGIN OUTER_SPRINT subspell ~~ END
+          OUTER_SPRINT file  ~%prefix%%num%%subspell%.spl~
+          OUTER_SPRINT block ~%prefix%%num%%subspell%~
+        END
+      END
+      
+      ACTION_IF !IS_AN_INT block BEGIN // is an IDS reference and not found, block will still be 0
+      
+        COPY_EXISTING ~%file%~ ~override~ // clone so as to inherit target and power
+          LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = clone_op opcode = new_op parameter1 = 0 parameter2 = 63 timing = 0 duration = 0 probability1 = 100 
+            probability2 = 0  dicenum = 0 dicesize = 0 savingthrow = 0 special = 0 STR_VAR resource = EVAL ~%block%~ insert = EVAL ~%placement%~ END
+          BUT_ONLY IF_EXISTS 
+      
+      END    
+      
+    END // inner_action
+  END // for loop    
+  BUT_ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BEGIN ~bg2ee projectile check~ DESIGNATED 213
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.pro$~ ~override~
+  READ_SHORT 0x08 type
+  PATCH_IF type = 3 BEGIN
+    SET proj = IDS_OF_SYMBOL (~projectl~ ~%SOURCE_RES%~)
+    PATCH_IF proj BEGIN
+      DEFINE_ASSOCIATIVE_ARRAY cd_aoe_proj BEGIN "%SOURCE_RES%" => ~%proj%~ END
+    END
+  END
+  BUT_ONLY
+
+ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~ 
+                           ~^.+\.spl$~ ~override~
+  SET fudge = 0
+  READ_ASCII 0x00 sig (3)
+  SET abil_length = 0x28
+  PATCH_IF ("%sig%" STRING_COMPARE_CASE "ITM" = 0) BEGIN
+    SET fudge = 1
+  END   
+  SET abil_length = (0x28 + (fudge * 0x10))
+  READ_LONG  0x64 abil_off
+  READ_SHORT 0x68 abil_num                           
+  FOR (index = 0 ; index < abil_num ; ++index) BEGIN
+    READ_SHORT (abil_off + (0x26 + (0x04 * fudge)) + (index * abil_length)) proj
+    //SET proj = ((proj - 1) + fudge)
+    SET proj = (proj - 1)
+    PATCH_IF proj > 1 BEGIN
+      PATCH_PHP_EACH cd_aoe_proj AS pro_file => pro_match BEGIN
+        PATCH_IF pro_match = proj BEGIN
+          READ_LONG 0x0c name_strref
+          PATCH_IF ((name_strref < 1) OR (name_strref = 9999999)) BEGIN
+            READ_LONG 0x08 name_strref
+          END  
+          GET_STRREF name_strref name
+          //PATCH_PRINT "  ~%SOURCE_FILE%~ // %name%, uses aoe projectile %pro_file% (%pro_match%)"
+          PATCH_PRINT " %pro_file% (%pro_match%) - ~%SOURCE_FILE%~ // %name%"
+        END
+      END
+    END
+  END
+  BUT_ONLY  
+  
