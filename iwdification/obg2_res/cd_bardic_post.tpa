@@ -57,7 +57,7 @@ ACTION_IF !enhanced_edition BEGIN
   END  
   
   OUTER_SET icons = 0
-  ACTION_IF MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~80~ OUTER_SET icons = 1 END
+  ACTION_IF MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~80~ BEGIN OUTER_SET icons = 1 END
   
   ACTION_CLEAR_ARRAY cd_bard_icons
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_bard_icons BEGIN
@@ -74,7 +74,7 @@ ACTION_IF !enhanced_edition BEGIN
   ACTION_PHP_EACH cd_bard_icons AS song => new_icon BEGIN  
 
     COPY_EXISTING ~%song%~ ~override~
-      PATCH_IF icons SET icon = new_icon END ELSE BEGIN SET icon = 40 END 
+      PATCH_IF icons BEGIN SET icon = new_icon END ELSE BEGIN SET icon = 40 END 
       LPF DELETE_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 66 END // oBG2 can't stop deafened characters from hearing
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 STR_VAR resource = EVAL ~%SOURCE_RES%~ END // remove EE no-stacking
       LPF ALTER_EFFECT INT_VAR match_timing = 0 match_duration = 7 timing = 10 duration = 100 END // oBG2 round times

@@ -1,5 +1,5 @@
 @359=~Courage~
-@358=~Hope~
+@358=~Hope~ 
 @357=~Cat's Grace~
 @356=~Righteous Wrath of the Faithful~
 @355=~Prayer~
@@ -16,28 +16,28 @@
 @344=~Mind Blank~
 @343=~Earth Elemental Transformation~
 @342=~Fire Elemental Transformation~
-@341=~War Chant of Sith—Armor Bonuses and Regeneration~
+@341=~War Chant of Sith-Armor Bonuses and Regeneration~
 @340=~"War Chant of Sith"
 All allies within 30 ft. gain a +2 bonus to Armor Class, +10% resistance to slashing, piercing, crushing, and missile damage, and the ability to regenerate 2 Hit Points per round.~
 @339=~War Chant of Sith~
 @338=~Enthralled~
-@337=~The Siren's Yearning—Enthralls Creatures~
+@337=~The Siren's Yearning-Enthralls Creatures~
 @336=~"The Siren's Yearning"
 All enemies within 30 ft. must save vs. Spell or become enthralled, unable to take action until 1 round passes or they take damage.~
 @335=~The Siren's Yearning~
-@334=~The Song of Kaudies—Resistant to Sound Attacks~
+@334=~The Song of Kaudies-Resistant to Sound Attacks~
 @333=~"The Song of Kaudies"
 All allies within 30 ft. have a 50% chance to shrug off the effects of spells such as Silence, Shout, Great Shout, Command, Greater Command, or any other sound-based attack.~
 @332=~The Song of Kaudies~
-@331=~Tymora's Melody—Luck and Skill Bonuses~
+@331=~Tymora's Melody-Luck and Skill Bonuses~
 @330=~"Tymora's Melody"
 All allies within 30 ft. gain +1 to luck, +3 to Saving Throws, +10 to lore, and a +10% bonus to all of their thieving skills.~
 @329=~Tymora's Melody~
-@328=~The Tale of Curran Strongheart—Immunity to Fear~
+@328=~The Tale of Curran Strongheart-Immunity to Fear~
 @327=~"The Tale of Curran Strongheart"
 All allies within 30 ft. gain immunity to fear effects for as long as the song lasts, and any fear effects currently on them are removed.~
 @326=~The Tale of Curran Strongheart~
-@325=~The Ballad of Three Heroes—Combat Bonuses~
+@325=~The Ballad of Three Heroes-Combat Bonuses~
 @324=~"The Ballad of Three Heroes"
 All allies within 30 ft. gain +1 to hit, +1 to damage, and +1 to all their Saving Throws.~
 @323=~The Ballad of Three Heroes~
@@ -140,7 +140,7 @@ Duration: Instant
 Casting Time: 9
 Area of Effect: 7-ft. radius
 Saving Throw: None
-This spell blankets the area of effect with a silver-blue mist—any creature within the mist will be cured of disease and poison and healed 25 Hit Points.~
+This spell blankets the area of effect with a silver-blue mist-any creature within the mist will be cured of disease and poison and healed 25 Hit Points.~
 @296=~Mist of Eldath~
 @295=~Greater Shield of Lathander
 (Conjuration)
@@ -378,7 +378,7 @@ Duration: 2 turns
 Casting Time: 7
 Area of Effect: 1 creature
 Saving Throw: None
-This spell works only on player characters or allied creatures. When cast, the target of this spell goes berserk, attacking the nearest creature until that creature is dead, then moving on to the next target. While under Blood Rage, the target is immune to charm, sleep, fear, hold, stunning, confusion, emotion, symbol spells, and related effects. In addition, the target gains +2 to hit, +3 to damage, +2 to Strength, +10 to maximum Hit Points, and +2 to <PRO_HISHER> movement rate. The spell has several disadvantages, however: The Hit Points of the target are masked for the duration of the spell, and the target cannot benefit from any effect that heals Hit Points. At the end of the spell's duration, the target becomes fatigued and <PRO_HISHER> Strength drops to 3 for 2 turns. Blood Rage cannot affect—and cannot be cast by—creatures of lawful alignment.~
+This spell works only on player characters or allied creatures. When cast, the target of this spell goes berserk, attacking the nearest creature until that creature is dead, then moving on to the next target. While under Blood Rage, the target is immune to charm, sleep, fear, hold, stunning, confusion, emotion, symbol spells, and related effects. In addition, the target gains +2 to hit, +3 to damage, +2 to Strength, +10 to maximum Hit Points, and +2 to <PRO_HISHER> movement rate. The spell has several disadvantages, however: The Hit Points of the target are masked for the duration of the spell, and the target cannot benefit from any effect that heals Hit Points. At the end of the spell's duration, the target becomes fatigued and <PRO_HISHER> Strength drops to 3 for 2 turns. Blood Rage cannot affect-and cannot be cast by-creatures of lawful alignment.~
 @247=~Blood Rage~
 @246=~Recitation
 (Abjuration, Invocation/Evocation)
@@ -389,7 +389,7 @@ Duration: 1 round/level
 Casting Time: 7
 Area of Effect: 25-ft. radius
 Saving Throw: None
-By reciting a sacred passage or declaration, the priest invokes <PRO_HISHER> deity's blessing upon <PRO_HIMHER>self and <PRO_HISHER> allies while sowing confusion and weakness among <PRO_HISHER> enemies. The priest's allies gain a +2 bonus to their attack rolls and Saving Throws, and the priest's enemies receive a -2 penalty to the same. Recitation does not nullify a Prayer spell—the two can be cast in tandem, and the effects are cumulative.~
+By reciting a sacred passage or declaration, the priest invokes <PRO_HISHER> deity's blessing upon <PRO_HIMHER>self and <PRO_HISHER> allies while sowing confusion and weakness among <PRO_HISHER> enemies. The priest's allies gain a +2 bonus to their attack rolls and Saving Throws, and the priest's enemies receive a -2 penalty to the same. Recitation does not nullify a Prayer spell-the two can be cast in tandem, and the effects are cumulative.~
 @245=~Recitation~
 @244=~Discharge of static electricity~
 @243=~Static Charge
@@ -702,7 +702,7 @@ Duration: 1 round/level
 Casting Time: 6
 Area of Effect: Special
 Saving Throw: None
-Shades is similar to Shadow Monsters and Demi-Shadow Monsters—it allows the caster to shape material from the Demiplane of Shadow into illusionary creatures. These shadows are tougher than the shadows summoned by Shadow Monsters and Demi-Shadow Monsters, and they will obey the caster until the spell expires or they are slain.~
+Shades is similar to Shadow Monsters and Demi-Shadow Monsters-it allows the caster to shape material from the Demiplane of Shadow into illusionary creatures. These shadows are tougher than the shadows summoned by Shadow Monsters and Demi-Shadow Monsters, and they will obey the caster until the spell expires or they are slain.~
 @168=~Shades~
 @167=~Lich Touch~
 @166=~Lich Touch~
@@ -983,7 +983,7 @@ Duration: 24 hours
 Casting Time: 1
 Area of Effect: The caster
 Saving Throw: None
-In the interests of one's self-control and privacy, Mind Blank shields a creature's mind from almost any mental effect—charm, maze, feeblemind, confusion, fear, intoxication, berserk, hold, and petrification.~
+In the interests of one's self-control and privacy, Mind Blank shields a creature's mind from almost any mental effect-charm, maze, feeblemind, confusion, fear, intoxication, berserk, hold, and petrification.~
 @64=~Mind Blank~
 @63=~Suffocate
 (Alteration)
@@ -1003,7 +1003,7 @@ Duration: 1 round/level
 Casting Time: 7
 Area of Effect: 12-ft. radius
 Saving Throw: 1/2
-This spell unleashes an acidic downpour on the area of effect, doing 1d4 points of acid damage each round for the first three rounds, 1d6 points for the next three rounds, and 1d8 points for each round thereafter. Moving out of the area of effect does not stop the damage—the acid adheres to the skin, and any creatures in the area of effect when Acid Storm is cast continue to suffer acid damage as long as the spell duration lasts. Creatures make a Save vs. Spell every round after they have been hit by the cloud—if successful, they only take half damage (for that round only).~
+This spell unleashes an acidic downpour on the area of effect, doing 1d4 points of acid damage each round for the first three rounds, 1d6 points for the next three rounds, and 1d8 points for each round thereafter. Moving out of the area of effect does not stop the damage-the acid adheres to the skin, and any creatures in the area of effect when Acid Storm is cast continue to suffer acid damage as long as the spell duration lasts. Creatures make a Save vs. Spell every round after they have been hit by the cloud-if successful, they only take half damage (for that round only).~
 @60=~Acid Storm~
 @59=~Trollish Fortitude
 (Necromancy)
@@ -1089,7 +1089,7 @@ Duration: Instant
 Casting Time: 4
 Area of Effect: 2-ft. radius
 Saving Throw: Special
-This spell creates a brilliant globe of magical energy that streaks forth from the caster's hand to unerringly strike its target, much like a Magic Missile spell. The wizard creates one missile at 7th level and an additional missile at every third level after 7th—in other words, two missiles at 10th level, three at 13th, four at 16th, and so on, to a maximum of seven missiles at 25th level. Each missile inflicts 2d4 points of damage to the target and then bursts in a 2-ft. radius concussive blast that inflicts 1 point of damage per level of the caster—for example, a 12th-level wizard could conjure two force missiles, each of which strikes for 2d4+12 points of magic damage. Creatures taking damage can attempt a Save vs. Spell to negate the concussion damage, but the impact of the missile itself allows no Saving Throw. The 1st-level wizard spell Shield will absorb the force missiles harmlessly, including the concussion damage.~
+This spell creates a brilliant globe of magical energy that streaks forth from the caster's hand to unerringly strike its target, much like a Magic Missile spell. The wizard creates one missile at 7th level and an additional missile at every third level after 7th-in other words, two missiles at 10th level, three at 13th, four at 16th, and so on, to a maximum of seven missiles at 25th level. Each missile inflicts 2d4 points of damage to the target and then bursts in a 2-ft. radius concussive blast that inflicts 1 point of damage per level of the caster-for example, a 12th-level wizard could conjure two force missiles, each of which strikes for 2d4+12 points of magic damage. Creatures taking damage can attempt a Save vs. Spell to negate the concussion damage, but the impact of the missile itself allows no Saving Throw. The 1st-level wizard spell Shield will absorb the force missiles harmlessly, including the concussion damage.~
 @39=~Mordenkainen's Force Missiles~
 @38=~Hopelessness~
 @37=~Stunned~

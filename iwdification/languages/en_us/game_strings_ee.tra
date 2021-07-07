@@ -86,13 +86,129 @@ Type: Two-handed
 Requires:
  10 Strength
 
-Weight: 5~
+Weight: 5~  @7005 = ~Shapeshift: Fire Elemental
 
-@12001 = ~Gained Passive Ability: Evasion~ // string 40024 in IWDEE
+Strength: 19
+Dexterity: 9
+
+Base Armor Class: 2
+Number of Attacks: 1
+Attack Damage: 1d8 crushing + 1d4 fire
+
+Special Abilities:
+– Cold Resistance: -50%
+– Fire Resistance: 100%
+– Acid Resistance: 15%
+– Electricity Resistance: 15%
+– Slashing Resistance: 15%
+– Crushing Resistance: 15%
+– Piercing Resistance: 15%
+– Missile Resistance: 15%~
+  @7006 = ~Shapeshift: Earth Elemental
+
+Strength: 23
+Dexterity: 5
+
+Base Armor Class: -2
+Number of Attacks: 1
+Attack Damage: 4d8 crushing
+
+Special Abilities:
+– Cold Resistance: 25%
+– Fire Resistance: 25%
+– Slashing Resistance: 50%
+– Crushing Resistance: -50%
+– Piercing Resistance: 50%
+– Missile Resistance: 75%~
+  @7007 = ~Shapeshift: Water Elemental
+
+Strength: 18
+Dexterity: 14
+
+Base Armor Class: -2
+Number of Attacks: 1
+Attack Damage: 4d8 crushing
+
+Special Abilities:
+– Cold Resistance: -25%
+– Electricity Resistance: -75%
+– Acid Resistance: 75%
+– Slashing Resistance: 75%
+– Crushing Resistance: 75%
+– Piercing Resistance: 75%
+– Missile Resistance: 75%~  
+  @7008 = ~Shapeshift: Black Bear
+
+Strength: 18/00
+Dexterity: 12
+
+Base Armor Class: 7
+Number of Attacks: 3
+Attack Damage: 1d6 (piercing), strikes as +1 weapon
+
+Special Abilities:
+ – Increased movement rate~  
+  @7011 = ~DRUID: The Druid serves the cause of nature and neutrality; the wilderness is <PRO_HISHER> community, and <PRO_HESHE> uses <PRO_HISHER> special powers to protect it and to preserve balance in the world.
+
+CLASS FEATURES:
+
+– May only wear non-metallic armor.
+– May only equip bucklers and non-metallic shields.
+– May only use the following weapons: scimitar, dagger, club, spear, quarterstaff, dart, sling.
+– May only become Proficient (one slot) in any weapon class.
+– May only become Proficient (one slot) in any fighting style.
+– May cast druidic spells.
+– 5th level: May shapeshift into a winter wolf once per day.
+– 7th level: May shapeshift into a boring beetle once per day.
+– 9th level: Becomes immune to poison. May shapeshift into a polar bear once per day.
+– 11th level: Gains the ability to transform into a fire elemental once per day.
+– 13th level: Gains the ability to transform into an earth elemental once per day.
+– 15th level: Gains the Timeless Body ability, becoming immune to fatigue. Gains the ability to transform into a water elemental once per day.
+– Alignment restricted to true neutral.
+– Hit Die: d8
+
+Prime Requisites For Dual-Classing: Wisdom, Charisma~ // iwdee string: 9560
+
+  @9006 = ~Shapeshift: Boring Beetle
+
+Strength: 18/51
+Dexterity: 7
+
+Base Armor Class: -2
+Number of Attacks: 1
+Attack Damage: 5d4 slashing
+
+Special Abilities:
+– Slashing Resistance: 50%
+– Piercing Resistance: 50%
+– Missile Resistance: 50%~
+  @9008 = ~Shapeshift: Polar Bear
+
+Strength: 18/00
+Dexterity: 10
+
+Base Armor Class: 4
+Number of Attacks: 3
+Attack Damage: 1d12 slashing
+
+Special Abilities:
+– Cold Resistance: 75%
+– Fire Resistance: -25%~
+  @9010 = ~Shapeshift: Winter Wolf
+
+Strength: 18
+Dexterity: 13
+
+Base Armor Class: 2
+Number of Attacks: 2
+Attack Damage: 1d6 slashing
+
+Special Abilities:
+– Cold Resistance: 75%
+– Fire Resistance: -25%~  
 @12002 = ~– 7th level: Gains the Evasion ability.
 
 EVASION: When a Thief is hit by a spell that can be evaded (Fireball, Lightning Bolt, etc.), the Thief is allowed a Save vs. Breath to completely avoid the effects. If the Saving Throw is failed, the spell works normally, including a save for half damage if the spell allows for it. A helpless Thief (e.g. held, stunned, or asleep) cannot use Evasion.
 
 ~ // keep these extra linebreaks
-@12003 = ~Disadvantages:~ // match this exactly to a kit description, as this is used as a text-match
 @12004 = ~– Alignment restricted to any except lawful good.~ // match this exactly to main thief description (strref 9561), as this is used as a text-match

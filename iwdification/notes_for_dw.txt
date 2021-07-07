@@ -10,13 +10,17 @@ all of the vars defined in the main install_iwd_spell_resources function when th
 spells are installed, e.g. WIZARD_ANTIMAGIC_SHELL. I've tried to patch to future-proof 
 against IWDEE releases, but in a few cases (notably Shroud of Flame) I'm forced to 
 directly insert new resources.
+
+I've stayed out of the /dw_iwdspells_resource except for one, absolutely needed change:
+I did a search-and-replace in isdwpells.tra to replace em-dashes with normal dashes.
+The former just get corrupted when used in oBG2. 
   
 For the most part I've tried to stay out of the /lib folder; all resources and 
 includes are in this obg2_res folder. Define the path in the tp2 and you're good to go:
 
     OUTER_SPRINT obg2_res_path      ~iwdification/obg2_res~  
 
-Changes I've had to make to the lib folder are documented below:
+Changes I've had to make to the /lib folder are documented below:
 
 always.tph
   Removed the EE/FAIL check right at the top and the EE check for DS installation 
@@ -38,7 +42,7 @@ bardsong_spells_postproduction.tpa
   from kitlist.2da instead of clastext; this required a little re-jiggering of
   the patching. 
 
-civine_spells_postproduction.tpa
+divine_spells_postproduction.tpa
   Inserted the INCLUDEs as noted above. The hidespl APPENDs are now gated on
   EE-game checks. 
 

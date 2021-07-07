@@ -775,35 +775,37 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 /////                                                  \\\\\
-///// druid shapeshiftigng & abilities                 \\\\\
+///// druid shapeshifting & abilities                  \\\\\
 /////                                                  \\\\\
 
-//BEGIN @5000 DESIGNATED 70 // Use IWD Shapeshifting and Ability Progression
-//SUBCOMPONENT @7000 // IWD CLass Updates: Druid
-//GROUP @995
+BEGIN @7001 DESIGNATED 70 // Use IWD Shapeshifting and Ability Progression
+SUBCOMPONENT @7000 // IWD CLass Updates: Druid
+GROUP @995
+
+INCLUDE ~iwdification/tpa/druid_poly.tpa~
 
 /////                                                  \\\\\
 ///// Elven Druids                                     \\\\\
 /////                                                  \\\\\
 
 BEGIN @7100 DESIGNATED 71
-//SUBCOMPONENT @7000 // IWD CLass Updates: Druid
+SUBCOMPONENT @7000 // IWD CLass Updates: Druid
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @997
+GROUP @995
 
-COPY_EXISTING ~clsrcreq.2da~ ~override~
-  PATCH_FOR_EACH class IN DRUID TOTEMIC_DRUID SHAPESHIFTER BEAST_FRIEND FIGHTER_DRUID BEGIN
-    REPLACE_TEXTUALLY ~^\(%class%[ %TAB%]+[0-9]+[ %TAB%]+\)[0-9]+\([ %TAB%]+.+\)$~ ~\11\2~
-  END
-  PRETTY_PRINT_2DA
-  BUT_ONLY
+INCLUDE ~iwdification/tpa/druid_elf.tpa~
 
 /////                                                  \\\\\
 ///// do both                                          \\\\\
 /////                                                  \\\\\
 
-//BEGIN @7300 DESIGNATED 73
-//SUBCOMPONENT @7000 // IWD CLass Updates: Druid
-//REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @997
+BEGIN @7200 DESIGNATED 72
+SUBCOMPONENT @7000 // IWD CLass Updates: Druid
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @997
+GROUP @995
+
+INCLUDE ~iwdification/tpa/druid_elf.tpa~
+INCLUDE ~iwdification/tpa/druid_poly.tpa~
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
