@@ -1036,6 +1036,35 @@ opcodes to oBG2 counterparts.
     LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 =   4 parameter2 = 3 STR_VAR resource = EVAL ~%eff%~ END // general = undead
     LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 104 opcode = 177                  parameter2 = 4 STR_VAR resource = EVAL ~%eff%~ END // race = parameter1
   
+/////                                                  \\\\\
+///// obg2 graphical fixes                             \\\\\
+/////                                                  \\\\\
+
+  // 3d blend flag in VVCs cause them to be virtually transparent in oBG2
+  ACTION_FOR_EACH file IN 
+    ~#bless~ ~#entropy~ ~#genabju~ ~#grnring~ ~#latshg1~ ~#latshg2~ ~#latshl1~ ~#latshl2~ ~#storm~ 
+    abjurh alterh asumm1x blessh ccdamah cdiseah cidamah cldamah cloudbh cmdamah cmwounh conjuh csdamah
+    curseh destruh enchah exaltah harmh invoch msumm1h necroh paralh prayerb prayerg recitab recitag
+    rwotfag rwotfah schargh sohopex uwardx witherh
+  BEGIN
+
+    COPY_EXISTING ~%file%.vvc~ ~override~
+      WRITE_SHORT 0x18 (THIS BAND `BIT9) 
+
+  END     
+    
+  // ee BAMs have horrible black auras on everything that show up w/o 3d enabled in oBG2; use original IWD BAMs instead  
+  ACTION_FOR_EACH file IN 
+    abjurax abjurh alancet alterh area1x area4x asumm1x blessh ccdamah cdiseah cldamah cloudbh 
+    cmdamah cmwounh conjuh copesta csdamah curseh destruh enchah eshielc exaltah gsolac1 gsolac2 
+    harmh invoch moeldaa msumm1h necroh pfirea pfirex rwotfah schargh sclouda scloudr sgrowta 
+    sgrowtx sohopex solatc1 solatc2 sshellc sunscoh tsprayt uwardx  
+  BEGIN
+
+    COPY ~%obg2_res_path%/%file%.bam~ ~override~
+
+  END  
+  
 END   
   
 /////                                                  \\\\\

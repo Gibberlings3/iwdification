@@ -206,6 +206,20 @@ Attack Damage: 1d6 slashing
 Special Abilities:
 – Cold Resistance: 75%
 – Fire Resistance: -25%~  
+@10003 = ~– May cast Detect Evil once per day per level (starts at 1st level with 4 uses).~ // match exact from bg2ee strref 9558
+@10004 = ~– May cast Protection From Evil once per day per level (starts at 1st level with one use).~ // match exact from bg2ee strref 9558
+@10005 = ~– May cast priest spells starting at level 9.~ // match exact from bg2ee strref 9558
+@10006 = ~– May use the Cure Disease ability once per day.
+– May use the Detect Evil ability at will (once per round).~ // grab text from iwdee 9558
+@10007 = ~– May cast a special version of Protection From Evil once per day. This ability only affects the Paladin and lasts for 24 turns.
+– May use the Smite Evil ability once per day to deal 1d6 + 1d6 points of damage for every 3 levels of the paladin to a single, evil-aligned opponent.~  // grab text from iwdee 9558
+@10008 = ~– May cast priest spells starting at level 6.
+– 3rd level: Gains the Divine Courage ability becoming immune to fear.
+– Paladins are completely immune to all forms of disease, magical or mundane.~ // grab text from iwdee 9558
+
+@11003 = ~– May use the Tracking ability at will (once per round).~ // from iwdee 37106
+@11004 = ~– Alignment restricted to good.~
+
 @12002 = ~– 7th level: Gains the Evasion ability.
 
 EVASION: When a Thief is hit by a spell that can be evaded (Fireball, Lightning Bolt, etc.), the Thief is allowed a Save vs. Breath to completely avoid the effects. If the Saving Throw is failed, the spell works normally, including a save for half damage if the spell allows for it. A helpless Thief (e.g. held, stunned, or asleep) cannot use Evasion.

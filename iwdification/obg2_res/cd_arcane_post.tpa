@@ -46,6 +46,9 @@ OUTER_SPRINT WIZARD_CONJURE_EARTH_ELEMENTAL SPWI622
 OUTER_SPRINT WIZARD_CONJURE_WATER_ELEMENTAL SPWI632
 OUTER_SPRINT WIZARD_MORDENKAINENS_SWORD SPWI716
 OUTER_SPRINT WIZARD_CATS_GRACE SPWI227
+OUTER_SPRINT WIZARD_SHOUT SPWI430
+OUTER_SPRINT WIZARD_GREAT_SHOUT SPWI819
+OUTER_SPRINT WIZARD_MORDENKAINENS_FORCE_MISSILES SPWI429
 */
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -57,11 +60,9 @@ OUTER_SPRINT WIZARD_CATS_GRACE SPWI227
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 // missing resources
-COPY ~%obg2_res_path%/abjurh.bam~   ~override~ // for abjurh VVC
-     ~%obg2_res_path%/aft_m04.wav~  ~override~ // for antimagic shell
+COPY ~%obg2_res_path%/aft_m04.wav~  ~override~ // for antimagic shell
      ~%obg2_res_path%/aft_m18.wav~  ~override~ // for suffocate
      ~%obg2_res_path%/eff_m107.wav~ ~override~ // for otiluke's freezing sphere
-     ~%obg2_res_path%/paralh.bam~   ~override~ // for paralh VVC
      ~%obg2_res_path%/tra_18.wav~   ~override~ // for snilloc projectile, idpro217
      
 // old iwd resources
@@ -199,7 +200,11 @@ COPY_EXISTING ~%WIZARD_ANTIMAGIC_SHELL%.spl~ ~override~
   LPF CLONE_EFFECT INT_VAR match_opcode = 123 STR_VAR match_resource = fseeds  resource = fireseed END // fire seeds
   PATCH_FOR_EACH file IN brblp wolfm brbrp plyjelly plyspid plyfist plymstar mindflay goliro trollall wolfgr firern earthrn BEGIN
     LPF CLONE_EFFECT INT_VAR match_opcode = 112 STR_VAR match_resource = smcudge resource = EVAL ~%file%~ END // clone from star-metal cudgel
-  END    
+  END   
+  
+COPY_EXISTING ~spwi114.spl~ ~override~ // update shield to block MFM, too
+  LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = ~spwi112~ resource = EVAL ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%~ END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = ~spwi112~ resource = EVAL ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%b~ END 
       
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -212,9 +217,11 @@ COPY_EXISTING ~%WIZARD_ANTIMAGIC_SHELL%.spl~ ~override~
 ACTION_IF enhanced_edition BEGIN
 
   // missing resources
-  COPY ~%obg2_res_path%/aft_m15.wav~  ~override~ // for seven eyes
-       ~%obg2_res_path%/aft_m16.wav~  ~override~ // for seven eyes
-       ~%obg2_res_path%/aft_m17.wav~  ~override~ // for seven eyes
+  COPY ~%obg2_res_path%/abjurh_ee.bam~ ~override/abjurh.bam~ // for abjurh VVC
+       ~%obg2_res_path%/aft_m15.wav~   ~override~ // for seven eyes
+       ~%obg2_res_path%/aft_m16.wav~   ~override~ // for seven eyes
+       ~%obg2_res_path%/aft_m17.wav~   ~override~ // for seven eyes
+       ~%obg2_res_path%/paralh_ee.bam~ ~override/paralh.bam~ // for paralh VVC
 
   // don't have IWD's random treasure table to assign weapon
   COPY_EXISTING ~ad3sklm.cre~ ~override~ // soul eater skeleton
@@ -932,10 +939,112 @@ opcodes to oBG2 counterparts.
 /////                                                  \\\\\
 
   COPY_EXISTING ~%WIZARD_MALAVONS_RAGE%.spl~ ~override~
-    LPF CD_SPLIT_SAVE_DAMAGE END
+    LPF CD_SPLIT_SAVE_DAMAGE END   
 
-END     
+/////                                                  \\\\\
+///// WIZARD_MORDENKAINENS_FORCE_MISSILES              \\\\\
+/////                                                  \\\\\
+
+COPY_EXISTING ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%.spl~ ~override~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 333 opcode = 146 parameter1 = 0 parameter2 = 1 END // change to concussive AoE cast
+  READ_SHORT 0x68 abil_num // now swap over to magic missile projectile
+  SET proj = 68
+  SET proj_inc = 0
+  FOR (index = 0 ; index < abil_num ; ++index) BEGIN
+    PATCH_IF proj < 72 BEGIN
+      SET proj_inc += 1
+      PATCH_IF proj_inc = 4 BEGIN SET proj_inc = 1 SET proj += 1 END
+    END  
+    LPF ALTER_SPELL_HEADER INT_VAR header = (index +1) projectile = proj END
+  END  
   
+/////                                                  \\\\\
+///// WIZARD_SHOUT                                     \\\\\
+/////                                                  \\\\\
+
+  ADD_PROJECTILE ~%obg2_res_path%/cdi315a.pro~ // Animation at speed = 25
+  ADD_PROJECTILE ~%obg2_res_path%/cdi315b.pro~ // Animation at speed = 15
+  COPY_EXISTING ~idpro315.pro~ ~override~
+	   WRITE_BYTE 0x217 255
+
+  COPY_EXISTING ~%WIZARD_SHOUT%.spl~ ~override/cdia431c.spl~ // move main spell to c
+    WRITE_LONG 0x08 "-1" // name
+    WRITE_LONG 0x50 "-1" // desc
+    LPF CD_SPLIT_SAVE_DAMAGE END
+    
+  COPY_EXISTING ~%WIZARD_SHOUT%.spl~ ~override~ // main spell now just casts three subspells
+    LPF ALTER_SPELL_HEADER INT_VAR projectile = 1 END
+    LPF DELETE_EFFECT END // delete all existing effects
+    PATCH_FOR_EACH letter IN a b c BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 148 target = 1 parameter2 = 1 STR_VAR resource = EVAL ~cdia431%letter%~ END
+    END  
+  
+  COPY ~%obg2_res_path%/cdia431a.spl~ ~override~
+    LPF ALTER_SPELL_HEADER INT_VAR projectile = cdi315a END
+  
+  COPY ~%obg2_res_path%/cdia431a.spl~ ~override/cdia431b.spl~
+    LPF ALTER_SPELL_HEADER INT_VAR projectile = cdi315b END
+
+/////                                                  \\\\\
+///// WIZARD_GREAT_SHOUT                               \\\\\
+/////                                                  \\\\\
+
+  COPY_EXISTING ~idpro319.pro~ ~override~
+	  WRITE_BYTE 0x217 255
+
+  COPY_EXISTING ~cdi315a.pro~ ~override/cdi319a.pro~
+                ~cdi315b.pro~ ~override/cdi319b.pro~
+	  WRITE_ASCII 0x10 ~#ff_m101~ #8
+
+  ADD_PROJECTILE ~override/cdi319a.pro~
+  ADD_PROJECTILE ~override/cdi319b.pro~
+
+  COPY_EXISTING ~%WIZARD_GREAT_SHOUT%.spl~ ~override/cdia806c.spl~ // move main spell to c
+    WRITE_LONG 0x08 "-1" // name
+    WRITE_LONG 0x50 "-1" // desc
+    LPF CD_SPLIT_SAVE_DAMAGE END
+    
+  COPY_EXISTING ~%WIZARD_GREAT_SHOUT%.spl~ ~override~ // main spell now just casts three subspells
+    LPF ALTER_SPELL_HEADER INT_VAR projectile = 1 END
+    LPF DELETE_EFFECT END // delete all existing effects
+    PATCH_FOR_EACH letter IN a b c BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 148 target = 1 parameter2 = 1 STR_VAR resource = EVAL ~cdia806%letter%~ END
+    END     
+  
+  COPY ~%obg2_res_path%/cdia431a.spl~ ~override/cdia806a.spl~
+    LPF ALTER_SPELL_HEADER INT_VAR projectile = cdi319a END
+  
+  COPY ~%obg2_res_path%/cdia431a.spl~ ~override/cdia806b.spl~
+    LPF ALTER_SPELL_HEADER INT_VAR projectile = cdi319b END
+  
+/////                                                  \\\\\
+///// obg2 graphical fixes                             \\\\\
+/////                                                  \\\\\
+
+  // 3d blend flag in VVCs cause them to be virtually transparent in oBG2
+  ACTION_FOR_EACH file IN 
+    ~#antishl~ ~#fireau~ ~#frostau~ ~#genench~ ~#malrage~ ~#ssswarm~ abjurh acidh alterh caelemx 
+    ceelemx cfelemx cwelemx enchah invoch mfmissx mswordh necroh ofspheh paralh soflamc vspherx 
+  BEGIN
+
+    COPY_EXISTING ~%file%.vvc~ ~override~
+      WRITE_SHORT 0x18 (THIS BAND `BIT9) 
+
+  END     
+    
+  // ee BAMs have horrible black auras on everything that show up w/o 3d enabled in oBG2; use original IWD BAMs instead  
+  ACTION_FOR_EACH file IN 
+    abjurh acidh alterh amshelc astorma astormx ceelemx cfelemx cwelemx enchah enchanx fiaurac 
+    fraurac gshoutt icelant invoch lodisrt mfmisst mfmissx mrageh mragex msumm1h msumm1x mswordh 
+    necroh ofsphet shoutt soflamc ssswarr ssswart ssswarx suffoca vsphert vspherx
+  BEGIN
+
+    COPY ~%obg2_res_path%/%file%.bam~ ~override~
+
+  END  
+
+END 
+
 /////                                                  \\\\\
 ///// compatibility w/ SR NWN-style Deflection         \\\\\
 /////                                                  \\\\\
@@ -944,13 +1053,13 @@ END
 OUTER_SET $arcane_aoe_spell(~WIZARD_SNILLOCS_SNOWBALL_SWARM~)=1
 OUTER_SET $arcane_aoe_spell(~WIZARD_EMOTION_FEAR~)=1 
 OUTER_SET $arcane_aoe_spell(~WIZARD_MALAVONS_RAGE~)=1      
-OUTER_SET $arcane_aoe_spell(~WIZARD_ACID_STORM~)=1       
+OUTER_SET $arcane_aoe_spell(~WIZARD_ACID_STORM~)=1  
+OUTER_SET $arcane_aoe_spell(~WIZARD_SHOUT~)=1    
+OUTER_SET $arcane_aoe_spell(~WIZARD_GREAT_SHOUT~)=1      
 
 ACTION_IF enhanced_edition BEGIN
 
-  OUTER_SET $arcane_aoe_spell(~WIZARD_SHOUT~)=1
-  OUTER_SET $arcane_aoe_spell(~WIZARD_SOUL_EATER~)=1     
-  OUTER_SET $arcane_aoe_spell(~WIZARD_GREAT_SHOUT~)=1  
+  OUTER_SET $arcane_aoe_spell(~WIZARD_SOUL_EATER~)=1 
 
 END 
    

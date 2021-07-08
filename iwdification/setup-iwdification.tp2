@@ -479,8 +479,8 @@ ACTION_IF !enhanced_edition BEGIN // don't bother importing spells that won't wo
         REPLACE_TEXTUALLY ~^WIZARD_CATS_GRACE[ %TAB%]+SP\(WI\|PR\|CL\|IN\)[0-9]+[ %TAB%%LNL%%MNL%%WNL%]+~ ~~
       END  
       PATCH_FOR_EACH cdspell IN 
-        WIZARD_MORDENKAINENS_FORCE_MISSILES WIZARD_SHOUT WIZARD_SOUL_EATER WIZARD_SEVEN_EYES SEVEN_EYES_MIND SEVEN_EYES_MAGE
-        SEVEN_EYES_SWORD SEVEN_EYES_VENOM SEVEN_EYES_FORTITUDE SEVEN_EYES_SPIRIT SEVEN_EYES_STONE WIZARD_GREAT_SHOUT
+        WIZARD_SOUL_EATER WIZARD_SEVEN_EYES SEVEN_EYES_MIND SEVEN_EYES_MAGE SEVEN_EYES_SWORD // soul eater & seven eyes
+        SEVEN_EYES_VENOM SEVEN_EYES_FORTITUDE SEVEN_EYES_SPIRIT SEVEN_EYES_STONE 
         BEGIN // ee spels that won't work even with tobex
         REPLACE_TEXTUALLY ~^%cdspell%[ %TAB%]+SP\(WI\|PR\|CL\|IN\)[0-9]+[ %TAB%%LNL%%MNL%%WNL%]+~ ~~
       END  
@@ -815,9 +815,125 @@ INCLUDE ~iwdification/tpa/druid_poly.tpa~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-//BEGIN @10000 DESIGNATED 100
-//GROUP @995
+BEGIN @10000 DESIGNATED 100
+GROUP @995
+
+// change paladin detect evil to at-will
+COPY_EXISTING ~spcl212.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = spcl211 END
+  LPF CLONE_EFFECT INT_VAR match_opcode = 171 opcode = 172 END
+
+// change paladin protection from evil to caster only, 24-hr duration
+COPY_EXISTING ~spcl213.spl~ ~override~
+  LPF ALTER_EFFECT INT_VAR match_target = 2 target = 1 END
+  LPF ALTER_EFFECT INT_VAR match_duration = 60 duration = 7200 END
+  LPF ALTER_SPELL_HEADER INT_VAR target = 5 END // caster
   
+COPY ~iwdification/2da/mxsplpal.2da~ ~override~ // paladin spell table
+     ~iwdification/bam/cdiplseb.bam~ ~override~ // smite evil icon
+     ~iwdification/bam/cdiplsec.bam~ ~override~ // smite evil icon
+     ~iwdification/spl/cdiplid.spl~  ~override~ // disease immunity
+  
+COPY ~iwdification/spl/cdiplif.spl~ ~override~ // fear immunity
+  SAY 0x30e @10009
+  
+COPY ~iwdification/spl/cdiplse.spl~ ~override~ // smite evil
+  SAY 0x08 @10001
+  SAY 0x50 @10002
+  WRITE_ASCII 0x3a cdiplsec
+  LPF ALTER_SPELL_HEADER STR_VAR icon = cdiplseb END // location: ability
+  
+COPY_EXISTING ~sppr317.spl~ ~override/cdiplcd.spl~
+  WRITE_SHORT 0x1c 4 // innate  
+  WRITE_LONG  0x34 1 // level
+  LPF ALTER_SPELL_HEADER INT_VAR location = 4 END // location: ability
+  
+ACTION_IF !enhanced_edition BEGIN
+  
+  COPY_EXISTING ~cdiplif.spl~ ~override~ // fear immunity
+    LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
+  COPY_EXISTING ~cdiplse.spl~ ~override~ // smite evil
+    LPF DELETE_EFFECT INT_VAR match_opcode = 324 END
+    FOR (index = 0 ; index < 7 ; ++index) BEGIN
+      LPF ALTER_EFFECT INT_VAR header = index match_opcode = 12 opcode = 177 parameter1 = 3 parameter2 = 8 STR_VAR resource = EVAL ~cdiplse%index%~ END
+    END 
+    
+  OUTER_FOR (index = 0 ; index < 7 ; ++index) BEGIN
+  
+    COPY ~iwdification/eff/cdiplse0.eff~ ~override/cdiplse%index%.eff~
+      WRITE_LONG 0x38 (index + 1) // number of dice
+      
+  END
+
+END
+
+OUTER_SET default_paladin = 9558
+ACTION_CLEAR_ARRAY  cd_pal_clabs
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_pal_clabs BEGIN // start with base class tables
+  ~%default_paladin%~ => clabpa01 // generic paladin abilities
+END
+  
+// add kit tables dynamically by reading kitlist
+COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_ROWS 9 rows
+  FOR (index = 2 ; index < rows ; ++index) BEGIN // skip reserve row
+    READ_2DA_ENTRY index 8 9 class
+    PATCH_IF class = 6 BEGIN
+      READ_2DA_ENTRY index 4 9 desc
+      READ_2DA_ENTRY index 5 9 clab
+      DEFINE_ASSOCIATIVE_ARRAY cd_pal_clabs BEGIN "%desc%" => "%clab%" END
+    END  
+  END
+  BUT_ONLY
+  
+ACTION_PHP_EACH cd_pal_clabs AS desc_strref => file BEGIN
+
+  ACTION_IF (RESOURCE_CONTAINS ~%file%.2da~ ~[ %TAB%]GA_SPCL212[ %TAB%]~) BEGIN   // returns false if non-existant or doesn't contain text
+            
+    ACTION_IF (!RESOURCE_CONTAINS ~%file%.2da~ ~[ %TAB%]GA_cdiplse[ %TAB%]~) BEGIN // make sure we're not re-patching a file
+            
+      COPY_EXISTING ~%file%.2da~ ~override~
+        REPLACE_TEXTUALLY ~\([ %TAB%]\)GA_SPCL212\([ %TAB%%LNL%%MNL%%WNL%]\)~ ~\1****\2~
+        REPLACE_TEXTUALLY ~\([ %TAB%]\)GA_SPCL213\([ %TAB%%LNL%%MNL%%WNL%]\)~ ~\1****\2~
+
+      APPEND ~%file%.2da~ ~ABILITY    AP_cdiplid  ****        AP_cdiplif  CDREPLACE
+ABILITY    GA_SPCL212  ****        ****        CDREPLACE
+ABILITY    GA_SPCL213  ****        ****        CDREPLACE
+ABILITY    GA_cdiplse  ****        ****        CDREPLACE
+ABILITY    GA_cdiplcd  ****        ****        CDREPLACE~
+    
+      COPY_EXISTING ~%file%.2da~ ~override~
+        COUNT_2DA_COLS cols
+        FOR (index = 5 ; index < cols ; ++index) BEGIN
+          REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
+        END
+        REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
+        PRETTY_PRINT_2DA
+        BUT_ONLY
+        
+    END    
+ 
+    ACTION_GET_STRREF desc_strref desc
+    OUTER_PATCH_SAVE desc "%desc%" BEGIN
+      SPRINT old @10003
+      SPRINT new @10006
+      REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
+      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
+      SPRINT old @10004
+      SPRINT new @10007
+      REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
+      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
+      SPRINT old @10005
+      SPRINT new @10008
+      REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
+      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
+    END
+    STRING_SET_EVALUATE desc_strref "%desc%"  
+
+  END
+
+END
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -826,8 +942,131 @@ INCLUDE ~iwdification/tpa/druid_poly.tpa~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-//BEGIN @11000 DESIGNATED 110
-//GROUP @995
+/* have everything except expanded tracking info
+BEGIN @11000 DESIGNATED 110
+GROUP @995
+
+COPY ~iwdification/2da/mxsplran.2da~ ~override~ // ranger spell table
+
+ACTION_IF enhanced_edition OR !GAME_IS ~soa~ BEGIN // only do tracking if tob is here
+
+  ACTION_IF !FILE_EXISTS_IN_GAME ~spcl922.spl~ BEGIN // bgee or sod
+  
+    COPY ~iwdification/spl/cdiplse.spl~ ~override~ // tracking
+      SAY 0x08 @10001
+      SAY 0x50 @10002
+
+  END
+
+  OUTER_SET default_ranger = 9557
+  ACTION_CLEAR_ARRAY  cd_ranger_clabs
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_ranger_clabs BEGIN // start with base class tables
+    clabrn01,~%default_ranger%~ => RANGER        // generic ranger
+    clabrn01,9580               => CLERIC_RANGER // cleric/ranger
+  END
+      
+  // add kit tables dynamically by reading kitlist
+  COPY_EXISTING ~kitlist.2da~ ~override~
+    COUNT_2DA_ROWS 9 rows
+    FOR (index = 2 ; index < rows ; ++index) BEGIN // skip reserve row
+      READ_2DA_ENTRY index 8 9 class
+      PATCH_IF class = 12 BEGIN
+        READ_2DA_ENTRY index 1 9 kitname
+        READ_2DA_ENTRY index 4 9 desc
+        READ_2DA_ENTRY index 5 9 clab
+        DEFINE_ASSOCIATIVE_ARRAY cd_ranger_clabs BEGIN "%clab%","%desc%" => "%kitname%" END
+      END  
+    END
+    BUT_ONLY
+  
+  ACTION_PHP_EACH cd_ranger_clabs AS params => kit BEGIN
+  
+    ACTION_IF FILE_EXISTS_IN_GAME ~%params_0%.2da~ BEGIN 
+
+      APPEND ~%params_0%.2da~ ~ABILITYX GA_SPCL922 CDREPLACE~ UNLESS ~GA_SPCL922~
+
+      COPY_EXISTING ~%params_0%.2da~ ~override~
+        COUNT_2DA_COLS cols
+        FOR (index = 3 ; index < cols ; ++index) BEGIN
+          REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
+        END
+        REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
+        PRETTY_PRINT_2DA
+        BUT_ONLY
+    
+    END
+   
+    ACTION_GET_STRREF params_1 desc
+    OUTER_PATCH_SAVE desc "%desc%" BEGIN
+      PATCH_IF params_1 = default_ranger BEGIN
+        SPRINT old @11004 // main ranger descript doesn't have 'disadvantages' line
+      END ELSE BEGIN  
+        SPRINT old @12003
+      END  
+      SPRINT new @11003
+      REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
+      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
+    END
+    STRING_SET_EVALUATE params_1 "%desc%" 
+  
+  END // ACTION_PHP_EACH
+  
+  ACTION_IF FILE_EXISTS_IN_GAME ~luabbr.2da~ BEGIN // if game has HLA tables (everything but bgee/sod)  
+  
+    ACTION_CLEAR_ARRAY cd_ranger_hlas
+    COPY_EXISTING ~luabbr.2da~ ~override~
+      COUNT_2DA_ROWS 2 rows
+      FOR (index = 0 ; index < rows ; ++index) BEGIN // skip reserve row
+        READ_2DA_ENTRY index 0 2 kitcheck
+        PATCH_PHP_EACH cd_ranger_clabs AS params => kit BEGIN
+          PATCH_IF ("%kitcheck%" STRING_COMPARE_CASE "%kit%" = 0) BEGIN // match kit
+            READ_2DA_ENTRY index 1 2 table
+            DEFINE_ASSOCIATIVE_ARRAY cd_ranger_hlas BEGIN "%kit%" => "%table%" END
+          END  
+        END 
+      END
+      BUT_ONLY   
+
+    ACTION_PHP_EACH cd_ranger_hlas AS kit => table BEGIN   
+
+      ACTION_IF (RESOURCE_CONTAINS ~lu%table%.2da~ ~[ %TAB%]GA_SPCL922[ %TAB%]~) BEGIN // returns false if non-existant or doesn't contain text   
+
+        COPY_EXISTING ~lu%table%.2da~ ~override~
+          COUNT_2DA_ROWS 10 rows
+          SET found = 0
+          FOR (index = 0 ; index < rows ; ++index) BEGIN 
+            PATCH_IF found BEGIN // if we're in a row after we've found tracking, re-index  
+              READ_2DA_ENTRY index 0 10 abil_num
+              SET abil_num -= 1
+              SET_2DA_ENTRY index 0 10 abil_num
+            END ELSE BEGIN 
+              READ_2DA_ENTRY index 1 10 ability
+              PATCH_IF ("%ability%" STRING_COMPARE_CASE "GA_SPCL922" = 0) BEGIN // match_duration
+                READ_2DA_ENTRY index 0 10 found
+              END    
+            END
+          END
+          PATCH_IF found BEGIN
+            REPLACE_TEXTUALLY ~^%found%[ %TAB%]+GA_SPCL922.+$[%MNL%%LNL%%WNL%]+~ ~~ // delete tracking line
+          END
+          BUT_ONLY 
+        
+        ACTION_IF found BEGIN // add blank line at end if replacement made
+            
+          APPEND ~lu%table%.2da~ ~24         *           *          *         *         *          *            *            *             *~
+        
+        END
+ 
+      END
+    
+    END   
+    
+  END
+  
+  // ok, so now we finally add tracking entries
+
+END  
+*/
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -858,6 +1097,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
       DEFINE_ASSOCIATIVE_ARRAY cd_thief_clabs BEGIN "%desc%" => "%clab%" END
     END  
   END
+
   
 ACTION_PHP_EACH cd_thief_clabs AS desc_strref => file BEGIN
   
