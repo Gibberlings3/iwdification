@@ -183,6 +183,12 @@ ACTION_PHP_EACH cd_monster_summoning_script AS file => script BEGIN
     
 END 
 
+// fixing an IWDEE bug here (submitted for 2.7)
+COPY_EXISTING ~%CLERIC_CAUSE_DISEASE%.spl~ ~override~
+  WRITE_SHORT 0x22 9 // casting animation
+  WRITE_BYTE  0x25 7 // school
+  
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\

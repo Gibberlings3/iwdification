@@ -503,14 +503,17 @@ opcodes to oBG2 counterparts.
 ///// WIZARD_DECASTAVE                                 \\\\\
 /////                                                  \\\\\ 
 
-  // oBG2 doesn't support the HP drain flag for damage, so route through external spell; add immunity for undead & golems
+  // oBG2 doesn't support the HP drain flag for damage, so route through external spell; add immunity for undead & golems  
+  // summoning a 2h weapon in BG2 with a shield equipped = crash, so change ot to a 1h weapon like the staff-mace
   COPY_EXISTING ~decasta.itm~ ~override~
     LPF CLONE_EFFECT INT_VAR match_opcode = 324 opcode = 177 parameter1 =   4 parameter2 = 3 STR_VAR resource = cdixa216 END // general = undead
     LPF ALTER_EFFECT INT_VAR match_opcode = 324 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdixa216 END // race = golem
     LPF ALTER_EFFECT INT_VAR match_opcode = 12 opcode = 146 parameter2 = 1 special = 0 dicenumber = 0 dicesize = 0 STR_VAR resource = cdideca END
+    WRITE_ASCII 0x22 ~MC~ #2 // use mace anim
+    WRITE_LONG  0x18 (THIS BAND `BIT1) // remove 2h flag 
     
   COPY ~%obg2_res_path%/cdideca.spl~ ~override~ // decastave's non-EE hp drain
-       ~%obg2_res_path%/decasta.bam~ ~override~ // oBG2 needs two-cycle inv icons
+       ~%obg2_res_path%/decasta.bam~ ~override~ // oBG2 needs two-cycle inv icons    
 
 /////                                                  \\\\\
 ///// WIZARD_LANCE_OF_DISRUPTION                       \\\\\
