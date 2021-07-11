@@ -64,6 +64,21 @@ COPY ~%obg2_res_path%/aft_m04.wav~  ~override~ // for antimagic shell
      ~%obg2_res_path%/aft_m18.wav~  ~override~ // for suffocate
      ~%obg2_res_path%/eff_m107.wav~ ~override~ // for otiluke's freezing sphere
      ~%obg2_res_path%/tra_18.wav~   ~override~ // for snilloc projectile, idpro217
+     ~%obg2_res_path%/spwi516a.bam~ ~override~ // conjure lesser fire elemental
+     ~%obg2_res_path%/spwi516b.bam~ ~override~ 
+     ~%obg2_res_path%/spwi516c.bam~ ~override~
+     ~%obg2_res_path%/spwi520a.bam~ ~override~ // conjure lesser air elemental
+     ~%obg2_res_path%/spwi520b.bam~ ~override~ 
+     ~%obg2_res_path%/spwi520c.bam~ ~override~
+     ~%obg2_res_path%/spwi521a.bam~ ~override~ // conjure lesser earth elemental
+     ~%obg2_res_path%/spwi521b.bam~ ~override~ 
+     ~%obg2_res_path%/spwi521c.bam~ ~override~
+     ~%obg2_res_path%/clwatera.bam~ ~override/%WIZARD_CONJURE_LESSER_WATER_ELEMENTAL%a.bam~ // conjure lesser water elemental
+     ~%obg2_res_path%/clwaterb.bam~ ~override/%WIZARD_CONJURE_LESSER_WATER_ELEMENTAL%b.bam~
+     ~%obg2_res_path%/clwaterc.bam~ ~override/%WIZARD_CONJURE_LESSER_WATER_ELEMENTAL%c.bam~
+     ~%obg2_res_path%/spwi601a.bam~ ~override~ // green invisible stalker
+     ~%obg2_res_path%/spwi601b.bam~ ~override~ 
+     ~%obg2_res_path%/spwi601c.bam~ ~override~
      
 // old iwd resources
 COPY_EXISTING ~%WIZARD_EXPEDITIOUS_RETREAT%.spl~ ~override~

@@ -15,7 +15,7 @@ ACTION_IF NUM_b117 > 0 BEGIN // song of kaudies
   COPY_EXISTING ~spcl%NUM_b117%.spl~ ~override~ 
     PATCH_FOR_EACH var IN ~%NUM_a431%~ ~%NUM_a806%~ BEGIN               
       PATCH_IF var > 0 BEGIN 
-        LPF CLONE_EFFECT INT_VAR match_opcode = op_318 STR_VAR match_resource = sppr211 resource = EVAL ~spwi%var%~ END
+        LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = sppr211 resource = EVAL ~spwi%var%~ END
       END  
     END 
     BUT_ONLY   

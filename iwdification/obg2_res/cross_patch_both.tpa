@@ -59,7 +59,7 @@ ACTION_IF NUM_a802 > 0 BEGIN // mind blank
   COPY_EXISTING ~spwi%NUM_a802%.spl~ ~override~ 
     PATCH_FOR_EACH var IN ~%NUM_d422%~ ~%NUM_d716%~ BEGIN               
       PATCH_IF var > 0 BEGIN 
-        LPF CLONE_EFFECT INT_VAR match_opcode = op_318 STR_VAR match_resource = spwi813 resource = EVAL ~sppr%var%~ END
+        LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = spwi813 resource = EVAL ~sppr%var%~ END
       END  
     END 
     BUT_ONLY   

@@ -450,6 +450,44 @@ COPY_EXISTING ~cdia482.spl~ ~override~ // shapeshift: winter wolf
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
+///// Use IWD Damage Animations                        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @13000 DESIGNATED 130
+GROUP @994
+REQUIRE_PREDICATE !GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ @997
+
+COPY_EXISTING ~dmgtypes.2da~ ~override~
+  REPLACE_TEXTUALLY ~^\(MAGICFIRE\|FIRE\)[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+~ ~\1        MISC_01C   FIREH      FIREL~
+  REPLACE_TEXTUALLY ~^\(MAGICCOLD\|COLD\)[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+~ ~\1        EFF_M46    COLDH      COLDL~
+  REPLACE_TEXTUALLY ~^ELECTRICITY[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+~ ~ELECTRICITY MISC_02C   ELECTRH    ELECTRL~
+  REPLACE_TEXTUALLY ~^ACID[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+~        ~ACID        EFF_M47    ACIDH      *~
+  PRETTY_PRINT_2DA
+  
+COPY ~iwdification/bam/blank.bam~         ~override/shacid.bam~
+     ~iwdification/bam/coldh.bam~         ~override~
+     ~iwdification/bam/coldl.bam~         ~override~
+     ~iwdification/bam/electrh.bam~       ~override~
+     ~iwdification/bam/electrl.bam~       ~override~
+     ~iwdification/bam/fireh.bam~         ~override~
+     ~iwdification/bam/firel.bam~         ~override~
+     ~iwdification/obg2_res/acidh.vvc~    ~override~
+     ~iwdification/obg2_res/acidh_ee.bam~ ~override/acidh.bam~
+     ~iwdification/vvc/coldh.vvc~         ~override~
+     ~iwdification/vvc/electrh.vvc~       ~override~
+     ~iwdification/vvc/fireh.vvc~         ~override~
+     ~iwdification/wav/eff_m46.wav~       ~override~
+     ~iwdification/wav/eff_m47.wav~       ~override~
+     ~iwdification/wav/misc_01c.wav~      ~override~
+     ~iwdification/wav/misc_02c.wav~      ~override~
+     
+     
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
 ///// IWD arcane spell pack                            \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1138,3 +1176,72 @@ INCLUDE ~iwdification/evasion/evasion.tpa~
 LAF cd_add_evasion STR_VAR 2da_file = ~iwdification/evasion/evasion.2da~ END
 LAF cd_add_evasion STR_VAR 2da_file = ~iwdification/evasion/evasion_arcane.2da~ END
 LAF cd_add_evasion STR_VAR 2da_file = ~iwdification/evasion/evasion_divine.2da~ END
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+  SET add = 0
+  READ_LONG 0x010 dual   // block of flags including the dual-class bits
+  READ_BYTE 0x234 level1 // If dual-classed, this value is put in the next field, and this field is set to 1.
+  READ_BYTE 0x235 level2 // Highest attained level in secondary class (0-100)
+  READ_BYTE 0x236 level3 // Highest attained level in tertiary class (0-100)
+  READ_BYTE 0x273 class  // V1.0
+  PATCH_IF (((class =  4) AND (level1 > 6)) OR     // single class thief, level > 6
+            ((class = 10) AND (level3 > 6))) BEGIN // f/m/t, thief level > 6
+    SET add = 1 
+  END ELSE 
+  PATCH_IF ((class = 9) OR (class = 13) OR (class = 15)) BEGIN // ft, mt, or ct
+    PATCH_IF (((dual & BIT3) = BIT3) OR     // f > t
+              ((dual & BIT4) = BIT4) OR     // m > t dual 
+              ((dual & BIT5) = BIT5)) BEGIN // c > t dual
+      PATCH_IF level1 > 6 BEGIN SET add = 1 END
+    END ELSE
+    PATCH_IF ((dual & BIT6) = BIT6) BEGIN // t > X dual  
+      PATCH_IF ((level2 > 6) AND (level1 > level2)) BEGIN SET add = 1 END // only if thief lev > 6 and re-activated
+    END ELSE BEGIN // true multiclass  
+      PATCH_IF level2 > 6 BEGIN SET add = 1 END
+    END
+  END 
+  PATCH_IF add BEGIN
+    LPF ADD_CRE_EFFECT INT_VAR opcode = 328 target = 1 parameter2 = 252 timing = 1 special = 1 END
+  END
+  BUT_ONLY
+  
+
+
+
+
+
+
+
+
+
+BEGIN ~bam work~ DESIGNATED 213
+
+<<<<<<<< ./bamstuff.bat
+>>>>>>>>
+
+COPY ~./bamstuff.bat~ ~override~
+COPY ~./bamstuff.bat~ ~override/makebam.bat~
+
+ACTION_CLEAR_ARRAY cd_bam_map
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_bam_map BEGIN
+
+   spwi526    => clwater // water
+   spwi620    => spwi516 // fire
+   spwi621    => spwi520 // air
+   spwi622    => spwi521 // earth
+
+END
+
+ACTION_PHP_EACH cd_bam_map AS old => new BEGIN
+
+  ACTION_FOR_EACH letter IN a b c BEGIN
+    MKDIR ~iwdification/bam_work/%new%%letter%~
+    APPEND ~bamstuff.bat~ ~bammer -input %old%%letter%.bam -output %new%%letter% >> %new%%letter%.bamd~
+    APPEND ~makebam.bat~  ~bammer -input %new%%letter%.bamd -output %new%%letter%.bam >> %new%%letter%.bamd~
+  END  
+    
+END
+
+MOVE ~override/bamstuff.bat~ ~iwdification/bam_work/bamstuff.bat~ 
+MOVE ~override/makebam.bat~ ~iwdification/bam_work/makebam.bat~ 
+
