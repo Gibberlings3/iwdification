@@ -59,7 +59,21 @@ OUTER_SPRINT WIZARD_MORDENKAINENS_FORCE_MISSILES SPWI429
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
+OUTER_SET num_cwe = ((IDS_OF_SYMBOL (~spell~ ~WIZARD_CONJURE_WATER_ELEMENTAL~)) - 2000)
+
 // missing resources
+COPY_EXISTING ~%WIZARD_CONJURE_LESSER_WATER_ELEMENTAL%a.bam~ ~override/spwi%num_cwe%a.bam~ // make lesser bams > normal
+              ~%WIZARD_CONJURE_LESSER_WATER_ELEMENTAL%b.bam~ ~override/spwi%num_cwe%b.bam~
+              ~%WIZARD_CONJURE_LESSER_WATER_ELEMENTAL%c.bam~ ~override/spwi%num_cwe%c.bam~
+              
+COPY_EXISTING ~spwi%num_cwe%.spl~ ~override~ // assign new bams
+  WRITE_ASCIIE 0x3a ~spwi%num_cwe%c~ #8
+  LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL ~spwi%num_cwe%b~ END  
+              
+COPY_EXISTING ~%WIZARD_CONJURE_WATER_ELEMENTAL_SCROLL%.itm~ ~override~ // assign new bams
+  WRITE_ASCIIE 0x3a ~spwi%num_cwe%a~ #8
+  LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL ~spwi%num_cwe%a~ END  
+              
 COPY ~%obg2_res_path%/aft_m04.wav~  ~override~ // for antimagic shell
      ~%obg2_res_path%/aft_m18.wav~  ~override~ // for suffocate
      ~%obg2_res_path%/eff_m107.wav~ ~override~ // for otiluke's freezing sphere
