@@ -183,12 +183,45 @@ ACTION_PHP_EACH cd_monster_summoning_script AS file => script BEGIN
     
 END 
 
-// fixing an IWDEE bug here (submitted for 2.7)
+// IWDEE bug here (submitted for 2.7)
 COPY_EXISTING ~%CLERIC_CAUSE_DISEASE%.spl~ ~override~
   WRITE_SHORT 0x22 9 // casting animation
   WRITE_BYTE  0x25 7 // school
-  
 
+// IWDEE bug wall of moonlight shouldn't have powers set on its damage since its AoE
+COPY_EXISTING ~%CLERIC_WALL_OF_MOONLIGHT%a.spl~ ~override~
+              ~%CLERIC_WALL_OF_MOONLIGHT%b.spl~ ~override~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 12 power = 0 END
+
+// IWDEE bug: tie mold touch portrait to disease effect; 
+COPY_EXISTING ~%CLERIC_MOLD_TOUCH%.spl~  ~override~
+              ~%CLERIC_MOLD_TOUCH%b.spl~ ~override~
+  LPF DELETE_EFFECT INT_VAR match_opcode = 142 special = 7 END // delete portrait icons because...
+  LPF ALTER_EFFECT  INT_VAR match_opcode =  78 special = 7 END  // we're attaching them directly to the disease effect
+  LPF ALTER_EFFECT  INT_VAR match_opcode =  78 match_parameter2 = 12 timing = 3 duration = 0 END  // we're attaching them directly to the disease effect
+
+// IWDEE bug: tie mold touch portrait to disease effect; 
+COPY_EXISTING ~%CLERIC_MOLD_TOUCH%.spl~  ~override~
+  LPF CLONE_EFFECT  INT_VAR match_opcode =  78 match_parameter1 = 2 
+    opcode = 206 parameter1 = 0 parameter2 = 0 timing = 0 duration = 1 STR_VAR resource = EVAL ~%CLERIC_MOLD_TOUCH%~ END  // we're attaching them directly to the disease effect
+
+// iwdee bug: blood rage can avoid fatigue with a re-cast - clone 321 into 206 then delete it
+COPY_EXISTING ~%CLERIC_BLOOD_RAGE%.spl~  ~override~
+  LPF CLONE_EFFECT  INT_VAR match_opcode = 321 opcode = 206 timing = 0 duration = 120 STR_VAR match_resource = EVAL ~%CLERIC_BLOOD_RAGE%~ insert = last END
+  LPF DELETE_EFFECT INT_VAR match_opcode = 321 STR_VAR match_resource = EVAL ~%CLERIC_BLOOD_RAGE%~ END
+
+// iwdee fix: remove extraneous 321
+COPY_EXISTING ~%CLERIC_ANIMAL_RAGE%.spl~  ~override~
+  LPF DELETE_EFFECT INT_VAR match_opcode = 321 match_timing = 4 END
+
+// iwdee fix: fix power levels
+COPY_EXISTING ~%CLERIC_ANIMAL_RAGE%b.spl~  ~override~
+  LPF ALTER_EFFECT INT_VAR power = 0 END
+
+// iwdee fix: static charge dispellable, but the icon lives on
+COPY_EXISTING ~%CLERIC_STATIC_CHARGE%.spl~  ~override~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 142 resist_dispel = 3 END
+  
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
