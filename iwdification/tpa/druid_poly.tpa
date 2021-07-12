@@ -21,7 +21,7 @@ END ELSE BEGIN
 
 END  
 
-OUTER_SPRINT first_ss cdidrnw // if no beetle, keep wolf shapeshift
+OUTER_SPRINT first_ss cdidrbr // if no beetle, keep wolf shapeshift
 ACTION_IF anim_beetle BEGIN OUTER_SPRINT first_ss cdidrubb END
   
 ACTION_CLEAR_ARRAY cd_druid_poly
@@ -109,3 +109,62 @@ COPY_EXISTING ~clabdr01.2da~ ~override~
   REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
   PRETTY_PRINT_2DA
   BUT_ONLY
+  
+// handing out some abilities
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+  SET druid_level = 0 
+  READ_LONG 0x010 dual   // block of flags including the dual-class bits
+  READ_BYTE 0x234 level1 // If dual-classed, this value is put in the next field, and this field is set to 1.
+  READ_BYTE 0x235 level2 // Highest attained level in secondary class (0-100)
+  READ_BYTE 0x273 class  // V1.0
+  READ_SHORT 0x246 kit
+  PATCH_IF ((class =  11) AND ((kit = 0) OR (kit = 0x4000))) BEGIN // single-class, unkitted druid
+    SET druid_level = level1
+  END ELSE 
+  PATCH_IF class = 16 BEGIN // f/d
+    PATCH_IF ((dual & BIT3) = BIT3) BEGIN // f > d dual - can't dual into kit, so no kit check
+      SET druid_level = level1
+    END ELSE
+    PATCH_IF ((dual & BIT7) = BIT7) BEGIN // d > f dual
+      PATCH_IF ((level1 > level2) AND ((kit = 0) OR (kit = 0x4000))) BEGIN // only set if druid re-activated and unkitted
+        SET druid_level = level2 
+      END 
+    END ELSE BEGIN // true multiclass - no kit allowed 
+      SET druid_level = level2
+    END
+  END 
+  PATCH_IF druid_level > 4 BEGIN
+    ADD_KNOWN_SPELL     cdidrww #0 ~innate~
+    ADD_MEMORIZED_SPELL cdidrww #0 ~innate~ (1)
+    PATCH_IF druid_level > 6 BEGIN
+      ADD_KNOWN_SPELL     ~%first_ss%~ #0 ~innate~
+      ADD_MEMORIZED_SPELL ~%first_ss%~ #0 ~innate~ (1)
+      PATCH_IF druid_level > 8 BEGIN
+        ADD_KNOWN_SPELL     cdidrpb #0 ~innate~
+        ADD_MEMORIZED_SPELL cdidrpb #0 ~innate~ (1)
+        LPF ADD_CRE_EFFECT INT_VAR opcode = 206 target = 1 timing = 1 STR_VAR resource = spwi502 effsource = spcl924 END // spell immunity: cloudkill
+        LPF ADD_CRE_EFFECT INT_VAR opcode = 206 target = 1 timing = 1 STR_VAR resource = spwi016 effsource = spcl924 END // spell immunity: cloudkill
+        LPF ADD_CRE_EFFECT INT_VAR opcode = 206 target = 1 timing = 1 STR_VAR resource = spin673 effsource = spcl924 END // spell immunity: cloudkill
+        LPF ADD_CRE_EFFECT INT_VAR opcode = 267 target = 1 timing = 1 parameter1 = 14017 STR_VAR effsource = spcl924 END // string immunity: poison
+        LPF ADD_CRE_EFFECT INT_VAR opcode = 267 target = 1 timing = 1 parameter1 = 14662 STR_VAR effsource = spcl924 END // string immunity: poisoned
+        LPF ADD_CRE_EFFECT INT_VAR opcode = 101 target = 1 timing = 1 parameter2 = 25 STR_VAR effsource = spcl924 END // immunity to poison
+        LPF ADD_CRE_EFFECT INT_VAR opcode = 173 target = 1 timing = 1 parameter1 = 100 STR_VAR effsource = spcl924 END // 100% poison damage resistance
+        PATCH_IF druid_level > 10 BEGIN
+          ADD_KNOWN_SPELL     cdidrfe #0 ~innate~
+          ADD_MEMORIZED_SPELL cdidrfe #0 ~innate~ (1)
+          PATCH_IF druid_level > 12 BEGIN
+            ADD_KNOWN_SPELL     cdidree #0 ~innate~
+            ADD_MEMORIZED_SPELL cdidree #0 ~innate~ (1)
+            PATCH_IF druid_level > 14 BEGIN
+              ADD_KNOWN_SPELL     cdidrwe #0 ~innate~
+              ADD_MEMORIZED_SPELL cdidrwe #0 ~innate~ (1)
+              LPF ADD_CRE_EFFECT INT_VAR opcode = 101 target = 1 timing = 1 parameter2 = 93 STR_VAR effsource = cdidrif END // immunity to fatigue
+              LPF ADD_CRE_EFFECT INT_VAR opcode =  93 target = 1 timing = 1 parameter2 =  1 insert_point = 0 STR_VAR effsource = cdidrif END // set fatigue to 0
+            END // lev 15 bonuses
+          END // lev 13 bonuses
+        END // lev 11 bonuses
+      END // lev 9 bonuses
+    END // lev 7 bonuses
+  END // lev 5 bonuses
+  BUT_ONLY
+  

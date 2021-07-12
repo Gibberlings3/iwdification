@@ -593,7 +593,7 @@ ACTION_IF !enhanced_edition BEGIN // don't bother importing spells that won't wo
   COPY ~%resource_loc%/divine_resrefs.txt~ ~%resource_loc%/divine_resrefs_obg2.txt~
     PATCH_IF !enhanced_edition BEGIN
       PATCH_FOR_EACH cdspell IN 
-        CLERIC_MOLD_TOUCH CLERIC_FAVOR_OF_ILMATER CLERIC_SMASHING_WAVE CLERIC_WALL_OF_MOONLIGHT CLERIC_SPIRITUAL_WRATH
+        /*CLERIC_MOLD_TOUCH*/ CLERIC_FAVOR_OF_ILMATER CLERIC_SMASHING_WAVE CLERIC_WALL_OF_MOONLIGHT CLERIC_SPIRITUAL_WRATH
         BEGIN // ee spels that won't work even with tobex
         REPLACE_TEXTUALLY ~^%cdspell%[ %TAB%]+SP\(WI\|PR\|CL\|IN\)[0-9]+[ %TAB%%LNL%%MNL%%WNL%]+~ ~~
       END  
@@ -768,7 +768,7 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// IWD CLass Updates: Bard                          \\\\\
+///// IWD Class Updates: Bard                          \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -807,7 +807,7 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// IWD CLass Updates: Druid                         \\\\\
+///// IWD Class Updates: Druid                         \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -817,7 +817,7 @@ END
 /////                                                  \\\\\
 
 BEGIN @7001 DESIGNATED 70 // Use IWD Shapeshifting and Ability Progression
-SUBCOMPONENT @7000 // IWD CLass Updates: Druid
+SUBCOMPONENT @7000 // IWD Class Updates: Druid
 GROUP @995
 
 INCLUDE ~iwdification/tpa/druid_poly.tpa~
@@ -827,7 +827,7 @@ INCLUDE ~iwdification/tpa/druid_poly.tpa~
 /////                                                  \\\\\
 
 BEGIN @7100 DESIGNATED 71
-SUBCOMPONENT @7000 // IWD CLass Updates: Druid
+SUBCOMPONENT @7000 // IWD Class Updates: Druid
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @997
 GROUP @995
 
@@ -838,7 +838,7 @@ INCLUDE ~iwdification/tpa/druid_elf.tpa~
 /////                                                  \\\\\
 
 BEGIN @7200 DESIGNATED 72
-SUBCOMPONENT @7000 // IWD CLass Updates: Druid
+SUBCOMPONENT @7000 // IWD Class Updates: Druid
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @997
 GROUP @995
 
@@ -848,7 +848,7 @@ INCLUDE ~iwdification/tpa/druid_poly.tpa~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// IWD CLass Updates: Paladin                       \\\\\
+///// IWD Class Updates: Paladin                       \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -858,7 +858,7 @@ GROUP @995
 
 // change paladin detect evil to at-will
 COPY_EXISTING ~spcl212.spl~ ~override~
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = spcl211 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = spcl212 END
   LPF CLONE_EFFECT INT_VAR match_opcode = 171 opcode = 172 END
 
 // change paladin protection from evil to caster only, 24-hr duration
@@ -908,7 +908,7 @@ END
 OUTER_SET default_paladin = 9558
 ACTION_CLEAR_ARRAY  cd_pal_clabs
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_pal_clabs BEGIN // start with base class tables
-  ~%default_paladin%~ => clabpa01 // generic paladin abilities
+  ~%default_paladin%~, clabpa01, 0 => 1 // generic paladin abilities
 END
   
 // add kit tables dynamically by reading kitlist
@@ -917,30 +917,38 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   FOR (index = 2 ; index < rows ; ++index) BEGIN // skip reserve row
     READ_2DA_ENTRY index 8 9 class
     PATCH_IF class = 6 BEGIN
+      READ_2DA_ENTRY index 1 9 kitid
       READ_2DA_ENTRY index 4 9 desc
       READ_2DA_ENTRY index 5 9 clab
-      DEFINE_ASSOCIATIVE_ARRAY cd_pal_clabs BEGIN "%desc%" => "%clab%" END
+      DEFINE_ASSOCIATIVE_ARRAY cd_pal_clabs BEGIN "%desc%", "%clab%", "%kitid%" => 0 END
     END  
   END
   BUT_ONLY
   
-ACTION_PHP_EACH cd_pal_clabs AS desc_strref => file BEGIN
+ACTION_PHP_EACH cd_pal_clabs AS params => update BEGIN
 
-  ACTION_IF (RESOURCE_CONTAINS ~%file%.2da~ ~[ %TAB%]GA_SPCL212[ %TAB%]~) BEGIN   // returns false if non-existant or doesn't contain text
+  ACTION_IF (RESOURCE_CONTAINS ~%params_1%.2da~ ~[ %TAB%]GA_SPCL212[ %TAB%]~) BEGIN   // returns false if non-existant or doesn't contain text
+  
+    COPY_EXISTING ~kit.ids~ ~override~
+      REPLACE_EVALUATE ~^\([^ %TAB%]+\)\([ %TAB%]+%params_2%[ %TAB%%LNL%%MNL%%WNL%]\)~ BEGIN  
+        SET new_kitid = ~%MATCH1%~
+        DEFINE_ASSOCIATIVE_ARRAY cd_pal_clabs BEGIN "%params_0%", "%params_1%", "%new_kitid%" => 1 END // mark as active
+      END ~%MATCH1%%MATCH2%~  
+      BUT_ONLY 
             
-    ACTION_IF (!RESOURCE_CONTAINS ~%file%.2da~ ~[ %TAB%]GA_cdiplse[ %TAB%]~) BEGIN // make sure we're not re-patching a file
+    ACTION_IF (!RESOURCE_CONTAINS ~%params_1%.2da~ ~[ %TAB%]GA_cdiplse[ %TAB%]~) BEGIN // make sure we're not re-patching a file
             
-      COPY_EXISTING ~%file%.2da~ ~override~
+      COPY_EXISTING ~%params_1%.2da~ ~override~
         REPLACE_TEXTUALLY ~\([ %TAB%]\)GA_SPCL212\([ %TAB%%LNL%%MNL%%WNL%]\)~ ~\1****\2~
         REPLACE_TEXTUALLY ~\([ %TAB%]\)GA_SPCL213\([ %TAB%%LNL%%MNL%%WNL%]\)~ ~\1****\2~
 
-      APPEND ~%file%.2da~ ~ABILITY    AP_cdiplid  ****        AP_cdiplif  CDREPLACE
+      APPEND ~%params_1%.2da~ ~ABILITY    AP_cdiplid  ****        AP_cdiplif  CDREPLACE
 ABILITY    GA_SPCL212  ****        ****        CDREPLACE
 ABILITY    GA_SPCL213  ****        ****        CDREPLACE
 ABILITY    GA_cdiplse  ****        ****        CDREPLACE
 ABILITY    GA_cdiplcd  ****        ****        CDREPLACE~
     
-      COPY_EXISTING ~%file%.2da~ ~override~
+      COPY_EXISTING ~%params_1%.2da~ ~override~
         COUNT_2DA_COLS cols
         FOR (index = 5 ; index < cols ; ++index) BEGIN
           REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
@@ -951,7 +959,7 @@ ABILITY    GA_cdiplcd  ****        ****        CDREPLACE~
         
     END    
  
-    ACTION_GET_STRREF desc_strref desc
+    ACTION_GET_STRREF params_0 desc
     OUTER_PATCH_SAVE desc "%desc%" BEGIN
       SPRINT old @10003
       SPRINT new @10006
@@ -966,16 +974,64 @@ ABILITY    GA_cdiplcd  ****        ****        CDREPLACE~
       REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
       REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
     END
-    STRING_SET_EVALUATE desc_strref "%desc%"  
+    STRING_SET_EVALUATE params_0 "%desc%"  
 
   END
 
 END
+  
+// handing out some abilities
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+  SET paladin_level = 0
+  READ_BYTE 0x273 class  // V1.0
+  PATCH_IF class = 6 BEGIN
+    READ_SHORT 0x246 kit
+    PATCH_IF (kit = 0) OR (kit = 0x4000) BEGIN // easy if unkitted
+      READ_BYTE 0x234 paladin_level
+    END ELSE BEGIN  
+      PATCH_PHP_EACH cd_pal_clabs AS params => update BEGIN // work through paladin kits
+        PATCH_IF update BEGIN // only if the clab got updated
+          PATCH_IF (kit = params_2) BEGIN // if matched and got an updated clab
+            READ_BYTE 0x234 paladin_level
+          END
+        END  
+      END
+    END
+  END   
+  PATCH_IF paladin_level BEGIN // if any paladin level
+    REMOVE_MEMORIZED_SPELL ~spcl212~ ~spcl213~ // remove all detect evil & protection from evil
+    ADD_MEMORIZED_SPELL spcl212 #0 ~innate~ (1) // replace with one casting
+    ADD_MEMORIZED_SPELL spcl213 #0 ~innate~ (1) // replace with one casting
+    ADD_KNOWN_SPELL     cdiplse #0 ~innate~
+    ADD_KNOWN_SPELL     cdiplcd #0 ~innate~
+    ADD_MEMORIZED_SPELL cdiplse #0 ~innate~ (1) // add smite evil
+    ADD_MEMORIZED_SPELL cdiplcd #0 ~innate~ (1) // add cure disease
+    LPF ADD_CRE_EFFECT INT_VAR opcode = 101 target = 1 timing = 1 parameter2 = 78 STR_VAR effsource = cdiplid END // immunity to disease
+    LPF ADD_CRE_EFFECT INT_VAR opcode = 267 target = 1 timing = 1 parameter1 = 54337 STR_VAR effsource = cdiplid END // string immunity: diseased
+    LPF ADD_CRE_EFFECT INT_VAR opcode = 267 target = 1 timing = 1 parameter1 = 39752 STR_VAR effsource = cdiplid END // string immunity: Stricken by a foul disease
+    PATCH_IF paladin_level > 2 BEGIN // add fear immunity, too
+      PATCH_IF enhanced_edition BEGIN
+        LPF ADD_CRE_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = spwi205 effsource = cdiplif END // remove spell
+        LPF ADD_CRE_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = spin105 effsource = cdiplif END // remove spell
+      END 
+      LPF ADD_CRE_EFFECT INT_VAR opcode = 296 target = 1 timing = 1 parameter2 = 106 STR_VAR resource = cdhorror effsource = cdiplif END // immunity to animation
+      LPF ADD_CRE_EFFECT INT_VAR opcode = 267 target = 1 timing = 1 parameter1 = 14007 STR_VAR effsource = cdiplif END // string immunity: panic
+      LPF ADD_CRE_EFFECT INT_VAR opcode = 267 target = 1 timing = 1 parameter1 = 17427 STR_VAR effsource = cdiplif END // string immunity: panic
+      LPF ADD_CRE_EFFECT INT_VAR opcode = 267 target = 1 timing = 1 parameter1 = 20568 STR_VAR effsource = cdiplif END // string immunity: morale failure: panic
+      LPF ADD_CRE_EFFECT INT_VAR opcode = 161 target = 1 timing = 1 STR_VAR effsource = cdiplif END // remove fear
+      LPF ADD_CRE_EFFECT INT_VAR opcode =  23 target = 1 timing = 1 STR_VAR effsource = cdiplif END // reset morale
+      LPF ADD_CRE_EFFECT INT_VAR opcode = 106 target = 1 timing = 1 parameter2 = 1 STR_VAR effsource = cdiplif END // morale break set
+      LPF ADD_CRE_EFFECT INT_VAR opcode = 101 target = 1 timing = 1 parameter2 = 23 insert_point = 999 STR_VAR effsource = cdiplif END // immunity to reset morale
+      LPF ADD_CRE_EFFECT INT_VAR opcode = 101 target = 1 timing = 1 parameter2 = 106 insert_point = 999 STR_VAR effsource = cdiplif END // immunity to morale break
+      LPF ADD_CRE_EFFECT INT_VAR opcode = 101 target = 1 timing = 1 parameter2 = 24 insert_point = 999 STR_VAR effsource = cdiplif END // immunity to panic
+    END // end fear immunity
+  END // other paladin stuff
+  BUT_ONLY  
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// IWD CLass Updates: Ranger                        \\\\\
+///// IWD Class Updates: Ranger                        \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1109,7 +1165,7 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// IWD CLass Updates: Thief                         \\\\\
+///// IWD Class Updates: Thief                         \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1201,7 +1257,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
     END
   END 
   PATCH_IF add BEGIN
-    LPF ADD_CRE_EFFECT INT_VAR opcode = 328 target = 1 parameter2 = 252 timing = 1 special = 1 END
+    LPF ADD_CRE_EFFECT INT_VAR opcode = 328 target = 1 parameter2 = 252 timing = 1 special = 1 STR_VAR effsource = cdievade END
   END
-  BUT_ONLY
+  BUT_ONLY  
   
