@@ -1,7 +1,7 @@
 BACKUP ~iwdification/backup~ // location to store files for uninstall purposes
-SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=185~ 
+SUPPORT ~https://www.gibberlings3.net/forums/forum/185-iwdification/~ 
 
-VERSION ~v1~
+VERSION ~Release Candidate 1~
 
 AUTO_EVAL_STRINGS
 
@@ -482,8 +482,6 @@ COPY ~iwdification/bam/blank.bam~         ~override/shacid.bam~
      ~iwdification/wav/eff_m47.wav~       ~override~
      ~iwdification/wav/misc_01c.wav~      ~override~
      ~iwdification/wav/misc_02c.wav~      ~override~
-     
-     
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -593,8 +591,8 @@ ACTION_IF !enhanced_edition BEGIN // don't bother importing spells that won't wo
   COPY ~%resource_loc%/divine_resrefs.txt~ ~%resource_loc%/divine_resrefs_obg2.txt~
     PATCH_IF !enhanced_edition BEGIN
       PATCH_FOR_EACH cdspell IN 
-        /*CLERIC_MOLD_TOUCH*/ CLERIC_FAVOR_OF_ILMATER CLERIC_SMASHING_WAVE CLERIC_WALL_OF_MOONLIGHT CLERIC_SPIRITUAL_WRATH
-        BEGIN // ee spels that won't work even with tobex
+        CLERIC_FAVOR_OF_ILMATER CLERIC_SMASHING_WAVE CLERIC_WALL_OF_MOONLIGHT CLERIC_SPIRITUAL_WRATH
+      BEGIN // ee spels that won't work even with tobex
         REPLACE_TEXTUALLY ~^%cdspell%[ %TAB%]+SP\(WI\|PR\|CL\|IN\)[0-9]+[ %TAB%%LNL%%MNL%%WNL%]+~ ~~
       END  
       PATCH_IF !anim_beetle BEGIN // exclude giant insect without beetle animations
@@ -655,7 +653,6 @@ REQUIRE_PREDICATE GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ @996
   
 COPY ~iwdification/icons/states.bam~ ~override/states.bam~  
      ~iwdification/icons/states.bam~ ~override/states2.bam~   
-
 
 WITH_TRA ~iwdification/dw_iwdspells_resource/tra/%LANGUAGE%/iwdspells.tra~ BEGIN
      
@@ -878,8 +875,6 @@ COPY ~iwdification/spl/cdiplif.spl~ ~override~ // fear immunity
 COPY ~iwdification/spl/cdiplse.spl~ ~override~ // smite evil
   SAY 0x08 @10001
   SAY 0x50 @10002
-  WRITE_ASCII 0x3a cdiplsec
-  LPF ALTER_SPELL_HEADER STR_VAR icon = cdiplseb END // location: ability
   
 COPY_EXISTING ~sppr317.spl~ ~override/cdiplcd.spl~
   WRITE_SHORT 0x1c 4 // innate  

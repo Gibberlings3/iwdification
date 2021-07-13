@@ -73,6 +73,7 @@ COPY ~%obg2_res_path%/abjurh.bam~   ~override~ // for abjurh VVC
      ~%obg2_res_path%/eff_p105.wav~ ~override~ // for whirlwind projectile
      ~%obg2_res_path%/eff_p107.wav~ ~override~ // for mold touch
      ~%obg2_res_path%/eff_p32.wav~  ~override~ // for curseh vvc
+     ~%obg2_res_path%/eff_p42.wav~  ~override~ // for static charge subspell
      ~%obg2_res_path%/eff_p48.wav~  ~override~ // for idpro213 projectile
      ~%obg2_res_path%/eff_p50.wav~  ~override~ // for idpro277 projectile
      ~%obg2_res_path%/paralh.bam~   ~override~ // for paralh VVC    

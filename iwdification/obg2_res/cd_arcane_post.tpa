@@ -227,9 +227,10 @@ COPY_EXISTING ~SS2liz5.cre~ ~override~ // lizard man
 COPY_EXISTING ~%WIZARD_ANTIMAGIC_SHELL%.spl~ ~override~
   LPF CLONE_EFFECT INT_VAR match_opcode = 123 STR_VAR match_resource = goodber resource = gberry END // good berries
   LPF CLONE_EFFECT INT_VAR match_opcode = 123 STR_VAR match_resource = fseeds  resource = fireseed END // fire seeds
-  PATCH_FOR_EACH file IN brblp wolfm brbrp plyjelly plyspid plyfist plymstar mindflay goliro trollall wolfgr firern earthrn BEGIN
+  PATCH_FOR_EACH file IN brblp wolfm brbrp plyjelly plyspid plyfist plymstar mindflay goliro trollall wolfgr firern earthrn 
+    chillt cdia480 cdia481 cdia482 cdidree cdidrfe cdidrwe cdidrbr BEGIN // chill touch, new polys 
     LPF CLONE_EFFECT INT_VAR match_opcode = 112 STR_VAR match_resource = smcudge resource = EVAL ~%file%~ END // clone from star-metal cudgel
-  END   
+  END  
   
 COPY_EXISTING ~spwi114.spl~ ~override~ // update shield to block MFM, too
   LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = ~spwi112~ resource = EVAL ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%~ END
@@ -269,6 +270,7 @@ ACTION_IF enhanced_edition BEGIN
        ~%obg2_res_path%/aft_m15.wav~   ~override~ // for seven eyes
        ~%obg2_res_path%/aft_m16.wav~   ~override~ // for seven eyes
        ~%obg2_res_path%/aft_m17.wav~   ~override~ // for seven eyes
+       ~%obg2_res_path%/tra_55.wav~    ~override~ // for mfmiss, mordenkainen's force missiles
        ~%obg2_res_path%/paralh_ee.bam~ ~override/paralh.bam~ // for paralh VVC
 
   // don't have IWD's random treasure table to assign weapon
