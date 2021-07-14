@@ -182,6 +182,9 @@ ACTION_PHP_EACH cd_monster_summoning_script AS file => script BEGIN
   COPY_EXISTING ~%file%.cre~ ~override~
     WRITE_ASCIIE 0x268 ~%default%~ #8 // default script
     LPF ALTER_CREATURE_ITEM INT_VAR flag_unstealable = 1 flag_undroppable = 1 STR_VAR match_item = all END // summons shouldn't drop items
+    PATCH_IF !enhanced_edition BEGIN
+      LPF ADD_CRE_EFFECT INT_VAR opcode = 215 target = 1 parameter2 = 1 duration = 1 STR_VAR resource = msumm1h END
+    END  
     BUT_ONLY IF_EXISTS
     
 END 
@@ -998,7 +1001,8 @@ opcodes to oBG2 counterparts.
 /////                                                  \\\\\
 
   COPY_EXISTING ~%CLERIC_STALKER%.spl~ ~override~ 
-    LPF CLONE_EFFECT INT_VAR match_opcode = 331 opcode = 215 parameter2 = 2 timing = 0 duration = 1 STR_VAR resource = msumm1h END // add animation
+  
+    LPF CLONE_EFFECT INT_VAR match_opcode = 331 opcode = 215 parameter2 = 2 timing = 0 duration = 2 resist_dispel = 0 dicenumber = 0 dicesize = 0 STR_VAR resource = asumm1x END // add animation
     LPF ALTER_EFFECT INT_VAR match_opcode = 331 opcode = 127 parameter1 = 22 parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = sshamb END 
     
   COPY_EXISTING ~shmblr.itm~ ~override~ // remove all effects and move to spell
@@ -1045,7 +1049,7 @@ opcodes to oBG2 counterparts.
       WRITE_LONG 0x28 anim_beetle
 
     COPY_EXISTING ~%CLERIC_GIANT_INSECT%.spl~ ~override~ 
-      LPF CLONE_EFFECT INT_VAR match_opcode = 331 opcode = 215 parameter2 = 2 timing = 0 duration = 1 STR_VAR resource = msumm1h END // add animation
+      LPF CLONE_EFFECT INT_VAR match_opcode = 331 opcode = 215 parameter2 = 2 timing = 0 duration = 2 resist_dispel = 0 dicenumber = 0 dicesize = 0 STR_VAR resource = asumm1x END // add animation
       LPF CLONE_EFFECT INT_VAR match_opcode = 331 opcode = 127 parameter1 = 4 parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = ginsect END // two beetles
       LPF ALTER_EFFECT INT_VAR match_opcode = 331 opcode = 127 parameter1 = 2 parameter2 = 0 probability1 = 49 dicesize = 0 dicenumber = 0 STR_VAR resource = ginsect END // +1
 
@@ -1117,11 +1121,16 @@ COPY_EXISTING ~%CLERIC_MOLD_TOUCH%b.spl~ ~override~
 ///// obg2 graphical fixes                             \\\\\
 /////                                                  \\\\\
 
+  COPY_EXISTING ~asumm1x.vvc~ ~override~
+                ~msumm1x.vvc~ ~override~
+    WRITE_LONG 0x2c "-100" // y-coordinate
+    WRITE_LONG 0x4c "-1"   // z-coordinate
+
   // 3d blend flag in VVCs cause them to be virtually transparent in oBG2
   ACTION_FOR_EACH file IN 
     ~#bless~ ~#entropy~ ~#genabju~ ~#grnring~ ~#latshg1~ ~#latshg2~ ~#latshl1~ ~#latshl2~ ~#storm~ 
     abjurh alterh asumm1x blessh ccdamah cdiseah cidamah cldamah cloudbh cmdamah cmwounh conjuh csdamah
-    curseh destruh enchah exaltah harmh invoch msumm1h necroh paralh prayerb prayerg recitab recitag
+    curseh destruh enchah exaltah harmh invoch msumm1h msumm1x necroh paralh prayerb prayerg recitab recitag
     rwotfag rwotfah schargh sohopex uwardx witherh mtouchh
   BEGIN
 
@@ -1134,7 +1143,7 @@ COPY_EXISTING ~%CLERIC_MOLD_TOUCH%b.spl~ ~override~
   ACTION_FOR_EACH file IN 
     abjurax abjurh alancet alterh area1x area4x asumm1x blessh ccdamah cdiseah cldamah cloudbh 
     cmdamah cmwounh conjuh copesta csdamah curseh destruh enchah eshielc exaltah gsolac1 gsolac2 
-    harmh invoch moeldaa msumm1h necroh pfirea pfirex rwotfah schargh sclouda scloudr sgrowta 
+    harmh invoch moeldaa msumm1h msumm1x necroh pfirea pfirex rwotfah schargh sclouda scloudr sgrowta 
     sgrowtx sohopex solatc1 solatc2 sshellc sunscoh tsprayt uwardx mtouchh
   BEGIN
 
