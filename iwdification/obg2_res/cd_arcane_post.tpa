@@ -1225,3 +1225,5 @@ ACTION_IF MOD_IS_INSTALLED ~spell_rev.tp2~ ~55~ BEGIN
   END // ACTION_PHP_EACH
 
 END
+
+INCLUDE ~iwdification/tpa/scroll_placement.tpa~

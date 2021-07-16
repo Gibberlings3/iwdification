@@ -58,3 +58,22 @@ tp2
   Scripting is another issue; in the arcane component you can see where I try to work around
   the EE-only scripting. ogremasu.baf in particular also looks like it's been SCS-ized. Rather
   than trying to reverse SSL, I just copy over the default ogremasu from oBG2. 
+  
+data/scroll_prices_arcane.txt
+  The following price adjustments were made to the scrolls:  
+    * Snilloc's Snowball Swarm 900 > 300 - other level 2 scrolls range 200-300
+    * Icelance 900 > 400 - other level 3 scrolls range 300-400
+    * Lance of Disruption 600 > 400 - other level 3 scrolls range 300-400
+    * Emotion, Hope - 600 > 500 - level 4 scrolls are 400-500
+    * Shout - 1200 > 500 - level 4 scrolls are 400-500
+    * Vitriolic Sphere - 1600 > 500 - level 4 scrolls are 400-500
+    * Shadow Monsters - 1200 > 500 - level 4 scrolls are 400-500
+    * All level 5 spells - 1500 > 1000 - All others, save two, are 1000
+    * All level 6 spells - 600 to 1800 > 2000 - All others are 2000
+    * All level 7 spells - 700 to 2100 > 3000 - All others are 3000
+    * All level 8 spells - 800 to 2400 > 5000 - All others are 5000
+    * Monster Summoning VI - 2700 > 5000 - All others are 5k, 10k save Freedom
+  
+data/scroll_prices_divine.txt
+  Adjusted Symbol, Pain from 700 to 3000 to bring it inline with others.
+  
