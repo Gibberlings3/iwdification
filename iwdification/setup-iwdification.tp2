@@ -540,6 +540,7 @@ LAF include STR_VAR file=install_iwd_spell_resources.tpa location="%iwdspells_li
 LAF install_iwd_spell_resources
   INT_VAR
     truncate_at_level=20
+		iwdification_extra=1
   STR_VAR
     scroll_shadow_list=iwd_arcane.2da
     spell_list=EVAL ~arcane_resrefs%obg2%.txt~

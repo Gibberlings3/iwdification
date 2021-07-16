@@ -2,6 +2,7 @@ DEFINE_ACTION_FUNCTION install_iwd_spell_resources
             INT_VAR overwrite_always=0
                     make_scrolls=1
 					truncate_at_level=0
+					iwdification_extra=0
             STR_VAR scroll_shadow_list=""
                     smtables_list="" 
                     spell_list="" 

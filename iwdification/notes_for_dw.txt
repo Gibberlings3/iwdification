@@ -30,7 +30,12 @@ elemental_summoning.tpa
   Adjusted GAME_IS check around line 27 as it would use BG string values for oBG2. 
   Also ran the EFF swap through an ALTER_EFFECT because the text replacement wasn't 
   catching the higher-level spair2 and spair3 references. 
-
+  
+install_iwd_spell_resources.tpa
+  Added new iwdification_extra variable that will scatter spell scrolls throughout the 
+  game and add a few arcane spells to joinable NPC spellbooks. Default is zero and is
+  used solely to include scroll_placement.tpa.
+  
 arcane_spells_postproduction.tpa
   Inserted the INCLUDEs as noted above.
 

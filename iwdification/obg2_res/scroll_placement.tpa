@@ -14,9 +14,9 @@ COPY_EXISTING ~rndscrol.2da~ ~override~ // replace second grease with expeditous
 // bg content
 ACTION_IF GAME_IS ~eet bgee tutu tutu_totsc bgt~ BEGIN
   ACTION_IF GAME_IS ~eet~ BEGIN             INCLUDE ~EET/other/cpmvars/eet_cpmvars.tpa~ END  
-  ACTION_IF GAME_IS ~bgee~ BEGIN            INCLUDE ~iwdification/tpa/g3_bgee_cpmvars.tpa~ END  
-  ACTION_IF GAME_IS ~tutu tutu_totsc~ BEGIN INCLUDE ~iwdification/tpa/g3_tutu_cpmvars.tpa~  END  
-  ACTION_IF GAME_IS ~bgt~ BEGIN             INCLUDE ~iwdification/tpa/g3_bgt_cpmvars.tpa~ END  
+  ACTION_IF GAME_IS ~bgee~ BEGIN            INCLUDE ~%obg2_res_path%/g3_bgee_cpmvars.tpa~ END  
+  ACTION_IF GAME_IS ~tutu tutu_totsc~ BEGIN INCLUDE ~%obg2_res_path%/g3_tutu_cpmvars.tpa~  END  
+  ACTION_IF GAME_IS ~bgt~ BEGIN             INCLUDE ~%obg2_res_path%/g3_bgt_cpmvars.tpa~ END  
   
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_scroll_container BEGIN
     ~%SouthBeregostRoad_Cave_BCS%~ ,         Container1  => ~%WIZARD_EXPEDITIOUS_RETREAT_SCROLL%~
@@ -125,7 +125,7 @@ END
 
 ACTION_PHP_EACH cd_scroll_container AS params => item BEGIN 
 
-  EXTEND_BOTTOM ~%params_0%.bcs~ ~iwdification/baf/scroll.baf~ EVALUATE_BUFFER
+  EXTEND_BOTTOM ~%params_0%.bcs~ ~%obg2_res_path%/scroll.baf~ EVALUATE_BUFFER
   
 END
   

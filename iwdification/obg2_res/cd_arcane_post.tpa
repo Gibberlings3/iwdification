@@ -1226,4 +1226,4 @@ ACTION_IF MOD_IS_INSTALLED ~spell_rev.tp2~ ~55~ BEGIN
 
 END
 
-INCLUDE ~iwdification/tpa/scroll_placement.tpa~
+ACTION_IF iwdification_extra BEGIN INCLUDE ~%obg2_res_path%/scroll_placement.tpa~ END
