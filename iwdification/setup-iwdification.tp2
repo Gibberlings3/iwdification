@@ -672,6 +672,14 @@ END
 ///// some basic spell usage in generic AI             \\\\\
 /////                                                  \\\\\
 
+// first, let's fix a thing
+COPY_EXISTING ~pries14a.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~\(IF[ %TAB%%LNL%%MNL%%WNL%]+See(NearestEnemyOf(Myself))[ %TAB%%LNL%%MNL%%WNL%]+HaveSpell(CLERIC_CONFUSION)[ %TAB%%LNL%%MNL%%WNL%]+THEN[ %TAB%%LNL%%MNL%%WNL%]+RESPONSE #100[ %TAB%%LNL%%MNL%%WNL%]+\)\(END\)~
+      ~\1 Spell(NearestEnemyOf(Myself),CLERIC_CONFUSION) \2~
+  END
+  BUT_ONLY  
+
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_cleric_subs BEGIN 
 
   CLERIC_SYMBOL_HOPELESSNESS => CLERIC_CONFUSION // found in PRIES18A.BCS
