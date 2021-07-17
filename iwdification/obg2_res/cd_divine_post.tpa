@@ -145,8 +145,10 @@ COPY_EXISTING ~%CLERIC_BLOOD_RAGE%.spl~ ~override~
  
 // removing arcane refs, re-added in cross-patch if needed
 COPY_EXISTING ~%CLERIC_CLOUDBURST%.spl~ ~override~ 
+  LPF ALTER_EFFECT INT_VAR match_opcode = 321 STR_VAR match_resource = firau1d6 resource = spwi403 END // fireshield blue
+  LPF ALTER_EFFECT INT_VAR match_opcode = 321 STR_VAR match_resource = firau1d2 resource = spwi418 END // fireshield red
+  LPF ALTER_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = firau1d2 resource = sppr730d END // immue to aura of flaming death damage
   LPF DELETE_EFFECT INT_VAR match_opcode = 321 END // old iwd refs + shroud of flame
-  LPF DELETE_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = firau1d2 END // fire salamander aura
  
 // removing arcane refs, re-added in cross-patch if needed
 COPY_EXISTING ~%CLERIC_ENTROPY_SHIELD%.spl~ ~override~ 
@@ -206,8 +208,12 @@ COPY_EXISTING ~%CLERIC_MOLD_TOUCH%.spl~  ~override~
   LPF CLONE_EFFECT  INT_VAR match_opcode =  78 match_parameter1 = 2 
     opcode = 206 parameter1 = 0 parameter2 = 0 timing = 0 duration = 1 STR_VAR resource = EVAL ~%CLERIC_MOLD_TOUCH%~ END  // we're attaching them directly to the disease effect
 
-// iwdee bug: blood rage can avoid fatigue with a re-cast - clone 321 into 206 then delete it
+// iwdee bug: blood rage can avoid fatigue with a re-cast - clone 321 into 206 then delete it; also block ops 18 and 98
 COPY_EXISTING ~%CLERIC_BLOOD_RAGE%.spl~  ~override~
+  LPF CLONE_EFFECT  INT_VAR match_opcode = 101 match_parameter2 = 17 STR_VAR insert = last END
+  LPF DELETE_EFFECT INT_VAR match_opcode = 101 match_parameter2 = 17 multi_match = 1 END
+  LPF CLONE_EFFECT  INT_VAR match_opcode = 101 match_parameter2 = 17 parameter2 = 18 END
+  LPF CLONE_EFFECT  INT_VAR match_opcode = 101 match_parameter2 = 17 parameter2 = 98 END
   LPF CLONE_EFFECT  INT_VAR match_opcode = 321 opcode = 206 timing = 0 duration = 120 STR_VAR match_resource = EVAL ~%CLERIC_BLOOD_RAGE%~ insert = last END
   LPF DELETE_EFFECT INT_VAR match_opcode = 321 STR_VAR match_resource = EVAL ~%CLERIC_BLOOD_RAGE%~ END
 
