@@ -678,7 +678,7 @@ COPY_EXISTING ~pries14a.bcs~ ~override~
     REPLACE_TEXTUALLY ~\(IF[ %TAB%%LNL%%MNL%%WNL%]+See(NearestEnemyOf(Myself))[ %TAB%%LNL%%MNL%%WNL%]+HaveSpell(CLERIC_CONFUSION)[ %TAB%%LNL%%MNL%%WNL%]+THEN[ %TAB%%LNL%%MNL%%WNL%]+RESPONSE #100[ %TAB%%LNL%%MNL%%WNL%]+\)\(END\)~
       ~\1 Spell(NearestEnemyOf(Myself),CLERIC_CONFUSION) \2~
   END
-  BUT_ONLY  
+  BUT_ONLY IF_EXISTS
 
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_cleric_subs BEGIN 
 
@@ -710,7 +710,7 @@ COPY_EXISTING_REGEXP GLOB ~^druid[0-9]+[A-Z]*\.bcs$~    ~override~
   END
   BUT_ONLY  
 
-COPY_EXISTING_REGEXP GLOB ~^prie[st][0-9]+[A-Z]*\.bcs$~ ~override~
+COPY_EXISTING_REGEXP GLOB ~^priest?[0-9]+[A-Za-z]*\.bcs$~ ~override~
   DECOMPILE_AND_PATCH BEGIN
     PATCH_PHP_EACH cd_cleric_subs AS new => old BEGIN
       REPLACE_TEXTUALLY ~RESPONSE[ %TAB%]#\([0-9]+\)[ %TAB%%LNL%%MNL%%WNL%]+Spell(\([^,]+\),%old%)[ %TAB%%LNL%%MNL%%WNL%]+END~ 

@@ -73,6 +73,7 @@ COPY_EXISTING ~spwi%num_cwe%.spl~ ~override~ // assign new bams
 COPY_EXISTING ~%WIZARD_CONJURE_WATER_ELEMENTAL_SCROLL%.itm~ ~override~ // assign new bams
   WRITE_ASCIIE 0x3a ~spwi%num_cwe%a~ #8
   LPF ALTER_ITEM_HEADER STR_VAR icon = EVAL ~spwi%num_cwe%a~ END  
+  IF_EXISTS // not present in bgee
               
 COPY ~%obg2_res_path%/aft_m04.wav~  ~override~ // for antimagic shell
      ~%obg2_res_path%/aft_m18.wav~  ~override~ // for suffocate
