@@ -31,7 +31,7 @@ BEGIN
         
           COPY_EXISTING ~%file%~ ~override~ // clone so as to inherit target and power
             LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = clone_op opcode = new_op parameter1 = 0 parameter2 = 63 timing = 0 duration = 0 probability1 = 100 
-              probability2 = 0  dicenum = 0 dicesize = 0 savingthrow = 0 special = 0 STR_VAR resource = EVAL ~%block%~ insert = EVAL ~%placement%~ END
+              probability2 = 0  dicenum = 0 dicesize = 0 savingthrow = 0 special = 0 silent = 1 STR_VAR resource = EVAL ~%block%~ insert = EVAL ~%placement%~ END
             BUT_ONLY IF_EXISTS 
         
         END    
