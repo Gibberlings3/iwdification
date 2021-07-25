@@ -583,7 +583,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_mage_subs BEGIN
   
 END
 
-COPY_EXISTING_REGEXP GLOB ~^mage[0-9]+[A-Z]*\.bcs$~     ~override~
+COPY_EXISTING_REGEXP GLOB ~^_?mage[0-9]+[A-Z]*\.bcs$~     ~override~
   DECOMPILE_AND_PATCH BEGIN
     PATCH_PHP_EACH cd_mage_subs AS new => old BEGIN
       REPLACE_TEXTUALLY ~RESPONSE[ %TAB%]#\([0-9]+\)[ %TAB%%LNL%%MNL%%WNL%]+Spell(\([^,]+\),%old%)[ %TAB%%LNL%%MNL%%WNL%]+END~ 
@@ -701,7 +701,7 @@ ACTION_IF !enhanced_edition BEGIN
   
 END
 
-COPY_EXISTING_REGEXP GLOB ~^druid[0-9]+[A-Z]*\.bcs$~    ~override~
+COPY_EXISTING_REGEXP GLOB ~^_?druid[0-9]+[A-Z]*\.bcs$~    ~override~
   DECOMPILE_AND_PATCH BEGIN
     PATCH_PHP_EACH cd_druid_subs AS new => old BEGIN
       REPLACE_TEXTUALLY ~RESPONSE[ %TAB%]#\([0-9]+\)[ %TAB%%LNL%%MNL%%WNL%]+Spell(\([^,]+\),%old%)[ %TAB%%LNL%%MNL%%WNL%]+END~ 
@@ -710,7 +710,7 @@ COPY_EXISTING_REGEXP GLOB ~^druid[0-9]+[A-Z]*\.bcs$~    ~override~
   END
   BUT_ONLY  
 
-COPY_EXISTING_REGEXP GLOB ~^priest?[0-9]+[A-Za-z]*\.bcs$~ ~override~
+COPY_EXISTING_REGEXP GLOB ~^_?priest?[0-9]+[A-Za-z]*\.bcs$~ ~override~
   DECOMPILE_AND_PATCH BEGIN
     PATCH_PHP_EACH cd_cleric_subs AS new => old BEGIN
       REPLACE_TEXTUALLY ~RESPONSE[ %TAB%]#\([0-9]+\)[ %TAB%%LNL%%MNL%%WNL%]+Spell(\([^,]+\),%old%)[ %TAB%%LNL%%MNL%%WNL%]+END~ 
