@@ -1,0 +1,57 @@
+/* TRANSLATORS NOTE:
+
+There are three tra files in this directory. This setup.tra file contains only strings used by 
+WeiDU for installation. It's in UTF-8 and does not get converted. The other two are for strings that will
+actually make it into the game, with game_strings_ee overriding game_strings on EE games. game_strings 
+will get converted to UTF-8 only on EE games. Since game_strings_ee will only be used on EE games, it is
+in UTF-8 already and will not be converted. 
+
+In addition to this folder, there are another four tra files used only for the new spells and bard songs, 
+located in iwdification/dw_iwdspells_resource/tra. The good news is that the largest one, iwdspells.tra,
+is automatically generated when we pull resources from IWDEE. While dw_iwdspells_bard.tra is new, it's also
+short. The other two are from SCS so you may be able to use an existing translation from there. 
+
+In the main, automatically generated iwdspells.tra, one manual change is required: in string @218, Cause Disease
+is an Abjuration, not Necromancy, and its sphere is Necromantic, not Healing. The rest of the file should
+already be pulled directly from your language on IWDEE and should not need translation, though you're welcome
+to look it over if you wish.
+*/
+
+
+// this file contains strings only used by the WeiDU installer and does not get converted to UTF-8 for EE games.
+  @993 = ~Additional Spells~
+  @994 = ~Miscellaneous Changes~
+  @995 = ~Class Updates~
+  @996 = ~This component is only available on non-EE games~
+  @997 = ~This component is only available on EE games~
+  @998 = ~This functionality is already installed by another mod.~
+  @999 = ~DLC Merger is required before mods can be installed on this game. Check the readme for more information and a link to download DLC Merger.~
+
+ @1000 = ~Icewind Dale Casting Graphics (Andyr)~
+
+ @2000 = ~Commoners Use Drab Colors~
+
+ @3000 = ~IWD Arcane Spell Pack~
+
+ @4000 = ~IWD Divine Spell Pack~
+
+ @5000 = ~IWD Class Updates: Bard~
+
+ @6000 = ~Two Handed Axe Item Pack~
+
+ @7000 = ~IWD Class Updates: Druid~
+ @7001 = ~Use IWD Shapeshifting and Ability Progression~
+ @7100 = ~Allow Elves to be Druids~
+ @7200 = ~Install Both of the Above~
+
+ @8000 = ~Additional Portrait Icons~
+
+ @9000 = ~Expanded Polymorph Self~
+
+@10000 = ~IWD Class Updates: Paladin~
+
+@11000 = ~IWD Class Updates: Ranger~
+
+@12000 = ~IWD Class Updates: Thief~
+
+@13000 = ~Use IWD Damage Animations~

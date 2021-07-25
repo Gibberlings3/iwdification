@@ -1,8 +1,0 @@
-IF
-  See(NearestEnemyOf(Myself))
-  !Range(NearestEnemyOf(Myself),12)
-THEN
-  RESPONSE #100
-    ReallyForceSpellRES("cdiphase",NearestEnemyOf(Myself)) // spin186
-END
-

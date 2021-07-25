@@ -1,0 +1,12 @@
+          block          op  placement   clone_op   subspell   file                                notes                           
+               0        318      first         12          d   CLERIC_CIRCLE_OF_BONES               // circle of bones subspell    
+               0        324      first         12          0   CLERIC_SPIKE_GROWTH                  // Spike Growth                
+               0        324      first         12          0   CLERIC_CLOUDBURST                    // Cloudburst                  
+               0        324      first         12          0   CLERIC_PRODUCE_FIRE                  // Produce Fire                
+               0        324      first         12          b   CLERIC_STATIC_CHARGE                 // static charge subspell      
+               0        324      first         12          0   CLERIC_SMASHING_WAVE                 // Smashing Wave               
+               0        324      above         12          0   CLERIC_THORN_SPRAY                   // Thorn Spray                 
+               0        324      first         12          0   CLERIC_SPIKE_STONES                  // Spike Stones                
+               0        324      first         12          0   CLERIC_MASS_CAUSE_LIGHT_WOUNDS       // Mass Cause Light Wounds     
+               0        324      first         12          0   CLERIC_WHIRLWIND                     // Whirlwind                   
+               0        324      first         12          0   CLERIC_SPIRITUAL_WRATH               // Spiritual Wrath       

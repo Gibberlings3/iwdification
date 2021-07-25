@@ -1,0 +1,324 @@
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////             palette editor for BAMs
+/////////////
+/////////////
+/////////////             "condition" should either be blank, or a function that takes as INT_VAR inputs "green", "red" and "blue" and returns 
+/////////////             "value", which should be 1 (if the color should be patched) or 0 (if not)
+/////////////             "action" should be a function which takes "green", "red", "blue" as inputs and then outputs "green", "red" and "blue"
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_ACTION_FUNCTION patch_colors
+   INT_VAR suppress_warning=0
+   STR_VAR condition=""
+           action=""
+           bam=""
+BEGIN
+   ACTION_IF "%bam%" STRING_COMPARE "" BEGIN
+      LAF return_first_entry STR_VAR list="%bam%" RET entry bam=list END
+      ACTION_IF FILE_EXISTS_IN_GAME "%entry%.bam" BEGIN
+         COPY_EXISTING "%entry%.bam" override
+             LPF patch_colors STR_VAR condition action END
+         BUT_ONLY
+      END ELSE BEGIN
+         ACTION_IF !suppress_warning BEGIN
+            LAF warning STR_VAR warning="tried to patch the palette of %entry%.bam but it doesn't exist" END
+         END
+      END
+      LAF patch_colors INT_VAR suppress_warning STR_VAR condition action bam END
+   END
+
+END
+
+DEFINE_PATCH_FUNCTION patch_colors
+    STR_VAR condition=""
+            action=""
+BEGIN
+   LPF decompress_bam RET was_compressed dl END
+   READ_LONG 0x10 pal_off
+   FOR (i=1;i<256;i+=1) BEGIN // skip top left
+        SET offset= pal_off + i*4
+        LPF read_color INT_VAR offset RET red blue green END
+        PATCH_IF "%condition%" STRING_COMPARE "" BEGIN
+           LPF "%condition%" INT_VAR red green blue RET value END
+        END ELSE BEGIN
+           SET value=1
+        END
+        PATCH_IF value BEGIN
+           LPF "%action%" INT_VAR red blue green RET red blue green END
+           LPF write_color INT_VAR offset red blue green END
+        END
+   END
+   LPF compress_bam INT_VAR was_compressed dl END
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION read_color
+   INT_VAR offset=0
+   RET red green blue
+BEGIN
+    READ_BYTE offset blue
+    READ_BYTE (offset+1) green
+    READ_BYTE (offset+2) red
+END
+
+DEFINE_PATCH_FUNCTION write_color
+   INT_VAR red=0 green=0 blue=0 offset=0
+BEGIN
+   LPF legal_byte INT_VAR input=green RET green=output END
+   LPF legal_byte INT_VAR input=blue RET blue=output END
+   LPF legal_byte INT_VAR input=red RET red=output END
+   WRITE_BYTE offset blue
+   WRITE_BYTE (offset+1) green
+   WRITE_BYTE (offset+2) red
+END
+
+DEFINE_PATCH_FUNCTION legal_byte INT_VAR input=0 RET output BEGIN
+   output = input>0x100 ? 0x100 : input
+   output = output<0 ? 0 : output
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION decompress_bam RET was_compressed dl BEGIN
+   SET was_compressed=0
+   SET dl=0
+   READ_ASCII 0x0 sg (4) //Signature
+   PATCH_IF ~%sg%~ STRING_EQUAL_CASE ~BAMC~  BEGIN
+       SET was_compressed=1
+       READ_LONG 0x8 dl //Uncompressed data length
+       DECOMPRESS_REPLACE_FILE 0xc (SOURCE_SIZE - 0xc) dl
+   END
+END
+
+DEFINE_PATCH_FUNCTION compress_bam INT_VAR dl=0 was_compressed=0 BEGIN
+   PATCH_IF was_compressed BEGIN
+    COMPRESS_REPLACE_FILE 0 dl 9
+    INSERT_BYTES 0x0 0xc
+    WRITE_ASCII 0x0 ~BAMCV1  ~
+    WRITE_LONG 0x8 dl
+   END
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEFINE_PATCH_FUNCTION length_of_frame_lookup_table
+RET lookup_num
+BEGIN
+   READ_SHORT 0x8 frame_num
+   READ_BYTE 0xa cycle_num
+   READ_LONG 0xc frame_off
+   READ_LONG 0x10 palette_off
+   READ_LONG 0x14 frame_lookup_off
+   SET cycle_off=frame_off + 0xc * frame_num
+   SET lookup_num=0
+   FOR (ind=0;ind<cycle_num;ind+=1) BEGIN
+      SET cycle_off_here=cycle_off + ind * 0x4
+      READ_SHORT cycle_off_here num_here
+      READ_SHORT (cycle_off_here + 0x2) ind_here
+      SET max_here=ind_here + num_here 
+      SET lookup_num = (lookup_num > max_here)? lookup_num : max_here
+   END
+
+
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION delete_cycle_data
+INT_VAR dl=0
+RET dl
+BEGIN
+   // get offsets
+   READ_SHORT 0x8 frame_num
+   READ_BYTE 0xa cycle_num
+   READ_LONG 0xc frame_off
+   READ_LONG 0x10 palette_off
+   READ_LONG 0x14 lookup_off
+   SET cycle_off=frame_off + 0xc * frame_num
+   LPF length_of_frame_lookup_table RET lookup_num END
+   // initialise
+   SET palette_delta = 0
+   SET lookup_delta = 0
+   SET data_delta = 0
+   // determine length of excisions and work out deltas
+   SET cycle_length = cycle_num * 4 
+   SET lookup_length = lookup_num * 2
+   SET palette_delta = 0 - cycle_length
+   SET lookup_delta = 0 - cycle_length
+   SET data_delta = 0 - cycle_length - lookup_length
+   // carry out excisions
+   DELETE_BYTES lookup_off lookup_length
+   DELETE_BYTES cycle_off cycle_length
+   // update indices
+   WRITE_BYTE 0xa 0
+   SET palette_off += palette_delta
+   WRITE_LONG 0x10 palette_off
+   SET lookup_off += lookup_delta
+   WRITE_LONG 0x14 lookup_off
+   FOR (ind=0;ind<frame_num;ind+=1) BEGIN
+      SET offset = frame_off + (ind * 0xc) + 0x8
+      READ_LONG offset data
+      SET data += data_delta
+      WRITE_LONG offset data
+   END
+   SET dl = dl - (lookup_length + cycle_length)
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEFINE_PATCH_FUNCTION extract_cycle_data
+   RET cycle_data
+       lookup_data
+       cycle_num
+BEGIN
+   // get offsets
+   READ_SHORT 0x8 frame_num
+   READ_BYTE 0xa cycle_num
+   READ_LONG 0xc frame_off
+   READ_LONG 0x10 palette_off
+   READ_LONG 0x14 lookup_off
+   SET cycle_off=frame_off + 0xc * frame_num
+   LPF length_of_frame_lookup_table RET lookup_num END
+   // initialise
+   SET palette_delta = 0
+   SET lookup_delta = 0
+   SET data_delta = 0
+   // determine length of excisions
+   SET cycle_length = cycle_num * 4 
+   SET lookup_length = lookup_num * 2
+   // carry out excisions
+   READ_ASCII lookup_off lookup_data (lookup_length)
+   READ_ASCII cycle_off cycle_data (cycle_length)
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION insert_cycle_data
+INT_VAR cycle_num=0
+        dl=0
+STR_VAR cycle_data=""
+        lookup_data=""
+RET
+        dl
+BEGIN
+   // get data lengths
+   SET cycle_length = STRING_LENGTH "%cycle_data%"
+   SET sanity=cycle_num*4
+   SET lookup_length = STRING_LENGTH "%lookup_data%"
+   // get offsets
+   READ_SHORT 0x8 frame_num
+   READ_LONG 0xc frame_off
+   READ_LONG 0x10 palette_off
+   READ_LONG 0x14 lookup_off
+   SET cycle_off=frame_off + 0xc * frame_num
+   LPF length_of_frame_lookup_table RET lookup_num END
+   // make lookup insertions
+   INSERT_BYTES lookup_off lookup_length
+   WRITE_ASCIIE lookup_off "%lookup_data%"
+   // make cycle insertions
+   INSERT_BYTES cycle_off cycle_length
+   WRITE_ASCIIE cycle_off "%cycle_data%"
+   // work out deltas
+   SET palette_delta = cycle_length
+   SET lookup_delta = cycle_length
+   SET data_delta = cycle_length + lookup_length
+   // update indices
+   WRITE_BYTE 0xa cycle_num
+   SET palette_off += palette_delta
+   WRITE_LONG 0x10 palette_off
+   SET lookup_off += lookup_delta
+   WRITE_LONG 0x14 lookup_off
+   FOR (ind=0;ind<frame_num;ind+=1) BEGIN
+      SET offset = frame_off + (ind * 0xc) + 0x8
+      READ_LONG offset data
+      SET data += data_delta
+      WRITE_LONG offset data
+   END
+   SET dl=dl+cycle_length + lookup_length
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////             Installer for v2 BAMs
+/////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_ACTION_FUNCTION install_v2_bam
+  INT_VAR lowest_mos_index=0
+  STR_VAR bam_name=""
+          bam_loc=""
+          pvrz_loc=""
+BEGIN
+   ACTION_IF "%pvrz_loc%" STRING_EQUAL "" BEGIN
+      OUTER_SPRINT pvrz_loc "%bam_loc%"
+   END
+   // get initial list of PVRZ indices
+   ACTION_CLEAR_ARRAY pvrz_ind_list
+   COPY "%bam_loc%/%bam_name%.bam" override
+     GET_OFFSET_ARRAY bam_array 0x1c 4 0x10 4 0 0 0x1c
+     PHP_EACH bam_array AS ind=>offset BEGIN
+        READ_LONG offset ref
+        SPRINT $pvrz_ind_list("%ref%") ""
+     END
+   // end of COPY
+   // go through and sort out the PVRZs' new indices
+   OUTER_SET current=lowest_mos_index
+   ACTION_PHP_EACH pvrz_ind_list AS ind=>discard BEGIN
+      LAF get_available_mos_index INT_VAR current RET new_index=value END
+      LAF pad_to_four INT_VAR arguments=ind RET padded_old=value END
+      LAF pad_to_four INT_VAR arguments=new_index RET padded_new=value END
+      COPY "%pvrz_loc%/mos%padded_old%.pvrz" "override/mos%padded_new%.pvrz"
+
+      OUTER_SET $pvrz_ind_list("%ind%")=new_index
+      OUTER_SET current=new_index+1
+   END
+   // update the bam file
+   COPY_EXISTING "%bam_name%.bam" override
+     GET_OFFSET_ARRAY bam_array 0x1c 4 0x10 4 0 0 0x1c
+     PHP_EACH bam_array AS ind=>offset BEGIN
+        READ_LONG offset ref
+        SET ref_new=$pvrz_ind_list("%ref%")
+        WRITE_LONG offset ref_new
+     END
+
+
+
+END
+
+DEFINE_ACTION_FUNCTION pad_to_four
+   INT_VAR arguments=0
+   RET value
+BEGIN
+   ACTION_IF arguments>9999 BEGIN
+      FAIL "pad_to_four requires an argument <=9999"
+   END
+   ACTION_IF arguments<10 BEGIN
+      OUTER_SPRINT value "000%arguments%"
+   END ELSE
+   ACTION_IF arguments<100 BEGIN
+      OUTER_SPRINT value "00%arguments%"
+   END ELSE
+   ACTION_IF arguments<1000 BEGIN
+      OUTER_SPRINT value "0%arguments%"
+   END ELSE BEGIN
+      OUTER_SPRINT value "%arguments%"
+   END
+END
+
+DEFINE_ACTION_FUNCTION get_available_mos_index
+    INT_VAR current=0
+    RET value
+BEGIN
+    LAF pad_to_four INT_VAR arguments=current RET padded=value END
+    ACTION_IF FILE_EXISTS_IN_GAME "mos%padded%.pvrz" BEGIN
+       OUTER_SET current +=1
+       LAF get_available_mos_index INT_VAR current RET value END
+    END ELSE BEGIN
+       OUTER_SET value=current
+    END
+END
+
+

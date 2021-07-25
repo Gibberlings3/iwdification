@@ -1,0 +1,229 @@
+// strings in this file will be used exclusively for EE games and override similar strings in game_strings
+// this file is UTF-8 and does not get converted.
+
+  @6002 = ~This mighty weapon consists of a haft several feet long, topped with a heavy blade. The axe may be double-bitted, with blades on both sides of the haft, or it may only have a single blade. It is an unwieldy weapon, but a skilled warrior can strike blows of tremendous strength with it.
+
+STATISTICS:
+
+Damage: 1d10 (slashing)
+Speed Factor: 9
+Proficiency Type: Axe
+Type: Two-handed
+Requires:
+ 10 Strength
+
+Weight: 10~
+  @6004 = ~This mighty weapon consists of a haft several feet long, topped with a heavy blade.  The axe may be double-bitted, with blades on both sides of the haft, or it may only have a single blade.  This axe has also been bestowed with a small number of magical properties, however, thus making it more effective in combat. Its keen blade, for instance, will shear through your opponent's flesh to find the bone while its barbed tip will seek out gaps in their armor.
+  
+STATISTICS:
+
+THAC0: +1
+Damage: 1d10+1 (slashing)
+Speed Factor: 8
+Proficiency Type: Axe
+Type: Two-handed
+Requires:
+ 10 Strength
+
+Weight: 9~
+  @6006 = ~Tremain Longaxe was an adventurer in the Ten Towns with a penchant for axes. While two-handed axes are generally slow and unwieldy, Tremain had this axe specially designed to trip opponents, allowing him to overcome foes with faster and lighter weapons.
+  
+STATISTICS:
+
+Combat abilities:
+- 10% chance of knocking down opponent for one round on each hit
+
+THAC0: +2
+Damage: 1d10+2 (slashing)
+Speed Factor: 7
+Proficiency Type: Axe
+Type: Two-handed
+Requires:
+ 10 Strength
+
+Weight: 8~
+  @6008 = ~This mighty weapon consists of a haft several feet long, topped with a heavy blade.  The axe may be double-bitted, with blades on both sides of the haft, or it may only have a single blade.  This axe has been imbued with several enchantments, however, thus making it more effective in combat.
+  
+STATISTICS:
+
+THAC0: +3
+Damage: 1d10+3 (slashing)
+Speed Factor: 6
+Proficiency Type: Axe
+Type: Two-handed
+Requires:
+ 10 Strength
+
+Weight: 7~
+  @6010 = ~Murzul Dul was a warchief under King Greneire who earned his fame as a skilled tactician. This immense axe doubled as his battle standard in combat and could strike down foes and rally his horde in equal measure. Like King Greniere himself and most of his horde, Dul was killed during the siege of the Citadel of Many Arrows when Emerus Warcrown swept away the battling hordes and the axe claimed as war spoils. The axe retains its ability to rally allies and shake foes by spiking the haft of the weapon into the ground.
+  
+STATISTICS:
+
+Combat abilities:
+- Battle Standard twice per day - The axe can knock back foes in a small radius and grant allies +1 THAC0 and damage for two rounds
+
+THAC0: +4
+Damage: 1d10+4 (slashing)
+Speed Factor: 5
+Proficiency Type: Axe
+Type: Two-handed
+Requires:
+ 10 Strength
+
+Weight: 6~
+  @6012 = ~Murzul Dul was a warchief under King Greneire who earned his fame as a skilled tactician. This immense axe doubled as his battle standard in combat and could strike down foes and rally his horde in equal measure. Like King Greniere himself and most of his horde, Dul was killed during the siege of the Citadel of Many Arrows when Emerus Warcrown swept away the battling hordes and the axe claimed as war spoils. The axe retains its ability to rally allies and shake foes by spiking the haft of the weapon into the ground. Cespenar has further enhanced this axe.
+  
+STATISTICS:
+
+Combat abilities:
+- Enhanced Battle Standard twice per day - By spiking the haft into the ground, the wielder can knock back foes in a small radius and grant allies +2 to saves, THAC0 and damage for two rounds
+
+THAC0: +5
+Damage: 1d10+5 (slashing)
+Speed Factor: 4
+Proficiency Type: Axe
+Type: Two-handed
+Requires:
+ 10 Strength
+
+Weight: 5~  
+  @7005 = ~Shapeshift: Fire Elemental
+
+Strength: 19
+Dexterity: 9
+
+Base Armor Class: 2
+Number of Attacks: 1
+Attack Damage: 1d8 crushing + 1d4 fire
+
+Special Abilities:
+– Cold Resistance: -50%
+– Fire Resistance: 100%
+– Acid Resistance: 15%
+– Electricity Resistance: 15%
+– Slashing Resistance: 15%
+– Crushing Resistance: 15%
+– Piercing Resistance: 15%
+– Missile Resistance: 15%~
+  @7006 = ~Shapeshift: Earth Elemental
+
+Strength: 23
+Dexterity: 5
+
+Base Armor Class: -2
+Number of Attacks: 1
+Attack Damage: 4d8 crushing
+
+Special Abilities:
+– Cold Resistance: 25%
+– Fire Resistance: 25%
+– Slashing Resistance: 50%
+– Crushing Resistance: -50%
+– Piercing Resistance: 50%
+– Missile Resistance: 75%~
+  @7007 = ~Shapeshift: Water Elemental
+
+Strength: 18
+Dexterity: 14
+
+Base Armor Class: -2
+Number of Attacks: 1
+Attack Damage: 4d8 crushing
+
+Special Abilities:
+– Cold Resistance: -25%
+– Electricity Resistance: -75%
+– Acid Resistance: 75%
+– Slashing Resistance: 75%
+– Crushing Resistance: 75%
+– Piercing Resistance: 75%
+– Missile Resistance: 75%~  
+  @7008 = ~Shapeshift: Black Bear
+
+Strength: 18/00
+Dexterity: 12
+
+Base Armor Class: 7
+Number of Attacks: 3
+Attack Damage: 1d6 (piercing), strikes as +1 weapon
+
+Special Abilities:
+ – Increased movement rate~  
+  @7011 = ~DRUID: The Druid serves the cause of nature and neutrality; the wilderness is <PRO_HISHER> community, and <PRO_HESHE> uses <PRO_HISHER> special powers to protect it and to preserve balance in the world.
+
+CLASS FEATURES:
+
+– May only wear non-metallic armor.
+– May only equip bucklers and non-metallic shields.
+– May only use the following weapons: scimitar, dagger, club, spear, quarterstaff, dart, sling.
+– May only become Proficient (one slot) in any weapon class.
+– May only become Proficient (one slot) in any fighting style.
+– May cast druidic spells.
+– 5th level: May shapeshift into a winter wolf once per day.
+– 7th level: May shapeshift into a boring beetle once per day.
+– 9th level: Becomes immune to poison. May shapeshift into a polar bear once per day.
+– 11th level: Gains the ability to transform into a fire elemental once per day.
+– 13th level: Gains the ability to transform into an earth elemental once per day.
+– 15th level: Gains the Timeless Body ability, becoming immune to fatigue. Gains the ability to transform into a water elemental once per day.
+– Alignment restricted to true neutral.
+– Hit Die: d8
+
+Prime Requisites For Dual-Classing: Wisdom, Charisma~ // iwdee string: 9560
+
+  @9006 = ~Shapeshift: Boring Beetle
+
+Strength: 18/51
+Dexterity: 7
+
+Base Armor Class: -2
+Number of Attacks: 1
+Attack Damage: 5d4 slashing
+
+Special Abilities:
+– Slashing Resistance: 50%
+– Piercing Resistance: 50%
+– Missile Resistance: 50%~
+  @9008 = ~Shapeshift: Polar Bear
+
+Strength: 18/00
+Dexterity: 10
+
+Base Armor Class: 4
+Number of Attacks: 3
+Attack Damage: 1d12 slashing
+
+Special Abilities:
+– Cold Resistance: 75%
+– Fire Resistance: -25%~
+  @9010 = ~Shapeshift: Winter Wolf
+
+Strength: 18
+Dexterity: 13
+
+Base Armor Class: 2
+Number of Attacks: 2
+Attack Damage: 1d6 slashing
+
+Special Abilities:
+– Cold Resistance: 75%
+– Fire Resistance: -25%~  
+@10003 = ~– May cast Detect Evil once per day per level (starts at 1st level with 4 uses).~ // match exact from bg2ee strref 9558
+@10004 = ~– May cast Protection From Evil once per day per level (starts at 1st level with one use).~ // match exact from bg2ee strref 9558
+@10005 = ~– May cast priest spells starting at level 9.~ // match exact from bg2ee strref 9558
+@10006 = ~– May use the Cure Disease ability once per day.
+– May use the Detect Evil ability at will (once per round).~ // grab text from iwdee 9558
+@10007 = ~– May cast a special version of Protection From Evil once per day. This ability only affects the Paladin and lasts for 24 turns.
+– May use the Smite Evil ability once per day to deal 1d6 + 1d6 points of damage for every 3 levels of the paladin to a single, evil-aligned opponent.~  // grab text from iwdee 9558
+@10008 = ~– May cast priest spells starting at level 6.
+– 3rd level: Gains the Divine Courage ability becoming immune to fear.
+– Paladins are completely immune to all forms of disease, magical or mundane.~ // grab text from iwdee 9558
+
+@11003 = ~– May use the Tracking ability at will (once per round).~ // from iwdee 37106
+@11004 = ~– Alignment restricted to good.~
+
+@12002 = ~– 7th level: Gains the Evasion ability.
+
+EVASION: When a Thief is hit by a spell that can be evaded (Fireball, Lightning Bolt, etc.), the Thief is allowed a Save vs. Breath to completely avoid the effects. If the Saving Throw is failed, the spell works normally, including a save for half damage if the spell allows for it. A helpless Thief (e.g. held, stunned, or asleep) cannot use Evasion.
+
+~ // keep these extra linebreaks
+@12004 = ~– Alignment restricted to any except lawful good.~ // match this exactly to main thief description (strref 9561), as this is used as a text-match

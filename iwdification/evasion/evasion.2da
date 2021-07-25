@@ -1,0 +1,100 @@
+          block          op  placement   clone_op   subspell   file                                notes                           
+       SPBLUN29         324      first         12          0   SPBLUN29.spl                        // Chain Lightning via Storm Sta
+        SPCL239         318      above        146          0   SPCL239.spl                         // Sun Soulbeam                 
+        SPCL722         324      above         12          0   SPCL722.spl                         // Lightning Bolt (talos)       
+         SPDD03         324      first         12          0   SPDD03.spl                          // Breath Weapon (dragon discipl
+        SPDR301         324      above         12          0   SPDR301.spl                         // Lightning Bolt (avenger)     
+        SPDR601         318      above         12          0   SPDR601.spl                         // Chain Lightning (avenger)    
+       SPIMIX01         324      first        215          0   SPIMIX01.spl                        // Flame Strike via Zaaman      
+        SPIN160         324      above         12          0   SPIN160.spl                         // Breathe Fireball (shapechange
+        SPIN935         324      first        177          0   SPIN935.spl                         // Glass Dust                   
+        SPIN973         324      first         12          0   SPIN973.spl                         // Air elemental whirlwind      
+        SPPR105         324      first        154          0   SPPR105.spl                         // Entangle                     
+        SPPR302         324      first         12          0   SPPR302.spl                         // Call Lightning               
+        SPPR304         324      first         12          0   SPPR304.spl                         // Glyph of Warding             
+        SPPR313         324      first        177          0   SPPR313.spl                         // Holy Smite                   
+        SPPR314         324      first        177          0   SPPR314.spl                         // Unholy Blight                
+        SPPR450         324      first         12          0   SPPR450.spl                         // Spirit Fire                  
+        SPPR503         324      first        215          0   SPPR503.spl                         // Flame Strike                 
+        SPPR517         324      first         60          0   SPPR517.spl                         // Insect Plague                
+       SPPR603D         318      first         12          0   SPPR603D.spl                        // blade barrier subspell       
+       SPPR698D         324      first         12          0   SPPR698D.spl                        // Blade Barrier                
+        SPPR705         324      first         12          0   SPPR705.spl                         // Fire Storm                   
+        SPPR751         324      above         12          0   SPPR751.spl                         // Ethereal Retribution         
+        SPPR984         324      above         12          0   SPPR984.spl                         // Flame Strike                 
+        SPPR985         324      first        215          0   SPPR985.spl                         // Flame Strike                 
+        SPWI001         324      first         12          0   SPWI001.spl                         // Fireball                     
+        SPWI002         324      first         12          0   SPWI002.spl                         // Lightning Bolt               
+        SPWI017         324      first         12          0   SPWI017.spl                         // Minor Lightning Bolt         
+        SPWI025         324      first         12          0   SPWI025.spl                         // Minor Lightning Bolt         
+        SPWI026         324      first         12          0   SPWI026.spl                         // Minor Lightning Bolt         
+        SPWI027         324      first         12          0   SPWI027.spl                         // Minor Lightning Bolt         
+        SPWI103         324      first         12          0   SPWI103.spl                         // Burning Hands                
+        SPWI105         324      first         39          0   SPWI105.spl                         // Color Spray                  
+        SPWI217         324      first         12          0   SPWI217.spl                         // Agannazar's Scorcher         
+        SPWI304         324      first         12          0   SPWI304.spl                         // Fireball                     
+        SPWI308         324      first         12          0   SPWI308.spl                         // Lightning Bolt               
+        SPWI313         318      first         12          0   SPWI313.spl                         // Skull Trap                   
+        SPWI404         324      first         12          0   SPWI404.spl                         // Ice Storm                    
+        SPWI503         324      first         12          0   SPWI503.spl                         // Cone of Cold                 
+       spwi523d         324      first         12          0   spwi523d.spl                        // sunfire subspell             
+        SPWI615         318      above         12          0   SPWI615.spl                         // Chain Lightning              
+       spwi615b         318      above         12          0   spwi615b.spl                        // No such index                
+        SPWI712         324      first         12          0   SPWI712.spl                         // Delayed Blast Fireball       
+        SPWI714         324      first         12          0   SPWI714.spl                         // Prismatic Spray              
+        SPWI812         324      first         12          0   SPWI812.spl                         // Abi-Dalzim's Horrid Wilting  
+        SPWI911         324      first         12          0   SPWI911.spl                         // Meteor Swarm                 
+        SPWI922         324      first         12          0   SPWI922.spl                         // Dragon's Breath              
+        SPWI925         324      first         12          0   SPWI925.spl                         // Comet                        
+       SPWISH24         324      first         12          0   SPWISH24.spl                        // Meteor Swarm                 
+       SPWISH27         324      first         12          0   SPWISH27.spl                        // Knockback                    
+       SPWISH32         324      first         12          0   SPWISH32.spl                        // Abi-Dalzim's Horrid Wilting  
+        SPWM111         324      first        154          0   SPWM111.spl                         // Entangle                     
+       SPYANC01         324      first         12          0   SPYANC01.spl                        // Whirlwind via chan           
+        SPYANCD         324      first         12          0   SPYANCD.spl                         // globe of blades via chan           
+                                                                                                   
+         AMUL01         324      first         12          0   AMUL01.ITM                           // Necklace of Missiles        
+         POTN13         324      first         12          0   POTN13.ITM                           // Oil of Fiery Burning        
+         POTN26         324      first         12          0   POTN26.ITM                           // Potion of Explosions        
+         POTN27         324      first         12          0   POTN27.ITM                           // Potion of Firebreath        
+         WAND05         324      first         12          0   WAND05.ITM                           // Wand of Fire                
+         WAND07         324      first         12          0   WAND07.ITM                           // Wand of Lightning           
+         WAND11         324      first         12          0   WAND11.ITM                           // Wand of the Heavens         
+                                                                                                   
+         BOLT07         324      first         45          0   BOLT07.ITM                           // Flasher Master Bruiser Mate 
+       CDSTAF12         324      first         12          0   CDSTAF12.SPL                         // Lightning Bolt              
+       FIRESEED         324      above         12          0   FIRESEED.ITM                         // Fire Seed                   
+         FRAG01         324      first         12          0   FRAG01.ITM                           // Frag Grenade                
+        FRAGSAP         324      first         12          0   FRAGSAP.ITM                          // Fragmentation Skull         
+       GLOBBLU1         318      first         12          0   GLOBBLU1.ITM                         // Blue Globe (cone of cold)   
+       GLOBRED1         318      first         12          0   GLOBRED1.ITM                         // Red Globe (fireball)        
+        JWSIEGE         318      first         12          0   JWSIEGE.SPL                          // comet explosions in saradush
+       MELIS02B         324      first         12          0   MELIS02B.SPL                         // Blade Barrier               
+       OHBDRAG1         324      first         12          0   OHBDRAG1.SPL                         // Topaz Dragon Breath         
+       OHBSHLD1         324      first         12          0   OHBSHLD1.ITM                         // Kazrah's Shield +4          
+       OHBWI304         324      first         12          0   OHBWI304.SPL                         // Fireball                    
+       OHBWI308         324      first         12          0   OHBWI308.SPL                         // Lightning Bolt              
+       SECRET03         324      first         12          0   SECRET03.ITM                         // Frag Grenade                
+       SPCL911B         318      first         12          0   SPCL911B.SPL                         // exploding trap              
+       SPCRYO01         324      first         12          0   SPCRYO01.SPL                         // Cone of Cold                
+        SPIN560         324      first         12          0   SPIN560.SPL                          // Cinder Shower               
+        SPIN595         324      first         12          0   SPIN595.SPL                          // Yellow Dragon Scorching Sand
+        SPIN596         324      first         12          0   SPIN596.SPL                          // Brown Dragon Acid Breath    
+        SPIN597         324      first         12          0   SPIN597.SPL                          // Blue Dragon Lightning Breath
+        SPIN688         324      first        154          0   SPIN688.SPL                          // Plant Growth                
+        SPIN693         318      first         12          0   SPIN693.SPL                          // <Invalid Strref -1>         
+        SPIN701         324      first         12          0   SPIN701.SPL                          // Fireball                    
+        SPIN714         324      first         12          0   SPIN714.SPL                          // Lightning Bolt              
+        SPIN832         324      first         45          0   SPIN832.SPL                          // Silver Dragon Paralyzation  
+        SPIN833         324      first         12          0   SPIN833.SPL                          // Silver Dragon Cone of Cold  
+        SPIN885         324      first         12          0   SPIN885.SPL                          // Kamikaze Explosion          
+        SPIN893         324      first         74          0   SPIN893.SPL                          // Shadow Dragon Breath        
+        SPIN926         324      first         12          0   SPIN926.SPL                          // Water Jet                   
+        SPIN937         324      first         39          0   SPIN937.SPL                          // Color Spray                 
+        SPIN938         324      first         12          0   SPIN938.SPL                          // Flame Fan                   
+        SPIN942         324      first         12          0   SPIN942.SPL                          // Breathes Grit               
+        SPIN956         318      first         12          0   SPIN956.SPL                          // Hell Hound Flame Breath     
+       SPPR725D         324      first         12          0   SPPR725D.SPL                         // Globe of Blades             
+        SPWI957         324      first         12          0   SPWI957.SPL                          // Fireball                    
+        SPWI997         324      first         12          0   SPWI997.SPL                          // Lightning Bolt              
+         WAND06         324      first         12          0   WAND06.ITM                           // Wand of Frost  

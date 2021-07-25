@@ -1,0 +1,184 @@
+
+
+OUTER_SET anim_beetle = 0 // 30720 gibb for testing 
+ACTION_IF enhanced_edition BEGIN 
+
+  STRING_SET 9560 @7011 // obg2 class descriptions don't include abilities
+  OUTER_SET anim_beetle = 57888
+  COPY ~iwdification/data/anim/e220.ini~             ~override~
+       ~iwdification/dw_iwdspells_resource/anim/bam~ ~override~
+       ~iwdification/dw_iwdspells_resource/anim/wav~ ~override~
+       
+END ELSE BEGIN
+
+  ACTION_IF MOD_IS_INSTALLED ~INFINITYANIMATIONS/SETUP-INFINITYANIMATIONS.TP2~ ~500~ BEGIN // 'more base animations'
+
+    ACTION_IF IDS_OF_SYMBOL (~animate~ ~BEETLE_BLACK~) > 0 THEN BEGIN
+      OUTER_SET anim_beetle = IDS_OF_SYMBOL (~animate~ ~BEETLE_BLACK~)
+    END
+  
+  END
+
+END  
+
+OUTER_SPRINT first_ss cdidrbr // if no beetle, keep black bear
+ACTION_IF anim_beetle BEGIN OUTER_SPRINT first_ss cdidrbb END
+  
+ACTION_CLEAR_ARRAY cd_druid_poly
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_druid_poly BEGIN
+
+  // item/creature => spell
+  cdia480 => cdidrbb
+  cdia481 => cdidrpb
+  cdia482 => cdidrww
+  cdidree => cdidree
+  cdidrfe => cdidrfe
+  cdidrwe => cdidrwe
+  cdidrbr => cdidrbr // alternative black bear for boring beetle
+  
+END
+
+ACTION_PHP_EACH cd_druid_poly AS res => spell BEGIN  
+
+  // clone wolf shapeshifting to others
+  COPY ~iwdification/spl/cdidree.spl~  ~override/%spell%.spl~
+    SAY 0x08 @9005 // boring beetle
+    SAY 0x50 @9006
+    WRITE_ASCIIE 0x3a ~%res%b~ #8
+    LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL ~%res%b~ END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = EVAL ~%res%~ END // give weapon
+    
+  COPY ~iwdification/bam/%res%.bam~  ~override~ 
+       ~iwdification/bam/%res%b.bam~ ~override~
+       ~iwdification/cre/%res%.cre~  ~override~
+       ~iwdification/itm/%res%.itm~  ~override~
+
+END  
+
+COPY_EXISTING ~cdidrpb.spl~ ~override~  
+  SAY 0x08 @9007 // polar bear
+  SAY 0x50 @9008
+
+COPY_EXISTING ~cdidrww.spl~ ~override~  
+  SAY 0x08 @9009 // winter wolf
+  SAY 0x50 @9010
+
+COPY_EXISTING ~cdidree.spl~ ~override~  
+  SAY 0x08 @7003 // earth elemental
+  SAY 0x50 @7006
+
+COPY_EXISTING ~cdidrfe.spl~ ~override~  
+  SAY 0x08 @7002 // fire elemental
+  SAY 0x50 @7005
+
+COPY_EXISTING ~cdidrwe.spl~ ~override~  
+  SAY 0x08 @7004 // water elemental
+  SAY 0x50 @7007
+
+COPY_EXISTING ~cdidrbr.spl~ ~override~  
+  SAY 0x08 #19792  
+  SAY 0x50 @7008
+
+COPY_EXISTING ~cdia480.cre~ ~override~  
+  SAY 0x08 @9001 // boring beetle
+  SAY 0x0c @9001
+  WRITE_LONG 0x28 anim_beetle
+
+COPY_EXISTING ~cdidrwe.cre~ ~override~     
+  SAY 0x08 @7009 // water elemental
+  SAY 0x0c @7009
+
+COPY ~iwdification/spl/cdidrif.spl~ ~override~   
+  SAY 0xfe @7010
+  
+COPY_EXISTING ~clabdr01.2da~ ~override~
+  REPLACE_TEXTUALLY ~[ %TAB%]GA_SPCL611[ %TAB%]~ ~ GA_%first_ss% ~ EVALUATE_BUFFER
+  PATCH_FOR_EACH res IN SPCL612 SPCL613 SPCL924 SPCL925 SPCL926 SPCL927 BEGIN
+    REPLACE_TEXTUALLY ~[ %TAB%]\(GA\|AP\)_%res%[ %TAB%]~ ~ **** ~
+  END  
+
+APPEND ~clabdr01.2da~
+~ABILITYX   ****       ****       ****       ****       GA_cdidrww ****       ****       ****       GA_cdidrpb ****       GA_cdidrfe ****       GA_cdidree ****       GA_cdidrwe CDREPLACE
+ABILITYY   ****       ****       ****       ****       ****       ****       ****       ****       AP_SPCL924 ****       ****       ****       ****       ****       AP_cdidrif CDREPLACE~
+
+COPY_EXISTING ~clabdr01.2da~ ~override~
+  COUNT_2DA_COLS cols
+  FOR (index = 17 ; index < cols ; ++index) BEGIN
+    REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
+  END
+  REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+  
+// handing out some abilities
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+  SET druid_level = 0 
+  READ_LONG 0x010 dual   // block of flags including the dual-class bits
+  READ_BYTE 0x234 level1 // If dual-classed, this value is put in the next field, and this field is set to 1.
+  READ_BYTE 0x235 level2 // Highest attained level in secondary class (0-100)
+  READ_BYTE 0x273 class  // V1.0
+  READ_SHORT 0x246 kit
+  PATCH_IF ((class =  11) AND ((kit = 0) OR (kit = 0x4000))) BEGIN // single-class, unkitted druid
+    SET druid_level = level1
+  END ELSE 
+  PATCH_IF class = 16 BEGIN // f/d
+    PATCH_IF ((dual & BIT3) = BIT3) BEGIN // f > d dual - can't dual into kit, so no kit check
+      SET druid_level = level1
+    END ELSE
+    PATCH_IF ((dual & BIT7) = BIT7) BEGIN // d > f dual
+      PATCH_IF ((level1 > level2) AND ((kit = 0) OR (kit = 0x4000))) BEGIN // only set if druid re-activated and unkitted
+        SET druid_level = level2 
+      END 
+    END ELSE BEGIN // true multiclass - no kit allowed 
+      SET druid_level = level2
+    END
+  END 
+  PATCH_IF druid_level BEGIN    
+    REMOVE_MEMORIZED_SPELL ~spcl611~ ~spcl612~ ~spcl613~ // remove all shapeshifts
+    REMOVE_KNOWN_SPELL     ~spcl611~ ~spcl612~ ~spcl613~ // remove all shapeshifts
+    // since poison immunity is being moved up, no reason to remove it (worse case it gets duped); fatigue immunity doesn't mean anything for non-party
+    PATCH_IF druid_level > 4 BEGIN
+      ADD_KNOWN_SPELL     cdidrww #0 ~innate~
+      ADD_MEMORIZED_SPELL cdidrww #0 ~innate~ (1)
+      PATCH_IF druid_level > 6 BEGIN
+        ADD_KNOWN_SPELL     ~%first_ss%~ #0 ~innate~
+        ADD_MEMORIZED_SPELL ~%first_ss%~ #0 ~innate~ (1)
+        PATCH_IF druid_level > 8 BEGIN
+          ADD_KNOWN_SPELL     cdidrpb #0 ~innate~
+          ADD_MEMORIZED_SPELL cdidrpb #0 ~innate~ (1)
+          LPF ADD_CRE_EFFECT INT_VAR opcode = 206 target = 1 timing = 1 STR_VAR resource = spwi502 effsource = spcl924 END // spell immunity: cloudkill
+          LPF ADD_CRE_EFFECT INT_VAR opcode = 206 target = 1 timing = 1 STR_VAR resource = spwi016 effsource = spcl924 END // spell immunity: cloudkill
+          LPF ADD_CRE_EFFECT INT_VAR opcode = 206 target = 1 timing = 1 STR_VAR resource = spin673 effsource = spcl924 END // spell immunity: cloudkill
+          LPF ADD_CRE_EFFECT INT_VAR opcode = 267 target = 1 timing = 1 parameter1 = 14017 STR_VAR effsource = spcl924 END // string immunity: poison
+          LPF ADD_CRE_EFFECT INT_VAR opcode = 267 target = 1 timing = 1 parameter1 = 14662 STR_VAR effsource = spcl924 END // string immunity: poisoned
+          LPF ADD_CRE_EFFECT INT_VAR opcode = 101 target = 1 timing = 1 parameter2 = 25 STR_VAR effsource = spcl924 END // immunity to poison
+          LPF ADD_CRE_EFFECT INT_VAR opcode = 173 target = 1 timing = 1 parameter1 = 100 STR_VAR effsource = spcl924 END // 100% poison damage resistance
+          PATCH_IF druid_level > 10 BEGIN
+            ADD_KNOWN_SPELL     cdidrfe #0 ~innate~
+            ADD_MEMORIZED_SPELL cdidrfe #0 ~innate~ (1)
+            PATCH_IF druid_level > 12 BEGIN
+              ADD_KNOWN_SPELL     cdidree #0 ~innate~
+              ADD_MEMORIZED_SPELL cdidree #0 ~innate~ (1)
+              PATCH_IF druid_level > 14 BEGIN
+                ADD_KNOWN_SPELL     cdidrwe #0 ~innate~
+                ADD_MEMORIZED_SPELL cdidrwe #0 ~innate~ (1)
+                LPF ADD_CRE_EFFECT INT_VAR opcode = 101 target = 1 timing = 1 parameter2 = 93 STR_VAR effsource = cdidrif END // immunity to fatigue
+                LPF ADD_CRE_EFFECT INT_VAR opcode =  93 target = 1 timing = 1 parameter2 =  1 insert_point = 0 STR_VAR effsource = cdidrif END // set fatigue to 0
+                PATCH_IF druid_level > 24 BEGIN SET druid_level = 24 END // will kill loop after three goes
+                FOR (index = 17 ; druid_level > index ; index += 3)  BEGIN // drop the +10% elemental bonuses
+                  PATCH_FOR_EACH offset IN 0x59 0x5a 0x5b 0x5c 0x5e 0x5f BEGIN 
+                    READ_BYTE offset resist
+                    PATCH_IF ((resist > 9) AND (resist < 100)) BEGIN // only if non-zero and not seemingly immune 
+                      WRITE_BYTE offset (resist - 10)
+                    END
+                  END 
+                END // for loop for elemental resist bonuses  
+              END // lev 15 bonuses
+            END // lev 13 bonuses
+          END // lev 11 bonuses
+        END // lev 9 bonuses
+      END // lev 7 bonuses
+    END // lev 5 bonuses
+  END // druid check  
+  BUT_ONLY
+  

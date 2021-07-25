@@ -1,0 +1,18 @@
+@1="May use Bard Song ability\. While active, the Bard Song has the following effects:" // 1-4 must exactly match the appropriate strings from the BG2 description of the bard song (other than replacing '.' with '\.')
+@2="Restore morale to its average value"
+@3="Remove Fear"
+@4="Protection From Fear"
+
+
+
+@10="May use Bard Song ability to play any song from <PRO_HISHER> repertoire."
+@11="Can play The Ballad of Three Heroes starting at 1st level."
+@12="Can play The Tale of Curran Strongheart starting at 3rd level."
+@13="Can play Tymora's Melody starting at 5th level."
+@14="Can play The Song of Kaudies starting at 7th level."
+@15="Can play The Siren's Yearning starting at 9th level."
+@16="Can play War Chant of Sith starting at 11th level."
+
+@20="Does not know the songs available to regular Bards."
+@21="None." // must match the string used in kit descriptions to indicate that there are no disadvantages; see, e.g., Jester
+@22="Disadvantages:" // must match appropriate string from kit descriptions
