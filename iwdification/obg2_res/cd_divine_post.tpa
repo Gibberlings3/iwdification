@@ -1126,7 +1126,6 @@ COPY_EXISTING ~%CLERIC_MOLD_TOUCH%b.spl~ ~override~
 /////                                                  \\\\\
 
   COPY_EXISTING ~asumm1x.vvc~ ~override~
-                ~msumm1x.vvc~ ~override~
     WRITE_LONG 0x2c "-100" // y-coordinate
     WRITE_LONG 0x4c "-1"   // z-coordinate
 
@@ -1134,7 +1133,7 @@ COPY_EXISTING ~%CLERIC_MOLD_TOUCH%b.spl~ ~override~
   ACTION_FOR_EACH file IN 
     ~#bless~ ~#entropy~ ~#genabju~ ~#grnring~ ~#latshg1~ ~#latshg2~ ~#latshl1~ ~#latshl2~ ~#storm~ 
     abjurh alterh asumm1x blessh ccdamah cdiseah cidamah cldamah cloudbh cmdamah cmwounh conjuh csdamah
-    curseh destruh enchah exaltah harmh invoch msumm1h msumm1x necroh paralh prayerb prayerg recitab recitag
+    curseh destruh enchah exaltah harmh invoch msumm1h necroh paralh prayerb prayerg recitab recitag
     rwotfag rwotfah schargh sohopex uwardx witherh mtouchh
   BEGIN
 
