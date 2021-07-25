@@ -51,6 +51,7 @@
        SPWISH32         324      first         12          0   SPWISH32.spl                        // Abi-Dalzim's Horrid Wilting  
         SPWM111         324      first        154          0   SPWM111.spl                         // Entangle                     
        SPYANC01         324      first         12          0   SPYANC01.spl                        // Whirlwind via chan           
+        SPYANCD         324      first         12          0   SPYANCD.spl                         // globe of blades via chan           
                                                                                                    
          AMUL01         324      first         12          0   AMUL01.ITM                           // Necklace of Missiles        
          POTN13         324      first         12          0   POTN13.ITM                           // Oil of Fiery Burning        

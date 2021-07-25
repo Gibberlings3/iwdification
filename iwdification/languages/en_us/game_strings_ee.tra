@@ -86,7 +86,8 @@ Type: Two-handed
 Requires:
  10 Strength
 
-Weight: 5~  @7005 = ~Shapeshift: Fire Elemental
+Weight: 5~  
+  @7005 = ~Shapeshift: Fire Elemental
 
 Strength: 19
 Dexterity: 9

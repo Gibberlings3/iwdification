@@ -191,11 +191,6 @@ ACTION_PHP_EACH cd_monster_summoning_script AS file => script BEGIN
     
 END 
 
-// IWDEE bug here (submitted for 2.7)
-COPY_EXISTING ~%CLERIC_CAUSE_DISEASE%.spl~ ~override~
-  WRITE_SHORT 0x22 9 // casting animation
-  WRITE_BYTE  0x25 7 // school
-
 // IWDEE bug: tie mold touch portrait to disease effect; 
 COPY_EXISTING ~%CLERIC_MOLD_TOUCH%.spl~  ~override~
               ~%CLERIC_MOLD_TOUCH%b.spl~ ~override~
@@ -252,9 +247,12 @@ ACTION_IF enhanced_edition BEGIN
   END  
 
   // IWDEE bug wall of moonlight shouldn't have powers set on its damage since its AoE
+  COPY_EXISTING ~%CLERIC_WALL_OF_MOONLIGHT%.spl~ ~override~
+    LPF ALTER_EFFECT INT_VAR resist_dispel = 1 END
+    
   COPY_EXISTING ~%CLERIC_WALL_OF_MOONLIGHT%a.spl~ ~override~
                 ~%CLERIC_WALL_OF_MOONLIGHT%b.spl~ ~override~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 12 power = 0 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 12 power = 0 resist_dispel = 0 END
 
 END ELSE BEGIN
 
