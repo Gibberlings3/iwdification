@@ -227,6 +227,11 @@ COPY_EXISTING ~%CLERIC_STATIC_CHARGE%.spl~  ~override~
 // oiwd fix
 COPY_EXISTING ~%CLERIC_WHIRLWIND%.spl~  ~override~
   LPF ALTER_EFFECT INT_VAR match_resist_dispel = 0 resist_dispel = 1 END
+    
+// iwdee fix: dupe 'unconscious' strings, remove redundant 318 at end
+COPY_EXISTING ~%CLERIC_SMASHING_WAVE%.spl~ ~override~
+  LPF DELETE_EFFECT INT_VAR match_opcode = 139 match_duration = 12 END 
+  LPF DELETE_EFFECT INT_VAR match_opcode = 318 match_parameter2 = 0 END 
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
