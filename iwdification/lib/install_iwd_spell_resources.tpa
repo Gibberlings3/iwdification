@@ -557,6 +557,8 @@ BEGIN
     END
     ACTION_IF IS_AN_INT check BEGIN // ie if it's -1, i.e. that number isn't used
        APPEND "projectl.ids" "%lowest_to_try% %resref%"
+       OUTER_SET cd_missile = lowest_to_try + 1
+       APPEND "missile.ids" "%cd_missile% %resref%"
        OUTER_SET number=lowest_to_try
     END ELSE BEGIN
        OUTER_SET lowest_to_try +=1

@@ -35,7 +35,8 @@ install_iwd_spell_resources.tpa
   Added new iwdification_extra variable that will scatter spell scrolls throughout the 
   game and add a few arcane spells to joinable NPC spellbooks. Default is zero and is
   used solely to include scroll_placement.tpa. Disabled install_iwd_icons so as to
-  avoid destructive states.bam overwrite in favor of extending statdesc.2da. 
+  avoid destructive states.bam overwrite in favor of extending statdesc.2da. Added
+  missile.ids appends for new projectiles by adding two lines around line 560.  
   
 arcane_spells_postproduction.tpa
   Inserted the INCLUDEs as noted above.
