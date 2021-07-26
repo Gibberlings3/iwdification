@@ -257,6 +257,11 @@ ACTION_IF enhanced_edition BEGIN
   COPY_EXISTING ~%CLERIC_WALL_OF_MOONLIGHT%a.spl~ ~override~
                 ~%CLERIC_WALL_OF_MOONLIGHT%b.spl~ ~override~
     LPF ALTER_EFFECT INT_VAR match_opcode = 12 power = 0 resist_dispel = 0 END
+    
+  // stun icons provided by stun effect in EE, remove redundant 142  
+  COPY_EXISTING ~%CLERIC_SMASHING_WAVE%.spl~ ~override~
+                ~%CLERIC_WHIRLWIND%.spl~     ~override~
+    LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 55 END 
   
   // portrait icons
   WITH_TRA ~%resource_loc%/tra/%EE_LANGUAGE%/iwdspells.tra~ BEGIN
