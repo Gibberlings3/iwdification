@@ -1,7 +1,7 @@
 BACKUP ~iwdification/backup~ // location to store files for uninstall purposes
 SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=185~ 
 
-VERSION ~Release Candidate 1~
+VERSION ~Release Candidate 2~
 
 AUTO_EVAL_STRINGS
 
