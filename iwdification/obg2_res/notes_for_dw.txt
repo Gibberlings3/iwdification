@@ -50,7 +50,9 @@ bardsong_spells_postproduction.tpa
 
 divine_spells_postproduction.tpa
   Inserted the INCLUDEs as noted above. The hidespl APPENDs are now gated on
-  EE-game checks. 
+  EE-game checks. The Entropy Shield/Flame Strike modification was deleting
+  all effects in the subspell instead of leaving the damage opcodes, so I've
+  reworked it slightly using old school DELETE_EFFECTs. 
 
 tp2
   I outright remove the spells that won't work on oBG2 by creating an alternate 
