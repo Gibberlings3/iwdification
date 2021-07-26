@@ -418,7 +418,7 @@ BEGIN
     // icons (will only happen once)
     
     ACTION_IF !GAME_IS iwdee BEGIN
-    LAF install_iwd_icons END
+    //LAF install_iwd_icons END
     END
 
     // make BIFF

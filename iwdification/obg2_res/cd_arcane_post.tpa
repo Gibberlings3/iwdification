@@ -309,6 +309,53 @@ ACTION_IF enhanced_edition BEGIN
   
   END  
   
+  // portrait icons
+  WITH_TRA ~%resource_loc%/tra/%EE_LANGUAGE%/iwdspells.tra~ BEGIN
+  
+    COPY ~%obg2_res_path%/pi_antimagic.bam~  ~override/%WIZARD_ANTIMAGIC_SHELL%d.bam~   
+         ~%obg2_res_path%/pi_beltyn.bam~     ~override/%WIZARD_BELTYNS_BURNING_BLOOD%d.bam~   
+         ~%obg2_res_path%/pi_cats_grace.bam~ ~override/%WIZARD_CATS_GRACE%d.bam~
+         ~%obg2_res_path%/pi_courage.bam~    ~override/%WIZARD_EMOTION_COURAGE%d.bam~  
+         ~%obg2_res_path%/pi_hope.bam~       ~override/%WIZARD_EMOTION_HOPE%d.bam~  
+         ~%obg2_res_path%/pi_iron_body.bam~  ~override/%WIZARD_IRON_BODY%d.bam~  
+         ~%obg2_res_path%/pi_mindblank.bam~  ~override/%WIZARD_MIND_BLANK%d.bam~   
+         ~%obg2_res_path%/pi_shroud.bam~     ~override/%WIZARD_SHROUD_OF_FLAME%d.bam~  
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@161) STR_VAR bam_file = EVAL ~%WIZARD_ANTIMAGIC_SHELL%d~ RET icon END 
+    COPY_EXISTING ~%WIZARD_ANTIMAGIC_SHELL%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 209 parameter2 = icon END            
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@25) STR_VAR bam_file = EVAL ~%WIZARD_BELTYNS_BURNING_BLOOD%d~ RET icon END 
+    COPY_EXISTING ~%WIZARD_BELTYNS_BURNING_BLOOD%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 207 parameter2 = icon END    
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@357) STR_VAR bam_file = EVAL ~%WIZARD_CATS_GRACE%d~ RET icon END 
+    COPY_EXISTING ~%WIZARD_CATS_GRACE%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 185 parameter2 = icon END     
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@359) STR_VAR bam_file = EVAL ~%WIZARD_EMOTION_COURAGE%d~ RET icon END 
+    COPY_EXISTING ~%WIZARD_EMOTION_COURAGE%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 187 parameter2 = icon END     
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@358) STR_VAR bam_file = EVAL ~%WIZARD_EMOTION_HOPE%d~ RET icon END 
+    COPY_EXISTING ~%WIZARD_EMOTION_HOPE%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 186 parameter2 = icon END     
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@350) STR_VAR bam_file = EVAL ~%WIZARD_IRON_BODY%d~ RET icon END 
+    COPY_EXISTING ~%WIZARD_IRON_BODY%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 172 parameter2 = icon END         
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@344) STR_VAR bam_file = EVAL ~%WIZARD_MIND_BLANK%d~ RET icon END 
+    COPY_EXISTING ~%WIZARD_MIND_BLANK%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 166 parameter2 = icon END          
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@46) STR_VAR bam_file = EVAL ~%WIZARD_SHROUD_OF_FLAME%d~ RET icon END 
+    COPY_EXISTING ~%WIZARD_SHROUD_OF_FLAME%.spl~  ~override~
+                  ~%WIZARD_SHROUD_OF_FLAME%b.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 208 parameter2 = icon END    
+      
+  END    
+  
 END ELSE BEGIN
 
 /* 

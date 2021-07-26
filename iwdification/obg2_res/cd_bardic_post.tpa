@@ -34,7 +34,40 @@ COPY_EXISTING ~%BARD_SONG_KAUDIES%.spl~  ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-ACTION_IF !enhanced_edition BEGIN
+ACTION_IF enhanced_edition BEGIN
+  
+  // portrait icons
+  WITH_TRA ~%resource_loc%/tra/%EE_LANGUAGE%/iwdspells.tra~ BEGIN
+  
+    COPY ~%obg2_res_path%/pi_bard.bam~ ~override/%BARD_SONG_BALLAD%d.bam~  
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@323) STR_VAR bam_file = EVAL ~%BARD_SONG_BALLAD%d~ RET icon END 
+    COPY_EXISTING ~%BARD_SONG_BALLAD%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 177 parameter2 = icon END    
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@326) STR_VAR bam_file = EVAL ~%BARD_SONG_BALLAD%d~ RET icon END 
+    COPY_EXISTING ~%BARD_SONG_CURRAN%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 178 parameter2 = icon END      
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@329) STR_VAR bam_file = EVAL ~%BARD_SONG_BALLAD%d~ RET icon END 
+    COPY_EXISTING ~%BARD_SONG_TYMORA%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 179 parameter2 = icon END    
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@332) STR_VAR bam_file = EVAL ~%BARD_SONG_BALLAD%d~ RET icon END 
+    COPY_EXISTING ~%BARD_SONG_KAUDIES%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 180 parameter2 = icon END    
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@335) STR_VAR bam_file = EVAL ~%BARD_SONG_BALLAD%d~ RET icon END 
+    COPY_EXISTING ~%BARD_SONG_SIREN%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 181 parameter2 = icon END       
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@339) STR_VAR bam_file = EVAL ~%BARD_SONG_BALLAD%d~ RET icon END 
+    COPY_EXISTING ~%BARD_SONG_SITH%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 182 parameter2 = icon END   
+      
+  END   
+
+END ELSE BEGIN
 
   //LAF CD_HANDLE_AUDIO_PREP END // at present, no new audio for bard songs
 

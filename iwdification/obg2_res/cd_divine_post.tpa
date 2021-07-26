@@ -253,6 +253,76 @@ ACTION_IF enhanced_edition BEGIN
   COPY_EXISTING ~%CLERIC_WALL_OF_MOONLIGHT%a.spl~ ~override~
                 ~%CLERIC_WALL_OF_MOONLIGHT%b.spl~ ~override~
     LPF ALTER_EFFECT INT_VAR match_opcode = 12 power = 0 resist_dispel = 0 END
+  
+  // portrait icons
+  WITH_TRA ~%resource_loc%/tra/%EE_LANGUAGE%/iwdspells.tra~ BEGIN
+  
+    COPY ~%obg2_res_path%/pi_animal_rage.bam~    ~override/%CLERIC_ANIMAL_RAGE%d.bam~  
+         ~%obg2_res_path%/pi_blood_rage.bam~     ~override/%CLERIC_BLOOD_RAGE%d.bam~  
+         ~%obg2_res_path%/pi_bones.bam~          ~override/%CLERIC_CIRCLE_OF_BONES%d.bam~   
+         ~%obg2_res_path%/pi_entropy_shield.bam~ ~override/%CLERIC_ENTROPY_SHIELD%d.bam~  
+         ~%obg2_res_path%/pi_exaltation.bam~     ~override/%CLERIC_EXALTATION%d.bam~  
+         ~%obg2_res_path%/pi_gsolathander.bam~   ~override/%CLERIC_GREATER_SHIELD_OF_LATHANDER%d.bam~ 
+         ~%obg2_res_path%/pi_isom.bam~           ~override/%CLERIC_IMPERVIOUS_SANCTITY_OF_MIND%d.bam~   
+         ~%obg2_res_path%/pi_pain.bam~           ~override/%CLERIC_SYMBOL_PAIN%d.bam~   
+         ~%obg2_res_path%/pi_prayer.bam~         ~override/%CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL%d.bam~   
+         ~%obg2_res_path%/pi_solathander.bam~    ~override/%CLERIC_SHIELD_OF_LATHANDER%d.bam~  
+         ~%obg2_res_path%/pi_static_charge.bam~  ~override/%CLERIC_STATIC_CHARGE%d.bam~    
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@351) STR_VAR bam_file = EVAL ~%CLERIC_ANIMAL_RAGE%d~ RET icon END 
+    COPY_EXISTING ~%CLERIC_ANIMAL_RAGE%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 173 parameter2 = icon END      
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@354) STR_VAR bam_file = EVAL ~%CLERIC_BLOOD_RAGE%d~ RET icon END 
+    COPY_EXISTING ~%CLERIC_BLOOD_RAGE%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 176 parameter2 = icon END     
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@226) STR_VAR bam_file = EVAL ~%CLERIC_CIRCLE_OF_BONES%d~ RET icon END 
+    COPY_EXISTING ~%CLERIC_CIRCLE_OF_BONES%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 212 parameter2 = icon END  
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@278) STR_VAR bam_file = EVAL ~%CLERIC_ENTROPY_SHIELD%d~ RET icon END 
+    COPY_EXISTING ~%CLERIC_ENTROPY_SHIELD%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 204 parameter2 = icon END       
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@352) STR_VAR bam_file = EVAL ~%CLERIC_EXALTATION%d~ RET icon END 
+    COPY_EXISTING ~%CLERIC_EXALTATION%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 174 parameter2 = icon END    
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@294) STR_VAR bam_file = EVAL ~%CLERIC_GREATER_SHIELD_OF_LATHANDER%d~ RET icon END 
+    COPY_EXISTING ~%CLERIC_GREATER_SHIELD_OF_LATHANDER%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 206 parameter2 = icon END      
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@348) STR_VAR bam_file = EVAL ~%CLERIC_IMPERVIOUS_SANCTITY_OF_MIND%d~ RET icon END 
+    COPY_EXISTING ~%CLERIC_IMPERVIOUS_SANCTITY_OF_MIND%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 170 parameter2 = icon END      
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@347) STR_VAR bam_file = EVAL ~%CLERIC_SYMBOL_PAIN%d~ RET icon END 
+    COPY_EXISTING ~%CLERIC_SYMBOL_PAIN%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 169 parameter2 = icon END   
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@356) STR_VAR bam_file = EVAL ~%CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL%d~ RET icon END 
+    COPY_EXISTING ~%CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL%a.spl~ ~override~
+                  ~%CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL%b.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 184 parameter2 = icon END  
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@353) STR_VAR bam_file = EVAL ~%CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL%d~ RET icon END 
+    COPY_EXISTING ~#reciteg.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 175 parameter2 = icon END   
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@355) STR_VAR bam_file = EVAL ~%CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL%d~ RET icon END 
+    COPY_EXISTING ~#prayerg.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 183 parameter2 = icon END   
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@270) STR_VAR bam_file = EVAL ~%CLERIC_SHIELD_OF_LATHANDER%d~ RET icon END 
+    COPY_EXISTING ~%CLERIC_SHIELD_OF_LATHANDER%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 205 parameter2 = icon END   
+  
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@242) STR_VAR bam_file = EVAL ~%CLERIC_STATIC_CHARGE%d~ RET icon END 
+    COPY_EXISTING ~%CLERIC_STATIC_CHARGE%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 203 parameter2 = icon END   
+      
+  END   
 
 END ELSE BEGIN
 
