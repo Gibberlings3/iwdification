@@ -267,6 +267,10 @@ ACTION_IF enhanced_edition BEGIN
   COPY_EXISTING ~%CLERIC_SMASHING_WAVE%.spl~ ~override~
                 ~%CLERIC_WHIRLWIND%.spl~     ~override~
     LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 55 END 
+
+  // IWDEE bug 321 should be timing 1/dur 0
+  COPY_EXISTING ~%CLERIC_SPIKE_STONES%.spl~ ~override~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 321 timing = 1 duration = 0 END
   
   // portrait icons
   WITH_TRA ~%resource_loc%/tra/%EE_LANGUAGE%/iwdspells.tra~ BEGIN
