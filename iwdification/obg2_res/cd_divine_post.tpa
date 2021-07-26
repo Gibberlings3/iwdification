@@ -191,9 +191,14 @@ ACTION_PHP_EACH cd_monster_summoning_script AS file => script BEGIN
     
 END 
 
+// mold touch no longer needs to ignore center
+COPY_EXISTING ~idmold.pro~ ~override~
+  WRITE_LONG 0x0c 0 // remove 'ignore center' flag
+
 // IWDEE bug: tie mold touch portrait to disease effect; 
 COPY_EXISTING ~%CLERIC_MOLD_TOUCH%.spl~  ~override~
               ~%CLERIC_MOLD_TOUCH%b.spl~ ~override~
+  LPF CLONE_EFFECT  INT_VAR match_parameter2 = 55 parameter2 = 68 END // prevent spread to someone who already has mold (matches 324 on main, 318 on sub)
   LPF DELETE_EFFECT INT_VAR match_opcode = 142 special = 7 END // delete portrait icons because...
   LPF ALTER_EFFECT  INT_VAR match_opcode =  78 special = 7 END  // we're attaching them directly to the disease effect
   LPF ALTER_EFFECT  INT_VAR match_opcode =  78 match_parameter2 = 12 timing = 3 duration = 0 END  // we're attaching them directly to the disease effect
@@ -202,6 +207,9 @@ COPY_EXISTING ~%CLERIC_MOLD_TOUCH%.spl~  ~override~
 COPY_EXISTING ~%CLERIC_MOLD_TOUCH%.spl~  ~override~
   LPF CLONE_EFFECT  INT_VAR match_opcode =  78 match_parameter1 = 2 opcode = 206 parameter1 = 0 parameter2 = 0 
     timing = 0 duration = 1 savingthrow = BIT0 STR_VAR resource = EVAL ~%CLERIC_MOLD_TOUCH%~ END
+
+// IWDEE bug: tie mold touch portrait to disease effect; 
+COPY_EXISTING ~%CLERIC_MOLD_TOUCH%b.spl~ ~override~
 
 // iwdee bug: blood rage can avoid fatigue with a re-cast - clone 321 into 206 then delete it; also block ops 18 and 98
 COPY_EXISTING ~%CLERIC_BLOOD_RAGE%.spl~  ~override~
