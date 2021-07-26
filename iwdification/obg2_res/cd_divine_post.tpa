@@ -235,7 +235,7 @@ COPY_EXISTING ~%CLERIC_SMASHING_WAVE%.spl~ ~override~
     
 // iwdee fix: weird durations for 318/324s
 COPY_EXISTING ~%CLERIC_CLOUD_OF_PESTILENCE%.spl~ ~override~
-  LPF DELETE_EFFECT INT_VAR match_duration = 85 duration = 0 END 
+  LPF ALTER_EFFECT INT_VAR match_duration = 85 duration = 0 END 
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
