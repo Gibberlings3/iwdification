@@ -29,7 +29,8 @@ always.tph
 elemental_summoning.tpa
   Adjusted GAME_IS check around line 27 as it would use BG string values for oBG2. 
   Also ran the EFF swap through an ALTER_EFFECT because the text replacement wasn't 
-  catching the higher-level spair2 and spair3 references. 
+  catching the higher-level spair2 and spair3 references. Replaced the R_T for the
+  lizardmen weapon with a REPLACE_CRE_ITEM as it was FUBAR'ing the entire inventory.
   
 install_iwd_spell_resources.tpa
   Added new iwdification_extra variable that will scatter spell scrolls throughout the 

@@ -461,7 +461,7 @@ ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_SHADES") BEGIN
    
    ACTION_FOR_EACH lizard IN ss2liz5 ss2liz6 ss2liz7 ss1liz3 ss1liz4 BEGIN
       COPY_EXISTING "%lizard%.cre" override 
-           REPLACE_TEXTUALLY "[BS]1-12" "#S1-12" (8)
+           REPLACE_CRE_ITEM ~#s1-12~ #0 #0 #0 ~NONE~ WEAPON1 EQUIP // add back as equipped weapon
       BUT_ONLY
    END
 
