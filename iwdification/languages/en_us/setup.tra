@@ -19,6 +19,7 @@ to look it over if you wish.
 
 
 // this file contains strings only used by the WeiDU installer and does not get converted to UTF-8 for EE games.
+  @992 = ~This component is not available in your language.~
   @993 = ~Additional Spells~
   @994 = ~Miscellaneous Changes~
   @995 = ~Class Updates~

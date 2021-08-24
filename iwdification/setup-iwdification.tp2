@@ -66,11 +66,26 @@ BEGIN @1000 DESIGNATED 10
 GROUP @994
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~70~ @998
 
-ACTION_FOR_EACH file IN cgabjura cgaltera cgconjur cgdivina cgenchan cgillusi cginvoca cgnecrom BEGIN
+ACTION_IF enhanced_edition BEGIN
 
-  COPY ~iwdification/bam/%file%.bam~ ~override~
+  ACTION_FOR_EACH file IN cgabjura cgaltera cgconjur cgdivina cgenchan cgillusi cginvoca cgnecrom BEGIN
 
-END
+    COPY ~iwdification/bam/%file%_ee.bam~ ~override/%file%.bam~
+         ~iwdification/pro/%file%.pro~    ~override~
+         
+  END
+
+END ELSE BEGIN
+
+  ACTION_FOR_EACH file IN cgabjura cgaltera cgconjur cgdivina cgenchan cgillusi cginvoca cgnecrom BEGIN
+
+    COPY ~iwdification/bam/%file%.bam~ ~override~
+         
+  END
+
+END  
+
+LAF HANDLE_AUDIO STR_VAR audio_path = ~iwdification/wav/casting~ oggdec_path = ~iwdification/wav~ END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -494,6 +509,7 @@ COPY ~iwdification/bam/blank.bam~         ~override/shacid.bam~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @3000 DESIGNATED 30
+REQUIRE_PREDICATE FILE_EXISTS ~iwdification/dw_iwdspells_resource/tra/%LANGUAGE%/dw_iwdspells_arcane.tra~ @992
 GROUP @993
 
 OUTER_SPRINT obg2 ""
@@ -601,6 +617,7 @@ COPY_EXISTING_REGEXP GLOB ~^_?mage[0-9]+[A-Z]*\.bcs$~     ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @4000 DESIGNATED 40
+REQUIRE_PREDICATE FILE_EXISTS ~iwdification/dw_iwdspells_resource/tra/%LANGUAGE%/dw_iwdspells_divine.tra~ @992
 GROUP @993
 
 OUTER_SPRINT obg2 ""
@@ -852,6 +869,7 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @5000 DESIGNATED 50 // aka add new bard songs
+REQUIRE_PREDICATE FILE_EXISTS ~iwdification/dw_iwdspells_resource/tra/%LANGUAGE%/dw_iwdspells_bard.tra~ @992
 GROUP @995
 
 /////                                                  \\\\\
