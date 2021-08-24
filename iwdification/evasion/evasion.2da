@@ -6,6 +6,7 @@
         SPDR301         324      above         12          0   SPDR301.spl                         // Lightning Bolt (avenger)     
         SPDR601         318      above         12          0   SPDR601.spl                         // Chain Lightning (avenger)    
        SPIMIX01         324      first        215          0   SPIMIX01.spl                        // Flame Strike via Zaaman      
+       dw#spimi         324      first        215          0   SPIMIX01.spl                        // Flame Strike via Zaaman      
         SPIN160         324      above         12          0   SPIN160.spl                         // Breathe Fireball (shapechange
         SPIN935         324      first        177          0   SPIN935.spl                         // Glass Dust                   
         SPIN973         324      first         12          0   SPIN973.spl                         // Air elemental whirlwind      
@@ -16,13 +17,15 @@
         SPPR314         324      first        177          0   SPPR314.spl                         // Unholy Blight                
         SPPR450         324      first         12          0   SPPR450.spl                         // Spirit Fire                  
         SPPR503         324      first        215          0   SPPR503.spl                         // Flame Strike                 
+       SPPR503d         324      first        215          0   SPPR503.spl                         // Flame Strike                 
         SPPR517         324      first         60          0   SPPR517.spl                         // Insect Plague                
        SPPR603D         318      first         12          0   SPPR603D.spl                        // blade barrier subspell       
        SPPR698D         324      first         12          0   SPPR698D.spl                        // Blade Barrier                
         SPPR705         324      first         12          0   SPPR705.spl                         // Fire Storm                   
         SPPR751         324      above         12          0   SPPR751.spl                         // Ethereal Retribution         
         SPPR984         324      above         12          0   SPPR984.spl                         // Flame Strike                 
-        SPPR985         324      first        215          0   SPPR985.spl                         // Flame Strike                 
+        SPPR985         324      first        215          0   SPPR985.spl                         // Flame Strike                  
+       SPPR985d         324      first        215          0   SPPR985.spl                         // Flame Strike                 
         SPWI001         324      first         12          0   SPWI001.spl                         // Fireball                     
         SPWI002         324      first         12          0   SPWI002.spl                         // Lightning Bolt               
         SPWI017         324      first         12          0   SPWI017.spl                         // Minor Lightning Bolt         
