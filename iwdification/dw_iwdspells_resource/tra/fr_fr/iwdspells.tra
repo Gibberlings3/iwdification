@@ -1,49 +1,49 @@
-%atsymbol%359=~Courage~
-%atsymbol%358=~Espoir~
-%atsymbol%357=~Grâce féline~
-%atsymbol%356=~Juste courroux des fidèles~
-%atsymbol%355=~Prière~
-%atsymbol%354=~Rage sanguinaire~
-%atsymbol%353=~Récitation~
-%atsymbol%352=~Exaltation~
-%atsymbol%351=~Rage animale~
-%atsymbol%350=~Corps de fer~
-%atsymbol%349=~Pétrifié(e)~
-%atsymbol%348=~Citadelle de l'âme~
-%atsymbol%347=~Douleur~
-%atsymbol%346=~En état de phase~
-%atsymbol%345=~Aide~
-%atsymbol%344=~Esprit impénétrable~
-%atsymbol%343=~Transf. élémentaire (Terre)~
-%atsymbol%342=~Transf. élémentaire (Feu)~
-%atsymbol%341=~Chant de guerre de Sith - bonus à l'armure et régénération~
-%atsymbol%340=~"Le chant de Guerre de Sith"
+@359=~Courage~
+@358=~Espoir~
+@357=~Grâce féline~
+@356=~Juste courroux des fidèles~
+@355=~Prière~
+@354=~Rage sanguinaire~
+@353=~Récitation~
+@352=~Exaltation~
+@351=~Rage animale~
+@350=~Corps de fer~
+@349=~Pétrifié(e)~
+@348=~Citadelle de l'âme~
+@347=~Douleur~
+@346=~En état de phase~
+@345=~Aide~
+@344=~Esprit impénétrable~
+@343=~Transf. élémentaire (Terre)~
+@342=~Transf. élémentaire (Feu)~
+@341=~Chant de guerre de Sith - bonus à l'armure et régénération~
+@340=~"Le chant de Guerre de Sith"
 Tous les alliés à 9 mètres de distance gagnent un bonus de +2 à la classe d'armure, 10% de résistance aux dégâts tranchants, perforants, contondants et projectiles, ainsi qu'une capacité de régénération de 2 points de vie par round.~
-%atsymbol%339=~Chant de guerre de Sith~
-%atsymbol%338=~Captivé~
-%atsymbol%337=~Chant des sirènes - fascine qui l'entend~
-%atsymbol%336=~"Le chant des Sirènes"
+@339=~Chant de guerre de Sith~
+@338=~Captivé~
+@337=~Chant des sirènes - fascine qui l'entend~
+@336=~"Le chant des Sirènes"
 Tous les adversaires à 9 mètres de distance doivent réussir un jet de sauvegarde contre les sorts ou perdre leur action pendant un round, ou jusqu'à ce qu'ils subissent des dégâts.~
-%atsymbol%335=~Chant des sirènes~
-%atsymbol%334=~Chant de Kaudiès - résistance aux attaques soniques~
-%atsymbol%333=~"Le chant de Kaudiès"
+@335=~Chant des sirènes~
+@334=~Chant de Kaudiès - résistance aux attaques soniques~
+@333=~"Le chant de Kaudiès"
 Tous les alliés à 9 mètres de distance ont 50% de chances de résister aux effets des sorts de Silence, Cri, Grand Cri, Injonction, Injonction majeure et tout autre attaque à base de son.~
-%atsymbol%332=~Chant de Kaudiès~
-%atsymbol%331=~Mélodie de Tymora - bonus de chance et de compétence~
-%atsymbol%330=~"La mélodie de Tymora"
+@332=~Chant de Kaudiès~
+@331=~Mélodie de Tymora - bonus de chance et de compétence~
+@330=~"La mélodie de Tymora"
 Tous les alliés à 9 mètres de distance gagnent un bonus de +1 à la chance, +3 aux jets de sauvegarde, +10 au score de connaissance et +10% aux talents de voleur.~
-%atsymbol%329=~Mélodie de Tymora~
-%atsymbol%328=~Ballade de Curran Cœurvaillant - immunité contre la terreur~
-%atsymbol%327=~"La ballade de Curran Cœurvaillant"
+@329=~Mélodie de Tymora~
+@328=~Ballade de Curran Cœurvaillant - immunité contre la terreur~
+@327=~"La ballade de Curran Cœurvaillant"
 Tous les alliés à 9 mètres de distance sont immunisés à la terreur aussi longtemps que dure la musique, et tout effet de terreur est dissipé instantanément.~
-%atsymbol%326=~Ballade de Curran Cœurvaillant~
-%atsymbol%325=~Ballade des Trois Héros - bonus au combat~
-%atsymbol%324=~"La ballade des Trois Héros"
+@326=~Ballade de Curran Cœurvaillant~
+@325=~Ballade des Trois Héros - bonus au combat~
+@324=~"La ballade des Trois Héros"
 Tous les alliés à 9 mètres de distance gagnent un bonus de +1 à l'attaque, aux dégâts et aux jets de sauvegarde.~
-%atsymbol%323=~Ballade des Trois Héros~
-%atsymbol%322=~Libère des vapeurs acides~
-%atsymbol%321=~Flétrissement~
-%atsymbol%320=~Flétrissement
+@323=~Ballade des Trois Héros~
+@322=~Libère des vapeurs acides~
+@321=~Flétrissement~
+@320=~Flétrissement
 (Nécromancie)
 Niveau : 7
 Sphère : Guérison
@@ -53,8 +53,8 @@ Temps d'incantation : 7
 Zone d'effet : 1 créature
 Jet de sauvegarde : annule
 Ce puissant sort fait en sorte que les organes de la cible cessent de fonctionner et se transforment peu à peu en poussière. La victime perd 3 points de vie par seconde. L'effet dure 1 round par 2 niveaux de lanceur, ou jusqu'à dissipation. Par exemple, un Flétrissement lancé par un clerc de niveau 14 ferait perdre 18 points de vie par round pendant 7 rounds. Ce sort reste sans effet contre les morts-vivants, les créatures artificielles et extra-planaires. Il ne peut être lancé que par un personnage d'alignement mauvais.~
-%atsymbol%319=~Flétrissement~
-%atsymbol%318=~Cantique
+@319=~Flétrissement~
+@318=~Cantique
 (Conjuration/Convocation)
 Niveau : 2
 Sphère : Combat 
@@ -65,14 +65,14 @@ Zone d'effet : rayon de 18 mètres
 Jet de sauvegarde : aucun
 Avec le sort de Cantique, le prêtre attire une faveur spéciale sur lui-même et sur son groupe, et inflige des dégâts à ses ennemis. Au terme de l'incantation, tous les jets d'attaque et de sauvegarde, ainsi que les dégâts minimum effectués par les alliés du prêtre situés dans la zone d'effet reçoivent un bonus de +1. En outre, tous les dommages infligés par les adversaires, à l'exception des dégâts de base des armes, diminuent d'une face de dé. Par exemple, une boule de feu de 6d6 dégâts de feu n'en infligera que 6d5, et une épée longue infligeant 1d8 +2 dégâts, +1d3 dégâts de feu n'en infligera que 1d8 +2, +1d2 dégâts de feu. Les ennemis du prêtre souffrent des effets opposés.
 Les cantiques multiples ne sont pas cumulatifs. Le sort requiert une certaine concentration de la part du prêtre, qui est incapable de faire appel à sa magie et dont la vitesse de déplacement est réduite de moitié.~
-%atsymbol%317=~Cantique~
-%atsymbol%316=~Pommade anti-scarabées bombardiers
+@317=~Cantique~
+@316=~Pommade anti-scarabées bombardiers
 Do not translate~
-%atsymbol%315=~Scarabée scolyte~
-%atsymbol%314=~Scarabée scolyte~
-%atsymbol%313=~Scarabée bombardier~
-%atsymbol%312=~Scarabée bombardier~
-%atsymbol%311=~Insecte géant
+@315=~Scarabée scolyte~
+@314=~Scarabée scolyte~
+@313=~Scarabée bombardier~
+@312=~Scarabée bombardier~
+@311=~Insecte géant
 (Transmutation)
 Niveau : 4
 Sphère : Faune
@@ -82,8 +82,8 @@ Temps d'incantation : 7
 Zone d'effet : spéciale
 Jet de sauvegarde : aucun
 Ce sort invoque 2 ou 3 scarabées scolytes ou scarabées bombardiers. Les insectes seront aux ordres du lanceur jusqu'à leur mort ou l'expiration de la durée du sort.~
-%atsymbol%310=~Insecte géant~
-%atsymbol%309=~Blessure critique
+@310=~Insecte géant~
+@309=~Blessure critique
 (Nécromancie)
 Niveau : 5
 Sphère : Guérison
@@ -93,8 +93,8 @@ Temps d'incantation : 8
 Zone d'effet : 1 créature
 Jet de sauvegarde : demi-dégâts
 En lançant ce sort, le personnage peut, en touchant la créature ciblée, lui infliger 27 points de dégâts (jet de sauvegarde contre les sorts pour demi-dégâts). Ce sort reste sans effet sur les morts-vivants, les créatures artificielles ou extra-planaires. Il ne peut être lancé que par des personnages d'alignement mauvais.~
-%atsymbol%308=~Blessure critique~
-%atsymbol%307=~Blessure grave
+@308=~Blessure critique~
+@307=~Blessure grave
 (Nécromancie)
 Niveau : 4
 Sphère : Guérison
@@ -104,9 +104,9 @@ Temps d'incantation : 5
 Zone d'effet : 1 créature
 Jet de sauvegarde : demi-dégâts
 En lançant ce sort, le personnage peut, en touchant la créature ciblée, lui infliger 17 points de dégâts (jet de sauvegarde contre les sorts pour demi-dégâts). Ce sort reste sans effet sur les morts-vivants, les créatures artificielles ou extra-planaires. Il ne peut être lancé par des personnages d'alignement bons.~
-%atsymbol%306=~Blessure grave~
-%atsymbol%305=~Deux niveaux absorbés~
-%atsymbol%304=~Drain d'énergie
+@306=~Blessure grave~
+@305=~Deux niveaux absorbés~
+@304=~Drain d'énergie
 (Nécromancie)
 Niveau : 7
 Sphère : Nécromancie
@@ -116,11 +116,11 @@ Temps d'incantation : 3
 Zone d'effet : 1 créature
 Jet de sauvegarde : aucun
 Ce sort permet de transformer le lanceur en un conduit d'énergie entre son plan et le Plan de l'Énergie Négative. En touchant une créature, le personnage aspire son essence vitale en direction du Plan de l'Énergie Négative, lui drainant 2 niveaux d'expérience. La cible perd ainsi des niveaux, des points de vie et des capacités de manière permanente. Ces niveaux ne peuvent être restaurés que par le sort de clerc de Restauration. Ce sort reste sans effet contre les morts-vivants, les créatures artificielles et extra-planaires. Il ne peut être lancé que par un personnage d'alignement mauvais.~
-%atsymbol%303=~Absorption d'énergie~
-%atsymbol%302=~Enchevêtré(e)~
-%atsymbol%301=~Tertre errant.~
-%atsymbol%300=~Tertre errant.~
-%atsymbol%299=~Traqueur
+@303=~Absorption d'énergie~
+@302=~Enchevêtré(e)~
+@301=~Tertre errant.~
+@300=~Tertre errant.~
+@299=~Traqueur
 (Conjuration)
 Niveau : 7
 Sphère : Flore
@@ -130,8 +130,8 @@ Temps d'incantation : 9
 Zone d'effet : spéciale
 Jet de sauvegarde : aucun
 Ce sort fait apparaître 11 DV de tertres errants, qui servent fidèlement le personnage, soit au combat, soit en lui rendant les services dont ils sont capables de se charger.~
-%atsymbol%298=~Traqueur~
-%atsymbol%297=~Brume d'Eldath
+@298=~Traqueur~
+@297=~Brume d'Eldath
 (Évocation)
 Niveau : 7
 Sphère : Élémentaire
@@ -141,8 +141,8 @@ Temps d'incantation : 9
 Zone d'effet : 2,10 mètres de rayon
 Jet de sauvegarde : aucun
 Une brume bleutée parée de reflets d'argent baigne la zone d'effet. Elle soigne toutes les maladies, vient à bout de tous les empoisonnements et rend 25 points de vie à chaque créature qu'elle enveloppe.~
-%atsymbol%296=~Brume d'Eldath~
-%atsymbol%295=~Bouclier suprême de Lathandre
+@296=~Brume d'Eldath~
+@295=~Bouclier suprême de Lathandre
 (Conjuration)
 Niveau : 7
 Sphère : Garde
@@ -152,8 +152,8 @@ Temps d'incantation : 9
 Zone d'effet : 1 créature
 Jet de sauvegarde : aucun
 Le sujet bénéficie d'une résistance à la magie de 100 % et d'une immunité totale contre les dégâts jusqu'au terme de la durée indiquée. Bouclier suprême de Lathandre ne peut protéger une créature d'alignement mauvais. Seul un personnage d'alignement bon peut lancer ce sort.~
-%atsymbol%294=~Bouclier suprême de Lathandre~
-%atsymbol%293=~Destruction
+@294=~Bouclier suprême de Lathandre~
+@293=~Destruction
 (Nécromancie)
 Niveau : 7
 Sphère : Guérison
@@ -163,9 +163,9 @@ Temps d'incantation : 9
 Zone d'effet : le lanceur
 Jet de sauvegarde : spécial
 Ce sort détruit la cible et la fait tomber en débris. La victime a droit à un jet de sauvegarde contre la mort magique, à -4. En cas de succès, elle n'est pas détruite mais perd 8d6 points de vie. Ce sort ne peut être lancé que par les personnages d'alignement mauvais. À noter qu'un individu tué par Destruction ne peut être ramené à la vie grâce à Rappel à la vie ou Résurrection.~
-%atsymbol%292=~Destruction~
-%atsymbol%291=~Sort inefficace~
-%atsymbol%290=~Citadelle de l'âme
+@292=~Destruction~
+@291=~Sort inefficace~
+@290=~Citadelle de l'âme
 (Abjuration)
 Niveau : 7
 Sphère : Protection
@@ -175,8 +175,8 @@ Temps d'incantation : 9
 Zone d'effet : le lanceur
 Jet de sauvegarde : aucun
 Ce sort immunise l'esprit du prêtre contre toute influence extérieure. Tant que le sort fait effet, le personnage est immunisé aux effets de charme, confusion, terreur, débilité mentale, immobilisation, sommeil, sort de Labyrinthe et ébriété.~
-%atsymbol%289=~Citadelle de l'âme~
-%atsymbol%288=~Symbole : désespoir
+@289=~Citadelle de l'âme~
+@288=~Symbole : désespoir
 (Conjuration/Convocation)
 Niveau : 7
 Sphère : Garde
@@ -186,9 +186,9 @@ Temps d'incantation : 3
 Zone d'effet : 4,50 mètres de rayon
 Jet de sauvegarde : annule
 Ce puissant enchantement permet au prêtre d'inscrire, à même le sol ou sur toute autre surface, un symbole qui y reste jusqu'à ce que quelqu'un approche. À ce moment, le symbole explose et toutes les créatures comprises dans la zone d'effet doivent réussir un jet de sauvegarde contre les sorts avec une pénalité de -2 sous peine de rester immobiles, tellement dépitées et découragées qu'elles ne se défendent même pas lorsqu'on les attaque. Ce sort dissipe l'influence d'Émotion, espoir dans la zone d'effet au moment de son lancement.~
-%atsymbol%287=~Symbole : désespoir~
-%atsymbol%286=~Douleurs atroces~
-%atsymbol%285=~Symbole, douleur
+@287=~Symbole : désespoir~
+@286=~Douleurs atroces~
+@285=~Symbole, douleur
 (Conjuration/Convocation)
 Niveau : 7
 Sphère : Garde
@@ -198,8 +198,8 @@ Temps d'incantation : 3
 Zone d'effet : 4,50 mètres de rayon
 Jet de sauvegarde : annule
 Toutes les créatures situées à moins de 4,50 mètres du symbole doivent effectuer un jet de sauvegarde contre les sorts. En cas d'échec, la douleur qu'elles ressentent se traduit par -4 aux jets d'attaque et -2 en Dextérité et à la CA.~
-%atsymbol%284=~Symbole : douleur~
-%atsymbol%283=~Courroux spirituel
+@284=~Symbole : douleur~
+@283=~Courroux spirituel
 (Évocation)
 Niveau : 6
 Sphère : Combat
@@ -209,8 +209,8 @@ Temps d'incantation : 2
 Zone d'effet : spéciale
 Jet de sauvegarde : demi-dégâts
 Au terme de l'incantation, le prêtre canalise l'énergie spirituelle pour la libérer sous forme d'éclairs dans quatre directions. Le personnage en choisit une, les autres éclairs partant à angle droit du premier (en forme de croix). Toute créature touchée par un éclair subit 4d10 points de dégâts, total réduit de moitié en cas de jet de sauvegarde réussi. Les créatures ayant la même composante morale d'alignement que le lanceur (bien, mal ou neutralité) ne sont pas affectées.~
-%atsymbol%282=~Courroux spirituel~
-%atsymbol%281=~Tourbillon
+@282=~Courroux spirituel~
+@281=~Tourbillon
 (Évocation)
 Niveau : 6
 Sphère : Élémentaire (air)
@@ -220,8 +220,8 @@ Temps d'incantation : 9
 Zone d'effet : spéciale
 Jet de sauvegarde : spécial
 Ce sort génère un petit tourbillon à proximité du personnage, lequel peut l'envoyer en n'importe quel point de son champ de vision. Une fois que le cyclone atteint sa destination, le prêtre peut cesser de le contrôler et le tourbillon se déplace alors au hasard, affectant toutes les créatures qu'il touche. Le personnage est immunisé contre l'effet du sort, de même que les élémentaux et les créatures énormes ou plus. Toute autre créature prise dans le tourbillon subit 2d8 points de dégâts contondant et 2d8 points de dégâts tranchants. Elle doit également réussir un jet de sauvegarde contre les souffles pour ne pas être étourdie pendant 2 rounds. Les créatures de 2 DV ou moins sont automatiquement tuées par ce sort. Le tourbillon peut affecter un maximum de 8 cibles, après quoi il se dissipe.~
-%atsymbol%280=~Tourbillon~
-%atsymbol%279=~Bouclier entropique
+@280=~Tourbillon~
+@279=~Bouclier entropique
 (Abjuration)
 Niveau : 6
 Sphère : Protection
@@ -231,8 +231,8 @@ Temps d'incantation : 9
 Zone d'effet : le lanceur
 Jet de sauvegarde : aucun
 Ce sort entoure le prêtre d'une aura d'énergie stoppant ou détournant la plupart des attaques. Elle confère un bonus de +6 à la CA et 50 % de résistance à la magie contre la plupart des attaques (feu, froid, électricité, etc.). Enfin, le prêtre bénéficie d'un bonus de +2 à tous ses jets de sauvegarde, tout en étant immunisé contre les projectiles.~
-%atsymbol%278=~Bouclier entropique~
-%atsymbol%277=~Blessure légère de masse
+@278=~Bouclier entropique~
+@277=~Blessure légère de masse
 (Nécromancie)
 Niveau : 5
 Sphère : Guérison
@@ -242,8 +242,8 @@ Temps d'incantation : 5
 Zone d'effet : rayon de 4,50 mètres
 Jet de sauvegarde : demi-dégâts
 Avec ce sort, le lanceur inflige 1d8 dégâts, +1 point de dégât par niveau aux adversaires à proximité. Un jet de sauvegarde contre les sorts permet de diviser les dégâts par 2. Ce sort reste sans effet contre les morts-vivants, les créatures artificielles et extra-planaires. Ce sort ne peut être lancé que par des personnages d'alignement mauvais.~
-%atsymbol%276=~Blessure légère de masse~
-%atsymbol%275=~Rage animale
+@276=~Blessure légère de masse~
+@275=~Rage animale
 (Enchantement)
 Niveau : 5
 Sphère : Combat
@@ -253,8 +253,8 @@ Temps d'incantation : 8
 Zone d'effet : 1 créature
 Jet de sauvegarde : aucun
 Ce sort confère au sujet la férocité d'une bête sauvage, ce qui se traduit par les avantages suivants : 19 en force, +20 points de vie, +20 % en vitesse de déplacement et +2 à tous les jets de sauvegarde. Par contre, le sujet ne peut jeter le moindre sort tant que Rage animale fait effet. Il peut être contrôlé normalement, sauf s'il aperçoit le moindre ennemi, auquel cas il se rue sur lui en utilisant toutes les armes possibles et imaginables. Chaque round, il y a 5 % de chances que le personnage devienne totalement enragé et attaque tout le monde, amis comme ennemis.~
-%atsymbol%274=~Rage animale~
-%atsymbol%273=~Vigilance contre les morts-vivants
+@274=~Rage animale~
+@273=~Vigilance contre les morts-vivants
 (Nécromancie)
 Niveau : 5
 Sphère : Glyphes
@@ -264,8 +264,8 @@ Temps d'incantation : 7
 Zone d'effet : 3 mètres de rayon
 Jet de sauvegarde : aucun
 Ce sort amplifie l'influence que le prêtre a sur les morts-vivants, mais il est lié à la zone autour du prêtre au moment du lancement. Tout mort-vivant pénétrant dans la zone d'effet est automatiquement affecté comme si le prêtre venait d'essayer de le repousser. En cas d'échec, le mort-vivant est immunisé contre le sort, sauf s'il quitte la zone d'effet pour y revenir par la suite.~
-%atsymbol%272=~Vigilance contre les morts-vivants~
-%atsymbol%271=~Bouclier de Lathandre
+@272=~Vigilance contre les morts-vivants~
+@271=~Bouclier de Lathandre
 (Conjuration)
 Niveau : 5
 Sphère : Garde
@@ -275,8 +275,8 @@ Temps d'incantation : 8
 Zone d'effet : 1 créature
 Jet de sauvegarde : aucun
 Le sujet est immunisé contre les dégâts jusqu'au terme de la durée indiquée. Bouclier de Lathandre ne peut protéger une créature d'alignement mauvais. Seul un personnage d'alignement non-mauvais peut lancer ce sort.~
-%atsymbol%270=~Bouclier de Lathandre~
-%atsymbol%269=~Pierres acérées
+@270=~Bouclier de Lathandre~
+@269=~Pierres acérées
 (Transmutation, Enchantement)
 Niveau : 5
 Sphère : Élémentaire (terre)
@@ -286,8 +286,8 @@ Temps d'incantation : 6
 Zone d'effet : 2,40 mètres de rayon
 Jet de sauvegarde : spécial
 Ce sort déforme la roche pour faire apparaître des pointes camouflées et invisibles. Toute créature pénétrant dans la zone d'effet perd 2d4 points de vie par round et doit réussir un jet de sauvegarde contre les sorts ou voir sa vitesse de déplacement diminuer de 30%.~
-%atsymbol%268=~Pierres acérées~
-%atsymbol%267=~Juste courroux des fidèles
+@268=~Pierres acérées~
+@267=~Juste courroux des fidèles
 (Enchantement/Charme)
 Niveau : 5
 Sphère : Combat
@@ -297,8 +297,8 @@ Temps d'incantation : 8
 Zone d'effet : 5,10 mètres de rayon
 Jet de sauvegarde : aucun
 Ce sort confère une sorte de folie divine aux alliés du prêtre, ce qui améliore leurs facultés martiales. Tous les compagnons du prêtre se trouvant dans la zone d'effet bénéficient d'un bonus de +1 aux jets d'attaque et de sauvegarde, tout en gagnant 8 points de vie supplémentaires (pouvant leur permettre de dépasser temporairement leur maximum de points de vie). Cependant, s'ils ont le même alignement que le prêtre, ils gagnent une attaque supplémentaire par round (qui annule Hâte), un bonus de +2 aux jets d'attaque, de dégâts et de sauvegarde, ainsi qu'une immunité aux sorts de charme et d'immobilisation. Les bénéficiaires du sort seront sujets à la fatigue une fois que l'enchantement prend fin.~
-%atsymbol%266=~Juste courroux des fidèles~
-%atsymbol%265=~Mur de lune
+@266=~Juste courroux des fidèles~
+@265=~Mur de lune
 (Évocation)
 Niveau : 4
 Sphère : Protection, Soleil
@@ -308,8 +308,8 @@ Temps d'incantation : 7
 Zone d'effet : mur de 2,40 mètres de long sur 60 centimètres d'épaisseur
 Jet de sauvegarde : aucun
 Ce sort fait apparaître un mur luisant d'énergie blanc-bleu. Il est intangible et n'a pas besoin d'être ancré à des points fixes. On peut passer librement au travers, mais les créatures d'alignement mauvais qui s'y risquent subissent 2d10 points de dégâts (5d10 pour les morts-vivants d'alignement mauvais). Une créature blessée par le mur ne peut être affectée une seconde fois, même si elle le retraverse. Plusieurs Murs de lune ne peuvent fonctionner en même temps.~
-%atsymbol%264=~Mur de lune~
-%atsymbol%263=~Projection d'épines
+@264=~Mur de lune~
+@263=~Projection d'épines
 (Transmutation)
 Niveau : 4
 Sphère : Flore
@@ -319,9 +319,9 @@ Temps d'incantation : 3
 Zone d'effet : cône de 5,10 mètres de long et de 90 degrés d'angle
 Jet de sauvegarde : demi-dégâts
 Par le biais de ce sort, le lanceur fait jaillir une gerbe d'épines, pics, barbillons et pointes de sa main. Les projectiles couvrent une zone conique de 5,10 mètres de long et de 90 degrés d'angle. Ils infligent 2d10 points de dégâts perforants à toutes les créatures dans la zone d'effet, ou 1d10 en cas de jet de sauvegarde réussi contre la mort.~
-%atsymbol%262=~Projection d'épines~
-%atsymbol%261=~Inconscient~
-%atsymbol%260=~Vague destructrice
+@262=~Projection d'épines~
+@261=~Inconscient~
+@260=~Vague destructrice
 (Évocation)
 Niveau : 4
 Sphère : Élémentaire (eau)
@@ -331,10 +331,10 @@ Temps d'incantation : 1 round
 Zone d'effet : spéciale
 Jet de sauvegarde : spécial
 Le sort appelle une vague d'eau qui se dirige dans la direction déterminée par le personnage, occasionnant de terribles ravages sur son passage. Toute créature touchée subit 4d10 points de dégâts contondants et a 25 % de chances de se retrouver étourdie pour 2 rounds, ainsi que 5 % de chances de perdre connaissance. En cas de jet de sauvegarde réussi contre les souffles, les dégâts sont réduits de moitié et il n'y a aucun risque d'étourdissement ou de perte de connaissance.~
-%atsymbol%259=~Vague destructrice~
-%atsymbol%258=~Masse d'armes météorique~
-%atsymbol%257=~Masse d'armes météorique~
-%atsymbol%256=~Masse d'armes météorique
+@259=~Vague destructrice~
+@258=~Masse d'armes météorique~
+@257=~Masse d'armes météorique~
+@256=~Masse d'armes météorique
 (Conjuration)
 Niveau : 4
 Sphère : Combat
@@ -344,8 +344,8 @@ Temps d'incantation : 7
 Zone d'effet : le lanceur
 Jet de sauvegarde : aucun
 Ce sort crée une masse d'armes en fer météorique infligeant 1d6 +2 dégâts contondants, bénéficiant d'un bonus de +2 à l'attaque et considérée comme une arme +4 afin de déterminer ce qu'elle peut toucher. Tous les bonus habituels s'appliquent normalement (Force, compétence et spécialisation). La masse inflige 2d6 points de dégâts contondants supplémentaires aux créatures qui ne sont pas d'origine naturelle (morts-vivants, élémentaux, golems, entités extra-planaires, etc.)~
-%atsymbol%255=~Masse d'armes météorique~
-%atsymbol%254=~Endurance infaillible
+@255=~Masse d'armes météorique~
+@254=~Endurance infaillible
 (Nécromancie)
 Niveau : 4
 Sphère : Nécromancie
@@ -355,8 +355,8 @@ Temps d'incantation : 9
 Zone d'effet : 1 créature
 Jet de sauvegarde : aucun
 Ce sort permet à la créature touchée de recouvrer les forces perdues au cours des 36 dernières heures (par une succession d'efforts physiques). Notez qu'il n'est pas forcément suffisant pour sortir d'un état fatigué.~
-%atsymbol%253=~Endurance infaillible~
-%atsymbol%252=~Nuage de pestilence
+@253=~Endurance infaillible~
+@252=~Nuage de pestilence
 (Transmutation)
 Niveau : 4
 Sphère : Combat, Élémentaire (air)
@@ -366,10 +366,10 @@ Temps d'incantation : 7
 Zone d'effet : 3,60 mètres de rayon
 Jet de sauvegarde : annule
 Ce sort transforme l'air en brume gris-vert nauséabonde à 3,60 mètres à la ronde. Le lanceur est immunisé contre l'effet des vapeurs, de même que les créatures qui ne respirent pas. A chaque round d'exposition à l'air infesté de maladies, une créature doit réussir un jet de sauvegarde contre les souffles sous peine de subir 3 points de dégâts magiques, d'être aveuglée et de perdre 3 points de Force et de Dextérité. La cécité et la perte de point de caractéristiques durent 1 tour. Nuage de pestilence ne peut être lancé que par les personnages mauvais.~
-%atsymbol%251=~Nuage de pestilence~
-%atsymbol%250=~Étourdir~
-%atsymbol%249=~Guéri(e)~
-%atsymbol%248=~Rage sanguinaire
+@251=~Nuage de pestilence~
+@250=~Étourdir~
+@249=~Guéri(e)~
+@248=~Rage sanguinaire
 (Transmutation)
 Niveau : 4
 Sphère : Combat
@@ -379,8 +379,8 @@ Temps d'incantation : 7
 Zone d'effet : 1 créature
 Jet de sauvegarde : aucun
 Ce sort ne fonctionne que sur les personnages et leurs alliés. Le sujet est aussitôt pris d'une rage meurtrière : il s'acharne sur la créature la plus proche jusqu'à la tuer, puis passe à la suivante. Sous l'emprise de ce sort, le sujet est immunisé contre l'étourdissement et les effets de type Charme, Sommeil, Terreur, Immobilisation, Confusion, Émotion et Symbole. De plus, il gagne +2 à l'attaque, +3 aux dégâts, +2 en force, 10 points de vie et un bonus à sa vitesse de déplacement. Cela étant, le sort présente également certains inconvénients : les points de vie du sujet sont masqués jusqu'au terme de la durée indiquée et il ne peut bénéficier d'aucun effet permettant de récupérer des points de vie. Quand le sort s'achève, le personnage se sent pris d'une grande fatigue et tombe à 3 de Force pendant 2 tours. Les créatures d'alignement loyal ne peuvent ni avoir recours à Rage sanguinaire, ni être affecté par ce sort.~
-%atsymbol%247=~Rage sanguinaire~
-%atsymbol%246=~Récitation
+@247=~Rage sanguinaire~
+@246=~Récitation
 (Abjuration, Invocation/Évocation)
 Niveau : 4
 Sphère : Combat
@@ -390,9 +390,9 @@ Temps d'incantation : 7
 Zone d'effet : rayon de 7,50 mètres
 Jet de sauvegarde : aucun
 En récitant un passage de texte sacré, le prêtre invoque la bénédiction de son dieu sur lui-même et ses alliés, tout en affaiblissant ses ennemis et en semant la confusion dans leurs rangs. Les compagnons du prêtre bénéficient d'un bonus de +2 à leurs jets d'attaque et de sauvegarde, tandis que ses adversaires subissent une pénalité de -2. Ce sort n'annule pas Prière ; tous deux peuvent être jetés en même temps, auquel cas leurs effets se cumulent.~
-%atsymbol%245=~Récitation~
-%atsymbol%244=~Décharge d'électricité statique~
-%atsymbol%243=~Électricité statique
+@245=~Récitation~
+@244=~Décharge d'électricité statique~
+@243=~Électricité statique
 (Transmutation)
 Niveau : 4
 Sphère : Climat
@@ -402,8 +402,8 @@ Temps d'incantation : 9
 Zone d'effet : champ visuel du lanceur
 Jet de sauvegarde : demi-dégâts
 Électricité statique est similaire à Appel de la foudre, si ce n'est qu'il est possible de l'utiliser en intérieur. Le sort permet de générer une charge d'électricité statique dans la zone d'effet, ce qui inflige 2d8 points de dégâts plus 1d8 par niveau du prêtre. La charge se déclenche une fois par tour jusqu'à ce que le sort arrive à son terme.~
-%atsymbol%242=~Électricité statique~
-%atsymbol%241=~Flammes
+@242=~Électricité statique~
+@241=~Flammes
 (Transmutation)
 Niveau : 4
 Sphère : Élémentaire (feu)
@@ -413,8 +413,8 @@ Temps d'incantation : 7
 Zone d'effet : rayon de 1,20 mètre
 Jet de sauvegarde : aucun
 Ce sort fait apparaître des flammes causant 1d4 points de dégâts plus 1 point par niveau du prêtre à toutes les créatures comprises dans la zone d'effet. Les créatures subiront les dommages une fois par round quel que soit le moment où elles sont entrées dans la zone d'effet.~
-%atsymbol%240=~Flammes~
-%atsymbol%239=~Faveur d'Ilmater
+@240=~Flammes~
+@239=~Faveur d'Ilmater
 (Nécromancie)
 Niveau : 3
 Sphère : Nécromancie, Protection
@@ -424,8 +424,8 @@ Temps d'incantation : 6
 Zone d'effet : 1 créature
 Jet de sauvegarde : aucun
 En lançant ce sort, le personnage échange sa force de vie avec celle de la cible, ce qui échange également leurs blessures physiques. Ce sort fonctionnera uniquement si le lanceur dispose de plus de points de vie que la cible. L'échange est permanent, et le lanceur peut soigner les blessures acquises avec les méthodes habituelles. L'échange peut être fait à distance, dans la limite de la portée du sort. Seuls les points de vie sont échangés, le lanceur ne peut pas "prendre" à la cible d'autres types de dommages, tels que le poison, la maladie, l'ébriété, etc. Ce sort reste sans effet sur les morts-vivants, les créatures artificielles et extra-planaires. Il ne peut être lancé par un personnage d'alignement mauvais.~
-%atsymbol%238=~Faveur d'Ilmater~
-%atsymbol%237=~Blessure moyenne
+@238=~Faveur d'Ilmater~
+@237=~Blessure moyenne
 (Nécromancie)
 Niveau : 3
 Sphère : Guérison
@@ -435,8 +435,8 @@ Temps d'incantation : 5
 Zone d'effet : 1 créature
 Jet de sauvegarde : demi-dégâts
 En lançant ce sort, le personnage peut, en touchant la créature ciblée, lui infliger 14 points de dégâts (jet de sauvegarde contre les sorts pour demi-dégâts). Ce sort reste sans effet sur les morts-vivants, les créatures artificielles et extra-planaires. Il ne peut être lancé par des personnages d'alignement bons.~
-%atsymbol%236=~Blessure moyenne~
-%atsymbol%235=~Protection anti-tempêtes
+@236=~Blessure moyenne~
+@235=~Protection anti-tempêtes
 (Abjuration)
 Niveau : 3
 Sphère : Climat, Protection
@@ -446,8 +446,8 @@ Temps d'incantation : 6
 Zone d'effet : le lanceur
 Jet de sauvegarde : aucun
 Le personnage se retrouve entouré d'une sphère d'énergie noire qui se déplace avec lui. Toutes les attaques de type feu, froid ou électricité lui infligent automatiquement des dégâts réduits de moitié.~
-%atsymbol%234=~Protection anti-tempête~
-%atsymbol%233=~Moisissure
+@234=~Protection anti-tempête~
+@233=~Moisissure
 (Transmutation)
 Niveau : 3
 Sphère : Flore
@@ -466,8 +466,8 @@ Si le jet de sauvegarde est réussi, les dégâts sont moins importants :
 2e round : 1d6 points
 3e round : 1d6 points
 Chaque round après le premier, la plus proche créature (dans un rayon de 3 mètres) doit réussir un jet de sauvegarde sous peine d'être affectée à son tour. Le processus se poursuit jusqu'à ce que la moisissure soit incapable d'infecter un nouvel hôte dans le temps imparti. Les créatures déjà affectées ne peuvent l'être une nouvelle fois. La moisissure brune meurt rapidement au terme de la durée du sort.~
-%atsymbol%232=~Moisissure~
-%atsymbol%231=~Trombes d'eau
+@232=~Moisissure~
+@231=~Trombes d'eau
 (Évocation)
 Niveau : 3
 Sphère : Élémentaire (eau)
@@ -477,8 +477,8 @@ Temps d'incantation : 6
 Zone d'effet : 5,10 mètres de rayon
 Jet de sauvegarde : aucun
 Ce sort génère une pluie diluvienne dans la zone d'effet. Toutes les créatures à base de feu ou de froid (ou vivant dans ces éléments) perdent 2d3 points de vie par round. De plus, toutes les créatures comprises dans la zone d'effet ont 50 % de chances par round d'être frappées par la foudre (2d6 points de dégâts, ou deux fois moins en cas de jet de sauvegarde réussi). Les sorts de Lame de feu et de Linceul de flammes, ainsi que l'aura des salamandres, sont éteints par Trombes d'eau.~
-%atsymbol%230=~Trombes d'eau~
-%atsymbol%229=~Croissance d'épines
+@230=~Trombes d'eau~
+@229=~Croissance d'épines
 (Transmutation)
 Niveau : 3
 Sphère : Élémentaire (terre)
@@ -488,8 +488,8 @@ Temps d'incantation : 6
 Zone d'effet : 4,50 mètres de rayon
 Jet de sauvegarde : aucun
 Ce sort transforme la végétation affectée en plantes épineuses. Toute créature pénétrant dans la zone d'effet subit 1d4 points de dégâts tranchants et 1d4 points de dégâts perforants par round, jusqu'au terme du sort.~
-%atsymbol%228=~Croissance d'épines~
-%atsymbol%227=~Cercle d'ossements
+@228=~Croissance d'épines~
+@227=~Cercle d'ossements
 (Nécromancie)
 Niveau : 3
 Sphère : Création, Garde
@@ -499,10 +499,10 @@ Temps d'incantation : 3
 Zone d'effet : 1 mètre de rayon
 Jet de sauvegarde : aucun
 Ce sort fait apparaître une barrière d'ossements flottants qui tourbillonnent rapidement autour du personnage. Quiconque tente de la franchir subit 1d6 points de dégâts contondants et 1d6 points de dégâts tranchants par round. Le personnage ne peut pas se déplacer tant que le sort fait effet. Cercle d'ossements ne peut être lancé par les personnages d'alignement bon.~
-%atsymbol%226=~Cercle d'ossements~
-%atsymbol%225=~Lame de lune +3~
-%atsymbol%224=~Lame de lune~
-%atsymbol%223=~Lame de lune
+@226=~Cercle d'ossements~
+@225=~Lame de lune +3~
+@224=~Lame de lune~
+@223=~Lame de lune
 (Invocation)
 Niveau : 3
 Sphère : Combat, Soleil
@@ -513,9 +513,9 @@ Zone d'effet : le lanceur
 Jet de sauvegarde : aucun
 Ce sort fait apparaître une épée silencieuse entièrement constituée de clarté lunaire et s'étendant à 1,20 mètre de la main du personnage. Elle est considérée comme une arme +4 afin de déterminer ce qu'elle peut toucher, même si ce bonus ne s'applique pas au TAC0. Comme il s'agit d'une arme dénuée de substance, les bonus de Force du personnage ne s'appliquent ni à l'attaque ni aux dégâts.
 La lame de lune absorbe l'énergie de la cible, ce qui se traduit par un total de 1d12 +4 points de dégâts à chaque coup, +1d12 points pour les morts-vivants, qui sont particulièrement vulnérables à ce sort. De plus, la lame a une action négative sur le flux des énergies magiques, avec pour conséquence que tout sort que la cible cherche à lancer lors du prochain round échoue automatiquement.~
-%atsymbol%222=~Lame de lune~
-%atsymbol%221=~Sommeil~
-%atsymbol%220=~Exaltation
+@222=~Lame de lune~
+@221=~Sommeil~
+@220=~Exaltation
 (Abjuration)
 Niveau : 3
 Sphère : Guérison
@@ -525,8 +525,8 @@ Temps d'incantation : 9
 Zone d'effet : 1 créature
 Jet de sauvegarde : aucun
 Ce sort permet au prêtre d'aider et de protéger un compagnon (mais pas lui-même). D'un simple contact, le prêtre fait disparaître les effets de la peur, de la fatigue, de la débilité, de l'inconscience, de l'ébriété, de la confusion et de la rage sanguinaire. De plus, le sujet est protégé contre les sorts et attaques provoquant ces effets jusqu'au terme de la durée indiquée.~
-%atsymbol%219=~Exaltation~
-%atsymbol%218=~Contagion
+@219=~Exaltation~
+@218=~Contagion
 (Nécromancie)
 Niveau : 3
 Sphère : Guérison
@@ -536,10 +536,10 @@ Temps d'incantation : 9
 Zone d'effet : 1 créature
 Jet de sauvegarde : annule
 La créature touchée par le prêtre contracte une maladie qui lui fait perdre 5d4 points de Force si elle rate son jet de sauvegarde contre les sorts. Contagion reste sans effet sur les morts-vivants, créatures artificielles et créatures extra-planaires. Ce sort ne peut être jeté par les personnages d'alignement bon.~
-%atsymbol%217=~Contamination~
-%atsymbol%216=~Pénalités de combat~
-%atsymbol%215=~Bonus de combat~
-%atsymbol%214=~Prière
+@217=~Contamination~
+@216=~Pénalités de combat~
+@215=~Bonus de combat~
+@214=~Prière
 (Conjuration/Convocation)
 Niveau : 3
 Sphère : Combat
@@ -549,8 +549,8 @@ Temps d'incantation : 6
 Zone d'effet : 9 mètres de rayon
 Jet de sauvegarde : aucun
 Prière favorise le prêtre et ses alliés, tout en maudissant leurs ennemis. Tous les jets d'attaque, de dégâts et de sauvegarde des compagnons du prêtre bénéficient d'un bonus de +1, tandis que ses adversaires subissent un malus de -1. Les créatures comprises dans la zone d'effet au moment où le sort est lancé continuent d'être affectées même si elles la quittent. Autrement dit, si le guerrier du groupe décide de poursuivre un gobelin, Prière l'aide toujours.~
-%atsymbol%213=~Prière~
-%atsymbol%212=~Blessure modérée
+@213=~Prière~
+@212=~Blessure modérée
 (Nécromancie)
 Niveau : 2
 Sphère : Guérison
@@ -560,10 +560,10 @@ Temps d'incantation : 5
 Zone d'effet : 1 créature
 Jet de sauvegarde : demi-dégâts
 En lançant ce sort, le personnage peut, en touchant la créature ciblée, lui infliger 11 points de dégâts (jet de sauvegarde contre les sorts pour demi-dégâts). Ce sort reste sans effet sur les morts-vivants, les créatures artificielles et extra-planaires. Il ne peut être lancé par des personnages d'alignement bons.~
-%atsymbol%211=~Blessure modérée~
-%atsymbol%210=~Griffes~
-%atsymbol%209=~Griffes~
-%atsymbol%208=~Griffes
+@211=~Blessure modérée~
+@210=~Griffes~
+@209=~Griffes~
+@208=~Griffes
 (Transmutation)
 Niveau : 2
 Sphère : Combat
@@ -573,9 +573,9 @@ Temps d'incantation : 5
 Zone d'effet : le lanceur
 Jet de sauvegarde : aucun
 Ce sort transforme les bras du personnage en pattes musclées et dotées de griffes, qui lui confèrent une Force de 18/72 et la faculté de lacérer ses adversaires (2d4 points de dégâts + bonus de Force). Le personnage peut frapper deux fois par round, avec un bonus de +2 à l'attaque.~
-%atsymbol%207=~Griffes~
-%atsymbol%206=~Entouré d'une aura argentée (-2 à la CA)~
-%atsymbol%205=~Lance d'alicorne
+@207=~Griffes~
+@206=~Entouré d'une aura argentée (-2 à la CA)~
+@205=~Lance d'alicorne
 (Évocation)
 Niveau : 2
 Sphère : Combat
@@ -585,9 +585,9 @@ Temps d'incantation : 5
 Zone d'effet : 1 créature
 Jet de sauvegarde : spécial
 Ce sort fait apparaître une lance argentée et partiellement éthérée en forme d'alicorne (une corne de licorne). Le personnage choisit sa cible, qui va aussitôt la transpercer, lui infligeant 3d6 points de dégâts perforants (ou deux fois moins en cas de jet de sauvegarde réussi). Même si la lance se dissipe instantanément après l'impact, elle laisse une aura argentée autour de la cible, rendant celle-ci plus facile à toucher (-2 à la CA pendant 3 rounds).~
-%atsymbol%204=~Lance d'alicorne~
-%atsymbol%203=~Guéri(e)~
-%atsymbol%202=~Soin des blessures modérées
+@204=~Lance d'alicorne~
+@203=~Guéri(e)~
+@202=~Soin des blessures modérées
 (Nécromancie)
 Niveau : 2
 Sphère : Guérison
@@ -597,9 +597,9 @@ Temps d'incantation : 5
 Zone d'effet : 1 créature
 Jet de sauvegarde : aucun
 Cette version plus puissante de Soin des blessures légères permet à la créature touchée de récupérer 11 points de vie et de soigner l'ébriété. Ce sort reste sans effet sur les morts-vivants, les créatures artificielles ou extra-planaires.~
-%atsymbol%201=~Soin des blessures modérées~
-%atsymbol%200=~Aveuglé(e)~
-%atsymbol%199=~Soleil ardent
+@201=~Soin des blessures modérées~
+@200=~Aveuglé(e)~
+@199=~Soleil ardent
 (Évocation)
 Niveau : 1
 Sphère : Soleil
@@ -609,8 +609,8 @@ Temps d'incantation : 4
 Zone d'effet : 1 créature
 Jet de sauvegarde : demi-dégâts
 Au terme de l'incantation, un rayon de soleil tombe du ciel et va frapper la cible désignée par le prêtre. La victime réduit les dégâts de moitié si elle réussit un jet de sauvegarde contre les sorts. Si elle est touchée, elle subit 1d6 points de dégâts, +1 par niveau du prêtre. Les morts-vivants et autres créatures vulnérables à la lumière du jour encaissent 1d6 points de dégâts, +2 par niveau du personnage. De plus, victimes sont aveuglées pendant 3 rounds.~
-%atsymbol%198=~Soleil ardent~
-%atsymbol%197=~Blessure légère
+@198=~Soleil ardent~
+@197=~Blessure légère
 (Nécromancie)
 Niveau : 1
 Sphère : Guérison
@@ -620,9 +620,9 @@ Temps d'incantation : 5
 Zone d'effet : 1 créature
 Jet de sauvegarde : demi-dégâts
 Une fois qu'il a lancé ce sort, le prêtre inflige 8 points de dégâts à la première créature qu'il touche (4 points en cas de jet de sauvegarde réussi). Ce sort reste sans effet sur les morts-vivants, les créatures artificielles ou extra-planaires. Il ne peut être lancé par un personnage d'alignement bon.~
-%atsymbol%196=~Blessure légère~
-%atsymbol%195=~Maudit(e)~
-%atsymbol%194=~Imprécation
+@196=~Blessure légère~
+@195=~Maudit(e)~
+@194=~Imprécation
 (Conjuration/Convocation)
 Niveau : 1
 Sphère : Générale
@@ -632,37 +632,37 @@ Temps d'incantation : 1 round
 Zone d'effet : rayon de 4,50 mètres
 Jet de sauvegarde : aucun
 Grâce à ce sort, le prêtre diminue le moral de ses adversaires et pénalise de -1 leurs jets de sauvegarde et d'attaque. Dès que l'incantation s'achève, le sort affecte toutes les créatures se trouvant dans un rayon de 4,50 mètres, dont le centre est choisi par le prêtre (les créatures quittant la zone d'effet sont toujours affectées ; par contre, celles qui y entrent par la suite ne le sont pas).~
-%atsymbol%193=~Imprécation~
-%atsymbol%192=~Œil de la pierre
+@193=~Imprécation~
+@192=~Œil de la pierre
 Cet œil protège le personnage contre une seule attaque pétrifiante.
 Il peut également être dépensé pour lancer le sort de magicien de troisième niveau : Immobilisation des personnes, qui immobilise des créatures humanoïdes pendant un round par niveau (jet de sauvegarde contre les sorts pour annuler).~
-%atsymbol%191=~Œil de la pierre~
-%atsymbol%190=~Œil de l'âme
+@191=~Œil de la pierre~
+@190=~Œil de l'âme
 Cet œil annule un sort causant une mort instantanée (Sort de mort, Doigt de mort, Mot de pouvoir mortel, Mise à mort ou Destruction).
 Il peut également être transformé en un Rayon débilitant, similaire au sort de magicien de deuxième niveau, qui abaisse la force de la cible à 5 (jet de sauvegarde contre les sorts pour annuler).~
-%atsymbol%189=~Œil de l'âme~
-%atsymbol%188=~Œil de la résistance
+@189=~Œil de l'âme~
+@188=~Œil de la résistance
 Cet œil bloque une attaque étourdissante, assourdissante, aveuglante ou de type silence.
 Il peut également être dépensé pour lancer le sort de magicien de quatrième niveau Cri, qui inflige 4d6 points de dégâts magiques et assourdit les créatures prises dans un cône de 10,5 mètres (jet de sauvegarde contre les sorts pour diviser les dégâts par deux et annuler la surdité).~
-%atsymbol%187=~Œil de la résistance~
-%atsymbol%186=~Œil du venin
+@187=~Œil de la résistance~
+@186=~Œil du venin
 Cet œil bloque une attaque ou un sort pouvant empoisonner le personnage.
 Il peut à la place être dépensé pour empoisonner une créature (20 points de dégâts en 20 secondes, jet de sauvegarde contre le poison pour annuler).~
-%atsymbol%185=~Œil du venin~
-%atsymbol%184=~Œil de l'épée
+@185=~Œil du venin~
+@184=~Œil de l'épée
 Cet œil détourne la première attaque physique infligeant des dégâts au personnage. 
 L'œil peut également être dépensé pour jeter le sort de magicien de premier niveau : Projectile magique, créant un projectile tous les deux niveaux d'expérience après le premier (5 projectiles maximum) qui infligent 1d4 +1 points de dégâts magiques.~
-%atsymbol%183=~Œil de l'épée~
-%atsymbol%182=~Œil du mage
+@183=~Œil de l'épée~
+@182=~Œil du mage
 Cet œil absorbe une attaque de type feu, électricité, froid ou acide.
 Il peut également être dépensé pour jeter le sort de magicien de troisième niveau Éclair, qui inflige 1d6 dégâts électriques par niveau (10d6 maximum) à toutes les créatures se trouvant sur son chemin.~
-%atsymbol%181=~Œil du mage~
-%atsymbol%180=~Œil de l'esprit
+@181=~Œil du mage~
+@180=~Œil de l'esprit
 Cet œil protège contre les attaques mentales, telles que Charme, Émotion et Terreur.
 Il peut être dépensé pour lancer le sort de magicien de premier niveau Charme-personne (durée d'un tour, jet de sauvegarde contre les sorts pour annuler).~
-%atsymbol%179=~Œil de l'esprit~
-%atsymbol%178=~Vous ne pouvez pas lancer ce sort tant que le précédent fait encore effet.~
-%atsymbol%177=~Cercle d'yeux
+@179=~Œil de l'esprit~
+@178=~Vous ne pouvez pas lancer ce sort tant que le précédent fait encore effet.~
+@177=~Cercle d'yeux
 (Abjuration)
 Niveau : 7
 Portée : personnelle
@@ -678,8 +678,8 @@ Ce sort fait apparaître sept yeux magiques flottant en cercle autour de la têt
 - Œil de l'âme : Cet œil annule un sort causant une mort instantanée (Sort de mort, Doigt de mort, Mot de pouvoir : mort, Mise à mort ou Destruction). Il peut également être transformé en un Rayon débilitant, similaire au sort de magicien de deuxième niveau, qui abaisse la force de la cible à 5 (jet de sauvegarde contre les sorts pour annuler).
 - Œil de la résistance : Cet œil bloque une attaque étourdissante, assourdissante, aveuglante ou de type silence. Il peut également être dépensé pour lancer le sort de magicien de quatrième niveau : Cri, qui inflige 4d6 dégâts magiques et assourdit les créatures prises dans un cône de 10,5 mètres (jet de sauvegarde contre les sorts pour diviser les dégâts par deux et annuler la surdité).
 - Œil de la pierre : Cet œil protège le personnage contre une seule attaque pétrifiante. Il peut également être dépensé pour lancer le sort de magicien de troisième niveau : Immobilisation des personnes, qui immobilise des créatures humanoïdes pendant un round par niveau (jet de sauvegarde contre les sorts pour annuler).~
-%atsymbol%176=~Cercle d'yeux~
-%atsymbol%175=~Rage de Malavon
+@176=~Cercle d'yeux~
+@175=~Rage de Malavon
 (Invocation)
 Niveau : 7
 Portée : personnelle
@@ -688,12 +688,12 @@ Temps d'incantation : 1
 Zone d'effet : rayon de 2,10 mètres
 Jet de sauvegarde : demi-dégâts
 Rage de Malavon a été inventé par un elfe noir du nom de Malavon. Sous l'effet du sort, le corps du magicien projette dans toutes les directions des rayons d'énergie noire, nuisibles pour ses alliés comme pour ses ennemis. Les barbillons magiques infligent 20d4 points de dégâts perforants à tout ce qu'ils touchent. Ce sort est particulièrement utile lorsque l'on se retrouve environné d'adversaires.~
-%atsymbol%174=~Rage de Malavon~
-%atsymbol%173=~Coup vorpal~
-%atsymbol%172=~Mort~
-%atsymbol%171=~Mort-vivant détruit~
-%atsymbol%170=~Créature extra-planaire détruite~
-%atsymbol%169=~Reflets
+@174=~Rage de Malavon~
+@173=~Coup vorpal~
+@172=~Mort~
+@171=~Mort-vivant détruit~
+@170=~Créature extra-planaire détruite~
+@169=~Reflets
 (Illusion/Fantasme)
 Niveau : 6
 Portée : champ visuel du lanceur
@@ -702,10 +702,10 @@ Temps d'incantation : 6
 Zone d'effet : spéciale
 Jet de sauvegarde : aucun
 Reflets est similaire aux sorts Monstres d'ombre et Demi-ombres, en ce sens qu'il permet de former des créatures illusoires à partir de matière prise au Demi-plan des Ombres. Ces monstres sont plus puissants que ceux qu'appellent les deux sorts mentionnés ci-dessus. Ils obéissent au mage jusqu'au terme de la durée du sort ou jusqu'à ce qu'ils soient détruits.~
-%atsymbol%168=~Reflets~
-%atsymbol%167=~Toucher de la liche~
-%atsymbol%166=~Toucher de la liche~
-%atsymbol%165=~Toucher de la liche
+@168=~Reflets~
+@167=~Toucher de la liche~
+@166=~Toucher de la liche~
+@165=~Toucher de la liche
 (Nécromancie)
 Niveau : 6
 Portée : contact
@@ -715,9 +715,9 @@ Zone d'effet : le lanceur
 Jet de sauvegarde : spécial
 Ce sort confère les pouvoirs et les immunités d'une liche au mage. Ce dernier n'a plus rien à craindre de la paralysie ou de la terreur tant que l'enchantement fait effet. Dans le même temps, ses mains luisent d'un éclat vert surnaturel qui inflige 1d10 points de dégâts à toute créature qu'il touche et la paralyse à moins qu'elle ne réussisse son jet de sauvegarde. Ce sort n'affecte pas les morts-vivants.
 ~
-%atsymbol%164=~Toucher de la liche~
-%atsymbol%163=~Dissipation des effets~
-%atsymbol%162=~Coquille antimagique
+@164=~Toucher de la liche~
+@163=~Dissipation des effets~
+@162=~Coquille antimagique
 (Abjuration)
 Niveau : 6
 Portée : personnelle
@@ -726,11 +726,11 @@ Temps d'incantation : 1
 Zone d'effet : le lanceur
 Jet de sauvegarde : aucun
 Ce sort entoure le magicien d'une barrière invisible se déplaçant avec lui. Elle l'immunise contre toutes les attaques magiques, mais l'empêche dans le même temps de jeter le moindre sort. Ce sort dissipe également les effets de surdité et de débilité mentale sur le lanceur.~
-%atsymbol%161=~Coquille antimagique~
-%atsymbol%160=~Homme-lézard coriace~
-%atsymbol%159=~Gobelin d'élite~
-%atsymbol%158=~Gobelin d'élite~
-%atsymbol%157=~Demi-ombres
+@161=~Coquille antimagique~
+@160=~Homme-lézard coriace~
+@159=~Gobelin d'élite~
+@158=~Gobelin d'élite~
+@157=~Demi-ombres
 (Illusion/Fantasme)
 Niveau : 5
 Portée : champ visuel du lanceur
@@ -739,11 +739,11 @@ Temps d'incantation : 5
 Zone d'effet : spécial
 Jet de sauvegarde : aucun
 Ce sort est semblable à Monstres d'ombre (4e niveau), si ce n'est que les créatures invoquées sont bien plus puissantes.~
-%atsymbol%156=~Demi-ombres~
-%atsymbol%155=~Arme de troll~
-%atsymbol%154=~Troll~
-%atsymbol%153=~Troll~
-%atsymbol%152=~Monstres d'ombre
+@156=~Demi-ombres~
+@155=~Arme de troll~
+@154=~Troll~
+@153=~Troll~
+@152=~Monstres d'ombre
 (Illusion/Fantasme)
 Niveau : 4
 Portée : champ visuel du lanceur
@@ -752,11 +752,11 @@ Temps d'incantation : 4
 Zone d'effet : spécial
 Jet de sauvegarde : aucun
 Ce sort façonne la matière du Demi-plan de l'Ombre pour créer des monstres illusoires. Jusqu'à 6 créatures peuvent être invoquées, dont le total des dés de vie ne pourra dépasser le niveau du lanceur.~
-%atsymbol%151=~Monstres d'ombre~
-%atsymbol%150=~Hâte~
-%atsymbol%149=~Lenteur~
-%atsymbol%148=~Ralenti(e)~
-%atsymbol%147=~Repli expéditif
+@151=~Monstres d'ombre~
+@150=~Hâte~
+@149=~Lenteur~
+@148=~Ralenti(e)~
+@147=~Repli expéditif
 (Transmutation)
 Niveau : 1
 Portée : personnelle
@@ -765,10 +765,10 @@ Temps d'incantation : 1
 Zone d'effet : le lanceur
 Jet de sauvegarde : aucun
 Ce sort double la vitesse de déplacement du sujet pendant un bref instant, ce qui lui permet généralement de s'enfuir. Les autres enchantements affectant la vitesse, comme Hâte et Lenteur, cessent de faire effet jusqu'au terme de la durée de Repli expéditif. Lorsqu'il est sous l'effet de ce sort, le lanceur ne peut ni attaquer, ni incanter, ni utiliser d'objets magiques ou avoir recours à des capacités spéciales... il ne peut que fuir.~
-%atsymbol%146=~Repli expéditif~
-%atsymbol%145=~Épée de Mordenkainen~
-%atsymbol%144=~Épée de Mordenkainen~
-%atsymbol%143=~Épée de Mordenkainen
+@146=~Repli expéditif~
+@145=~Épée de Mordenkainen~
+@144=~Épée de Mordenkainen~
+@143=~Épée de Mordenkainen
 (Invocation)
 Niveau : 7
 Portée : champ visuel du lanceur
@@ -777,10 +777,10 @@ Temps d'incantation : 7
 Zone d'effet : spéciale
 Jet de sauvegarde : aucun
 Ce sort fait apparaître une épée de force que le magicien peut utiliser par la seule force de son esprit. Elle frappe comme si elle était maniée par un guerrier de la moitié du niveau du mage et, bien que ce dernier la tienne en main, il peut s'en servir pour attaquer n'importe quelle créature se trouvant dans son champ de vision. L'épée ne possède aucun bonus au jet d'attaque, mais elle peut atteindre les créatures uniquement touchées par les armes +2 et inflige 5d6 points de dégâts à chaque coup.~
-%atsymbol%142=~Épée de Mordenkainen~
-%atsymbol%141=~Élémental d'eau~
-%atsymbol%140=~Élémental d'eau~
-%atsymbol%139=~Conjuration d'un élémental d'eau
+@142=~Épée de Mordenkainen~
+@141=~Élémental d'eau~
+@140=~Élémental d'eau~
+@139=~Conjuration d'un élémental d'eau
 (Conjuration/Convocation)
 Niveau : 5
 Portée : champ visuel du lanceur
@@ -789,10 +789,10 @@ Temps d'incantation : 9
 Zone d'effet : spéciale
 Jet de sauvegarde : aucun
 Ce sort invoque un Élémental d'Eau de 8 DV au service du personnage en ouvrant un portail magique vers le Plan Élémentaire de l'Eau. L'Élémental se battra pour le personnage jusqu'à sa destruction ou la fin du sort.~
-%atsymbol%138=~Conjuration d'un élémental d'eau~
-%atsymbol%137=~Élémentaire d'air~
-%atsymbol%136=~Élémentaire d'air~
-%atsymbol%135=~Conjuration d'un élémental d'air
+@138=~Conjuration d'un élémental d'eau~
+@137=~Élémentaire d'air~
+@136=~Élémentaire d'air~
+@135=~Conjuration d'un élémental d'air
 (Conjuration/Convocation)
 Niveau : 5
 Portée : champ visuel du lanceur
@@ -801,10 +801,10 @@ Temps d'incantation : 9
 Zone d'effet : spéciale
 Jet de Sauvegarde : aucun
 Ce sort invoque un Élémental d'Air de 8 DV au service du personnage en ouvrant un portail magique vers le Plan Élémentaire de l'Air. L'Élémental se battra pour le personnage jusqu'à sa destruction ou la fin du sort.~
-%atsymbol%134=~Conjuration d'un élémental d'air~
-%atsymbol%133=~Élémentaire de feu~
-%atsymbol%132=~Élémental de feu~
-%atsymbol%131=~Conjuration d'un élémental de feu
+@134=~Conjuration d'un élémental d'air~
+@133=~Élémentaire de feu~
+@132=~Élémental de feu~
+@131=~Conjuration d'un élémental de feu
 (Conjuration/Convocation)
 Niveau : 5
 Portée : champ visuel du lanceur
@@ -813,10 +813,10 @@ Temps d'incantation : 9
 Zone d'effet : spéciale
 Jet de Sauvegarde : aucun
 Ce sort invoque un Élémental de Feu de 8 DV au service du personnage en ouvrant un portail magique vers le Plan Élémentaire du Feu. L'Élémental se battra pour le personnage jusqu'à sa destruction ou la fin du sort.~
-%atsymbol%130=~Conjuration d'un élémental de feu~
-%atsymbol%129=~Élémentaire de terre~
-%atsymbol%128=~Élémental de terre~
-%atsymbol%127=~Conjuration d'un élémental de terre
+@130=~Conjuration d'un élémental de feu~
+@129=~Élémentaire de terre~
+@128=~Élémental de terre~
+@127=~Conjuration d'un élémental de terre
 (Conjuration/Convocation)
 Niveau : 5
 Portée : champ visuel du lanceur
@@ -825,8 +825,8 @@ Temps d'incantation : 9
 Zone d'effet : spéciale
 Jet de Sauvegarde : aucun
 Ce sort invoque un Élémental de Terre de 8 DV au service du personnage en ouvrant un portail magique vers le Plan Élémentaire de la Terre. L'Élémental se battra pour le personnage jusqu'à sa destruction ou la fin du sort.~
-%atsymbol%126=~Conjuration d'un élémental de terre~
-%atsymbol%125=~Convocation de monstres III
+@126=~Conjuration d'un élémental de terre~
+@125=~Convocation de monstres III
 (Conjuration/Convocation)
 Niveau : 5
 Portée : 6 mètres
@@ -835,10 +835,10 @@ Temps d'incantation : 5
 Zone d'effet : spéciale
 Jet de sauvegarde : aucun
 Ce sort fait apparaître 1d4 monstres de niveau 3. Ils se manifestent dans la limite de portée et le magicien peut leur ordonner d'attaquer ses adversaires jusqu'à ce que la durée du sort arrive à son terme (à moins que les monstres invoqués ne soient tués auparavant).~
-%atsymbol%124=~Convocation de monstres III~
-%atsymbol%123=~Homme-lézard~
-%atsymbol%122=~Homme-lézard~
-%atsymbol%121=~Convocation de monstres II
+@124=~Convocation de monstres III~
+@123=~Homme-lézard~
+@122=~Homme-lézard~
+@121=~Convocation de monstres II
 (Conjuration/Convocation)
 Niveau : 4
 Portée : 6 mètres
@@ -847,10 +847,10 @@ Temps d'incantation : 4
 Zone d'effet : spéciale
 Jet de sauvegarde : aucun
 Ce sort fait apparaître 1d6 monstres de niveau 2. Ils se manifestent dans la limite de portée et le magicien peut leur ordonner d'attaquer ses adversaires jusqu'à ce que la durée du sort arrive à son terme (à moins que les monstres invoqués ne soient tués auparavant).~
-%atsymbol%120=~Convocation de monstres II~
-%atsymbol%119=~Gobelin~
-%atsymbol%118=~Gobelin~
-%atsymbol%117=~Convocation de monstres I
+@120=~Convocation de monstres II~
+@119=~Gobelin~
+@118=~Gobelin~
+@117=~Convocation de monstres I
 (Conjuration/Convocation)
 Niveau : 3
 Portée : 6 mètres
@@ -859,11 +859,11 @@ Temps d'incantation : 4
 Zone d'effet : spéciale
 Jet de sauvegarde : aucun
 Ce sort fait apparaître 2d3 monstres de niveau 1. Ils se manifestent dans la limite de portée et le magicien peut leur ordonner d'attaquer ses adversaires jusqu'à ce que la durée du sort arrive à son terme (à moins que les monstres invoqués ne soient tués auparavant).~
-%atsymbol%116=~Convocation de monstres I~
-%atsymbol%115=~Attaquer~
-%atsymbol%114=~Minotaure~
-%atsymbol%113=~Minotaure~
-%atsymbol%112=~Convocation de monstres V
+@116=~Convocation de monstres I~
+@115=~Attaquer~
+@114=~Minotaure~
+@113=~Minotaure~
+@112=~Convocation de monstres V
 (Conjuration/Convocation)
 Niveau : 7
 Portée : 6 mètres
@@ -872,20 +872,20 @@ Temps d'incantation : 6
 Zone d'effet : spéciale
 Jet de sauvegarde : aucun
 Ce sort fait apparaître 1d3 monstres de niveau 5. Ils se manifestent dans la limite de portée et le magicien peut leur ordonner d'attaquer ses adversaires jusqu'à ce que la durée du sort arrive à son terme (à moins que les monstres invoqués ne soient tués auparavant).~
-%atsymbol%111=~Convocation de monstres V~
-%atsymbol%110=~Salamander spear
+@111=~Convocation de monstres V~
+@110=~Salamander spear
 1d8 piercing
 1d6 fire damage
 do not translate~
-%atsymbol%109=~Frost salamander spear
+@109=~Frost salamander spear
 1d8 piercing
 +1d6 cold
 do not trans~
-%atsymbol%108=~Salamandre~
-%atsymbol%107=~Salamandre~
-%atsymbol%106=~Salamandre du givre~
-%atsymbol%105=~Salamandre du givre~
-%atsymbol%104=~Convocation de monstres VI
+@108=~Salamandre~
+@107=~Salamandre~
+@106=~Salamandre du givre~
+@105=~Salamandre du givre~
+@104=~Convocation de monstres VI
 (Conjuration/Convocation)
 Niveau : 8
 Portée : 6 mètres
@@ -894,13 +894,13 @@ Temps d'incantation : 8
 Zone d'effet : spéciale
 Jet de sauvegarde : aucun
 Ce sort fait apparaître 1d3 monstres de niveau 6. Ils se manifestent dans la limite de portée et le magicien peut leur ordonner d'attaquer ses adversaires jusqu'à ce que la durée du sort arrive à son terme (à moins que les monstres invoqués ne soient tués auparavant).~
-%atsymbol%103=~Convocation de monstres VI~
-%atsymbol%102=~Attaquer~
-%atsymbol%101=~Ombre des roches~
-%atsymbol%100=~Ombre des roches~
-%atsymbol%99=~Squelette de garde~
-%atsymbol%98=~Squelette de garde~
-%atsymbol%97=~Convocation de monstres VII 
+@103=~Convocation de monstres VI~
+@102=~Attaquer~
+@101=~Ombre des roches~
+@100=~Ombre des roches~
+@99=~Squelette de garde~
+@98=~Squelette de garde~
+@97=~Convocation de monstres VII 
 (Conjuration/Convocation)
 Niveau : 9
 Portée : 6 mètres
@@ -909,8 +909,8 @@ Temps d'incantation : 9
 Zone d'effet : spéciale
 Jet de sauvegarde : aucun
 Ce sort fait apparaître 1d2 monstres de niveau 7 ou 8. Ils se manifestent dans la limite de portée et le magicien peut leur ordonner d'attaquer ses adversaires jusqu'à ce que la durée du sort arrive à son terme (à moins que les monstres invoqués ne soient tués auparavant).~
-%atsymbol%96=~Convocation de monstres VII~
-%atsymbol%95=~Convocation de monstres IV
+@96=~Convocation de monstres VII~
+@95=~Convocation de monstres IV
 (Conjuration/Convocation)
 Niveau : 6
 Portée : 6 mètres
@@ -919,14 +919,14 @@ Temps d'incantation : 6
 Zone d'effet : spéciale
 Jet de sauvegarde : aucun
 Ce sort fait apparaître 1d3 monstres de niveau 4. Ils se manifestent dans la limite de portée et le magicien peut leur ordonner d'attaquer ses adversaires jusqu'à ce que la durée du sort arrive à son terme (à moins que les monstres invoqués ne soient tués auparavant).~
-%atsymbol%94=~Convocation de monstres IV~
-%atsymbol%93=~Crâne~
-%atsymbol%92=~Transparence des monstres
+@94=~Convocation de monstres IV~
+@93=~Crâne~
+@92=~Transparence des monstres
 Ne pas traduire~
-%atsymbol%91=~Objet de transparence de monstre~
-%atsymbol%90=~Ombre~
-%atsymbol%89=~Ombre~
-%atsymbol%88=~Convocation d'ombres
+@91=~Objet de transparence de monstre~
+@90=~Ombre~
+@89=~Ombre~
+@88=~Convocation d'ombres
 (Conjuration/Convocation, Nécromancie)
 Niveau : 5
 Portée : champ visuel du lanceur
@@ -935,14 +935,14 @@ Temps d'incantation : 5
 Zone d'effet : spécial
 Jet de sauvegarde : aucun
 Ce sort fait apparaître trois ombres disposant chacune de 3 dés de vie. Ces créatures obéissent aux ordres de leur maître et combattent pour lui jusqu'au terme du sort (ou jusqu'à ce qu'elles soient détruites).~
-%atsymbol%87=~Convocation d'ombres~
-%atsymbol%86=~Poing de fer~
-%atsymbol%85=~Poing de fer~
-%atsymbol%84=~Victime d'une grave maladie~
-%atsymbol%83=~Malade~
-%atsymbol%82=~Empoisonné(e)~
-%atsymbol%81=~Poison~
-%atsymbol%80=~Corps de fer
+@87=~Convocation d'ombres~
+@86=~Poing de fer~
+@85=~Poing de fer~
+@84=~Victime d'une grave maladie~
+@83=~Malade~
+@82=~Empoisonné(e)~
+@81=~Poison~
+@80=~Corps de fer
 (Transmutation)
 Niveau : 8
 Portée : personnelle
@@ -951,9 +951,9 @@ Temps d'incantation : 8
 Zone d'effet : le lanceur
 Jet de sauvegarde : aucun
 Ce sort transforme le corps du personnage en fer vivant, ce qui lui confère plusieurs pouvoirs distincts. Tant que le sort fait effet, le personnage bénéficie des résistances suivantes : 100 % contre l'électricité, 50 % contre le feu et 25 % contre les attaques contondantes. Il est en outre immunisé contre les sorts affectant la respiration ou la physiologie. De plus, sa Force passe à 25 et il peut donner deux coups de poing par round (2d4 points de dégâts + bonus de Force). Malheureusement, les mouvements du personnage deviennent lents et gourds, ce qui réduit sa vitesse de déplacement de 75 % et l'empêche de lancer le moindre sort tant que Corps de fer fait effet.~
-%atsymbol%79=~Corps de fer~
-%atsymbol%78=~Inconscient(e)~
-%atsymbol%77=~Grand cri
+@79=~Corps de fer~
+@78=~Inconscient(e)~
+@77=~Grand cri
 (Évocation)
 Niveau : 8
 Portée : personnelle
@@ -962,18 +962,18 @@ Temps d'incantation : 1
 Zone d'effet : cône de 5,10 mètres de long et de 15 degrés d'angle
 Jet de sauvegarde : demi-dégâts
 Au terme de l'incantation, le personnage libère un cri terrible dans un cône de 5,10 mètres de long pour un angle de 15 degrés. L'effort exigé de la part du mage est tel que ce dernier perd 2d4 points de vie et doit réussir un jet de sauvegarde contre les sorts sous peine de perdre connaissance pendant un round. Les créatures ayant 5 DV ou moins meurent instantanément si elles sont prises dans la zone d'effet du Grand cri. Toutes les autres créatures ont droit à un jet de sauvegarde contre les sorts. Celles qui le ratent sont étourdies pendant 2 rounds, assourdies pendant 4 rounds et subissent 4d12 points de dégâts magiques. Celles qui le réussissent sont étourdies pendant 1 round, assourdies pendant 2 rounds et subissent 2d12 points de dégâts magiques.~
-%atsymbol%76=~Grand cri~
-%atsymbol%75=~Charmé(e)~
-%atsymbol%74=~Charme néfaste~
-%atsymbol%73=~Dominé(e)~
-%atsymbol%72=~Échec du test de moral : panique~
-%atsymbol%71=~En état d'ébriété~
-%atsymbol%70=~Confus(e)~
-%atsymbol%69=~Obstination bornée~
-%atsymbol%68=~Immobilisé(e)~
-%atsymbol%67=~Paralysé(e)~
-%atsymbol%66=~Immobilisation~
-%atsymbol%65=~Esprit impénétrable
+@76=~Grand cri~
+@75=~Charmé(e)~
+@74=~Charme néfaste~
+@73=~Dominé(e)~
+@72=~Échec du test de moral : panique~
+@71=~En état d'ébriété~
+@70=~Confus(e)~
+@69=~Obstination bornée~
+@68=~Immobilisé(e)~
+@67=~Paralysé(e)~
+@66=~Immobilisation~
+@65=~Esprit impénétrable
 (Abjuration)
 Niveau : 8
 Portée : personnelle
@@ -983,8 +983,8 @@ Zone d'effet : le lanceur
 Jet de sauvegarde : aucun
 Esprit impénétrable est le meilleur garant d'intimité qui soit, puisqu'il protège de presque tous les effets mentaux, tels que le charme, le sort de Labyrinthe, la débilité mentale, la confusion, la terreur, l'ébriété, la rage sanguinaire, l'immobilisation et la pétrification.
 ~
-%atsymbol%64=~Esprit impénétrable~
-%atsymbol%63=~Suffocation
+@64=~Esprit impénétrable~
+@63=~Suffocation
 (Transmutation)
 Niveau : 7
 Portée : champ visuel du lanceur
@@ -993,8 +993,8 @@ Temps d'incantation : 7
 Zone d'effet : 2,10 mètres de rayon
 Jet de sauvegarde : spécial
 Ce sort vide les poumons de toutes les créatures se trouvant dans la zone d'effet. Les êtres qui ne respirent pas sont immunisés contre cette attaque. Les autres subissent les effets suivants : -4 à la Classe d'Armure, -4 aux jets d'attaque, -6 en Dextérité, une attaque de moins par round, vitesse de déplacement réduite de moitié, et 4d8 points de dégâts magiques par round. Un jet de sauvegarde réussi annule les effets sauf 2d8 points de dégâts pour le round en cours. Les effets se dissipent progressivement quand la victime quitte la zone d'effet, mais un round est parfois nécessaire avant de trouver son second souffle.~
-%atsymbol%62=~Suffocation~
-%atsymbol%61=~Tempête acide
+@62=~Suffocation~
+@61=~Tempête acide
 (Invocation)
 Niveau : 7
 Portée : champ visuel du lanceur
@@ -1003,8 +1003,8 @@ Temps d'incantation : 7
 Zone d'effet : 3,60 mètres de rayon
 Jet de sauvegarde : demi-dégâts
 Ce sort déchaîne une violente pluie acide sur la zone d'effet, ce qui inflige 1d4 points de dégâts d'acide par round pendant les trois premiers rounds, 1d6 points pendant les trois suivants, et 1d8 points par round au-delà du sixième. Quitter la zone d'effet ne signifie pas que l'on échappe au sort, car l'acide s'accroche à la peau et toute créature affectée au début du sort continue de subir des dégâts jusqu'à ce que la tempête acide s'achève. Les victimes ont droit à un jet de sauvegarde chaque round après le premier. En cas de succès, les dégâts qu'elles subissent sont réduits de moitié (mais seulement pour le round concerné).~
-%atsymbol%60=~Tempête acide~
-%atsymbol%59=~Résistance de troll
+@60=~Tempête acide~
+@59=~Résistance de troll
 (Nécromancie)
 Niveau : 6
 Portée : personnelle
@@ -1013,10 +1013,10 @@ Temps d'incantation : 6
 Zone d'effet : le lanceur
 Jet de sauvegarde : aucun
 Ce sort confère au personnage la résistance d'un troll, ce qui lui permet de se régénérer au rythme de 5 points de vie par round.~
-%atsymbol%58=~Résistance de troll~
-%atsymbol%57=~Squelette~
-%atsymbol%56=~Squelette~
-%atsymbol%55=~Destruction d'âme
+@58=~Résistance de troll~
+@57=~Squelette~
+@56=~Squelette~
+@55=~Destruction d'âme
 (Nécromancie)
 Niveau : 6
 Portée : champ visuel du lanceur
@@ -1025,10 +1025,10 @@ Temps d'incantation : 5
 Zone d'effet : 2,10 mètres de rayon
 Jet de sauvegarde : aucun
 Ce sort inflige 3d8 points de dégâts à toutes les créatures vivantes situées à moins de 2,10 mètres à la ronde. De plus, toute créature tuée par Destruction d'âme est aussitôt oblitérée et son énergie vitale est transformée en squelette à 3 DV sous le contrôle du personnage. Pour chaque créature mourant de la sorte, le magicien gagne +1 en force, Dextérité et Constitution (pendant 1 tour).~
-%atsymbol%54=~Destruction d'âme~
-%atsymbol%53=~Dard d'os +3~
-%atsymbol%52=~Dard d'os~
-%atsymbol%51=~Dards d'os
+@54=~Destruction d'âme~
+@53=~Dard d'os +3~
+@52=~Dard d'os~
+@51=~Dards d'os
 (Nécromancie)
 Niveau : 6
 Portée : personnelle
@@ -1037,8 +1037,8 @@ Temps d'incantation : 5
 Zone d'effet : le lanceur
 Jet de sauvegarde : aucun
 Ce sort crée 9 dards pouvant être lancés par le personnage (qui est obligé de les garder en main tant que l'enchantement fait effet). Les dards sont +3, infligent 1d4 points de dégâts chacun, et toute créature touchée doit réussir un jet de sauvegarde contre la mort magique sous peine de perdre 2d6 points de vie supplémentaires et de voir sa Force baisser de 3 points pendant 5 rounds. Le personnage n'a pas besoin de savoir manier les dards pour pouvoir utiliser ce sort.~
-%atsymbol%50=~Dards d'os~
-%atsymbol%49=~Sphère glaciale d'Otiluke
+@50=~Dards d'os~
+@49=~Sphère glaciale d'Otiluke
 (Transmutation, Invocation)
 Niveau : 6
 Portée : champ visuel du lanceur
@@ -1047,8 +1047,8 @@ Temps d'incantation : 6
 Zone d'effet : 1 créature
 Jet de sauvegarde : annule
 Ce sort projette un rayon glacé contre la cible. Il peut toucher toute créature située dans le champ de vision du magicien et inflige 1d4 +2 points de dégâts de froid par niveau de ce dernier. Si la victime réussit son jet de sauvegarde, elle évite totalement le rayon et ne subit pas le moindre dégât.~
-%atsymbol%48=~Sphère glaciale d'Otiluke~
-%atsymbol%47=~Linceul de flammes
+@48=~Sphère glaciale d'Otiluke~
+@47=~Linceul de flammes
 (Évocation)
 Niveau : 5
 Portée : champ visuel du lanceur
@@ -1057,8 +1057,8 @@ Temps d'incantation : 5
 Zone d'effet : rayon de 1,5 mètres
 Jet de sauvegarde : annule
 La créature affectée par ce sort s'enflamme si elle rate son jet de sauvegarde. Elle subit 2d6 points de dégâts de feu par round et des langues de feu projetées par la victime atteignent toutes les créatures distantes de moins de 1,50 mètres et leur infligent 1d4 points de dégâts de feu (si elles ratent leur jet de sauvegarde, ces dernières se retrouvent également dévorées par les flammes). Le linceul se dissipe si le jeteur de sorts et sa cible ne sont plus dans la même zone. Ce sort est particulièrement utile pour disperser un groupe de trolls ou de salamandres du givre.~
-%atsymbol%46=~Linceul de flammes~
-%atsymbol%45=~Sphère acide
+@46=~Linceul de flammes~
+@45=~Sphère acide
 (Conjuration)
 Niveau : 4
 Portée : champ visuel du lanceur
@@ -1068,9 +1068,9 @@ Zone d'effet : rayon de 1,50 mètre
 Jet de sauvegarde : spécial
 Cette incantation fait apparaître une sphère d'acide vert émeraude, que le personnage peut lancer sur la cible de son choix. La sphère explose et inonde d'acide la créature choisie. Celle-ci perd 1d4 points de vie par niveau du magicien, jusqu'à un maximum de 12d4. Une fois les premiers dégâts encaissés, la victime doit réussir un jet de sauvegarde contre les sorts si elle ne veut pas en subir davantage. En cas d'échec, l'acide continue de la ronger round après round, les dégâts diminuant de deux dés par round. Par exemple, un magicien de niveau 8 inflige 8d4 points de dégâts grâce à ce sort au cours du premier round, 6d4 au deuxième, 4d4 au troisième, 2d4 au quatrième et le sort s'arrête au cinquième round. À chaque round après le premier, la victime a droit à un jet de sauvegarde contre les sorts pour éviter des dégâts supplémentaires.
 L'acide asperge toutes les créatures situées à moins de 1,50 mètre de la cible. Toutes doivent réussir un jet de sauvegarde contre la pétrification/métamorphose si elles ne veulent pas subir 1d4 points de dégâts par cinq niveaux du lanceur. Ces dégâts d'aspersion ne sont pas continus.~
-%atsymbol%44=~Sphère acide~
-%atsymbol%43=~Surdité~
-%atsymbol%42=~Cri
+@44=~Sphère acide~
+@43=~Surdité~
+@42=~Cri
 (Évocation)
 Niveau : 4
 Portée : personnelle
@@ -1079,8 +1079,8 @@ Temps d'incantation : 1
 Zone d'effet : cône de 5,10 mètres de long et de 15 degrés d'angle
 Jet de sauvegarde : demi-dégâts
 Ce sort confère un pouvoir vocal terrifiant au personnage, lequel peut laisser fuser un cri à déchirer les tympans affectant une zone d'effet en forme de cône. Toute créature prise dans la zone d'effet perd 4d6 points de vie et se retrouve assourdie pendant 9 rounds. Un jet de sauvegarde réussi contre les sorts annule la surdité et réduit les dégâts de moitié.~
-%atsymbol%41=~Cri~
-%atsymbol%40=~Projectiles de force de Mordenkainen
+@41=~Cri~
+@40=~Projectiles de force de Mordenkainen
 (Évocation)
 Niveau : 4
 Portée : champ visuel du lanceur
@@ -1089,10 +1089,10 @@ Temps d'incantation : 4
 Zone d'effet : rayon de 60 centimètres
 Jet de sauvegarde : spécial
 Ce sort fait apparaître un petit globe d'énergie magique filant de la main tendue du mage pour aller frapper à coup sûr la cible désignée, un peu comme un sort Projectiles magiques. Le personnage crée un projectile au niveau 7, plus un autre tous les trois niveaux supplémentaires (deux au niveau 10, trois au niveau 13, quatre au niveau 16, et ainsi de suite jusqu'à un maximum de sept au niveau 25). Chaque projectile cause 2d4 points de dégâts puis explose, la détonation infligeant 1 point de dégât de commotion par niveau du magicien dans un rayon de 60 centimètres. Par exemple, un mage de niveau 12 ferait apparaître deux projectiles de force, infligeant chacun 2d4+12 points de dégâts magiques. Les créatures touchées ont droit à un jet de sauvegarde contre les sorts pour éviter les dégâts de commotion mais l'impact du projectile lui-même n'est pas soumis à un jet de sauvegarde. Le sort de mage de niveau 1 Bouclier absorbe les projectiles de force sans dommage, y compris les dégâts de commotion.~
-%atsymbol%39=~Projectiles de force de Mordenkainen~
-%atsymbol%38=~Désespoir~
-%atsymbol%37=~Étourdi~
-%atsymbol%36=~Émotion, désespoir
+@39=~Projectiles de force de Mordenkainen~
+@38=~Désespoir~
+@37=~Étourdi~
+@36=~Émotion, désespoir
 (Enchantement/Charme)
 Niveau : 4
 Portée : champ visuel du lanceur
@@ -1101,9 +1101,9 @@ Temps d'incantation : 4
 Zone d'effet : 2,10 mètres de rayon
 Jet de sauvegarde : annule
 Ce sort fait naître un grand désespoir dans la zone d'effet. Tous les ennemis échouant leur jet de sauvegarde contre les sorts restent immobiles et ne font rien pendant 1 tour. Au moment du lancement, ce sort annule Émotion, espoir dans la zone d'effet.~
-%atsymbol%35=~Émotion, désespoir~
-%atsymbol%34=~Panique~
-%atsymbol%33=~Émotion, terreur
+@35=~Émotion, désespoir~
+@34=~Panique~
+@33=~Émotion, terreur
 (Enchantement/Charme)
 Niveau : 4
 Portée : champ visuel du lanceur
@@ -1112,8 +1112,8 @@ Temps d'incantation : 4
 Zone d'effet : 2,10 mètres de rayon
 Jet de sauvegarde : annule
 Ce sort terrifie les créatures comprises dans la zone d'effet. En cas de jet de sauvegarde raté, elles s'enfuient pendant 5 rounds. Ce sort dissipe Émotion, courage dans la zone d'effet au moment où il est lancé.~
-%atsymbol%32=~Émotion, terreur~
-%atsymbol%31=~Émotion, espoir
+@32=~Émotion, terreur~
+@31=~Émotion, espoir
 (Enchantement/Charme)
 Niveau : 4
 Portée : champ visuel du lanceur
@@ -1122,8 +1122,8 @@ Temps d'incantation : 4
 Zone d'effet : 2,10 mètres de rayon
 Jet de sauvegarde : aucun
 Ce sort génère l'espoir chez les créatures comprises dans la zone d'effet. Leur moral s'en ressent et elles bénéficient d'un bonus de +2 à tous leurs jets d'attaque, de dégâts et de sauvegarde. Ce sort dissipe tout sentiment de désespoir dans la zone d'effet au moment où il est lancé.~
-%atsymbol%30=~Émotion, espoir~
-%atsymbol%29=~Émotion, courage 
+@30=~Émotion, espoir~
+@29=~Émotion, courage 
 (Enchantement/Charme)
 Niveau : 4
 Portée : champ visuel du lanceur
@@ -1132,9 +1132,9 @@ Temps d'incantation : 4
 Zone d'effet : 2,10 mètres de rayon
 Jet de sauvegarde : aucun
 Ce sort génère un grand courage chez toutes les créatures comprises dans la zone d'effet. Ces dernières bénéficient alors des bonus suivants : +1 à l'attaque, +3 aux dégâts et +5 points de vie temporaires (ce qui peut leur permettre de dépasser leur maximum). Enfin, le sort dissipe automatiquement la terreur dans la zone d'effet.~
-%atsymbol%28=~Émotion, courage~
-%atsymbol%27=~Berserk~
-%atsymbol%26=~Sang brûlant de Beltyn
+@28=~Émotion, courage~
+@27=~Berserk~
+@26=~Sang brûlant de Beltyn
 (Nécromancie)
 Niveau : 4
 Portée : champ visuel du lanceur
@@ -1143,8 +1143,8 @@ Temps d'incantation : 4
 Zone d'effet : 1 créature
 Jet de sauvegarde : annule
 Le sort fait brûler le sang de la cible, ce qui lui inflige 3d4 points de dégâts par round et rend la victime folle de douleur. Chaque round, la victime a droit à un jet de sauvegarde contre les sorts (à -3). Dès qu'elle en réussit un, le sort cesse de faire effet. Il ne fonctionne pas contre les morts-vivants ou les créatures natives des autres plans qui n'ont pas de sang dans les veines (comme les élémentaires). Si la cible résiste au feu, cela réduit ou annule les dégâts provoqués par le sort.~
-%atsymbol%25=~Sang brûlant de Beltyn~
-%atsymbol%24=~Lance de destruction
+@25=~Sang brûlant de Beltyn~
+@24=~Lance de destruction
 (Évocation)
 Niveau : 3
 Portée : 30 mètres
@@ -1153,9 +1153,9 @@ Temps d'incantation : 3
 Zone d'effet : spéciale
 Jet de sauvegarde : demi-dégâts
 Ce sort fait apparaître une lance de force partant du doigt du personnage et pouvant être lancée jusqu'à 30 mètres. Toute créature touchée par le rayon d'énergie subit 5d4 points de dégâts, +2 par niveau du magicien (jusqu'à un maximum de +30). Un jet de sauvegarde réussi contre les sorts réduit les dégâts de moitié.~
-%atsymbol%23=~Lance de destruction~
-%atsymbol%22=~Étourdi(e)~
-%atsymbol%21=~Lance de glace
+@23=~Lance de destruction~
+@22=~Étourdi(e)~
+@21=~Lance de glace
 (Invocation)
 Niveau : 3
 Portée : champ visuel du lanceur
@@ -1164,9 +1164,9 @@ Temps d'incantation : 3
 Zone d'effet : 1 créature
 Jet de sauvegarde : spécial
 Ce sort projette une lance de glace sur la cible choisie. Elle touche automatiquement, inflige 5d6 points de dégâts et oblige la victime à réussir un jet de sauvegarde contre les sorts pour ne pas être étourdie pendant 3 rounds.~
-%atsymbol%20=~Lance de glace~
-%atsymbol%19=~Modification de la dextérité~
-%atsymbol%18=~Grâce féline
+@20=~Lance de glace~
+@19=~Modification de la dextérité~
+@18=~Grâce féline
 (Transmutation)
 Niveau : 2
 Portée : contact
@@ -1175,10 +1175,10 @@ Temps d'incantation : 2
 Zone d'effet : 1 créature
 Jet de sauvegarde : aucun
 Ce sort augmente la Dextérité du sujet en fonction de la classe de ce dernier : 1d8 points pour un voleur, 1d6 points pour un guerrier ou un mage et 1d4 points pour un prêtre. Grâce féline ne permet pas d'avoir plus de 20 en Dextérité.~
-%atsymbol%17=~Grâce féline~
-%atsymbol%16=~Bâton décuplé~
-%atsymbol%15=~Bâton décuplé~
-%atsymbol%14=~Bâton décuplé
+@17=~Grâce féline~
+@16=~Bâton décuplé~
+@15=~Bâton décuplé~
+@14=~Bâton décuplé
 (Invocation)
 Niveau : 2
 Portée : personnelle
@@ -1187,9 +1187,9 @@ Temps d'incantation : 2
 Zone d'effet : le lanceur
 Jet de sauvegarde : aucun
 Ce sort fait apparaître un bâton d'énergie dans la main du magicien. Il est considéré comme une arme magique infligeant 1d6 points de dégâts par coup et pouvant toucher les créatures comme s'il était une arme +1. Mais il reste un bâton, que son utilisateur doit savoir manier pour ne pas encourir de pénalité à l'attaque. Au premier coup porté, le bâton a également la possibilité d'absorber 1d2 points de vie de la cible, qui sont aussitôt transférés au mage, mais uniquement pour le soigner (pas pour augmenter ses points de vie au-dessus du maximum).~
-%atsymbol%13=~Bâton décuplé~
-%atsymbol%12=~<NO TEXT>~
-%atsymbol%11=~Nuée de boules de neige de Snilloc
+@13=~Bâton décuplé~
+@12=~<NO TEXT>~
+@11=~Nuée de boules de neige de Snilloc
 (Invocation)
 Niveau : 2
 Portée : champ visuel du lanceur
@@ -1198,13 +1198,13 @@ Temps d'incantation : 2
 Zone d'effet : 4,50 mètres de rayon
 Jet de sauvegarde : demi-dégâts
 Ce sort fait apparaître un déluge de boules de neige à partir du point choisi par le magicien. Ces projectiles touchent toutes les créatures prises dans la zone d'effet et leur infligent 1d3 points de dégâts de froid par niveau du personnage, jusqu'à un maximum de 8d3 au niveau 8. Contre les créatures à base de feu (ou qui l'utilisent), le sort cause 1d6 points de dégâts de froid par niveau, jusqu'à un maximum de 8d6 au niveau 8.~
-%atsymbol%10=~<Invalid Strref 9999999>~
-%atsymbol%9=~Nuée de boules de neige de Snilloc~
-%atsymbol%8=~L'Œil de l'esprit bloque un effet magique et se dissipe.~
-%atsymbol%7=~L'Œil de l'épée bloque un effet magique et se dissipe.~
-%atsymbol%6=~L'Œil du mage bloque un effet magique et se dissipe.~
-%atsymbol%5=~L'Œil du venin bloque un effet magique et se dissipe.~
-%atsymbol%4=~L'Œil de l'âme bloque un effet magique et se dissipe.~
-%atsymbol%3=~L'Œil de la résistance bloque un effet magique et se dissipe.~
-%atsymbol%2=~L'Œil de la pierre bloque un effet magique et se dissipe.~
-%atsymbol%1=~Ce sort soigne le personnage de 11 points de vie.~
+@10=~<Invalid Strref 9999999>~
+@9=~Nuée de boules de neige de Snilloc~
+@8=~L'Œil de l'esprit bloque un effet magique et se dissipe.~
+@7=~L'Œil de l'épée bloque un effet magique et se dissipe.~
+@6=~L'Œil du mage bloque un effet magique et se dissipe.~
+@5=~L'Œil du venin bloque un effet magique et se dissipe.~
+@4=~L'Œil de l'âme bloque un effet magique et se dissipe.~
+@3=~L'Œil de la résistance bloque un effet magique et se dissipe.~
+@2=~L'Œil de la pierre bloque un effet magique et se dissipe.~
+@1=~Ce sort soigne le personnage de 11 points de vie.~
