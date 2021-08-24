@@ -279,7 +279,7 @@ COPY_EXISTING ~wand10.itm~ ~override~
 // iwdee bug: use 176 for movement speed, 321 needs save  
 COPY_EXISTING ~%WIZARD_SUFFOCATE%.spl~ ~override~ 
   LPF ALTER_EFFECT INT_VAR match_opcode = 321 savingthrow = BIT0 END
-  LPF ALTER_EFFECT INT_VAR match_opcode = 126 opcode = 176 
+  LPF ALTER_EFFECT INT_VAR match_opcode = 126 opcode = 176 END
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
