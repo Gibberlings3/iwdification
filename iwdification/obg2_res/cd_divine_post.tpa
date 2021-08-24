@@ -198,18 +198,25 @@ COPY_EXISTING ~idmold.pro~ ~override~
 // IWDEE bug: tie mold touch portrait to disease effect; 
 COPY_EXISTING ~%CLERIC_MOLD_TOUCH%.spl~  ~override~
               ~%CLERIC_MOLD_TOUCH%b.spl~ ~override~
-  LPF CLONE_EFFECT  INT_VAR match_parameter2 = 55 parameter2 = 68 END // prevent spread to someone who already has mold (matches 324 on main, 318 on sub)
-  LPF DELETE_EFFECT INT_VAR match_opcode = 142 special = 7 END // delete portrait icons because...
+  LPF DELETE_EFFECT INT_VAR match_opcode = 142 END // delete portrait icons because...
   LPF ALTER_EFFECT  INT_VAR match_opcode =  78 special = 7 END  // we're attaching them directly to the disease effect
   LPF ALTER_EFFECT  INT_VAR match_opcode =  78 match_parameter2 = 12 timing = 3 duration = 0 END  // we're attaching them directly to the disease effect
 
 // IWDEE bug: tie mold touch portrait to disease effect; 
 COPY_EXISTING ~%CLERIC_MOLD_TOUCH%.spl~  ~override~
+  
+  LPF ALTER_EFFECT  INT_VAR match_opcode =  78 match_duration = 18 opcode = 12 parameter1 = 0 parameter2 = (64 << 16) 
+    dicenumber = 1 dicesize = 6 special = 0 END // change final mold touch burst to 1d6 magic damage
+  LPF CLONE_EFFECT  INT_VAR match_opcode = 324 match_parameter2 = 55 parameter2 = 68 END // prevent spread to someone who already has mold
   LPF CLONE_EFFECT  INT_VAR match_opcode =  78 match_parameter1 = 2 opcode = 206 parameter1 = 0 parameter2 = 0 
     timing = 0 duration = 1 savingthrow = BIT0 STR_VAR resource = EVAL ~%CLERIC_MOLD_TOUCH%~ END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 174 resist_dispel = 3 END  // always play audio/visual
+  LPF ALTER_EFFECT INT_VAR match_opcode = 215 resist_dispel = 3 END  // always play audio/visual
 
 // IWDEE bug: tie mold touch portrait to disease effect; 
 COPY_EXISTING ~%CLERIC_MOLD_TOUCH%b.spl~ ~override~
+  WRITE_BYTE 0x1c 2 // spell type
+  WRITE_BYTE 0x25 8 // subspell should have proper school set              
 
 // iwdee bug: blood rage can avoid fatigue with a re-cast - clone 321 into 206 then delete it; also block ops 18 and 98
 COPY_EXISTING ~%CLERIC_BLOOD_RAGE%.spl~  ~override~
@@ -1196,7 +1203,7 @@ opcodes to oBG2 counterparts.
 /////                                                  \\\\\ 
   
 COPY_EXISTING ~%CLERIC_MOLD_TOUCH%.spl~ ~override~
-  PATCH_FOR_EACH op IN 78 206 318 328 BEGIN
+  PATCH_FOR_EACH op IN 12 78 206 318 328 BEGIN
     LPF DELETE_EFFECT INT_VAR match_opcode = op END
   END  
   LPF CLONE_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdix326 END // race = golem
