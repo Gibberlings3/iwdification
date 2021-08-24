@@ -218,14 +218,21 @@ COPY_EXISTING ~MS6SALC.cre~ ~override~ // frost salamander from MS6
   
 COPY_EXISTING ~ss1liz3.cre~ ~override~ // lizard man
               ~ss1liz4.cre~ ~override~ // lizard man
+              ~ss2liz5.cre~ ~override~ // lizard man
+              ~ss2liz6.cre~ ~override~ // lizard man
+              ~ss2liz7.cre~ ~override~ // lizard man
+  LPF DELETE_CRE_ITEM STR_VAR item_to_delete = ~##s1-12~ END // nonexistant, and in helm slot (3,4)
+  LPF DELETE_CRE_ITEM STR_VAR item_to_delete = ~#s1-12~ END  // right weapon, but in helm slot (5-7)
+  ADD_CRE_ITEM ~#s1-12~ #0 #0 #0 ~NONE~ WEAPON1 EQUIP        // add back as equipped weapon
+  READ_LONG 0x2b8 slot_off
+  WRITE_SHORT (slot_off + 0x4e) 0 // invalid weapon ability selected
+  
+COPY_EXISTING ~ss1liz3.cre~ ~override~ // lizard man
+              ~ss1liz4.cre~ ~override~ // lizard man
   LPF DELETE_CRE_ITEM STR_VAR item_to_delete = ~##s1-12~ END // nonexistant, and in helm slot
   ADD_CRE_ITEM ~#s1-12~ #0 #0 #0 ~NONE~ WEAPON1 EQUIP        // add back as equipped weapon
-
-COPY_EXISTING ~SS2liz5.cre~ ~override~ // lizard man
-              ~SS2liz6.cre~ ~override~ // lizard man
-              ~SS2liz7.cre~ ~override~ // lizard man
-  LPF DELETE_CRE_ITEM STR_VAR item_to_delete = ~#s1-12~ END // right weapon, but in helm slot
-  ADD_CRE_ITEM ~#s1-12~ #0 #0 #0 ~NONE~ WEAPON1 EQUIP       // add back as equipped weapon
+  READ_LONG 0x2b8 slot_off
+  WRITE_SHORT (slot_off + 0x4e) 0 // invalid weapon ability selected
 
 // clone IWD references into BG2; remove all bg2 shapeshifting references
 COPY_EXISTING ~%WIZARD_ANTIMAGIC_SHELL%.spl~ ~override~
