@@ -29,8 +29,7 @@ always.tph
 elemental_summoning.tpa
   Adjusted GAME_IS check around line 27 as it would use BG string values for oBG2. 
   Also ran the EFF swap through an ALTER_EFFECT because the text replacement wasn't 
-  catching the higher-level spair2 and spair3 references. Replaced the R_T for the
-  lizardmen weapon with a REPLACE_CRE_ITEM as it was FUBAR'ing the entire inventory.
+  catching the higher-level spair2 and spair3 references. 
   
 install_iwd_spell_resources.tpa
   Added new iwdification_extra variable that will scatter spell scrolls throughout the 
@@ -55,6 +54,11 @@ divine_spells_postproduction.tpa
   EE-game checks. The Entropy Shield/Flame Strike modification was deleting
   all effects in the subspell instead of leaving the damage opcodes, so I've
   reworked it slightly using old school DELETE_EFFECTs. 
+  
+tra/en_us/dw_iwdspells_divine.tra
+  Added @8, a new descript for Symbol, Pain. Like (most) symbol spells, it
+  actually sets a glyph trap which waits for a victim, not just going into
+  effect immediately. The AoE radius was also corrected.   
 
 tp2
   I outright remove the spells that won't work on oBG2 by creating an alternate 

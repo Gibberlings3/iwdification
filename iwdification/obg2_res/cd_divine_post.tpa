@@ -250,8 +250,69 @@ COPY_EXISTING ~%CLERIC_SMASHING_WAVE%.spl~ ~override~
     
 // iwdee fix: weird durations for 318/324s
 COPY_EXISTING ~%CLERIC_CLOUD_OF_PESTILENCE%.spl~ ~override~
-  LPF ALTER_EFFECT INT_VAR match_duration = 85 duration = 0 END 
+  LPF ALTER_EFFECT INT_VAR match_duration = 85 duration = 0 END  
+
+//Symbol Pain: The description says the symbol is activated the instant the spell is cast when in reality it's a glyph projectile that waits until an enemy gets too close.
+// also listed AoE is incorrect
+WITH_TRA ~%scsroot%/%iwdspells_trabase%/%LANGUAGE%/dw_iwdspells_divine.tra~ BEGIN
+
+  PRINT ~path is %scsroot%/%iwdspells_trabase%/%LANGUAGE%/dw_iwdspells_divine.tra~
+
+  COPY_EXISTING ~%CLERIC_SYMBOL_PAIN%.spl~ ~override~
+    SAY 0x50 @8
+    
+END    
+
+// Symbol Hopelessness: idpro277.pro has its secondary projectile incorrectly set. It should look for 230-Icewind_Glyph_Hit (ICGHIT). 
+COPY_EXISTING ~idpro277.pro~ ~override~
+  WRITE_SHORT 0x214 230 // icghit
   
+/////                                                  \\\\\
+///// cosmetic suggestions - thanks, Galactygon!       \\\\\
+/////                                                  \\\\\
+
+// Curse: Should use BG-style projectile Sparkle_Area_Purple_Not_Party (SPARPUNP.pro)  
+COPY_EXISTING ~%CLERIC_CURSE%.spl~ ~override~
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = 171 END   
+
+// I'd remove the glow and do a recolor of SPFLMBLD.bam using the blue palette of OHDSTREE.bam (BG2EE).
+COPY ~%obg2_res_path%/cdmoon.bam~  ~override~  
+COPY_EXISTING ~%CLERIC_MOONBLADE%.spl~ ~override~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 215 target = 1 power = 3 timing = 1 resist_dispel = 1 duration = 3 STR_VAR resource = cdmoon END   
+
+// MOONBLA.itm needs to use BG style visuals (invocation/red SHEARTH, glow)   
+COPY_EXISTING ~moonbla.itm~ ~override~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 9 match_parameter2 = 1966100 opcode = 8 parameter2 = 20 END  
+  LPF ALTER_EFFECT INT_VAR match_opcode = 9 match_parameter2 = 1638421 opcode = 8 parameter2 = 21 END  
+  LPF ALTER_EFFECT INT_VAR match_opcode = 9 match_parameter2 = 1310736 opcode = 8 parameter2 = 16 END  
+  LPF ALTER_EFFECT INT_VAR match_opcode = 215 STR_VAR resource = shearth END  
+
+// Unfailing Endurance: Should be using BG-style necromancy/aqua SHAIR and glow.  
+COPY_EXISTING ~%CLERIC_UNFAILING_ENDURANCE%.spl~ ~override~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 215 STR_VAR resource = shair END   
+
+// Star Metal Cudgel: SMCUDGE.itm should use BG style visuals (conjuration/purple SHEARTH, glow) 
+COPY_EXISTING ~smcudge.itm~ ~override~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 9 match_parameter2 = 1179668 opcode = 8 parameter2 = 20 END  
+  LPF ALTER_EFFECT INT_VAR match_opcode = 9 match_parameter2 = 1572885 opcode = 8 parameter2 = 21 END  
+  LPF ALTER_EFFECT INT_VAR match_opcode = 9 match_parameter2 = 1966096 opcode = 8 parameter2 = 16 END  
+  LPF ALTER_EFFECT INT_VAR match_opcode = 215 STR_VAR resource = shearth END  
+
+// Mass Cause Light Wounds: Should use projectile "Sparkle_Area_Ice_Not_Party" (SPARICNP.pro). Visuals should match other cause wounds (i.e. SERIOUS.itm, CRITICAL.itm, HARM.itm)   
+COPY_EXISTING ~%CLERIC_MASS_CAUSE_LIGHT_WOUNDS%.spl~ ~override~
+  LPF ALTER_SPELL_HEADER INT_VAR projectile = 172 END   
+
+// Entropy Shield: Visual should be green/abjuration SHWATER and play EFF_P01 when spell is cast. Status icon shows "Flaming Fists" 
+COPY_EXISTING ~%CLERIC_ENTROPY_SHIELD%.spl~ ~override~
+  LPF CLONE_EFFECT INT_VAR match_opcode = 215 opcode = 174 duration = 2 STR_VAR match_resource = abjurh resource = eff_p01 END 
+  LPF ALTER_EFFECT INT_VAR match_opcode = 215 STR_VAR match_resource = abjurh resource = SHWATER END  
+  
+// Wither: I'd replace the HARMH.vvc with SPCAUSEW.vvc (like the other Harm/Cause Wounds spells in BG2).
+COPY_EXISTING ~%CLERIC_WITHER%.spl~ ~override~  
+  LPF ALTER_EFFECT INT_VAR match_opcode = 215 STR_VAR match_resource = harmh resource = spcausew END  
+
+// smashing wave, spiritual wrath in EE-only section below
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -266,7 +327,14 @@ ACTION_IF enhanced_edition BEGIN
        ~%obg2_res_path%/tra_56.wav~   ~override~                               // for idpro302, smashing wave
        ~%obg2_res_path%/tra_59.wav~   ~override~                               // for idpro312, spiritual wrath
        ~%obg2_res_path%/sppr616a.bam~ ~override/%CLERIC_SPIRITUAL_WRATH%a.bam~ // spiritual wrath bam
-  
+       ~%obg2_res_path%/swrathu.bam~  ~override~                               // spiritual wrath trailing animation
+       ~%obg2_res_path%/0103.ini~     ~override~                               // spiritual wrath trailing animation
+       ~%obg2_res_path%/swavet.bam~   ~override~                               // smashing wave trailing animation
+       ~%obg2_res_path%/0104.ini~     ~override~                               // smashing wave trailing animation
+       
+  APPEND ~animate.ids~ ~0x0103 SPIRITUAL_WRATH~ UNLESS ~^0x0103~  
+  APPEND ~animate.ids~ ~0x0104 SMASHING_WAVE~   UNLESS ~^0x0104~        
+       
   ACTION_IF ((MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~120~) AND (FILE_EXISTS ~iwdification/evasion/evasion_divine.2da~)) BEGIN
 
     INCLUDE ~iwdification/evasion/evasion.tpa~
@@ -300,6 +368,10 @@ ACTION_IF enhanced_edition BEGIN
   // IWDEE bug 321 should be subject to same MR check as AC effect
   COPY_EXISTING ~%CLERIC_ALICORN_LANCE%.spl~ ~override~
     LPF ALTER_EFFECT INT_VAR match_opcode = 321 resist_dispel = 1 END
+    
+  // Spiritual Wrath: Missing red/invocation SHAIR visual to accompany the glow. Sound not necessary since the damage sound takes over. Also, the child projectile is missing its smoke/trail animation. 
+  COPY_EXISTING ~%CLERIC_SPIRITUAL_WRATH%.spl~ ~override~    
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 215 target = 2 power = 6 timing = 1 resist_dispel = 2 STR_VAR resource = spair END
   
   // portrait icons
   WITH_TRA ~%resource_loc%/tra/%EE_LANGUAGE%/iwdspells.tra~ BEGIN
@@ -370,6 +442,13 @@ ACTION_IF enhanced_edition BEGIN
       LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 203 parameter2 = icon END   
       
   END   
+  
+  // make extra planars immune to harm
+  COPY_EXISTING ~harm.itm~ ~override~
+    LPF ADD_ITEM_EFFECT INT_VAR insert_point = 0 type = 1 opcode = 324 target = 2 parameter2 = 55 resist_dispel = 2 STR_VAR resource = EVAL ~%SOURCE_RES%~ END
+    PATCH_FOR_EACH race IN 121 139 145 147 153 156 157 158 159 169 BEGIN
+      LPF CLONE_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 55 parameter1 = race parameter2 = 104 END
+    END  
 
 END ELSE BEGIN
 

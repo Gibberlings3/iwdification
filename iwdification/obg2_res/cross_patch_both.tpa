@@ -111,8 +111,12 @@ ACTION_IF ((NUM_a524 > 0) AND (NUM_d325 > 0)) BEGIN // cloudburst prot/remove sh
   COPY_EXISTING ~sppr%NUM_d325%.spl~ ~override~
     PATCH_IF enhanced_edition BEGIN
       LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 2 power = 3 timing = 1 resist_dispel = 2 STR_VAR resource = EVAL ~spwi%NUM_a524%~ END
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 2 power = 3 timing = 1 resist_dispel = 2 STR_VAR resource = EVAL ~spwi%NUM_a524%b~ END
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 2 power = 3 timing = 1 resist_dispel = 2 STR_VAR resource = EVAL ~spwi%NUM_a524%c~ END
     END ELSE BEGIN
       LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 206 target = 2 power = 3 duration = 6 resist_dispel = 2 STR_VAR resource = EVAL ~spwi%NUM_a524%~ END
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 206 target = 2 power = 3 duration = 6 resist_dispel = 2 STR_VAR resource = EVAL ~spwi%NUM_a524%b~ END
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 206 target = 2 power = 3 duration = 6 resist_dispel = 2 STR_VAR resource = EVAL ~spwi%NUM_a524%c~ END
     END
     BUT_ONLY
 
