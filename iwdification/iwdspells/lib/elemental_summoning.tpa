@@ -1,0 +1,191 @@
+DEFINE_ACTION_FUNCTION elemental_summoning
+BEGIN
+    LAF make_label STR_VAR label=dw#elemental_summoning END
+
+	LAM data_spells_by_level
+
+	///////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////
+	// Load various name variables
+	///////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////
+
+	// this is the filename for the water elemental CRE
+
+	OUTER_SPRINT water_cre es8watr
+
+	// this points to the "Conjure Lesser [x] Elemental" strings (we have to introduce water)
+	ACTION_IF !GAME_IS "bgee" BEGIN
+		ACTION_DEFINE_ASSOCIATIVE_ARRAY lesser_elem_name_map BEGIN
+			AIR=>24827
+			EARTH=>24829
+			FIRE=>24830
+		END
+	END ELSE BEGIN // BGEE is special case
+		ACTION_DEFINE_ASSOCIATIVE_ARRAY lesser_elem_name_map BEGIN
+			AIR=>26540
+			EARTH=>26542
+			FIRE=>26530
+		END
+	END
+	OUTER_SET $lesser_elem_name_map("WATER")=RESOLVE_STR_REF (@7)
+     
+     // this points to the names for the various sorts of water elemental
+
+    COPY_EXISTING "%water_cre%.cre" "%workspace%"
+        SET $water_elem_names("STANDARD")=LONG_AT NAME1
+    BUT_ONLY
+	OUTER_SET $water_elem_names("GREATER")=73479
+    OUTER_SET $water_elem_names("ELDER")= RESOLVE_STR_REF (@8)
+    OUTER_SET $water_elem_names("LESSER")= RESOLVE_STR_REF (@9)
+     
+    // this is the "conjure water elemental" string
+     
+    COPY_EXISTING "%WIZARD_CONJURE_LESSER_WATER_ELEMENTAL%.spl" "%workspace%"
+        SET conjure_water_strref=LONG_AT NAME1
+    BUT_ONLY
+
+	///////////////////////////////////////////////////////////////
+	// remove elemental-summoning overlay from summoned creatures
+	///////////////////////////////////////////////////////////////
+
+	cre.edit[elairsu2 elairsu3 elairsu4 elearsu1 elearsu2 elearsu3 elearsu4 elfirsu1 elfirsu2 elfirsu3 elfirsu4|allow_missing:i=1][m.cre_swap_scripts{wizelsum=>"" wizelsu2=>""}]
+
+	///////////////////////////////////////////////////////////////
+	// change summoning effects so that allegiance matches summoner
+	///////////////////////////////////////////////////////////////
+
+	eff.edit[speart1 speart2 speart3 splesear spfir1 spfir2 spfir3 splesfir spair1 spair2 spair3 splesair|allow_missing:i=1][m_parameter2=0]
+  
+	///////////////////////////////////////////////////////////////
+	// edit the L6 spells to change the descriptions and remove the mental-battle opcodes
+	///////////////////////////////////////////////////////////////
+
+	array.new[elem_desc_array][EARTH=>3 FIRE=>4 AIR=>5]
+	
+	ACTION_PHP_EACH elem_desc_array AS k=>v BEGIN
+		OUTER_SPRINT spl EVAL "%WIZARD_CONJURE_%k%_ELEMENTAL%"
+		OUTER_SPRINT scrl EVAL "%WIZARD_CONJURE_%k%_ELEMENTAL_SCROLL%"
+		spl.edit["%spl%"]
+		[
+			m.ab_fx.delete{s_opcode=165 OR s_opcode=215 OR s_opcode=142}
+			m_description:="t_%v%"		
+		]
+		itm.edit["%scrl%"][m_identified_description:="%v%"]
+	END
+	
+	///////////////////////////////////////////////////////////////
+	// rename the L5 spells back to Lesser
+	///////////////////////////////////////////////////////////////
+
+	ACTION_FOR_EACH key IN EARTH AIR FIRE WATER BEGIN
+		OUTER_SPRINT spl EVAL "%WIZARD_CONJURE_LESSER_%key%_ELEMENTAL%"
+		OUTER_SPRINT scrl EVAL "%WIZARD_CONJURE_LESSER_%key%_ELEMENTAL_SCROLL%"
+		OUTER_SET new_name_strref=$lesser_elem_name_map("%key%")
+		ACTION_GET_STRREF new_name_strref new_name
+		spl.edit["%spl%"]
+		[
+			m_description=m_description.patch{REPLACE_TEXTUALLY "%m_name%" "%new_name%"}
+			m_name:="%new_name%"
+		]
+		itm.edit["%scrl%"]
+		[
+			m_identified_description=m_identified_description.patch{REPLACE_TEXTUALLY "%m_identified_name%" "%new_name%"}
+			m_identified_name:="%new_name%"		
+		]
+    END
+
+	///////////////////////////////////////////////////////////////
+	// clone air-elemental summoning to make a water version
+	///////////////////////////////////////////////////////////////
+
+	// the icons
+	
+	ACTION_FOR_EACH letter IN A B C BEGIN
+		COPY_EXISTING "%WIZARD_CONJURE_LESSER_WATER_ELEMENTAL%%letter%.bam" "%workspace%/water_icon%letter%.bam"
+	END
+
+	// the spell
+	
+	WIZARD_CONJURE_WATER_ELEMENTAL,WIZARD_CONJURE_WATER_ELEMENTAL_SCROLL=spl.copy["%WIZARD_CONJURE_AIR_ELEMENTAL%"=>WIZARD_CONJURE_WATER_ELEMENTAL|icon_base_name=water_icon icon_path="%workspace%"]
+	[
+		m_name-strref=conjure_water_strref
+		m_description:=@6
+		REPLACE_TEXTUALLY SPAIR1 DW#WAT1 (8)
+		REPLACE_TEXTUALLY SPAIR2 DW#WAT2 (8)
+		REPLACE_TEXTUALLY SPAIR3 DW#WAT3 (8)
+	]
+	
+    // scroll placement
+	
+    OUTER_SPRINT scroll_old "%WIZARD_CONJURE_AIR_ELEMENTAL_SCROLL%" // only bother if it exists
+    ACTION_IF FILE_EXISTS_IN_GAME "%scroll_old%.itm" BEGIN
+		COPY_EXISTING_REGEXP GLOB ".*\.sto" override
+            PATCH_IF INDEX_BUFFER ("%scroll_old%")>=0 BEGIN
+				LPF struct_read RET_ARRAY m=struct END
+				LPF struct_clone 
+					STR_VAR 
+						type=item 
+						struct=m 
+						match="~%s_resref%~==%scroll_old%" 
+						patch="s_resref:=%scroll_new%"
+					RET_ARRAY m=struct END
+				LPF struct_write STR_VAR struct=m END
+			END
+		BUT_ONLY
+	END
+	// the EFF files
+
+	COPY_EXISTING "SPAIR1.EFF" "override/DW#WAT1.EFF" WRITE_ASCIIE 0x30 DW#WATE2 (8)
+	COPY_EXISTING "SPAIR2.EFF" "override/DW#WAT2.EFF" WRITE_ASCIIE 0x30 DW#WATE3 (8)
+	COPY_EXISTING "SPAIR3.EFF" "override/DW#WAT3.EFF" WRITE_ASCIIE 0x30 DW#WATE4 (8)
+
+	// the CRE files
+
+	// get the CLASS and ANIMATION entries from the water elemental; rename while we're at it
+
+	COPY_EXISTING "%water_cre%.cre" override
+		READ_LONG 0x28 anim
+        READ_BYTE 0x273 class
+		SET temp=$water_elem_names("LESSER")
+		WRITE_LONG 0x8 temp
+		WRITE_LONG 0xc temp
+    BUT_ONLY
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY air_elem BEGIN
+        STANDARD=>ELAIRSU2
+        GREATER=>ELAIRSU3
+        ELDER=>ELAIRSU4
+    END
+	ACTION_IF !FILE_EXISTS_IN_GAME "elairsu4.cre" BEGIN
+		COPY "%MOD_FOLDER%/%component_loc%/resource/elairsu4.cre" override
+	END
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY water_elem BEGIN
+        STANDARD=>DW#WATE2
+        GREATER=>DW#WATE3
+        ELDER=>DW#WATE4
+    END
+    ACTION_PHP_EACH air_elem AS key=>oldcre BEGIN
+        OUTER_SPRINT newcre $water_elem("%key%")
+        OUTER_SET name=$water_elem_names("%key%")
+        COPY_EXISTING "%oldcre%.cre" "override/%newcre%.cre"
+            WRITE_LONG 0x28 anim
+            WRITE_BYTE 0x273 class
+            WRITE_LONG NAME1 name
+            WRITE_LONG NAME2 name
+        BUT_ONLY
+    END
+	
+	///////////////////////////////////////////////////////////////
+	// install Cam's replacement icons for the Lesser series
+	///////////////////////////////////////////////////////////////
+
+	ACTION_BASH_FOR "%MOD_FOLDER%/%component_loc%/resource/elem_icons" "SPWI.*\.bam" BEGIN
+		COPY "%BASH_FOR_FILESPEC%" override
+	END
+	ACTION_FOR_EACH letter IN A B C BEGIN
+		COPY "%MOD_FOLDER%/%component_loc%/resource/elem_icons/clwater%letter%.bam" "override/%WIZARD_CONJURE_LESSER_WATER_ELEMENTAL%%letter%.bam"
+	END
+
+
+END
+

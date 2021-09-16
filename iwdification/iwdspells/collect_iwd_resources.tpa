@@ -1,0 +1,128 @@
+DEFINE_ACTION_FUNCTION collect_iwd_resources STR_VAR version=0 BEGIN
+
+	//sanity
+	ACTION_IF !GAME_IS "iwdee" BEGIN
+		FAIL "collect_iwd_resources must be run on IWD:EE"
+	END
+
+	INCLUDE "%MOD_FOLDER%/%component_loc%/lib/move_spell_resources.tph"
+
+	// first install IWD spell fixes
+
+	INCLUDE "%MOD_FOLDER%/%component_loc%/lib/iwdfix.tph"
+	LAF iwd_spell_fixes END
+
+	// resource remappings
+	
+	LAF iwd_resource_remaps END
+	
+	// main resource collection
+	
+	OUTER_SPRINT resource_loc "copyover"
+	OUTER_SPRINT location data
+	OUTER_SPRINT do_not_copy "do_not_copy_to_bg2ee.2da"
+	OUTER_SPRINT ids_remaps "ids_remaps_iwdee.2da"
+	OUTER_SPRINT dest_spell_ids "bg2ee_spell.ids"
+	
+	MKDIR "%resource_loc%"
+
+	// blank this for clean reinstall
+	
+	COPY ".../stratagems-inline/blank" "%resource_loc%/strref_lookup.txt"
+
+	// bard songs
+
+	LAF get_spell_resources
+		STR_VAR file=iwd_bard.2da
+				prefix=bard
+				location
+				do_not_copy
+				ids_remaps
+				dest_spell_ids
+				resource_loc
+				iter_start="bard_spell_base.txt"
+	END
+		
+
+	// arcane spells
+	
+	LAF get_spell_resources
+		STR_VAR file=iwd_arcane.2da
+				prefix=arcane
+				location
+				do_not_copy
+				ids_remaps
+				dest_spell_ids
+				resource_loc
+	END
+
+	// divine spells
+	
+	LAF get_spell_resources
+		STR_VAR file=iwd_divine.2da
+				prefix=divine
+				location
+				do_not_copy
+				ids_remaps
+				dest_spell_ids
+				resource_loc
+	END
+	
+
+   // animations
+
+   LAF anim_collect STR_VAR resource_loc="%resource_loc%/anim" animation=beetle_black END
+
+   // icons
+
+   // LAF get_iwd_icons STR_VAR resource_loc END
+
+   // copy-only spell BAMs
+
+   LAF get_spell_bams STR_VAR file="bam_copy_arcane.2da" location resource_loc END
+   LAF get_spell_bams STR_VAR file="bam_copy_divine.2da" location resource_loc END
+
+	// make sure all the strrefs used by oBG2 icons are logged (probably they all are anyway, but
+	// let's play it safe)
+	
+	LAF 2da_read STR_VAR file=obg2_icons.2da location=data case=mixed RET_ARRAY obg2_icons=array icon_rows=rows END
+	ACTION_PHP_EACH icon_rows AS row=>discard BEGIN
+		OUTER_SET arguments=$obg2_icons("%row%" "strref")
+		LAF log_strref STR_VAR arguments END
+	END	
+
+	// we specifically need strref 19397, which is the 'cure moderate wounds' store description
+	
+	LAF log_strref STR_VAR arguments=19397 END
+
+   // TRA entries
+
+   LAF process_tra_entries_all STR_VAR resource_loc library_path="iwdspells/lib" END
+
+END
+
+DEFINE_ACTION_FUNCTION iwd_resource_remaps BEGIN
+
+	// misc_01c.wav => #isc_01c.wav
+		
+	COPY_EXISTING "misc_01c.wav" "override/#isc_01c.wav"
+	ACTION_FOR_EACH file IN
+	"#SHROUD.VVC" "MSUMM1H.VVC" "SOFLAMC.VVC" "SPGFLSH1.VVC" 
+	BEGIN
+		COPY_EXISTING "%file%" override
+			REPLACE_TEXTUALLY "misc_01c" "#isc_01c"
+	END
+	
+	//s1-12.itm => #s1-12.itm
+	
+	COPY_EXISTING "s1-12.itm" "override/#s1-12.itm"
+	ACTION_FOR_EACH cre IN
+	beetbomb gisbomb ms2bbtl ms2lizm rndbomb ss1liz3 ss1liz4 werewodr
+	BEGIN
+		COPY_EXISTING "%cre%.cre" override
+			REPLACE_TEXTUALLY "s1-12" "#s1-12" (8)
+	END
+	
+	
+
+END
