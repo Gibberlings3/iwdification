@@ -4,8 +4,8 @@ DEFINE_ACTION_FUNCTION cd_arcane_post BEGIN
   
   ACTION_IF enhanced_edition BEGIN
     
-    COPY ~%MOD_FOLDER%/%component_loc%/lib/resource/0105.ini~    ~override~ // lance of disruption animation
-         ~%MOD_FOLDER%/%component_loc%/lib/resource/lodisru.bam~ ~override~
+    COPY ~%MOD_FOLDER%/%component_loc%/resource/0105.ini~    ~override~ // lance of disruption animation
+         ~%MOD_FOLDER%/%component_loc%/resource/lodisru.bam~ ~override~
     
     APPEND ~animate.ids~ ~0x0105 LANCE_OF_DISRUPTION~   UNLESS ~^0x0105~ 
     

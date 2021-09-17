@@ -1,5 +1,5 @@
 BACKUP ~iwdification/backup~ // location to store files for uninstall purposes
-SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=185~ 
+SUPPORT ~https://www.gibberlings3.net/forums/forum/185-iwdification/~ 
 
 VERSION ~Release Candidate 2~
 
@@ -12,18 +12,11 @@ ALWAYS
   ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN FAIL @999 END // DLC Merger check
 
   ACTION_IF !VARIABLE_IS_SET enhanced_edition THEN BEGIN
-  
-    OUTER_SPRINT scsroot            ~iwdification~
-    OUTER_SPRINT resource_loc       ~iwdification/dw_iwdspells_resource~
-    OUTER_SPRINT iwdspells_data     ~data~
-    OUTER_SPRINT iwdspells_lib      ~lib~
-    OUTER_SPRINT iwdspells_resource ~resource~
-    OUTER_SPRINT sfo_loc            ~sfo~
-    OUTER_SPRINT ssl_loc            ~ssl~
-    OUTER_SPRINT iwdspells_trabase  ~dw_iwdspells_resource/tra~
-    OUTER_SPRINT inifile            ~dw_iwdspells.ini~
-    OUTER_SPRINT obg2_res_path      ~iwdification/obg2_res~
-    OUTER_SET do_not_biff = 1
+
+    // usual SFO loading - usually done in ALWAYS
+    OUTER_SPRINT sfo_library_path "sfo" // the path (relative to your mod directory) to the directory SFO is in. Usually 'sfo'.
+    OUTER_SPRINT sfo_tra_path "languages" // the path (relative to your mod directory) to the directory in which you keep tra files. Usually 'lang' or 'tra'.
+    INCLUDE "%MOD_FOLDER%/%sfo_library_path%/sfo_init.tpc"
   
     OUTER_SET enhanced_edition = 0
   
@@ -45,14 +38,14 @@ END
 
 ASK_EVERY_COMPONENT
 
-LANGUAGE ~English~ ~en_us~ ~iwdification/languages/en_us/setup.tra~               // installer strings
-                           ~iwdification/languages/en_us/game_strings.tra~        // strings for the tlk
+LANGUAGE ~English~ ~english~ ~iwdification/languages/english/setup.tra~               // installer strings
+                             ~iwdification/languages/english/game_strings.tra~        // strings for the tlk
                              
 
-LANGUAGE ~French~ ~fr_fr~ ~iwdification/languages/en_us/setup.tra~        // installer strings
-                          ~iwdification/languages/fr_fr/setup.tra~        // installer strings
-                          ~iwdification/languages/en_us/game_strings.tra~ // strings for the tlk
-                          ~iwdification/languages/fr_fr/game_strings.tra~ // strings for the tlk
+LANGUAGE ~French~ ~french~ ~iwdification/languages/english/setup.tra~        // installer strings
+                           ~iwdification/languages/french/setup.tra~         // installer strings
+                           ~iwdification/languages/english/game_strings.tra~ // strings for the tlk
+                           ~iwdification/languages/french/game_strings.tra~  // strings for the tlk
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -332,7 +325,7 @@ GROUP @994
 
 // first, some general cleanup and fixes to the spells
 COPY_EXISTING ~spwi498.spl~ ~override~ // Black Bear
-	LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = PLYBEAR2 END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = PLYBEAR2 END
   
 // create different weapons for black/brown bears  
 COPY_EXISTING ~plybear1.itm~ ~override/plybear2.itm~ // Black Bear
@@ -368,8 +361,8 @@ ACTION_PHP_EACH cd_poly_self AS params => spell BEGIN
 
   COPY_EXISTING ~%params_0%.itm~ ~override~
     LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 144 target = 1 parameter2 = 7 timing = 2 END
-    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 135 target = 1 timing = 2 STR_VAR resource = EVAL ~%params_1%~ END	
-    BUT_ONLY    	
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 135 target = 1 timing = 2 STR_VAR resource = EVAL ~%params_1%~ END  
+    BUT_ONLY      
 
 END
 
@@ -497,8 +490,6 @@ COPY ~iwdification/bam/blank.bam~         ~override/shacid.bam~
      ~iwdification/wav/eff_m47.wav~       ~override~
      ~iwdification/wav/misc_01c.wav~      ~override~
      ~iwdification/wav/misc_02c.wav~      ~override~
-     
-     
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -509,78 +500,18 @@ COPY ~iwdification/bam/blank.bam~         ~override/shacid.bam~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @3000 DESIGNATED 30
-REQUIRE_PREDICATE FILE_EXISTS ~iwdification/dw_iwdspells_resource/tra/%LANGUAGE%/dw_iwdspells_arcane.tra~ @992
+REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
 GROUP @993
 
-OUTER_SPRINT obg2 ""
-
-ACTION_IF !enhanced_edition BEGIN // don't bother importing spells that won't work for non-ee games
-
-  OUTER_SPRINT obg2 "_obg2"
-  // some of the scripting brought over uses EE-specific commands, so
-  COPY ~%scsroot%/%iwdspells_resource%/dw#msogr.baf~ ~%scsroot%/%iwdspells_resource%/dw#msogr.baf~
-    REPLACE_TEXTUALLY ~!CheckSpellState(Myself,STATE_ENRAGED)~ ~StateCheck(Myself,STATE_BERSERK)~
-    
-  // imported ogremasu has all sorts of CheckSpellState stuff, so ignore it
-  COPY_EXISTING ~ogremasu.bcs~ ~%scsroot%/%iwdspells_resource%/ogremasu.baf~
-    DECOMPILE_BCS_TO_BAF   
-    
-  APPEND ~class.ids~ ~219 ELEMENTAL_WATER~
-
-  COPY ~%resource_loc%/arcane_resrefs.txt~ ~%resource_loc%/arcane_resrefs_obg2.txt~
-    PATCH_IF !enhanced_edition BEGIN
-      PATCH_IF !FILE_EXISTS ~tobex_ini/tobexcore.ini~ BEGIN // cat's grace will work on non-ee, but only with tobex
-        REPLACE_TEXTUALLY ~^WIZARD_CATS_GRACE[ %TAB%]+SP\(WI\|PR\|CL\|IN\)[0-9]+[ %TAB%%LNL%%MNL%%WNL%]+~ ~~
-      END  
-      PATCH_FOR_EACH cdspell IN 
-        WIZARD_SOUL_EATER WIZARD_SEVEN_EYES SEVEN_EYES_MIND SEVEN_EYES_MAGE SEVEN_EYES_SWORD // soul eater & seven eyes
-        SEVEN_EYES_VENOM SEVEN_EYES_FORTITUDE SEVEN_EYES_SPIRIT SEVEN_EYES_STONE 
-        BEGIN // ee spels that won't work even with tobex
-        REPLACE_TEXTUALLY ~^%cdspell%[ %TAB%]+SP\(WI\|PR\|CL\|IN\)[0-9]+[ %TAB%%LNL%%MNL%%WNL%]+~ ~~
-      END  
-    END    
-    
+INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
+LAF iwdspells_extern 
+  STR_VAR type=arcane 
+          custom_includes="iwdspells/custom/cd_scroll_placement.tpa iwdspells/custom/cd_arcane_spell_use.tpa" 
+          iconv_path="languages/iconv" // if you use these values
+          ini_name="dw_iwdspells.ini"
+          oggdec_path="wav"
+          sox_path="wav"
 END 
-  
-/////                                                  \\\\\
-///// begin generated from iwdspells                   \\\\\
-/////                                                  \\\\\
-
-INCLUDE ~%scsroot%/%iwdspells_lib%/always.tph~  
-
-LAF make_label STR_VAR label=dw#iwd_arcane END
-
-LAF include STR_VAR file=lib_spell_style.tph location="%iwdspells_lib%" END
-LAF include STR_VAR file=install_iwd_spell_resources.tpa location="%iwdspells_lib%" END
-
-LAF install_iwd_spell_resources
-  INT_VAR
-    truncate_at_level=20
-		iwdification_extra=1
-  STR_VAR
-    scroll_shadow_list=iwd_arcane.2da
-    spell_list=EVAL ~arcane_resrefs%obg2%.txt~
-    lookup=iwd_strref.txt
-    smtables_list=arcane_smtable.txt
-    scroll_price_list=scroll_prices_arcane.txt
-    proj_list=arcane_proj.txt
-    tra=iwdspells.tra
-    biff="dw#iwdm"
-    afterwards="arcane_spells_postproduction"
-    afterwards_tra="dw_iwdspells_arcane.tra"
-    bam_copy="bam_copy_arcane.2da"
-    green_bams="green_spells_arcane.2da"
-    style_old="%iwdspells_data%/spell_styles_iwd.2da"
-    style_new="%iwdspells_data%/spell_styles_bg.2da"       
-END
-
-ACTION_IF MOD_IS_INSTALLED "spell_rev/setup-spell_rev.tp2" 55 BEGIN
-  LAF run STR_VAR file=sr_nwn_spelldeflection location="%iwdspells_lib%" version=sr_nwn_arcane END
-END
-
-ACTION_IF enhanced_edition BEGIN // subroutine for adding spells to hotkey list in bgee.lua
-  LAF run STR_VAR file=rebuild_spell_hotkeys location="%iwdspells_lib%" END
-END  
 
 /////                                                  \\\\\
 ///// some basic spell usage in generic AI             \\\\\
@@ -617,73 +548,19 @@ COPY_EXISTING_REGEXP GLOB ~^_?mage[0-9]+[A-Z]*\.bcs$~     ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @4000 DESIGNATED 40
-REQUIRE_PREDICATE FILE_EXISTS ~iwdification/dw_iwdspells_resource/tra/%LANGUAGE%/dw_iwdspells_divine.tra~ @992
+REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
 GROUP @993
 
-OUTER_SPRINT obg2 ""
-
-ACTION_IF !enhanced_edition BEGIN // don't bother importing spells that won't work for non-ee games
-
-  OUTER_SPRINT obg2 "_obg2"
-  OUTER_SET anim_beetle = 0
-  ACTION_IF MOD_IS_INSTALLED ~INFINITYANIMATIONS/SETUP-INFINITYANIMATIONS.TP2~ ~500~ BEGIN // 'more base animations'
-
-    ACTION_IF IDS_OF_SYMBOL (~animate~ ~BEETLE_BLACK~) > 0 THEN BEGIN
-      OUTER_SET anim_beetle = IDS_OF_SYMBOL (~animate~ ~BEETLE_BLACK~)
-    END
-    
-  END
-
-  COPY ~%resource_loc%/divine_resrefs.txt~ ~%resource_loc%/divine_resrefs_obg2.txt~
-    PATCH_IF !enhanced_edition BEGIN
-      PATCH_FOR_EACH cdspell IN 
-        /*CLERIC_MOLD_TOUCH*/ CLERIC_FAVOR_OF_ILMATER CLERIC_SMASHING_WAVE CLERIC_WALL_OF_MOONLIGHT CLERIC_SPIRITUAL_WRATH
-        BEGIN // ee spels that won't work even with tobex
-        REPLACE_TEXTUALLY ~^%cdspell%[ %TAB%]+SP\(WI\|PR\|CL\|IN\)[0-9]+[ %TAB%%LNL%%MNL%%WNL%]+~ ~~
-      END  
-      PATCH_IF !anim_beetle BEGIN // exclude giant insect without beetle animations
-        REPLACE_TEXTUALLY ~^INNATE_BOMBARDIER_BEETLE_CLOUD[ %TAB%]+SP\(WI\|PR\|CL\|IN\)[0-9]+[ %TAB%%LNL%%MNL%%WNL%]+~ ~~
-        REPLACE_TEXTUALLY ~^CLERIC_GIANT_INSECT[ %TAB%]+SP\(WI\|PR\|CL\|IN\)[0-9]+[ %TAB%%LNL%%MNL%%WNL%]+~ ~~
-      END  
-    END  
-  
-END  
-
-/////                                                  \\\\\
-///// begin generated from iwdspells                   \\\\\
-/////                                                  \\\\\  
-
-INCLUDE ~%scsroot%/%iwdspells_lib%/always.tph~  
-
-LAF make_label STR_VAR label=dw#iwd_divine END
-LAF include STR_VAR file=lib_spell_style.tph location="%iwdspells_lib%" END
-LAF include STR_VAR file=install_iwd_spell_resources.tpa location="%iwdspells_lib%" END
-LAF install_iwd_spell_resources
-  INT_VAR 
-    truncate_at_level=20
-  STR_VAR
-    spell_list=EVAL ~divine_resrefs%obg2%.txt~
-    lookup=iwd_strref.txt
-    proj_list=divine_proj.txt
-    smtables_list=divine_smtable.txt
-    scroll_price_list=scroll_prices_divine.txt
-    tra=iwdspells.tra
-    biff="dw#iwdp"
-    afterwards="divine_spells_postproduction"
-    afterwards_tra="dw_iwdspells_divine.tra"
-    bam_copy="bam_copy_divine.2da"
-    green_bams=""
-    style_old="%iwdspells_data%/spell_styles_iwd.2da"
-    style_new="%iwdspells_data%/spell_styles_bg.2da"
+INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
+LAF iwdspells_extern 
+  STR_VAR type=divine 
+          custom_includes="iwdspells/custom/cd_divine_spell_use.tpa" 
+          iconv_path="languages/iconv" // if you use these values
+          ini_name="dw_iwdspells.ini"
+          oggdec_path="wav"
+          sox_path="wav"
 END
 
-ACTION_IF MOD_IS_INSTALLED "spell_rev/setup-spell_rev.tp2" 55 BEGIN
-  LAF run STR_VAR file=sr_nwn_spelldeflection location="%iwdspells_lib%" version=sr_nwn_divine END
-END
-
-ACTION_IF enhanced_edition BEGIN // subroutine for adding spells to hotkey list in bgee.lua
-  LAF run STR_VAR file=rebuild_spell_hotkeys location="%iwdspells_lib%" END
-END
 
 /////                                                  \\\\\
 ///// some basic spell usage in generic AI             \\\\\
@@ -748,117 +625,12 @@ BEGIN @8000 DESIGNATED 80
 GROUP @993
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ @996
   
-COPY ~iwdification/icons/states.bam~ ~override/states.bam~  
-     ~iwdification/icons/states.bam~ ~override/states2.bam~   
-
-
-WITH_TRA ~iwdification/dw_iwdspells_resource/tra/%LANGUAGE%/iwdspells.tra~ BEGIN
-     
-  COPY ~iwdification/icons/statdesc.2da~ ~override~
-    REPLACE ~iron_body~ @350 
-    REPLACE ~mind_blank~ @344 
-    REPLACE ~cats_grace~ @357 
-    REPLACE ~emotion_hope~ @358 
-    REPLACE ~emotion_courage~ @359 
-    REPLACE ~shroud_of_flame~ @46 
-    REPLACE ~beltyn~ @25 
-    REPLACE ~antimagic_shell~ @161 
-    REPLACE ~pain~ @347 
-    REPLACE ~isom~ @348 
-    REPLACE ~exaltation~ @352 
-    REPLACE ~static_charge~ @242 
-    REPLACE ~entropy_shield~ @278 
-    REPLACE ~shield_lathander~ @270 
-    REPLACE ~blood_rage~ @354 
-    REPLACE ~animal_rage~ @351 
-    REPLACE ~recitation~ @353 
-    REPLACE ~prayer~ @355 
-    REPLACE ~rwotf~ @356 
-    REPLACE ~bard_heroes~ @323 
-    REPLACE ~bard_curran~ @326 
-    REPLACE ~bard_tymora~ @329 
-    REPLACE ~bard_kaudies~ @332 
-    REPLACE ~bard_siren~ @335 
-    REPLACE ~bard_sith~ @339 
-    PRETTY_PRINT_2DA     
-
-END
-
-COPY ~iwdification/icons/icons.2da~ ~iwdification/icons/icons.2da~
-  COUNT_2DA_ROWS 7 rows
-  FOR (row = 1 ; row < rows ; ++row) BEGIN
-    READ_2DA_ENTRY row 0 7 icon_text
-    READ_2DA_ENTRY row 1 7 icon_tra
-    READ_2DA_ENTRY row 2 7 icon
-    READ_2DA_ENTRY row 3 7 existing
-    READ_2DA_ENTRY row 4 7 clone
-    READ_2DA_ENTRY row 5 7 resource
-    READ_2DA_ENTRY row 6 7 ids_ref
-    INNER_ACTION BEGIN
-      
-      // identify and patch IDS references...
-      ACTION_IF !IS_AN_INT ~%ids_ref%~ BEGIN
-        OUTER_SET num = IDS_OF_SYMBOL (~spell~ ~%ids_ref%~)
-        ACTION_IF num > 3999 BEGIN OUTER_SET num -= 4000 OUTER_SPRINT prefix spcl END
-        ACTION_IF num > 2999 BEGIN OUTER_SET num -= 3000 OUTER_SPRINT prefix spin END
-        ACTION_IF num > 1999 BEGIN OUTER_SET num -= 2000 OUTER_SPRINT prefix spwi END
-        ACTION_IF num >  999 BEGIN OUTER_SET num -= 1000 OUTER_SPRINT prefix sppr END
-        
-        COPY_EXISTING ~%prefix%%num%.spl~  ~override~
-                      ~%prefix%%num%a.spl~ ~override~
-                      ~%prefix%%num%b.spl~ ~override~
-                      ~%prefix%%num%c.spl~ ~override~
-          PATCH_IF existing BEGIN
-            LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 142 match_parameter2 = existing parameter2 = icon END
-          END ELSE BEGIN
-            LPF CLONE_EFFECT INT_VAR silent = 1 multi_match = 1 match_opcode = clone opcode = 142 parameter1 = 0 parameter2 = icon END
-          END  
-          BUT_ONLY IF_EXISTS            
-                      
-      END ELSE BEGIN // or just patch a resource directly
-        
-        COPY_EXISTING ~%resource%~  ~override~
-          PATCH_IF existing BEGIN
-            LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 142 match_parameter2 = existing parameter2 = icon END
-          END ELSE BEGIN
-            LPF CLONE_EFFECT INT_VAR silent = 1 multi_match = 1 match_opcode = clone opcode = 142 parameter1 = 0 parameter2 = icon END
-          END  
-          BUT_ONLY IF_EXISTS 
-          
-      END
-        
-    END // end inner_action
-  END // end for loop
-  BUT_ONLY
-
-// shroud of flame has no easy op to clone, so deal with it manually
-OUTER_SET num = (IDS_OF_SYMBOL (~spell~ ~WIZARD_SHROUD_OF_FLAME~) - 2000)
-ACTION_IF num >  0 BEGIN 
-          
-  COPY_EXISTING ~spwi%num%.spl~   ~override~
-                ~spwi%num%c.spl~  ~override~
-    LPF ADD_SPELL_EFFECT INT_VAR opcode = 142 target = 2 power = 5 parameter2 = 169 duration = 6 savingthrow = BIT0 END
-
-END 
-
-// static charge has no easy op to clone, so deal with it manually
-OUTER_SET num = (IDS_OF_SYMBOL (~spell~ ~CLERIC_STATIC_CHARGE~) - 1000)
-ACTION_IF num >  0 BEGIN 
-          
-  COPY_EXISTING ~sppr%num%.spl~   ~override~
-                ~sppr%num%b.spl~  ~override~
-    LPF ADD_SPELL_EFFECT INT_VAR opcode = 142 target = 2 power = 4 parameter2 = 175 duration = 60 END
-
-END  
-
-// greater shield should re-use shield of lathander icon
-OUTER_SET num = (IDS_OF_SYMBOL (~spell~ ~CLERIC_GREATER_SHIELD_OF_LATHANDER~) - 1000)
-ACTION_IF num >  0 BEGIN 
-          
-  COPY_EXISTING ~sppr%num%.spl~   ~override~
-    LPF CLONE_EFFECT INT_VAR match_opcode = 101 opcode = 142 parameter1 = 0 parameter2 = 177 END
-
-END
+INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
+LAF iwdspells_extern STR_VAR type="icon" 
+                             iconv_path="languages/iconv" // if you use these values
+                             ini_name="dw_iwdspells.ini"
+                             oggdec_path="wav"
+                             sox_path="wav"END
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -869,36 +641,19 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @5000 DESIGNATED 50 // aka add new bard songs
-REQUIRE_PREDICATE FILE_EXISTS ~iwdification/dw_iwdspells_resource/tra/%LANGUAGE%/dw_iwdspells_bard.tra~ @992
+REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
 GROUP @995
 
 /////                                                  \\\\\
 ///// begin generated from iwdspells                   \\\\\
 /////                                                  \\\\\ 
 
-INCLUDE ~%scsroot%/%iwdspells_lib%/always.tph~  
-
-LAF make_label STR_VAR label=dw#iwd_bardic END
-LAF include STR_VAR file=lib_spell_style.tph location="%iwdspells_lib%" END
-LAF include STR_VAR file=install_iwd_spell_resources.tpa location="%iwdspells_lib%" END
-LAF install_iwd_spell_resources
-  INT_VAR 
-    truncate_at_level=20
-  STR_VAR
-    spell_list=bardic_resrefs.txt
-    lookup=iwd_strref.txt
-    proj_list=bardic_proj.txt
-    smtables_list=bardic_smtable.txt
-    scroll_price_list=scroll_prices_arcane.txt
-    tra=iwdspells.tra
-    biff="dw#iwdb"
-    afterwards="bardsong_postproduction"
-    afterwards_tra="dw_iwdspells_bard.tra"
-    bam_copy="bam_copy_arcane.2da"
-    green_bams=""
-    style_old="%iwdspells_data%/spell_styles_iwd.2da"
-    style_new="%iwdspells_data%/spell_styles_bg.2da"
-END
+INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
+LAF iwdspells_extern STR_VAR type=bard 
+                             iconv_path="languages/iconv" // if you use these values
+                             ini_name="dw_iwdspells.ini"
+                             oggdec_path="wav"
+                             sox_path="wav"END
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1306,18 +1061,18 @@ ACTION_PHP_EACH cd_thief_clabs AS desc_strref => file BEGIN
   
   END
  
-	ACTION_GET_STRREF desc_strref desc
-	OUTER_PATCH_SAVE desc "%desc%" BEGIN
+  ACTION_GET_STRREF desc_strref desc
+  OUTER_PATCH_SAVE desc "%desc%" BEGIN
     PATCH_IF desc_strref = default_thief BEGIN
       SPRINT old @12004 // main thief descript doesn't have 'disadvantages' line
     END ELSE BEGIN  
       SPRINT old @12003
     END  
     SPRINT new @12002
-		REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
-		REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
+    REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
+    REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
   END
-	STRING_SET_EVALUATE desc_strref "%desc%"  
+  STRING_SET_EVALUATE desc_strref "%desc%"  
 
 END
 

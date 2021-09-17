@@ -15,10 +15,10 @@ DEFINE_ACTION_FUNCTION cd_divine_post BEGIN
   
   ACTION_IF enhanced_edition BEGIN
   
-    COPY ~%MOD_FOLDER%/%component_loc%/lib/resource/0103.ini~    ~override~ // spiritual wrath animation
-         ~%MOD_FOLDER%/%component_loc%/lib/resource/swrathu.bam~ ~override~
-         ~%MOD_FOLDER%/%component_loc%/lib/resource/0104.ini~    ~override~ // smashing wave animation
-         ~%MOD_FOLDER%/%component_loc%/lib/resource/swavet.bam~  ~override~
+    COPY ~%MOD_FOLDER%/%component_loc%/resource/0103.ini~    ~override~ // spiritual wrath animation
+         ~%MOD_FOLDER%/%component_loc%/resource/swrathu.bam~ ~override~
+         ~%MOD_FOLDER%/%component_loc%/resource/0104.ini~    ~override~ // smashing wave animation
+         ~%MOD_FOLDER%/%component_loc%/resource/swavet.bam~  ~override~
          
     APPEND ~animate.ids~ ~0x0103 SPIRITUAL_WRATH~ UNLESS ~^0x0103~  
     APPEND ~animate.ids~ ~0x0104 SMASHING_WAVE~   UNLESS ~^0x0104~ 
@@ -34,7 +34,7 @@ DEFINE_ACTION_FUNCTION cd_divine_post BEGIN
     LPF ALTER_SPELL_HEADER INT_VAR projectile = 171 END   
 
   // I'd remove the glow and do a recolor of SPFLMBLD.bam using the blue palette of OHDSTREE.bam (BG2EE).
-  COPY ~%obg2_res_path%/cdmoon.bam~  ~override~  
+  COPY ~%MOD_FOLDER%/%component_loc%/resource/cdmoon.bam~  ~override~  
   COPY_EXISTING ~%CLERIC_MOONBLADE%.spl~ ~override~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 215 target = 1 power = 3 timing = 1 resist_dispel = 1 duration = 3 STR_VAR resource = cdmoon END   
 
@@ -79,6 +79,8 @@ DEFINE_ACTION_FUNCTION cd_divine_post BEGIN
       LPF ADD_ITEM_EFFECT INT_VAR insert_point = 0 type = 1 opcode = 324 target = 2 parameter2 = 55 resist_dispel = 2 STR_VAR resource = EVAL ~%SOURCE_RES%~ END
       PATCH_FOR_EACH race IN 121 139 145 147 153 156 157 158 159 169 BEGIN
         LPF CLONE_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 55 parameter1 = race parameter2 = 104 END
-      END    
+      END  
+
+  END      
       
 END
