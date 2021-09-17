@@ -1,6 +1,6 @@
 DEFINE_ACTION_FUNCTION cd_divine_post BEGIN
 
-	INCLUDE "%MOD_FOLDER%/%component_loc%/lib/cdfunctions.tpa"
+  INCLUDE "%MOD_FOLDER%/%component_loc%/lib/cdfunctions.tpa"
 
   // bgee 2.6 includes this file, even though it's unused, so we patch just in case
   COPY_EXISTING ~asumm1x.vvc~ ~override~
