@@ -5,9 +5,12 @@ ACTION_IF enhanced_edition BEGIN
 
   STRING_SET 9560 @7011 // obg2 class descriptions don't include abilities
   OUTER_SET anim_beetle = 57888
-  COPY ~iwdification/data/anim/e220.ini~             ~override~
-       ~iwdification/dw_iwdspells_resource/anim/bam~ ~override~
-       ~iwdification/dw_iwdspells_resource/anim/wav~ ~override~
+  ACTION_IF FILE_EXISTS_IN_GAME ~e220.ini~ BEGIN
+  
+    COPY ~iwdification/bam/e220.ini~                         ~override~
+         ~iwdification/iwdspells/copyover/anim/beetle_black~ ~override~
+         
+  END       
        
 END ELSE BEGIN
 
@@ -91,88 +94,204 @@ COPY_EXISTING ~cdidrwe.cre~ ~override~
 COPY ~iwdification/spl/cdidrif.spl~ ~override~   
   SAY 0xfe @7010
   
-COPY_EXISTING ~clabdr01.2da~ ~override~
-  REPLACE_TEXTUALLY ~[ %TAB%]GA_SPCL611[ %TAB%]~ ~ GA_%first_ss% ~ EVALUATE_BUFFER
-  PATCH_FOR_EACH res IN SPCL612 SPCL613 SPCL924 SPCL925 SPCL926 SPCL927 BEGIN
-    REPLACE_TEXTUALLY ~[ %TAB%]\(GA\|AP\)_%res%[ %TAB%]~ ~ **** ~
+ACTION_CLEAR_ARRAY cd_druid_kits
+ACTION_CLEAR_ARRAY cd_druid_kits_annotated
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_druid_kits BEGIN clabdr01 => 16384 END
+
+COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_ROWS 9 rows
+  FOR (index = 2 ; index < rows ; ++index) BEGIN // skip reserve row
+    READ_2DA_ENTRY index 8 9 class
+    PATCH_IF class = 11 BEGIN
+      READ_2DA_ENTRY index 0 9 kitid
+      READ_2DA_ENTRY index 5 9 clab
+      SET kitid = (kitid + 16384)
+      DEFINE_ASSOCIATIVE_ARRAY cd_druid_kits BEGIN "%clab%" => ~%kitid%~ END // find all druid clabs
+    END  
+  END
+  BUT_ONLY
+
+OUTER_SET shapeshifting_tc = 0
+OUTER_SET druid_abils_tc = 0
+  
+ACTION_PHP_EACH cd_druid_kits AS clab => kitno BEGIN
+
+  // means testing the clab
+  COPY_EXISTING ~%clab%.2da~ ~override~
+    SET spcl611 = 0
+    SET spcl612 = 0
+    SET spcl613 = 0
+    SET spcl924 = 0
+    SET spcl925 = 0
+    SET spcl926 = 0
+    SET spcl927 = 0
+    SET shapeshifting = 0 
+    SET druid_abils = 0   
+    COUNT_2DA_ROWS 30 rows
+    FOR (index = 0 ; index < rows ; ++index) BEGIN
+      READ_2DA_ENTRY index  7 30 lev7
+      READ_2DA_ENTRY index 15 30 lev15
+      READ_2DA_ENTRY index 18 30 lev18
+      READ_2DA_ENTRY index 21 30 lev21
+      READ_2DA_ENTRY index 24 30 lev24
+      PATCH_IF ("%lev7%"  STRING_COMPARE_CASE "GA_SPCL611" = 0) BEGIN SET spcl611 = 1 END 
+      PATCH_IF ("%lev7%"  STRING_COMPARE_CASE "GA_SPCL612" = 0) BEGIN SET spcl612 = 1 END 
+      PATCH_IF ("%lev7%"  STRING_COMPARE_CASE "GA_SPCL613" = 0) BEGIN SET spcl613 = 1 END  
+      PATCH_IF ("%lev15%" STRING_COMPARE_CASE "AP_SPCL924" = 0) BEGIN SET spcl924 = 1 END 
+      PATCH_IF ("%lev18%" STRING_COMPARE_CASE "AP_SPCL925" = 0) BEGIN SET spcl925 = 1 END 
+      PATCH_IF ("%lev21%" STRING_COMPARE_CASE "AP_SPCL926" = 0) BEGIN SET spcl926 = 1 END 
+      PATCH_IF ("%lev24%" STRING_COMPARE_CASE "AP_SPCL927" = 0) BEGIN SET spcl927 = 1 END 
+    END 
+    PATCH_IF (spcl611 + spcl612 + spcl613 = 3) BEGIN // if normal shapeshifting 
+      SET shapeshifting = 1
+      REPLACE_TEXTUALLY ~[ %TAB%]GA_SPCL611[ %TAB%]~ ~ GA_%first_ss% ~ EVALUATE_BUFFER
+      PATCH_FOR_EACH res IN SPCL612 SPCL613 BEGIN
+        REPLACE_TEXTUALLY ~[ %TAB%]\(GA\|AP\)_%res%[ %TAB%]~ ~ **** ~
+      END  
+    END
+    PATCH_IF (spcl924 + spcl925 + spcl926 + spcl927 = 4) BEGIN // if normal abilities  
+      SET druid_abils = 1   
+      PATCH_FOR_EACH res IN SPCL924 SPCL925 SPCL926 SPCL927 BEGIN
+        REPLACE_TEXTUALLY ~[ %TAB%]\(GA\|AP\)_%res%[ %TAB%]~ ~ **** ~
+      END 
+    END
+
+  ACTION_IF shapeshifting BEGIN    
+
+    APPEND ~%clab%.2da~
+    ~ABILITYX   ****       ****       ****       ****       GA_cdidrww ****       ****       ****       GA_cdidrpb ****       GA_cdidrfe ****       GA_cdidree ****       GA_cdidrwe CDREPLACE~
+    
   END  
 
-APPEND ~clabdr01.2da~
-~ABILITYX   ****       ****       ****       ****       GA_cdidrww ****       ****       ****       GA_cdidrpb ****       GA_cdidrfe ****       GA_cdidree ****       GA_cdidrwe CDREPLACE
-ABILITYY   ****       ****       ****       ****       ****       ****       ****       ****       AP_SPCL924 ****       ****       ****       ****       ****       AP_cdidrif CDREPLACE~
+  ACTION_IF druid_abils BEGIN    
 
-COPY_EXISTING ~clabdr01.2da~ ~override~
-  COUNT_2DA_COLS cols
-  FOR (index = 17 ; index < cols ; ++index) BEGIN
-    REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
-  END
-  REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
-  PRETTY_PRINT_2DA
-  BUT_ONLY
+    APPEND ~%clab%.2da~
+    ~ABILITYY   ****       ****       ****       ****       ****       ****       ****       ****       AP_SPCL924 ****       ****       ****       ****       ****       AP_cdidrif CDREPLACE~
+
+  END 
+  
+  ACTION_IF shapeshifting OR druid_abils BEGIN
+  
+    COPY_EXISTING ~%clab%.2da~ ~override~
+      COUNT_2DA_COLS cols
+      FOR (index = 17 ; index < cols ; ++index) BEGIN
+        REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
+      END
+      REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
+      PRETTY_PRINT_2DA
+      BUT_ONLY
+     
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_druid_kits_annotated BEGIN "%clab%", "%shapeshifting%", "%druid_abils%" => "%kitno%" END
+    
+    ACTION_IF ("%clab%" STRING_COMPARE_CASE "clabdr01" = 0) BEGIN // special vars for trueclass
+      OUTER_SET shapeshifting_tc = shapeshifting
+      OUTER_SET druid_abils_tc = druid_abils
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_druid_kits_annotated BEGIN "true", "%shapeshifting%", "%druid_abils%" => 0 END // add extra entry so we get both kit = 0 and 0x4000
+    END
+
+  END  
+
+END    
   
 // handing out some abilities
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
   SET druid_level = 0 
+  SET shapeshifting = 0
+  SET druid_abils = 0
   READ_LONG 0x010 dual   // block of flags including the dual-class bits
   READ_BYTE 0x234 level1 // If dual-classed, this value is put in the next field, and this field is set to 1.
   READ_BYTE 0x235 level2 // Highest attained level in secondary class (0-100)
   READ_BYTE 0x273 class  // V1.0
   READ_SHORT 0x246 kit
-  PATCH_IF ((class =  11) AND ((kit = 0) OR (kit = 0x4000))) BEGIN // single-class, unkitted druid
-    SET druid_level = level1
+  PATCH_IF class = 11 BEGIN // single-class druid
+    PATCH_PHP_EACH cd_druid_kits_annotated AS params => kitno BEGIN // if one of the kits with altered abilities
+      PATCH_IF kitno = kit BEGIN
+        SET druid_level = level1
+        SET shapeshifting = shapeshifting_tc
+        SET druid_abils = druid_abils_tc
+      END
+    END      
   END ELSE 
   PATCH_IF class = 16 BEGIN // f/d
     PATCH_IF ((dual & BIT3) = BIT3) BEGIN // f > d dual - can't dual into kit, so no kit check
       SET druid_level = level1
+      SET shapeshifting = shapeshifting_tc
+      SET druid_abils = druid_abils_tc
     END ELSE
     PATCH_IF ((dual & BIT7) = BIT7) BEGIN // d > f dual
-      PATCH_IF ((level1 > level2) AND ((kit = 0) OR (kit = 0x4000))) BEGIN // only set if druid re-activated and unkitted
-        SET druid_level = level2 
+      PATCH_IF (level1 > level2) BEGIN
+        PATCH_PHP_EACH cd_druid_kits_annotated AS params => kitno BEGIN // if one of the kits with altered abilities
+          PATCH_IF kitno = kit BEGIN
+            SET druid_level = level2 
+            SET shapeshifting = params_1
+            SET druid_abils = params_2
+          END
+        END          
       END 
     END ELSE BEGIN // true multiclass - no kit allowed 
       SET druid_level = level2
+      SET shapeshifting = shapeshifting_tc
+      SET druid_abils = druid_abils_tc
     END
   END 
-  PATCH_IF druid_level BEGIN    
-    REMOVE_MEMORIZED_SPELL ~spcl611~ ~spcl612~ ~spcl613~ // remove all shapeshifts
-    REMOVE_KNOWN_SPELL     ~spcl611~ ~spcl612~ ~spcl613~ // remove all shapeshifts
+  PATCH_IF druid_level BEGIN   
+    PATCH_IF shapeshifting BEGIN
+      REMOVE_MEMORIZED_SPELL ~spcl611~ ~spcl612~ ~spcl613~ // remove all shapeshifts
+      REMOVE_KNOWN_SPELL     ~spcl611~ ~spcl612~ ~spcl613~ // remove all shapeshifts
+    END  
     // since poison immunity is being moved up, no reason to remove it (worse case it gets duped); fatigue immunity doesn't mean anything for non-party
     PATCH_IF druid_level > 4 BEGIN
-      ADD_KNOWN_SPELL     cdidrww #0 ~innate~
-      ADD_MEMORIZED_SPELL cdidrww #0 ~innate~ (1)
+      PATCH_IF shapeshifting BEGIN
+        ADD_KNOWN_SPELL     cdidrww #0 ~innate~
+        ADD_MEMORIZED_SPELL cdidrww #0 ~innate~ (1)
+      END  
       PATCH_IF druid_level > 6 BEGIN
-        ADD_KNOWN_SPELL     ~%first_ss%~ #0 ~innate~
-        ADD_MEMORIZED_SPELL ~%first_ss%~ #0 ~innate~ (1)
+        PATCH_IF shapeshifting BEGIN
+          ADD_KNOWN_SPELL     ~%first_ss%~ #0 ~innate~
+          ADD_MEMORIZED_SPELL ~%first_ss%~ #0 ~innate~ (1)
+        END  
         PATCH_IF druid_level > 8 BEGIN
-          ADD_KNOWN_SPELL     cdidrpb #0 ~innate~
-          ADD_MEMORIZED_SPELL cdidrpb #0 ~innate~ (1)
-          LPF ADD_CRE_EFFECT INT_VAR opcode = 206 target = 1 timing = 1 STR_VAR resource = spwi502 effsource = spcl924 END // spell immunity: cloudkill
-          LPF ADD_CRE_EFFECT INT_VAR opcode = 206 target = 1 timing = 1 STR_VAR resource = spwi016 effsource = spcl924 END // spell immunity: cloudkill
-          LPF ADD_CRE_EFFECT INT_VAR opcode = 206 target = 1 timing = 1 STR_VAR resource = spin673 effsource = spcl924 END // spell immunity: cloudkill
-          LPF ADD_CRE_EFFECT INT_VAR opcode = 267 target = 1 timing = 1 parameter1 = 14017 STR_VAR effsource = spcl924 END // string immunity: poison
-          LPF ADD_CRE_EFFECT INT_VAR opcode = 267 target = 1 timing = 1 parameter1 = 14662 STR_VAR effsource = spcl924 END // string immunity: poisoned
-          LPF ADD_CRE_EFFECT INT_VAR opcode = 101 target = 1 timing = 1 parameter2 = 25 STR_VAR effsource = spcl924 END // immunity to poison
-          LPF ADD_CRE_EFFECT INT_VAR opcode = 173 target = 1 timing = 1 parameter1 = 100 STR_VAR effsource = spcl924 END // 100% poison damage resistance
+          PATCH_IF shapeshifting BEGIN
+            ADD_KNOWN_SPELL     cdidrpb #0 ~innate~
+            ADD_MEMORIZED_SPELL cdidrpb #0 ~innate~ (1)
+          END  
+          PATCH_IF druid_abils BEGIN
+            LPF ADD_CRE_EFFECT INT_VAR opcode = 206 target = 1 timing = 1 STR_VAR resource = spwi502 effsource = spcl924 END // spell immunity: cloudkill
+            LPF ADD_CRE_EFFECT INT_VAR opcode = 206 target = 1 timing = 1 STR_VAR resource = spwi016 effsource = spcl924 END // spell immunity: cloudkill
+            LPF ADD_CRE_EFFECT INT_VAR opcode = 206 target = 1 timing = 1 STR_VAR resource = spin673 effsource = spcl924 END // spell immunity: cloudkill
+            LPF ADD_CRE_EFFECT INT_VAR opcode = 267 target = 1 timing = 1 parameter1 = 14017 STR_VAR effsource = spcl924 END // string immunity: poison
+            LPF ADD_CRE_EFFECT INT_VAR opcode = 267 target = 1 timing = 1 parameter1 = 14662 STR_VAR effsource = spcl924 END // string immunity: poisoned
+            LPF ADD_CRE_EFFECT INT_VAR opcode = 101 target = 1 timing = 1 parameter2 = 25 STR_VAR effsource = spcl924 END // immunity to poison
+            LPF ADD_CRE_EFFECT INT_VAR opcode = 173 target = 1 timing = 1 parameter1 = 100 STR_VAR effsource = spcl924 END // 100% poison damage resistance
+          END  
           PATCH_IF druid_level > 10 BEGIN
-            ADD_KNOWN_SPELL     cdidrfe #0 ~innate~
-            ADD_MEMORIZED_SPELL cdidrfe #0 ~innate~ (1)
+            PATCH_IF shapeshifting BEGIN
+              ADD_KNOWN_SPELL     cdidrfe #0 ~innate~
+              ADD_MEMORIZED_SPELL cdidrfe #0 ~innate~ (1)
+            END  
             PATCH_IF druid_level > 12 BEGIN
-              ADD_KNOWN_SPELL     cdidree #0 ~innate~
-              ADD_MEMORIZED_SPELL cdidree #0 ~innate~ (1)
+              PATCH_IF shapeshifting BEGIN
+                ADD_KNOWN_SPELL     cdidree #0 ~innate~
+                ADD_MEMORIZED_SPELL cdidree #0 ~innate~ (1)
+              END  
               PATCH_IF druid_level > 14 BEGIN
-                ADD_KNOWN_SPELL     cdidrwe #0 ~innate~
-                ADD_MEMORIZED_SPELL cdidrwe #0 ~innate~ (1)
-                LPF ADD_CRE_EFFECT INT_VAR opcode = 101 target = 1 timing = 1 parameter2 = 93 STR_VAR effsource = cdidrif END // immunity to fatigue
-                LPF ADD_CRE_EFFECT INT_VAR opcode =  93 target = 1 timing = 1 parameter2 =  1 insert_point = 0 STR_VAR effsource = cdidrif END // set fatigue to 0
-                PATCH_IF druid_level > 24 BEGIN SET druid_level = 24 END // will kill loop after three goes
-                FOR (index = 17 ; druid_level > index ; index += 3)  BEGIN // drop the +10% elemental bonuses
-                  PATCH_FOR_EACH offset IN 0x59 0x5a 0x5b 0x5c 0x5e 0x5f BEGIN 
-                    READ_BYTE offset resist
-                    PATCH_IF ((resist > 9) AND (resist < 100)) BEGIN // only if non-zero and not seemingly immune 
-                      WRITE_BYTE offset (resist - 10)
+                PATCH_IF shapeshifting BEGIN
+                  ADD_KNOWN_SPELL     cdidrwe #0 ~innate~
+                  ADD_MEMORIZED_SPELL cdidrwe #0 ~innate~ (1)
+                END  
+                PATCH_IF druid_abils BEGIN
+                  LPF ADD_CRE_EFFECT INT_VAR opcode = 101 target = 1 timing = 1 parameter2 = 93 STR_VAR effsource = cdidrif END // immunity to fatigue
+                  LPF ADD_CRE_EFFECT INT_VAR opcode =  93 target = 1 timing = 1 parameter2 =  1 insert_point = 0 STR_VAR effsource = cdidrif END // set fatigue to 0
+                  PATCH_IF druid_level > 24 BEGIN SET druid_level = 24 END // will kill loop after three goes
+                  FOR (index = 17 ; druid_level > index ; index += 3)  BEGIN // drop the +10% elemental bonuses
+                    PATCH_FOR_EACH offset IN 0x59 0x5a 0x5b 0x5c 0x5e 0x5f BEGIN 
+                      READ_BYTE offset resist
+                      PATCH_IF ((resist > 9) AND (resist < 100)) BEGIN // only if non-zero and not seemingly immune 
+                        WRITE_BYTE offset (resist - 10)
+                      END
                     END
-                  END 
-                END // for loop for elemental resist bonuses  
+                  END // for loop for elemental resist bonuses 
+                END // end druid ability checks  
               END // lev 15 bonuses
             END // lev 13 bonuses
           END // lev 11 bonuses
