@@ -1,0 +1,222 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// cd_add_random_treasure, v2021.09.23              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_ACTION_FUNCTION cd_add_random_treasure
+  STR_VAR cd_random_table = ~~
+          cd_random_item  = ~~
+  RET     cd_random_item_return
+  BEGIN
+  
+  OUTER_SPRINT cd_random_item_return ~~
+  
+  ACTION_IF (("%cd_random_table%"  STRING_COMPARE_CASE "" = 0) OR
+             ("%cd_random_item%"  STRING_COMPARE_CASE "" = 0)) BEGIN // sanity check
+
+    PRINT ~Parameters not specified, nothing added.~
+    
+  END ELSE BEGIN  
+
+    OUTER_INNER_PATCH_SAVE cd_random_table ~%cd_random_table%~ BEGIN // some basic cleanup first
+      REPLACE_TEXTUALLY ~%TAB%~ ~ ~
+      REPLACE_TEXTUALLY ~ +~ ~ ~
+    END  
+  
+    ACTION_IF FILE_EXISTS_IN_GAME ~rndtres.2da~ BEGIN // for iwd or the EEs
+      
+      OUTER_SPRINT cd_random_item_return ~%cd_random_item%~
+    
+      ACTION_IF !GAME_IS ~iwd how totlm~ BEGIN // need to pad out entry if EEs
+      
+        COPY_EXISTING ~rndtres.2da~ ~override~
+          COUNT_2DA_COLS columns
+          BUT_ONLY
+      
+        OUTER_INNER_PATCH_SAVE cd_random_table ~%cd_random_table%~ BEGIN
+          COUNT_REGEXP_INSTANCES ~ +[^ ]~ cd_random_padding
+          FOR (cd_random_index = cd_random_padding ; cd_random_index < (columns - 2) ; ++cd_random_index) BEGIN // -2: C_R_E doesn't count first entry; columns is +1 because it includes item
+            REPLACE_TEXTUALLY ~$~ ~ *~
+          END
+        END
+        
+      END  
+    
+      APPEND ~rndtres.2da~ ~%cd_random_item% %cd_random_table%~
+    
+    END ELSE BEGIN // for bg2-style tables 
+    
+      // pad out to 20 entries
+      OUTER_INNER_PATCH_SAVE cd_random_table ~%cd_random_table%~ BEGIN
+        COUNT_REGEXP_INSTANCES ~ +[^ ]~ cd_random_padding
+      END  
+      OUTER_WHILE cd_random_padding < 19 BEGIN
+        OUTER_INNER_PATCH_SAVE cd_random_table ~%cd_random_table%~ BEGIN
+          REPLACE_TEXTUALLY ~$~ ~ %cd_random_table%~
+          COUNT_REGEXP_INSTANCES ~ +[^ ]~ cd_random_padding
+        END 
+      END
+      OUTER_INNER_PATCH_SAVE cd_random_table ~%cd_random_table%~ BEGIN
+        REPLACE_TEXTUALLY ~^\([^ ]+ +[^ ]+ +[^ ]+ +[^ ]+ +[^ ]+ +[^ ]+ +[^ ]+ +[^ ]+ +[^ ]+ +[^ ]+ +[^ ]+ +[^ ]+ +[^ ]+ +[^ ]+ +[^ ]+ +[^ ]+ +[^ ]+ +[^ ]+ +[^ ]+\).+~ ~\1~
+      END 
+    
+      COPY_EXISTING ~rndtreas.2da~ ~override~
+        COUNT_2DA_ROWS 20 cd_rndtreas_rows
+        BUT_ONLY
+      
+      ACTION_IF cd_rndtreas_rows >= 42 BEGIN
+        PRINT ~Random treasure table already full, nothing added.~
+      END ELSE
+      ACTION_IF cd_rndtreas_rows < 9 BEGIN
+        OUTER_SET cd_random_symbol = cd_rndtreas_rows + 1
+        APPEND ~rndtreas.2da~ ~%cd_random_item% %cd_random_table%~
+        OUTER_SPRINT cd_random_item_return ~rndtre0%cd_random_symbol%~
+      END ELSE BEGIN
+        ACTION_IF cd_rndtreas_rows < 16 BEGIN // if in 'dead symbol' zone, pad out to 17 to get back into letters
+          OUTER_FOR (index = cd_rndtreas_rows ; index < 16 ; ++index) BEGIN
+            APPEND ~rndtreas.2da~ ~cdnull%index% 001 001 001 001 001 001 001 001 001 001 001 001 001 001 001 001 001 001 001~
+          END  
+          OUTER_SET cd_rndtreas_rows = 16
+        END
+        APPEND ~rndtreas.2da~ ~%cd_random_item% %cd_random_table%~ 
+        
+        OUTER_SET cd_random_symbol = 49 + cd_rndtreas_rows  
+<<<<<<<< ./cd_rndtreas.txt
+rndtre00
+>>>>>>>>
+        COPY ~./cd_rndtreas.txt~ ~./cd_rndtreas.txt~
+          WRITE_BYTE 0x07 ~%cd_random_symbol%~
+          READ_ASCII 0x00 cd_random_item_return (8) 
+      END       
+
+    END // end rndtres vs. rndtreas 
+    
+  END // end sanity check
+
+END // end function
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// add profs for random weapons                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_ACTION_FUNCTION cd_match_random_profs
+  INT_VAR old_bg2_prof = 0
+          prof_lsword  = 0 // Bastard swords, Two handed swords, Long Swords, and Scimitars
+          prof_ssword  = 0 // Daggers and Short swords
+          prof_bow     = 0 // Long bows, Composite Long bows, and Short bows
+          prof_spear   = 0 // Spears and Halberds
+          prof_blunt   = 0 // Maces, Clubs, Warhammers, and the Staff
+          prof_spiked  = 0 // Morning Stars and Flails
+          prof_axe     = 0 // Battle axes and Throwing axes
+          prof_missile = 0 // Slings, Darts, and Crossbows 
+  STR_VAR old_item = ~~ 
+          new_item = ~~   
+          creature = ~~   
+          slot     = ~~ 
+BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ BEGIN
+
+    ACTION_CLEAR_ARRAY cd_bgprofs
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_bgprofs BEGIN 
+      1 => "%prof_lsword%"
+      2 => "%prof_ssword%"
+      3 => "%prof_bow%"
+      4 => "%prof_spear%"
+      5 => "%prof_blunt%"
+      6 => "%prof_spiked%"
+      7 => "%prof_axe%"
+      8 => "%prof_missile%"
+    END 
+    
+    COPY_EXISTING ~%creature%.cre~ ~override~
+      SET match = 0
+      SET profs = 0
+      CLEAR_ARRAY cd_check_slots
+      PATCH_IF ("%slot%" STRING_COMPARE_CASE "weapon" = 0) BEGIN
+        SET profs = 1
+        DEFINE_ASSOCIATIVE_ARRAY cd_check_slots BEGIN 
+          weapon1 => 0x12
+          weapon2 => 0x14
+          weapon3 => 0x16
+          weapon4 => 0x18
+        END  
+      END ELSE
+      PATCH_IF ("%slot%" STRING_COMPARE_CASE "quiver" = 0) BEGIN
+        DEFINE_ASSOCIATIVE_ARRAY cd_check_slots BEGIN 
+          quiver1 => 0x1a
+          quiver2 => 0x1c
+          quiver3 => 0x1e
+        END  
+      END ELSE
+      PATCH_IF ("%slot%" STRING_COMPARE_CASE "helmet" = 0) BEGIN
+        DEFINE_ASSOCIATIVE_ARRAY cd_check_slots BEGIN helmet  => 0x00 END
+      END ELSE  
+      PATCH_IF ("%slot%" STRING_COMPARE_CASE "armor" = 0) BEGIN
+        DEFINE_ASSOCIATIVE_ARRAY cd_check_slots BEGIN armor   => 0x02 END
+      END ELSE   
+      PATCH_IF ("%slot%" STRING_COMPARE_CASE "offhand" = 0) BEGIN
+        DEFINE_ASSOCIATIVE_ARRAY cd_check_slots BEGIN offhand => 0x04 END
+      END  
+      READ_LONG 0x2b8 slot_off
+      READ_LONG 0x2bc item_off
+      READ_LONG 0x2b0 item_num
+      PATCH_PHP_EACH cd_check_slots AS slot => offset BEGIN
+        READ_SHORT (slot_off + offset) itm_idx
+        PATCH_IF (itm_idx < item_num) BEGIN // sanity check
+          READ_ASCII (item_off + 0x00 + (itm_idx * 0x14)) item
+          PATCH_IF (("%old_item%" STRING_COMPARE_CASE "%item%" = 0) OR 
+                    ("%old_item%" STRING_COMPARE_CASE "" = 0)) BEGIN 
+            WRITE_ASCIIE (item_off + 0x00 + (itm_idx * 0x14)) ~%new_item%~ // actually replace weapon
+            SET match = 1
+          END
+        END
+      END  
+      PATCH_IF match AND profs BEGIN // let's start with the prof changes if new item added  
+        SET min_prof = 1
+        PATCH_IF old_bg2_prof BEGIN
+          READ_LONG 0x2c4 fx_off
+          READ_LONG 0x2c8 fx_num
+          READ_BYTE 0x33  fx_type
+          FOR (index = 0 ; index < fx_num ; ++index) BEGIN
+            READ_SHORT (fx_off + (fx_type * 0x08) + 0x00 + ((0x30 + (fx_type * 0xd8)) * index)) opcode
+            PATCH_IF opcode = 233 BEGIN
+              READ_SHORT (fx_off + (fx_type * 0x10) + 0x04 + ((0x30 + (fx_type * 0xd8)) * index)) stars
+              READ_SHORT (fx_off + (fx_type * 0x10) + 0x08 + ((0x30 + (fx_type * 0xd8)) * index)) prof
+              PATCH_IF ((old_bg2_prof = prof) AND (stars > min_prof)) BEGIN
+                SET min_prof = stars
+              END
+            END
+          END  
+        END
+        PATCH_PHP_EACH cd_bgprofs AS offset => value BEGIN
+          PATCH_IF value = 2 BEGIN
+            READ_BYTE (0x6d + offset) stars
+            PATCH_IF (stars > min_prof) BEGIN
+              SET min_prof = stars
+            END
+          END
+        END
+        PATCH_IF min_prof > 5 BEGIN SET min_prof = 5 END  
+        PATCH_PHP_EACH cd_bgprofs AS offset => value BEGIN
+          PATCH_IF value = 1 BEGIN
+            READ_BYTE (0x6d + offset) stars
+            PATCH_IF (stars < min_prof) BEGIN
+              WRITE_BYTE (0x6d + offset) min_prof
+            END
+          END
+        END
+      END 
+      BUT_ONLY    
+          
+   END
+   
+END   
+ 

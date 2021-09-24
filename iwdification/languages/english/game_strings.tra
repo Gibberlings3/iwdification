@@ -322,3 +322,19 @@ EVASION: When a Thief is hit by a spell that can be evaded (Fireball, Lightning 
 ~ // keep these extra linebreaks
 @12003 = ~Disadvantages:~ // match this exactly to a kit description, as this is used as a text-match
 @12004 = ~- Alignment restricted to any except lawful good.~ // match this exactly to main thief description (strref 9561), as this is used as a text-match
+
+
+// these two strings are used to change "Long Sword" into "High Quality Long Sword"
+// 14003 is used as a prefix, and 14004 as a suffix, to the existing item name; remember spaces
+@14003 = ~High Quality ~
+@14004 = ~~
+// these two strings are used to change the description for high-quality weapons by adding THAC0: +1 to the descript
+// the mod matches the contents of 14006 and adds 14005 as the line above it
+@14005 = ~THAC0: +~ 
+// if the line doesn't have an existing THAC0 line, we match the STATISTICS: line and add it underneath
+// the ? makes the : match optional, e.g. this will match "STATISTICS" or "STATISTICS:"
+// the horrible mess at the end is to capture and preserve the existing whitespace and line breaks
+@14006 = ~^STATISTICS:?[ %TAB%%LNL%%MNL%%WNL%]+~ 
+// if the descript has an existing THAC0 bonus line, instead we need to match and replace
+// matches THAC0 or the mistaken THACO; matches an optional +
+@14007 = ~^THAC[0O]:?[ %TAB%]+\+?[0-9]+~

@@ -40,7 +40,6 @@ ASK_EVERY_COMPONENT
 
 LANGUAGE ~English~ ~english~ ~iwdification/languages/english/setup.tra~               // installer strings
                              ~iwdification/languages/english/game_strings.tra~        // strings for the tlk
-                             
 
 LANGUAGE ~French~ ~french~ ~iwdification/languages/english/setup.tra~        // installer strings
                            ~iwdification/languages/french/setup.tra~         // installer strings
@@ -474,22 +473,54 @@ COPY_EXISTING ~dmgtypes.2da~ ~override~
   REPLACE_TEXTUALLY ~^ACID[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+~        ~ACID        EFF_M47    ACIDH      *~
   PRETTY_PRINT_2DA
   
-COPY ~iwdification/bam/blank.bam~         ~override/shacid.bam~
-     ~iwdification/bam/coldh.bam~         ~override~
-     ~iwdification/bam/coldl.bam~         ~override~
-     ~iwdification/bam/electrh.bam~       ~override~
-     ~iwdification/bam/electrl.bam~       ~override~
-     ~iwdification/bam/fireh.bam~         ~override~
-     ~iwdification/bam/firel.bam~         ~override~
-     ~iwdification/obg2_res/acidh.vvc~    ~override~
-     ~iwdification/obg2_res/acidh_ee.bam~ ~override/acidh.bam~
-     ~iwdification/vvc/coldh.vvc~         ~override~
-     ~iwdification/vvc/electrh.vvc~       ~override~
-     ~iwdification/vvc/fireh.vvc~         ~override~
-     ~iwdification/wav/eff_m46.wav~       ~override~
-     ~iwdification/wav/eff_m47.wav~       ~override~
-     ~iwdification/wav/misc_01c.wav~      ~override~
-     ~iwdification/wav/misc_02c.wav~      ~override~
+COPY ~iwdification/bam/blank.bam~                   ~override/shacid.bam~
+     ~iwdification/bam/coldh.bam~                   ~override~
+     ~iwdification/bam/coldl.bam~                   ~override~
+     ~iwdification/bam/electrh.bam~                 ~override~
+     ~iwdification/bam/electrl.bam~                 ~override~
+     ~iwdification/bam/fireh.bam~                   ~override~
+     ~iwdification/bam/firel.bam~                   ~override~
+     ~iwdification/iwdspells/obg2_res/acidh.vvc~    ~override~
+     ~iwdification/iwdspells/obg2_res/acidh_ee.bam~ ~override/acidh.bam~
+     ~iwdification/vvc/coldh.vvc~                   ~override~
+     ~iwdification/vvc/electrh.vvc~                 ~override~
+     ~iwdification/vvc/fireh.vvc~                   ~override~
+     ~iwdification/wav/eff_m46.wav~                 ~override~
+     ~iwdification/wav/eff_m47.wav~                 ~override~
+     ~iwdification/wav/misc_01c.wav~                ~override~
+     ~iwdification/wav/misc_02c.wav~                ~override~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// randomized equipment                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// include hq items                                 \\\\\
+/////                                                  \\\\\
+
+BEGIN @14001 DESIGNATED 140 // with hq items
+SUBCOMPONENT @14000 // randomized equipment
+GROUP @994  
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @997
+
+OUTER_SET include_hq = 1
+INCLUDE ~iwdification/tpa/random.tpa~
+
+/////                                                  \\\\\
+///// exclude hq items                                 \\\\\
+/////                                                  \\\\\
+
+BEGIN @14002 DESIGNATED 141 // with hq items
+SUBCOMPONENT @14000 // randomized equipment
+GROUP @994  
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @997
+
+OUTER_SET include_hq = 0
+INCLUDE ~iwdification/tpa/random.tpa~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
