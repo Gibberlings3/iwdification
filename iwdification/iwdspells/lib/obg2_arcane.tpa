@@ -867,9 +867,11 @@ COPY_EXISTING ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%.spl~ ~override~
 	   WRITE_BYTE 0x217 255 // removing explosion effect
 	   WRITE_SHORT 0x224 30 // increase size of the cone
   
-  COPY ~%obg2_res_path%/cdia431a.eff~ ~override~
-       ~%obg2_res_path%/cdia431b.eff~ ~override~
-       ~%obg2_res_path%/cdia431a.cre~ ~override~
+  COPY ~%obg2_res_path%/cdia431a.eff~ ~override/cdia431a.eff~
+       ~%obg2_res_path%/cast.eff~     ~override/cdia431c.eff~
+    WRITE_ASCIIE 0x30 ~%DEST_RES%~ #8
+  
+  COPY ~%obg2_res_path%/cdia431a.cre~ ~override~
 
   COPY_EXISTING ~%WIZARD_SHOUT%.spl~ ~override/cdia431.spl~ // move main spell to null
     WRITE_LONG 0x08 "-1" // name
@@ -897,10 +899,10 @@ COPY_EXISTING ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%.spl~ ~override~
     
   COPY_EXISTING ~cdia431a.spl~ ~override~
                 ~cdia431b.spl~ ~override~  
-    LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 4 power = 4 parameter1 = 60 parameter2 = 4 timing = 1 STR_VAR resource = EVAL ~%DEST_RES%~ END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 4 power = 4 parameter1 = 60 parameter2 = 4 timing = 1 STR_VAR resource = cdia431c END
     
   COPY_EXISTING ~cdia431a.spl~ ~override~ 
-    LPF ALTER_EFFECT INT_VAR match_opcode = 177 target = 1 power = 0 parameter1 = 0 parameter2 = 2 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 target = 1 power = 0 parameter1 = 0 parameter2 = 2 STR_VAR resource = cdia431a END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 STR_VAR resource = cdia431b END
     
   COPY_EXISTING ~cdia431c.spl~ ~override~  
@@ -932,8 +934,8 @@ COPY_EXISTING ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%.spl~ ~override~
   ADD_PROJECTILE ~override/cdi319b.pro~
   
   COPY ~%obg2_res_path%/cdia431a.eff~ ~override/cdia806a.eff~
-       ~%obg2_res_path%/cdia431b.eff~ ~override/cdia806b.eff~
-    WRITE_ASCII 0x30 ~cdia806~ #7
+       ~%obg2_res_path%/cast.eff~     ~override/cdia806c.eff~
+    WRITE_ASCIIE 0x30 ~%DEST_RES%~ #8
     
   COPY ~%obg2_res_path%/cdia431a.cre~ ~override/cdia806a.cre~ // creature needed for pass target
 	  WRITE_ASCII 0x514 ~cdia806~ #8
@@ -964,10 +966,10 @@ COPY_EXISTING ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%.spl~ ~override~
     
   COPY_EXISTING ~cdia806a.spl~ ~override~
                 ~cdia806b.spl~ ~override~  
-    LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 4 power = 8 parameter1 = 60 parameter2 = 4 timing = 1 STR_VAR resource = EVAL ~%DEST_RES%~ END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 4 power = 8 parameter1 = 60 parameter2 = 4 timing = 1 STR_VAR resource = cdia806c END
     
   COPY_EXISTING ~cdia806a.spl~ ~override~ 
-    LPF ALTER_EFFECT INT_VAR match_opcode = 177 target = 1 power = 0 parameter1 = 0 parameter2 = 2 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 target = 1 power = 0 parameter1 = 0 parameter2 = 2 STR_VAR resource = cdia806a END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 STR_VAR resource = cdia806b END
     
   COPY_EXISTING ~cdia806c.spl~ ~override~  

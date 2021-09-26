@@ -570,6 +570,61 @@ END
     WRITE_BYTE  0x218 0     // explosion color
 
 /////                                                  \\\\\
+///// CLERIC_SMASHING_WAVE                             \\\\\
+/////                                                  \\\\\
+    
+  COPY ~%obg2_res_path%/cdia431a.cre~ ~override/cdid426a.cre~ // creature needed for pass target
+	  WRITE_ASCII 0x514 ~cdid426~ #8
+  
+  COPY ~%obg2_res_path%/cdia431a.eff~ ~override/cdid426a.eff~
+       ~%obg2_res_path%/cast.eff~     ~override/cdid426c.eff~
+    WRITE_ASCIIE 0x30 ~%DEST_RES%~ #8
+
+  ADD_PROJECTILE ~%obg2_res_path%/cdiswavw.pro~ // coneshape - close to rectangular... but not as resctangular...
+
+  COPY_EXISTING ~%CLERIC_SMASHING_WAVE%.spl~ ~override/cdid426.spl~ // move main spell to null
+    WRITE_LONG 0x08 "-1" // name
+    WRITE_LONG 0x50 "-1" // desc
+    WRITE_ASCII 0x10 ~~ #24 // remove casting sound, schools, etc.
+    LPF ALTER_SPELL_HEADER INT_VAR projectile = cdiswavw END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 318 END
+	  LPF CD_SPLIT_SAVE_DAMAGE END
+    
+  COPY_EXISTING ~%CLERIC_SMASHING_WAVE%.spl~ ~override~ // make template for others
+    LPF DELETE_EFFECT END // delete all existing effects
+    
+  COPY_EXISTING ~%CLERIC_SMASHING_WAVE%.spl~ ~override/cdid426a.spl~ 
+                ~%CLERIC_SMASHING_WAVE%.spl~ ~override/cdid426b.spl~ 
+                ~%CLERIC_SMASHING_WAVE%.spl~ ~override/cdid426c.spl~ 
+                ~%CLERIC_SMASHING_WAVE%.spl~ ~override/cdid426v.spl~ 
+    WRITE_LONG 0x08 "-1" // name
+    WRITE_LONG 0x50 "-1" // desc
+    WRITE_ASCII 0x10 ~~ #24 // remove casting sound, schools, etc.
+    
+  COPY_EXISTING ~%CLERIC_SMASHING_WAVE%.spl~ ~override~  
+    PATCH_FOR_EACH res IN cdid426a cdid426 BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 148 target = 1 parameter2 = 1 STR_VAR resource = EVAL ~%res%~ END
+    END  
+    
+  COPY_EXISTING ~cdid426a.spl~ ~override~
+                ~cdid426b.spl~ ~override~  
+    LPF ALTER_SPELL_HEADER INT_VAR projectile = 1 END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 4 power = 4 parameter1 = 60 parameter2 = 4 timing = 1 STR_VAR resource = cdid426c END
+    
+  COPY_EXISTING ~cdid426a.spl~ ~override~ 
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 target = 1 power = 0 parameter1 = 0 parameter2 = 2 STR_VAR resource = cdid426a END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 STR_VAR resource = cdid426b END
+    
+  COPY_EXISTING ~cdid426c.spl~ ~override~  
+    LPF ALTER_SPELL_HEADER INT_VAR projectile = 1 END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 235 target = 2 power = 9 parameter1 = 25 parameter2 = 2 duration = 1 END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 2 power = 4 parameter2 = 1 timing = 4 STR_VAR resource = cdid426v END
+   
+  OUTER_SET swave = (IDS_OF_SYMBOL (projectl swave) + 1)
+  COPY_EXISTING ~cdid426v.spl~ ~override~ 
+    LPF ALTER_SPELL_HEADER INT_VAR projectile = swave END
+
+/////                                                  \\\\\
 ///// CLERIC_THORN_SPRAY                               \\\\\
 /////                                                  \\\\\
 
@@ -579,6 +634,24 @@ END
   COPY_EXISTING ~idpro303.pro~ ~override~
     WRITE_BYTE 0x217 11 // re-use cone of cold
     WRITE_BYTE 0x218 0
+
+/////                                                  \\\\\
+///// CLERIC_WALL_OF_MOONLIGHT                         \\\\\
+/////                                                  \\\\\
+
+  COPY_EXISTING ~%CLERIC_WALL_OF_MOONLIGHT%.spl~ ~override~
+		LPF ALTER_EFFECT INT_VAR match_opcode = 326 match_parameter2 = 37 opcode = 177 parameter1 = 3 parameter2 = 8 END // evil
+		LPF ALTER_EFFECT INT_VAR match_opcode = 326 opcode = 215 target = 1 power = 0 parameter2 = 2 timing = 0 duration = 60 STR_VAR resource = womoonx END
+
+  COPY ~%obg2_res_path%/cast.eff~ ~override/%CLERIC_WALL_OF_MOONLIGHT%a.eff~ // evil
+       ~%obg2_res_path%/cast.eff~ ~override/%CLERIC_WALL_OF_MOONLIGHT%b.eff~ // undead
+    WRITE_ASCIIE 0x30 ~%DEST_RES%~       
+       
+  COPY_EXISTING ~%CLERIC_WALL_OF_MOONLIGHT%a.spl~ ~override~ // if undead, route via eff to b-spell for extra 3d10
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 2 parameter1 = 4 parameter2 = 3 timing = 1 STR_VAR resource = EVAL ~%CLERIC_WALL_OF_MOONLIGHT%b~ END // extra 3d10 for undead
+
+  COPY_EXISTING ~womoon.pro~ ~override~ // Play visual in spell
+    WRITE_SHORT 0x200 0
 
 /////                                                  \\\\\
 ///// CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL           \\\\\
@@ -962,7 +1035,7 @@ COPY_EXISTING ~%CLERIC_MOLD_TOUCH%b.spl~ ~override~
     ~#bless~ ~#entropy~ ~#genabju~ ~#grnring~ ~#latshg1~ ~#latshg2~ ~#latshl1~ ~#latshl2~ ~#storm~ 
     abjurh alterh asumm1x blessh ccdamah cdiseah cidamah cldamah cloudbh cmdamah cmwounh conjuh csdamah
     curseh destruh enchah exaltah harmh invoch msumm1h necroh paralh prayerb prayerg recitab recitag
-    rwotfag rwotfah schargh sohopex uwardx witherh mtouchh
+    rwotfag rwotfah schargh sohopex uwardx witherh mtouchh womoonx
   BEGIN
 
     COPY_EXISTING ~%file%.vvc~ ~override~
@@ -975,7 +1048,7 @@ COPY_EXISTING ~%CLERIC_MOLD_TOUCH%b.spl~ ~override~
     abjurax abjurh alancet alterh area1x area4x asumm1x blessh ccdamah cdiseah cldamah cloudbh 
     cmdamah cmwounh conjuh copesta csdamah curseh destruh enchah eshielc exaltah gsolac1 gsolac2 
     harmh invoch moeldaa msumm1h msumm1x necroh pfirea pfirex rwotfah schargh sclouda scloudr sgrowta 
-    sgrowtx sohopex solatc1 solatc2 sshellc sunscoh tsprayt uwardx mtouchh
+    sgrowtx sohopex solatc1 solatc2 sshellc sunscoh tsprayt uwardx mtouchh womoonx swaveh swavex
   BEGIN
 
     COPY ~%obg2_res_path%/%file%.bam~ ~override~
