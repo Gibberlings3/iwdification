@@ -82,9 +82,6 @@ BEGIN
 			LAF return_first_entry STR_VAR list="%spl%" RET key=entry spl=list END
 			OUTER_SPRINT value "%key%"
 		END
-		ACTION_IF VARIABLE_IS_SET "%value%" BEGIN
-			OUTER_SPRINT value EVAL "%%value%%"
-		END
 		ACTION_IF is_ids_here<0 BEGIN
 			OUTER_SET is_ids_here=(STRING_LENGTH "%value%">8)
 		END

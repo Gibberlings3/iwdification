@@ -111,6 +111,21 @@ Multiple chants are not cumulative. This spell requires a moderate amount of con
 @221="None." // must match the string used in kit descriptions to indicate that there are no disadvantages; see, e.g., Jester
 @222="Disadvantages:" // must match appropriate string from kit descriptions
 @223="This ability replaces the current Bard Song." // must exactly match string from description of spcl920.spl
+// 224 and 225 can also be used to remove text from the description of the Enhanced Bard Song (spcl920) if non_English installs need it
+@224="NULL_NOT_IN_USE_WURBLE"
+@225="NULL_NOT_IN_USE_WURBLE"
+@226=~Symbol, Pain
+(Conjuration/Summoning)
+Level: 7
+Sphere: Guardian
+Range: Visual range of the caster
+Duration: 11 turns
+Casting Time: 3
+Area of Effect: 12-ft. radius
+Saving Throw: Neg.
+
+Symbol, Pain is a powerful enchantment that allows the priest to inscribe a symbol on the ground or any other surface. The symbol will remain there until someone comes too close, at which point it will explode, causing all those within the area of effect to make a Saving Throw vs. Spell. Those who fail their Saving Throws are overwhelmed by pain, suffering a -4 penalty to their attack rolls, a -2 penalty to their Dexterity scores, and a -2 penalty to their Armor Class.~
+
 
 // note to translators: any sentence containing any of strings 10001-10020 is deleted from the spell description. Use these to remove good/evil alignment restrictions from the spell descriptions. (Use 10007 and later if you need more than 6 strings to do this in your language)
 

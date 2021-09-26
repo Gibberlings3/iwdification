@@ -13,7 +13,7 @@ DEFINE_ACTION_FUNCTION iwd_divine_spells_postproduction BEGIN
 		LAF surplus_cleric_protections END
 		LAF run STR_VAR file=summoned_monsters_divine location=lib END
 		LAF run STR_VAR file=dealign_cleric_spells version=1 location=lib END
-		ACTION_IF !MOD_IS_INSTALLED "spell_rev/setup-spell_rev.tp2" 55 BEGIN
+		ACTION_IF !MOD_IS_INSTALLED "spell_rev/setup-spell_rev.tp2" 0 BEGIN
 			LAF bg2ify_cure_moderate_wounds END
 			LAF hide_old_cause_wounds END
 		END
@@ -140,7 +140,17 @@ DEFINE_ACTION_FUNCTION make_physical_mirror_level_5 BEGIN
           REPLACE_TEXTUALLY CLERIC_PHYSICAL_MIRROR CLERIC_MIRROR_OLD  // avoid 'CLERIC_PHYSICAL_MIRROR' because it's better not to have an ids entry that's a substring of another one
    BUT_ONLY
    ACTION_IF FILE_EXISTS_IN_GAME "hidespl.2da" BEGIN
-		APPEND "hidespl.2da" "%CLERIC_PHYSICAL_MIRROR% 1 0 0"
+		ACTION_IF enhanced_edition BEGIN
+			APPEND "hidespl.2da" "%CLERIC_PHYSICAL_MIRROR% 1 0 0"
+		END ELSE BEGIN
+			APPEND "hidespl.2da" "%CLERIC_PHYSICAL_MIRROR% ****"		
+		END
+   END ELSE BEGIN
+ 		spl.edit[%resref_old%]
+		[
+			m_unusable_druid=1
+			m_unusable_cleric=1
+		]  
    END
 
    // copy in new version
@@ -250,8 +260,13 @@ DEFINE_ACTION_FUNCTION hide_old_cause_wounds BEGIN
    // hide BG2 versions of Cause Serious/Critical Wounds (we leave them in just to avoid AI confusions in other mods)
    
    ACTION_IF FILE_EXISTS_IN_GAME "hidespl.2da" BEGIN
-	   APPEND "hidespl.2da" "%CLERIC_CAUSE_SERIOUS_WOUNDS%  1 0 0"
-	   APPEND "hidespl.2da" "%CLERIC_CAUSE_CRITICAL_WOUNDS% 1 0 0"
+	   ACTION_IF enhanced_edition BEGIN
+		   APPEND "hidespl.2da" "%CLERIC_CAUSE_SERIOUS_WOUNDS%  1 0 0"
+		   APPEND "hidespl.2da" "%CLERIC_CAUSE_CRITICAL_WOUNDS% 1 0 0"
+	   END ELSE BEGIN
+		   APPEND "hidespl.2da" "%CLERIC_CAUSE_SERIOUS_WOUNDS%  ****"
+		   APPEND "hidespl.2da" "%CLERIC_CAUSE_CRITICAL_WOUNDS% ****"	   
+	   END
    END ELSE BEGIN
 		spl.edit[%CLERIC_CAUSE_SERIOUS_WOUNDS% %CLERIC_CAUSE_CRITICAL_WOUNDS%]
 		[

@@ -1,7 +1,7 @@
 DEFINE_ACTION_FUNCTION obg2_arcane BEGIN
-	INCLUDE "%MOD_FOLDER%/%component_loc%/lib/cdfunctions.tpa"
+  INCLUDE "%MOD_FOLDER%/%component_loc%/lib/cdfunctions.tpa"
 
-	OUTER_SPRINT spell_list arcane_resrefs.txt
+  OUTER_SPRINT spell_list arcane_resrefs.txt
 
 /* 
 //temp for when testing this as a standalone file
@@ -14,23 +14,17 @@ that can't be converted (removed from arcane_resrefs.txt prior
 to running this on oBG2) and then this, where we convert EE-only
 opcodes to oBG2 counterparts.
 */
-
-
-
-
-  LAF CD_HANDLE_AUDIO_PREP END // ogg > wav conversions  
-
-
+  LAF CD_HANDLE_AUDIO_PREP END // ogg > wav conversions 
 
 // stun icons provided by stun effect in EE, need to be done explicitly in oBG2  
-	  COPY_EXISTING ~%WIZARD_GREAT_SHOUT%.spl~ ~override~
-					~%WIZARD_ICELANCE%.spl~    ~override~
-		LPF CLONE_EFFECT INT_VAR match_opcode = 45 opcode=142 parameter2 = 55 END 
+  COPY_EXISTING ~%WIZARD_GREAT_SHOUT%.spl~ ~override~
+                ~%WIZARD_ICELANCE%.spl~    ~override~
+    LPF CLONE_EFFECT INT_VAR silent=1 match_opcode = 45 opcode=142 parameter2 = 55 END 
 
 
 /////                                                  \\\\\
-///// monster summoning		                            \\\\\
-///// 
+///// monster summoning                                \\\\\
+/////                                                  \\\\\
 
 // build array of new summons; delete 2nd & 3rd columns for oBG2 summon tables, graphics will be specified as 215s in spells
 
@@ -57,14 +51,15 @@ COPY_EXISTING ~caelemw.2da~ ~override~ // conjure lesser air elemental
   END  
   REPLACE_TEXTUALLY ~[ %TAB%]+Hit\(Animation\)?[ %TAB%]+AreaHitAnimation~ ~~
   REPLACE_TEXTUALLY ~^\([0-9]+[ %TAB%]+[^ %TAB%]+\)[ %TAB%].+$~ ~\1~ 
-  BUT_ONLY 
+  BUT_ONLY
+  IF_EXISTS  // might be missing because e.g. SR
 
 ACTION_PHP_EACH cd_monster_summoning_script AS file => script BEGIN
 
   COPY_EXISTING ~%file%.cre~ ~override~
-	PATCH_IF !FILE_EXISTS_IN_GAME "bdsum00.bcs" BEGIN
-		REPLACE_TEXTUALLY "bdsum00" "wtasight" (8)
-	END
+    PATCH_IF !FILE_EXISTS_IN_GAME "bdsum00.bcs" BEGIN
+      REPLACE_TEXTUALLY "bdsum00" "wtasight" (8)
+    END
     LPF ADD_CRE_EFFECT INT_VAR opcode = 215 target = 1 parameter2 = 1 duration = 1 STR_VAR resource = msumm1h END 
     BUT_ONLY IF_EXISTS
     
@@ -111,6 +106,8 @@ END
   ACTION_CLEAR_ARRAY cd_cre_anim
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_cre_anim BEGIN
 
+     ~dw#ms1oa~ => 0xe810 // these anims get broken when installed
+     ~dw#ms1ow~ => 0xe800 // these anims get broken when installed
      ms7umbh    => ~%anim_uhulk%~
      ss3umb8    => ~%anim_uhulk%~
      ss3umb9    => ~%anim_uhulk%~
@@ -125,11 +122,69 @@ END
      sumshad    => ~%anim_shadow_lg%~
 
   END
-
-  ACTION_PHP_EACH cd_cre_anim AS file => anim BEGIN
   
+  ACTION_PHP_EACH cd_cre_anim AS file => anim BEGIN
+    
     COPY_EXISTING ~%file%.cre~ ~override~
       WRITE_LONG 0x28 anim
+      IF_EXISTS
+      
+  END
+
+/////                                                  \\\\\
+///// other corrections for summons                    \\\\\
+/////                                                  \\\\\
+  
+  ACTION_CLEAR_ARRAY cd_cre_race
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_cre_race BEGIN
+
+     ms1goba => 112 // goblins use kobold race in bg2
+     ms1gobm => 112
+     ss1gob1 => 112
+     ss1gob2 => 112
+     ss1gob3 => 112
+     ss2gob1 => 112
+     ss2gob2 => 112
+     ss2gob3 => 112
+     ms2lizm => 154 // lizardmen use yuan-ti in bg2
+     ss1liz3 => 154
+     ss1liz4 => 154
+     ss2liz5 => 154
+     ss2liz6 => 154
+     ss2liz7 => 154
+     ms5mino => 113 // minotaurs use ogre in bg2
+     ms6salc => 145 // salamanders use elemental in bg2
+     ms6salf => 145
+
+  END
+
+  ACTION_PHP_EACH cd_cre_race AS file => race BEGIN
+    
+    COPY_EXISTING ~%file%.cre~ ~override~
+      WRITE_BYTE 0x272 race
+      IF_EXISTS
+      
+  END
+  
+  ACTION_CLEAR_ARRAY cd_cre_class
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_cre_class BEGIN
+
+     ms5mino    => 125 // minotaur, class: ogre
+     ms6salc    => 187 // salamander, class; elemental_fire
+     ms6salf    => 187
+     ms7umbh    => 168 // umber hulk, class; umberhulk
+     es8watr    => 255 // water elemental, no_class
+     ~dw#wate2~ => 255
+     ~dw#wate3~ => 255
+     ~dw#wate4~ => 255
+
+  END
+
+  ACTION_PHP_EACH cd_cre_class AS file => class BEGIN
+    
+    COPY_EXISTING ~%file%.cre~ ~override~
+      WRITE_BYTE 0x273 class
+      IF_EXISTS
       
   END
 
@@ -236,7 +291,7 @@ END
       PATCH_IF icon < 0 BEGIN
         LPF DELETE_EFFECT INT_VAR match_opcode = 142 END
       END ELSE BEGIN  
-        LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = icon END  
+        LPF ALTER_EFFECT INT_VAR silent=1 match_opcode = 142 parameter2 = icon END  
       END
       IF_EXISTS // cat's grace won't be here w/o tobex 
 
@@ -395,7 +450,8 @@ END
 /////                                                  \\\\\
 ///// WIZARD_VITRIOLIC_SPHERE                          \\\\\
 /////                                                  \\\\\
-    
+  
+ACTION_IF !MOD_IS_INSTALLED "spell_rev/setup-spell_rev.tp2" 0 BEGIN
   // vit sphere needs a lot of restructuring to get the delayed saves working
   COPY_EXISTING ~%WIZARD_VITRIOLIC_SPHERE%.spl~ ~override~
     LPF DELETE_EFFECT INT_VAR match_opcode =  12 match_timing = 4 END // delete any delayed damage
@@ -413,6 +469,7 @@ END
     
   COPY ~%obg2_res_path%/acidh.bam~ ~override~
        ~%obg2_res_path%/acidh.vvc~ ~override~
+END
 
 /////                                                  \\\\\
 ///// WIZARD_SHROUD_OF_FLAME                           \\\\\
@@ -601,14 +658,19 @@ END
 ///// WIZARD_SUMMON_SHADOW                             \\\\\
 /////                                                  \\\\\
 
+ACTION_IF !MOD_IS_INSTALLED "spell_rev/setup-spell_rev.tp2" 0 BEGIN
+
   COPY_EXISTING ~%WIZARD_SUMMON_SHADOW%.spl~ ~override~ // shadows are level 4, so p1=12 should mean 3 shadows
     LPF CLONE_EFFECT INT_VAR match_opcode = 331 opcode = 215 parameter2 = 2 timing = 0 duration = 1 STR_VAR resource = msumm1h END // add animation
     LPF ALTER_EFFECT INT_VAR match_opcode = 331 opcode = 127 parameter1 = 12 parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = sshadow END 
+
+END
 
 /////                                                  \\\\\
 ///// WIZARD_MONSTER_SUMMONING                         \\\\\
 /////                                                  \\\\\
 
+ACTION_IF !MOD_IS_INSTALLED "spell_rev/setup-spell_rev.tp2" 0 BEGIN
   ACTION_CLEAR_ARRAY cd_monster_summoning_cre
   ACTION_CLEAR_ARRAY cd_monster_summoning
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_monster_summoning BEGIN
@@ -652,12 +714,13 @@ END
     
   COPY_EXISTING ~%WIZARD_MONSTER_SUMMONING_1%.spl~ ~override~ // above shenigans turn MS1 into 1d5 monsters, now make it 1d5+1 (lazy 2d3 mimic)
     LPF ALTER_EFFECT INT_VAR match_opcode = 127 parameter1 = 2 match_probability1 = 100 END
-    
-  // summons 6 creatures from MS2 table  
+ 
+  // summons 6 creatures from MS2 table;   
   COPY_EXISTING ~wand10.itm~ ~override~ 
-      LPF CLONE_EFFECT INT_VAR match_opcode = 331 opcode = 215 parameter2 = 2 timing = 0 duration = 2 resist_dispel = 0 dicenumber = 0 dicesize = 0 STR_VAR resource = msumm1x END // add animation
-      LPF ALTER_EFFECT INT_VAR match_opcode = 331 opcode = 127 parameter1 = 12 parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = EVAL ~msummo2~ END
+    LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 331 opcode = 215 parameter2 = 2 timing = 0 duration = 2 resist_dispel = 0 dicenumber = 0 dicesize = 0 STR_VAR resource = msumm1x END // add animation
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 331 opcode = 127 parameter1 = 12 parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = EVAL ~msummo2~ END
 
+END
 /////                                                  \\\\\
 ///// WIZARD_CONJURE_LESSER_X_ELEMENTAL                \\\\\
 /////                                                  \\\\\
@@ -712,10 +775,15 @@ END
 ///// WIZARD_EXPEDITIOUS_RETREAT                       \\\\\
 /////                                                  \\\\\ 
 
+
+ACTION_IF !MOD_IS_INSTALLED "spell_rev/setup-spell_rev.tp2" 0 BEGIN
+
   // change 324 to 177 for immunities
   COPY_EXISTING ~%WIZARD_EXPEDITIOUS_RETREAT%.spl~ ~override~
     LPF ALTER_EFFECT INT_VAR match_opcode = 324 opcode = 177 parameter1 = 20 parameter2 = 5 STR_VAR resource = cdixa126 END // class = monk
     LPF ALTER_EFFECT INT_VAR match_opcode = 126 parameter2 = 2 END // mode 5 not available on oBG2
+
+END
 
 /////                                                  \\\\\
 ///// WIZARD_SHADOW_MONSTERS                           \\\\\
@@ -795,7 +863,7 @@ COPY_EXISTING ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%.spl~ ~override~
   ADD_PROJECTILE ~%obg2_res_path%/cdi315a.pro~ // Animation at speed = 25
   ADD_PROJECTILE ~%obg2_res_path%/cdi315b.pro~ // Animation at speed = 15
   COPY_EXISTING ~idpro315.pro~ ~override~
-	   WRITE_BYTE 0x217 255
+     WRITE_BYTE 0x217 255
 
   COPY_EXISTING ~%WIZARD_SHOUT%.spl~ ~override/cdia431c.spl~ // move main spell to c
     WRITE_LONG 0x08 "-1" // name
@@ -820,11 +888,11 @@ COPY_EXISTING ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%.spl~ ~override~
 /////                                                  \\\\\
 
   COPY_EXISTING ~idpro319.pro~ ~override~
-	  WRITE_BYTE 0x217 255
+    WRITE_BYTE 0x217 255
 
   COPY_EXISTING ~cdi315a.pro~ ~override/cdi319a.pro~
                 ~cdi315b.pro~ ~override/cdi319b.pro~
-	  WRITE_ASCII 0x10 ~#ff_m101~ #8
+    WRITE_ASCII 0x10 ~#ff_m101~ #8
 
   ADD_PROJECTILE ~override/cdi319a.pro~
   ADD_PROJECTILE ~override/cdi319b.pro~
@@ -862,8 +930,9 @@ COPY_EXISTING ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%.spl~ ~override~
     ceelemx cfelemx cwelemx enchah invoch mfmissx msumm1x mswordh necroh ofspheh paralh soflamc vspherx 
   BEGIN
 
-    COPY_EXISTING ~%file%.vvc~ ~override~
+  COPY_EXISTING ~%file%.vvc~ ~override~
       WRITE_SHORT 0x18 (THIS BAND `BIT9) 
+  IF_EXISTS
 
   END     
     

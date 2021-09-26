@@ -272,7 +272,7 @@ BEGIN
 	ACTION_IF !FILE_EXISTS "%data_loc%/strref_map.txt" BEGIN
 		LAF array_read STR_VAR file="strref_lookup.txt" path="%resource_loc%" RET_ARRAY tra_array=array END
 		ACTION_IF !enhanced_edition BEGIN
-			LAF check_ini STR_VAR ini=obg2_language_override RET value END
+			LAF check_ini INT_VAR silent=1 STR_VAR ini=obg2_language_override RET value END
 			ACTION_IF "%value%" STR_EQ "0" BEGIN
 				OUTER_SPRINT lang "%LANGUAGE%"
 			END ELSE BEGIN
@@ -475,13 +475,13 @@ BEGIN
 			OUTER_SET skip=1
 			OUTER_WHILE "%condition%" STR_CMP "" BEGIN
 				LAF return_first_entry STR_VAR list="%condition%" separator="|" RET var=entry condition=list END
-				ACTION_IF EVAL "%%var%%" STR_EQ 1 BEGIN
+				ACTION_IF (EVAL "%%var%%" STR_EQ "0" = 0) BEGIN
 					OUTER_SET skip=0
 				END
 			END
 		END ELSE BEGIN
 			OUTER_SET skip=0
-		END		
+		END	
 		ACTION_IF !skip && !VARIABLE_IS_SET $skip_array("%spell%") BEGIN
 			// we're not, so proceed
 			OUTER_SET exists=0
@@ -565,8 +565,8 @@ BEGIN
 								END
 								PHP_EACH offset_array AS ind=>offset BEGIN
 									READ_SHORT delta+offset proj_old
+									proj_old -=1
 									PATCH_IF VARIABLE_IS_SET $proj_map("%proj_old%") BEGIN
-										proj_old -=1
 										proj_new =$proj_map("%proj_old%")
 										WRITE_SHORT delta+offset (proj_new+1)
 									END
@@ -593,8 +593,8 @@ BEGIN
 										WRITE_SHORT 0x214 proj_new			
 									END
 									READ_SHORT 0x21a proj_old
+									proj_old -=1
 									PATCH_IF VARIABLE_IS_SET $proj_map("%proj_old%") BEGIN
-										proj_old -=1
 										proj_new =$proj_map("%proj_old%")
 										WRITE_SHORT 0x214 (proj_new+1)			
 									END						
@@ -680,7 +680,7 @@ BEGIN
 				LAF resolve_statdesc INT_VAR strref=desc /*check_first=old_id*/ STR_VAR bam bam_name path="%resource_loc%/icons" RET new_id=stat_num END
 				// update resource
 				COPY_EXISTING "%resource%" override
-					LPF ALTER_EFFECT INT_VAR match_parameter2=old_id parameter2=new_id STR_VAR match_function="READ_SHORT 0x0 opcode;; value=(opcode=142 || opcode=169 || opcode=240)" END
+					LPF ALTER_EFFECT INT_VAR silent=1 match_parameter2=old_id parameter2=new_id STR_VAR match_function="READ_SHORT 0x0 opcode;; value=(opcode=142 || opcode=169 || opcode=240)" END
 				BUT_ONLY
 			END
 			
@@ -1257,10 +1257,4 @@ OUTER_SPRINT atsymbol "@"
 INCLUDE "%MOD_FOLDER%/%library_path%/move_spell_resources.tph"
 LAF process_tra_entries INT_VAR make_lookup=0 STR_VAR tra="%language%/spells_copied.tra" END
 
-
-	// iwdee fix: symbol, pain description correction
-  PRINT ~ === checking for tra file~
-	ACTION_IF FILE_EXISTS ~%language%/spells_copied.tra~ BEGIN
-    PRINT ~ === tra file exists for process_strref~
-  END  
 >>>>>>>>

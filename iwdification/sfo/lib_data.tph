@@ -354,8 +354,14 @@ DEFINE_ACTION_FUNCTION data_priest_spells_core//internal
 BEGIN
 	// load hidespl (note that 2.6 doesn't use the is_final thing)
 	ACTION_IF FILE_EXISTS_IN_GAME "hidespl.2da" BEGIN
-		LAF 2da_read STR_VAR file=hidespl.2da RET_ARRAY array END
-		LAF 2da_extract_array STR_VAR array range=IS_HIDDEN RET_ARRAY hidden_spells=array END
+		LAF 2da_read STR_VAR file=hidespl.2da RET_ARRAY rows array END
+		ACTION_IF enhanced_edition BEGIN
+			LAF 2da_extract_array STR_VAR array range=IS_HIDDEN RET_ARRAY hidden_spells=array END
+		END ELSE BEGIN
+			ACTION_PHP_EACH rows AS k=>v BEGIN
+				OUTER_SET $hidden_spells("%k%")=1
+			END	
+		END
 	END
 	// go through the spells
 	OUTER_FOR (level=7;level>=1;level=level - 1) BEGIN

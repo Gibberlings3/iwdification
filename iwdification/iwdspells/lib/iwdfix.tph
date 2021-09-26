@@ -132,7 +132,7 @@ DEFINE_ACTION_FUNCTION iwd_spell_fixes BEGIN
   COPY_EXISTING ~%CLERIC_MOLD_TOUCH%b.spl~ ~override~
     WRITE_BYTE 0x1c 2 // spell type
     WRITE_BYTE 0x25 8 // subspell should have proper school set 
-  
+    
   // create new subspell for final 1d6 of mold touch damage when saved against  
   COPY_EXISTING ~%CLERIC_MOLD_TOUCH%.spl~  ~override/%CLERIC_MOLD_TOUCH%a.spl~
     WRITE_LONG 0x08 "-1" // blank name
