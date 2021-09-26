@@ -164,15 +164,15 @@ END ELSE BEGIN // if hq items, create them and set their variables to their resr
 /////                                                  \\\\\
 
   LAF cd_add_random_treasure STR_VAR 
-        cd_random_item = ~cdrdarow~
+        cd_random_item = ~cdrdbolt~
         cd_random_table = EVAL ~bolt01*20 bolt01*20 bolt01*20 bolt01*20 bolt01*20 bolt01*20 bolt01*20 bolt01*20 bolt01*20 %cdhqbolt%*20~ 
-    RET cdrdarow = cd_random_item_return
+    RET cdrdbolt = cd_random_item_return
   END
   
   ACTION_FOR_EACH cre IN 
     hgwar01 kuowhi01 orc06 ppthf02 rerak05 rerak06 sahbar01 sahbar02 sahrgr01 sahrgr02 sahsss01 sahsss02 sahsss03 sahuag01 spmugg spmugg2 spmugg3 // bg2ee
   BEGIN
-    LAF cd_match_random_profs STR_VAR old_item = arow01 new_item = cdrdarow slot = quiver creature = EVAL ~%cre%~ END
+    LAF cd_match_random_profs STR_VAR old_item = arow01 new_item = cdrdbolt slot = quiver creature = EVAL ~%cre%~ END
   END
 
 /////                                                  \\\\\
