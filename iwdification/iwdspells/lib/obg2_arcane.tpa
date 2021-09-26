@@ -860,60 +860,128 @@ COPY_EXISTING ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%.spl~ ~override~
 ///// WIZARD_SHOUT                                     \\\\\
 /////                                                  \\\\\
 
-  ADD_PROJECTILE ~%obg2_res_path%/cdi315a.pro~ // Animation at speed = 25
-  ADD_PROJECTILE ~%obg2_res_path%/cdi315b.pro~ // Animation at speed = 15
+  ADD_PROJECTILE ~%obg2_res_path%/cdi315a.pro~ // Animation at speed = 20
+  ADD_PROJECTILE ~%obg2_res_path%/cdi315b.pro~ // invisible Animation at speed = 100
+       
   COPY_EXISTING ~idpro315.pro~ ~override~
-     WRITE_BYTE 0x217 255
+	   WRITE_BYTE 0x217 255 // removing explosion effect
+	   WRITE_SHORT 0x224 30 // increase size of the cone
+  
+  COPY ~%obg2_res_path%/cdia431a.eff~ ~override~
+       ~%obg2_res_path%/cdia431b.eff~ ~override~
+       ~%obg2_res_path%/cdia431a.cre~ ~override~
 
-  COPY_EXISTING ~%WIZARD_SHOUT%.spl~ ~override/cdia431c.spl~ // move main spell to c
+  COPY_EXISTING ~%WIZARD_SHOUT%.spl~ ~override/cdia431.spl~ // move main spell to null
     WRITE_LONG 0x08 "-1" // name
     WRITE_LONG 0x50 "-1" // desc
+    WRITE_ASCII 0x10 ~~ #24 // remove casting sound, schools, etc.
     LPF CD_SPLIT_SAVE_DAMAGE END
     
-  COPY_EXISTING ~%WIZARD_SHOUT%.spl~ ~override~ // main spell now just casts three subspells
+  COPY_EXISTING ~%WIZARD_SHOUT%.spl~ ~override~ // make template for others
     LPF ALTER_SPELL_HEADER INT_VAR projectile = 1 END
     LPF DELETE_EFFECT END // delete all existing effects
-    PATCH_FOR_EACH letter IN a b c BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR opcode = 148 target = 1 parameter2 = 1 STR_VAR resource = EVAL ~cdia431%letter%~ END
+    
+  COPY_EXISTING ~%WIZARD_SHOUT%.spl~ ~override/cdia431a.spl~ 
+                ~%WIZARD_SHOUT%.spl~ ~override/cdia431b.spl~ 
+                ~%WIZARD_SHOUT%.spl~ ~override/cdia431c.spl~ 
+                ~%WIZARD_SHOUT%.spl~ ~override/cdia431v.spl~ 
+                ~%WIZARD_SHOUT%.spl~ ~override/cdia431x.spl~ 
+    WRITE_LONG 0x08 "-1" // name
+    WRITE_LONG 0x50 "-1" // desc
+    WRITE_ASCII 0x10 ~~ #24 // remove casting sound, schools, etc.
+    
+  COPY_EXISTING ~%WIZARD_SHOUT%.spl~ ~override~  
+    PATCH_FOR_EACH res IN cdia431a cdia431 BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 148 target = 1 parameter2 = 1 STR_VAR resource = EVAL ~%res%~ END
     END  
-  
-  COPY ~%obg2_res_path%/cdia431a.spl~ ~override~
+    
+  COPY_EXISTING ~cdia431a.spl~ ~override~
+                ~cdia431b.spl~ ~override~  
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 4 power = 4 parameter1 = 60 parameter2 = 4 timing = 1 STR_VAR resource = EVAL ~%DEST_RES%~ END
+    
+  COPY_EXISTING ~cdia431a.spl~ ~override~ 
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 target = 1 power = 0 parameter1 = 0 parameter2 = 2 END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 STR_VAR resource = cdia431b END
+    
+  COPY_EXISTING ~cdia431c.spl~ ~override~  
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 235 target = 2 power = 9 parameter1 = 30 parameter2 = 2 duration = 1 END
+    PATCH_FOR_EACH res IN cdia431v cdia431x BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 2 power = 4 parameter2 = 1 timing = 4 STR_VAR resource = EVAL ~%res%~ END
+    END  
+    
+  COPY_EXISTING ~cdia431v.spl~ ~override~  
     LPF ALTER_SPELL_HEADER INT_VAR projectile = cdi315a END
-  
-  COPY ~%obg2_res_path%/cdia431a.spl~ ~override/cdia431b.spl~
+    
+  COPY_EXISTING ~cdia431x.spl~ ~override~  
     LPF ALTER_SPELL_HEADER INT_VAR projectile = cdi315b END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 2 parameter2 = 1 STR_VAR resource = cdia431v END
 
 /////                                                  \\\\\
 ///// WIZARD_GREAT_SHOUT                               \\\\\
 /////                                                  \\\\\
 
   COPY_EXISTING ~idpro319.pro~ ~override~
-    WRITE_BYTE 0x217 255
+	  WRITE_BYTE 0x217 255 // removing explosion effect
+  	WRITE_SHORT 0x224 30 // increase the size of the cone
 
-  COPY_EXISTING ~cdi315a.pro~ ~override/cdi319a.pro~
-                ~cdi315b.pro~ ~override/cdi319b.pro~
+  COPY_EXISTING ~cdi315a.pro~ ~override/cdi319a.pro~ // Animation at speed = 20
+                ~cdi315b.pro~ ~override/cdi319b.pro~ // invisible Animation at speed = 100
     WRITE_ASCII 0x10 ~#ff_m101~ #8
 
   ADD_PROJECTILE ~override/cdi319a.pro~
   ADD_PROJECTILE ~override/cdi319b.pro~
+  
+  COPY ~%obg2_res_path%/cdia431a.eff~ ~override/cdia806a.eff~
+       ~%obg2_res_path%/cdia431b.eff~ ~override/cdia806b.eff~
+    WRITE_ASCII 0x30 ~cdia806~ #7
+    
+  COPY ~%obg2_res_path%/cdia431a.cre~ ~override/cdia806a.cre~ // creature needed for pass target
+	  WRITE_ASCII 0x514 ~cdia806~ #8
 
-  COPY_EXISTING ~%WIZARD_GREAT_SHOUT%.spl~ ~override/cdia806c.spl~ // move main spell to c
+  COPY_EXISTING ~%WIZARD_GREAT_SHOUT%.spl~ ~override/cdia806.spl~ // move main spell to null
     WRITE_LONG 0x08 "-1" // name
     WRITE_LONG 0x50 "-1" // desc
+    WRITE_ASCII 0x10 ~~ #24 // remove casting sound, schools, etc.
     LPF CD_SPLIT_SAVE_DAMAGE END
     
-  COPY_EXISTING ~%WIZARD_GREAT_SHOUT%.spl~ ~override~ // main spell now just casts three subspells
+  COPY_EXISTING ~%WIZARD_GREAT_SHOUT%.spl~ ~override~ // make template for others
     LPF ALTER_SPELL_HEADER INT_VAR projectile = 1 END
     LPF DELETE_EFFECT END // delete all existing effects
-    PATCH_FOR_EACH letter IN a b c BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR opcode = 148 target = 1 parameter2 = 1 STR_VAR resource = EVAL ~cdia806%letter%~ END
-    END     
-  
-  COPY ~%obg2_res_path%/cdia431a.spl~ ~override/cdia806a.spl~
+    
+  COPY_EXISTING ~%WIZARD_GREAT_SHOUT%.spl~ ~override/cdia806a.spl~ 
+                ~%WIZARD_GREAT_SHOUT%.spl~ ~override/cdia806b.spl~ 
+                ~%WIZARD_GREAT_SHOUT%.spl~ ~override/cdia806c.spl~ 
+                ~%WIZARD_GREAT_SHOUT%.spl~ ~override/cdia806v.spl~ 
+                ~%WIZARD_GREAT_SHOUT%.spl~ ~override/cdia806x.spl~ 
+    WRITE_LONG 0x08 "-1" // name
+    WRITE_LONG 0x50 "-1" // desc
+    WRITE_ASCII 0x10 ~~ #24 // remove casting sound, schools, etc.
+    
+  COPY_EXISTING ~%WIZARD_GREAT_SHOUT%.spl~ ~override~  
+    PATCH_FOR_EACH res IN cdia806a cdia806 BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 148 target = 1 parameter2 = 1 STR_VAR resource = EVAL ~%res%~ END
+    END  
+    
+  COPY_EXISTING ~cdia806a.spl~ ~override~
+                ~cdia806b.spl~ ~override~  
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 4 power = 8 parameter1 = 60 parameter2 = 4 timing = 1 STR_VAR resource = EVAL ~%DEST_RES%~ END
+    
+  COPY_EXISTING ~cdia806a.spl~ ~override~ 
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 target = 1 power = 0 parameter1 = 0 parameter2 = 2 END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 STR_VAR resource = cdia806b END
+    
+  COPY_EXISTING ~cdia806c.spl~ ~override~  
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 235 target = 2 power = 9 parameter1 = 30 parameter2 = 2 duration = 1 END
+    PATCH_FOR_EACH res IN cdia806v cdia806x BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 2 power = 8 parameter2 = 1 timing = 4 STR_VAR resource = EVAL ~%res%~ END
+    END  
+    
+  COPY_EXISTING ~cdia806v.spl~ ~override~  
     LPF ALTER_SPELL_HEADER INT_VAR projectile = cdi319a END
-  
-  COPY ~%obg2_res_path%/cdia431a.spl~ ~override/cdia806b.spl~
+    
+  COPY_EXISTING ~cdia806x.spl~ ~override~  
     LPF ALTER_SPELL_HEADER INT_VAR projectile = cdi319b END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 2 parameter2 = 1 STR_VAR resource = cdia806v END
   
 /////                                                  \\\\\
 ///// obg2 graphical fixes                             \\\\\
