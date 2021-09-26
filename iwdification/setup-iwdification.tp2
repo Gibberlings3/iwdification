@@ -369,9 +369,8 @@ OUTER_SET anim_beetle = 0 // 30720 gibb for testing
 ACTION_IF enhanced_edition BEGIN 
 
   OUTER_SET anim_beetle = 57888
-  COPY ~iwdification/data/anim/e220.ini~             ~override~
-       ~iwdification/dw_iwdspells_resource/anim/bam~ ~override~
-       ~iwdification/dw_iwdspells_resource/anim/wav~ ~override~
+  COPY ~iwdification/bam/e220.ini~                         ~override~
+       ~iwdification/iwdspells/copyover/anim/beetle_black~ ~override~
        
 END ELSE BEGIN
 

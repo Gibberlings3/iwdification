@@ -565,6 +565,7 @@ COPY_EXISTING ~bandit.cre~ ~override~
   SPRINT item_to_delete "bow05" // delete shortbow in inventory
   LPM DELETE_CRE_ITEM 
   REPLACE_CRE_ITEM ~cdrdsbow~ #0 #0 #0 none weapon2 EQUIP // overwrites comp weapon with random bow
+  IF_EXISTS
 
 /////                                                  \\\\\
 ///// randomize lizard man weapons                     \\\\\
