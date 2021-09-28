@@ -9,18 +9,52 @@
 INCLUDE ~iwdification/tpa/random_treasure.tpa~ // load functions
 
 /////                                                  \\\\\
+///// mix up generic helms                             \\\\\
+/////                                                  \\\\\
+
+// do this first as a check against file being present
+ACTION_IF !FILE_EXISTS_IN_GAME rndtres.2da BEGIN
+
+  COPY ~iwdification/2da/rndtres.2da~ ~override~ // seeded with cdrdhlm
+  
+END ELSE BEGIN  
+
+  LAF cd_add_random_treasure STR_VAR // 20% chance to get nicer cosmetic helmet
+        cd_random_item = ~cdrdhlm~
+        cd_random_table = EVAL ~helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm08 helm09 helm10 helm11 helm12 helm13 helm14 helm15~ 
+    RET cdrdhlm = cd_random_item_return
+  END
+
+END
+
+ACTION_FOR_EACH cre IN 
+  // bgee/sod
+  hobchil1 hobgbeg1 hobgbeg2 hobgbeg3 hobgbeg4 hobgbeg5 hobgbeg6 hobgbeg7 hobgbeg8 hobgoa_a hobgoa_b hobgoa_c hobgoa_d hobgoa_e
+  hobgob hobgob_a hobgob_b hobgob_c hobgob_d hobgob_e hobgoba ogreha 
+  bdturm01 bdturm04 flyfgt02 gororc02 hobarc01 hobarc02 hobcap01 hobsha01 hobwar01 kaypal03 obshal04 orc02 sensmsp2 // bg2ee
+BEGIN
+  LAF cd_match_random_profs STR_VAR old_item = helm01 new_item = cdrdhlm slot = helmet creature = EVAL ~%cre%~ END
+END
+
+/////                                                  \\\\\
 ///// add 2h axes to the mix, if installed             \\\\\
 /////                                                  \\\\\
 
 // add 2h axes to the mix if component installed
 ACTION_IF !FILE_EXISTS_IN_GAME ~cdax2h1.itm~ BEGIN
-  OUTER_SPRINT ~cdax2h1~  ~ halb01~
-  OUTER_SPRINT ~cdhqax2h~ ~ halb01~
-  OUTER_SPRINT ~2h_axes~ ~~
+  OUTER_SPRINT ~cdax2h1~    ~halb01~
+  ACTION_IF !include_hq BEGIN
+    OUTER_SPRINT ~cdax2h1_6~  ~halb01~ // for 1-in-6 hq replacement
+    OUTER_SPRINT ~cdax2h1_8~  ~halb01~ // for 1-in-8 hq replacement
+    OUTER_SPRINT ~cdax2h1_10~ ~halb01~ // for 1-in-10 hq replacement
+  END ELSE BEGIN
+    OUTER_SPRINT ~cdax2h1_6~  ~halb01 halb01 halb01 halb01 halb01 cdhqhalb~ // for 1-in-6 hq replacement
+    OUTER_SPRINT ~cdax2h1_8~  ~halb01 halb01 halb01 halb01 halb01 halb01 halb01 cdhqhalb~ // for 1-in-8 hq replacement
+    OUTER_SPRINT ~cdax2h1_10~ ~halb01 halb01 halb01 halb01 halb01 halb01 halb01 halb01 halb01 cdhqhalb~ // for 1-in-10 hq replacement
+  END  
 END ELSE BEGIN  
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_make_hq_items BEGIN cdax2h1,15,0,15 => cdhqax2h END // 2h axe
-  OUTER_SPRINT ~cdax2h1~  ~ cdax2h1~
-  OUTER_SPRINT ~2h_axes~ ~ cdax2h1 cdax2h1 cdax2h1 cdax2h1 cdhqax2h~
+  OUTER_SPRINT ~cdax2h1~  ~cdax2h1~
 END  
 
 /////                                                  \\\\\
@@ -28,33 +62,33 @@ END
 /////                                                  \\\\\
 
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_make_hq_items BEGIN // ^^ 2h axe added to the array, above, if installed
-  // source item, color loc x3 (16,20,21) => hq resref
+  // source item, color loc x3 (16,20,21) => hq resref - two letter code in comment is used for fake weapons (2h axe is 2a)
   arow01,   0,  0,   0 => cdhqarow // arrows
-  ax1h01,  15,  0,  15 => cdhqaxe  // axe
-  blun01,   0,  0,   0 => cdhqclub // club
-  blun02, 103,  0, 103 => cdhqmace // mace
-  blun04,  15,  0,  15 => cdhqflal // flail
-  blun06,   7,  0,  15 => cdhqmstr // morning star
+  ax1h01,  15,  0,  15 => cdhqaxe  // ax axe
+  blun01,   0,  0,   0 => cdhqclub // cl club
+  blun02, 103,  0, 103 => cdhqmace // mc mace
+  blun04,  15,  0,  15 => cdhqflal // fl flail
+  blun06,   7,  0,  15 => cdhqmstr // ms morning star
   bolt01,   0,  0,   0 => cdhqbolt // bolts
-  bow01,    0,  0,   0 => cdhqcbow // composite long bow 
-  bow03,    0,  0,   0 => cdhqlbow // long bow
-  bow05,    0,  0,   0 => cdhqsbow // short bow
+  bow01,    0,  0,   0 => cdhqcbow // cw composite long bow 
+  bow03,    0,  0,   0 => cdhqlbow // bw long bow
+  bow05,    0,  0,   0 => cdhqsbow // bs short bow
   bull01,   0,  0,   0 => cdhqbull // bullets
-  dagg01,   0,  0,  15 => cdhqdagg // dagger
-  halb01,  15,  0,  15 => cdhqhalb // halberd
-  hamm01,   0,  7,  39 => cdhqhamm // hammer
-  sper01,   0,  0,  15 => cdhqsper // spear
-  staf01,   0,  0,   0 => cdhqstaf // staff
-  sw1h01,   0,  0,  15 => cdhqsw1b // bastard sword
-  sw1h04,   0,  0,  15 => cdhqsw1l // long sword
-  sw1h07,  15,  0,   0 => cdhqsw1s // short sword
-  sw1h20,   0,  0,  15 => cdhqscim // scimitar
-  sw1h43,   0,  0,  15 => cdhqkat  // katana
-  sw1h46,   0,  0,  15 => cdhqwaki // wakizashia
-  sw1h48,   0,  0,  15 => cdhqninj // ninja-to
-  sw2h01,   0,  0,  15 => cdhqsw2h // two-handed swords
-  xbow01,   0,  0,   0 => cdhqcbhv // heavy crossbow
-  xbow04,   0,  0,  15 => cdhqcblt // light crossbow
+  dagg01,   0,  0,  15 => cdhqdagg // dd dagger
+  halb01,  15,  0,  15 => cdhqhalb // hb halberd
+  hamm01,   0,  7,  39 => cdhqhamm // wh hammer
+  sper01,   0,  0,  15 => cdhqsper // sp spear
+  staf01,   0,  0,   0 => cdhqstaf // qs staff
+  sw1h01,   0,  0,  15 => cdhqsw1b // s0 bastard sword
+  sw1h04,   0,  0,  15 => cdhqsw1l // s1 long sword
+  sw1h07,  15,  0,   0 => cdhqsw1s // ss short sword
+  sw1h20,   0,  0,  15 => cdhqscim // sc scimitar
+  sw1h43,   0,  0,  15 => cdhqkat  // s3 katana
+  sw1h46,   0,  0,  15 => cdhqwaki // wk wakizashia
+  sw1h48,   0,  0,  15 => cdhqninj // nt ninja-to
+  sw2h01,   0,  0,  15 => cdhqsw2h // s2 two-handed swords
+  xbow01,   0,  0,   0 => cdhqcbhv // cb heavy crossbow
+  xbow04,   0,  0,  15 => cdhqcblt // lc light crossbow
   
 END
 
@@ -62,7 +96,9 @@ ACTION_IF !include_hq BEGIN // if no hq items, their variables will evaluate to 
  
   ACTION_PHP_EACH cd_make_hq_items AS source => newitem BEGIN
 
-    OUTER_SPRINT ~%newitem%~ ~ %source_0%~
+    OUTER_SPRINT ~%source_0%_6~  ~%source_0%~ // for 1-in-6 hq replacement
+    OUTER_SPRINT ~%source_0%_8~  ~%source_0%~ // for 1-in-8 hq replacement
+    OUTER_SPRINT ~%source_0%_10~ ~%source_0%~ // for 1-in-10 hq replacement
     
   END
 
@@ -76,68 +112,14 @@ END ELSE BEGIN // if hq items, create them and set their variables to their resr
 
   ACTION_PHP_EACH cd_make_hq_items AS source => newitem BEGIN
 
-    OUTER_SPRINT ~%newitem%~ ~ %newitem%~
+    OUTER_SPRINT ~%source_0%_6~  ~%source_0% %source_0% %source_0% %source_0% %source_0% %newitem%~ // for 1-in-6 hq replacement
+    OUTER_SPRINT ~%source_0%_8~  ~%source_0% %source_0% %source_0% %source_0% %source_0% %source_0% %source_0% %newitem%~ // for 1-in-8 hq replacement
+    OUTER_SPRINT ~%source_0%_10~ ~%source_0% %source_0% %source_0% %source_0% %source_0% %source_0% %source_0% %source_0% %source_0% %newitem%~ // for 1-in-10 hq replacement
+
     COPY ~iwdification/bam/%newitem%.bam~ ~override~
-    COPY_EXISTING ~%source_0%.itm~ ~override/%newitem%.itm~
-      WRITE_ASCIIE 0x3a ~%newitem%~   
-      WRITE_LONG   0x34 (THIS * 2) // double the price; iwd quintuples it but that seems extreme  
-      READ_LONG    0x64 abil_off
-      READ_SHORT   0x68 abil_num
-      FOR (index = 0 ; index < abil_num ; ++index) BEGIN
-        READ_BYTE (abil_off +        (index * 0x38)) type
-        PATCH_IF (type != 3) BEGIN // not magic
-          WRITE_ASCIIE (abil_off + 0x04 + (index * 0x38)) ~%newitem%~              
-          WRITE_SHORT  (abil_off + 0x14 + (index * 0x38)) (THIS + 1) 
-          READ_SHORT   (abil_off + 0x14 + (index * 0x38)) thac0
-        END
-      END    
-      PATCH_IF (source_1 OR source_2 OR source_3) BEGIN // recolor paperdoll
-        READ_LONG  0x6a fx_off
-        READ_SHORT 0x6e fx_idx
-        READ_SHORT 0x70 fx_num
-        FOR (index = 0 ; index < fx_num ; ++index) BEGIN
-          READ_SHORT (fx_off + 0x00 + ((fx_idx + index) * 0x30)) opcode
-          PATCH_IF opcode = 7 BEGIN
-            READ_LONG  (fx_off + 0x08 + ((fx_idx + index) * 0x30)) loc
-            PATCH_IF ((loc = 16) AND (source_1 != 0)) BEGIN
-              WRITE_LONG  (fx_off + 0x04 + ((fx_idx + index) * 0x30)) source_1
-            END ELSE  
-            PATCH_IF ((loc = 20) AND (source_2 != 0)) BEGIN
-              WRITE_LONG  (fx_off + 0x04 + ((fx_idx + index) * 0x30)) source_2
-            END ELSE  
-            PATCH_IF ((loc = 21) AND (source_3 != 0)) BEGIN
-              WRITE_LONG  (fx_off + 0x04 + ((fx_idx + index) * 0x30)) source_3
-            END 
-          END
-        END
-      END      
-      PATCH_FOR_EACH offset IN 0x08 0x0c BEGIN
-        READ_LONG ~%offset%~ name_strref
-        PATCH_IF (name_strref >= 0 && name_strref < 2147483646) BEGIN
-          READ_STRREF ~%offset%~ name
-          INNER_PATCH_SAVE name ~%name%~ BEGIN
-            REPLACE_TEXTUALLY ~\(%name%\)~ ~%name_prefix%\1%name_suffix%~
-          END
-          SAY offset ~%name%~
-        END
-      END 
-      PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
-        READ_LONG ~%offset%~ desc_strref
-        PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
-          READ_STRREF ~%offset%~ desc
-          INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-            PATCH_IF thac0 = 1 BEGIN // if it needs a new line
-              REPLACE_TEXTUALLY ~\(%desc_stats%\)~ ~\1%desc_new%%thac0%
-~
-            END ELSE BEGIN
-              REPLACE_TEXTUALLY ~%desc_thac0%~ ~%desc_new%%thac0%~
-            END
-          END
-          SAY offset ~%desc%~
-        END
-      END       
-   
-  END
+    LAF cd_make_hq_weapon STR_VAR base_item = EVAL ~%source_0%~ hq_item = EVAL ~%newitem%~ END
+    
+  END  
 
 /////                                                  \\\\\
 ///// mix in the occassional high quality arrows       \\\\\
@@ -145,7 +127,7 @@ END ELSE BEGIN // if hq items, create them and set their variables to their resr
 
   LAF cd_add_random_treasure STR_VAR
         cd_random_item = ~cdrdarow~
-        cd_random_table = EVAL ~arow01*20 arow01*20 arow01*20 arow01*20 arow01*20 arow01*20 arow01*20 arow01*20 arow01*20 %cdhqarow%*20~ 
+        cd_random_table = EVAL ~%arow01_10%~ 
     RET cdrdarow = cd_random_item_return
   END
   
@@ -165,7 +147,7 @@ END ELSE BEGIN // if hq items, create them and set their variables to their resr
 
   LAF cd_add_random_treasure STR_VAR 
         cd_random_item = ~cdrdbolt~
-        cd_random_table = EVAL ~bolt01*20 bolt01*20 bolt01*20 bolt01*20 bolt01*20 bolt01*20 bolt01*20 bolt01*20 bolt01*20 %cdhqbolt%*20~ 
+        cd_random_table = EVAL ~%bolt01_10%~ 
     RET cdrdbolt = cd_random_item_return
   END
   
@@ -176,51 +158,28 @@ END ELSE BEGIN // if hq items, create them and set their variables to their resr
   END
 
 /////                                                  \\\\\
-///// mix in hq short swords for kobolds               \\\\\
+///// mix in the occassional high quality staff        \\\\\
 /////                                                  \\\\\
 
-// kobolds only support short sword animations, so no point in mixing in more
   LAF cd_add_random_treasure STR_VAR 
-        cd_random_item = ~cdrdkob~
-        cd_random_table = EVAL ~sw1h07 sw1h07 sw1h07 sw1h07 sw1h07 sw1h07 sw1h07 sw1h07 sw1h07 %cdhqsw1s%~ 
-    RET cdrdkob = cd_random_item_return
+        cd_random_item = ~cdrdstaf~
+        cd_random_table = EVAL ~%staf01_10%~ 
+    RET cdrdstaf = cd_random_item_return
   END
   
   ACTION_FOR_EACH cre IN 
-    // bgee/sod
-    kobcap01 kobcomm kobola_a kobola_b kobola_c kobola_d kobola_e kobold kobold_a kobold_b kobold_c
-    kobold_d kobold_e kobolda 
-    kobarc01 kobcom01 kobwar01 // bg2ee; kobcap01 is repeat
+    orc05 // bgee/sod
   BEGIN
-    LAF cd_match_random_profs STR_VAR old_item = sw1h07 new_item = cdrdkob slot = weapon creature = EVAL ~%cre%~ END
-  END
-
-/////                                                  \\\\\
-///// mix in hq long swords for hobgoblins             \\\\\
-/////                                                  \\\\\
-
-// hobgoblins only support long sword animations; 1pp adds fake bastard swords to a few which we don't change
-
-  LAF cd_add_random_treasure STR_VAR
-        cd_random_item = ~cdrdhgls~
-        cd_random_table = EVAL ~sw1h04 sw1h04 sw1h04 sw1h04 sw1h04 sw1h04 sw1h04 sw1h04 sw1h04 %cdhqsw1l%~ 
-    RET cdrdhgls = cd_random_item_return
+    LAF cd_match_random_profs STR_VAR old_item = staf01 new_item = cdrdstaf slot = weapon creature = EVAL ~%cre%~ END
   END
   
-  ACTION_FOR_EACH cre IN 
-    bdhobg02 bdhobg05 // bgee/sod
-    ppthf01 hobcap01 rakmah01 rakruh01 // bg2ee
-  BEGIN
-    LAF cd_match_random_profs STR_VAR old_item = sw1h04 new_item = cdrdhgls slot = weapon creature = EVAL ~%cre%~ END
-  END
-
 /////                                                  \\\\\
 ///// mix in hq light crossbows for thieves            \\\\\
 /////                                                  \\\\\
 
   LAF cd_add_random_treasure STR_VAR
         cd_random_item = ~cdrdcbth~
-        cd_random_table = EVAL ~xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 %cdhqcblt%~ 
+        cd_random_table = EVAL ~%xbow04_10%~ 
     RET cdrdcbth = cd_random_item_return
   END
   
@@ -236,7 +195,7 @@ END ELSE BEGIN // if hq items, create them and set their variables to their resr
 
   LAF cd_add_random_treasure STR_VAR 
         cd_random_item = ~cdrdclbw~
-        cd_random_table = EVAL ~bow01 bow01 bow01 bow01 bow01 bow01 bow01 bow01 bow01 %cdhqcbow%~ 
+        cd_random_table = EVAL ~%bow01_10%~ 
     RET cdrdclbw = cd_random_item_return
   END
   
@@ -251,10 +210,10 @@ END ELSE BEGIN // if hq items, create them and set their variables to their resr
 ///// mix in the occassional hq short bow              \\\\\
 /////                                                  \\\\\
 
-// primarily meant for thieves; have another replasce down below that also mixes in long bows
+// primarily meant for thieves; have another replace down below that also mixes in long bows
   LAF cd_add_random_treasure STR_VAR 
         cd_random_item = ~cdrdsbth~
-        cd_random_table = EVAL ~bow05 bow05 bow05 bow05 bow05 bow05 bow05 bow05 bow05 %cdhqsbow%~ 
+        cd_random_table = EVAL ~%bow05_10%~ 
     RET cdrdsbth = cd_random_item_return
   END
   
@@ -270,7 +229,7 @@ END ELSE BEGIN // if hq items, create them and set their variables to their resr
 
   LAF cd_add_random_treasure STR_VAR
         cd_random_item = ~cdrdcbhv~
-        cd_random_table = EVAL ~xbow01 xbow01 xbow01 xbow01 xbow01 xbow01 xbow01 xbow01 xbow01 %cdhqcbhv%~ 
+        cd_random_table = EVAL ~%xbow01_10%~ 
     RET cdrdcbhv = cd_random_item_return
   END
   
@@ -287,7 +246,7 @@ END ELSE BEGIN // if hq items, create them and set their variables to their resr
 // for the goblin w/axe animation, as an axe & shield is hardcoded to the animation
   LAF cd_add_random_treasure STR_VAR
         cd_random_item = ~cdrdgaxe~
-        cd_random_table = EVAL ~ax1h01 ax1h01 ax1h01 ax1h01 ax1h01 ax1h01 ax1h01 ax1h01 ax1h01 %cdhqaxe%~ 
+        cd_random_table = EVAL ~%ax1h01_10%~ 
     RET cdrdgaxe = cd_random_item_return
   END
   
@@ -300,23 +259,36 @@ END ELSE BEGIN // if hq items, create them and set their variables to their resr
 END 
 
 /////                                                  \\\\\
-///// mix up generic helms                             \\\\\
-/////                                                  \\\\\
+///// make cosmetic items                              \\\\\
+/////                                                  \\\\\ 
 
-LAF cd_add_random_treasure STR_VAR 
-      cd_random_item = ~cdrdhlm~
-      cd_random_table = EVAL ~helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm08 helm09 helm10 helm11 helm12 helm13 helm14 helm15~ 
-  RET cdrdhlm = cd_random_item_return
-END
-  
-ACTION_FOR_EACH cre IN 
-  // bgee/sod
-  hobchil1 hobgbeg1 hobgbeg2 hobgbeg3 hobgbeg4 hobgbeg5 hobgbeg6 hobgbeg7 hobgbeg8 hobgoa_a hobgoa_b hobgoa_c hobgoa_d hobgoa_e
-  hobgob hobgob_a hobgob_b hobgob_c hobgob_d hobgob_e hobgoba ogreha 
-  bdturm01 bdturm04 flyfgt02 gororc02 hobarc01 hobarc02 hobcap01 hobsha01 hobwar01 kaypal03 obshal04 orc02 sensmsp2 // bg2ee
-BEGIN
-  LAF cd_match_random_profs STR_VAR old_item = helm01 new_item = cdrdhlm slot = helmet creature = EVAL ~%cre%~ END
-END
+OUTER_SPRINT base_item sw1h01    // bastard sword w/ long sword animation
+OUTER_SPRINT hq_item   cdhqsw1b
+OUTER_SPRINT fake_item s0
+OUTER_SPRINT animation S1
+REINCLUDE ~iwdification/tpa/random_make_fake.tpa~ // why no function? I need to return three variables
+
+OUTER_SPRINT base_item sw1h07    // short sword w/ long sword animation
+OUTER_SPRINT hq_item   cdhqsw1s
+OUTER_SPRINT fake_item ss
+REINCLUDE ~iwdification/tpa/random_make_fake.tpa~
+
+OUTER_SPRINT base_item sw1h20    // scimitar w/ long sword animation
+OUTER_SPRINT hq_item   cdhqscim
+OUTER_SPRINT fake_item sc
+REINCLUDE ~iwdification/tpa/random_make_fake.tpa~ 
+
+OUTER_SPRINT base_item sw1h04    // long sword w/ short sword animation
+OUTER_SPRINT hq_item   cdhqsw1l
+OUTER_SPRINT fake_item s1
+OUTER_SPRINT animation SS
+REINCLUDE ~iwdification/tpa/random_make_fake.tpa~
+
+OUTER_SPRINT base_item bow05     // short bow w/ long bow animation
+OUTER_SPRINT hq_item   cdhqsbow
+OUTER_SPRINT fake_item bs
+OUTER_SPRINT animation BW
+REINCLUDE ~iwdification/tpa/random_make_fake.tpa~
 
 /////                                                  \\\\\
 ///// 10% chance for leather > studded leather         \\\\\
@@ -428,7 +400,7 @@ END
 
 LAF cd_add_random_treasure STR_VAR 
       cd_random_item = ~cdrdbte~
-      cd_random_table = EVAL ~arow09*6 arow08*6 arow10*6 arow12*6 arow04*6 arow05*6~ 
+      cd_random_table = EVAL ~arow04 arow05 arow08 arow09 arow10~ // acid, biting, fire, cold, piercing
   RET cdrdbte = cd_random_item_return
 END
 
@@ -445,7 +417,7 @@ END
 // xvart animation uses hardcoded sword animation; long sword is stretching it a bit but what the hell
 LAF cd_add_random_treasure STR_VAR
       cd_random_item = ~cdrdxvrt~
-      cd_random_table = EVAL ~sw1h07 sw1h07 sw1h07 sw1h07 sw1h07 sw1h07 sw1h07 sw1h07 sw1h07 %cdhqsw1s% sw1h07 sw1h07 sw1h07 sw1h07 sw1h07 sw1h07 sw1h07 sw1h07 sw1h07 %cdhqsw1s% sw1h04 sw1h04 sw1h04 sw1h04 %cdhqsw1l%~ 
+      cd_random_table = EVAL ~%sw1h07_8% %sw1h07_8% %sw1h07_8% %sw1h07_8% %sw1h04_8%~ // 25% long sword/75% short sword; 1-in-8 HQ
   RET cdrdxvrt = cd_random_item_return
 END
 
@@ -459,10 +431,10 @@ END
 ///// gnoll halberd replacements                       \\\\\
 /////                                                  \\\\\
 
-// gnoll animation allows for long swords and halberds; change to 60% halberd, 20% 2h axe (halberd if not installed), 20% long sword; 20% for high-quality in each 
+// gnoll animation allows for long swords and halberds; change to 60% halberd, 20% 2h axe (halberd if not installed), 20% long sword; 1-in-8 for high-quality in each 
 LAF cd_add_random_treasure STR_VAR
       cd_random_item  = ~cdrdgnl~
-      cd_random_table = EVAL ~halb01 halb01 halb01 halb01 halb01 halb01 halb01 halb01 halb01 halb01 halb01 halb01 %cdhqhalb% %cdhqhalb% %cdhqhalb% %cdax2h1% %cdax2h1% %cdax2h1% %cdax2h1% %cdax2h1% %cdhqax2h% sw1h04 sw1h04 sw1h04 sw1h04 %cdhqsw1l%~ 
+      cd_random_table = EVAL ~%halb01_8% %halb01_8% %halb01_8% %cdax2h1_8% %sw1h04_8%~
   RET cdrdgnl = cd_random_item_return
 END
 
@@ -478,10 +450,10 @@ END
 ///// sahuagins spear replacements                     \\\\\
 /////                                                  \\\\\
 
-// sahuagin support spear and staff animations: 75% spear, 25% staff; 20% hq
+// sahuagin support spear and staff animations: 75% spear, 25% staff; 10% hq
 LAF cd_add_random_treasure STR_VAR 
       cd_random_item  = ~cdrdsah~
-      cd_random_table = EVAL ~sper01 sper01 sper01 sper01 sper01 sper01 sper01 sper01 sper01 sper01 sper01 sper01 %cdhqsper% %cdhqsper% %cdhqsper% staf01 staf01 staf01 staf01 %cdhqstaf%~ 
+      cd_random_table = EVAL ~%sper01_10% %sper01_10% %sper01_10% %staf01_10%~ 
   RET cdrdsah = cd_random_item_return
 END
 
@@ -498,8 +470,8 @@ END
 
 // half-ogre and orc-melee have hardcoded sword animations, change to 40% bastard 20% each for long, short, and scimitar; 20% for high-quality in each
 LAF cd_add_random_treasure STR_VAR
-      cd_random_item  = ~cdrdhogr~
-      cd_random_table = EVAL ~sw1h01 sw1h01 sw1h01 sw1h01 sw1h01 sw1h01 sw1h01 sw1h01 %cdhqsw1b% %cdhqsw1b% sw1h04 sw1h04 sw1h04 sw1h04 %cdhqsw1l% sw1h07 sw1h07 sw1h07 sw1h07 %cdhqsw1s% sw1h20 sw1h20 sw1h20 sw1h20 %cdhqscim%~ 
+    cd_random_item  = ~cdrdhogr~
+    cd_random_table = EVAL ~%sw1h01_8% %sw1h01_8% %sw1h04_8% %sw1h07_8% %sw1h20_8%~ 
   RET cdrdhogr = cd_random_item_return
 END
 
@@ -516,8 +488,8 @@ END
 /////                                                  \\\\\
 
 LAF cd_add_random_treasure STR_VAR 
-      cd_random_item = ~cdrdlbw~
-      cd_random_table = EVAL ~bow03 bow03 bow03 bow03 bow03 bow03 bow03 bow03 bow03 bow03 bow03 bow03 bow03 bow03 bow03 bow03 bow03 bow03 %cdhqlbow% %cdhqlbow% bow01 bow01 bow01 bow01 %cdrdcblt%~ 
+    cd_random_item = ~cdrdlbw~
+    cd_random_table = EVAL ~%bow03_8% %bow03_8% %bow03_8% %bow03_8% %bow01_8%~ // 80% long bow/20% composite long bow; 1-in-8 HQ
   RET cdrdlbw = cd_random_item_return
 END
 
@@ -533,8 +505,8 @@ END
 /////                                                  \\\\\
 
 LAF cd_add_random_treasure STR_VAR
-      cd_random_item = ~cdrdcblt~
-      cd_random_table = EVAL ~xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 xbow04 %cdhqcblt% %cdhqcblt% xbow01 xbow01 xbow01 xbow01 %cdhqcbhv%~ 
+    cd_random_item = ~cdrdcblt~
+    cd_random_table = EVAL ~%xbow04_8% %xbow04_8% %xbow04_8% %xbow04_8% %xbow01_8%~ // 80% lt crossbow/20% hv crossbow; 1-in-8 HQ
   RET cdrdcblt = cd_random_item_return
 END
 
@@ -549,23 +521,20 @@ END
 /////                                                  \\\\\
 
 LAF cd_add_random_treasure STR_VAR
-      cd_random_item = ~cdrdsbow~
-      cd_random_table = EVAL ~bow05 bow05 bow05 bow05 bow05 bow05 bow05 bow05 bow05 bow05 bow05 bow05 bow05 bow05 bow05 bow05 bow05 bow05 %cdhqsbow% %cdhqsbow% bow03 bow03 bow03 bow03 %cdhqlbow%~ 
+    cd_random_item = ~cdrdsbow~
+    cd_random_table = EVAL ~%bow05_8% %bow05_8% %bow05_8% %bow05_8% %bow03_8%~ // 80% short bow/20% long bow; 1-in-8 HQ
   RET cdrdsbow = cd_random_item_return
 END
 
 ACTION_FOR_EACH cre IN 
   bdturm04 bodfgt02 flyfgt03 icgob01 rorca01 // bg2ee
 BEGIN
-  LAF cd_match_random_profs STR_VAR old_item = bow05 new_item = cdrdsbow slot = weapon creature = EVAL ~%cre%~ END
+  LAF cd_match_random_profs INT_VAR old_bg2_prof = 105 prof_bow = 2 
+                            STR_VAR old_item = bow05 new_item = cdrdsbow slot = weapon creature = EVAL ~%cre%~ END
 END
 
 // one fix: 1pp gave a comp weapon to a creature with an animation that supports the original weapon
-COPY_EXISTING ~bandit.cre~ ~override~
-  SPRINT item_to_delete "bow05" // delete shortbow in inventory
-  LPM DELETE_CRE_ITEM 
-  REPLACE_CRE_ITEM ~cdrdsbow~ #0 #0 #0 none weapon2 EQUIP // overwrites comp weapon with random bow
-  IF_EXISTS
+LAF cd_match_random_profs STR_VAR old_item = bow05 new_item = cdrdsbow comp_item = compb05 slot = weapon creature = bandit END
 
 /////                                                  \\\\\
 ///// randomize lizard man weapons                     \\\\\
@@ -574,7 +543,7 @@ COPY_EXISTING ~bandit.cre~ ~override~
 // lizadman animation supports staves, halberds: 60% halberd, 20% staff, 20% 2h axe (sub halberd); 20% HQ
 LAF cd_add_random_treasure STR_VAR
       cd_random_item = ~cdrdlman~
-      cd_random_table = EVAL ~halb01 halb01 halb01 halb01 halb01 halb01 halb01 halb01 halb01 %cdhqhalb% staf01 staf01 staf01 staf01 %cdhqstaf% %cdax2h1% %cdax2h1% %cdax2h1% %cdax2h1% %cdhqax2h%~ 
+      cd_random_table = EVAL ~%halb01_8% %halb01_8% %halb01_8% %cdax2h1_8% %staf01_8%~ 
   RET cdrdlman = cd_random_item_return
 END
 
@@ -589,10 +558,10 @@ END
 ///// randomize yuan-ti weapons                        \\\\\
 /////                                                  \\\\\
 
-// yuan-ti support sword, axe: equal shots at 2h/bastard/long/short swords, scimitars, axe; 25% HQ 
+// yuan-ti support sword, axe: equal shots at 2h/bastard/long/short swords, scimitars, axe; 1-in-6 HQ 
 LAF cd_add_random_treasure STR_VAR 
       cd_random_item = ~cdrdyuan~
-      cd_random_table = EVAL ~ax1h01 ax1h01 ax1h01 %cdhqaxe% sw1h01 sw1h01 sw1h01 %cdhqsw1b% sw1h04 sw1h04 sw1h04 %cdhqsw1l% sw1h07 sw1h07 sw1h07 %cdhqsw1s% sw1h20 sw1h20 sw1h20 %cdhqscim% sw2h01 sw2h01 sw2h01 %cdhqsw2h%~ 
+      cd_random_table = EVAL ~%ax1h01_6% %sw1h01_6% %sw1h04_6% %sw1h07_6% %sw1h20_6% %sw2h01_6%~ 
   RET cdrdyuan = cd_random_item_return
 END
 
@@ -607,10 +576,10 @@ END
 ///// one-handed melee blunt weapons                   \\\\\
 /////                                                  \\\\\
 
-// for skeleton/character animations that support all weapons, really mix it up 
+// for skeleton/character animations that support all weapons, really mix it up
 LAF cd_add_random_treasure STR_VAR
       cd_random_item = ~cdrd1hmb~
-      cd_random_table = EVAL ~blun01 blun01 blun01 blun01 %cdhqclub% blun02 blun02 blun02 blun02 %cdhqmace% blun04 blun04 blun04 blun04 %cdhqflal% blun06 blun06 blun06 blun06 %cdhqmstr% hamm01 hamm01 hamm01 hamm01 %cdhqhamm%~ 
+      cd_random_table = EVAL ~%blun01_8% %blun02_8% %blun04_8% %blun06_8% %hamm01_8%~ // equal between club, mace, hammer, flail, morningstar; 1-in-8 HQ
   RET cdrd1hmb = cd_random_item_return
 END
 
@@ -644,7 +613,7 @@ END
 // for skeleton/character animations that support all weapons, really mix it up - but limited in this case for thieves
 LAF cd_add_random_treasure STR_VAR
       cd_random_item = ~cdrdth1m~
-      cd_random_table = EVAL ~blun01 blun01 blun01 blun01 %cdhqclub% dagg01 dagg01 dagg01 dagg01 %cdhqdagg% sw1h04 sw1h04 sw1h04 sw1h04 %cdhqsw1l% sw1h07 sw1h07 sw1h07 sw1h07 %cdhqsw1s% sw1h20 sw1h20 sw1h20 sw1h20 %cdhqscim%~ 
+      cd_random_table = EVAL ~%blun01_8% %dagg01_8% %sw1h04_8% %sw1h07_8% %sw1h20_8%~ // equal club, dagger, long sword, short sword, scimitar; 1-in-8 HQ
   RET cdrdth1m = cd_random_item_return
 END
 
@@ -677,7 +646,7 @@ LAF cd_match_random_profs INT_VAR old_bg2_prof = 91 prof_lsword = 2 prof_blunt =
 // for skeleton/character animations that support all weapons, really mix it up 
 LAF cd_add_random_treasure STR_VAR
       cd_random_item = ~cdrd1hms~
-      cd_random_table = EVAL ~ax1h01 ax1h01 ax1h01 %cdhqaxe% dagg01 dagg01 dagg01 %cdhqdagg% sw1h01 sw1h01 sw1h01 %cdhqsw1b% sw1h04 sw1h04 sw1h04 %cdhqsw1l% sw1h07 sw1h07 sw1h07 %cdhqsw1s% sw1h20 sw1h20 sw1h20 %cdhqscim%~ 
+      cd_random_table = EVAL ~%ax1h01_6% %dagg01_6% %sw1h01_6% %sw1h04_6% %sw1h07_6% %sw1h20_6%~ 
   RET cdrd1hms = cd_random_item_return
 END
 
@@ -703,7 +672,7 @@ END
 // for skeleton/character animations that support all weapons
 LAF cd_add_random_treasure STR_VAR
       cd_random_item = ~cdrd1hth~
-      cd_random_table = EVAL ~dart01*20 dagg05*10~ 
+      cd_random_table = EVAL ~dart01 dagg05~ 
   RET cdrd1hth = cd_random_item_return
 END
 
@@ -716,12 +685,19 @@ LAF cd_match_random_profs INT_VAR old_bg2_prof = 96 prof_missile = 1 prof_ssword
 ///// two-handed melee weapons                         \\\\\
 /////                                                  \\\\\    
          
-// for skeleton/character animations that support all weapons, really mix it up 
+// for skeleton/character animations that support all weapons, really mix it up
+ACTION_IF !FILE_EXISTS_IN_GAME ~cdax2h1.itm~ BEGIN 
+  OUTER_SPRINT ~2hweps~ ~%halb01_10% %sper01_10% %staf01_10% %sw2h01_10%~
+END ELSE BEGIN  
+  OUTER_SPRINT ~2hweps~ EVAL ~%halb01_8% %sper01_8% %staf01_8% %sw2h01_8% %cdax2h1_8%~
+END
+
 LAF cd_add_random_treasure STR_VAR
-      cd_random_item = ~cdrd2hm~
-      cd_random_table = EVAL ~%2h_axes% halb01 halb01 halb01 halb01 %cdhqhalb% sper01 sper01 sper01 sper01 %cdhqsper% staf01 staf01 staf01 staf01 %cdhqstaf% sw2h01 sw2h01 sw2h01 sw2h01 %cdhqsw2h%~ 
+    cd_random_item = ~cdrd2hm~
+    cd_random_table = EVAL ~%2hweps%~
   RET cdrd2hm = cd_random_item_return
 END
+
 ACTION_FOR_EACH cre IN // 2-handed sword to 2-handed melee
   skelet_c // bgee/sod
   gromg14 plshkn02 // bg2ee
@@ -742,7 +718,95 @@ BEGIN
   LAF cd_match_random_profs INT_VAR old_bg2_prof = 98 prof_lsword = 1 prof_blunt = 1 prof_spear = 2 prof_axe = 1
                             STR_VAR old_item = sper01 new_item = cdrd1hms slot = weapon creature = EVAL ~%cre%~ END
 END
+
+/////                                                  \\\\\
+///// kobold weapon mix                                \\\\\
+/////                                                  \\\\\ 
+
+// mix in 
+LAF cd_add_random_treasure STR_VAR 
+    cd_random_item = ~cdrdkob~
+    cd_random_table = EVAL ~%sw1h07_10% %sw1h07_10% %sw1h07_10% %cdfs1SS_10%~ 
+  RET cdrdkob = cd_random_item_return
+END
+
+ACTION_FOR_EACH cre IN 
+  // bgee/sod
+  kobcap01 kobcomm kobola_a kobola_b kobola_c kobola_d kobola_e kobold kobold_a kobold_b kobold_c
+  kobold_d kobold_e kobolda 
+  kobarc01 kobcom01 kobwar01 // bg2ee; kobcap01 is repeat
+BEGIN
+  LAF cd_match_random_profs INT_VAR old_bg2_prof = 91 prof_lsword = 1 prof_ssword = 2
+                            STR_VAR old_item = sw1h07 new_item = cdrdkob slot = weapon creature = EVAL ~%cre%~ END
+END
              
+/////                                                  \\\\\
+///// hobgoblin melee mix                              \\\\\
+/////                                                  \\\\\ 
+
+LAF cd_add_random_treasure STR_VAR // equal chances scimitar, bastard/long/short sword; 1-in-10 for HQ
+    cd_random_item = ~cdrdhobm~
+    cd_random_table = EVAL ~%cdfs0S1_10% %sw1h04_10% %cdfssS1_10% %cdfscS1_10%~ 
+  RET cdrdhobm = cd_random_item_return
+END
+
+ACTION_FOR_EACH cre IN 
+  bdhobg02 bdhobg05 // bgee/sod
+  ppthf01 hobcap01 rakmah01 rakruh01 // bg2ee
+BEGIN
+  LAF cd_match_random_profs INT_VAR old_bg2_prof = 90 prof_lsword = 2 prof_ssword = 1
+                            STR_VAR old_item = sw1h04 new_item = cdrdhobm slot = weapon creature = EVAL ~%cre%~ END
+END
+             
+/////                                                  \\\\\
+///// compb05 mix                                      \\\\\
+/////                                                  \\\\\ 
+
+// compb05 is a short bow with a long bow animation
+// this is for creatures using short bows but only have long bow animations; namely sirines, hobgoblins and kobolds
+LAF cd_add_random_treasure STR_VAR // 75% short bow, 25% long bow; 1-in-10 for HQ
+    cd_random_item = ~cdrdcb5~
+    cd_random_table = EVAL ~%cdfbsBW_10% %cdfbsBW_10% %cdfbsBW_10% %bow03_10%~ 
+  RET cdrdcb5 = cd_random_item_return
+END
+
+ACTION_FOR_EACH cre IN 
+  hobchil2 hobelite hobgbeg1 hobgbeg2 hobgbeg3 hobgbeg4 hobgbeg9 hobgoa_a hobgoa_b hobgoa_c hobgoa_d
+  hobgoa_e hobgoba kobcomm kobola_a kobola_b kobola_c kobola_d kobola_e kobolda // bgee/sod
+  chevil01 hobarc01 hobeli01 kobcom01 sirine01 // bg2ee
+BEGIN
+  LAF cd_match_random_profs INT_VAR old_bg2_prof = 105 prof_bow = 2 
+                            STR_VAR old_item = bow05 new_item = cdrdcb5 comp_item = compb05 slot = weapon creature = EVAL ~%cre%~ END
+END          
+             
+/////                                                  \\\\\
+///// comps01 mix                                      \\\\\
+/////                                                  \\\\\ 
+
+// comps01 is a bastard sword with a long sword animation
+// this is for creatures using bastard swords but only have long sword animations; namely hobgoblins and ogre mages
+LAF cd_add_random_treasure STR_VAR // 60% bastard sword, 20% long sword, 20% scimitar; 1-in-8 HQ
+    cd_random_item = ~cdrdcs1~
+    cd_random_table = EVAL ~%cdfs0S1_8% %cdfs0S1_8% %cdfs0S1_8% %cdfscS1_8% %sw1h04_8%~ 
+  RET cdrdcs1 = cd_random_item_return
+END
+
+ACTION_FOR_EACH cre IN // creatures with bastard swords
+  hobchil1 hobchil2 hobelite hobgbeg1 hobgbeg2 hobgbeg3 hobgbeg4 hobgbeg5 hobgbeg6 hobgbeg7 hobgbeg8 hobgbeg9 hobgoa_a 
+  hobgoa_b hobgoa_c hobgoa_d hobgoa_e hobgob hobgob_a hobgob_b hobgob_c hobgob_d hobgob_e hobgoba // bgee/sod
+  chevil03 hobarc01 hobarc02 hobarc02 hobeli01 hobwar01 plshom01 // bg2ee
+BEGIN
+  LAF cd_match_random_profs INT_VAR old_bg2_prof = 89 prof_lsword = 2
+                            STR_VAR old_item = sw1h01 new_item = cdrdcs1 comp_item = comps01 slot = weapon creature = EVAL ~%cre%~ END
+END
+
+ACTION_FOR_EACH cre IN  // creatures with scimitars
+  ogrema // bgee/sod
+BEGIN
+  LAF cd_match_random_profs INT_VAR old_bg2_prof = 89 prof_lsword = 2
+                            STR_VAR old_item = sw1h20 new_item = cdrdcs1 comp_item = comps01 slot = weapon creature = EVAL ~%cre%~ END
+END
+          
 /////                                                  \\\\\
 ///// wrap it up and make it purty!                    \\\\\
 /////                                                  \\\\\    

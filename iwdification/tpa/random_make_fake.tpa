@@ -1,0 +1,44 @@
+OUTER_SPRINT fake    ~cdf%fake_item%%animation%~
+OUTER_SPRINT fake_hq ~cdfh%fake_item%%animation%~ // same as fake, but with extra h
+PRINT ~fake and HQ are %fake% and %fake_hq%~
+  
+COPY_EXISTING ~%base_item%.itm~ ~override/%fake%.itm~
+  WRITE_ASCIIE 0x22 ~%animation%~ #2
+  WRITE_LONG   0x18 (THIS BAND `BIT2) // removes droppable flag
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 122 target = 1 parameter1 = 1 timing = 1 insert_point =   0 STR_VAR resource = EVAL ~%SOURCE_RES%~ END // create new weapon
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 318 target = 1                timing = 1 insert_point = 999 STR_VAR resource = EVAL ~%DEST_RES%~ END // add immunity to item
+  // for bgee, also need to make not breakable
+  READ_LONG    0x64 abil_off
+  READ_SHORT   0x68 abil_num
+  FOR (index = 0 ; index < abil_num ; ++index) BEGIN
+    READ_BYTE (abil_off +        (index * 0x38)) type
+    PATCH_IF ((type != 0) AND (type != 3)) BEGIN // not default, magic
+      WRITE_LONG (abil_off + 0x26 + (index * 0x38)) (THIS BAND `BIT1) // removes breakable flag  
+    END
+  END   
+  
+ACTION_IF !include_hq BEGIN // if no hq items, their variables will evaluate to the normal item 
+  OUTER_SPRINT ~%fake%_6~  ~%fake%~
+  OUTER_SPRINT ~%fake%_8~  ~%fake%~
+  OUTER_SPRINT ~%fake%_10~ ~%fake%~
+END ELSE BEGIN  
+  OUTER_SPRINT ~%fake%_6~  ~%fake% %fake% %fake% %fake% %fake% %fake_hq%~
+  OUTER_SPRINT ~%fake%_8~  ~%fake% %fake% %fake% %fake% %fake% %fake% %fake% %fake_hq%~
+  OUTER_SPRINT ~%fake%_10~ ~%fake% %fake% %fake% %fake% %fake% %fake% %fake% %fake% %fake% %fake_hq%~
+  
+  COPY_EXISTING ~%hq_item%.itm~ ~override/%fake_hq%.itm~
+    WRITE_ASCIIE 0x22 ~%animation%~ #2
+    WRITE_LONG   0x18 (THIS BAND `BIT2) // removes droppable flag
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 122 target = 1 parameter1 = 1 timing = 1 insert_point =   0 STR_VAR resource = EVAL ~%SOURCE_RES%~ END // create new weapon
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 318 target = 1                timing = 1 insert_point = 999 STR_VAR resource = EVAL ~%DEST_RES%~ END // add immunity to item
+    // for bgee, also need to make not breakable
+    READ_LONG    0x64 abil_off
+    READ_SHORT   0x68 abil_num
+    FOR (index = 0 ; index < abil_num ; ++index) BEGIN
+      READ_BYTE (abil_off +        (index * 0x38)) type
+      PATCH_IF ((type != 0) AND (type != 3)) BEGIN // not default, magic
+        WRITE_LONG (abil_off + 0x26 + (index * 0x38)) (THIS BAND `BIT1) // removes breakable flag  
+      END
+    END  
+
+END
