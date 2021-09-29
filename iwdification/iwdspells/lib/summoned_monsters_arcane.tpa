@@ -325,7 +325,7 @@ DEFINE_ACTION_FUNCTION summoned_monsters_arcane BEGIN
 			m.item.alter{s_unstealable=1 s_undroppable=1}
 		]
 
-		cre.copy[orc01=>dw#ms1ow orc02=>dw#ms1oa]
+		cre.copy[orc01=>dw#ms1ow orc02=>dw#ms1oa|source_location=resource]
 		[
 			m_gender:=summoned
 			m_allegiance:=controlled

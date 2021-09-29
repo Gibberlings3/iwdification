@@ -71,7 +71,7 @@ BEGIN
 			m.ab_fx.delete{s_opcode=165 OR s_opcode=215 OR s_opcode=142}
 			m_description:="t_%v%"		
 		]
-		itm.edit["%scrl%"][m_identified_description:="%v%"]
+		itm.edit["%scrl%"|allow_missing:i=1][m_identified_description:="%v%"]
 	END
 	
 	///////////////////////////////////////////////////////////////
