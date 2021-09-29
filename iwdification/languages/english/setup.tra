@@ -36,20 +36,18 @@ to look it over if you wish.
 
  @4000 = ~IWD Divine Spell Pack~
 
- @5000 = ~IWD Class Updates: Bard~
+ @5000 = ~IWD Class Updates: Bard: Add IWD Bard Songs~
 
  @6000 = ~Two Handed Axe Item Pack~
 
- @7000 = ~IWD Class Updates: Druid~
- @7001 = ~Use IWD Shapeshifting and Ability Progression~
- @7100 = ~Allow Elves to be Druids~
- @7200 = ~Install Both of the Above~
+ @7000 = ~IWD Class Updates: Druid: Use IWD Shapeshifting and Ability Progression~
+ @7100 = ~IWD Class Updates: Druid: Allow Elves to be Druids~
 
  @8000 = ~Additional Portrait Icons~
 
  @9000 = ~Expanded Polymorph Self~
 
-@10000 = ~IWD Class Updates: Paladin~
+@10000 = ~IWD Class Updates: Paladin: IWD Abilities and Skills~
 
 @11000 = ~IWD Class Updates: Ranger~
 
@@ -60,3 +58,9 @@ to look it over if you wish.
 @14000 = ~Randomized Enemy Equipment~
 @14001 = ~Add High Quality Items~
 @14002 = ~Do Not Add High Quality Items~
+
+@15000 = ~IWD Class Updates: Bard: Use IWD Spell Progression~
+
+@16000 = ~IWD Class Updates: Paladin: Use IWD Spell Progression~
+
+@17000 = ~IWD Class Updates: Ranger: Use IWD Spell Progression~

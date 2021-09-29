@@ -592,13 +592,13 @@ LAF iwdspells_extern STR_VAR type="icon"
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
+/////                                                  \\\\\
+///// bard songs                                       \\\\\
+/////                                                  \\\\\ 
+
 BEGIN @5000 DESIGNATED 50 // aka add new bard songs
 REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
 GROUP @995
-
-/////                                                  \\\\\
-///// begin generated from iwdspells                   \\\\\
-/////                                                  \\\\\ 
 
 INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
 LAF iwdspells_extern STR_VAR type=bard 
@@ -606,6 +606,33 @@ LAF iwdspells_extern STR_VAR type=bard
                              ini_name="dw_iwdspells.ini"
                              oggdec_path="wav"
                              sox_path="wav"END
+
+/////                                                  \\\\\
+///// IWD Spell Progression                            \\\\\
+/////                                                  \\\\\
+
+BEGIN @15000 DESIGNATED 150 // bard spell table
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2270~ @998
+GROUP @995
+  
+COPY ~iwdification/2da/un_mxsplbrd.2da~ ~override/mxsplbrd.2da~
+
+ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~95~) BEGIN
+
+  COPY_EXISTING ~mxsplbrd.2da~ ~override~
+    COUNT_2DA_COLS cols
+    READ_2DA_ENTRIES_NOW rows cols
+    FOR (row = 0; row < rows; ++row) BEGIN
+      FOR (col = 1; col < 7; ++col) BEGIN
+        READ_2DA_ENTRY_FORMER rows row col slots
+        PATCH_IF (slots > 0) BEGIN
+          SET_2DA_ENTRY row col cols (slots + 2)
+        END
+      END
+    END
+    IF_EXISTS BUT_ONLY
+    
+END
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -619,8 +646,7 @@ LAF iwdspells_extern STR_VAR type=bard
 ///// druid shapeshifting & abilities                  \\\\\
 /////                                                  \\\\\
 
-BEGIN @7001 DESIGNATED 70 // Use IWD Shapeshifting and Ability Progression
-SUBCOMPONENT @7000 // IWD Class Updates: Druid
+BEGIN @7000 DESIGNATED 70 // Use IWD Shapeshifting and Ability Progression
 GROUP @995
 
 INCLUDE ~iwdification/tpa/druid_poly.tpa~
@@ -630,7 +656,6 @@ INCLUDE ~iwdification/tpa/druid_poly.tpa~
 /////                                                  \\\\\
 
 BEGIN @7100 DESIGNATED 71
-SUBCOMPONENT @7000 // IWD Class Updates: Druid
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @997
 GROUP @995
 
@@ -640,13 +665,7 @@ INCLUDE ~iwdification/tpa/druid_elf.tpa~
 ///// do both                                          \\\\\
 /////                                                  \\\\\
 
-BEGIN @7200 DESIGNATED 72
-SUBCOMPONENT @7000 // IWD Class Updates: Druid
-REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @997
-GROUP @995
-
-INCLUDE ~iwdification/tpa/druid_elf.tpa~
-INCLUDE ~iwdification/tpa/druid_poly.tpa~
+BEGIN ~deprecated~ DESIGNATED 72 DEPRECATED ~now separate, independent components~
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -655,6 +674,10 @@ INCLUDE ~iwdification/tpa/druid_poly.tpa~
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// Abilities and skills                             \\\\\
+/////                                                  \\\\\
 
 BEGIN @10000 DESIGNATED 100
 GROUP @995
@@ -670,8 +693,7 @@ COPY_EXISTING ~spcl213.spl~ ~override~
   LPF ALTER_EFFECT INT_VAR match_duration = 60 duration = 7200 END
   LPF ALTER_SPELL_HEADER INT_VAR target = 5 END // caster
   
-COPY ~iwdification/2da/mxsplpal.2da~ ~override~ // paladin spell table
-     ~iwdification/bam/cdiplseb.bam~ ~override~ // smite evil icon
+COPY ~iwdification/bam/cdiplseb.bam~ ~override~ // smite evil icon
      ~iwdification/bam/cdiplsec.bam~ ~override~ // smite evil icon
      ~iwdification/spl/cdiplid.spl~  ~override~ // disease immunity
   
@@ -831,6 +853,16 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
   END // other paladin stuff
   BUT_ONLY  
 
+/////                                                  \\\\\
+///// IWD Spell Progression                            \\\\\
+/////                                                  \\\\\
+
+BEGIN @16000 DESIGNATED 160
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2390~ @998
+GROUP @995
+
+COPY ~iwdification/2da/iwd_mxsplpal.2da~ ~override/mxsplpal.2da~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -839,11 +871,13 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
+/////                                                  \\\\\
+///// IWD Class Updates: Ranger: Tracking              \\\\\
+/////                                                  \\\\\
+
 /* have everything except expanded tracking info
 BEGIN @11000 DESIGNATED 110
 GROUP @995
-
-COPY ~iwdification/2da/mxsplran.2da~ ~override~ // ranger spell table
 
 ACTION_IF enhanced_edition OR !GAME_IS ~soa~ BEGIN // only do tracking if tob is here
 
@@ -964,6 +998,16 @@ ACTION_IF enhanced_edition OR !GAME_IS ~soa~ BEGIN // only do tracking if tob is
 
 END  
 */
+
+/////                                                  \\\\\
+///// IWD Spell Progression                            \\\\\
+/////                                                  \\\\\
+
+BEGIN @17000 DESIGNATED 170
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2400~ @998
+GROUP @995
+
+COPY ~cdtweaks/2da/iwd_mxsplran.2da~ ~override/mxsplran.2da~
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
