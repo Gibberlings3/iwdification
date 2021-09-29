@@ -113,7 +113,10 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 
 OUTER_SET shapeshifting_tc = 0
 OUTER_SET druid_abils_tc = 0
-  
+
+OUTER_SET sod_exception = 0
+ACTION_IF ((GAME_IS bgee) AND (GAME_INCLUDES sod)) OUTER_SET sod_exception = 1 END
+
 ACTION_PHP_EACH cd_druid_kits AS clab => kitno BEGIN
 
   // means testing the clab
@@ -149,7 +152,8 @@ ACTION_PHP_EACH cd_druid_kits AS clab => kitno BEGIN
         REPLACE_TEXTUALLY ~[ %TAB%]\(GA\|AP\)_%res%[ %TAB%]~ ~ **** ~
       END  
     END
-    PATCH_IF (spcl924 + spcl925 + spcl926 + spcl927 = 4) BEGIN // if normal abilities  
+    PATCH_IF ((spcl924 + spcl925 + spcl926 + spcl927 = 4) OR // if normal abilities  
+              ((sod_exception) AND ("%clab%" STRING_COMPARE_REGEXP "^[Cc][Ll][Aa][Bb][Dd][Rr]0[1-4]$" = 0))) BEGIN // or one of the default kits on pure SoD game
       SET druid_abils = 1   
       PATCH_FOR_EACH res IN SPCL924 SPCL925 SPCL926 SPCL927 BEGIN
         REPLACE_TEXTUALLY ~[ %TAB%]\(GA\|AP\)_%res%[ %TAB%]~ ~ **** ~
