@@ -212,7 +212,7 @@ BEGIN
     END 
     
     COPY_EXISTING ~%creature%.cre~ ~override~
-      PATCH_IF ("%comp_item%" STRING_COMPARE_CASE "" = 0) BEGIN // if we're dealing with a comp item
+      PATCH_IF ("%comp_item%" STRING_COMPARE_CASE "") BEGIN // if we're dealing with a comp item
         SPRINT replacement ~%comp_item%~
         SET delete_old = 1
       END ELSE BEGIN  
@@ -254,8 +254,8 @@ BEGIN
         READ_SHORT (slot_off + offset) itm_idx
         PATCH_IF (itm_idx < item_num) BEGIN // sanity check
           READ_ASCII (item_off + 0x00 + (itm_idx * 0x14)) item
-          PATCH_IF (("%old_item%" STRING_COMPARE_CASE "%replacement%" = 0) OR 
-                    ("%old_item%" STRING_COMPARE_CASE "" = 0)) BEGIN 
+          PATCH_IF (("%replacement%" STRING_COMPARE_CASE "%item%" = 0) OR 
+                    ("%replacement%" STRING_COMPARE_CASE "" = 0)) BEGIN 
             WRITE_ASCIIE (item_off + 0x00 + (itm_idx * 0x14)) ~%new_item%~ // actually replace weapon
             SET match = 1
           END

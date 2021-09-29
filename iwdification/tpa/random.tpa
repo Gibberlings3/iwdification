@@ -21,7 +21,7 @@ END ELSE BEGIN
 
   LAF cd_add_random_treasure STR_VAR // 20% chance to get nicer cosmetic helmet
         cd_random_item = ~cdrdhlm~
-        cd_random_table = EVAL ~helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm08 helm09 helm10 helm11 helm12 helm13 helm14 helm15~ 
+        cd_random_table = EVAL ~helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm01 helm08 helm09 helm10 helm11 helm12 helm13 helm15~ 
     RET cdrdhlm = cd_random_item_return
   END
 
