@@ -71,9 +71,12 @@
     <div class="ribbon_triangle_h2-r"></div>
     <div class="section">
       <p>If you should encounter any bugs, please report them to the authors at the <a href="https://www.gibberlings3.net/forums/forum/185-iwdification/">IWDification</a> forum. In addition, IWDification is <a href="https://github.com/Gibberlings3/iwdification">available on GitHub</a>, so fixes and changes can be submitted by the community. </p>
-      <h3>Known Issues</h3>
+      <h3>Known Mod Conflicts</h3>
+      <p><strong>IWD Class Updates: Bard: Add IWD Bard Songs</strong> will overwrite the bard song changes from Rogue Rebalancing's <strong>Bard Kit revisions</strong> component. It also conflicts with the bard song changes introduced for Garrick in the <strong>Garrick: Tales of a Troubadour</strong> mod. </p>
+<h3>Known Issues</h3>
 <p>Two-handed axes use the same combat and paperdoll animations as halberds. </p>
       <p>Contact Other Plane has no dialogue written, and is therefore unavailable at present.      </p>
+      <p>With <strong>Randomized Enemy Equipment</strong>, a handful of creatures get multiple weapons. An even smaller percentage of these will sometimes only drop one of these two weapons on death. </p>
       <h3>Known Issues (Non-EE Games)      </h3>
       <p>For the <strong>Arcane</strong> and <strong>Divine Spell Packs</strong>, not all spells could be converted to the original Baldur's Gate II engine. The Cat's Grace spell (part of the <strong>Arcane Spell Pack</strong>) requires <a href="http://www.spellholdstudios.net/ie/tobex">TobEx</a> for its unique dexterity modifications. Giant Insect (part of the <strong>Divine Spell Pack</strong>) requires the beetle animation, part of <a href="http://www.spellholdstudios.net/ie/infinityanimations">Infinity Animations</a>.  Soul Eater, Seven Eyes, Favor of Ilmater, and Spiritual Wrath are not available. All of the compromises made for the <strong>Arcane</strong> or <strong>Divine Spell Packs</strong> can be found in the notes on their respective spell listings (<a href="https://www.gibberlings3.net/subpages/iwdification/arcane/">arcane</a>, <a href="https://www.gibberlings3.net/subpages/iwdification/divine/">divine</a>). </p>
     </div>
@@ -97,10 +100,8 @@
       <p>First, extract the files from the tarball into your game directory. When properly extracted, your game directory will contain <strong>setup-iwdification</strong>, <strong>setup-iwdification.command</strong>, and the folder<strong> iwdification</strong>. To install, double-click <strong>setup-iwdification.command</strong> and follow the instructions on screen.</p>
       <p>You can run <strong>setup-iwdification.command</strong> in your game folder to reinstall, uninstall or otherwise change components.</p>
       <p><strong>Linux</strong><br />
-        IWDification for Linux is distributed as a compressed tarball and does not include a WeiDU installer.</p>
-      <p>Extract the contents of the mod to the folder of the game you wish to modify.</p>
-      <p>Download the latest version of WeiDU for Linux from <a href="http://www.weidu.org/%7Ethebigg/">WeiDU.org</a> and copy WeiDU and WeInstall to /usr/bin. Following that, open a terminal, cd to your game installation directory, run tolower   and answer Y to both queries. You can avoid running the second option   (linux.ini) if you've already ran it once in the same directory. To save   time, the archive is already tolowered, so there's no need to run the   first option (lowercasing file names) either if you've extracted only   this mod since the last time you lowercased file names. If you're   unsure, running tolower and choosing both options is the safe bet.</p>
-      <p>To install, run WeInstall iwdification in your game folder. Then run wine BGMain.exe and start playing. </p>
+      IWDification for Linux is distributed as a compressed tarball and does not   include a WeiDU installer.  Linux users will need to do a one-time   install of <abbr title="Weimer Dialogue Utility"><abbr title="Weimer Dialogue Utility">WeiDU</abbr></abbr> (and a few other adjustments) as described in <a href="https://moebiusproject.gitlab.io/mods_on_linux" rel="external nofollow noopener" target="_blank">this great writeup</a>. </p>
+      <p>To install, run 'WeInstall iwdification' in your game folder. </p>
       <p><strong> Note for Complete Uninstallation</strong><br />
         In addition to the methods above for removing individual components, you can completely uninstall the mod using setup-iwdification --uninstall at the command line to remove all components without wading through prompts.</p>
     </div>
@@ -129,7 +130,7 @@
 <p><strong>Expanded Polymorph Self Options</strong></p>
 <p>This component adds three new forms to the arcane Polymorph Self spell: winter wolf, polar bear, and boring beetle (the boring beetle requires <a href="http://www.spellholdstudios.net/ie/infinityanimations">Infinity Animations</a> on original BG2). </p>
 <p><strong>Randomized Enemy Equipment</strong><br />
-  <em>Enhanced Edition Only</em></p>
+  <em>Enhanced Editions Only</em></p>
 <p>Icewind Dale routinely randomized the weapons and other equipment of enemy mobs, e.g. skeletons in IWD could attack with just about any melee or ranged weapon in the game. This component does the same for BG and BG2 random enemies. It is limited somewhat by the animation system of the game:  gnolls, for example, only support weapon animations for long swords and halberds so the randomization is limited. You can optionally install high-quality items--these are non-magical items that provide an additional +1 to-hit over their normal counterparts--to provide a little more variation. If the<strong> Two Handed Axes</strong> component is installed, these will also be added to the mix. </p>
 <p>At present, this component only randomizes equipment on truly random mobs, e.g. most hobgoblins in BG will get randomized equipment but special, fixed groups (such as the ones with Joia's ring at the Friendly Arms Inn) will not. This is done primarily to avoid conflicts with other mods which may alter equipment. You can read more details about this on the <a href="https://www.gibberlings3.net/forums/topic/33232-randomized-enemy-equipment-details/">relevant forum thread</a>. </p>
     </div>  
@@ -178,7 +179,7 @@
     <div class="ribbon_triangle_h3-l"></div>
     <div class="ribbon_triangle_h3-r"></div>
     <div class="section">
-<p><strong>IWD Class Updates: Bard (formerly known as Bard Song</strong>)</p>
+<p><strong>IWD Class Updates: Bard: Add IWD Bard Songs (formerly known as Bard Song</strong>)</p>
       <p>Bards in Icewind Dale gained different bard songs as they leveled:</p>
       <ul>
         <li>The Ballad of Three Heroes &mdash; Available at level one, this   provides all allies with +1 to hit, +1 damage, and +1 to saving throws.</li>
@@ -189,12 +190,23 @@
         <li>War Chant of the Sith &mdash; Available at level 11, this provides +2 <acronym title="Armor Class">AC</acronym>, regeneration of two <acronym title="Hit Points">HP</acronym>/round, and 10% resistance to all crushing, missile, piercing, and slashing damage.</li>
       </ul>
       <p>As the songs become available to the bard, the ability to freely   switch between them is available. This component only affects trueclass   bards, as the available kits use variants of <acronym title="Baldur's Gate II">BG2</acronym> bard song for kit advantages and/or disadvantages. Bards with these new songs will not be able to pick Enhanced Bard Song as a high-level ability. </p>
-      <p><strong>IWD Class Updates: Druid</strong></p>
-      <p> There are two options which can be installed separately or together. The first, <strong>Allow Elves to be Druids</strong>, does exactly that: it opens the druid class and fighter-druid multi-class to elves, but is only available on EE games.. </p>
-      <p>The second, <strong>Use IWD Shapeshifting and Ability Progression</strong>, makes several changes to the druid class. Trueclass druids swap their BG2 shapeshifting (wolf, black bear, brown bear) for the IWD progression: winter wolf (level 5), boring beetle (level 7, but kept as black bear for vanilla games without <a href="http://www.spellholdstudios.net/ie/infinityanimations">Infinity Animations</a>), polar bear (level 9), fire elemental (level 11), earth elemental (level 13), and water elemental (level 15). Immunity from poison is moved from level 15 to level 9, and instead of the BG2 elemental resists at levels 18/21/24, the druid becomes immune to fatigue at level 15. </p>
-      <p><strong>IWD Class Updates: Paladin</strong></p>
+      <p><strong>IWD Class Updates: Bard: Use IWD Spell Progression</strong><br />
+      <em>Also available in the Tweaks Anthology mod </em></p>
+      <p>Bards in Icewind Dale could learn up to eighth-level spells and this component makes the IWD table available. This is also available in Tweaks Anthology as  <strong>Alter Bard Spell Progression Table: Un-Nerfed Table</strong>. A <a href="https://gibberlings3.github.io/Documentation/readmes/readme-cdtweaks_tables.html#bard" rel="external nofollow">comparison of the spell progression tables</a> is available from the Tweaks documentation. </p>
+<p><strong>IWD Class Updates: Druid: Use IWD Shapeshifting and Ability Progression</strong></p>
+<p>This makes several changes to the druid class. Trueclass druids swap their BG2 shapeshifting (wolf, black bear, brown bear) for the IWD progression: winter wolf (level 5), boring beetle (level 7, but kept as black bear for vanilla games without <a href="http://www.spellholdstudios.net/ie/infinityanimations">Infinity Animations</a>), polar bear (level 9), fire elemental (level 11), earth elemental (level 13), and water elemental (level 15). Immunity from poison is moved from level 15 to level 9, and instead of the BG2 elemental resists at levels 18/21/24, the druid becomes immune to fatigue at level 15. </p>
+<p><strong>IWD Class Updates: Druid: Allow Elves to be Druids</strong><br />
+  <em>Enhanced Editions Only</em></p>
+      <p> As simple as it gets: this opens the druid class and fighter-druid multi-class to elves, but is only available on EE games..      </p>
+      <p><strong>IWD Class Updates: Paladin: IWD Abilities and Skills</strong></p>
       <p>The paladin's Detect Evil ability becomes an at-will ability, and Protection From Evil only protects the paladin but lasts 24 hours. Paladins can cast Cure Disease (per the cleric spell) once per day and Smite Evil once per day (does 1d6 plus 1d6 per thee levels of magic damage to an evil opponent). Paladins are now immune to disease and become immune to fear at level three. They also receive an expanded spellcasting table, being able to start casting spells at level 6 instead of 9. </p>
-      <p><strong>IWD Class Updates: Thief</strong><br />
+      <p><strong>IWD Class Updates: Paladin: Use IWD Spell Progression</strong><br />
+        <em>Also available in the Tweaks Anthology mod </em></p>
+      <p> Icewind Dale expanded the level and number of spells high level   paladins could cast. This component replaces the game tables with those   of <abbr title="Icewind Dale">IWD</abbr>-<abbr title="Heart of Winter">HoW</abbr>.This is also available in Tweaks Anthology as  <strong> Paladins Use <abbr title="Icewind Dale">IWD</abbr>-<abbr title="Heart of Winter">HoW</abbr> Spell Progression Tables (grogerson)</strong>. A <a href="file:///D:/docs/IE Mod Packaging/Documentation/readmes/readme-cdtweaks_tables.html#paladin" rel="external nofollow">comparison of the spell progression tables</a> is available from the Tweaks documentation. </p>
+      <p><strong>IWD Class Updates: Ranger: Use IWD Spell Progression</strong><br />
+<em>Also available in the Tweaks Anthology mod </em></p>
+      <p> Icewind Dale expanded the level and number of spells high level rangers   could cast. This component replaces the game tables with those of <abbr title="Icewind Dale">IWD</abbr>-<abbr title="Heart of Winter">HoW</abbr>. .This is also available in Tweaks Anthology as <strong>Rangers Use <abbr title="Icewind Dale">IWD</abbr>-<abbr title="Heart of Winter">HoW</abbr> Spell Progression Tables (grogerson)</strong>. A <a href="file:///D:/docs/IE Mod Packaging/Documentation/readmes/readme-cdtweaks_tables.html#ranger" rel="external nofollow">comparison of the spell progression tables</a> is available from the Tweaks documentation. </p>
+      <p><strong>IWD Class Updates: Thief: Evasion</strong><br />
       <em>Enhanced Edition Only</em></p>
       <p>At level seven, thieves earn the Evasion perk. When a thief is hit by a spell that can be evaded (Fireball, Lightning Bolt, etc.), the thief is allowed a Save vs. Breath to completely avoid the effects. If the Saving Throw is failed, the spell works normally, including a save for half damage if the spell allows for it. A helpless thief (e.g. held, stunned, or asleep) cannot use Evasion.</p>
     </div>
@@ -263,7 +275,15 @@
       <div>
         <p><strong>Version Release Candidate 2 - September 30, 2021</strong> </p>
         <ul>
-          <li>Added <strong>Randomized Enemy Equipment</strong> as a component for EE games</li>
+          <li>Some general re-organization of the mod components:
+            <ul>
+              <li>Everything in the IWD Class Updates group was renamed in a more consistent scheme</li>
+              <li>Added <strong>Randomized Enemy Equipment</strong> as a component for EE games</li>
+              <li>Split the paladin class updates into separate components, <strong>IWD Class Updates: Paladin: IWD Abilities and Skills</strong> and <strong>IWD Class Updates: Paladin: Use IWD Spell Progression</strong></li>
+              <li>Similarly, the two druid class updates are presented as separate components rather than as a menu </li>
+              <li>Added the <strong>IWD Class Updates: Bard: Use IWD Spell Progression </strong>and <strong>IWD Class Updates: Ranger: Use IWD Spell Progression</strong> components. All of the spell progression components are from Tweaks Anthology, and will not cross-install</li>
+            </ul>
+          </li>
           <li>Updated the core converter for the <strong>Arcane </strong>and<strong> Divine Spell Packs</strong> and bard songs for <strong>IWD Class Updates: Bard</strong>. The core converter now also handles the <strong>Additional Portrait Icons</strong> component. Amongst its improvements:
             <ul>
               <li>Portrait icons for the new spells were not working on EE installs. </li>
@@ -291,7 +311,7 @@
           </li>
           <li>Thanks to TotoR, Smashing Wave and Wall of Moonlight now work on oBG2. He also provided (further) cosmetic improvements for Shout and Great Shout. </li>
           <li>Based on feedback from Galactygon, <strong>Icewind Dale Casting Graphics</strong> now looks a lot better and includes casting sounds</li>
-          <li>The <strong>Use IWD Shapeshifting and Ability Progression</strong> component was only being applied to un-kitted druids. The component will now test kits and, if they're also using the base druid abilities, make these changes as appropriate. The upshot being that Avengers now receive the new shapeshifting and abilities. </li>
+          <li>The<strong>IWD Class Updates: Druid: Use IWD Shapeshifting and Ability Progression </strong>component was only being applied to un-kitted druids. The component will now test kits and, if they're also using the base druid abilities, make these changes as appropriate. The upshot being that Avengers now receive the new shapeshifting and abilities. </li>
           <li>The spell components would fail to install in French; unfortunately these need an updated French translation to work and will now skip </li>
         </ul>
         <p><strong>Version Release Candidate 1 - July 25, 2021</strong></p>
