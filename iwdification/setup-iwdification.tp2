@@ -57,6 +57,7 @@ LANGUAGE ~French~ ~french~ ~iwdification/languages/english/setup.tra~        // 
 BEGIN @1000 DESIGNATED 10
 GROUP @994
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~70~ @998
+LABEL ~cd_tweaks_iwd_casting_graphics~
 
 ACTION_IF enhanced_edition BEGIN
 
@@ -90,6 +91,7 @@ LAF HANDLE_AUDIO STR_VAR audio_path = ~iwdification/wav/casting~ oggdec_path = ~
 BEGIN @2000 DESIGNATED 20
 GROUP @994
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~100~ @998
+LABEL ~cd_tweaks_drab_commoners~
 
 COPY_EXISTING ~randcolr.2da~ ~override~
   REPLACE_TEXTUALLY ~HairSet1~ ~CD_DELETE_ME HairSet1~
@@ -147,6 +149,7 @@ COPY_EXISTING ~randcolr.2da~ ~override~
 
 BEGIN @6000 DESIGNATED 60
 GROUP @994
+LABEL ~cd_iwdification_2h_axes~
 
 COPY ~iwdification/bam/cdax2h1i.bam~ ~override~
      ~iwdification/bam/cdax2h2i.bam~ ~override~
@@ -321,6 +324,7 @@ END
 
 BEGIN @9000 DESIGNATED 90
 GROUP @994  
+LABEL ~cd_iwdification_expanded_polymorph_self~
 
 // first, some general cleanup and fixes to the spells
 COPY_EXISTING ~spwi498.spl~ ~override~ // Black Bear
@@ -464,6 +468,7 @@ COPY_EXISTING ~cdia482.spl~ ~override~ // shapeshift: winter wolf
 BEGIN @13000 DESIGNATED 130
 GROUP @994
 REQUIRE_PREDICATE !GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ @997
+LABEL ~cd_iwdification_damage_animations~
 
 COPY_EXISTING ~dmgtypes.2da~ ~override~
   REPLACE_TEXTUALLY ~^\(MAGICFIRE\|FIRE\)[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+~ ~\1        MISC_01C   FIREH      FIREL~
@@ -505,6 +510,7 @@ BEGIN @14001 DESIGNATED 140 // with hq items
 SUBCOMPONENT @14000 // randomized equipment
 GROUP @994  
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @997
+LABEL ~cd_iwdification_randomized_equipment_hq~
 
 OUTER_SET include_hq = 1
 INCLUDE ~iwdification/tpa/random.tpa~
@@ -517,6 +523,7 @@ BEGIN @14002 DESIGNATED 141 // with hq items
 SUBCOMPONENT @14000 // randomized equipment
 GROUP @994  
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @997
+LABEL ~cd_iwdification_randomized_equipment~
 
 OUTER_SET include_hq = 0
 INCLUDE ~iwdification/tpa/random.tpa~
@@ -532,6 +539,7 @@ INCLUDE ~iwdification/tpa/random.tpa~
 BEGIN @3000 DESIGNATED 30
 REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
 GROUP @993
+LABEL ~cd_iwdification_arcane_spells~
 
 INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
 LAF iwdspells_extern 
@@ -554,6 +562,7 @@ END
 BEGIN @4000 DESIGNATED 40
 REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
 GROUP @993
+LABEL ~cd_iwdification_divine_spells~
 
 INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
 LAF iwdspells_extern 
@@ -576,6 +585,7 @@ END
 BEGIN @8000 DESIGNATED 80
 GROUP @993
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ @996
+LABEL ~cd_iwdification_obg2_portrait_icons~
   
 INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
 LAF iwdspells_extern STR_VAR type="icon" 
@@ -599,6 +609,7 @@ LAF iwdspells_extern STR_VAR type="icon"
 BEGIN @5000 DESIGNATED 50 // aka add new bard songs
 REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
 GROUP @995
+LABEL ~cd_iwdification_bard_songs~
 
 INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
 LAF iwdspells_extern STR_VAR type=bard 
@@ -614,6 +625,7 @@ LAF iwdspells_extern STR_VAR type=bard
 BEGIN @15000 DESIGNATED 150 // bard spell table
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2270~ @998
 GROUP @995
+LABEL ~cd_tweaks_bard_spell_progression_unnerfed~
   
 COPY ~iwdification/2da/un_mxsplbrd.2da~ ~override/mxsplbrd.2da~
 
@@ -648,6 +660,7 @@ END
 
 BEGIN @7000 DESIGNATED 70 // Use IWD Shapeshifting and Ability Progression
 GROUP @995
+LABEL ~cd_iwdification_druid_abilities~
 
 INCLUDE ~iwdification/tpa/druid_poly.tpa~
 
@@ -658,6 +671,7 @@ INCLUDE ~iwdification/tpa/druid_poly.tpa~
 BEGIN @7100 DESIGNATED 71
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @997
 GROUP @995
+LABEL ~cd_iwdification_elven_druids~
 
 INCLUDE ~iwdification/tpa/druid_elf.tpa~
 
@@ -681,6 +695,7 @@ BEGIN ~deprecated~ DESIGNATED 72 DEPRECATED ~now separate, independent component
 
 BEGIN @10000 DESIGNATED 100
 GROUP @995
+LABEL ~cd_iwdification_paladin_abilities~
 
 // change paladin detect evil to at-will
 COPY_EXISTING ~spcl212.spl~ ~override~
@@ -860,6 +875,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 BEGIN @16000 DESIGNATED 160
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2390~ @998
 GROUP @995
+LABEL ~cd_tweaks_paladin_spell_progression_iwd~
 
 COPY ~iwdification/2da/iwd_mxsplpal.2da~ ~override/mxsplpal.2da~
 
@@ -1006,6 +1022,7 @@ END
 BEGIN @17000 DESIGNATED 170
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2400~ @998
 GROUP @995
+LABEL ~cd_tweaks_ranger_spell_progression_iwd~
 
 COPY ~cdtweaks/2da/iwd_mxsplran.2da~ ~override/mxsplran.2da~
   
@@ -1020,6 +1037,7 @@ COPY ~cdtweaks/2da/iwd_mxsplran.2da~ ~override/mxsplran.2da~
 BEGIN @12000 DESIGNATED 120
 REQUIRE_PREDICATE !GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ @997
 GROUP @995
+LABEL ~cd_iwdification_thief_evasion~
 
 OUTER_SET default_thief = 9561
 ACTION_CLEAR_ARRAY  cd_thief_clabs
