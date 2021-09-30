@@ -132,10 +132,11 @@ END ELSE BEGIN // if hq items, create them and set their variables to their resr
   END
   
   ACTION_FOR_EACH cre IN 
-    bandit bandita bdhobg02 hobchil2 hobelite hobgbeg1 hobgbeg2 hobgbeg3 hobgbeg4 hobgbeg9 hobgoa_a hobgoa_b hobgoa_c hobgoa_d 
-    hobgoa_e hobgoba ironelit kobcap01 kobola_a kobola_b kobola_c kobola_d kobola_e kobolda orc02 skelet_c // bgee/sod
-    arnwar01 bdturm04 bodfgt02 flyfgt03 hobarc01 hobeli01 icgob01 kaysmg03 kobarc01 kobcom01 ohnrwme2 rorca01 skelwa03 
-    ysgrunt yssold12 // bg2ee, omitted as it's in bgee list: kobcap01
+    bandit bandita bdhobg02 bounty flampun2 hobchil2 hobelite hobgbeg1 hobgbeg2 hobgbeg3 hobgbeg4 hobgbeg9 
+    hobgoa_a hobgoa_b hobgoa_c hobgoa_d hobgoa_e hobgoba ironelit kobcap01 kobola_a kobola_b kobola_c 
+    kobola_d kobola_e kobolda orc02 skelet_c // bgee/sod
+    arnwar01 bdturm04 bodfgt02 flyfgt03 hobarc01 hobeli01 icgob01 kaysmg03 kobarc01 kobcom01 ohnrwme2 
+    rorca01 skelwa03 ysgrunt yssold12 // bg2ee, omitted as it's in bgee list: kobcap01
   BEGIN
     LAF cd_match_random_profs STR_VAR old_item = arow01 new_item = cdrdarow slot = quiver creature = EVAL ~%cre%~ END
   END
@@ -232,7 +233,7 @@ END ELSE BEGIN // if hq items, create them and set their variables to their resr
   END
   
   ACTION_FOR_EACH cre IN 
-    kobcap01 orc02 skelet_c // bgee/sod   
+    bounty flampun2 kobcap01 orc02 skelet_c // bgee/sod   
     kobarc01 ohnrwme2 refigh01 rethie01 skelwa03 tantug03 ysgrunt yssold12 // bg2ee; kobcap01 is repeat
   BEGIN
     LAF cd_match_random_profs STR_VAR old_item = bow01 new_item = cdrdclbw slot = weapon creature = EVAL ~%cre%~ END
@@ -334,8 +335,8 @@ END
   
 ACTION_FOR_EACH cre IN 
   // bgee/sod
-  bandit bandita hobchil1 hobchil2 hobelite hobgbeg1 hobgbeg3 hobgbeg4 hobgbeg5
-  hobgbeg7 hobgbeg8 hobgbeg9 hobgoa_a hobgoa_b hobgoa_d hobgoa_e hobgob 
+  bandit bandita bounty hobchil1 hobchil2 hobelite hobgbeg1 hobgbeg3 hobgbeg4 
+  hobgbeg5 hobgbeg7 hobgbeg8 hobgbeg9 hobgoa_a hobgoa_b hobgoa_d hobgoa_e hobgob 
   hobgob_a hobgob_b hobgob_d hobgob_e hobgoba //orc02 in bg2ee list, next
   bdturm04 genth01 genth02 gororc01 gororc02 hobarc01 hobarc02 hobeli01 hobsha01 hobwar01 kaysmg02 kaysmg03 
   kaysmg04 orc01 orc02 orc05 orc06 ppsail01 ppsail02 ppsail03 reband01 reband02 reband03 rethug01 rethug03 
@@ -355,7 +356,7 @@ LAF cd_add_random_treasure STR_VAR
 END
   
 ACTION_FOR_EACH cre IN 
-  hobgbeg2 hobgbeg6 hobgoa_c hobgob_c orc01 // bgee/sod
+  flamsco hobgbeg2 hobgbeg6 hobgoa_c hobgob_c orc01 // bgee/sod
   hobsha01 ppthf02 spmugg spmugg2 spmugg3 // bg2ee
   arnwar03
 BEGIN
@@ -405,7 +406,7 @@ LAF cd_add_random_treasure STR_VAR
 END
 
 ACTION_FOR_EACH cre IN 
-  skelet03 // bgee/sod
+  flampun skelet03 // bgee/sod
   arnwar02 flyfgt02 rorcl01 // bg2ee
 BEGIN
   LAF cd_match_random_profs STR_VAR new_item = cdrdshs slot = offhand creature = EVAL ~%cre%~ END
@@ -642,6 +643,13 @@ BEGIN
 END
 
 ACTION_FOR_EACH cre IN 
+  flampun flampun2 // bgee/sod
+BEGIN
+  LAF cd_match_random_profs INT_VAR old_bg2_prof = 100 prof_spiked = 2 prof_blunt = 1 // blun06 to 1-handed melee, blunt 
+                            STR_VAR old_item = blun02 new_item = cdrd1hmb slot = weapon creature = EVAL ~%cre%~ END
+END
+
+ACTION_FOR_EACH cre IN 
   rethug03 // bg2ee
 BEGIN
   LAF cd_match_random_profs INT_VAR old_bg2_prof = 91 prof_ssword = 2 prof_spiked = 1 prof_blunt = 1 // sw1h07 to 1-handed melee, blunt (is cleric)
@@ -714,14 +722,14 @@ LAF cd_add_random_treasure STR_VAR
 END
 
 ACTION_FOR_EACH cre IN  // short sword to 1-handed melee, bladed
-  skelets // bgee/sod
+  flamsco skelets // bgee/sod
   rethug01 rethug04 spmugg spmugg2 spmugg3 // bg2ee
 BEGIN
   LAF cd_match_random_profs INT_VAR old_bg2_prof = 91 prof_lsword = 1 prof_axe = 1 prof_ssword = 2 
                             STR_VAR old_item = sw1h07 new_item = cdrd1hms slot = weapon creature = EVAL ~%cre%~ END
 END                          
 ACTION_FOR_EACH cre IN  // long sword to 1-handed melee, bladed
-  bandit bandita irongu ironelit // bgee/sod
+  bandit bandita bounty irongu ironelit // bgee/sod
   arnwar01 reband03 skelet03 rorca01 yssold12 yssold13 // bg2ee
 BEGIN
   LAF cd_match_random_profs INT_VAR old_bg2_prof = 90 prof_lsword = 2 prof_axe = 1 prof_ssword = 1 
