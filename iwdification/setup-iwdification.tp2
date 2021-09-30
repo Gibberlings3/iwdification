@@ -538,6 +538,7 @@ INCLUDE ~iwdification/tpa/random.tpa~
 
 BEGIN @3000 DESIGNATED 30
 REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ ~1500~ @998
 GROUP @993
 LABEL ~cd_iwdification_arcane_spells~
 
@@ -561,6 +562,7 @@ END
 
 BEGIN @4000 DESIGNATED 40
 REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ ~1510~ @998
 GROUP @993
 LABEL ~cd_iwdification_divine_spells~
 
@@ -585,6 +587,7 @@ END
 BEGIN @8000 DESIGNATED 80
 GROUP @993
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ @996
+// REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ ~1510~ @998 Future SCS?
 LABEL ~cd_iwdification_obg2_portrait_icons~
   
 INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
@@ -608,6 +611,7 @@ LAF iwdspells_extern STR_VAR type="icon"
 
 BEGIN @5000 DESIGNATED 50 // aka add new bard songs
 REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
+// REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ ~1510~ @998 Future SCS?
 GROUP @995
 LABEL ~cd_iwdification_bard_songs~
 
