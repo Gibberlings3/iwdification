@@ -1,12 +1,13 @@
 OUTER_SPRINT fake    ~cdf%fake_item%%animation%~
 OUTER_SPRINT fake_hq ~cdfh%fake_item%%animation%~ // same as fake, but with extra h
-PRINT ~fake and HQ are %fake% and %fake_hq%~
+//PRINT ~fake and HQ are %fake% and %fake_hq%~
   
 COPY_EXISTING ~%base_item%.itm~ ~override/%fake%.itm~
   WRITE_ASCIIE 0x22 ~%animation%~ #2
   WRITE_LONG   0x18 (THIS BAND `BIT2) // removes droppable flag
-  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 122 target = 1 parameter1 = 1 timing = 1 insert_point =   0 STR_VAR resource = EVAL ~%SOURCE_RES%~ END // create new weapon
-  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 318 target = 1                timing = 1 insert_point = 999 STR_VAR resource = EVAL ~%DEST_RES%~ END // add immunity to item
+  LPF DELETE_EFFECT INT_VAR match_opcode = 122 silent = 1 END // just in case
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 122 target = 1 parameter1 = 1 timing = 1 insert_point = 998 STR_VAR resource = EVAL ~%SOURCE_RES%~ END // create new weapon
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 318 target = 1                timing = 1 insert_point = 999 STR_VAR resource = EVAL ~%DEST_RES%~ END   // add immunity to item
   // for bgee, also need to make not breakable
   READ_LONG    0x64 abil_off
   READ_SHORT   0x68 abil_num
@@ -29,8 +30,9 @@ END ELSE BEGIN
   COPY_EXISTING ~%hq_item%.itm~ ~override/%fake_hq%.itm~
     WRITE_ASCIIE 0x22 ~%animation%~ #2
     WRITE_LONG   0x18 (THIS BAND `BIT2) // removes droppable flag
-    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 122 target = 1 parameter1 = 1 timing = 1 insert_point =   0 STR_VAR resource = EVAL ~%SOURCE_RES%~ END // create new weapon
-    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 318 target = 1                timing = 1 insert_point = 999 STR_VAR resource = EVAL ~%DEST_RES%~ END // add immunity to item
+    LPF DELETE_EFFECT INT_VAR match_opcode = 122 silent = 1 END // just in case
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 122 target = 1 parameter1 = 1 timing = 1 insert_point = 998 STR_VAR resource = EVAL ~%SOURCE_RES%~ END // create new weapon
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 318 target = 1                timing = 1 insert_point = 999 STR_VAR resource = EVAL ~%DEST_RES%~ END   // add immunity to item
     // for bgee, also need to make not breakable
     READ_LONG    0x64 abil_off
     READ_SHORT   0x68 abil_num
