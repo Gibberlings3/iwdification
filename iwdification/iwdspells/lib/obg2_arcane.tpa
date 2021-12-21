@@ -687,20 +687,24 @@ ACTION_IF !MOD_IS_INSTALLED "spell_rev/setup-spell_rev.tp2" 0 BEGIN
 
   ACTION_PHP_EACH cd_monster_summoning AS spell => table BEGIN
   
-    // turns single 331 into one 100% 127 plus multiple, staggered 127s to simulate dice rolls
-    COPY_EXISTING ~%spell_0%.spl~ ~override~ 
-      LPF CLONE_EFFECT INT_VAR match_opcode = 331 opcode = 215 parameter2 = 2 timing = 0 duration = 2 resist_dispel = 0 dicenumber = 0 dicesize = 0 STR_VAR resource = msumm1x END // add animation
-      LPF ALTER_EFFECT INT_VAR match_opcode = 331 opcode = 127 parameter1 = table parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = EVAL ~msummo%table%~ END
-      FOR (index = 1 ; index < spell_1 ; ++index) BEGIN
-        LPF CLONE_EFFECT INT_VAR match_opcode = 127 match_probability1 = 100 probability1 = (((100 * index) / %spell_1%) - 1) END
-      END  
+    ACTION_IF FILE_EXISTS_IN_GAME ~msummo%table%.2da~ BEGIN
+  
+      // turns single 331 into one 100% 127 plus multiple, staggered 127s to simulate dice rolls
+      COPY_EXISTING ~%spell_0%.spl~ ~override~ 
+        LPF CLONE_EFFECT INT_VAR match_opcode = 331 opcode = 215 parameter2 = 2 timing = 0 duration = 2 resist_dispel = 0 dicenumber = 0 dicesize = 0 STR_VAR resource = msumm1x END // add animation
+        LPF ALTER_EFFECT INT_VAR match_opcode = 331 opcode = 127 parameter1 = table parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = EVAL ~msummo%table%~ END
+        FOR (index = 1 ; index < spell_1 ; ++index) BEGIN
+          LPF CLONE_EFFECT INT_VAR match_opcode = 127 match_probability1 = 100 probability1 = (((100 * index) / %spell_1%) - 1) END
+        END  
+      
+      // this bit parses the summoning tables and changes the power level for consistent summoning numbers    
+      COPY_EXISTING ~msummo%table%.2da~ ~override~ 
+        REPLACE_EVALUATE ~^\([0-9]+[ %TAB%]+\)\(.+\)$~ BEGIN
+          DEFINE_ASSOCIATIVE_ARRAY cd_monster_summoning_cre BEGIN ~%MATCH2%~ => ~%table%~ END // build table for next step
+        END ~%MATCH1%%MATCH2%~ 
+        BUT_ONLY 
     
-    // this bit parses the summoning tables and changes the power level for consistent summoning numbers    
-    COPY_EXISTING ~msummo%table%.2da~ ~override~ 
-      REPLACE_EVALUATE ~^\([0-9]+[ %TAB%]+\)\(.+\)$~ BEGIN
-        DEFINE_ASSOCIATIVE_ARRAY cd_monster_summoning_cre BEGIN ~%MATCH2%~ => ~%table%~ END // build table for next step
-      END ~%MATCH1%%MATCH2%~ 
-      BUT_ONLY
+    END    
   
   END  
 
