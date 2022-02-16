@@ -626,7 +626,7 @@ END
     END  
     // updating iwd > bg2 refs before moving
     LPF ALTER_EFFECT INT_VAR match_opcode = 318 opcode = 206 END // make some adjustments before moving
-    LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 208 END // delete iron body icon
+    LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 172 END // delete iron body icon
     LPF DELETE_EFFECT INT_VAR match_opcode = 321 END // delete self-cast protection
     LPF DELETE_EFFECT INT_VAR match_opcode = 1 END // delete APR set (fist item already has it)
     
