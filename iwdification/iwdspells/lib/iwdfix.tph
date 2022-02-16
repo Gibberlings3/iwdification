@@ -78,6 +78,11 @@ DEFINE_ACTION_FUNCTION iwd_spell_fixes BEGIN
 	  LPF CLONE_EFFECT INT_VAR match_opcode =  142 match_duration = 12
 		opcode = 206 parameter1 = 0 parameter2 = 0 duration = 1 STR_VAR resource = EVAL ~%WIZARD_GREAT_SHOUT%~ insert = below END 
 
+	// iwdee fix: deafness from (great) shout not including portrait icon
+	COPY_EXISTING ~%WIZARD_GREAT_SHOUT%.spl~ ~override~
+                ~%WIZARD_SHOUT%.spl~       ~override~
+    LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 80 opcode = 142 parameter2 = 112 END // clone deaf into deafness icon
+
 	// iwdee fix: emotion fear should only remove emotion courage if the normal save/MR checks work  
 	COPY_EXISTING ~%WIZARD_EMOTION_FEAR%.spl~ ~override~
 	  LPF ALTER_EFFECT INT_VAR match_opcode = 321 resist_dispel = 1 savingthrow = BIT0 END

@@ -16,11 +16,10 @@ opcodes to oBG2 counterparts.
 */
   LAF CD_HANDLE_AUDIO_PREP END // ogg > wav conversions 
 
-// stun icons provided by stun effect in EE, need to be done explicitly in oBG2  
+  // stun icons provided by stun effect in EE, need to be done explicitly in oBG2  
   COPY_EXISTING ~%WIZARD_GREAT_SHOUT%.spl~ ~override~
                 ~%WIZARD_ICELANCE%.spl~    ~override~
     LPF CLONE_EFFECT INT_VAR silent=1 match_opcode = 45 opcode=142 parameter2 = 55 END 
-
 
 /////                                                  \\\\\
 ///// monster summoning                                \\\\\
