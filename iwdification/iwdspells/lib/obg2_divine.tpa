@@ -205,7 +205,7 @@ END
      ~#prayerg.spl~                             => 18   // prayer > chant
      ~#reciteg.spl~                             => 18   // recitation > chant
      ~%CLERIC_EXALTATION%.spl~                  => "-1" // exaltation > delete
-     ~%CLERIC_CIRCLE_OF_BONES%.spl~             => "-1" // circle of bones > delete
+     ~%CLERIC_CIRCLE_OF_BONES%.spl~             => 98   // circle of bones > blade barrier
      ~%CLERIC_STORM_SHELL%.spl~                 => 76   // storm shield > protection from the elements
      ~%CLERIC_STATIC_CHARGE%.spl~               => "-1" // static charge > delete
      ~%CLERIC_BLOOD_RAGE%.spl~                  => 4    // blood rage to berserk
