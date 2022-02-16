@@ -61,6 +61,10 @@ END
 		COPY "%obg2_res_path%/%vvc%.vvc" override
 	END
 
+  // use ttwo-cycle item icons direct from oIWD (keeps icons centered, among other issues)  
+  COPY ~%obg2_res_path%/ismcudge.bam~ ~override~ // star metal cudgel
+       ~%obg2_res_path%/moonbla.bam~  ~override~ // moonblade
+
 
 
 /////                                                  \\\\\

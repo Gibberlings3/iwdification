@@ -21,6 +21,12 @@ opcodes to oBG2 counterparts.
                 ~%WIZARD_ICELANCE%.spl~    ~override~
     LPF CLONE_EFFECT INT_VAR silent=1 match_opcode = 45 opcode=142 parameter2 = 55 END 
 
+  // use ttwo-cycle item icons direct from oIWD (keeps icons centered, among other issues)  
+  COPY ~%obg2_res_path%/idobone.bam~  ~override~ // darts of bone 
+       ~%obg2_res_path%/iibody.bam~   ~override~ // iron body
+       ~%obg2_res_path%/iltouch.bam~  ~override~ // lich touch
+       ~%obg2_res_path%/imsword.bam~  ~override~ // mordenkainen's force blade
+
 /////                                                  \\\\\
 ///// monster summoning                                \\\\\
 /////                                                  \\\\\
@@ -511,7 +517,6 @@ END
     LPF CD_CONVERT_61 END // run this thorugh same conversion for consistency
     
   COPY ~%obg2_res_path%/cdidob2.spl~ ~override~ // farm str drain to second spell to prevent stacking
-       ~%obg2_res_path%/idobone.bam~ ~override~ // oBG2 needs two-cycle inv icons
 
 /////                                                  \\\\\
 ///// WIZARD_ACID_STORM                                \\\\\
