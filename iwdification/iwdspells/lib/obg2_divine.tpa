@@ -859,7 +859,7 @@ END
 /////                                                  \\\\\
 
   COPY_EXISTING ~%CLERIC_IMPERVIOUS_SANCTITY_OF_MIND%.spl~ ~override~
-    LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 170 END // do it here since there are multiple 142s
+    LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 223 END // do it here since there are multiple 142s
     LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
     LPF ALTER_EFFECT INT_VAR match_opcode = 318 opcode = 206 parameter1 = 0 parameter2 = 0 END
 
