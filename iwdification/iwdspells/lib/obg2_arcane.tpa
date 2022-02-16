@@ -503,7 +503,7 @@ END
     LPF CLONE_EFFECT INT_VAR match_opcode = 324 opcode = 177 parameter1 =   4 parameter2 = 3 STR_VAR resource = cdixa630 END // general = undead
     LPF ALTER_EFFECT INT_VAR match_opcode = 324 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdixa630 END // race = golem
     LPF ALTER_EFFECT INT_VAR match_opcode = 12 opcode = 146 parameter2 = 1 special = 0 dicenumber = 0 dicesize = 0 STR_VAR resource = cdidob1 END
-    PATCH_FOR_EACH op IN 321 44 215 174 61 BEGIN
+    PATCH_FOR_EACH op IN 321 44 215 174 61 142 BEGIN
       LPF DELETE_EFFECT INT_VAR match_opcode = op END
     END  
     

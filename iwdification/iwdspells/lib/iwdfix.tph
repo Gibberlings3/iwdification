@@ -67,7 +67,8 @@ DEFINE_ACTION_FUNCTION iwd_spell_fixes BEGIN
 	ACTION_FOR_EACH letter IN A B C BEGIN
 		COPY_EXISTING "SPWI914%letter%.bam" "override/%CLERIC_ENERGY_DRAIN%%letter%.bam"
 	END
-	// coded by Cam from here on
+  
+	// coded by Cam from here on    
 
 	// iwdee fix: lich touch should paralyze, not hold
 	COPY_EXISTING ~ltouch.spl~ ~override~
@@ -96,6 +97,7 @@ DEFINE_ACTION_FUNCTION iwd_spell_fixes BEGIN
 	// Darts of Bone was offering a saving throw(!)
 	COPY_EXISTING ~dobone.itm~ ~override~
 	  LPF ALTER_EFFECT INT_VAR match_opcode = 1 savingthrow = 0 END
+    LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 44 opcode = 142 parameter1 = 0 parameter2 = 91 END // clone strength malus into 'ability score drained' icon
 
 	COPY_EXISTING ~idpro313.pro~ ~override~
 	  WRITE_ASCII 0x18 ~#tra_59~ #8
