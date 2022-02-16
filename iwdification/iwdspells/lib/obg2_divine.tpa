@@ -999,7 +999,7 @@ COPY_EXISTING ~%CLERIC_MOLD_TOUCH%.spl~ ~override~
   PATCH_FOR_EACH op IN 78 146 206 318 328 BEGIN
     LPF DELETE_EFFECT INT_VAR match_opcode = op END
   END  
-  LPF CLONE_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdix326 END // race = golem
+  LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  68 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdix326 END // race = golem
   LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 =   4 parameter2 = 3 STR_VAR resource = cdix326 END // general = undead  
   FOR (index = 0 ; index < 4 ; ++index) BEGIN
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 78 target = 2 power = 3 parameter1 = 2 parameter2 = 3 resist_dispel = 1 duration = ((index + 1) * 6) savingthrow = BIT0 END // 1d6/round over four rounds
