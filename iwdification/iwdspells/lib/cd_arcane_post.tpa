@@ -12,9 +12,11 @@ DEFINE_ACTION_FUNCTION cd_arcane_post BEGIN
   END  
        
 	COPY_EXISTING ~spwi114.spl~ ~override~ // update shield to block MFM, too
-	  LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = ~spwi112~ resource = EVAL ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%~ END
-	  LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = ~spwi112~ resource = EVAL ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%b~ END 
-	  
+                ~amul15.itm~  ~override~ // update shield amulet to block MFM, too, for folks using non-Fixpack or IRR
+	  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR match_resource = ~spwi112~ resource = EVAL ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%~ END
+	  LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR match_resource = ~spwi112~ resource = EVAL ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%b~ END
+    BUT_ONLY IF_EXISTS
+    
 	// update wand of monster summoning to use new tables
 	// first, find table value
 	OUTER_SET ms2table="-1"
