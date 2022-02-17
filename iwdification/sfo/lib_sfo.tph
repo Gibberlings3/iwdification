@@ -482,7 +482,7 @@ DEFINE_ACTION_MACRO sfo_crossplatform BEGIN
 					END				
 				END
 				OUTER_SPRINT "%var%" "%val%"
-				OUTER_SPRINT "%var%_BCS" "%val_bcs%"
+				OUTER_SPRINT "%var%_BCS" "%val%"
 			END
 	   
 		// residuals
