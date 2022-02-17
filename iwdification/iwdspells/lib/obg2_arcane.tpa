@@ -253,6 +253,7 @@ END
                 //~dobone.itm~                           ~override~ // this just gets removed below
                 ~#soflamc.spl~                         ~override~
                 ~shadow1.spl~                          ~override~ // shadow on-hit attack from summon shadow
+                ~ghast1.spl~                           ~override~ // ghast on-hit attack from mon sum
                 ~%WIZARD_EXPEDITIOUS_RETREAT%.spl~     ~override~
                 ~%WIZARD_DECASTAVE%.spl~               ~override~
                 ~%WIZARD_CATS_GRACE%.spl~              ~override~
@@ -335,7 +336,7 @@ END
 
   // convert 325 to individual save opcodes
   COPY_EXISTING ~%WIZARD_EMOTION_HOPE%.spl~ ~override~
-                //~cdiwdtr1.spl~              ~override~
+                ~cdiwdtr1.spl~              ~override~
     LPF CD_CONVERT_325 END
 
 /////                                                  \\\\\

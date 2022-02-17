@@ -68,5 +68,7 @@ DEFINE_ACTION_FUNCTION obg2_bard BEGIN
     LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 15 opcode = 177 parameter1 =   2 parameter2 = 4 probability1 = 69 STR_VAR resource = cdixb118 END // elf charm protection
     LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_target = 2 parameter2 = 55 END // stunned icon
     LPF DELETE_EFFECT INT_VAR match_opcode = 232 END // no wake-on-hit
+  
+  DELETE ~override/#cureent.spl~ // not needed for oBG2
 
 END
