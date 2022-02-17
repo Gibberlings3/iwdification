@@ -46,6 +46,11 @@ DEFINE_ACTION_FUNCTION surplus_cleric_protections BEGIN // these protect against
 		LPF DELETE_EFFECT STR_VAR match_resource="SPWI033" END
 	BUT_ONLY
 
+	//same-alignment version of RWotF cancels haste, but not Mazzy's version; also in bgee, no need to gate this with a game check
+	COPY_EXISTING "%CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL%a.spl" override
+		LPF CLONE_EFFECT STR_VAR match_resource="SPWI305" resource="spin828" END // should dupe both the 321 and 206
+	BUT_ONLY
+
 END
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
