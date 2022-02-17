@@ -279,24 +279,25 @@ END
   ACTION_CLEAR_ARRAY cd_icon_map
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_icon_map BEGIN
 
-     ~%WIZARD_CATS_GRACE%.spl~            => "-1" // cat's grace > delete
-     ~%WIZARD_BELTYNS_BURNING_BLOOD%.spl~ => "-1" // beltyn's burning blood > delete
-     ~%WIZARD_EMOTION_COURAGE%.spl~       => "-1" // courage > delete
-     ~%WIZARD_EMOTION_HOPE%.spl~          => 22   // hope > heroism
-     ~%WIZARD_SHROUD_OF_FLAME%.spl~       => "-1" // shroud of flame > delete
-     ~%WIZARD_MIND_BLANK%.spl~            => "-1" // mind blank > delete
-     ~%WIZARD_ANTIMAGIC_SHELL%.spl~       => 83   // antomagic shell > spell failure
-     ~%WIZARD_EXPEDITIOUS_RETREAT%.spl~   => 38   // expeditious retreat > haste
+     ~%WIZARD_CATS_GRACE%.spl~           , 185 => "-1" // cat's grace > delete
+     ~%WIZARD_BELTYNS_BURNING_BLOOD%.spl~, 207 => "-1" // beltyn's burning blood > delete
+     ~%WIZARD_EMOTION_COURAGE%.spl~      , 187 => "-1" // courage > delete
+     ~%WIZARD_EMOTION_HOPE%.spl~         , 186 => 22   // hope > heroism
+     ~%WIZARD_MIND_BLANK%.spl~           , 166 => "-1" // mind blank > delete
+     ~%WIZARD_MIND_BLANK%.spl~           , 171 => "-1" // mind blank > delete
+     ~%WIZARD_ANTIMAGIC_SHELL%.spl~      , 209 => 83   // antimagic shell > spell failure
+     ~%WIZARD_EXPEDITIOUS_RETREAT%.spl~  , 195 => 38   // expeditious retreat > haste
+     ~%WIZARD_IRON_BODY%.spl~            , 172 => "-1" // iron body > delete
 
   END
 
-  ACTION_PHP_EACH cd_icon_map AS file => icon BEGIN
+  ACTION_PHP_EACH cd_icon_map AS params => icon BEGIN
   
-    COPY_EXISTING ~%file%~ ~override~
+    COPY_EXISTING ~%params_0%~ ~override~
       PATCH_IF icon < 0 BEGIN
-        LPF DELETE_EFFECT INT_VAR match_opcode = 142 END
+        LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = params_1 END
       END ELSE BEGIN  
-        LPF ALTER_EFFECT INT_VAR silent=1 match_opcode = 142 parameter2 = icon END  
+        LPF ALTER_EFFECT INT_VAR silent=1 match_opcode = 142 match_parameter2 = params_1 parameter2 = icon END  
       END
       IF_EXISTS // cat's grace won't be here w/o tobex 
 
@@ -626,7 +627,6 @@ END
     END  
     // updating iwd > bg2 refs before moving
     LPF ALTER_EFFECT INT_VAR match_opcode = 318 opcode = 206 END // make some adjustments before moving
-    LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 172 END // delete iron body icon
     LPF DELETE_EFFECT INT_VAR match_opcode = 321 END // delete self-cast protection
     LPF DELETE_EFFECT INT_VAR match_opcode = 1 END // delete APR set (fist item already has it)
     

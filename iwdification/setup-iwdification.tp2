@@ -527,75 +527,6 @@ LABEL ~cd_iwdification_randomized_equipment~
 
 OUTER_SET include_hq = 0
 INCLUDE ~iwdification/tpa/random.tpa~
-
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
-///// IWD arcane spell pack                            \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-
-BEGIN @3000 DESIGNATED 30
-REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
-REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ ~1500~ @998
-GROUP @993
-LABEL ~cd_iwdification_arcane_spells~
-
-INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
-LAF iwdspells_extern 
-  STR_VAR type=arcane 
-          custom_includes="iwdspells/custom/cd_scroll_placement.tpa iwdspells/custom/cd_arcane_spell_use.tpa" 
-          iconv_path="languages/iconv" // if you use these values
-          ini_name="dw_iwdspells.ini"
-          oggdec_path="wav"
-          sox_path="wav"
-END 
-
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
-///// IWD divine spell pack                            \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-
-BEGIN @4000 DESIGNATED 40
-REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
-REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ ~1510~ @998
-GROUP @993
-LABEL ~cd_iwdification_divine_spells~
-
-INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
-LAF iwdspells_extern 
-  STR_VAR type=divine 
-          custom_includes="iwdspells/custom/cd_divine_spell_use.tpa" 
-          iconv_path="languages/iconv" // if you use these values
-          ini_name="dw_iwdspells.ini"
-          oggdec_path="wav"
-          sox_path="wav"
-END 
-  
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
-///// obg2 portrait icons                              \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-
-BEGIN @8000 DESIGNATED 80
-GROUP @993
-REQUIRE_PREDICATE GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ @996
-// REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ ~1510~ @998 Future SCS?
-LABEL ~cd_iwdification_obg2_portrait_icons~
-  
-INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
-LAF iwdspells_extern STR_VAR type="icon" 
-                             iconv_path="languages/iconv" // if you use these values
-                             ini_name="dw_iwdspells.ini"
-                             oggdec_path="wav"
-                             sox_path="wav"END
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1129,4 +1060,73 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
     LPF ADD_CRE_EFFECT INT_VAR opcode = 328 target = 1 parameter2 = 252 timing = 1 special = 1 STR_VAR effsource = cdievade END
   END
   BUT_ONLY  
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// IWD arcane spell pack                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @3000 DESIGNATED 30
+REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ ~1500~ @998
+GROUP @993
+LABEL ~cd_iwdification_arcane_spells~
+
+INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
+LAF iwdspells_extern 
+  STR_VAR type=arcane 
+          custom_includes="iwdspells/custom/cd_scroll_placement.tpa iwdspells/custom/cd_arcane_spell_use.tpa" 
+          iconv_path="languages/iconv" // if you use these values
+          ini_name="dw_iwdspells.ini"
+          oggdec_path="wav"
+          sox_path="wav"
+END 
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// IWD divine spell pack                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @4000 DESIGNATED 40
+REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ ~1510~ @998
+GROUP @993
+LABEL ~cd_iwdification_divine_spells~
+
+INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
+LAF iwdspells_extern 
+  STR_VAR type=divine 
+          custom_includes="iwdspells/custom/cd_divine_spell_use.tpa" 
+          iconv_path="languages/iconv" // if you use these values
+          ini_name="dw_iwdspells.ini"
+          oggdec_path="wav"
+          sox_path="wav"
+END 
+  
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// obg2 portrait icons                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @8000 DESIGNATED 80
+GROUP @993
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ @996
+// REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ ~1510~ @998 Future SCS?
+LABEL ~cd_iwdification_obg2_portrait_icons~
+  
+INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
+LAF iwdspells_extern STR_VAR type="icon" 
+                             iconv_path="languages/iconv" // if you use these values
+                             ini_name="dw_iwdspells.ini"
+                             oggdec_path="wav"
+                             sox_path="wav"END
   

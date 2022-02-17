@@ -202,28 +202,31 @@ END
   ACTION_CLEAR_ARRAY cd_icon_map
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_icon_map BEGIN
 
-     ~#prayerg.spl~                             => 18   // prayer > chant
-     ~#reciteg.spl~                             => 18   // recitation > chant
-     ~%CLERIC_EXALTATION%.spl~                  => "-1" // exaltation > delete
-     ~%CLERIC_CIRCLE_OF_BONES%.spl~             => 98   // circle of bones > blade barrier
-     ~%CLERIC_STORM_SHELL%.spl~                 => 76   // storm shield > protection from the elements
-     ~%CLERIC_STATIC_CHARGE%.spl~               => "-1" // static charge > delete
-     ~%CLERIC_BLOOD_RAGE%.spl~                  => 4    // blood rage to berserk
-     ~%CLERIC_SHIELD_OF_LATHANDER%.spl~         => "-1" // shield o' lathander > delete
-     ~%CLERIC_ANIMAL_RAGE%.spl~                 => 83   // animal rage > spell failure
-     ~%CLERIC_ENTROPY_SHIELD%.spl~              => 56   // entropy shield > regeneration
-     ~%CLERIC_SYMBOL_PAIN%.spl~                 => "-1" // pain > delete
-     ~%CLERIC_GREATER_SHIELD_OF_LATHANDER%.spl~ => "-1" // greater shield o' lathander > delete
+     ~#prayerg.spl~                                 , 183 => 18   // prayer > chant
+     ~#reciteg.spl~                                 , 175 => 18   // recitation > chant
+     ~%CLERIC_EXALTATION%.spl~                      , 174 => "-1" // exaltation > delete
+     ~%CLERIC_CIRCLE_OF_BONES%.spl~                 , 212 => 98   // circle of bones > blade barrier
+     ~%CLERIC_STORM_SHELL%.spl~                     , 140 => 76   // storm shield > protection from the elements
+     ~%CLERIC_STATIC_CHARGE%.spl~                   , 203 => "-1" // static charge > delete
+     ~%CLERIC_BLOOD_RAGE%.spl~                      , 176 => 4    // blood rage to berserk
+     ~%CLERIC_SHIELD_OF_LATHANDER%.spl~             , 205 => "-1" // shield o' lathander > delete
+     ~%CLERIC_ANIMAL_RAGE%.spl~                     , 173 => 83   // animal rage > spell failure
+     ~%CLERIC_ENTROPY_SHIELD%.spl~                  , 204 => 56   // entropy shield > regeneration
+     ~%CLERIC_SYMBOL_PAIN%.spl~                     , 169 => "-1" // pain > delete
+     ~%CLERIC_GREATER_SHIELD_OF_LATHANDER%.spl~     , 206 => "-1" // greater shield o' lathander > delete
+     ~%CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL%a.spl~, 184 => "-1" // righteous wrath of the faithful (allies) > delete
+     ~%CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL%b.spl~, 184 => "-1" // righteous wrath of the faithful (same alignment) > delete
+     ~%CLERIC_IMPERVIOUS_SANCTITY_OF_MIND%.spl~     , 170 => "-1" // ISoM > delete
      
   END
 
-  ACTION_PHP_EACH cd_icon_map AS file => icon BEGIN
+  ACTION_PHP_EACH cd_icon_map AS params => icon BEGIN
   
-    COPY_EXISTING ~%file%~ ~override~
+    COPY_EXISTING ~%params_0%~ ~override~
       PATCH_IF icon < 0 BEGIN
-        LPF DELETE_EFFECT INT_VAR match_opcode = 142 END
+        LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = params_1 END
       END ELSE BEGIN  
-        LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = icon END  
+        LPF ALTER_EFFECT INT_VAR silent=1 match_opcode = 142 match_parameter2 = params_1 parameter2 = icon END  
       END
 
   END  
@@ -672,7 +675,6 @@ END
     READ_SHORT abil_off + 0x26 proj
     
   COPY_EXISTING ~%CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL%b.spl~ ~override~ // allies
-    LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 184 END
     PATCH_FOR_EACH op IN 321 8 174 215 18 93 BEGIN // cosmetics, sound, fatigue, hp bonus
       LPF DELETE_EFFECT INT_VAR match_opcode = op END
     END
@@ -683,7 +685,6 @@ END
 
   COPY_EXISTING ~%CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL%a.spl~ ~override~ // same alignment
     LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
-    LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 184 END
     LPF CLONE_EFFECT INT_VAR match_opcode = 54 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL%a~ END
     LPF CD_CONVERT_9_255 END
 
@@ -859,7 +860,6 @@ END
 /////                                                  \\\\\
 
   COPY_EXISTING ~%CLERIC_IMPERVIOUS_SANCTITY_OF_MIND%.spl~ ~override~
-    LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 170 END // do it here since there are multiple 142s
     LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
     LPF ALTER_EFFECT INT_VAR match_opcode = 318 opcode = 206 parameter1 = 0 parameter2 = 0 END
 
