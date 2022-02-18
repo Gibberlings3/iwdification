@@ -91,8 +91,10 @@ DEFINE_ACTION_FUNCTION cd_bardic_post BEGIN
     COPY_EXISTING ~gtt#sno.spl~ ~override~    
       LPF ALTER_EFFECT INT_VAR match_opcode = 251 STR_VAR resource = EVAL ~spcl%code%~ END
 
-    COPY_EXISTING ~bggarrik.bcs~ ~override~
-                  ~garrick.bcs~  ~override~ 
+    COPY_EXISTING ~_garri.bcs~   ~override~ // tutu
+                  ~bggarrik.bcs~ ~override~ // bgt
+                  ~garrick.bcs~  ~override~ // bgee 
+                  ~garrick_.bcs~ ~override~ // eet 
       DECOMPILE_AND_PATCH BEGIN
         REPLACE_TEXTUALLY ~gtt#sno~ ~#BARD1~
       END 
