@@ -82,5 +82,52 @@ DEFINE_ACTION_FUNCTION cd_bardic_post BEGIN
     END
     
   END  
+  
+  // compatibility with Garrick: Tales of a Troubadour
+  ACTION_IF FILE_EXISTS_IN_GAME ~gtt#sno.spl~ BEGIN     //Compatibility with garrick-tt begins here
+  
+    OUTER_SET code=IDS_OF_SYMBOL ("spell" "BARD_SONG_BALLAD")
+    OUTER_SET code=code - 4000 
+    COPY_EXISTING ~gtt#sno.spl~ ~override~    
+      WRITE_ASCII 0xae "spcl%code%" #8  // Change default battle song for the Ballad of Three Heroes, in case I have missed something
+
+    COPY_EXISTING ~BGGARRIK.bcs~ ~override~
+      DECOMPILE_AND_PATCH BEGIN
+        REPLACE_TEXTUALLY ~gtt#sno~ ~#BARD1~
+      END                                                    
+
+  END 
+  
+  ACTION_IF FILE_EXISTS_IN_GAME "RR#BDF03.spl" BEGIN // Compatibility with RR begins here
+    WITH_SCOPE BEGIN
+      LAF struct_read STR_VAR file=RR#BDF03.spl RET_ARRAY m0=struct END
+      spl.copy[#bard1=>dw-921]
+      [
+          m.fx.alter{s_resource:=dw-921}
+          m.ab_fx.alter{s_resource:=RR#BDF04}
+          m.ab.alter{s_icon:=spenbarb}
+          m_name:="%m0_name%"
+          INNER_PATCH_SAVE m_description "%m0_description%" BEGIN
+              old:=@223
+              REPLACE_TEXTUALLY "%old%" ""
+              old:=@224
+              REPLACE_TEXTUALLY "%old%" ""
+              old:=@225
+              REPLACE_TEXTUALLY "%old%" ""
+          END
+      ]
+      END
+      
+    COPY_EXISTING "luba0.2da" override
+      REPLACE_TEXTUALLY "AP_RR#BDF03" "GA_DW-921  "
+      REPLACE_TEXTUALLY "AP_RR#BDF05" "*          "
+      IF_EXISTS        
+        
+    OUTER_SET code=IDS_OF_SYMBOL ("spell" "BARD_SONG_BALLAD")
+    OUTER_SET code=code - 4000
+    COPY_EXISTING "CLABBA01.2da" override
+      REPLACE_TEXTUALLY "AP_RR#BDF01" "AP_SPCL%code%" 
+
+  END  // Compatibility with RR ends here 
  
 END
