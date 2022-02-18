@@ -196,6 +196,9 @@ DEFINE_ACTION_FUNCTION summoned_monsters_arcane BEGIN
 
 
 	ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_MONSTER_SUMMONING_3") BEGIN
+  
+    OUTER_SPRINT rage BERSERKER_ENRAGE
+    ACTION_IF (RESOURCE_CONTAINS ~spell.ids~ ~[ %TAB%]BERSERKER_RAGE[ %TAB%%LNL%%MNL%%WNL%]~) BEGIN OUTER_SPRINT rage BERSERKER_RAGE END
 
 		// ogre berserker
 
@@ -203,7 +206,7 @@ DEFINE_ACTION_FUNCTION summoned_monsters_arcane BEGIN
 		[
 			m_no_corpse=1
 			m_xp_value=1
-			m.cre_add_spells{BERSERKER_ENRAGE} // MIH removes the _RAGE entry, for some reason
+			m.cre_add_spells{%rage%} // MIH removes the _RAGE entry, for some reason
 			m.cre_set_proficiencies{flailmorningstar=>2}
 			m.cre_remove_items{ogre1}
 			m.cre_add_items{blun06}
@@ -211,7 +214,7 @@ DEFINE_ACTION_FUNCTION summoned_monsters_arcane BEGIN
 			m.item.alter{s_unstealable=1 s_undroppable=1}
 		]
 		COPY "%MOD_FOLDER%/%component_loc%/resource/dw#msogr.baf" "override/dw#msogr.bcs"
-			REPLACE_TEXTUALLY ~BERSERKER_RAGE~ ~BERSERKER_ENRAGE~ // MIH removes the _RAGE entry, for some reason
+			REPLACE_TEXTUALLY ~BERSERKER_RAGE~ ~%rage%~ // MIH removes the _RAGE entry, for some reason
 			PATCH_IF !enhanced_edition BEGIN
 				REPLACE_TEXTUALLY ~!CheckSpellState(Myself,STATE_ENRAGED)~ ~StateCheck(Myself,STATE_BERSERK)~
 			END
