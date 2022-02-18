@@ -159,7 +159,9 @@ ACTION_PHP_EACH cd_druid_kits AS clab => kitno BEGIN
       END  
     END
     PATCH_IF ((spcl924 + spcl925 + spcl926 + spcl927 = 4) OR // if normal abilities  
-              ((sod_exception) AND ("%clab%" STRING_COMPARE_REGEXP "^[Cc][Ll][Aa][Bb][Dd][Rr]0[1-4]$" = 0))) BEGIN // or one of the default kits on pure SoD game
+              ((sod_exception) AND 
+                (("%clab%" STRING_COMPARE_REGEXP "^[Cc][Ll][Aa][Bb][Dd][Rr]0[1-4]$" = 0) OR         // uses clabdr01 - clabdr04
+                ((kitid = 16384) OR (kitid = 16400) OR (kitid = 16401) OR (kitid = 16402))))) BEGIN // or one of the default kits on pure SoD game
       SET druid_abils = 1   
       PATCH_FOR_EACH res IN SPCL924 SPCL925 SPCL926 SPCL927 BEGIN
         REPLACE_TEXTUALLY ~[ %TAB%]\(GA\|AP\)_%res%[ %TAB%]~ ~ **** ~
