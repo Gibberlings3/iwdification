@@ -121,7 +121,7 @@ OUTER_SET shapeshifting_tc = 0
 OUTER_SET druid_abils_tc = 0
 
 OUTER_SET sod_exception = 0
-ACTION_IF ((GAME_IS bgee) AND (GAME_INCLUDES sod)) BEGIN OUTER_SET sod_exception = 1 END
+ACTION_IF GAME_IS bgee BEGIN OUTER_SET sod_exception = 1 END
 
 ACTION_PHP_EACH cd_druid_kits AS clab => kitno BEGIN
 

@@ -196,6 +196,117 @@
       <p>Bards in Icewind Dale could learn up to eighth-level spells and this component makes the IWD table available. This is also available in Tweaks Anthology as  <strong>Alter Bard Spell Progression Table: Un-Nerfed Table</strong>. A <a href="https://gibberlings3.github.io/Documentation/readmes/readme-cdtweaks_tables.html#bard" rel="external nofollow">comparison of the spell progression tables</a> is available from the Tweaks documentation. </p>
 <p><strong>IWD Class Updates: Druid: Use IWD Shapeshifting and Ability Progression</strong></p>
 <p>This makes several changes to the druid class. Trueclass druids swap their BG2 shapeshifting (wolf, black bear, brown bear) for the IWD progression: winter wolf (level 5), boring beetle (level 7, but kept as black bear for vanilla games without <a href="http://www.spellholdstudios.net/ie/infinityanimations">Infinity Animations</a>), polar bear (level 9), fire elemental (level 11), earth elemental (level 13), and water elemental (level 15). Immunity from poison is moved from level 15 to level 9, and instead of the BG2 elemental resists at levels 18/21/24, the druid becomes immune to fatigue at level 15. </p>
+<p>Details of the new forms (and the original three from BG) are below for comparison:</p>
+<table border="1">
+  <tr>
+    <th>&nbsp;</th>
+    <th>Winter Wolf</th>
+    <th>Boring Beetle</th>
+    <th>Polar Bear</th>
+    <th>Fire Elemental</th>
+    <th>Earth Elemental</th>
+    <th>Water Elemental</th>
+    <th>Brown Bear</th>
+    <th>Wolf</th>
+    <th>Black Bear</th>
+  </tr>
+  <tr>
+    <td>Level</td>
+    <td>5</td>
+    <td>7</td>
+    <td>9</td>
+    <td>11</td>
+    <td>13</td>
+    <td>15</td>
+    <td>7</td>
+    <td>7</td>
+    <td>7</td>
+  </tr>
+  <tr>
+    <td>Strength</td>
+    <td>18</td>
+    <td>18/51</td>
+    <td>18</td>
+    <td>19</td>
+    <td>23</td>
+    <td>18</td>
+    <td>18</td>
+    <td>18</td>
+    <td>18</td>
+  </tr>
+  <tr>
+    <td>Dexterity</td>
+    <td>13</td>
+    <td>7</td>
+    <td>10</td>
+    <td>9</td>
+    <td>5</td>
+    <td>14</td>
+    <td>12</td>
+    <td>17</td>
+    <td>12</td>
+  </tr>
+  <tr>
+    <td>Damage</td>
+    <td>1d6 slashing</td>
+    <td>5d4 slashing</td>
+    <td>1d12 slashing</td>
+    <td>1d8 crushing</td>
+    <td>4d8 crushing</td>
+    <td>4d8 crushing</td>
+    <td>1d6 piercing</td>
+    <td>1d8 piercing</td>
+    <td>1d4 piercing</td>
+  </tr>
+  <tr>
+    <td>Weapon strikes as...</td>
+    <td>+1</td>
+    <td>+2</td>
+    <td>+3</td>
+    <td>+4</td>
+    <td>+4</td>
+    <td>+4</td>
+    <td>+1</td>
+    <td>+1</td>
+    <td>+1</td>
+  </tr>
+  <tr>
+    <td>Base AC</td>
+    <td>2</td>
+    <td>-2</td>
+    <td>4</td>
+    <td>2</td>
+    <td>-2</td>
+    <td>-2</td>
+    <td>6</td>
+    <td>6</td>
+    <td>7</td>
+  </tr>
+  <tr>
+    <td>Base APR</td>
+    <td>2</td>
+    <td>1</td>
+    <td>3</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>3</td>
+    <td>1</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>Notes</td>
+    <td>Haste (normal); 75% cold resistance; -25% fire resistance</td>
+    <td>Haste (normal); 50% slashing, piercing, missile resistance</td>
+    <td>75% cold resistance; -25% fire resistance</td>
+    <td>100% fire resistance; 15% electricity, acid, physical damage resistance; -50% cold resistance</td>
+    <td>75% missile resistance; 50% slashing, piercing resistance; 25% fire, cold, resistance; -50% crushing resistance</td>
+    <td>75% acid,physical damage resistance; -25% cold resistance; -75% electrical resistance</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
 <p><strong>IWD Class Updates: Druid: Allow Elves to be Druids</strong><br />
   <em>Enhanced Editions Only</em></p>
       <p> As simple as it gets: this opens the druid class and fighter-druid multi-class to elves, but is only available on EE games.</p>
@@ -274,8 +385,26 @@
     <div class="ribbon_triangle_h2-r"></div>
     <div class="section">
       <div>
-        <p><strong>Version 1 - December 20, 2021</strong> </p>
-        <p><strong>Version Release Candidate 2 - September 30, 2021</strong></p>
+        <p><strong>Version 1 - February 20, 2022</strong></p>
+        <ul>
+          <li>Fixed bug where the icon for High-Quality Arrows was off-center. Also fixed bug where the icons for High Quality Longbows and High Quality Composite Longbows were swapped</li>
+          <li>Fixed a rare bug where items added from Randomized Weapons could get duplicated</li>
+          <li>Fixed a number of bugs inherited from imported IWDEE assets--afftecting Siren's Yearning bard song; divine spells Animal Rage, Cause Disease, Circle of Bones, Cloudburst, Smashing Wave, and Symbol Hopelessness; and arcane spells Shout and Great Shout. These have also been reported to Beamdog for their inclusion in a future patch. </li>
+          <li>The new Water Elemental spell was summong Air Elementals; also fixed a few issues with descriptions not getting properly updated</li>
+          <li>Due to timing differences, the new bard songs were lasting just over a round and blocking themselves, effectively making them work every other round</li>
+          <li>Fixed some minor install issues, notably, the install would fail if it deferred to another mod's Monster Summoning spells, and fixed a minor conflict with Angel's Made in heaven mod</li>
+          <li>Better feedback: Shout and Great Shout now add deaf portrait icons to their deafened targets; Darts of Bone will cause 'Ability Score Drained' icon to its strength drain effect; Circle of Bones will use 'Blade Barrier' icon for oBG2; Storm Shell will use 'Protection From The Elements' icon for oBG2</li>
+          <li>Various spells which create magical weapons--Iron Body, Lich Touch, Mordenkainen's Force Blade, Star Metal Cudgel, and Moonblade--had off-center icons in oBG2 games</li>
+          <li>Cleaned up some leftover EE opcodes in spells for oBG2 games. </li>
+          <li>Storm Shell no longer stacks</li>
+          <li>Fixed some big problems with the new portrait icons added in oBG2--namely that some were not getting properly updated; was leaving an EE-style icon description table; and they could be partially rolled back when another spell component was installed after. The last item is not completely fixed, but the oBG2 component has been moved to the end of the mod to make it less likely to happen. Spells which get their own unique icon will no longer show ancillary icons, e.g. Iron Body will only show an Iron Body icon, and not the extra Protection from Poison icon. </li>
+          <li>Righteous Wrath of the Faithful blocks haste for allies of the same alignment, but was not blocking Mazzy's custom haste spell</li>
+          <li>Fixed a bug on oBG2 where the underlying framework left a nonsense script in the override</li>
+          <li>For players using IRR or other mods that use the old-style Shield Amulet, it gets updated to block Mordenkainen's Force Missiles (other versions just cast the Shield spell directly, which was already updated to block MFM)</li>
+          <li>Bard songs should now better update class and kit descriptions for oBG2</li>
+          <li>For BGEE games, tried to be a little more forgiving in determining which druid kits get the revised abilities</li>
+        </ul>
+<p><strong>Version Release Candidate 2 - September 30, 2021</strong></p>
         <ul>
           <li>Some general re-organization of the mod components:
             <ul>
