@@ -28,7 +28,14 @@ DEFINE_ACTION_FUNCTION cd_divine_post BEGIN
 
     APPEND ~animate.ids~ ~0x0103 SPIRITUAL_WRATH~ UNLESS ~^0x0103~  
     APPEND ~animate.ids~ ~0x0104 SMASHING_WAVE~   UNLESS ~^0x0104~ 
-
+    
+    // smashing wave should have swave as the explosion projectile, not secondary
+    COPY_EXISTING ~idpro302.pro~ ~override~
+      READ_SHORT  0x214 swave // read projectile value from secondary...
+      WRITE_SHORT 0x214 0     // then blank it
+      WRITE_SHORT 0x21a swave // then assign it as explosion
+      BUT_ONLY
+      
   END 
 
   /////                                                  \\\\\
