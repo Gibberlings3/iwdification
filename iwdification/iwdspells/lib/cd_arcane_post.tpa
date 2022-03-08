@@ -8,6 +8,11 @@ DEFINE_ACTION_FUNCTION cd_arcane_post BEGIN
          ~%MOD_FOLDER%/%component_loc%/resource/lodisru.bam~ ~override~
 
     APPEND ~animate.ids~ ~0x0105 LANCE_OF_DISRUPTION~   UNLESS ~^0x0105~ 
+    
+    OUTER_SET proj = (IDS_OF_SYMBOL ("projectl" "lodisr") + 1)
+    COPY_EXISTING ~idpro313.pro~ ~override~ // LoD projectile; lodisr should be the explosion projectile, not secondary
+      WRITE_SHORT 0x214 0    // blank secondary projectile
+      WRITE_SHORT 0x21a proj // assign lodisr as explosion
 
   END  
        
