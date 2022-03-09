@@ -1,5 +1,5 @@
 // strings in this file will be overridden by strings in game_strings_ee for EE games.
-// this file is ANSI, and will be converted to UTF-8 for EE games.
+// this file is UTF-8, and will be converted to ANSI for non-EE games.
 
   @6001 = ~Two Handed Axe~
   @6002 = ~This mighty weapon consists of a haft several feet long, topped with a heavy blade.  The axe may be double-bitted, with blades on both sides of the haft, or it may only have a single blade.  It is an unwieldy weapon, but a skilled warrior can strike blows of tremendous strength with it.

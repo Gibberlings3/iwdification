@@ -1,7 +1,7 @@
-BACKUP ~iwdification/backup~ // location to store files for uninstall purposes
+BACKUP ~weidu_external/iwdification/backup~ // location to store files for uninstall purposes
 SUPPORT ~https://www.gibberlings3.net/forums/forum/185-iwdification/~ 
 
-VERSION ~v1~
+VERSION ~v2~
 
 AUTO_EVAL_STRINGS
 
@@ -18,19 +18,24 @@ ALWAYS
     OUTER_SPRINT sfo_tra_path "languages" // the path (relative to your mod directory) to the directory in which you keep tra files. Usually 'lang' or 'tra'.
     INCLUDE "%MOD_FOLDER%/%sfo_library_path%/sfo_init.tpc"
   
-    OUTER_SET enhanced_edition = 0
-  
     ACTION_IF !GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ THEN BEGIN
 
       OUTER_SET enhanced_edition = 1
+      LOAD_TRA ~iwdification/languages/%LANGUAGE%/game_strings_ee.tra~
+      OUTER_SPRINT ~tra_location~ ~iwdification/languages~
+    
+    END ELSE BEGIN
+  
+      OUTER_SET enhanced_edition = 0
 
-      // convert strings to UTF-8 for BGEE/BG2EE
+      // convert strings from UTF-8 for originals
       ACTION_DEFINE_ARRAY cdreload BEGIN game_strings END
       ACTION_DEFINE_ARRAY cdnoconvert BEGIN game_strings_ee setup END
-      LAF HANDLE_CHARSETS INT_VAR infer_charset = 1 STR_VAR tra_path = ~iwdification/languages~ reload_array = cdreload noconvert_array = cdnoconvert END
-      LOAD_TRA ~iwdification/languages/%LANGUAGE%/game_strings_ee.tra~
+      LAF HANDLE_CHARSETS INT_VAR from_utf8 = 1 infer_charsets = 1 
+                          STR_VAR default_language = ~english~ tra_path = ~iwdification/languages~ out_path = ~weidu_external/iwdification/languages~ noconvert_array = cdnoconvert reload_array = cdreload END
+      OUTER_SPRINT ~tra_location~ ~weidu_external/iwdification/languages~
     
-    END
+    END    
 
   END
 
