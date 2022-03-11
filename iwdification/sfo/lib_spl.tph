@@ -342,7 +342,7 @@ BEGIN
 		SPRINT scrl_icon "%icon%"
 		SPRINT scrl_ground_icon gscrl01
 		PATCH_IF GAME_IS "bgee bg2ee bg1 bg2 tob eet tutu tutu_totsc bgt" BEGIN
-			SPRINT desc_image cscrl01
+			SPRINT scrl_desc_image cscrl01
 		END
 		PATCH_MATCH "%spl_type%" WITH
 		wizard BEGIN
