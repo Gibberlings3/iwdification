@@ -1,7 +1,7 @@
 BACKUP ~weidu_external/iwdification/backup~ // location to store files for uninstall purposes
 SUPPORT ~https://www.gibberlings3.net/forums/forum/185-iwdification/~ 
 
-VERSION ~v2~
+VERSION ~v3~
 
 AUTO_EVAL_STRINGS
 
@@ -568,8 +568,9 @@ REQUIRE_PREDICATE !FILE_EXISTS_IN_GAME ~rr#bdf01.spl~ @991 // skip if RR bard so
 GROUP @995
 LABEL ~cd_iwdification_bard_kit_selectable_songs~
 
-// why not swashbuckler? unlike jesters and skalds, EBS is better than their default bard 
-// song so there would never be a reason to switch back
+// why not blade? unlike jesters and skalds, EBS is better than their default bard 
+// song so there would never be a reason to switch back. same reason this component
+// is skipped with RR, since it has skald/jester bard song HLAs that are better
 
 OUTER_SET skald_name  = RESOLVE_STR_REF (@18001)
 OUTER_SET skald_desc  = RESOLVE_STR_REF (@18002)
@@ -583,10 +584,8 @@ ACTION_CLEAR_ARRAY cd_selectable_bard_song
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_selectable_bard_song BEGIN
 
   // spell which changes bard song, spell of the actual new bard song, CLAB, BAM, name strref, desc strref => new ability for selecting bard song
-  spcl751,  spcl751a,   clabba03,  cdibsjes, ~%jester_name%~, ~%jester_desc%~ => cdcl751   // jester
-  spcl542,  spcl542a,   clabba04,  cdibsska, ~%skald_name%~,  ~%skald_desc%~  => cdcl542   // skald
-  ~a!ds1~,  ~a!dssong~, ~a!dirge~, spenbard, "-1",            "-1"            => ~a!ds1a~  // dirgesinger from song & silence
-  ~a!lup1~, ~a!lups~,   ~a!lup~,   spenbard, "-1",            "-1"            => ~a!lup1a~ // luring piper from song & silence
+  spcl751, spcl751a, clabba03, cdibsjes, ~%jester_name%~, ~%jester_desc%~ => cdcl751   // jester
+  spcl542, spcl542a, clabba04, cdibsska, ~%skald_name%~,  ~%skald_desc%~  => cdcl542   // skald
   
 END
 

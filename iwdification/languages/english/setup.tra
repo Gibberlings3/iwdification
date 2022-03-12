@@ -19,6 +19,7 @@ to look it over if you wish.
 
 
 // this file contains strings only used by the WeiDU installer and does not get converted to UTF-8 for EE games.
+  @991 = ~This component is not available for your game.~
   @992 = ~This component is not available in your language.~
   @993 = ~Additional Spells~
   @994 = ~Miscellaneous Changes~
@@ -64,3 +65,5 @@ to look it over if you wish.
 @16000 = ~IWD Class Updates: Paladin: Use IWD Spell Progression~
 
 @17000 = ~IWD Class Updates: Ranger: Use IWD Spell Progression~
+
+@18000 = ~IWD Class Updates: Bard: Selectable Bard Songs for Jesters and Skalds~

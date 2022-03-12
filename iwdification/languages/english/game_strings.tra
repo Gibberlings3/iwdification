@@ -338,3 +338,15 @@ EVASION: When a Thief is hit by a spell that can be evaded (Fireball, Lightning 
 // if the descript has an existing THAC0 bonus line, instead we need to match and replace
 // matches THAC0 or the mistaken THACO; matches an optional +
 @14007 = ~^THAC[0O]:?[ %TAB%]+\+?[0-9]+~
+
+// 18002 and 18004 are copied directly from the kit descriptions, strref #25220 and #25219 on bg2ee
+@18001 = ~Skald Song~
+@18002 = ~The Skald's song is different from the typical Bard's and varies with level:
+ 1st level: Grants allies a +2 bonus to hit and damage rolls, and a +2 bonus to AC.
+ 15th level: Grants allies a +4 bonus to hit and damage rolls, a +4 bonus to AC, and immunity to fear.
+ 20th level: Grants allies a +4 bonus to hit and damage rolls, a +4 bonus to AC, and immunity to fear, stun, and confusion.~
+@18003 = ~Jester Song~
+@18004 = ~The Jester's song does not help allies. Instead, every opponent within 30 feet must save once per round to avoid falling under its effects:
+  1st level: Enemies must save vs. Spell with a +2 bonus or be confused.
+  15th level: Enemies must save vs. Spell with a +2 bonus or be confused, and must save vs. Spell or be slowed.
+  20th level: Enemies must save vs. Spell with a +2 bonus or be confused, must save vs. Spell at +2 or be knocked unconscious, and must save vs. Spell or be slowed.~
