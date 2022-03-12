@@ -559,6 +559,40 @@ LAF iwdspells_extern STR_VAR type=bard
                              sox_path="wav"END
 
 /////                                                  \\\\\
+///// switchable skald/jester/EBS bard songs           \\\\\
+/////                                                  \\\\\ 
+
+BEGIN @18000 DESIGNATED 180 // allow skald/jester to switch between their songs and EBS
+REQUIRE_PREDICATE GAME_INCLUDES ~tob~ @991                 // requires tob
+REQUIRE_PREDICATE !FILE_EXISTS_IN_GAME ~rr#bdf01.spl~ @991 // skip if RR bard song HLAs installed
+GROUP @995
+LABEL ~cd_iwdification_bard_kit_selectable_songs~
+
+// why not swashbuckler? unlike jesters and skalds, EBS is better than their default bard 
+// song so there would never be a reason to switch back
+
+OUTER_SET skald_name  = RESOLVE_STR_REF (@18001)
+OUTER_SET skald_desc  = RESOLVE_STR_REF (@18002)
+OUTER_SET jester_name = RESOLVE_STR_REF (@18003)
+OUTER_SET jester_desc = RESOLVE_STR_REF (@18004)
+
+COPY ~iwdification/bam/cdibsjes.bam~ ~override~
+     ~iwdification/bam/cdibsska.bam~ ~override~
+
+ACTION_CLEAR_ARRAY cd_selectable_bard_song
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_selectable_bard_song BEGIN
+
+  // spell which changes bard song, spell of the actual new bard song, CLAB, BAM, name strref, desc strref => new ability for selecting bard song
+  spcl751,  spcl751a,   clabba03,  cdibsjes, ~%jester_name%~, ~%jester_desc%~ => cdcl751   // jester
+  spcl542,  spcl542a,   clabba04,  cdibsska, ~%skald_name%~,  ~%skald_desc%~  => cdcl542   // skald
+  ~a!ds1~,  ~a!dssong~, ~a!dirge~, spenbard, "-1",            "-1"            => ~a!ds1a~  // dirgesinger from song & silence
+  ~a!lup1~, ~a!lups~,   ~a!lup~,   spenbard, "-1",            "-1"            => ~a!lup1a~ // luring piper from song & silence
+  
+END
+
+INCLUDE ~iwdification/tpa/switchable_bard_song.tpa~
+
+/////                                                  \\\\\
 ///// IWD Spell Progression                            \\\\\
 /////                                                  \\\\\
 

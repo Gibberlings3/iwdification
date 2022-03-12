@@ -1,0 +1,149 @@
+// do this once to get name, file of the actual EBS song spell  
+OUTER_SPRINT ebs ~~
+COPY_EXISTING ~spcl920.spl~  ~override~ // default EBS
+  READ_LONG  0x08 ebs_name
+  READ_LONG  0x50 ebs_descript
+  READ_ASCII 0x3a ebs_icon      
+  READ_LONG  0x64 abil_off
+  READ_SHORT 0x68 abil_num
+  READ_LONG  0x6a fx_off
+  FOR (index = 0 ; index < abil_num ; ++index) BEGIN
+    READ_SHORT (abil_off + 0x1e + (0x28 * index)) abil_fx_num
+    READ_SHORT (abil_off + 0x20 + (0x28 * index)) abil_fx_idx
+    FOR (index2 = 0 ; index2 < abil_fx_num ; ++index2) BEGIN
+      READ_SHORT (fx_off + 0x00 + (0x30 * (abil_fx_idx + index2))) opcode
+      PATCH_IF (opcode = 251) BEGIN
+        READ_ASCII (fx_off + 0x14 + (0x30 * (abil_fx_idx + index2))) ebs
+      END  
+    END
+  END
+  BUT_ONLY
+    
+ACTION_IF (~%ebs%~ STRING_COMPARE_CASE ~~) BEGIN // sanity check: if no 251 was detected in HLA, stop
+    
+  ACTION_IF !FILE_EXISTS_IN_GAME ~#bard7.spl~ BEGIN // only if this isn't done by the main bard song component already  
+  
+    COPY_EXISTING ~%ebs%.spl~ ~override~ // assign a name to the actual EBS in case it doesn't have one
+      READ_LONG 0x08 name
+      PATCH_IF name < 0 BEGIN
+        WRITE_LONG 0x08 ebs_name
+      END
+      BUT_ONLY  
+          
+    COPY_EXISTING ~spcl751.spl~  ~override/#bard7a.spl~ // jester
+      LPF ALTER_EFFECT INT_VAR match_opcode = 251 opcode = 206 STR_VAR resource = ~#bard7b~ END // immune to #bard7a
+      IF_EXISTS
+
+    COPY_EXISTING ~#bard7a.spl~ ~override/#bard7b.spl~ // use for bards who don't get songs
+      LPF ALTER_EFFECT INT_VAR match_opcode = 206 opcode = 171 STR_VAR resource = ~#bard7~ END // immune to #bard7a
+  
+    COPY ~iwdification/iwdspells/copyover/bard_song_ballad/#bard1.spl~ ~override/#bard7.spl~ // create innate for selecting EBS
+      WRITE_LONG   0x08 ebs_name
+      WRITE_LONG   0x50 ebs_descript
+      WRITE_ASCIIE 0x3a ~%ebs_icon%~
+      LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL ~%ebs_icon%~ END
+      LPF ALTER_EFFECT INT_VAR check_headers = 0 STR_VAR match_resource = ~#bard1~ resource = ~#bard7~ END // covers the remove/give innate
+      LPF ALTER_EFFECT INT_VAR check_globals = 0 match_opcode = 251 STR_VAR resource = EVAL ~%ebs%~ END // changes bard song to actual spcl920 target
+  
+    COPY_EXISTING ~spcl920.spl~  ~override~ // default EBS
+      LPF CLONE_EFFECT INT_VAR match_opcode = 251 opcode = 146 STR_VAR resource = ~#bard7a~ END
+      LPF CLONE_EFFECT INT_VAR match_opcode = 251 opcode = 146 STR_VAR resource = ~#bard7b~ END
+      BUT_ONLY
+      
+  END  
+
+  ACTION_PHP_EACH cd_selectable_bard_song AS params => new_abil BEGIN
+  
+    ACTION_IF ((FILE_EXISTS_IN_GAME ~%params_0%.spl~) AND (FILE_EXISTS_IN_GAME ~%params_1%.spl~) AND (FILE_EXISTS_IN_GAME ~%params_2%.2da~)) BEGIN 
+    
+      // if blank strings passed along, check if existing spells have name/descriptions
+      ACTION_IF ((params_4 <= 0) OR (params_4 > 999999) OR (params_5 <= 0) OR (params_5 > 999999)) BEGIN 
+      
+        COPY_EXISTING ~%params_0%.spl~  ~override~ 
+                      ~%params_1%.spl~  ~override~ 
+          PATCH_IF (params_4 <= 0) BEGIN            
+            READ_LONG 0x08 p4_check
+            PATCH_IF ((p4_check > 0) AND (p4_check < 999999)) BEGIN        
+              SET params_4 = p4_check
+            END
+          END            
+          PATCH_IF (params_5 <= 0) BEGIN            
+            READ_LONG 0x50 p5_check
+            PATCH_IF ((p5_check > 0) AND (p5_check < 999999)) BEGIN        
+              SET params_5 = p5_check
+            END
+          END            
+          BUT_ONLY
+          
+      END    
+    
+      COPY_EXISTING ~spcl920.spl~ ~override~ // EBS blocks re-assignment of jester/skald song, so nuke effect if present
+        LPF DELETE_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR match_resource = EVAL ~%params_1%~ END      
+        BUT_ONLY  
+      
+      COPY_EXISTING ~%params_0%.spl~ ~override~ // spell which switches the bard song
+        LPF CLONE_EFFECT INT_VAR match_opcode = 251 opcode = 206 STR_VAR resource = ~#bard7a~ END // add immunity to #bard7a
+        IF_EXISTS
+    
+      COPY ~iwdification/iwdspells/copyover/bard_song_ballad/#bard1.spl~ ~override/%new_abil%.spl~ // new switching spell 
+        LPF ALTER_EFFECT INT_VAR check_headers = 0 STR_VAR match_resource = ~#bard1~ resource = EVAL ~%new_abil%~ END // covers the remove/give innate
+        LPF ALTER_EFFECT INT_VAR check_globals = 0 match_opcode = 251 STR_VAR resource = EVAL ~%params_1%~ END        // changes bard song to actual bard song
+   
+      // assign name, description, and icons
+      COPY_EXISTING ~%params_0%.spl~  ~override~ 
+                    ~%params_1%.spl~  ~override~ 
+                    ~%new_abil%.spl~  ~override~ 
+        WRITE_LONG 0x08 params_4 
+        WRITE_LONG 0x50 params_5  
+        WRITE_ASCIIE 0x3a ~%params_3%~ 
+        LPF ALTER_SPELL_HEADER STR_VAR icon = EVAL ~%params_3%~ END 
+        BUT_ONLY
+        
+      COPY_EXISTING ~%params_2%.2da~ ~override~
+        COUNT_2DA_COLS cols
+        COUNT_2DA_ROWS cols rows
+        SET found = 0
+        SET added = 0
+        FOR (column = 1 ; column < cols ; ++column) BEGIN // skip 'ability' column
+          FOR (row = 0 ; row < rows ; ++row) BEGIN
+            READ_2DA_ENTRY row column cols entry
+            PATCH_IF ("%entry%" STRING_COMPARE_CASE "AP_%params_0%" = 0) BEGIN // found the column
+              SET found = column
+              FOR (index = 0 ; index < rows ; ++index) BEGIN
+                READ_2DA_ENTRY index column cols entry2
+                PATCH_IF ("%entry2%" STRING_COMPARE_CASE "****" = 0) BEGIN // if blank entry in the column
+                  SET added = 1
+                  SET_2DA_ENTRY index column cols ~AP_%new_abil%~
+                  SET index = rows  // kill all loops
+                  SET row = rows
+                  SET column = cols
+                END
+              END // end search for empty entry
+            END // end P_I match            
+          END // end row loop               
+        END // end column loop     
+        PRETTY_PRINT_2DA      
+        BUT_ONLY
+        
+      ACTION_IF found AND !added BEGIN // if we found a match, but had no blank entries to use
+      
+        APPEND ~%params_2%.2da~ ~ABILITY0 AP_%new_abil%~
+        
+        COPY_EXISTING ~%params_2%.2da~ ~override~
+          FOR (index = 1 ; index < (cols - 1) ; ++index) BEGIN // 
+            PATCH_IF index < found BEGIN
+              REPLACE_TEXTUALLY ~AP_%new_abil%~ ~**** AP_%new_abil%~
+            END ELSE BEGIN  
+              REPLACE_TEXTUALLY ~AP_%new_abil%~ ~AP_%new_abil% ****~
+            END
+          END  
+          PRETTY_PRINT_2DA      
+          BUT_ONLY
+          
+      END    
+      
+    END    
+
+  END
+  
+END  
