@@ -76,7 +76,7 @@ DEFINE_ACTION_FUNCTION cd_divine_post BEGIN
   // Entropy Shield: Visual should be green/abjuration SHWATER and play EFF_P01 when spell is cast. Status icon shows "Flaming Fists" 
   COPY_EXISTING ~%CLERIC_ENTROPY_SHIELD%.spl~ ~override~
     LPF CLONE_EFFECT INT_VAR match_opcode = 215 opcode = 174 duration = 2 STR_VAR match_resource = abjurh resource = eff_p01 END 
-    LPF ALTER_EFFECT INT_VAR match_opcode = 215 STR_VAR match_resource = abjurh resource = SHWATER END  
+    LPF DELETE_EFFECT INT_VAR match_opcode = 215 STR_VAR match_resource = abjurh END // looks bad with abjurh or shwater, so just remove
 
   // Wither: I'd replace the HARMH.vvc with SPCAUSEW.vvc (like the other Harm/Cause Wounds spells in BG2).
   COPY_EXISTING ~%CLERIC_WITHER%.spl~ ~override~  
