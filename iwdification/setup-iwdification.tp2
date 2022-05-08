@@ -777,15 +777,15 @@ ABILITY    GA_cdiplcd  ****        ****        CDREPLACE~
       SPRINT old @10003
       SPRINT new @10006
       REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
-      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
+      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%~ // swap text
       SPRINT old @10004
       SPRINT new @10007
       REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
-      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
+      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%~ // swap text
       SPRINT old @10005
       SPRINT new @10008
       REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
-      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
+      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%~ // swap text
     END
     STRING_SET_EVALUATE params_0 "%desc%"  
 
