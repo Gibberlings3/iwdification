@@ -139,7 +139,7 @@ BEGIN
 						type=item 
 						struct=m 
 						match="~%s_resref%~==%scroll_old%" 
-						patch="s_resref:=%scroll_new%"
+						patch="s_resref:=~%WIZARD_CONJURE_WATER_ELEMENTAL_SCROLL%~"
 					RET_ARRAY m=struct END
 				LPF struct_write STR_VAR struct=m END
 			END
