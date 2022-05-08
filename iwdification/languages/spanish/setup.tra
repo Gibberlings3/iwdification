@@ -1,0 +1,46 @@
+// this file contains strings only used by the WeiDU installer and does not get converted to UTF-8 for EE games.
+  @992 = ~Este componente no esta disponible en tu idioma.~
+  @993 = ~Hechizos adicionales~
+  @994 = ~Cambios varios~
+  @995 = ~Actualizacion de clase~
+  @996 = ~Este componente solo esta disponible en juegos no-EE~
+  @997 = ~Este componente solo esta disponible en juegos EE~
+  @998 = ~Esta funcion ya ha sido instalada por otro mod.~
+  @999 = ~Se requiere instalar DLC Merger antes de que se puedan instalar mods en este juego. Revisa el archivo readme para obtener mas informacion, ademas de un enlace para bajar DLC Merger.~
+
+ @1000 = ~Graficos de hechizos de Icewind Dale (Andyr)~
+
+ @2000 = ~Los plebeyos usan colores oscuros~
+
+ @3000 = ~Pack de hechizos arcanos de IWD~
+
+ @4000 = ~Pack de hechizos divinos de IWD~
+
+ @5000 = ~Actualizacion de clases a IWD: Bardo: Agregar canciones de bardo de IWD~
+
+ @6000 = ~Pack de hachas a 2 manos~
+
+ @7000 = ~Actualizacion de clases a IWD: Druida: Usar progresion de cambiaformas y habilidades de IWD~
+ @7100 = ~Actualizacion de clases a IWD: Druida: Permitir que los elfos sean druidas~
+
+ @8000 = ~Iconos de retrato adicionales~
+
+ @9000 = ~Poliformarse expandido~
+
+@10000 = ~Actualizacion de clase a IWD: Paladin: Habilidades de IWD~
+
+@11000 = ~Actualizacion de clase a IWD: Explorador: Rastrear~
+
+@12000 = ~Actualizacion de clase a IWD: Ladron: Evasion~
+
+@13000 = ~Usar animaciones al herir de IWD~
+
+@14000 = ~Equipamiento de enemigos aleatorio~
+@14001 = ~Agregar objetos de alta calidad~
+@14002 = ~No agregar objetos de alta calidad~
+
+@15000 = ~Actualizacion de clase a IWD: Bardo: Usar progresion de hechizos de IWD~
+
+@16000 = ~Actualizacion de clase a IWD: Paladin: Usar progresion de hechizos de IWD~
+
+@17000 = ~Actualizacion de clase a IWD: Explorador: Usar progresion de hechizos de IWD~

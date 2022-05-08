@@ -1,0 +1,222 @@
+// strings in this file will be used exclusively for EE games and override similar strings in game_strings
+// this file is UTF-8 and does not get converted.
+  @6002 = ~Esta poderosa arma consiste en un mango de metro veinte a metro y medio de largo, con una hoja pesada en un extremo. El hacha puede ser de doble filo, con hojas a ambos lados del mango, o puede tener un filo único. Es un arma difícil de manejar, pero un guerrero diestro puede dar golpes de tremenda fuerza con ella.
+
+CARACTERÍSTICAS:
+
+Daño: 1D10
+Tipo de daño: Cortante
+Peso: 10 lbs
+Factor de velocidad: 9
+Talento marcial: Hacha
+Tipo de arma: A dos manos
+Requisitos: Fuerza 10~
+  @6004 = ~Esta poderosa arma consiste en un mango de metro veinte a metro y medio de largo, con una hoja pesada en un extremo. El hacha puede ser de doble filo, con hojas a ambos lados del mango, o puede tener un filo único. Sin embargo, esta hacha ha sido dotada de unas pocas propiedades mágicas, lo que la hace más eficaz en el combate. Su afilada hoja, por ejemplo, atravesará la carne del oponente para encontrar el hueso, mientras que su punta con púas buscará huecos en su armadura.
+
+CARACTERÍSTICAS:
+
+Daño: 1D10 +1
+GAC0: bonificación +1
+Tipo de daño: Cortante
+Peso: 9 lbs
+Factor de velocidad: 8
+Talento marcial: Hacha
+Tipo de arma: A dos manos
+Requisitos: Fuerza 10~
+  @6006 = ~Tremain Hachalarga fue un aventurero de las Diez Ciudades aficionado a las hachas. Las hachas de dos manos suelen ser lentas y poco manejables, pero Tremain diseñó esta hacha especialmente para hacer tropezar a los oponentes, lo que le permitía vencer a enemigos con armas más rápidas y ligeras.
+
+CARACTERÍSTICAS:
+
+Daño: 1D10 +2
+GAC0: bonificación +2
+Aptitudes de combate: 10% de derribar al oponente durante un asalto con cada golpe.
+Tipo de daño: Cortante
+Peso: 8 lbs
+Factor de velocidad: 7
+Talento marcial: Hacha
+Tipo de arma: A dos manos
+Requisitos: Fuerza 10~
+  @6008 = ~Esta poderosa arma consiste en un mango de metro veinte a metro y medio de largo, con una hoja pesada en un extremo. El hacha puede ser de doble filo, con hojas a ambos lados del mango, o puede tener un filo único. Sin embargo, esta hacha ha sido imbuida con numerosos encantamientos lo que la hace mucho más efectiva en combate.
+
+CARACTERÍSTICAS:
+
+Daño: 1D10 +3
+GAC0: bonificación +3
+Tipo de daño: Cortante
+Peso: 7 lbs
+Factor de velocidad: 6
+Talento marcial: Hacha
+Tipo de arma: A dos manos
+Requisitos: Fuerza 10~
+  @6010 = ~Murzul Dul fue un jefe de guerra a las ordenes del Rey Greneire que se ganó la reputación de ser un hábil estratega. Esta inmensa hacha le hacía las veces de estandarte en combate, con ella era capaz de abatir enemigos y de reunir a su hordas. Al igual que el propio Rey Greniere y la mayor parte de su horda, Dul murió durante el asedio de la Ciudadela de las Flechas cuando Emerus Coronaguerra arrasó a las hordas combatientes y el hacha fue reclamada como botín de guerra. El hacha conserva su capacidad de convocar aliados y hacer tambalear a los enemigos clavando el mango del arma en el suelo.
+
+CARACTERÍSTICAS:
+
+Daño: 1D10 +4
+GAC0: bonificación +4
+Aptitudes especiales:
+Estandarte de Batalla
+ Repele a los oponentes que se encuentren cerca y otorga a los aliados +1 al GAC0 durante dos asaltos.
+ Uso: 2/día
+Tipo de daño: Cortante
+Peso: 6 lbs
+Factor de velocidad: 5
+Talento marcial: Hacha
+Tipo de arma: A dos manos
+Requisitos: Fuerza 10~
+  @6012 = ~Murzul Dul fue un jefe de guerra a las ordenes del Rey Greneire que se ganó la reputación de ser un hábil estratega. Esta inmensa hacha le hacía las veces de estandarte en combate, con ella era capaz de abatir enemigos y de reunir a su hordas. Al igual que el propio Rey Greniere y la mayor parte de su horda, Dul murió durante el asedio de la Ciudadela de las Flechas cuando Emerus Coronaguerra arrasó a las hordas combatientes y el hacha fue reclamada como botín de guerra. El hacha conserva su capacidad de convocar aliados y hacer tambalear a los enemigos clavando el mango del arma en el suelo. Ha sido mejorada por Cespenar.
+
+CARACTERÍSTICAS:
+
+Daño: 1D10 +5
+GAC0: bonificación +5
+Aptitudes especiales:
+Estandarte de Batalla Superior
+ Repele a los oponentes que se encuentren cerca y otorga a los aliados +2 al GAC0, al daño y a las tiradas de salvación durante dos asaltos.
+ Uso: 2/día
+Tipo de daño: Cortante
+Peso: 5 lbs
+Factor de velocidad: 4
+Talento marcial: Hacha
+Tipo de arma: A dos manos
+Requisitos: Fuerza 10~
+  @7005 = ~Forma de elemental de fuego
+
+Fuerza: 19
+Destreza: 9
+
+Clase de Armadura base: 2
+Cantidad de ataques: 1
+Daño de ataque: 1D8 contundente + 1D4 fuego
+
+Habilidades especiales:
+– Resistencia al frío: -50%
+– Resistencia al fuego: 100%
+– Resistencia al ácido: 15%
+– Resistencia a la electricidad: 15%
+– Resistencia al daño cortante: 15%
+– Resistencia al daño contundente: 15%
+– Resistencia al daño perforante: 15%
+– Resistencia al daño de proyectiles: 15%~
+  @7006 = ~Forma de elemental de tierra
+
+Fuerza: 23
+Destreza: 5
+
+Clase de Armadura base: -2
+Cantidad de ataques: 1
+Daño de ataque: 4D8 contundente
+
+Habilidades especiales:
+– Resistencia al frío: 25%
+– Resistencia al fuego: 25%
+– Resistencia al daño cortante: 50%
+– Resistencia al daño contundente: -50%
+– Resistencia al daño perforante: 50%
+– Resistencia al daño de proyectiles: 75%~
+  @7007 = ~Forma de elemental de agua
+
+Fuerza: 18
+Destreza: 14
+
+Clase de Armadura base: -2
+Cantidad de ataques: 1
+Daño de ataque: 4D8 contundente
+
+Habilidades especiales:
+– Resistencia al frío: -25%
+– Resistencia a la electricidad: -75%
+– Resistencia al ácido: 75%
+– Resistencia al daño cortante: 75%
+– Resistencia al daño contundente: 75%
+– Resistencia al daño perforante: 75%
+– Resistencia al daño de proyectiles: 75%~  
+  @7008 = ~Cambiar forma: Oso negro
+
+Fuerza: 18/00
+Destreza: 12
+
+Clase de Armadura base: 7
+Cantidad de ataques: 3
+Daño de ataque: 1D6 (perforante), golpea como un arma +1
+
+Habilidades especiales:
+ – Tasa de movimiento incrementada~  
+  @7011 = ~DRUIDA: El druida sirve a la naturaleza y la neutralidad, y su comunidad es el mundo salvaje. Es una persona que utiliza sus poderes especiales para defender la naturaleza y proteger el equilibrio en el mundo.
+
+CARACTERÍSTICAS:
+
+­ No pueden usar armadura metálica.
+­ Solo pueden equipar rodelas y escudos que no sean metálicos.
+­ Solo pueden usar las siguientes armas: cimitarras, dagas, clavas, lanzas, bastones, dardos y hondas.
+­ Pueden asignar solo una casilla en talentos de armas.
+­ Pueden asignar solo una casilla en talentos de estilos de lucha.
+­ Pueden lanzar conjuros de druida.
+­ A nivel 5 pueden cambiar de forma a lobo invernal una vez por día.
+­ A nivel 7 pueden cambiar de forma a escarabajo tedioso una vez por día.
+­ A nivel 9 se vuelven inmune al veneno y pueden cambiar de forma a oso polar una vez por día.
+­ A nivel 11 ganan la habilidad de transformarse en un elemental de fuego una vez al día.
+­ A nivel 13 ganan la habilidad de transformarse en un elemental de tierra una vez al día.
+­ A nivel 15 ganan la habilidad Cuerpo intemporal volviéndose inmune a la fatiga y ganan la habilidad de transformarse en un elemental de agua una vez al día.
+­ Alineamiento restringido a neutral absoluto.
+­ Dado de puntos de golpe: D8
+
+Requisitos principales para clase dual: Sabiduría, Carisma~ // iwdee string: 9560
+
+  @9006 = ~Cambiar forma: Escarabajo tedioso
+
+Fuerza: 18/51
+Destreza: 7
+
+Clase de Armadura base: -2
+Cantidad de ataques: 1
+Daño de ataque: 5D4 cortante
+
+Habilidades especiales:
+– Resistencia al daño cortante: 50%
+– Resistencia al daño perforante: 50%
+– Resistencia al daño de proyectiles: 50%~
+  @9008 = ~Cambiar forma: Oso polar
+
+Fuerza: 18/00
+Destreza: 10
+
+Clase de Armadura base: 4
+Cantidad de ataques: 3
+Daño de ataque: 1D12 cortante
+
+Habilidades especiales:
+– Resistencia al frío: 75%
+– Resistencia al fuego: -25%~
+  @9010 = ~Cambiar forma: Lobo invernal
+
+Fuerza: 18
+Destreza: 13
+
+Clase de Armadura base: 2
+Cantidad de ataques: 2
+Daño de ataque: 1D6 cortante
+
+Habilidades especiales:
+– Resistencia al frío: 75%
+– Resistencia al fuego: -25%~  
+@10003 = ~- Pueden utilizar la habilidad Detectar el Mal una vez al día por nivel (empiezan con cuatro usos en nivel 1).~ // match exact from bg2ee strref 9558
+@10004 = ~- Pueden utilizar la habilidad Protección contra el Mal una vez al día por nivel (empiezan con un uso en nivel 1).~ // match exact from bg2ee strref 9558
+@10005 = ~- A partir de nivel 9, pueden lanzar conjuros de clérigo de hasta cuarto nivel.~ // match exact from bg2ee strref 9558
+@10006 = ~- Pueden usar la habilidad Curar enfermedad una vez por día.
+- Pueden usar la habilidad Detectar el Mal a voluntad (una vez por asalto).~ // grab text from iwdee 9558
+@10007 = ~- Pueden lanzar una versión especial de Protección contra el Mal una vez por día. Esta habilidad solo afecta al Paladín y dura 24 turnos.
+- Pueden utilizar la habilidad Castigar el mal una vez por día para hacer 1D6 + 1D6 puntos de daño por cada 3 niveles del Paladín a un único enemigo maligno.~  // grab text from iwdee 9558
+@10008 = ~- Pueden lanzar conjuros de sacerdote a partir del nivel 6.
+- A nivel 3 ganan la habilidad Coraje Divino volviéndose inmunes al pánico.
+- Los Paladines son completamente inmunes a todas las clases de enfermedad, mágica o mundana.~ // grab text from iwdee 9558
+
+@11003 = ~- Pueden usar la habilidad Rastrear a voluntad (una vez por asalto).~ // from iwdee 37106
+@11004 = ~- Alineamiento restringido a bueno.~
+
+@12002 = ~- A nivel 7 ganan la habilidad Evasión.
+
+EVASIÓN: Cuando un Ladrón es golpeado por un conjuro que puede ser esquivado (Bola de fuego, Rayo relampagueante, etc.), el Ladrón puede hacer una tirada de salvación contra alientos para evitar completamente sus efectos. Si se falla la tirada de salvación, el conjuro funciona normalmente, incluyendo las tiradas de salvación para reducir el daño a la mitad si el conjuro lo permite. Un Ladrón indefenso (por ejemplo inmóvil, aturdido o dormido) no puede usar Evasión.
+
+~ // keep these extra linebreaks
+@12004 = ~DESVENTAJAS:~ // match this exactly to main thief description (strref 9561), as this is used as a text-match

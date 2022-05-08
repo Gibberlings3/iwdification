@@ -51,6 +51,11 @@ LANGUAGE ~French~ ~french~ ~iwdification/languages/english/setup.tra~        // 
                            ~iwdification/languages/english/game_strings.tra~ // strings for the tlk
                            ~iwdification/languages/french/game_strings.tra~  // strings for the tlk
 
+LANGUAGE ~Spanish~ ~spanish~ ~iwdification/languages/english/setup.tra~        // installer strings
+                             ~iwdification/languages/spanish/setup.tra~        // installer strings
+                             ~iwdification/languages/english/game_strings.tra~ // strings for the tlk
+                             ~iwdification/languages/spanish/game_strings.tra~ // strings for the tlk
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
