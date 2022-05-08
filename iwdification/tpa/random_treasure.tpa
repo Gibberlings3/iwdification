@@ -116,18 +116,11 @@ BEGIN
     WRITE_LONG   0x34 (THIS * 2) // double the price; iwd quintuples it but that seems extreme  
     READ_LONG    0x64 abil_off
     READ_SHORT   0x68 abil_num
-    FOR (index = 0 ; index < abil_num ; ++index) BEGIN
-      READ_BYTE (abil_off +        (index * 0x38)) type
-      PATCH_IF ((type != 0) AND (type != 3)) BEGIN // not default, magic
-        WRITE_ASCIIE (abil_off + 0x04 + (index * 0x38)) ~%hq_item%~              
-        WRITE_SHORT  (abil_off + 0x14 + (index * 0x38)) (THIS + 1) 
-        READ_SHORT   (abil_off + 0x14 + (index * 0x38)) thac0         
-      END
-    END    
+    READ_LONG    0x6a fx_off
+    READ_SHORT   0x6e fx_idx
+    READ_SHORT   0x70 fx_num
+    SET fx_delta = 0
     PATCH_IF (source_1 OR source_2 OR source_3) BEGIN // recolor paperdoll
-      READ_LONG  0x6a fx_off
-      READ_SHORT 0x6e fx_idx
-      READ_SHORT 0x70 fx_num
       FOR (index = 0 ; index < fx_num ; ++index) BEGIN
         READ_SHORT (fx_off + 0x00 + ((fx_idx + index) * 0x30)) opcode
         PATCH_IF opcode = 7 BEGIN
@@ -144,6 +137,28 @@ BEGIN
         END
       END
     END      
+    FOR (index = 0 ; index < abil_num ; ++index) BEGIN            
+      READ_SHORT  (abil_off + 0x1e + (index * 0x38)) abil_fx_num
+      WRITE_SHORT (abil_off + 0x20 + (index * 0x38)) (THIS + fx_delta)
+      READ_SHORT  (abil_off + 0x20 + (index * 0x38)) abil_fx_idx
+      READ_BYTE   (abil_off +        (index * 0x38)) type
+      PATCH_IF ((type != 0) AND (type != 3)) BEGIN // not default, magic
+        WRITE_ASCIIE (abil_off + 0x04 + (index * 0x38)) ~%hq_item%~              
+        WRITE_SHORT  (abil_off + 0x14 + (index * 0x38)) (THIS + 1) 
+        READ_SHORT   (abil_off + 0x14 + (index * 0x38)) thac0  
+        FOR (index2 = 0 ; index2 < abil_fx_num ; ++index2) BEGIN
+          READ_SHORT (fx_off + 0x00 + ((abil_fx_idx + index2) * 0x30)) opcode
+          READ_ASCII (fx_off + 0x14 + ((abil_fx_idx + index2) * 0x30)) resref
+          PATCH_IF (((opcode = 146) OR (opcode = 309)) AND ("%resref%" STRING_COMPARE_CASE "%base_item%" = 0)) BEGIN // weapon breakage spell (EE) or var (BGT)
+            DELETE_BYTES (fx_off + 0x00 + ((abil_fx_idx + index2) * 0x30)) 0x30 // delete effect
+            SET index2      -= 1
+            SET fx_delta    -= 1
+            SET abil_fx_num -= 1
+          END  
+        END  
+      END
+      WRITE_SHORT  (abil_off + 0x1e + (index * 0x38)) abil_fx_num
+    END    
     PATCH_FOR_EACH offset IN 0x08 0x0c BEGIN
       READ_LONG ~%offset%~ name_strref
       PATCH_IF (name_strref >= 0 && name_strref < 2147483646) BEGIN

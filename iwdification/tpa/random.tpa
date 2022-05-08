@@ -66,8 +66,8 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_make_hq_items BEGIN // ^^ 2h axe added to the
   arow01,   0,  0,   0 => cdhqarow // arrows
   ax1h01,  15,  0,  15 => cdhqaxe  // ax axe
   blun01,   0,  0,   0 => cdhqclub // cl club
-  blun02, 103,  0, 103 => cdhqmace // mc mace
-  blun04,  15,  0,  15 => cdhqflal // fl flail
+  blun02,  15,  0,  15 => cdhqflal // fl flail
+  blun04, 103,  0, 103 => cdhqmace // mc mace
   blun06,   7,  0,  15 => cdhqmstr // ms morning star
   bolt01,   0,  0,   0 => cdhqbolt // bolts
   bow01,    0,  0,   0 => cdhqcbow // cw composite long bow 
