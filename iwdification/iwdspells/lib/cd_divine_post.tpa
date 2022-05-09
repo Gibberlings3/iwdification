@@ -37,6 +37,10 @@ DEFINE_ACTION_FUNCTION cd_divine_post BEGIN
       BUT_ONLY
       
   END 
+  
+  COPY_EXISTING ~bclaw.itm~ ~override~
+    WRITE_ASCII 0x44 ~~ #8 // blank ground icon reference, not that it can be dropped
+    BUT_ONLY IF_EXISTS
 
   /////                                                  \\\\\
   ///// cosmetic suggestions - thanks, Galactygon!       \\\\\
