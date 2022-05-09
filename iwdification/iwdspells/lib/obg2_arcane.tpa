@@ -925,7 +925,7 @@ COPY_EXISTING ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%.spl~ ~override~
     
   COPY_EXISTING ~cdia431x.spl~ ~override~  
     LPF ALTER_SPELL_HEADER INT_VAR projectile = cdi315b END
-    LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 2 parameter2 = 1 STR_VAR resource = cdia431v END
+    //LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 2 parameter2 = 1 STR_VAR resource = cdia431v END
 
 /////                                                  \\\\\
 ///// WIZARD_GREAT_SHOUT                               \\\\\
@@ -992,7 +992,7 @@ COPY_EXISTING ~%WIZARD_MORDENKAINENS_FORCE_MISSILES%.spl~ ~override~
     
   COPY_EXISTING ~cdia806x.spl~ ~override~  
     LPF ALTER_SPELL_HEADER INT_VAR projectile = cdi319b END
-    LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 2 parameter2 = 1 STR_VAR resource = cdia806v END
+    //LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 2 parameter2 = 1 STR_VAR resource = cdia806v END
   
 /////                                                  \\\\\
 ///// obg2 graphical fixes                             \\\\\
