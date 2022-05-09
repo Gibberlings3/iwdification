@@ -683,7 +683,8 @@ COPY_EXISTING ~spcl212.spl~ ~override~
 // change paladin protection from evil to caster only, 24-hr duration
 COPY_EXISTING ~spcl213.spl~ ~override~
   LPF ALTER_EFFECT INT_VAR match_target = 2 target = 1 END
-  LPF ALTER_EFFECT INT_VAR match_duration = 60 duration = 7200 END
+  LPF ALTER_SPELL_EFFECT INT_VAR duration_high = 7200 match_opcode = "-1" END
+//  LPF ALTER_EFFECT INT_VAR match_duration = 60 duration = 7200 END
   LPF ALTER_SPELL_HEADER INT_VAR target = 5 END // caster
   
 COPY ~iwdification/bam/cdiplseb.bam~ ~override~ // smite evil icon
