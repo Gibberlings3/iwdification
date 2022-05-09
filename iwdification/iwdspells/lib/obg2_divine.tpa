@@ -602,6 +602,7 @@ END
     
   COPY_EXISTING ~%CLERIC_SMASHING_WAVE%.spl~ ~override~ // make template for others
     LPF DELETE_EFFECT END // delete all existing effects
+    LPF ALTER_SPELL_HEADER INT_VAR projectile = 1 END
     
   COPY_EXISTING ~%CLERIC_SMASHING_WAVE%.spl~ ~override/cdid426a.spl~ 
                 ~%CLERIC_SMASHING_WAVE%.spl~ ~override/cdid426b.spl~ 
@@ -618,7 +619,6 @@ END
     
   COPY_EXISTING ~cdid426a.spl~ ~override~
                 ~cdid426b.spl~ ~override~  
-    LPF ALTER_SPELL_HEADER INT_VAR projectile = 1 END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 4 power = 4 parameter1 = 60 parameter2 = 4 timing = 1 STR_VAR resource = cdid426c END
     
   COPY_EXISTING ~cdid426a.spl~ ~override~ 
@@ -626,7 +626,6 @@ END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 STR_VAR resource = cdid426b END
     
   COPY_EXISTING ~cdid426c.spl~ ~override~  
-    LPF ALTER_SPELL_HEADER INT_VAR projectile = 1 END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 235 target = 2 power = 9 parameter1 = 25 parameter2 = 2 duration = 1 END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 2 power = 4 parameter2 = 1 timing = 4 STR_VAR resource = cdid426v END
    
