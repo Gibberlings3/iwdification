@@ -139,7 +139,95 @@ Non utilisable par :
   @6015 = ~Ooh, une grosse hache ! T'as du petit bois à couper ? Brillante, brillante !~
   @6016 = ~J'ai une recette qui peut rendre Étendard de bataille encore plus batailleur. 5 000 pièces d'or et il est à toi.~
   @6017 = ~Alors, voyons voir ce que tu as d'autre.~
-  
+
+  @7002 = ~Métamorphose en élémentaire de feu~ // iwdee 25824
+  @7003 = ~Métamorphose en élémentaire de terre~ // iwdee 25823
+  @7004 = ~Métamorphose en élémentaire d'eau~ // iwdee 25822
+  @7005 = ~Métamorphose en élémentaire de feu
+
+Force : 19
+Dextérité : 9
+
+Classe d'Armure de base : 2
+Attaques par round : 1
+Dégâts : 1d8 (contondant) + 1d4 Dégâts de feu
+
+Capacités spéciales :
+- résistance au froid : -50%
+- résistance au feu : 100%
+- résistance à l'acide : 15%
+- résistance à l'électricité : 15%
+- résistance aux Dégâts tranchants : 15%
+- résistance aux Dégâts contondants : 15%
+- résistance aux Dégâts perforants : 15%
+- résistance aux Dégâts projectiles : 15%~
+
+@7006 = ~Métamorphose en élémentaire de terre
+
+Force : 23
+Dextérité : 5
+
+Classe d'Armure de base : -2
+Attaques par round : 1
+Dégâts : 4d8 (contondant)
+
+Capacités spéciales :
+- résistance au froid : 25%
+- résistance au feu : 25%
+- résistance aux Dégâts tranchants : 50%
+- résistance aux Dégâts contondants : -50%
+- résistance aux Dégâts perforants : 50%
+- résistance aux Dégâts projectiles : 75%~
+  @7007 = ~Métamorphose en élémentaire d'eau
+
+Force : 18
+Dextérité : 14
+
+Classe d'Armure de base : -2
+Attaques par round : 1
+Dégâts : 4d8 (contondant)
+
+Capacités spéciales :
+- résistance au froid : -25%
+- résistance à l'électricité : -75%
+- résistance à l'acide : 75%
+- résistance aux Dégâts tranchants : 75%
+- résistance aux Dégâts contondants : 75%
+- résistance aux Dégâts perforants : 75%
+- résistance aux Dégâts projectiles : 75%~
+@7008 = ~Métamorphose en ours brun
+
+Force : 18/00
+Dextérité : 12
+
+Classe d'Armure de base : 7
+Attaques par round : 3
+Dégâts : 1d6 (perforant), touche comme une arme +1
+
+Capacités spéciales :
+- vitesse de déplacement augmentée~
+  @7009 = ~élémentaire d'eau~
+  @7010 = ~Capacité passive obtenue : éternelle jeunesse~ // iwdee string: 40026
+  @7011 = ~DRUIDE : Le druide sert la cause de la nature et de la neutralité; La nature sauvage est sa communauté. Il utilise ses pouvoirs spéciaux pour la protéger et préserver l'équilibre du monde.
+
+CAPACITÉS :
+
+- Ne peut porter d'armure métallique.
+- Ne peut utiliser de bouclier métallique ou plus lourd que la targe.
+- Ne peut utiliser que les armes suivantes : cimeterre, dague, gourdin, lance, bâton, fléchette et fronde.
+- Ne peut �tre que comp�tent (une étoile) dans le maniement des armes.
+- Ne peut �tre que comp�tent (une étoile) dans les styles de combat.
+- Peut lancer des sorts divins.
+- Au niveau 5, il peut changer de forme en loup arctique une fois par jour.
+- Au niveau 7, il peut changer de forme en scarabée scolyte une fois par jour.
+- Au niveau 9, il devient immunisé contre le poison et peut changer de forme en ours polaire une fois par jour.
+- Au niveau 11, il peut changer de forme en élémentaire de feu une fois par jour.
+- Au niveau 13, il peut changer de forme en élémentaire de terre une fois par jour.
+- Au niveau 15, il gagne la capacité d'éternelle jeunesse, ce qui l'immunise à la fatigue, et peut changer de forme en élémentaire d'eau une fois par jour.
+- Doit être d'alignement neutre-strict.
+- Dés de vie : d8.
+
+Caractéristiques requises pour le jumelage : Sagesse, Charisme.~ // iwdee string: 9560
 
   @9001 = ~Scarabée scolyte~
   @9002 = ~Métamorphose
@@ -224,4 +312,87 @@ Capacités spéciales :
 - résistance au froid : 75 %
 - résistance au feu : -25 %
 
-Le druide récupère 12 points de vie après l'utilisation de cette capacité.~  
+Le druide récupère 12 points de vie après l'utilisation de cette capacité.~
+
+@10001 = ~Châtiment du Mal~ // iwdee 26267
+@10002 = ~Châtiment du Mal
+
+Les paladins ont la capacité d'invoquer une colonne de lumière sacrée une fois par jour. Cette capacité inflige 1d6 Dégâts magiques, +1d6 tous les 3 niveaux du paladin, à une unique créature d'alignement mauvais se trouvant dans son champ visuel.~ // iwdee 40020
+
+// LOOKUP - captured as last ($2), but dropped (replaced with @10006)
+@10003 = ~- Peut lancer Détection du mal une fois par jour par niveau\.~ // match exact from bg2ee strref 9558
+// not present in obg1/obg2
+
+// LOOKUP  - captured as last ($2), but dropped (replaced with @10007)
+@10004 = ~ Peut lancer Protection contre le mal une fois par jour par niveau\.~ // match exact from bg2ee strref 9558
+// not present in obg1/obg2
+
+// LOOKUP - captured as last ($2), but dropped (replaced with @10008)
+@10005 = ~- Peut lancer quelques sorts divins à partir du niveau 9\.~ // match exact from bg2ee strref 9558
+// not present in obg1/obg2
+
+// REPLACEMENT
+@10006 = ~- Peut lancer 'Guérison des maladies' une fois par jour.
+- Peut lancer 'Détection du mal' une fois par round.~ // grab text from iwdee 9558
+
+// REPLACEMENT
+@10007 = ~- Peut lancer une version spéciale de 'Protection contre le mal' une fois par jour. Cette capacité n'affecte que le paladin et dure 24 tours.
+- Peut lancer 'Châtiment du mal' une fois par jour, ce qui inflige 1d6 points de Dégâts, +1d6 tous les 3 niveaux à un seul adversaire d'alignement maléfique.~  // grab text from iwdee 9558
+
+// REPLACEMENT
+@10008 = ~- Peut lancer quelques sorts divins à partir du niveau 6.
+- Au niveau 3, reçoit la capacité de Courage Divin, ce qui l'immunise contre la terreur.
+- Immunité complète aux maladies, magiques ou non.~ // grab text from iwdee 9558
+@10009 = ~Capacité passive obtenue : Courage divin~ // iwdee 40025
+@11001 = ~Pistage~ // bg2ee 70494
+@11002 = ~Pistage
+Grâce à son intime connaissance des milieux naturels et des créatures qui y vivent, un rôdeur peut utiliser cette faculté pour avoir une idée générale des créatures présentes dans une zone donnée, ainsi que de la direction dans laquelle ils se trouvent. Des flèches rouges indiquent à l'écran la direction générale des créatures de la zone.~ // bg2ee 71467
+@11003 = ~- Peut avoir recours à la capacité spéciale de Pistage, une fois par round
+
+PISTAGE : Le rôdeur recherche des traces afin de savoir quel type de créatures se trouve dans la zone où il est. En utilisant cette capacité, le personnage peut savoir combien de créatures sont passées, l'endroit vers lequel elles se sont dirigées et depuis combien de temps les traces ont été faites.
+
+~ // from iwdee 37106, keep these extra linebreaks
+@11004 = ~- Doit être d'alignement bon.~
+@12001 = ~capacité passive obtenue : Esquive totale~ // string 40024 in IWDEE
+@12002 = ~- Au niveau 7, il gagne l'esquive totale.
+
+ESQUIVE TOTALE : Chaque fois que le personnage est affecté par un sort auquel il est possible d'échapper partiellement (Boule de feu, éclair, etc.), il esquive la totalité des Dégâts s'il réussit un jet de sauvegarde contre les souffles. Si le jet de sauvegarde est raté, le sort fonctionne normalement (et le personnage a droit à un second jet de sauvegarde pour ne subir que des Dégâts réduits de moitié, le cas échéant). Notez qu'un personnage sans défense (immobilisé, étourdi, etc.) ne peut avoir recours à cette capacité.
+
+~ //keep these extra linebreaks
+
+// __LOOKUP__ captured as last ($2), @12002 inserted between $1(newline) and $2
+@12003 = ~^Désavantages :~ // match this exactly to a kit description, as this is used as a text-match - used bg2ee 25215 for bounty hunter - same as obg2
+
+
+// __LOOKUP__captured as last ($2), @12002 inserted between $1(newline) and $2
+@12004 = ~- Ne peut pas être d'alignement loyal[ -]bon\.~ // match this exactly to main thief description (strref 9561), as this is used as a text-match
+// not present in obg1/obg2
+
+
+// these two strings are used to change "Long Sword" into "High Quality Long Sword"
+// 14003 is used as a prefix, and 14004 as a suffix, to the existing item name; remember spaces
+// __REPLACEMENT__
+@14003 = ~~
+// __REPLACEMENT__
+@14004 = ~ de maître~
+// these two strings are used to change the description for high-quality weapons by adding THAC0: +1 to the descript
+// the mod matches the contents of 14006 and adds 14005 as the line above it
+// __REPLACEMENT__
+@14005 = ~TAC0 : +~
+
+// if the line doesn't have an existing THAC0 line, we match the STATISTICS: line and add it underneath
+// the ? makes the : match optional, e.g. this will match "STATISTICS" or "STATISTICS:"
+// the horrible mess at the end is to capture and preserve the existing whitespace and line breaks
+// __LOOKUP__ wrapped in capture, captured as $1 (only captured), re-injected with text appended
+@14006 = ~^(STATISTIQUES| ?PARAMETRES)[ :]*[%LNL%%MNL%%WNL%]+~
+// oBG2: "STATISTIQUES :" + "PARAMETRES:" + "PARAMETRES :" (start of line) + " PARAMETRES :" (space at start) + "PARAMETRES : " (with space at the end), "PARAMETRES" (not :) and "PARAMETRES " with a spc and no :)
+// oBG1 only uses the PARAMETRES variants (and actually, most of them)
+// There is no PARAMÈTRES variant (with an È) in either
+
+// if the descript has an existing THAC0 bonus line, instead we need to match and replace
+// matches THAC0 or the mistaken THACO; matches an optional +
+// __LOOKUP__ no capture
+@14007 = ~^TH?AC[0O] *:? ?\+ ?[0-9]+|^TAC0  : bonus de +3~
+// oBG1 : "THAC0 :"  + "TACO :" + "TAC0 :" + "TAC0  : bonus de +3"
+// oBG2 : "TAC0 :" + "TACO :" "TAC0 + 1"
+// oIWD1
