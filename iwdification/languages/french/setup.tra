@@ -1,4 +1,5 @@
 // this file contains strings only used by the WeiDU installer and does not get converted to UTF-8 for EE games.
+@991 = ~Ce composant n'est pas disponible pour votre jeu.~
 @992 = ~Ce composant n'est pas disponible dans votre langue.~
 @993 = ~Sorts additionnels~
 @994 = ~Modifications diverses~
@@ -45,6 +46,8 @@
 @16000 = ~Mises a jour de classes IWD : Paladin : Utiliser la progression de sorts d'IWD~
 
 @17000 = ~Mises a jour de classes IWD : Rodeur : Utiliser la progression de sorts d'IWD~
+
+@18000 = ~Mises a jour de classes IWD : Barde : Chansons de barde selectionnables pour les Bouffons et les Scaldes~
 
 // WeiDU prompts
 @-1000= "Le mod %TP2_FILE_NAME% contient"

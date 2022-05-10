@@ -396,3 +396,15 @@ ESQUIVE TOTALE : Chaque fois que le personnage est affecté par un sort auquel i
 // oBG1 : "THAC0 :"  + "TACO :" + "TAC0 :" + "TAC0  : bonus de +3"
 // oBG2 : "TAC0 :" + "TACO :" "TAC0 + 1"
 // oIWD1
+
+// 18002 and 18004 are copied directly from the kit descriptions, strref #25220 and #25219 on bg2ee
+@18001 = ~Chanson du scalde~
+@18002 = ~La chanson du Scalde a des effets différents de celle du barde et varie en fonction de son niveau :
+ Niveau 1-14 : Les alliés gagnent un bonus de +2 aux jets de toucher et de dégâts et +2 à la CA.
+ Niveau 15-19 : Les alliés gagnent un bonus de +4 aux jets de toucher et de dégâts, +4 à la classe d'armure, et une immunité contre la peur.
+ Niveau 20 : Les alliés gagnent un bonus de +4 aux jets de toucher et de dégâts, +4 à la classe d'armure, et une immunité contre la peur, l'étourdissement et la confusion.~
+@18003 = ~Chanson du bouffon~
+@18004 = ~La chanson du bouffon n'aide pas ses alliés. Au contraire, tous les ennemis dans un rayon de 9 mètres doivent réussir un jet de sauvegarde à chaque round sous peine de subir ses effets :
+  Niveau 1 : les ennemis doivent réussir un jet de sauvegarde contre les sorts à +2 sous peine de confusion.
+  Niveau 15 : les ennemis doivent réussir un jet de sauvegarde contre les sorts à +2 sous peine de confusion, et un jet se sauvegarde contre les sorts sous peine d'être ralentis.
+  Niveau 20 : Les ennemis doivent réussir un jet de sauvegarde contre les sorts à +2 sous peine de confusion, un jet se sauvegarde contre les sorts à +2 sous peine de tomber inconscients et un jet se sauvegarde contre les sorts sous peine d'être ralentis.~
