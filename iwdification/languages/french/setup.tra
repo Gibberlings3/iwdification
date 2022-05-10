@@ -1,7 +1,12 @@
 // this file contains strings only used by the WeiDU installer and does not get converted to UTF-8 for EE games.
-
-@998  = ~Les fonctionnalites de ce composant sont deja installees par un autre mod.~
-@999  = ~Il est necessaire d'utiliser Modmerge avant d'installer des mods pour ce jeu. Consultez le readme pour plus d'informations et pour trouver un lien pour telecharger Modmerge.~
+@992 = ~Ce composant n'est pas disponible dans votre langue.~
+@993 = ~Sorts additionnels~
+@994 = ~Modifications diverses~
+@995 = ~Mises a jour de classes~
+@996 = ~Ce composant n'est disponible que pour les jeux non-EE~
+@997 = ~Ce composant n'est disponible que pour les jeux EE~
+@998 = ~Les fonctionnalites de ce composant sont deja installees par un autre mod.~
+@999 = ~Il est necessaire d'utiliser DLC merger avant d'installer des mods pour ce jeu. Consultez le readme pour plus d'informations et pour trouver un lien pour telecharger DLC merger.~
 
 @1000 = ~Incantation des sorts style Icewind Dale (Andyr)~
 
@@ -15,6 +20,31 @@
 
 @6000 = ~Pack de haches a deux mains~
 
+
+ @7000 = ~Mises a jour de classes IWD : Druide : Utiliser la metamorphose et la progression de sorts d'IWD~
+ @7100 = ~Mises a jour de classes IWD : Druide : Permettre aux elfes d'etre druide~
+
+ @8000 = ~Icones de portrait additionnelles~
+
+ @9000 = ~Extension de Metamorphose~
+
+@10000 = ~Mises a jour de classes IWD : Paladin : Capacités et compétences d'IWD~
+
+@11000 = ~Mises a jour de classes IWD : Rodeur: Pistage~
+
+@12000 = ~Mises a jour de classes IWD : Voleur : Esquive totale~
+
+@13000 = ~Utiliser les animations de degats d'IWD~
+
+@14000 = ~Equipement des ennemis aleatoire~
+@14001 = ~Ajouter des objets "de maitre"~
+@14002 = ~Ne pas ajouter d'objets "de maitre"~
+
+@15000 = ~Mises a jour de classes IWD : Barde : Utiliser la progression de sorts d'IWD~
+
+@16000 = ~Mises a jour de classes IWD : Paladin : Utiliser la progression de sorts d'IWD~
+
+@17000 = ~Mises a jour de classes IWD : Rodeur : Utiliser la progression de sorts d'IWD~
 
 // WeiDU prompts
 @-1000= "Le mod %TP2_FILE_NAME% contient"
