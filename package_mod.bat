@@ -23,7 +23,7 @@ set ico_folder=%mod_folder%\style
 set audio_folder=%mod_folder%\wav
 set tispack_folder=%mod_folder%\tiz
 set iconv_folder=%mod_folder%\languages\iconv
-set mod_readme=http://www.gibberlings3.net/readmes/readme-%mod_folder%.html
+set mod_readme=https://gibberlings3.github.io/Documentation/readmes/readme-%mod_folder%.html
 
 REM /* MODIFY: if you don't need to build a specific package, you can disable it by setting the appropriate variable below to 0 */
 set build_windows=1
