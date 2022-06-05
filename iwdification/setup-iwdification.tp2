@@ -690,9 +690,10 @@ COPY_EXISTING ~spcl213.spl~ ~override~
 COPY ~iwdification/bam/cdiplseb.bam~ ~override~ // smite evil icon
      ~iwdification/bam/cdiplsec.bam~ ~override~ // smite evil icon
      ~iwdification/spl/cdiplid.spl~  ~override~ // disease immunity
-  
+
+OUTER_SET passive  = RESOLVE_STR_REF (@10009)  
 COPY ~iwdification/spl/cdiplif.spl~ ~override~ // fear immunity
-  SAY 0x30e @10009
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = passive END
   
 COPY ~iwdification/spl/cdiplse.spl~ ~override~ // smite evil
   SAY 0x08 @10001
