@@ -13,6 +13,9 @@ DEFINE_ACTION_FUNCTION iwdspells_bard STR_VAR version="" BEGIN
 		LAF check_ini INT_VAR silent=1 STR_VAR section=iwdspells ini=no_cap_at_level_20 RET value END
 		OUTER_SET truncate_at_level=value?"-1":20
 
+		LAF check_ini INT_VAR silent=1 STR_VAR section=iwdspells ini=overwrite_old_spells RET overwrite_always=value END
+
+
 		OUTER_SPRINT resource_loc "%MOD_FOLDER%/%component_loc%/copyover"
 
 		OUTER_SPRINT overwrite_these_spells "overwrite.2da"
@@ -23,6 +26,7 @@ DEFINE_ACTION_FUNCTION iwdspells_bard STR_VAR version="" BEGIN
 		
 		LAF install_spell_resources
 			INT_VAR truncate_at_level
+					overwrite_always
 			STR_VAR resource_loc
 					prefix=bard
 					file=iwd_bard.2da
