@@ -112,7 +112,7 @@ DEFINE_ACTION_FUNCTION cd_make_hq_weapon
 BEGIN
 
   COPY_EXISTING ~%base_item%.itm~ ~override/%hq_item%.itm~
-    WRITE_ASCIIE 0x3a ~%hq_item%~   
+    WRITE_ASCIIE 0x3a ~%hq_item%~ #8   
     WRITE_LONG   0x34 (THIS * 2) // double the price; iwd quintuples it but that seems extreme  
     READ_LONG    0x64 abil_off
     READ_SHORT   0x68 abil_num
@@ -143,7 +143,7 @@ BEGIN
       READ_SHORT  (abil_off + 0x20 + (index * 0x38)) abil_fx_idx
       READ_BYTE   (abil_off +        (index * 0x38)) type
       PATCH_IF ((type != 0) AND (type != 3)) BEGIN // not default, magic
-        WRITE_ASCIIE (abil_off + 0x04 + (index * 0x38)) ~%hq_item%~              
+        WRITE_ASCIIE (abil_off + 0x04 + (index * 0x38)) ~%hq_item%~ #8             
         WRITE_SHORT  (abil_off + 0x14 + (index * 0x38)) (THIS + 1) 
         READ_SHORT   (abil_off + 0x14 + (index * 0x38)) thac0  
         FOR (index2 = 0 ; index2 < abil_fx_num ; ++index2) BEGIN
@@ -271,7 +271,7 @@ BEGIN
           READ_ASCII (item_off + 0x00 + (itm_idx * 0x14)) item
           PATCH_IF (("%replacement%" STRING_COMPARE_CASE "%item%" = 0) OR 
                     ("%replacement%" STRING_COMPARE_CASE "" = 0)) BEGIN 
-            WRITE_ASCIIE (item_off + 0x00 + (itm_idx * 0x14)) ~%new_item%~ // actually replace weapon
+            WRITE_ASCIIE (item_off + 0x00 + (itm_idx * 0x14)) ~%new_item%~ #8 // actually replace weapon
             SET match = 1
           END
         END
