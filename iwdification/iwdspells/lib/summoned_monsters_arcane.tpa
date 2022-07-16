@@ -346,13 +346,11 @@ DEFINE_ACTION_FUNCTION summoned_monsters_arcane BEGIN
 			IF {"%SOURCE_RES%" STR_EQ "orc01"}
 			{{
 				m_both_names:=@11
-				m_animation:=ORC_MELEE
 			}}
 			ELSE
 			{{
 				m_both_names:=@12
 				m.cre_swap_items{arow01=>arow02}
-				m_animation:=ORC_RANGE
 			}}
 		]
 
