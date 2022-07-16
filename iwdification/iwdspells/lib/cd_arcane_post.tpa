@@ -123,9 +123,10 @@ DEFINE_ACTION_FUNCTION cd_arcane_post BEGIN
   COPY_EXISTING ~decasta.itm~ ~override~
     LPF ALTER_EFFECT INT_VAR match_opcode = 8 parameter1 = ~0x00006400~ END // from 0/100/0 to 100/0/0
     LPF ALTER_EFFECT INT_VAR match_opcode = 215 opcode = 141 parameter2 = 1 END // from invoch
+    IF_EXISTS // if spell installed from elsewhere (ctb), this isn't here
 
- // Emotion spells: the projectiles should appear more similar to the small area of effect sparkle area gold projectiles (i.e. HOLD.pro).
- COPY_EXISTING ~idpro255.pro~ ~override~
+  // Emotion spells: the projectiles should appear more similar to the small area of effect sparkle area gold projectiles (i.e. HOLD.pro).
+  COPY_EXISTING ~idpro255.pro~ ~override~
                ~idpro407.pro~ ~override~
     WRITE_LONG  0x0c (THIS | BIT0) // add 'show sparks' flag
     WRITE_SHORT 0x28 4 // gold   
@@ -134,9 +135,11 @@ DEFINE_ACTION_FUNCTION cd_arcane_post BEGIN
   COPY_EXISTING ~dobone.itm~ ~override~
     LPF ALTER_EFFECT INT_VAR match_opcode = 215 opcode = 141 parameter2 = 1 END // from necroh
     LPF ALTER_EFFECT INT_VAR match_opcode =  61 parameter1 = ~0x785a3c00~  END // 60/90/120
+    IF_EXISTS // if spell installed from elsewhere (ctb), this isn't here
 
   // Lich Touch: LTOUCH.spl should be using necromancy/aqua SHEARTH plus accompanying glow and sound. Currently using IWD-style visuals. 
   COPY_EXISTING ~ltouch.spl~ ~override~
     LPF ALTER_EFFECT INT_VAR match_opcode = 215 opcode = 141 parameter2 = 1 END // from necroh
+    IF_EXISTS // if spell installed from elsewhere (ctb), this isn't here
 
 END
