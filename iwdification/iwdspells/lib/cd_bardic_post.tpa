@@ -1,11 +1,14 @@
 DEFINE_ACTION_FUNCTION cd_bardic_post BEGIN
 
+  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("BARD_SONG_KAUDIES") BEGIN
 
-  // Kaudies protects from some BG-specific sound effects
-  COPY_EXISTING ~%BARD_SONG_KAUDIES%.spl~  ~override~
-    LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = spwi431 resource = spin789 END // shout > demilich howl
-    LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = spwi431 resource = spin891 END // shout > moon dog howl
-    LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = spwi431 resource = spcl908 END // shout > war cry
+    // Kaudies protects from some BG-specific sound effects
+    COPY_EXISTING ~%BARD_SONG_KAUDIES%.spl~  ~override~
+      LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = spwi431 resource = spin789 END // shout > demilich howl
+      LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = spwi431 resource = spin891 END // shout > moon dog howl
+      LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR match_resource = spwi431 resource = spcl908 END // shout > war cry
+  
+  END
   
   // compatibility with Garrick: Tales of a Troubadour
   ACTION_IF FILE_EXISTS_IN_GAME ~gtt#sno.spl~ BEGIN     //Compatibility with garrick-tt begins here
