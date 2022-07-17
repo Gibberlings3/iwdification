@@ -119,8 +119,7 @@ DEFINE_ACTION_FUNCTION cd_divine_post BEGIN
 
     // Entropy Shield: Visual should be green/abjuration SHWATER and play EFF_P01 when spell is cast. Status icon shows "Flaming Fists" 
     COPY_EXISTING ~%CLERIC_ENTROPY_SHIELD%.spl~ ~override~
-      LPF CLONE_EFFECT INT_VAR match_opcode = 215 opcode = 174 duration = 2 STR_VAR match_resource = abjurh resource = eff_p01 END 
-      LPF DELETE_EFFECT INT_VAR match_opcode = 215 STR_VAR match_resource = abjurh END // looks bad with abjurh or shwater, so just remove
+      LPF ALTER_EFFECT INT_VAR match_opcode = 215 opcode = 174 duration = 2 STR_VAR match_resource = abjurh resource = eff_p01 END // looks bad with abjurh or shwater, so just remove
 
   END      
 
@@ -136,7 +135,7 @@ DEFINE_ACTION_FUNCTION cd_divine_post BEGIN
 
     // Spiritual Wrath: Missing red/invocation SHAIR visual to accompany the glow. Sound not necessary since the damage sound takes over. Also, the child projectile is missing its smoke/trail animation. 
     COPY_EXISTING ~%CLERIC_SPIRITUAL_WRATH%.spl~ ~override~    
-      LPF ADD_SPELL_EFFECT INT_VAR opcode = 215 target = 2 power = 6 timing = 1 resist_dispel = 2 STR_VAR resource = spair END
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 215 target = 2 power = 6 timing = 1 resist_dispel = 2 STR_VAR resource = shair END
 
     COPY_EXISTING ~harm.itm~ ~override~
       LPF ADD_ITEM_EFFECT INT_VAR insert_point = 0 type = 1 opcode = 324 target = 2 parameter2 = 55 resist_dispel = 2 STR_VAR resource = EVAL ~%SOURCE_RES%~ END
