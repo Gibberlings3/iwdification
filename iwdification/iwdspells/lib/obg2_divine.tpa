@@ -166,68 +166,95 @@ opcodes to oBG2 counterparts.
 ///// CLERIC_CAUSE_BAD_THINGS                          \\\\\
 /////                                                  \\\\\ 
   
-  ACTION_CLEAR_ARRAY cd_immunity_cause
-  
-  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_LIGHT_WOUNDS") BEGIN  
-    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_immunity_cause BEGIN
-       ~%CLERIC_CAUSE_LIGHT_WOUNDS%~        => cdixd114
-    END
-  END  
-  
-  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_MODERATE_WOUNDS") BEGIN  
-    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_immunity_cause BEGIN
-       ~%CLERIC_CAUSE_MODERATE_WOUNDS%~     => cdixd220
-    END
-  END  
-  
-  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_DISEASE") BEGIN  
-    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_immunity_cause BEGIN
-       ~%CLERIC_CAUSE_DISEASE%~             => cdixd320
-    END
-  END  
-  
-  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_MEDIUM_WOUNDS") BEGIN  
-    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_immunity_cause BEGIN
-       ~%CLERIC_CAUSE_MEDIUM_WOUNDS%~       => cdixd330  
-    END
-  END  
-  
-  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_SERIOUS_WOUNDS_IWD") BEGIN  
-    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_immunity_cause BEGIN
-       ~%CLERIC_CAUSE_SERIOUS_WOUNDS_IWD%~  => cdixd414   
-    END
-  END  
-  
-  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_CRITICAL_WOUNDS_IWD") BEGIN  
-    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_immunity_cause BEGIN
-       ~%CLERIC_CAUSE_CRITICAL_WOUNDS_IWD%~ => cdixd510   
-    END
-  END  
-  
-  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_MASS_CAUSE_LIGHT_WOUNDS") BEGIN  
-    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_immunity_cause BEGIN
-       ~%CLERIC_MASS_CAUSE_LIGHT_WOUNDS%~   => cdixd523    
-    END
-  END  
-
-  ACTION_PHP_EACH cd_immunity_cause AS spell => eff BEGIN
-    
-    // create the eff 
-    COPY ~%obg2_res_path%/immunity.eff~ ~override/%eff%.eff~
-      WRITE_ASCIIE 0x30 ~%spell%~ #8          
+  ACTION_IF ((VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_LIGHT_WOUNDS")) OR 
+             (VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_MODERATE_WOUNDS")) OR  
+             (VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_DISEASE")) OR  
+             (VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_MEDIUM_WOUNDS")) OR  
+             (VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_SERIOUS_WOUNDS_IWD")) OR  
+             (VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_CRITICAL_WOUNDS_IWD")) OR  
+             (VARIABLE_IS_SET $IWD_spell_installed("CLERIC_MASS_CAUSE_LIGHT_WOUNDS")))   
+  BEGIN  
       
-    COPY_EXISTING ~%spell%.spl~ ~override~
-      READ_LONG 0x34 level
-      LPF DELETE_EFFECT INT_VAR match_opcode = 324 silent = 1 END 
-      LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
-      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 power = level parameter1 = 4 parameter2 = 3 resist_dispel = 2 STR_VAR resource = EVAL ~%eff%~ END // undead immune
-      PATCH_FOR_EACH race IN 121 139 144 145 147 156 157 158 159 169 BEGIN
+    // create the eff 
+    COPY ~%obg2_res_path%/immunity.eff~ ~override/cdixd608.eff~
+      WRITE_ASCIIE 0x30 ~cdiharm~ #8          
+  
+    // change harm to have same restrictions as other stuff
+    COPY ~%obg2_res_path%/cdiharm.spl~ ~override~ // shift harm effects to spell, so we can block it
+    
+    COPY_EXISTING ~harm.itm~ ~override~
+      LPF ITEM_EFFECT_TO_SPELL INT_VAR type = 1 header = 0 STR_VAR new_itm_spl = ~cdiharm.spl~ END // move existing on-hit effects to cdiharm spell
+      LPF DELETE_EFFECT INT_VAR check_globals = 0 END // then delete existing
+      LPF ADD_ITEM_EFFECT INT_VAR insert_point = 0 type = 1 opcode = 146 target = 2 parameter2 = 1 timing = 1 STR_VAR resource = cdiharm END // cast new spell
+      LPF ADD_ITEM_EFFECT INT_VAR insert_point = 0 type = 1 opcode = 177 power = 6 parameter1 = 4 parameter2 = 3 resist_dispel = 2 STR_VAR resource = cdixd608 END // undead immune
+      PATCH_FOR_EACH race IN 121 139 144 145 147 156 157 158 159 169 BEGIN // add racial immunities
         LPF CLONE_EFFECT INT_VAR match_opcode = 177 match_parameter2 = 3 parameter1 = race parameter2 = 4 END
       END  
-      LPF CD_SPLIT_SAVE_DAMAGE END
       
-  END   
+    ACTION_CLEAR_ARRAY cd_immunity_cause
+  
+    ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_LIGHT_WOUNDS") BEGIN  
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_immunity_cause BEGIN
+         ~%CLERIC_CAUSE_LIGHT_WOUNDS%~        => cdixd114
+      END
+    END  
+    
+    ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_MODERATE_WOUNDS") BEGIN  
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_immunity_cause BEGIN
+         ~%CLERIC_CAUSE_MODERATE_WOUNDS%~     => cdixd220
+      END
+    END  
+    
+    ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_DISEASE") BEGIN  
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_immunity_cause BEGIN
+         ~%CLERIC_CAUSE_DISEASE%~             => cdixd320
+      END
+    END  
+    
+    ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_MEDIUM_WOUNDS") BEGIN  
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_immunity_cause BEGIN
+         ~%CLERIC_CAUSE_MEDIUM_WOUNDS%~       => cdixd330  
+      END
+    END  
+    
+    ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_SERIOUS_WOUNDS_IWD") BEGIN  
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_immunity_cause BEGIN
+         ~%CLERIC_CAUSE_SERIOUS_WOUNDS_IWD%~  => cdixd414   
+      END
+    END  
+    
+    ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CAUSE_CRITICAL_WOUNDS_IWD") BEGIN  
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_immunity_cause BEGIN
+         ~%CLERIC_CAUSE_CRITICAL_WOUNDS_IWD%~ => cdixd510   
+      END
+    END  
+    
+    ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_MASS_CAUSE_LIGHT_WOUNDS") BEGIN  
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_immunity_cause BEGIN
+         ~%CLERIC_MASS_CAUSE_LIGHT_WOUNDS%~   => cdixd523    
+      END
+    END  
 
+    ACTION_PHP_EACH cd_immunity_cause AS spell => eff BEGIN
+      
+      // create the eff 
+      COPY ~%obg2_res_path%/immunity.eff~ ~override/%eff%.eff~
+        WRITE_ASCIIE 0x30 ~%spell%~ #8          
+        
+      COPY_EXISTING ~%spell%.spl~ ~override~
+        READ_LONG 0x34 level
+        LPF DELETE_EFFECT INT_VAR match_opcode = 324 silent = 1 END 
+        LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
+        LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 power = level parameter1 = 4 parameter2 = 3 resist_dispel = 2 STR_VAR resource = EVAL ~%eff%~ END // undead immune
+        PATCH_FOR_EACH race IN 121 139 144 145 147 156 157 158 159 169 BEGIN
+          LPF CLONE_EFFECT INT_VAR match_opcode = 177 match_parameter2 = 3 parameter1 = race parameter2 = 4 END
+        END  
+        LPF CD_SPLIT_SAVE_DAMAGE END
+        
+    END   
+
+  END
+  
 /////                                                  \\\\\
 ///// CLERIC_CHANT                                     \\\\\
 /////                                                  \\\\\
@@ -391,9 +418,9 @@ opcodes to oBG2 counterparts.
 
     COPY_EXISTING ~%CLERIC_ENERGY_DRAIN%.spl~ ~override~ 
       LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
-      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter1 = 153 match_parameter2 = 104 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdixd739 END // race tiefling > golem
-      LPF ALTER_EFFECT INT_VAR match_opcode = 324                        match_parameter2 =  55 opcode = 177 parameter1 =   4 parameter2 = 3 STR_VAR resource = cdixd739 END // general = undead
-      LPF ALTER_EFFECT INT_VAR match_opcode = 324                        match_parameter2 = 104 opcode = 177                  parameter2 = 4 STR_VAR resource = cdixd739 END // race = parameter1
+      LPF CLONE_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdixd739 END // race = golem
+      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 =   4 parameter2 = 3 STR_VAR resource = cdixd739 END // general = undead
+      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 104 opcode = 177                  parameter2 = 4 STR_VAR resource = cdixd739 END // race = parameter1
 
   END
 
@@ -884,9 +911,6 @@ opcodes to oBG2 counterparts.
     COPY_EXISTING ~%CLERIC_STAR_METAL_CUDGEL%.spl~ ~override~
                   ~smcudge.itm~                    ~override~
       LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow  
-    
-    COPY_EXISTING ~smcudge.itm~ ~override~
-      LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 153 match_parameter2 = 4 END // delete tiefling exception
 
   END
 
@@ -1173,9 +1197,9 @@ opcodes to oBG2 counterparts.
     COPY_EXISTING ~%CLERIC_WITHER%.spl~ ~override~
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
       LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
-      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter1 = 153 match_parameter2 = 104 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdixd740 END // race tiefling > golem
-      LPF ALTER_EFFECT INT_VAR match_opcode = 324                        match_parameter2 =  55 opcode = 177 parameter1 =   4 parameter2 = 3 STR_VAR resource = cdixd740 END // general = undead
-      LPF ALTER_EFFECT INT_VAR match_opcode = 324                        match_parameter2 = 104 opcode = 177                  parameter2 = 4 STR_VAR resource = cdixd740 END // race = parameter1
+      LPF CLONE_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdixd740 END // race = golem
+      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 =   4 parameter2 = 3 STR_VAR resource = cdixd740 END // general = undead
+      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 104 opcode = 177                  parameter2 = 4 STR_VAR resource = cdixd740 END // race = parameter1
   
   END 
   

@@ -139,7 +139,7 @@ DEFINE_ACTION_FUNCTION cd_divine_post BEGIN
 
     COPY_EXISTING ~harm.itm~ ~override~
       LPF ADD_ITEM_EFFECT INT_VAR insert_point = 0 type = 1 opcode = 324 target = 2 parameter2 = 55 resist_dispel = 2 STR_VAR resource = EVAL ~%SOURCE_RES%~ END
-      PATCH_FOR_EACH race IN 121 139 145 147 153 156 157 158 159 169 BEGIN
+      PATCH_FOR_EACH race IN 121 139 145 147 156 157 158 159 169 BEGIN
         LPF CLONE_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 55 parameter1 = race parameter2 = 104 END
       END    
 

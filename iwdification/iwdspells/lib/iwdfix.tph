@@ -205,7 +205,61 @@ DEFINE_ACTION_FUNCTION iwd_spell_fixes BEGIN
 	COPY_EXISTING ~%BARD_SONG_KAUDIES%.spl~  ~override~
 	  LPF ALTER_EFFECT INT_VAR match_probability1 = 50 probability1 = 49 END // correcting
 
-
+  // exclude tieflings from extraplanar definition
+  COPY_EXISTING ~%CLERIC_CAUSE_CRITICAL_WOUNDS%.spl~   ~override~
+                ~%CLERIC_CAUSE_DISEASE%.spl~           ~override~
+                ~%CLERIC_CAUSE_LIGHT_WOUNDS%.spl~      ~override~
+                ~%CLERIC_CAUSE_MEDIUM_WOUNDS%.spl~     ~override~
+                ~%CLERIC_CAUSE_MODERATE_WOUNDS%.spl~   ~override~
+                ~%CLERIC_CAUSE_SERIOUS_WOUNDS%.spl~    ~override~
+                ~%CLERIC_ENERGY_DRAIN%.spl~            ~override~
+                ~%CLERIC_FAVOR_OF_ILMATER%.spl~        ~override~
+                ~%CLERIC_MASS_CAUSE_LIGHT_WOUNDS%.spl~ ~override~
+                ~%CLERIC_WITHER%.spl~                  ~override~
+    LPF DELETE_EFFECT INT_VAR match_opcode = 324 match_parameter1 = 153 match_parameter2 = 104 END 
+    
+  COPY_EXISTING ~smcudge.itm~ ~override~ // star metal cudgel - bonus damage vs. "outer planar"
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 153 match_parameter2 = 4 END // bonus tiefling damage
+    
+ /* for EEFP   
+  // exclude tieflings from extraplanar definition
+  COPY_EXISTING ~devaheal.spl~ ~override~ // deva heal
+                ~spcl102.spl~  ~override~ // absorb health
+                ~spcl111.spl~  ~override~ // cure disease (paladin)
+                ~spcl211.spl~  ~override~ // lay on hands
+                ~spin200.spl~  ~override~ // cure serious wounds
+                ~spin923.spl~  ~override~ // Named "limited wish", but appears to be a heal
+                ~sppr103.spl~  ~override~ // cure light wounds
+                ~sppr207.spl~  ~override~ // cure moderate wounds
+                ~sppr315.spl~  ~override~ // cure medium wounds
+                ~sppr317.spl~  ~override~ // cure disease
+                ~sppr401.spl~  ~override~ // cure serious wounds
+                ~sppr417.spl~  ~override~ // lesser restoration
+                ~sppr502.spl~  ~override~ // cure critical wounds
+                ~sppr514.spl~  ~override~ // mass cure light wounds
+                ~sppr607.spl~  ~override~ // heal
+                ~sppr608.spl~  ~override~ // harm
+                ~sppr699.spl~  ~override~ // harm (enemy)
+                ~sppr711.spl~  ~override~ // regeneration
+                ~sppr713.spl~  ~override~ // greater restoration
+                ~spwi914.spl~  ~override~ // energy drain (arcane)
+                ~spwish06.spl~ ~override~ // greater restoration (wish)
+                ~spwish19.spl~ ~override~ // energy drain (wish)
+                ~spwish28.spl~ ~override~ // heal (wish)
+                ~spwish39.spl~ ~override~ // heal (wish)
+                ~spwish46.spl~ ~override~ // greater restoration (wish)
+                ~spwm168.spl~  ~override~ // heal (wild surge)               
+    LPF DELETE_EFFECT INT_VAR match_opcode = 324 match_parameter1 = 153 match_parameter2 = 104 END 
+    
+  COPY_EXISTING ~doves.itm~   ~override~ // debian rod of smiting -  bonus damage vs. "outer planar"
+                ~debian.itm~  ~override~ // three white doves - bonus damage & destruction vs. "outer planar"
+                ~sw1h51.itm~  ~override~ // solemn duty  - damage bonus vs. "outer planars"
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 153 match_parameter2 = 4 END // bonus tiefling damage
+  
+  COPY_EXISTING ~sw1h51.itm~ ~override~ // solemn duty - also has thac0, enchantment bonuses vs. "outer planars"
+    LPF DELETE_EFFECT INT_VAR match_opcode = 344 match_parameter1 = 153 match_parameter2 = 4 END // bonus tiefling enchantment
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = sw1h51k END            // bonus tiefling to-hit
+*/
 	END
 
 END
