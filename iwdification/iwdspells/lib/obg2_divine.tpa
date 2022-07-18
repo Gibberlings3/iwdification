@@ -74,21 +74,7 @@ opcodes to oBG2 counterparts.
                 ~sppr510.spl~ ~override~ // cause critical wounds (using IWD alt)
                 ~sppr613.spl~ ~override~ // physical mirror (now at level 5)
     WRITE_LONG 0x1e (THIS BOR (BIT30 + BIT31)) // adds cleric/pal and druid/ran flags, effectively excluding it from all divine casters
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 /////                                                  \\\\\
 ///// CLERIC_ALICORN_LANCE                             \\\\\
 /////                                                  \\\\\
@@ -132,7 +118,7 @@ opcodes to oBG2 counterparts.
       LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
       LPF CD_CONVERT_325 END // convert 325 to individual save opcodes
       LPF CD_CONVERT_333 END    
-      PATCH_FOR_EACH ea IN 0 1 28 29 30 31 126 128 199 200 201 202 254 255 BEGIN // all ea values except charmed, controlled, ally, familiar, pc
+      PATCH_FOR_EACH ea IN 1 28 29 30 31 126 128 199 200 201 202 254 255 BEGIN // all ea values except charmed, controlled, ally, familiar, pc
         LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 2 power = 4 parameter1 = ea parameter2 = 2 resist_dispel = 3 duration = 120 insert_point = 0 STR_VAR resource = cdixd522 END
       END  
    
@@ -170,7 +156,7 @@ opcodes to oBG2 counterparts.
       LPF CD_CONVERT_9_255 END // EEs allow these ops to target 255 'full body'; need to convert to series of smaller targets
       LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
       LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 2 power = 4 parameter1 = 16 parameter2 = 8 resist_dispel = 3 duration = 120 insert_point = 0 STR_VAR resource = cdixd422 END // lawful
-      PATCH_FOR_EACH ea IN 1 28 29 30 31 126 128 BEGIN // all ea values except charmed, controlled, ally, familiar, pc
+      PATCH_FOR_EACH ea IN 1 28 29 30 31 126 128 199 200 201 202 254 255 BEGIN // all ea values except charmed, controlled, ally, familiar, pc
         LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 2 power = 4 parameter1 = ea parameter2 = 2 resist_dispel = 3 duration = 120 insert_point = 0 STR_VAR resource = cdixd422 END
       END  
   
@@ -179,12 +165,6 @@ opcodes to oBG2 counterparts.
 /////                                                  \\\\\
 ///// CLERIC_CAUSE_BAD_THINGS                          \\\\\
 /////                                                  \\\\\ 
-  
-  COPY_EXISTING ~%CLERIC_CAUSE_CRITICAL_WOUNDS%.spl~ ~override~
-    LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
-    
-  COPY_EXISTING ~%CLERIC_CAUSE_SERIOUS_WOUNDS%.spl~ ~override~
-    LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
   
   ACTION_CLEAR_ARRAY cd_immunity_cause
   
@@ -241,7 +221,7 @@ opcodes to oBG2 counterparts.
       LPF DELETE_EFFECT INT_VAR match_opcode = 324 silent = 1 END 
       LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
       LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 power = level parameter1 = 4 parameter2 = 3 resist_dispel = 2 STR_VAR resource = EVAL ~%eff%~ END // undead immune
-      PATCH_FOR_EACH race IN 121 139 144 145 147 153 156 157 158 159 169 BEGIN
+      PATCH_FOR_EACH race IN 121 139 144 145 147 156 157 158 159 169 BEGIN
         LPF CLONE_EFFECT INT_VAR match_opcode = 177 match_parameter2 = 3 parameter1 = race parameter2 = 4 END
       END  
       LPF CD_SPLIT_SAVE_DAMAGE END
@@ -292,7 +272,7 @@ opcodes to oBG2 counterparts.
   ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CLOUD_OF_PESTILENCE") BEGIN  
   
     COPY ~%obg2_res_path%/immunity.eff~ ~override/cdixd423.eff~ // generating immunity EFFs for various 324 replacements
-      WRITE_ASCIIE 0x30 ~%CLERIC_CLOUD_OF_PESTILENCE%b~ #8  
+      WRITE_ASCIIE 0x30 ~cdid423~ #8  
 
     // copy meat to subspell that does the work
     COPY_EXISTING ~%CLERIC_CLOUD_OF_PESTILENCE%.spl~ ~override/cdid423.spl~
@@ -411,9 +391,9 @@ opcodes to oBG2 counterparts.
 
     COPY_EXISTING ~%CLERIC_ENERGY_DRAIN%.spl~ ~override~ 
       LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
-      LPF CLONE_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdixd739 END // race = golem
-      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 =   4 parameter2 = 3 STR_VAR resource = cdixd739 END // general = undead
-      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 104 opcode = 177                  parameter2 = 4 STR_VAR resource = cdixd739 END // race = parameter1
+      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter1 = 153 match_parameter2 = 104 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdixd739 END // race tiefling > golem
+      LPF ALTER_EFFECT INT_VAR match_opcode = 324                        match_parameter2 =  55 opcode = 177 parameter1 =   4 parameter2 = 3 STR_VAR resource = cdixd739 END // general = undead
+      LPF ALTER_EFFECT INT_VAR match_opcode = 324                        match_parameter2 = 104 opcode = 177                  parameter2 = 4 STR_VAR resource = cdixd739 END // race = parameter1
 
   END
 
@@ -659,7 +639,7 @@ opcodes to oBG2 counterparts.
     COPY_EXISTING ~#reciteb.spl~ ~override~
                   ~#reciteg.spl~ ~override~
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
-      LPF CLONE_EFFECT INT_VAR silent=1 match_opcode = 54 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%SOURCE-RES%~ END // can't use 321 for self-stack, insert 206
+      LPF CLONE_EFFECT INT_VAR silent=1 match_opcode = 54 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%SOURCE_RES%~ END // can't use 321 for self-stack, insert 206
       LPF CD_CONVERT_9_255 END // EEs allow these ops to target 255 'full body'; need to convert to series of smaller targets
       LPF CD_CONVERT_325 END // convert 325 to individual save opcodes
     
@@ -903,7 +883,10 @@ opcodes to oBG2 counterparts.
     
     COPY_EXISTING ~%CLERIC_STAR_METAL_CUDGEL%.spl~ ~override~
                   ~smcudge.itm~                    ~override~
-      LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
+      LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow  
+    
+    COPY_EXISTING ~smcudge.itm~ ~override~
+      LPF DELETE_EFFECT INT_VAR match_opcode = 177 match_parameter1 = 153 match_parameter2 = 4 END // delete tiefling exception
 
   END
 
@@ -1156,9 +1139,10 @@ opcodes to oBG2 counterparts.
       LPF ALTER_SPELL_HEADER INT_VAR projectile = cdwhirl END // use smallarc from circle of bones
       LPF DELETE_EFFECT INT_VAR match_opcode = 318 END
       LPF DELETE_EFFECT INT_VAR match_opcode = 324 END
-      LPF CLONE_EFFECT INT_VAR match_opcode = 45 opcode = 142 parameter2 = 55 END // DW- stun icons provided by stun effect in EE, need to be done explicitly in oBG2  
+      LPF ALTER_EFFECT STR_VAR match_resource = EVAL ~%CLERIC_WHIRLWIND%~ resource = cdid617b END // only hit once/round
+      LPF CLONE_EFFECT INT_VAR match_opcode = 45 opcode = 142 parameter2 = 55 STR_VAR insert = below END // DW- stun icons provided by stun effect in EE, need to be done explicitly in oBG2  
       LPF ADD_SPELL_EFFECT INT_VAR opcode = 265 target = 1 parameter1 = 1 timing = 1 insert_point = 0 STR_VAR resource = cdizosa END
-      LPF ADD_SPELL_EFFECT INT_VAR opcode = 273 target = 1 timing = 1 resist_dispel = 3 insert_point = 0 STR_VAR resource = cdizosa END
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 273 target = 1 timing = 1 resist_dispel = 3 insert_point = 0 END
       PATCH_FOR_EACH race IN 146 118 119 142 101 102 145 144 127 199 BEGIN // dragon, syverns, slimes, giants, ankheg, basilisk, elemental, golem, otyugh, ettin
         LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 2 parameter1 = race parameter2 = 4 duration = 1 insert_point = 0 STR_VAR resource = cdixd617 END
       END
@@ -1182,13 +1166,16 @@ opcodes to oBG2 counterparts.
 /////                                                  \\\\\
 
   ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_WITHER") BEGIN  
+    
+    COPY ~%obg2_res_path%/immunity.eff~ ~override/cdixd740.eff~ // generating immunity EFFs for various 324 replacements
+      WRITE_ASCIIE 0x30 ~%CLERIC_WITHER%~ #8  
   
     COPY_EXISTING ~%CLERIC_WITHER%.spl~ ~override~
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
       LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
-      LPF CLONE_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = EVAL ~%eff%~ END // race = golem
-      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 =   4 parameter2 = 3 STR_VAR resource = EVAL ~%eff%~ END // general = undead
-      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 104 opcode = 177                  parameter2 = 4 STR_VAR resource = EVAL ~%eff%~ END // race = parameter1
+      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter1 = 153 match_parameter2 = 104 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdixd740 END // race tiefling > golem
+      LPF ALTER_EFFECT INT_VAR match_opcode = 324                        match_parameter2 =  55 opcode = 177 parameter1 =   4 parameter2 = 3 STR_VAR resource = cdixd740 END // general = undead
+      LPF ALTER_EFFECT INT_VAR match_opcode = 324                        match_parameter2 = 104 opcode = 177                  parameter2 = 4 STR_VAR resource = cdixd740 END // race = parameter1
   
   END 
   

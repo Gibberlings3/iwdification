@@ -43,6 +43,8 @@ variable gets set, and then the main baldur game script resets the variable afte
 EEs are so, so, SO much easier here. Thanks Laszlo!
 */
 
+APPEND ~action.ids~ ~181 ReallyForceSpellRES(S:RES*,O:Target)~ UNLESS ~181 ReallyForceSpellRES(S:RES\*,O:Target)~ 
+
 DEFINE_ACTION_FUNCTION cd_create_cloud 
   INT_VAR cloud_dur = 6 
           visloop = 5 
