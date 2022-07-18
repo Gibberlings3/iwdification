@@ -131,7 +131,7 @@ opcodes to oBG2 counterparts.
     END    
   END  
 
-  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_CONJURE_WATER_ELEMENTAL") BEGIN  
+  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_CONJURE_LESSER_WATER_ELEMENTAL") BEGIN  
     ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_cre_anim BEGIN
        es8watr    => ~%anim_welem%~
        ~dw#wate2~ => ~%anim_welem%~
@@ -223,7 +223,7 @@ opcodes to oBG2 counterparts.
   
   ACTION_CLEAR_ARRAY cd_cre_class
   
-  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_CONJURE_WATER_ELEMENTAL") BEGIN  
+  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_CONJURE_LESSER_WATER_ELEMENTAL") BEGIN  
     ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_cre_class BEGIN
        es8watr    => 255 // water elemental, no_class
        ~dw#wate2~ => 255
@@ -328,7 +328,7 @@ opcodes to oBG2 counterparts.
   ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_ANTIMAGIC_SHELL") BEGIN
 
     // portrait icons that use IWD-exclusive icons get remapped if an existing icon works, otherwise get deleted
-    COPY_EXISTING ~%WIZARD_ANTIMAGIC_SHELL%~ ~override~
+    COPY_EXISTING ~%WIZARD_ANTIMAGIC_SHELL%.spl~ ~override~
       LPF ALTER_EFFECT INT_VAR silent=1 match_opcode = 142 match_parameter2 = 209 parameter2 = 83 END // antimagic shell > spell failure
       
   END     
@@ -367,7 +367,7 @@ opcodes to oBG2 counterparts.
       LPF DELETE_EFFECT INT_VAR match_opcode = 328 END // no op 328 in oBG2
       LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 185 END // no cat's grace icon in obg2
       LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
-      LPF CLONE_EFFECT INT_VAR match_opcode = 15 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%file%~ END // self stack 
+      LPF CLONE_EFFECT INT_VAR match_opcode = 15 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%WIZARD_CATS_GRACE%~ END // self stack 
     
   END  
 
@@ -414,7 +414,7 @@ opcodes to oBG2 counterparts.
   ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_DARTS_OF_BONE") BEGIN
 
     COPY ~%obg2_res_path%/cdidob2.spl~ ~override~ // farm str drain to second spell to prevent stacking
-        ~%obg2_res_path%/idobone.bam~  ~override~ // use two-cycle item icons direct from oIWD (keeps icons centered, among other issues)  
+         ~%obg2_res_path%/idobone.bam~  ~override~ // use two-cycle item icons direct from oIWD (keeps icons centered, among other issues)  
     
     COPY ~%obg2_res_path%/immunity.eff~ ~override/cdixa630.eff~ // generating immunity EFFs for various 324 replacements
       WRITE_ASCIIE 0x30 ~cdidob1~ #8 
@@ -474,7 +474,7 @@ opcodes to oBG2 counterparts.
     COPY_EXISTING ~%WIZARD_DEMI_SHADOW_MONSTERS%.spl~ ~override~
       LPF CLONE_EFFECT INT_VAR match_opcode = 331 opcode = 215 parameter2 = 2 timing = 0 duration = 1 STR_VAR resource = msumm1h END // add animation
       READ_SHORT 0x68 abil_num
-      LPF ALTER_EFFECT INT_VAR header = 0 match_opcode = 331 opcode = 127 parameter1 = 1 parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = dsmonst END
+      LPF ALTER_EFFECT INT_VAR header = 0 match_opcode = 331 opcode = 127 parameter1 = 9 parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = dsmonst END
       FOR (index = 1 ; index < abil_num ; ++index) BEGIN
         LPF ALTER_EFFECT INT_VAR header = index match_opcode = 331 opcode = 127 parameter1 = (index + 9) parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = dsmonst END
       END
@@ -491,7 +491,7 @@ opcodes to oBG2 counterparts.
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END // self-stack handled by new 206
       LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 187 END // delete courage portrait icon 
       LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
-      LPF CLONE_EFFECT INT_VAR match_opcode = 54 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%file%~ END // prevent self-stack
+      LPF CLONE_EFFECT INT_VAR match_opcode = 54 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%WIZARD_EMOTION_COURAGE%~ END // prevent self-stack
       PATCH_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_EMOTION_FEAR") BEGIN
         LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR resource = EVAL ~%WIZARD_EMOTION_FEAR%~ END // emotion courage also protects from emotion fear  
       END  
@@ -509,7 +509,7 @@ opcodes to oBG2 counterparts.
       LPF ALTER_EFFECT INT_VAR silent=1 match_opcode = 142 match_parameter2 = 186 parameter2 = 22 END // portrait icon hope > heroism  
       LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
       LPF CD_CONVERT_325 END // convert 325 to individual save opcodes
-      LPF CLONE_EFFECT INT_VAR match_opcode = 54 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%file%~ END  
+      LPF CLONE_EFFECT INT_VAR match_opcode = 54 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%WIZARD_EMOTION_HOPE%~ END  
       PATCH_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_EMOTION_HOPELESSNESS") BEGIN
         LPF CLONE_EFFECT INT_VAR match_opcode = 206 STR_VAR resource = EVAL ~%WIZARD_EMOTION_HOPELESSNESS%~ END // hope also protects against hoplessness 
       END  
@@ -539,14 +539,18 @@ opcodes to oBG2 counterparts.
   
 /////                                                  \\\\\
 ///// WIZARD_EMOTION_HOPELESSNESS                      \\\\\
-/////                                                  \\\\\ 
+/////                                                  \\\\\  
+  
+  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_EMOTION_HOPELESSNESS") BEGIN
 
-  COPY_EXISTING ~spwi411.spl~ ~override~ // emotion: hopelessness
-    LPF DELETE_EFFECT INT_VAR silent = 1 match_opcode = 321 END // use silent in case we're not using IWDspell version
-    PATCH_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_EMOTION_HOPE") BEGIN
-      LPF CLONE_EFFECT INT_VAR match_opcode = 45 opcode = 206 STR_VAR resource = EVAL ~%WIZARD_EMOTION_HOPE%~ END  
-    END  
+    COPY_EXISTING ~spwi411.spl~ ~override~ // emotion: hopelessness
+      LPF DELETE_EFFECT INT_VAR silent = 1 match_opcode = 321 END // use silent in case we're not using IWDspell version
+      PATCH_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_EMOTION_HOPE") BEGIN
+        LPF CLONE_EFFECT INT_VAR match_opcode = 45 opcode = 206 STR_VAR resource = EVAL ~%WIZARD_EMOTION_HOPE%~ END  
+      END  
 
+  END
+  
 /////                                                  \\\\\
 ///// WIZARD_EXPEDITIOUS_RETREAT                       \\\\\
 /////                                                  \\\\\ 
@@ -576,8 +580,8 @@ opcodes to oBG2 counterparts.
       WRITE_BYTE 0x217 255 // removing explosion effect
       WRITE_SHORT 0x224 30 // increase the size of the cone
 
-    COPY_EXISTING ~cdi315a.pro~ ~override/cdi319a.pro~ // Animation at speed = 20
-                  ~cdi315b.pro~ ~override/cdi319b.pro~ // invisible Animation at speed = 100
+    COPY ~%obg2_res_path%/cdi315a.pro~ ~override/cdi319a.pro~ // Animation at speed = 20
+         ~%obg2_res_path%/cdi315b.pro~ ~override/cdi319b.pro~ // invisible Animation at speed = 100
       WRITE_ASCII 0x10 ~#ff_m101~ #8
 
     ADD_PROJECTILE ~override/cdi319a.pro~
@@ -646,7 +650,7 @@ opcodes to oBG2 counterparts.
 
     // stun icons provided by stun effect in EE, need to be done explicitly in oBG2  
     COPY_EXISTING ~%WIZARD_ICELANCE%.spl~    ~override~
-      LPF CLONE_EFFECT INT_VAR silent=1 match_opcode = 45 opcode=142 parameter2 = 55 END 
+      LPF CLONE_EFFECT INT_VAR silent=1 match_opcode = 45 opcode = 142 parameter2 = 55 STR_VAR insert = below END 
       
   END    
 
@@ -811,6 +815,7 @@ opcodes to oBG2 counterparts.
     ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_monster_summoning BEGIN
       ~%WIZARD_MONSTER_SUMMONING_5%~,3      => 5
     END  
+  END  
 
   ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_MONSTER_SUMMONING_6") BEGIN
     ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_monster_summoning BEGIN
@@ -881,7 +886,7 @@ opcodes to oBG2 counterparts.
         LPF ALTER_SPELL_HEADER INT_VAR header = (index +1) projectile = proj END
       END  
       
- END
+  END
  
 /////                                                  \\\\\
 ///// WIZARD_MORDENKAINENS_SWORD_IWD                   \\\\\
@@ -896,7 +901,7 @@ opcodes to oBG2 counterparts.
     // because the thac0 is level-dependent, it means we need multiple summoned swords
     COPY_EXISTING ~%WIZARD_MORDENKAINENS_SWORD_IWD%.spl~ ~override~ 
       LPF DELETE_EFFECT INT_VAR match_opcode = 54 END // moving this to the summoned weapon
-      LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
+//      LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
       READ_SHORT 0x68 abil_num
       FOR (index = 2 ; index < abil_num ; ++index) BEGIN // skip first two, as msword becomes msword14
         PATCH_IF index > 27 BEGIN SET sword = 0 END ELSE BEGIN SET sword = ((28 - index) / 2) END
@@ -938,7 +943,7 @@ opcodes to oBG2 counterparts.
     COPY_EXISTING ~%WIZARD_SHADES%.spl~ ~override~
       LPF CLONE_EFFECT INT_VAR match_opcode = 331 opcode = 215 parameter2 = 2 timing = 0 duration = 1 STR_VAR resource = msumm1h END // add animation
       READ_SHORT 0x68 abil_num
-      LPF ALTER_EFFECT INT_VAR header = 0 match_opcode = 331 opcode = 127 parameter1 = 1 parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = shades END
+      LPF ALTER_EFFECT INT_VAR header = 0 match_opcode = 331 opcode = 127 parameter1 = 12 parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = shades END
       FOR (index = 1 ; index < abil_num ; ++index) BEGIN
         LPF ALTER_EFFECT INT_VAR header = index match_opcode = 331 opcode = 127 parameter1 = (index + 12) parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = shades END
       END
@@ -955,7 +960,7 @@ opcodes to oBG2 counterparts.
     COPY_EXISTING ~%WIZARD_SHADOW_MONSTERS%.spl~ ~override~
       LPF CLONE_EFFECT INT_VAR match_opcode = 331 opcode = 215 parameter2 = 2 timing = 0 duration = 1 STR_VAR resource = msumm1h END // add animation
       READ_SHORT 0x68 abil_num
-      LPF ALTER_EFFECT INT_VAR header = 0 match_opcode = 331 opcode = 127 parameter1 = 1 parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = smonste END
+      LPF ALTER_EFFECT INT_VAR header = 0 match_opcode = 331 opcode = 127 parameter1 = 7 parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = smonste END
       FOR (index = 1 ; index < abil_num ; ++index) BEGIN
         LPF ALTER_EFFECT INT_VAR header = index match_opcode = 331 opcode = 127 parameter1 = (index + 7) parameter2 = 0 dicesize = 0 dicenumber = 0 STR_VAR resource = smonste END
       END
@@ -1068,7 +1073,7 @@ opcodes to oBG2 counterparts.
   ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_SNILLOCS_SNOWBALL_SWARM") BEGIN
   
     COPY ~%obg2_res_path%/immunity.eff~ ~override/cdixa204.eff~ // generating immunity EFFs for various 324 replacements
-      WRITE_ASCIIE 0x30 ~%WIZARD_SNILLOCS_SNOWBALL_SWARM%~ #8 
+      WRITE_ASCIIE 0x30 ~%WIZARD_SNILLOCS_SNOWBALL_SWARM%b~ #8 
     
     COPY_EXISTING ~%WIZARD_SNILLOCS_SNOWBALL_SWARM%.spl~ ~override~ // evasion
       LPF DELETE_EFFECT INT_VAR match_opcode = 324 END // try to convert 324s to 177s where possible, but evasion checks get deleted since there's no oBG2 counterpart
@@ -1118,13 +1123,12 @@ opcodes to oBG2 counterparts.
     // dupe suffocate into spell used by invisible creature  
     COPY_EXISTING ~%WIZARD_SUFFOCATE%.spl~ ~override/cdia726.spl~ 
         WRITE_LONG 0x08 "-1" // name
-        LPF CLONE_EFFECT INT_VAR match_opcode = 321 opcode = 206 timing = 0 duration = 6 STR_VAR insert = last END
+        LPF CLONE_EFFECT INT_VAR match_opcode = 321 opcode = 206 timing = 0 duration = 6 STR_VAR insert = last resource = cdia726 END
         LPF DELETE_EFFECT INT_VAR match_opcode = 321 END
         LPF CLONE_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  9 opcode = 177 parameter1 = 145 parameter2 = 4 STR_VAR resource = cdixa726 END // race = elemental
         LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  9 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdixa726 END // race = golem
         LPF ALTER_EFFECT INT_VAR match_opcode = 324                       opcode = 177 parameter1 =   4 parameter2 = 3 STR_VAR resource = cdixa726 END // general = undead
         LPF ALTER_EFFECT INT_VAR match_opcode = 176 parameter2 = 2 END // mode 5 not available on oBG2
-        LPF ALTER_EFFECT INT_VAR match_opcode = 206 STR_VAR resource = cdia726 END // update self-reference
         LPF CD_SPLIT_SAVE_DAMAGE END
 
     // change actual suffocate used into just a summon for the invisible creature     
@@ -1162,7 +1166,7 @@ opcodes to oBG2 counterparts.
     COPY_EXISTING ~%WIZARD_TROLLISH_FORTITUDE%.spl~ ~override~
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END // no op 321 (effect removal by spell) in oBG2; manually replace
       LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow  
-      LPF CLONE_EFFECT INT_VAR match_opcode = 142 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%file%~ END  
+      LPF CLONE_EFFECT INT_VAR match_opcode = 142 opcode = 206 parameter1 = 0 parameter2 = 0 STR_VAR insert = last resource = EVAL ~%WIZARD_TROLLISH_FORTITUDE%~ END  
  
    END
 
