@@ -1,8 +1,8 @@
 // bgee/sod lacks spcl924, so use copy in case
 ACTION_IF !FILE_EXISTS_IN_GAME ~spcl924.spl~ BEGIN
-  COPY ~iwdification/spl/cdidrpsn.spl~ ~override~
+  COPY ~iwdification/spl/cdidrps.spl~ ~override~
 END ELSE BEGIN
-  COPY_EXISTING ~spcl924.spl~ ~override/cdidrpsn.spl~
+  COPY_EXISTING ~spcl924.spl~ ~override/cdidrps.spl~
 END
   
 
@@ -178,7 +178,7 @@ ACTION_PHP_EACH cd_druid_kits AS clab => kitno BEGIN
   ACTION_IF druid_abils BEGIN    
 
     APPEND ~%clab%.2da~
-    ~ABILITYY   ****       ****       ****       ****       ****       ****       ****       ****       AP_cdidrpsn ****       ****       ****       ****       ****       AP_cdidrif CDREPLACE~
+    ~ABILITYY   ****       ****       ****       ****       ****       ****       ****       ****       AP_cdidrps ****       ****       ****       ****       ****       AP_cdidrif CDREPLACE~
 
   END 
   

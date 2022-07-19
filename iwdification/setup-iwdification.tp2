@@ -1022,7 +1022,7 @@ LABEL ~cd_iwdification_thief_evasion~
 OUTER_SET default_thief = 9561
 ACTION_CLEAR_ARRAY  cd_thief_clabs
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_thief_clabs BEGIN // start with base class tables
-  ~%default_thief%~ => clabth01 // generic thief abilities
+  ~%default_thief%~, clabth01 => clabth01 // generic thief abilities
 END
   
 // add kit tables dynamically by reading kitlist
@@ -1033,16 +1033,16 @@ COPY_EXISTING ~kitlist.2da~ ~override~
     PATCH_IF class = 4 BEGIN
       READ_2DA_ENTRY index 4 9 desc
       READ_2DA_ENTRY index 5 9 clab
-      DEFINE_ASSOCIATIVE_ARRAY cd_thief_clabs BEGIN "%desc%" => "%clab%" END
+      DEFINE_ASSOCIATIVE_ARRAY cd_thief_clabs BEGIN "%desc%", "%clab%" => "%clab%" END
     END  
   END
 
   
-ACTION_PHP_EACH cd_thief_clabs AS desc_strref => file BEGIN
+ACTION_PHP_EACH cd_thief_clabs AS params => file BEGIN
   
   ACTION_IF FILE_EXISTS_IN_GAME ~%file%.2da~ BEGIN 
 
-    APPEND ~%file%.2da~ ~ABILITYX **** **** **** **** **** **** AP_CDIEVADE CDREPLACE~ UNLESS ~AP_CDIEVADE~
+    APPEND ~%file%.2da~ ~ABILITYX **** **** **** **** **** **** AP_CDIEVAD  CDREPLACE~ UNLESS ~AP_CDIEVAD~
 
     COPY_EXISTING ~%file%.2da~ ~override~
       COUNT_2DA_COLS cols
@@ -1055,9 +1055,9 @@ ACTION_PHP_EACH cd_thief_clabs AS desc_strref => file BEGIN
   
   END
  
-  ACTION_GET_STRREF desc_strref desc
+  ACTION_GET_STRREF params_0 desc
   OUTER_PATCH_SAVE desc "%desc%" BEGIN
-    PATCH_IF desc_strref = default_thief BEGIN
+    PATCH_IF params_0 = default_thief BEGIN
       SPRINT old @12004 // main thief descript doesn't have 'disadvantages' line
     END ELSE BEGIN  
       SPRINT old @12003
@@ -1066,11 +1066,11 @@ ACTION_PHP_EACH cd_thief_clabs AS desc_strref => file BEGIN
     REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
     REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
   END
-  STRING_SET_EVALUATE desc_strref "%desc%"  
+  STRING_SET_EVALUATE params_0 "%desc%"  
 
 END
 
-COPY ~iwdification/spl/cdievade.spl~ ~override~
+COPY ~iwdification/spl/cdievad.spl~ ~override~
   SAY 0x9e @12001
 
 INCLUDE ~iwdification/evasion/evasion.tpa~
@@ -1102,7 +1102,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
     END
   END 
   PATCH_IF add BEGIN
-    LPF ADD_CRE_EFFECT INT_VAR opcode = 328 target = 1 parameter2 = 252 timing = 1 special = 1 STR_VAR effsource = cdievade END
+    LPF ADD_CRE_EFFECT INT_VAR opcode = 328 target = 1 parameter2 = 252 timing = 1 special = 1 STR_VAR effsource = cdievad END
   END
   BUT_ONLY  
 
