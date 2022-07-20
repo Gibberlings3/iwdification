@@ -218,8 +218,9 @@ Capacités spéciales :
 // corrfr  -> "- Peut lancer « Détection du mal » une fois par jour par niveau (trois utilisations au niveau 1)."
 
 // LOOKUP  - captured as last ($2), but dropped (replaced with @10007)
-@10004 = ~- Peut lancer « Protection contre le mal » une fois par jour par niveau\.~ // match exact from bg2ee strref 9558
-// bg1ee & bg2ee & correctfr are identical
+@10004 = ~- Peut lancer [« ']+Protection contre le mal[ »']+ une fois par jour par niveau\.~ // match exact from bg2ee strref 9558
+// bg2ee & correctfr are identical (using french quotes «» with nbsp)
+//  bg1ee uses single quotes without nbsp
 
 // LOOKUP - captured as last ($2), but dropped (replaced with @10008)
 @10005 = ~- Peut lancer quelques sorts divins à partir du niveau[  ]+9\.~ // match exact from bg2ee strref 9558
