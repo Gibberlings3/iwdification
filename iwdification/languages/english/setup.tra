@@ -6,12 +6,13 @@ actually make it into the game, with game_strings_ee overriding game_strings on 
 will get converted to UTF-8 only on EE games. Since game_strings_ee will only be used on EE games, it is
 in UTF-8 already and will not be converted. 
 
-In addition to this folder, there are another four tra files used only for the new spells and bard songs, 
-located in iwdification/dw_iwdspells_resource/tra. The good news is that the largest one, iwdspells.tra,
-is automatically generated when we pull resources from IWDEE. While dw_iwdspells_bard.tra is new, it's also
-short. The other two are from SCS so you may be able to use an existing translation from there. 
+In addition to this folder, there are another two tra files used only for the new spells and bard songs,
+located in iwdification/iwdspells/copyover/tra/en_us/spells_copied.tra and
+iwdification/iwdspells/lang/english/dw_iwdspells.tra. The good news is that the largest one, spells_copied.tra,
+is automatically generated when we pull resources from IWDEE. While dw_iwdspells.tra is new, it's also
+short.
 
-In the main, automatically generated iwdspells.tra, one manual change is required: in string @218, Cause Disease
+In the main, automatically generated spells_copied.tra, one manual change is required: in string @216, Cause Disease
 is an Abjuration, not Necromancy, and its sphere is Necromantic, not Healing. The rest of the file should
 already be pulled directly from your language on IWDEE and should not need translation, though you're welcome
 to look it over if you wish.
