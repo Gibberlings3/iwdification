@@ -1,7 +1,7 @@
 // strings in this file will be overridden by strings in game_strings_ee for EE games.
 // this file is UTF-8, and will be converted to ANSI for non-EE games.
 
-  @6001 = ~Two Handed Axe~
+  @6001 = ~Two-Handed Axe~
   @6002 = ~This mighty weapon consists of a haft several feet long, topped with a heavy blade.  The axe may be double-bitted, with blades on both sides of the haft, or it may only have a single blade.  It is an unwieldy weapon, but a skilled warrior can strike blows of tremendous strength with it.
 
 STATISTICS:
@@ -18,7 +18,7 @@ Not Usable By:
  Cleric
  Mage 
  Thief~
-  @6003 = ~Two Handed Axe +1~
+  @6003 = ~Two-Handed Axe +1~
   @6004 = ~This mighty weapon consists of a haft several feet long, topped with a heavy blade.  The axe may be double-bitted, with blades on both sides of the haft, or it may only have a single blade.  This axe has also been bestowed with a small number of magical properties, however, thus making it more effective in combat. Its keen blade, for instance, will shear through your opponent's flesh to find the bone while its barbed tip will seek out gaps in their armor.
 
 STATISTICS:
@@ -36,7 +36,7 @@ Not Usable By:
  Cleric
  Mage
  Thief~
-  @6005 = ~Two Handed Axe +2: Tremain's Tumbler~
+  @6005 = ~Two-Handed Axe +2: Tremain's Tumbler~
   @6006 = ~Tremain Longaxe was an adventurer in the Ten Towns with a penchant for axes. While two-handed axes are generally slow and unwieldy, Tremain had this axe specially designed to trip opponents, allowing him to overcome foes with faster and lighter weapons.
 
 STATISTICS:
@@ -55,7 +55,7 @@ Not Usable By:
  Cleric
  Mage
  Thief~
-  @6007 = ~Two Handed Axe +3~
+  @6007 = ~Two-Handed Axe +3~
   @6008 = ~This mighty weapon consists of a haft several feet long, topped with a heavy blade.  The axe may be double-bitted, with blades on both sides of the haft, or it may only have a single blade.  This axe has been imbued with several enchantments, however, thus making it more effective in combat.
 
 STATISTICS:
@@ -73,7 +73,7 @@ Not Usable By:
  Cleric
  Mage
  Thief~
-  @6009 = ~Two Handed Axe +4: The Battle Standard~
+  @6009 = ~Two-Handed Axe +4: The Battle Standard~
   @6010 = ~Murzul Dul was a warchief under King Greneire who earned his fame as a skilled tactician. This immense axe doubled as his battle standard in combat and could strike down foes and rally his horde in equal measure. Like King Greniere himself and most of his horde, Dul was killed during the siege of the Citadel of Many Arrows when Emerus Warcrown swept away the battling hordes and the axe claimed as war spoils. The axe retains its ability to rally allies and shake foes by spiking the haft of the weapon into the ground.
 
 STATISTICS:
@@ -92,7 +92,7 @@ Not Usable By:
  Cleric
  Mage
  Thief~
-  @6011 = ~Two Handed Axe +5: The Battle Standard~
+  @6011 = ~Two-Handed Axe +5: The Battle Standard~
   @6012 = ~Murzul Dul was a warchief under King Greneire who earned his fame as a skilled tactician. This immense axe doubled as his battle standard in combat and could strike down foes and rally his horde in equal measure. Like King Greniere himself and most of his horde, Dul was killed during the siege of the Citadel of Many Arrows when Emerus Warcrown swept away the battling hordes and the axe claimed as war spoils. The axe retains its ability to rally allies and shake foes by spiking the haft of the weapon into the ground. Cespenar has further enhanced this axe.
 
 STATISTICS:
