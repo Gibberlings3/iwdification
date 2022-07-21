@@ -43,18 +43,21 @@ END
 
 ASK_EVERY_COMPONENT
 
-LANGUAGE ~English~ ~english~ ~iwdification/languages/english/setup.tra~               // installer strings
-                             ~iwdification/languages/english/game_strings.tra~        // strings for the tlk
+LANGUAGE ~English~ ~english~ 
+  ~iwdification/languages/english/setup.tra~        // installer strings
+  ~iwdification/languages/english/game_strings.tra~ // strings for the tlk
 
-LANGUAGE ~French~ ~french~ ~iwdification/languages/english/setup.tra~        // installer strings
-                           ~iwdification/languages/french/setup.tra~         // installer strings
-                           ~iwdification/languages/english/game_strings.tra~ // strings for the tlk
-                           ~iwdification/languages/french/game_strings.tra~  // strings for the tlk
-
-LANGUAGE ~Spanish~ ~spanish~ ~iwdification/languages/english/setup.tra~        // installer strings
-                             ~iwdification/languages/spanish/setup.tra~        // installer strings
-                             ~iwdification/languages/english/game_strings.tra~ // strings for the tlk
-                             ~iwdification/languages/spanish/game_strings.tra~ // strings for the tlk
+LANGUAGE ~French (by mickabouille)~ ~french~ 
+  ~iwdification/languages/english/setup.tra~        // installer strings
+  ~iwdification/languages/french/setup.tra~         // installer strings
+  ~iwdification/languages/english/game_strings.tra~ // strings for the tlk
+  ~iwdification/languages/french/game_strings.tra~  // strings for the tlk
+                                            
+LANGUAGE ~Spanish (by Gorlod)~ ~spanish~ 
+  ~iwdification/languages/english/setup.tra~        // installer strings
+  ~iwdification/languages/spanish/setup.tra~        // installer strings
+  ~iwdification/languages/english/game_strings.tra~ // strings for the tlk
+  ~iwdification/languages/spanish/game_strings.tra~ // strings for the tlk
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
