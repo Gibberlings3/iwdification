@@ -558,6 +558,11 @@ REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspel
 // REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ ~1510~ @998 Future SCS?
 GROUP @995
 LABEL ~cd_iwdification_bard_songs~
+// When using iwdification, ToTLM and rr there is a circular dependency because ToTLM expects IWDifdicatiion
+// ahead of it for the IWD spells but expects RR after it, while IWDification expects RR before due to Bard Songs.
+// Instead of setting a global install order rule for all iwdification components (iwdification.ini) define it only for a single component.
+// Remove when rr will be updated to be compatible with iwdification so the install order won't matter.
+METADATA ~AFTER = rr~
 
 INCLUDE "%MOD_FOLDER%/iwdspells/iwdspells_extern.tpa"
 LAF iwdspells_extern STR_VAR type=bard 
