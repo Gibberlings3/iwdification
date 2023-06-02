@@ -129,23 +129,23 @@ END
 
 DEFINE_ACTION_FUNCTION CD_HANDLE_AUDIO_PREP BEGIN
 
-  OUTER_SPRINT output ~weidu_external/workspace/%spell_list%_audio_temp~
-  MKDIR ~%output%~
+  OUTER_SPRINT audio_files ~weidu_external/workspace/%spell_list%_audio_temp~
+  MKDIR ~%audio_files%~
 
   // turn spell copy list into series of A_B_Fs that walk the directories
-  COPY ~%resource_loc%/%spell_list%~ ~%output%/audio.tpa~
+  COPY ~%resource_loc%/%spell_list%~ ~%audio_files%/audio.tpa~
     REPLACE_TEXTUALLY 
       "^\([^ %LNL%%MNL%%WNL%]+\) .+$" 
-      "ACTION_BASH_FOR ~%resource_loc%/\1~ ~^.+\.wav$~ BEGIN COPY ~%resource_loc%/\1/percentBASH_FOR_RESpercent.wav~ ~%output%~ END"
+      "ACTION_BASH_FOR ~%resource_loc%/\1~ ~^.+\.wav$~ BEGIN COPY ~%resource_loc%/\1/percentBASH_FOR_RESpercent.wav~ ~%audio_files%~ END"
       
-  COPY ~%output%/audio.tpa~ ~%output%/audio.tpa~
+  COPY ~%audio_files%/audio.tpa~ ~%audio_files%/audio.tpa~
     REPLACE_TEXTUALLY ~percent~ ~%~
     
-  INCLUDE ~%output%/audio.tpa~ // now we run it, copying all wavs to the output folder
+  INCLUDE ~%audio_files%/audio.tpa~ // now we run it, copying all wavs to the audio_files folder
 
   // now we convert to true wavs and dump them into the override
-  LAF CD_HANDLE_AUDIO STR_VAR audio_path = ~%output%~ output_path = ~%output%/output~ oggdec_path sox_path END
-  DELETE ~%output%/audio.tpa~
+  LAF CD_HANDLE_AUDIO STR_VAR audio_path = ~%audio_files%~ output_path = ~%audio_files%/output~ oggdec_path sox_path END
+  DELETE ~%audio_files%/audio.tpa~
 
 END  
 
