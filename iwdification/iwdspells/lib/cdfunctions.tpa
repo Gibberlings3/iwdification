@@ -143,9 +143,9 @@ DEFINE_ACTION_FUNCTION CD_HANDLE_AUDIO_PREP BEGIN
     
   INCLUDE ~%output%/audio.tpa~ // now we run it, copying all wavs to the output folder
 
-  LAF CD_HANDLE_AUDIO STR_VAR audio_path = ~%output%~ output_path = ~%output%~ oggdec_path sox_path END // now we convert to true wavs
+  // now we convert to true wavs and dump them into the override
+  LAF CD_HANDLE_AUDIO STR_VAR audio_path = ~%output%~ output_path = ~%output%~ oggdec_path sox_path END
   DELETE ~%output%/audio.tpa~
-  COPY ~%output%~ ~override~ // and dump them into the override
 
 END  
 
@@ -204,10 +204,14 @@ BEGIN
       unix
       BEGIN
         OUTER_SET installed = 1
+
+        OUTER_SPRINT output_path ~%output_path%/tmp~
+        MKDIR ~%output_path%~
+
         ACTION_BASH_FOR ~%audio_path%~ ~.+\.wav$~ BEGIN
-          OUTER_SPRINT wavfile ~%audio_path%/%BASH_FOR_RES%.wav~
+          OUTER_SPRINT wavfile ~%output_path%/%BASH_FOR_RES%.wav~
 //          COPY ~.../fl#inlined/null.file~ ~%wavfile%~
-          AT_NOW ~oggdec '%BASH_FOR_FILESPEC%'~
+          AT_NOW ~oggdec '%BASH_FOR_FILESPEC%' -o '%wavfile%'~
           ACTION_IF FILE_EXISTS ~%wavfile%~ AND !FILE_SIZE ~%wavfile%~ 0 BEGIN
 //            MOVE ~%wavfile%~ ~%output_path%~
           END ELSE OUTER_SET installed = 0
@@ -228,6 +232,7 @@ BEGIN
       COPY_LARGE + ~%BASH_FOR_FILESPEC%~ ~%output_path%/%BASH_FOR_RES%.%ext%~
     END
   END
+  COPY ~%output_path%~ ~override~
 END
 
 /////                                                  \\\\\
