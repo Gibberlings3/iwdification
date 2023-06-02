@@ -144,7 +144,7 @@ DEFINE_ACTION_FUNCTION CD_HANDLE_AUDIO_PREP BEGIN
   INCLUDE ~%output%/audio.tpa~ // now we run it, copying all wavs to the output folder
 
   // now we convert to true wavs and dump them into the override
-  LAF CD_HANDLE_AUDIO STR_VAR audio_path = ~%output%~ output_path = ~%output%~ oggdec_path sox_path END
+  LAF CD_HANDLE_AUDIO STR_VAR audio_path = ~%output%~ output_path = ~%output%/output~ oggdec_path sox_path END
   DELETE ~%output%/audio.tpa~
 
 END  
@@ -166,6 +166,8 @@ DEFINE_ACTION_FUNCTION CD_HANDLE_AUDIO
     sox_path = ~iwdification/wav~
     output_path = ~iwdification/wav~
 BEGIN
+  MKDIR ~%output_path%~
+
   /* Early versions of BG:EE do not include bgee.lua and
    * PST:EE does not include monkfist.2da
    */
@@ -176,9 +178,9 @@ BEGIN
       BEGIN
         ACTION_IF FILE_EXISTS "%oggdec_path%/oggdec.exe" BEGIN
           ACTION_BASH_FOR ~%audio_path%~ ~.+\.wav$~ BEGIN
-//            OUTER_SPRINT wavfile ~%audio_path%/%BASH_FOR_RES%.wav~
+            OUTER_SPRINT wavfile ~%output_path%/%BASH_FOR_RES%.wav~
 //            COPY ~.../fl#inlined/null.file~ ~%wavfile%~
-            AT_NOW ~%oggdec_path%/oggdec.exe "%BASH_FOR_FILESPEC%"~
+            AT_NOW ~%oggdec_path%/oggdec.exe "%BASH_FOR_FILESPEC%" -w "%wavfile%"~
 //            MOVE ~%wavfile%~ ~%output_path%~
           END
         END ELSE BEGIN
@@ -191,7 +193,7 @@ BEGIN
         ACTION_IF FILE_EXISTS ~%sox_path%/sox~ BEGIN
           AT_NOW ~chmod +x '%sox_path%/sox'~
           ACTION_BASH_FOR ~%audio_path%~ ~.+\.wav$~ BEGIN
-            OUTER_SPRINT wavfile ~%audio_path%/%BASH_FOR_RES%.wav~
+            OUTER_SPRINT wavfile ~%output_path%/%BASH_FOR_RES%.wav~
 //            COPY ~.../fl#inlined/null.file~ ~%wavfile%~
             AT_NOW ~'%sox_path%/sox' '%BASH_FOR_FILESPEC%' '%wavfile%'~
 //            MOVE ~%wavfile%~ ~%output_path%~
@@ -204,10 +206,6 @@ BEGIN
       unix
       BEGIN
         OUTER_SET installed = 1
-
-        OUTER_SPRINT output_path ~%output_path%/tmp~
-        MKDIR ~%output_path%~
-
         ACTION_BASH_FOR ~%audio_path%~ ~.+\.wav$~ BEGIN
           OUTER_SPRINT wavfile ~%output_path%/%BASH_FOR_RES%.wav~
 //          COPY ~.../fl#inlined/null.file~ ~%wavfile%~
