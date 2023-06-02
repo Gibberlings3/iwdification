@@ -142,10 +142,10 @@ DEFINE_ACTION_FUNCTION CD_HANDLE_AUDIO_PREP BEGIN
     REPLACE_TEXTUALLY ~percent~ ~%~
     
   INCLUDE ~%audio_files%/audio.tpa~ // now we run it, copying all wavs to the audio_files folder
+  DELETE ~%audio_files%/audio.tpa~
 
   // now we convert to true wavs and dump them into the override
   LAF CD_HANDLE_AUDIO STR_VAR audio_path = ~%audio_files%~ output_path = ~%audio_files%/output~ oggdec_path sox_path END
-  DELETE ~%audio_files%/audio.tpa~
 
 END  
 
