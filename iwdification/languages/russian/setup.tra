@@ -26,44 +26,44 @@ to look it over if you wish.
   @995 = ~Обновления классов~
   @996 = ~Компонент доступен только для оригинальной версии игры~
   @997 = ~Компонент доступен только для Enhanced Edition~
-  @998 = ~This functionality is already installed by another mod.~
-  @999 = ~DLC Merger is required before mods can be installed on this game. Check the readme for more information and a link to download DLC Merger.~
+  @998 = ~Этот функционал уже добавлен другой модификацией.~
+  @999 = ~Для установки модификаций на эту игру требуется DLC Merger. Ознакомьтесь с файлом readme для дополнительной информации.~
 
  @1000 = ~Графика заклинаний из Icewind Dale (Andyr)~
 
- @2000 = ~Commoners Use Drab Colors~
+ @2000 = ~Менее яркая одежда у простолюдинов~
 
- @3000 = ~IWD - Набор заклинаний мага~
+ @3000 = ~Набор заклинаний мага из Icewind Dale~
 
- @4000 = ~IWD - Набор заклинаний жреца~
+ @4000 = ~Набор заклинаний жреца из Icewind Dale~
 
- @5000 = ~Обновление классов - Песни барда из IWD~
+ @5000 = ~Обновление классов - Песни барда из Icewind Dale~
 
- @6000 = ~Двуручные топоры~
+ @6000 = ~Набор двуручных топоров~
 
- @7000 = ~Обновление классов - Способности и формы друида из IWD~
+ @7000 = ~Обновление классов - Способности и формы друида из Icewind Dale~
  @7100 = ~Обновление классов - Эльфы могут быть друидами~
 
- @8000 = ~Additional Portrait Icons~
+ @8000 = ~Дополнительные иконки на портрете персонажа~
 
- @9000 = ~Expanded Polymorph Self~
+ @9000 = ~Расширение заклинания «Превращение себя»~
 
-@10000 = ~IWD Class Updates: Paladin: IWD Abilities and Skills~
+@10000 = ~Обновление классов - способности паладина из Icewind Dale~
 
-@11000 = ~IWD Class Updates: Ranger: Tracking~
+@11000 = ~Обновление классов - «Выслеживание» для следопытов~
 
-@12000 = ~IWD Class Updates: Thief: Evasion~
+@12000 = ~Обновление классов - «Уклонение» для воров~
 
-@13000 = ~Use IWD Damage Animations~
+@13000 = ~Анимации получения урона из Icewind Dale~
 
-@14000 = ~Randomized Enemy Equipment~
-@14001 = ~Add High Quality Items~
-@14002 = ~Do Not Add High Quality Items~
+@14000 = ~Случайная экипировка у врагов~
+@14001 = ~Добавить предметы высокого качества~
+@14002 = ~Не добавлять предметы высокого качества~
 
-@15000 = ~IWD Class Updates: Bard: Use IWD Spell Progression~
+@15000 = ~Обновление классов - Прогрессия заклинаний барда из Icewind Dale~
 
-@16000 = ~IWD Class Updates: Paladin: Use IWD Spell Progression~
+@16000 = ~Обновление классов - Прогрессия заклинаний паладина из Icewind Dale~
 
-@17000 = ~IWD Class Updates: Ranger: Use IWD Spell Progression~
+@17000 = ~Обновление классов - Прогрессия заклинаний следопыта из Icewind Dale~
 
-@18000 = ~IWD Class Updates: Bard: Selectable Bard Songs for Jesters and Skalds~
+@18000 = ~Обновление классов - Выбор песни барда для шутов и скальдов~
