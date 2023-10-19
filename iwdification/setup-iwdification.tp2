@@ -59,6 +59,12 @@ LANGUAGE ~Spanish (by Gorlod)~ ~spanish~
   ~iwdification/languages/english/game_strings.tra~ // strings for the tlk
   ~iwdification/languages/spanish/game_strings.tra~ // strings for the tlk
 
+LANGUAGE ~Russian (by Arkie)~ ~russian~ 
+  ~iwdification/languages/english/setup.tra~        // installer strings
+  ~iwdification/languages/russian/setup.tra~        // installer strings
+  ~iwdification/languages/english/game_strings.tra~ // strings for the tlk
+  ~iwdification/languages/russian/game_strings.tra~ // strings for the tlk
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
