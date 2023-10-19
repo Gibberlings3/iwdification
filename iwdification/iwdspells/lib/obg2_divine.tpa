@@ -366,6 +366,15 @@ opcodes to oBG2 counterparts.
       WRITE_BYTE  0x218 0     // explosion color
 
     LAUNCH_ACTION_FUNCTION cd_create_cloud INT_VAR visloop = 1 cloud_dur = 12 zosa = 1 STR_VAR code = cdid325 anim = cloudbh ssound = "are_p24" END  
+    
+    // one-off touchup for cloud: reduce number of clouds per TotoR's request
+    COPY_EXISTING ~cdid325m.bcs~ ~override~
+      DECOMPILE_AND_PATCH BEGIN
+        REPLACE_TEXTUALLY 
+          ~\(SetGlobalTimer("cloudtime","LOCALS",1)\)[ %TAB%%LNL%%MNL%%WNL%]+CreateCreature("cdid325v",\[-1\.-1\],[0S])[ %TAB%%LNL%%MNL%%WNL%]+CreateCreature("cdid325v",\[-1\.-1\],[0S])[ %TAB%%LNL%%MNL%%WNL%]+CreateCreature("cdid325v",\[-1\.-1\],[0S])[ %TAB%%LNL%%MNL%%WNL%]+CreateCreature("cdid325v",\[-1\.-1\],[0S])[ %TAB%%LNL%%MNL%%WNL%]+CreateCreature("cdid325v",\[-1\.-1\],[0S])[ %TAB%%LNL%%MNL%%WNL%]+CreateCreature("cdid325v",\[-1\.-1\],[0S])~ 
+          ~\1~
+      END  
+      BUT_ONLY
 
     COPY ~%obg2_res_path%/cdid325c.eff~ ~override~ // eff for 'fire- and cold-using' creature damage
     
