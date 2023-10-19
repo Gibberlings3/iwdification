@@ -1096,6 +1096,8 @@ opcodes to oBG2 counterparts.
     COPY_EXISTING ~idpro217.pro~ ~override~
       WRITE_BYTE 0x217 14   
   
+    COPY ~%obg2_res_path%/rng_m02.wav~ ~override~ // this wav is present in bg2ee but not obg2
+  
   END
 
 /////                                                  \\\\\

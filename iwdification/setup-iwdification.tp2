@@ -683,6 +683,8 @@ BEGIN @10000 DESIGNATED 100
 GROUP @995
 LABEL ~cd_iwdification_paladin_abilities~
 
+LAF HANDLE_AUDIO STR_VAR audio_path = ~iwdification/wav/paladin~ oggdec_path = ~iwdification/wav~ END
+
 // change paladin detect evil to at-will
 COPY_EXISTING ~spcl212.spl~ ~override~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = spcl212 END
