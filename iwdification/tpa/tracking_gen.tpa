@@ -1,0 +1,20 @@
+OUTER_SPRINT tracking ~~
+
+COPY_EXISTING ~tracking.2da~ ~override~
+  REPLACE_TEXTUALLY ~^O_[0-9]+~ ~O_%default_track%~
+  PATCH_PHP_EACH cd_tracking_area AS area => string BEGIN
+    COUNT_REGEXP_INSTANCES ~^%area%[ %TAB%]+~ count
+    PATCH_IF count BEGIN // if entry already exists
+      REPLACE_TEXTUALLY CASE_INSENSITIVE ~^%area%[ %TAB%]+\(O_\)?-?[0-9]+[ %TAB%]*~ ~%area%     O_%string%~ // alter existing entry
+    END ELSE BEGIN
+      SPRINT tracking ~%tracking%%WNL%%area%     O_%string%~ // otherwise add to var for appending
+    END  
+  END            
+  INNER_PATCH_SAVE tracking ~%tracking%~ BEGIN
+    REPLACE_TEXTUALLY ~^[%LNL%%MNL%%WNL%]+~ ~~ // purge the extra empty line we generated
+  END
+  BUT_ONLY  
+
+APPEND ~tracking.2da~ ~%tracking%~
+  
+  
