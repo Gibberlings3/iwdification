@@ -95,7 +95,11 @@ DEFINE_ACTION_FUNCTION summoned_monsters_arcane BEGIN
 			m.cre_remove_items{monhp1}
 			m.item.alter{s_unstealable=1 s_undroppable=1}	
 		]
-		install[trollreg.itm trollimm.itm|location=resource]
+    ACTION_FOR_EACH file IN trollreg trollimm BEGIN // don't break oBG2 trolls with EE revive sequence
+      ACTION_IF !FILE_EXISTS_IN_GAME ~%file%.itm~ BEGIN 
+        install[%file%.itm|location=resource]
+      END  
+    END  
 
 
 		// main summoning
@@ -125,7 +129,11 @@ DEFINE_ACTION_FUNCTION summoned_monsters_arcane BEGIN
 			m.immunity_spell{trollreg}		
 			m.item.alter{s_unstealable=1 s_undroppable=1}		
 		]
-		install[trollreg.itm trollimm.itm|location=resource]
+    ACTION_FOR_EACH file IN trollreg trollimm BEGIN // don't break oBG2 trolls with EE revive sequence
+      ACTION_IF !FILE_EXISTS_IN_GAME ~%file%.itm~ BEGIN 
+        install[%file%.itm|location=resource]
+      END  
+    END  
 
 		//minotaur
 

@@ -812,9 +812,14 @@ opcodes to oBG2 counterparts.
   END   
 
   ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_MONSTER_SUMMONING_5") BEGIN
+  
     ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_monster_summoning BEGIN
       ~%WIZARD_MONSTER_SUMMONING_5%~,3      => 5
-    END  
+    END      
+  
+    COPY_EXISTING ~dw#ms5tr.cre~  ~override~
+      LPF DELETE_EFFECT INT_VAR match_opcode = 206  END // leftover EE troll regen stuff
+      
   END  
 
   ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_MONSTER_SUMMONING_6") BEGIN
