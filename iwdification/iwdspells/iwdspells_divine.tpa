@@ -1,8 +1,8 @@
 DEFINE_ACTION_FUNCTION iwdspells_divine STR_VAR version="" BEGIN
 
-	LAF check_label STR_VAR label="dw#iwdspells_divine" RET value END
+	LAF check_label STR_VAR label="dw_iwdspells_divine_installed" RET value END
 	ACTION_IF !value BEGIN
-		LAF make_label STR_VAR label="dw#iwdspells_divine" END
+		LAF make_label STR_VAR label="dw_iwdspells_divine_installed" END
 
 
 		OUTER_SPRINT custom_includes "%version%" // pass through 'version' to conform to rules for SFO 'run' function

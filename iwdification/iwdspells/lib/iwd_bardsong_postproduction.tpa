@@ -28,7 +28,7 @@ DEFINE_ACTION_FUNCTION iwd_bardsong_postproduction BEGIN
 	class.edit[bard|edit_strrefs_in_place:i=0]
 	[
 		k.kit_grant_powers{#BARD1 1,#BARD2 3,#BARD3 5,#BARD4 7,#BARD5 9,#BARD6 11}	
-		INNER_PATCH_SAVE k_desc "%k_desc%" BEGIN
+		INNER_PATCH_SAVE k_desc "%k_clastext_descstr%" BEGIN
 			LPF bard_desc_helper END
 		END
 	]
@@ -37,7 +37,7 @@ DEFINE_ACTION_FUNCTION iwd_bardsong_postproduction BEGIN
 	
 	kit.edit_all[bard|edit_strrefs_in_place:i=0 skip_trueclass:i=1]
 	[
-		INNER_PATCH_SAVE k_desc "%k_desc%" BEGIN
+		INNER_PATCH_SAVE k_desc "%k_clastext_descstr%" BEGIN
 			LPF bard_kit_desc_helper END
 		END	
 	]
@@ -220,7 +220,7 @@ DEFINE_ACTION_FUNCTION iwd_bardsong_postproduction BEGIN
             SPRINT discard @221
             SPRINT disadvantages @222
             SPRINT newline @220
-            REPLACE_TEXTUALLY "\(%disadvantages%\)\(.*[%WNL%%MNL%%LNL%][^a-zA-Z0-9]*\)\([a-zA-Z0-9].*\)" "\1\2%newline%\2\3"
+            REPLACE_TEXTUALLY "%disadvantages%\(.*[%WNL%%MNL%%LNL%][^a-zA-Z0-9]*\)\([a-zA-Z0-9].*\)" "%disadvantages%\1%newline%\1\2"
             REPLACE_TEXTUALLY "[%WNL%%MNL%%LNL%][^a-zA-z]*%discard%.*" ""
           END  
         
@@ -254,6 +254,6 @@ DEFINE_PATCH_FUNCTION bard_kit_desc_helper BEGIN
 	SPRINT discard @221
 	SPRINT disadvantages @222
 	SPRINT newline @220
-	REPLACE_TEXTUALLY "\(%disadvantages%\)\(.*[%WNL%%MNL%%LNL%][^a-zA-Z0-9]*\)\([a-zA-Z0-9].*\)" "\1\2%newline%\2\3"
+	REPLACE_TEXTUALLY "%disadvantages%\(.*[%WNL%%MNL%%LNL%][^a-zA-Z0-9]*\)\([a-zA-Z0-9].*\)" "%disadvantages%\1%newline%\1\2"
 	REPLACE_TEXTUALLY "[%WNL%%MNL%%LNL%][^a-zA-z]*%discard%.*" ""
 END

@@ -1,9 +1,8 @@
 DEFINE_ACTION_FUNCTION iwdspells_arcane STR_VAR version="" BEGIN
 
-	LAF check_label STR_VAR label="dw#iwdspells_arcane" RET value END
+	LAF check_label STR_VAR label="dw_iwdspells_arcane_installed" RET value END
 	ACTION_IF !value BEGIN
-		LAF make_label STR_VAR label="dw#iwdspells_arcane" END
-
+		LAF make_label STR_VAR label="dw_iwdspells_arcane_installed" END
 		OUTER_SPRINT custom_includes "%version%" // pass through 'version' to conform to rules for SFO 'run' function
 
 		INCLUDE "%MOD_FOLDER%/%component_loc%/lib/move_spell_resources.tph"
