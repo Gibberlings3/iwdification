@@ -664,45 +664,17 @@ opcodes to oBG2 counterparts.
     COPY ~%obg2_res_path%/iibody.bam~   ~override~ // iron body
     
     COPY_EXISTING ~%WIZARD_IRON_BODY%.spl~ ~override~
-      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 172 END // delete iron body icon
       LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
-      // sans tobex, items in the magical weapon slot will always be removed by dispel magic in oBG2. to avoid the incongruous 
-      // state of having iron body in effect but without the melee bits, we move all effects to the paw as equipped effects
+    
+    COPY_EXISTING ~ibody.itm~ ~override~
+      LPF DELETE_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 172 END // delete iron body icon
       PATCH_FOR_EACH res IN ~##wi904~ spwi726  BEGIN
         LPF DELETE_EFFECT INT_VAR match_opcode = 318 STR_VAR match_resource = EVAL ~%res%~ END
       END  
-      // updating iwd > bg2 refs before moving
+      // updating iwd > bg2 refs
       LPF ALTER_EFFECT INT_VAR match_opcode = 318 opcode = 206 END // make some adjustments before moving
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END // delete self-cast protection
       LPF DELETE_EFFECT INT_VAR match_opcode = 1 END // delete APR set (fist item already has it)
-      
-    COPY_EXISTING ~%WIZARD_IRON_BODY%.spl~ ~override~ // re-copy to reset SOURCE_SIZE
-      READ_LONG 0x6a fx_off
-      SET fx_num = ((SOURCE_SIZE - fx_off) / 0x30)
-      READ_ASCII fx_off fx (fx_num * 0x30)
-      PATCH_FOR_EACH op IN 7 29 30 44 87 101 126 142 145 169 173 206 267 BEGIN // delete stuff that's moving to the paw
-        LPF DELETE_EFFECT INT_VAR match_opcode = op END
-      END  
-      
-    COPY_EXISTING ~ibody.itm~ ~override~
-      READ_LONG   0x64 abil_off ELSE 0
-      READ_SHORT  0x68 abil_num ELSE 0
-      READ_LONG   0x6a fx_off
-      WRITE_SHORT 0x70 (THIS + fx_num)
-      FOR (index = 0 ; index < abil_num ; ++index) BEGIN // start iterating through abilities
-        WRITE_SHORT  (abil_off + 0x20 + (0x28 * index)) (THIS + fx_num)
-      END
-      INSERT_BYTES fx_off (fx_num * 0x30)
-      WRITE_ASCIIE fx_off ~%fx%~
-      PATCH_FOR_EACH op IN 50 61 111 174 215 BEGIN // remove audio/visual & item creation
-        LPF DELETE_EFFECT INT_VAR match_opcode = op END
-      END
-      LPF ALTER_EFFECT INT_VAR check_headers = 0 power = 0 resist_dispel = 0 timing = 2 duration = 0 END
-      LPF ALTER_EFFECT INT_VAR match_opcode = 126 parameter2 = 2 END // mode 5 not available on oBG2
-      FOR (index = 0 ; index < 6 ; ++index) BEGIN
-        LPF CLONE_EFFECT INT_VAR check_headers = 0 match_opcode = 7 match_parameter2 = 255 parameter2 = index END
-      END  
-      LPF ALTER_EFFECT INT_VAR check_headers = 0 match_opcode = 7 match_parameter2 = 255 parameter2 = 6 END
     
   END
 

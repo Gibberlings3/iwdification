@@ -33,7 +33,7 @@ DEFINE_ACTION_FUNCTION beholder_protections BEGIN // these are renamed between I
 	ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_IRON_BODY") BEGIN
   
     //iron body protects against beholder flesh to stone
-    COPY_EXISTING "%WIZARD_IRON_BODY%.spl" override
+    COPY_EXISTING "ibody.itm" override
       LPF ALTER_EFFECT STR_VAR match_resource = spin143 resource = EVAL "%BEHOLDER_FLESH_TO_STONE%" END
       BUT_ONLY
       
