@@ -65,6 +65,10 @@ LANGUAGE ~Russian (by Arkie)~ ~russian~
   ~iwdification/languages/english/game_strings.tra~ // strings for the tlk
   ~iwdification/languages/russian/game_strings.tra~ // strings for the tlk
 
+LANGUAGE ~Simplified Chinese~ ~Schinese~ 
+  ~iwdification/languages/Schinese/setup.tra~        // installer strings
+  ~iwdification/languages/Schinese/game_strings.tra~ // strings for the tlk
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
