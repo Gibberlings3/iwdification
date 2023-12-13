@@ -561,7 +561,9 @@ INCLUDE ~iwdification/tpa/random.tpa~
 
 BEGIN @5000 DESIGNATED 50 // aka add new bard songs
 REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
-// REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ ~1510~ @998 Future SCS?
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ 1520 @998
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_som/dw_som.tp2~ 1520 @998
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 1520 @998
 GROUP @995
 LABEL ~cd_iwdification_bard_songs~
 // When using iwdification, ToTLM and rr there is a circular dependency because ToTLM expects IWDifdicatiion
@@ -687,6 +689,7 @@ BEGIN ~deprecated~ DESIGNATED 72 DEPRECATED ~now separate, independent component
 
 BEGIN @10000 DESIGNATED 100
 GROUP @995
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40200 @998
 LABEL ~cd_iwdification_paladin_abilities~
 
 LAF HANDLE_AUDIO STR_VAR audio_path = ~iwdification/wav/paladin~ oggdec_path = ~iwdification/wav~ END
@@ -1136,7 +1139,9 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 
 BEGIN @3000 DESIGNATED 30
 REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
-REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ ~1500~ @998
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ 1500 @998
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_som/dw_som.tp2~ 1500 @998
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 1500 @998
 GROUP @993
 LABEL ~cd_iwdification_arcane_spells~
 
@@ -1160,7 +1165,9 @@ END
 
 BEGIN @4000 DESIGNATED 40
 REQUIRE_PREDICATE FILE_EXISTS ~iwdification/iwdspells/lang/%LANGUAGE%/dw_iwdspells.tra~ @992
-REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ ~1510~ @998
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~stratagems/setup-stratagems.tp2~ 1510 @998
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_som/dw_som.tp2~ 1510 @998
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 1510 @998
 GROUP @993
 LABEL ~cd_iwdification_divine_spells~
 
