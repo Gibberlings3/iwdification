@@ -1039,6 +1039,8 @@ COPY ~iwdification/2da/iwd_mxsplran.2da~ ~override/mxsplran.2da~
 
 BEGIN @12000 DESIGNATED 120
 REQUIRE_PREDICATE !GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ @997
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40450 @998
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40460 @998
 GROUP @995
 LABEL ~cd_iwdification_thief_evasion~
 
