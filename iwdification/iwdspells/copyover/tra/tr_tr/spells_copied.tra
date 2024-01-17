@@ -5,37 +5,38 @@
 
 9 m içindeki tüm müttefikler vurabilmeye +1, hasara +1 ve tüm Kurtarış Zarları'na +1 kazanır.~
 @4=~Üç Kahramanın Balatı - Dövüş Bonusları~
-@5=~Curran Güçlüyürek'in Hikayesi~
-@6=~"Curran Güçlüyürek'in Hikayesi"
+@5=~<NO TEXT>~
+@6=~Curran Güçlüyürek'in Hikayesi~
+@7=~"Curran Güçlüyürek'in Hikayesi"
 
 9 mt içindeki tüm müttefikler şarkı sona erinceye kadar korku etkilerine karşı bağışıklık kazanır ve üzerlerindeki mevcut korku etkileri ortadan kalkar.~
-@7=~Curran Güçlüyürek'in Hikayesi - Korkuya Bağışıklık~
-@8=~Panik~
-@9=~Tymora's Melody~
-@10=~"Tymora'nın Ezgisi"
+@8=~Curran Güçlüyürek'in Hikayesi - Korkuya Bağışıklık~
+@9=~Panik~
+@10=~Tymora's Melody~
+@11=~"Tymora'nın Ezgisi"
 
 9 mt içindeki tüm müttefikler şansa +1, Kurtarış Zarları'na +3, kültüre +10 ve tüm hırsızlık yeteneklerine +%10 bonus kazanır.~
-@11=~Tymora'nın Ezgisi - Şans ve Yetenek Bonusları~
-@12=~The Song of Kaudies~
-@13=~"Kaudies'in Şarkısı"
+@12=~Tymora'nın Ezgisi - Şans ve Yetenek Bonusları~
+@13=~The Song of Kaudies~
+@14=~"Kaudies'in Şarkısı"
 
 9 m içindeki tüm müttefikler Sustur, Nara, Etkili Nara, Buyruk, Büyük Buyruk ve diğer her türlü ses tabanlı saldırılara karşı %50 etkilenmeme olasılığı elde ederler.~
-@14=~Kaudies'in Şarkısı - Ses Saldırılarına Direnç~
-@15=~Büyü Etkisiz~
-@16=~The Siren's Yearning~
-@17=~"Sirenin Hasreti"
+@15=~Kaudies'in Şarkısı - Ses Saldırılarına Direnç~
+@16=~Büyü Etkisiz~
+@17=~The Siren's Yearning~
+@18=~"Sirenin Hasreti"
 
 9 mt içindeki tüm müttefikler büyüye karşı kurtarış gerçekleştirmelidir. Başarısız olurlarsa ya büyülenir ve 1 raunt boyunca eylem gerçekleştiremez ya da hasar alırlar.~
-@18=~Sirenin Hasreti - Yaratıkları Köleleştirme~
-@19=~Sersemledi~
-@20=~Enthralled~
-@21=~War Chant of Sith~
-@22=~"Sith'in Savaş İlahisi"
+@19=~Sirenin Hasreti - Yaratıkları Köleleştirme~
+@20=~Sersemledi~
+@21=~Enthralled~
+@22=~War Chant of Sith~
+@23=~"Sith'in Savaş İlahisi"
 
 9 mt içindeki tüm müttefikler Zırh Seviyesi'ne +2 bonus; kesme, delme, ezme hasarları ile menzilli hasarına karşı +%10 direnç ve tur başına 2 Can Puanı tazeleme kabiliyeti kazanır.~
-@23=~Sith'in Savaş İlahisi -Zırh Bonusları ve Tazeleme~
-@24=~Snilloc'un Kartopu Yağmuru~
-@25=~Snilloc'un Kartopu Yağmuru
+@24=~Sith'in Savaş İlahisi -Zırh Bonusları ve Tazeleme~
+@25=~Snilloc'un Kartopu Yağmuru~
+@26=~Snilloc'un Kartopu Yağmuru
 (Oluşturma)
 
 Seviye: 2
@@ -46,10 +47,10 @@ Etki Alanı: 10 metre yarıçapında
 Kurtarış Zarı: 1/2 hasar
 
 Bu büyü menzil içindeki bir noktadan kartopu sağanağının çıkmasına sebep olur. Bu kartopları etki alanı içindeki her şeye isabet eder ve seviye başına 1z3 soğuk hasarı verir. Bu hasar maksimum 8. seviyede 8z3 puana çıkabilir. Ateş kullanan ya da ateşten yapıya sahip yaratıklara, seviye başına 1z6 soğuk hasarı verir.~
-@26=~Dekaçomak~
 @27=~Dekaçomak~
 @28=~Dekaçomak~
-@29=~Dekaçomak
+@29=~Dekaçomak~
+@30=~Dekaçomak
 (Oluşturma)
 Seviye: 2
 Menzil: İcracı 
@@ -58,8 +59,8 @@ Büyü Yapma Süresi: 2
 Etki Alanı: Büyü İcracısı
 Kurtarış Zarı: Yok
 Bu büyü icracının elinde bir güç asası oluşturur. Asa büyülü bir silah gibi davranır; her vuruşta 1-6 can puanı hasar verir ve normal silahlara bağışıklığı olan yaratıklara vurabilir. Ancak bu bir asa olduğu için icracının asa silahlarına dair bir yetkinliği yoksa icracı Dekaçomak'ı kullandığında ceza puanı alır. Asanın aynı zamanda ilk vuruşta hedefin 1-2 can puanını emme gücü de bulunmaktadır. Bu can puanları icracıya eklenir, fakat bu puanlar sadece icracının aldığı hasarı iyileştirebilir; can puanını normal maksimumunun üzerine çıkarmaz.~
-@30=~Kedi Zarafeti~
-@31=~Kedi Zarafeti (Başkalaşım) 
+@31=~Kedi Zarafeti~
+@32=~Kedi Zarafeti (Başkalaşım) 
 Seviye: 2
 Menzil: Temas 
 Etki Süresi: 1 saat/seviye 
@@ -67,9 +68,9 @@ Büyü Yapma Süresi: 2
 Etki Alanı: 1 yaratık
 Kurtarış Zarı: Yok 
 Bu büyü hedefin çevikliğini büyülü şekilde artırır. Artış miktarı hedefin sınıfına bağlıdır: Hırsızlar 1z8 puan, Dövüşçü ve Büyücüler 1z6 puan, Runbanlar 1z4 puan kazanır. Kedi Zarafeti hedefin çevikliğini 20'nin üzerine çıkaramaz.~
-@32=~Çeviklik Değişikliği~
-@33=~Buzkargısı~
-@34=~Buzkargısı (Oluşturma)
+@33=~Çeviklik Değişikliği~
+@34=~Buzkargısı~
+@35=~Buzkargısı (Oluşturma)
 Seviye: 3
 Menzil: İcracının Görüş Alanı
 Etki Süresi: Anında 
@@ -77,9 +78,9 @@ Büyü Yapma Süresi: 3
 Etki Alanı: 1 yaratık
 Kurtarış Zarı: Özel
 Bu büyü icracının seçtiği bir hedefe büyülü bir buz kargısı fırlatır. Kargı hedefi kendiliğinden vurur, 5-30 puan hasar verir ve hedefi büyüye karşı kurtarış yapmaya zorlar; aksi takdirde hedef 1-4 raunt sersemler.~
-@35=~Sersemlemiş~
-@36=~Parçalayan Kargı~
-@37=~Parçalayan Kargı (Oluşturma)
+@36=~Sersemlemiş~
+@37=~Parçalayan Kargı~
+@38=~Parçalayan Kargı (Oluşturma)
 Seviye: 3
 Menzil: 18 metre
 Etki Süresi: Anında
@@ -87,9 +88,9 @@ Büyü Yapma Süresi: 3
 Etki Alanı: Özel
 Kurtarış Zarı: 1/2
 Bu büyü, icracıdan başlayarak 18 metre uzaktaki bir noktaya doğru uzanan bir güç mızrağı yaratır. Mızrağın yoluna çıkan her yaratık 5z4 puan ezme hasarı ile icracının seviyesinin +2 ile çarpımı (maksimum +30) kadar hasar alır. Kurbanlar yarı hasar için büyüye karşı kurtarış yapabilirler.~
-@38=~Başıbozukluk~
-@39=~Beltyn'in Yanan Kanı~
-@40=~Beltyn'in Yanan Kanı 
+@39=~Başıbozukluk~
+@40=~Beltyn'in Yanan Kanı~
+@41=~Beltyn'in Yanan Kanı 
 (Ölüm İlmi)
 Seviye: 4
 Menzil: İcracının Görüş Alanı
@@ -98,8 +99,8 @@ Büyü Yapma Süresi: 4
 Etki Alanı: 1 yaratık
 Kurtarış Zarı: Etkisiz
 Bu büyü hedefin kanını aleve çevirir; her rauntta 3-12 can puanı hasar vererek kurbanı acıyla cinnete sürükler. Hedef her rauntta büyüye karşı kurtarış zarı atar; başarılı olursa hasar almaz ve cinnet durumu geçer. Bu büyü kana sahip olmayan (elementaller gibi) hortlak ya da düzlemdışı yaratıklara karşı işlemez. Şayet yaratık ateşe karşı dirençliyse bu direnç, büyüden alınan hasarı azaltır ya da sıfırlar.~
-@41=~Duygu: Cesaret~
-@42=~Duygu: Cesaret 
+@42=~Duygu: Cesaret~
+@43=~Duygu: Cesaret 
 (Efsunlama)
 Seviye: 4
 Menzil: İcracının Görüş Alanı
@@ -108,8 +109,8 @@ Büyü Yapma Süresi: 4
 Etki Alanı: 3 mt yarıçapında
 Kurtarış Zarı: Etkisiz
 Bu büyü etki alanında cesaret duygusu yaratır. Büyünün etkisine giren her yaratık geçici süreyle vuruşuna +1, hasar zarlarına +3 ve can puanına +5 (büyü yaratığı maksimum can puanının üzerine çıkartabilir) kazanır. Bu büyü icra anında etki alanı içindeki tüm korku etkilerini ortadan kaldırır.~
-@43=~Duygu: Umut~
-@44=~Duygu: Umut
+@44=~Duygu: Umut~
+@45=~Duygu: Umut
 (Efsunlama)
 Seviye: 4
 Menzil: İcracının Görüş Alanı
@@ -118,8 +119,8 @@ Büyü Yapma Süresi: 4
 Etki Alanı: 3 mt yarıçapında
 Kurtarış Zarı: Etkisiz
 Bu büyü etki alanında umut duygusu yaratır. Büyünün etkisine giren her yaratığın morali artar ve kurtarış, saldırı ve hasar zarlarına +2 kazanırlar.~
-@45=~Duygu: Korku~
-@46=~Duygu: Korku 
+@46=~Duygu: Korku~
+@47=~Duygu: Korku 
 (Efsunlama)
 Seviye: 4
 Menzil: İcracının Görüş Alanı
@@ -128,8 +129,8 @@ Büyü Yapma Süresi: 4
 Etki Alanı: 3 mt yarıçapında
 Kurtarış Zarı: Etkisiz
 Bu büyü etki alanında korku duygusu yaratır. Büyünün etkisine giren her yaratık 5 raunt boyunca kaçar.~
-@47=~Emotion: Hopelessness~
-@48=~Duygu: Umutsuzluk 
+@48=~Emotion: Hopelessness~
+@49=~Duygu: Umutsuzluk 
 (Efsunlama)
 Seviye: 4
 Menzil: İcracının Görüş Alanı
@@ -138,8 +139,8 @@ Büyü Yapma Süresi: 4
 Etki Alanı: 3 mt yarıçapında
 Kurtarış Zarı: Etkisiz
 Bu büyü etki alanında umutsuzluk duygusu yaratır. Büyünün etkisine giren her yaratık büyünün etki süresi boyunca hiçbir şey yapmadan olduğu yerde dikilir.~
-@49=~Hopelessness~
-@50=~Mordenkainen'in Güç Misilleri
+@50=~Hopelessness~
+@51=~Mordenkainen'in Güç Misilleri
 (Oluşturma)
 Seviye: 4
 Menzil: İcracının Görüş Alanı
@@ -148,9 +149,9 @@ Büyü Yapma Süresi: 4
 Etki Alanı: Özel
 Kurtarış Zarı: Özel
 Bu büyü Büyü Misili büyüsüne çok benzer bir şekilde, hızla icracının elinden çıkarak şaşmaz bir biçimde hedefe isabet eden, parlak bir büyülü enerji küresi yaratır. Büyücü 7. seviyede bir misil ve 7. seviyeden sonra her üç seviyede ilave bir misil yaratır - başka bir deyişle 10. seviyede iki misil, 13.'de üç, 16.'da dört olmak üzere devam eder; maksimum 25. seviyede yedi misil yaratır. Her bir misil hedefe 2z4 puan hasar verir, sonra da 1,5 metre yarıçapında sarsıcı bir patlamayla infilak eder; bu patlama icracının seviyesi başına 1 puan hasar verir - örneğin 12. seviye bir büyücü her biri 2z4+12 puan hasar ile çarpan iki güç misili meydana getirebilir. Hasar alan yaratıklar sonraki patlamanın hasarından kurtulabilmek için büyüye karşı kurtarış yapabilirler; ancak misilin çarpışında kurtarış zarına izin yoktur. 1. seviye büyücü büyüsü Kalkan güç misillerini zararsızca emebilir, buna ardından gelen sarsıcı patlama hasarı da dahildir.~
-@51=~Mordenkainen'in Güç Misilleri~
-@52=~Nara~
-@53=~Nara (Oluşturma)
+@52=~Mordenkainen'in Güç Misilleri~
+@53=~Nara~
+@54=~Nara (Oluşturma)
 Seviye: 4
 Menzil: İcracı
 Etki Süresi: Anında 
@@ -158,9 +159,9 @@ Büyü Yapma Süresi: 1
 Etki Alanı: 9 metre uzunluk, 3 metre çap
 Kurtarış Zarı: 1/2
 Nara büyücüye muazzam gırtlak güçleri bahşeder, ağzından kulak zarlarını patlatan bir haykırış çıkartmasını sağlar. Bu haykırış 9 metre uzunluğa ve 3 metre çapa ulaşan bir etki alanına sahiptir. Bu alan içindeki her yaratık 2z6 raunt boyunca sağır olur ve 4z6 puan hasar alır. Başarılı bir büyüye karşı kurtarış yaratığın sağırlıktan etkilenmemesini sağlar ve alacağı hasarı yarıya indirir.~
-@54=~Sağırlık~
-@55=~Kezzap Küresi~
-@56=~Kezzap Küresi (Çağırma)
+@55=~Sağırlık~
+@56=~Kezzap Küresi~
+@57=~Kezzap Küresi (Çağırma)
 Seviye: 4
 Menzil: İcracının Görüş Alanı
 Etki Süresi: Özel
@@ -168,8 +169,8 @@ Büyü Yapma Süresi: 4
 Etki Alanı: Özel
 Kurtarış Zarı: Özel
 Bu büyü, icracının menzil içindeki herhangi bir hedefe çarpması için yönlendirebileceği, zümrüt yeşili parlayan bir küre meydana getirir. Hedefine ulaştığında küre patlar ve kurbanı kuvvetli bir asitle sırılsıklam eder. Kurban icracının seviyesi başına 1z4 puan asit hasarı alır, alabileceği maksimum hasar 12z4 puandır. İlk hasardan sonra kurban daha fazla hasardan sakınabilmek için kurtarış zarı atmak zorundadır. Başarısız olursa kurban ilerleyen rauntlarda asit hasarı almaya devam eder; her rauntta katlanacağı hasar iki zar azalır. Örneğin 8. seviye bir büyücü bu büyüyle birinci rauntta 8z4, ikinci rauntta 6z4, üçüncü rauntta 4z4, dördüncü rauntta 2z4 puan hasar verir ve büyü beşinci rauntta sona erer. Her rauntta kurbanın daha fazla hasardan sakınmak için büyüye karşı kurtarış zarı atma hakkı vardır. Kezzap küresi aynı zamanda ana hedefinin 1,5 metre yarıçaplık çevresine de asit sıçratır. Sıçrama yarıçapı içinde yer alan her yaratık şekil değiştirmeye/felçe karşı kurtarış yapmalıdır, aksi takdirde icracının sahip olduğu her beş seviye başına 1z6 puan hasar veren bir sıçrama vuruşunun kurbanı olur. Sıçrama vuruşları devamlı hasara sebep olmaz.~
-@57=~Alev Kefeni~
-@58=~Alev Kefeni 
+@58=~Alev Kefeni~
+@59=~Alev Kefeni 
 (Oluşturma)
 
 Seviye: 5
@@ -180,7 +181,6 @@ Etki Alanı: 4 metre yarıçapında
 Kurtarış Zarı: Etkisiz
 
 Bu büyü bir yaratığın, şayet büyüye karşı kurtarışta başarılı olamazsa alev almasına sebep olur. Yaratık her rauntta yanarak 2z6 puanlık hasar alır ve yanan hedeften püsküren alev damlaları, hedefe 4 metre uzaklıkta ya da daha yakın duran yaratıkların alevlerden 1z4 puan hasar almasına neden olur. Ayrıca kurbanın alevlerinin isabet ettiği herkes, kendileri de kefen büyüsüne tutulmamak için büyüye karşı kurtarış gerçekleştirmelidir. İcracı ile hedef artık aynı alanda değilse alev kefeni yok olur. Bu büyü özellikle trol ve buz semenderleri sürülerini dağıtmak için birebirdir.~
-@59=~<NO TEXT>~
 @60=~Otiluke'ün Dondurucu Küresi~
 @61=~Otiluke'ün Dondurucu Küresi 
 (Başkalaşım, Oluşturma)

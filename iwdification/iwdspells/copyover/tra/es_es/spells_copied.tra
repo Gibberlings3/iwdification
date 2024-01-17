@@ -5,37 +5,38 @@
 
 Todos los aliados en un radio de 9m ganan +1 al golpe, +1 al daño y +1 a todas las tiradas de salvación.~
 @4=~La balada de los tres héroes: Bonificaciones al combate~
-@5=~El Relato de Curran Fortecorazón~
-@6=~"El cuento de Curran Fortecor"
+@5=~Escarabajo~
+@6=~El Relato de Curran Fortecorazón~
+@7=~"El cuento de Curran Fortecor"
 
 Todos los aliados en un radio de 9m ganan inmunidad al miedo y todos los efectos del miedo actualmente sobre ellos son curados.~
-@7=~El relato de Curran Fortecorazón: Inmunidad al miedo~
-@8=~Pánico~
-@9=~Melodía de Tymora~
-@10=~"La melodía de Tymora"
+@8=~El relato de Curran Fortecorazón: Inmunidad al miedo~
+@9=~Pánico~
+@10=~Melodía de Tymora~
+@11=~"La melodía de Tymora"
 
 Todos los aliados en un radio de 9m ganan +1 a la suerte, +3 a las tiradas de salvación, +10 al conocimiento y +10% a sus habilidades de ladrón.~
-@11=~Melodía de Tymora: Suerte y bonificaciones de habilidad~
-@12=~La Canción de Kaudies~
-@13=~"La canción de Kaudies"
+@12=~Melodía de Tymora: Suerte y bonificaciones de habilidad~
+@13=~La Canción de Kaudies~
+@14=~"La canción de Kaudies"
 
 Todos los aliados en un radio de 9m ganan la posibilidad de curar los efectos de Silencio, Alarido, Gran Alarido, Orden Imperiosa o cualquier otro ataque de sonido. ~
-@14=~La canción de Kaudies: Resistencia a los ataques sonoros~
-@15=~Conjuro ineficaz~
-@16=~El Anhelo de la Sirena~
-@17=~"El anhelo de la sirena"
+@15=~La canción de Kaudies: Resistencia a los ataques sonoros~
+@16=~Conjuro ineficaz~
+@17=~El Anhelo de la Sirena~
+@18=~"El anhelo de la sirena"
 
 Todos los enemigos en un radio de 9m deven salvar contra Hechizos o ser Cautivados e incapaces de tomar acción hasta que pase un asalto o sean dañados.~
-@18=~El anhelo de la sirena: Cautiva a las criaturas~
-@19=~Aturdido~
-@20=~Cautivado~
-@21=~Cántico de Guerra de Sith~
-@22=~"Canto de guerra de Sith"
+@19=~El anhelo de la sirena: Cautiva a las criaturas~
+@20=~Aturdido~
+@21=~Cautivado~
+@22=~Cántico de Guerra de Sith~
+@23=~"Canto de guerra de Sith"
 
 Todos los aliados en un radio de 9m ganan +2 a la Clase de Armadura, +10% resistencia al daño cortante, punzante, aplastante y de misil; y la habilidad de regenerar 2 puntos de daño por asalto.~
-@23=~Cántico de guerra de Sith: Bonificaciones a la armadura y regeneración~
-@24=~Enjambre de bolas de nieve de Snilloc~
-@25=~Enjambre de bolas de nieve de Snilloc
+@24=~Cántico de guerra de Sith: Bonificaciones a la armadura y regeneración~
+@25=~Enjambre de bolas de nieve de Snilloc~
+@26=~Enjambre de bolas de nieve de Snilloc
 (Evocación)
 Nivel: 2
 Alcance: Rango visual del lanzador
@@ -47,10 +48,10 @@ Tirada de salvación: Mitad
 DESCRIPCIÓN:
 
 Este conjuro ocasiona unos remolinos de bolas de nieve que brotan desde un punto dentro de una zona determinada. Estas bolas de nieve golpearán a todo lo que se encuentre dentro del área de efecto, haciendo 1-3 puntos de daño por nivel, hasta un máximo de 8-24 puntos de daño en el nivel 8. Contra criaturas que usan o moran en el fuego, inflige 1-6 puntos de daño por nivel.~
-@26=~Decaestaca~
 @27=~Decaestaca~
 @28=~Decaestaca~
-@29=~Decaestaca
+@29=~Decaestaca~
+@30=~Decaestaca
 (Evocación)
 Nivel: 2
 Alcance: El lanzador
@@ -62,8 +63,8 @@ Tirada de salvación: Ninguna
 DESCRIPCIÓN:
 
 Este conjuro crea un bastón de energía en la mano del lanzador. Se considera un arma mágica, y hace 1-6 puntos de daño por golpe y puede golpear a criaturas inmunes a armas normales. Sin embargo es una bastón, así que si el lanzador no tiene ningún talento marcial en bastones, entonces la Decaestaca se usa con penalizadores. El bastón también tiene el poder para drenar 1-2 puntos de golpe del objetivo en el primer golpe. Estos puntos de golpe se añaden al lanzador, pero solo pueden curar el daño que el lanzador ha recibido; no aumentarán sus puntos de golpe máximos.~
-@30=~Gracia felina~
-@31=~Gracia felina
+@31=~Gracia felina~
+@32=~Gracia felina
 (Alteración)
 Nivel: 2
 Alcance: Toque
@@ -81,9 +82,9 @@ Los guerreros y magos ganan 1-6 puntos
 Los clérigos ganan 1-4 puntos
 
 El conjuro Gracia felina no puede aumentar en más de 20 la destreza del objetivo.~
-@32=~Modificación de la Destreza~
-@33=~Lanza de hielo~
-@34=~Lanza de hielo
+@33=~Modificación de la Destreza~
+@34=~Lanza de hielo~
+@35=~Lanza de hielo
 (Evocación)
 Nivel: 3
 Alcance: Rango visual del lanzador
@@ -95,9 +96,9 @@ Tirada de salvación: Especial
 DESCRIPCIÓN:
 
 Este conjuro dispara una lanza mágica de hielo al objetivo que elije el lanzador. Golpea de forma automática, infligiendo 5-30 puntos de daño y forzando al objetivo a hacer una tirada de salvación contra conjuros, sino quedará aturdido durante 1-4 asaltos.~
-@35=~Atontado~
-@36=~Lanza de disrupción~
-@37=~Lanza de disrupción
+@36=~Atontado~
+@37=~Lanza de disrupción~
+@38=~Lanza de disrupción
 (Invocación)
 Nivel: 3
 Alcance: 18 metros
@@ -111,9 +112,9 @@ DESCRIPCIÓN:
 Este conjuro crea una lanza de energía, que se extiende desde el lanzador hasta un punto concreto situado a una distancia de 18 metros. Cualquier criatura que se encuentre en el camino de la lanza sufrirá 5D4 puntos de daño contundente, y adicionalmente, +2 puntos de daño por nivel del lanzador (hasta un máximo de +30).
 
 Las víctimas pueden hacer una tirada de salvación contra conjuros para recibir solamente la mitad del daño.~
-@38=~Furia~
-@39=~Sangre ardiente de Beltyn~
-@40=~Sangre ardiente de Beltyn
+@39=~Furia~
+@40=~Sangre ardiente de Beltyn~
+@41=~Sangre ardiente de Beltyn
 (Nigromancia)
 Nivel: 4
 Alcance: Rango visual del lanzador
@@ -125,8 +126,8 @@ Tirada de salvación: Negación
 DESCRIPCIÓN:
 
 Este conjuro convierte la sangre del objetivo en fuego, y a causa de eso, recibe 3-12 puntos de daño en cada asalto y hace que se enfurezca debido al dolor. El objetivo debe hacer una tirada de salvación contra conjuros en cada asalto; si tiene éxito, el daño y el estar enfurecido se niegan. Este conjuro no funciona en muertos vivientes o en criaturas de los Planos exteriores que no tengan sangre (como los elementales). Si la criatura es resistente al fuego, esta resistencia disminuirá o anulará el daño de este conjuro.~
-@41=~Emoción: valentía~
-@42=~Emoción: valentía
+@42=~Emoción: valentía~
+@43=~Emoción: valentía
 (Encantamiento/Hechizo)
 Nivel: 4
 Alcance: Rango visual del lanzador
@@ -138,8 +139,8 @@ Tirada de salvación: Negación
 DESCRIPCIÓN:
 
 Este conjuro provoca la emoción de valentía dentro del área de efecto. Todas las criaturas afectadas por el conjuro ganan +1 al acierto del golpe, +3 a las tiradas de dado al daño y +5 a los puntos de golpe temporales (que pueden superar los puntos de golpe máximos). Este conjuro anula todos los efectos de miedo dentro del área de efecto en el momento de ser lanzado.~
-@43=~Emoción: esperanza~
-@44=~Emoción: esperanza
+@44=~Emoción: esperanza~
+@45=~Emoción: esperanza
 (Encantamiento/Hechizo)
 Nivel: 4
 Alcance: Rango visual del lanzador
@@ -151,8 +152,8 @@ Tirada de salvación: Negación
 DESCRIPCIÓN:
 
 Este conjuro crea la emoción de esperanza dentro del área de efecto. Todas las criaturas afectadas por el conjuro ganan un aumento de la moral, y +2 a las tiradas de salvación, tiradas de dado para el ataque y tiradas de dado para el daño.~
-@45=~Emoción: temor~
-@46=~Emoción: temor
+@46=~Emoción: temor~
+@47=~Emoción: temor
 (Encantamiento/Hechizo)
 Nivel: 4
 Alcance: Rango visual del lanzador
@@ -164,8 +165,8 @@ Tirada de salvación: Negación
 DESCRIPCIÓN:
 
 Este conjuro provoca la emoción de temor dentro del área de efecto. Todas las criaturas afectadas por el conjuro huyen durante 5 asaltos.~
-@47=~Emoción: desesperación~
-@48=~Emoción: desesperación
+@48=~Emoción: desesperación~
+@49=~Emoción: desesperación
 (Encantamiento/Hechizo)
 Nivel: 4
 Alcance: Rango visual del lanzador
@@ -177,8 +178,8 @@ Tirada de salvación: Negación
 DESCRIPCIÓN:
 
 Este conjuro crea la emoción de la desesperanza dentro del área de efecto. Todas las criaturas afectadas por el conjuro se detienen y no hacen nada mientras dura el conjuro.~
-@49=~Desesperación~
-@50=~Proyectiles de fuerza de Mordenkainen
+@50=~Desesperación~
+@51=~Proyectiles de fuerza de Mordenkainen
 (Invocación)
 Nivel: 4
 Alcance: Rango visual del lanzador
@@ -192,9 +193,9 @@ DESCRIPCIÓN:
 Este conjuro crea un globo brillante de energía mágica que surge de la mano del lanzador y alcanza a su objetivo sin posibilidad de error, de forma muy parecida al conjuro Proyectil mágico. El mago crea un proyectil en el séptimo nivel, y un proyectil adicional cada tres niveles después del séptimo... en otras palabras, dos proyectiles a nivel 10, tres a nivel 13, cuatro a nivel 16, y así, hasta un máximo de siete proyectiles a nivel 25. Cada proyectil inflige 2D4 puntos de daño al objetivo y, a continuación, brota en un radio de 1'5 metros una explosión violenta que inflige 1 punto de daño por nivel del lanzador... por ejemplo, un mago de nivel 12, podría convocar dos proyectiles de fuerza, y cada uno de ellos haría 2D4+12 puntos de daño.
 
 Las criaturas que reciben el daño pueden intentar una tirada de salvación contra conjuros para evitar el daño de la explosión, pero el propio proyectil no permite ninguna tirada de salvación. El conjuro Escudo del primer nivel de mago absorbe el daño del proyectil de fuerza, incluído el daño de la explosión.~
-@51=~Proyectiles de fuerza de Mordenkainen~
-@52=~Alarido~
-@53=~Alarido
+@52=~Proyectiles de fuerza de Mordenkainen~
+@53=~Alarido~
+@54=~Alarido
 (Invocación)
 Nivel: 4
 Alcance: El lanzador
@@ -206,9 +207,9 @@ Tirada de salvación: Mitad
 DESCRIPCIÓN:
 
 Este conjuro otorga al mago un tremendo poder vocal, permitiéndole emitir desde la boca un rugido ensordecedor que cubre un área de efecto cónica de 10 metros de largo por 3 metros de diámetro en su punto más lejano. Cualquier criatura dentro del área queda ensordecida durante 2D6 asaltos y recibe 4D6 puntos de daño. Una tirada de salvación contra conjuros con éxito niega la sordera y reduce el daño a la mitad.~
-@54=~Sordera~
-@55=~Esfera vitriólica~
-@56=~Esfera vitriólica
+@55=~Sordera~
+@56=~Esfera vitriólica~
+@57=~Esfera vitriólica
 (Conjuración)
 Nivel: 4
 Alcance: Rango visual del lanzador
@@ -224,8 +225,8 @@ Este conjuro convoca una esfera de ácido de color esmeralda brillante que el la
 Cuando acierta en el objetivo, la esfera explota y empapa a la víctima con un potente ácido. La víctima sufre 1D4 puntos de daño por ácido por nivel del lanzador, hasta un máximo de 12D4 puntos de daño. Tras el daño inicial, la víctima debe hacer una tirada de salvación para evitar el daño. Si no tiene éxito, la víctima continúa sufriendo daño por ácido en los asaltos siguientes, soportando dos dados menos de daño en cada asalto que transcurre. Por ejemplo, un mago de octavo nivel inflige 8D4 puntos de daño con este conjuro en el primer asalto, 6D4 en el segundo asalto, 4D4 en el tercero, 2D4 en el cuarto, y en el quinto asalto finaliza el conjuro. A la víctima se le permite una tirada de salvación contra conjuros en cada ronda para evitar más daño.
 
 El conjuro Esfera vitriólica también salpica ácido en un radio de 1'5 metros alrededor del primer objetivo. Las criaturas dentro del radio donde salpica, deben hacer una tirada de salvación contra polimorfismo/petrificación o sufrirán un golpe por salpicadura que inflige 1D4 puntos de daño por cada cinco niveles del lanzador. Los golpes por salpicadura no provocan un daño continuado.~
-@57=~Sudario de fuego~
-@58=~Sudario de fuego
+@58=~Sudario de fuego~
+@59=~Sudario de fuego
 (Invocación)
 Nivel: 5
 Alcance: Rango visual del lanzador
@@ -237,7 +238,6 @@ Tirada de salvación: Negación
 DESCRIPCIÓN:
 
 Este conjuro hace que una criatura comience a arder si falla una tirada de salvación contra conjuros. La criatura arderá recibiendo 2D6 puntos de daño en cada asalto, y del objetivo ardiendo eruptan gotas de fuego que causan a las criaturas dentro de un radio de 3 metros del objetivo que reciban 1D4 puntos de daño por fuego. Cualquiera que sea golpeado por las llamas de la víctima también debe hacer una tirada de salvación contra conjuros para evitar contraer el sudario. El sudario de fuego se disipa si el lanzador y el objetivo ya no están en la misma área. Este conjuro es particularmente útil para dispersar grupos de trolls o salamandras de la escarcha.~
-@59=~Escarabajo~
 @60=~Esfera congelante de Otiluke~
 @61=~Esfera congelante de Otiluke
 (Alteración, Evocación)

@@ -5,37 +5,38 @@
 
 All allies within 30 ft. gain +1 to hit, +1 to damage, and +1 to all their Saving Throws.~
 @4=~The Ballad of Three Heroes—Combat Bonuses~
-@5=~The Tale of Curran Strongheart~
-@6=~"The Tale of Curran Strongheart"
+@5=~<NO TEXT>~
+@6=~The Tale of Curran Strongheart~
+@7=~"The Tale of Curran Strongheart"
 
 All allies within 30 ft. gain immunity to fear effects for as long as the song lasts, and any fear effects currently on them are removed.~
-@7=~The Tale of Curran Strongheart—Immunity to Fear~
-@8=~Panic~
-@9=~Tymora's Melody~
-@10=~"Tymora's Melody"
+@8=~The Tale of Curran Strongheart—Immunity to Fear~
+@9=~Panic~
+@10=~Tymora's Melody~
+@11=~"Tymora's Melody"
 
 All allies within 30 ft. gain +1 to luck, +3 to Saving Throws, +10 to lore, and a +10% bonus to all of their thieving skills.~
-@11=~Tymora's Melody—Luck and Skill Bonuses~
-@12=~The Song of Kaudies~
-@13=~"The Song of Kaudies"
+@12=~Tymora's Melody—Luck and Skill Bonuses~
+@13=~The Song of Kaudies~
+@14=~"The Song of Kaudies"
 
 All allies within 30 ft. have a 50% chance to shrug off the effects of spells such as Silence, Shout, Great Shout, Command, Greater Command, or any other sound-based attack.~
-@14=~The Song of Kaudies—Resistant to Sound Attacks~
-@15=~Spell Ineffective~
-@16=~The Siren's Yearning~
-@17=~"The Siren's Yearning"
+@15=~The Song of Kaudies—Resistant to Sound Attacks~
+@16=~Spell Ineffective~
+@17=~The Siren's Yearning~
+@18=~"The Siren's Yearning"
 
 All enemies within 30 ft. must save vs. Spell or become enthralled, unable to take action until 1 round passes or they take damage.~
-@18=~The Siren's Yearning—Enthralls Creatures~
-@19=~Stunned~
-@20=~Enthralled~
-@21=~War Chant of Sith~
-@22=~"War Chant of Sith"
+@19=~The Siren's Yearning—Enthralls Creatures~
+@20=~Stunned~
+@21=~Enthralled~
+@22=~War Chant of Sith~
+@23=~"War Chant of Sith"
 
 All allies within 30 ft. gain a +2 bonus to Armor Class, +10% resistance to slashing, piercing, crushing, and missile damage, and the ability to regenerate 2 Hit Points per round.~
-@23=~War Chant of Sith—Armor Bonuses and Regeneration~
-@24=~Snilloc's Snowball Swarm~
-@25=~Snilloc's Snowball Swarm
+@24=~War Chant of Sith—Armor Bonuses and Regeneration~
+@25=~Snilloc's Snowball Swarm~
+@26=~Snilloc's Snowball Swarm
 (Evocation)
 
 Level: 2
@@ -46,10 +47,10 @@ Area of Effect: 15-ft. radius
 Saving Throw: 1/2
 
 This spell causes a flurry of snowballs to erupt from a point within range. These snowballs will hit everything within the area of effect, doing 1d3 points of cold damage per level, up to a maximum of 8d3 points at level 8. Against fire-using or fire-dwelling creatures, it inflicts 1d6 points of cold damage per level, up to a maximum of 8d6 points at level 8.~
-@26=~Decastave~
 @27=~Decastave~
 @28=~Decastave~
-@29=~Decastave
+@29=~Decastave~
+@30=~Decastave
 (Evocation)
 
 Level: 2
@@ -60,8 +61,8 @@ Area of Effect: The caster
 Saving Throw: None
 
 This spell creates a staff of force in the caster's hand. It is treated as a magical weapon, doing 1d6 Hit Points of damage per hit, and it can hit creatures that require +1 weapons to hit. It is a staff, however, so if the caster does not have a proficiency in staff weapons, then the Decastave is used at a penalty. The staff also has the power to drain a target of 1d2 Hit Points on every strike. These Hit Points are added to the caster's, but they can only heal damage the caster has taken; they will not raise <PRO_HISHER> Hit Points beyond <PRO_HISHER> normal maximum.~
-@30=~Cat's Grace~
-@31=~Cat's Grace
+@31=~Cat's Grace~
+@32=~Cat's Grace
 (Alteration)
 
 Level: 2
@@ -72,9 +73,9 @@ Area of Effect: 1 creature
 Saving Throw: None
 
 This spell magically increases a target's Dexterity. The amount depends on the target's class: Rogues gain 1d8 points, warriors and wizards gain 1d6 points, and priests gain 1d4 points. If a character has more than one class, the larger die is used. Cat's Grace cannot raise a target's Dexterity past 20.~
-@32=~Dexterity Modification~
-@33=~Icelance~
-@34=~Icelance
+@33=~Dexterity Modification~
+@34=~Icelance~
+@35=~Icelance
 (Evocation)
 
 Level: 3
@@ -85,9 +86,9 @@ Area of Effect: 1 creature
 Saving Throw: Special
 
 This spell fires a magical lance of ice at a target of the caster's choosing. It automatically hits, inflicting 5d6 points of cold damage and forcing the target to make a Save vs. Spell or be stunned for 3 rounds.~
-@35=~Stunned~
-@36=~Lance of Disruption~
-@37=~Lance of Disruption
+@36=~Stunned~
+@37=~Lance of Disruption~
+@38=~Lance of Disruption
 (Invocation)
 
 Level: 3
@@ -98,9 +99,9 @@ Area of Effect: Special
 Saving Throw: 1/2
 
 This spell shoots a lance of force, which travels from the caster to a specified point 100 ft. in the distance. Any creatures in the lance's path take 5d4 points of crushing damage plus 2 points of damage per level of the caster (maximum of +30). Victims can save vs. Spell for half damage.~
-@38=~Berserk~
-@39=~Beltyn's Burning Blood~
-@40=~Beltyn's Burning Blood
+@39=~Berserk~
+@40=~Beltyn's Burning Blood~
+@41=~Beltyn's Burning Blood
 (Necromancy)
 
 Level: 4
@@ -111,8 +112,8 @@ Area of Effect: 1 creature
 Saving Throw: Neg.
 
 This spell turns a target's blood to flame, doing 3d4 Hit Points of damage every round and driving the victim berserk with pain. The target gets to save vs. Spell every round; if successful, the damage and berserk state are negated. This spell does not work against undead or extraplanar creatures that do not have blood (such as elementals). If the creature is resistant to fire, this resistance will lower or nullify the damage from this spell.~
-@41=~Emotion, Courage~
-@42=~Emotion, Courage
+@42=~Emotion, Courage~
+@43=~Emotion, Courage
 (Enchantment/Charm)
 
 Level: 4
@@ -123,8 +124,8 @@ Area of Effect: 7-ft. radius
 Saving Throw: None
 
 This spell creates the emotion of courage within the area of effect. All creatures affected by the spell gain +1 to hit, +3 to their damage rolls, and +5 temporary Hit Points (which can put them above their maximum Hit Points). This spell nullifies all fear effects within the area of effect at the time of casting.~
-@43=~Emotion, Hope~
-@44=~Emotion, Hope
+@44=~Emotion, Hope~
+@45=~Emotion, Hope
 (Enchantment/Charm)
 
 Level: 4
@@ -135,8 +136,8 @@ Area of Effect: 7-ft. radius
 Saving Throw: None
 
 This spell creates the emotion of hope within the area of effect. All creatures affected by the spell gain a morale boost and +2 on their Saving Throws, attack rolls, and damage rolls. This spell nullifies all hopelessness effects within the area of effect at the time of casting.~
-@45=~Emotion, Fear~
-@46=~Emotion, Fear
+@46=~Emotion, Fear~
+@47=~Emotion, Fear
 (Enchantment/Charm)
 
 Level: 4
@@ -147,8 +148,8 @@ Area of Effect: 7-ft. radius
 Saving Throw: Neg.
 
 This spell creates the emotion of fear within the area of effect. All enemies who fail to save vs. Spell flee for 5 rounds. This spell nullifies Emotion, Courage within the area of effect at the time of casting.~
-@47=~Emotion, Hopelessness~
-@48=~Emotion, Hopelessness
+@48=~Emotion, Hopelessness~
+@49=~Emotion, Hopelessness
 (Enchantment/Charm)
 
 Level: 4
@@ -159,8 +160,8 @@ Area of Effect: 7-ft. radius
 Saving Throw: Neg.
 
 This spell creates the emotion of hopelessness within the area of effect. All enemies who fail to save vs. Spell just stand and do nothing for 1 turn. This spell nullifies Emotion, Hope within the area of effect at the time of casting.~
-@49=~Hopelessness~
-@50=~Mordenkainen's Force Missiles
+@50=~Hopelessness~
+@51=~Mordenkainen's Force Missiles
 (Invocation)
 
 Level: 4
@@ -171,9 +172,9 @@ Area of Effect: 2-ft. radius
 Saving Throw: Special
 
 This spell creates a brilliant globe of magical energy that streaks forth from the caster's hand to unerringly strike its target, much like a Magic Missile spell. The wizard creates one missile at 7th level and an additional missile at every third level after 7th—in other words, two missiles at 10th level, three at 13th, four at 16th, and so on, to a maximum of seven missiles at 25th level. Each missile inflicts 2d4 points of damage to the target and then bursts in a 2-ft. radius concussive blast that inflicts 1 point of damage per level of the caster—for example, a 12th-level wizard could conjure two force missiles, each of which strikes for 2d4+12 points of magic damage. Creatures taking damage can attempt a Save vs. Spell to negate the concussion damage, but the impact of the missile itself allows no Saving Throw. The 1st-level wizard spell Shield will absorb the force missiles harmlessly, including the concussion damage.~
-@51=~Mordenkainen's Force Missiles~
-@52=~Shout~
-@53=~Shout
+@52=~Mordenkainen's Force Missiles~
+@53=~Shout~
+@54=~Shout
 (Invocation)
 
 Level: 4
@@ -184,9 +185,9 @@ Area of Effect: 17-ft. cone with 15-deg. arc
 Saving Throw: Special
 
 Shout grants the wizard tremendous vocal powers, allowing <PRO_HIMHER> to emit an earsplitting roar from <PRO_HISHER> mouth in a cone-shaped area of effect. Any creature within this area is deafened for 9 rounds and suffers 4d6 points of magic damage. A successful Save vs. Spell negates the deafness and reduces the damage by half.~
-@54=~Deafness~
-@55=~Vitriolic Sphere~
-@56=~Vitriolic Sphere
+@55=~Deafness~
+@56=~Vitriolic Sphere~
+@57=~Vitriolic Sphere
 (Conjuration)
 
 Level: 4
@@ -199,8 +200,8 @@ Saving Throw: Special
 This spell conjures a sphere of glowing emerald acid that the caster can direct to strike any target within range. When it reaches its target, the sphere explodes and drenches the victim in potent acid. The victim suffers 1d4 points of acid damage per caster level, to a maximum of 12d4 points of damage. After the initial damage, the victim must save vs. Spell to avoid more damage. If unsuccessful, the victim continues to suffer acid damage in the following rounds, sustaining two less dice of damage each round. For example, an 8th-level wizard inflicts 8d4 damage with this spell on the first round, 6d4 on the second round, 4d4 on the third round, 2d4 on the fourth round, and the spell ends on the fifth round. Each round after the first, the victim is entitled to a Save vs. Spell to avoid further damage.
 
 The vitriolic sphere also splashes acid in a 5-ft. radius around the primary target. Any creatures within the splash radius must save vs. Petrification/Polymorph or suffer a splash hit that inflicts 1d4 points of damage per every five levels of the caster. Splash hits do not cause continuing damage.~
-@57=~Shroud of Flame~
-@58=~Shroud of Flame
+@58=~Shroud of Flame~
+@59=~Shroud of Flame
 (Invocation)
 
 Level: 5
@@ -211,7 +212,6 @@ Area of Effect: 5-ft. radius
 Saving Throw: Neg.
 
 This spell causes a creature to burst into flames if it fails a Save vs. Spell. The creature will burn for 2d6 points of fire damage every round, and gouts of flame erupt from the burning target, causing any creatures within 5 ft. to take 1d4 points of fire damage from the flames. Anyone hit by the victim's flames must also make a Save vs. Spell to avoid contracting the shroud themselves. The shroud of flame dissipates if the caster and target are no longer in the same area. This spell is particularly useful in dispersing packs of trolls and frost salamanders.~
-@59=~<NO TEXT>~
 @60=~Otiluke's Freezing Sphere~
 @61=~Otiluke's Freezing Sphere
 (Alteration, Evocation)
@@ -843,7 +843,7 @@ Saving Throw: None
 Prayer bestows favor on the priest and <PRO_HISHER> allies, and curses their enemies. All attacks, damage, and Saving Throws by friendly characters gain a +1 bonus, while enemy attacks, damage rolls, and saves get a -1 penalty. Any creatures within the area of effect when the spell is cast will continue to be affected by the spell when they leave the area, so if the warriors want to chase down that fleeing goblin, the effects of the Prayer will follow them.~
 @246=~Cause Disease~
 @247=~Cause Disease
-(Abjuration)
+(Necromancy)
 
 Level: 3
 Sphere: Healing
@@ -1253,10 +1253,10 @@ Sphere: Guardian
 Range: Visual range of the caster
 Duration: 11 turns
 Casting Time: 3
-Area of Effect: 12-ft. radius
+Area of Effect: 15-ft. radius
 Saving Throw: Neg.
 
-Symbol, Pain is a powerful enchantment that allows the priest to inscribe a symbol on the ground or any other surface. The symbol will remain there until someone comes too close, at which point it will explode, causing all those within the area of effect to make a Saving Throw vs. Spell. Those who fail their Saving Throws are overwhelmed by pain, suffering a -4 penalty to their attack rolls, a -2 penalty to their Dexterity scores, and a -2 penalty to their Armor Class.~
+All enemies within 15 ft. of the symbol of pain at the moment it is invoked must make a Save vs. Spell. Those who fail their Saving Throws are overwhelmed by pain, suffering a -4 penalty to their attack rolls, a -2 penalty to their Dexterity scores, and a -2 penalty to their Armor Class.~
 @315=~Wracking Pains~
 @316=~Symbol, Hopelessness~
 @317=~Symbol, Hopelessness

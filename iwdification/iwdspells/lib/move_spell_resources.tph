@@ -157,6 +157,7 @@ BEGIN
 						LAF log_this INT_VAR repeat=0 STR_VAR path="%resource_loc%" file="%prefix%_proj.txt" input="%resref% %int%" END
 						ACTION_IF !VARIABLE_IS_SET $do_not_copy("%resource%") BEGIN
 							COPY_EXISTING "%resource%" "%resource_loc%/%spell%"
+								LPF strref_apply STR_VAR function=log_strref END
 						END
 					END
 				END
@@ -949,12 +950,14 @@ BEGIN
 
 	LAF array_read STR_VAR file path location locbase RET_ARRAY array END
 	ACTION_PHP_EACH array AS spell_name=>discard BEGIN
-	    LAF RES_NUM_OF_SPELL_NAME STR_VAR spell_name RET resref=spell_res END
-		ACTION_FOR_EACH letter IN A B C BEGIN
-			ACTION_IF FILE_EXISTS "%resource_loc%/bam/%spell_name%_ANIMATION_%letter%.bam" BEGIN
-				COPY "%resource_loc%/bam/%spell_name%_ANIMATION_%letter%.bam" "override/%resref%%letter%.bam"
-            END
-        END
+	    LAF RES_NUM_OF_SPELL_NAME INT_VAR silent=1 STR_VAR spell_name RET resref=spell_res success=spell_num END
+		ACTION_IF success > 0 BEGIN
+			ACTION_FOR_EACH letter IN A B C BEGIN
+				ACTION_IF FILE_EXISTS "%resource_loc%/bam/%spell_name%_ANIMATION_%letter%.bam" BEGIN
+					COPY "%resource_loc%/bam/%spell_name%_ANIMATION_%letter%.bam" "override/%resref%%letter%.bam"
+				END
+			END
+		END
     END
 END
 
@@ -1031,6 +1034,9 @@ BEGIN
 										ACTION_MATCH "%source%" WITH
 										"SP\(IN\|WI\|PR\|CL\)[0-9]+" BEGIN
 											LAF NAME_NUM_OF_SPELL_RES STR_VAR spell_res="%source%" RET source=spell_name END
+											ACTION_IF VARIABLE_IS_SET $ids_remaps("%source%") BEGIN
+												OUTER_SPRINT source $ids_remaps("%source%")
+											END
 										END
 										"SP\(IN\|WI\|PR\)[0-9]+[A-Z]" BEGIN
 											OUTER_PATCH "%source%" BEGIN
@@ -1041,6 +1047,9 @@ BEGIN
 												""
 											END
 											LAF NAME_NUM_OF_SPELL_RES STR_VAR spell_res="%base%" RET source=spell_name END
+											ACTION_IF VARIABLE_IS_SET $ids_remaps("%source%") BEGIN
+												OUTER_SPRINT source $ids_remaps("%source%")
+											END
 											OUTER_SPRINT source "%source%-%letter%"
 										END
 										DEFAULT

@@ -5,37 +5,38 @@
 
 Všichni spojenci do 9 metrů od barda obdrží: +1 k šanci na zásah, +1 ke zranění a +1 ke všem jejich záchraným hodům.~
 @4=~Balada o třech hrdinech - bojové bonusy~
-@5=~Příběh Currana Silného srdce~
-@6=~“Příběh Currana Stronghearta.” 
+@5=~<NO TEXT>~
+@6=~Příběh Currana Silného srdce~
+@7=~“Příběh Currana Stronghearta.” 
 
 Všichni spojenci do 9 metrů od barda jsou zbaveni strachu a obdrží imunitu na strach po dobu, dokud bard zpívá píseň.~
-@7=~Příběh Currana Silného srdce - imunita: strach~
-@8=~Panika~
-@9=~Tymořina melodie~
-@10=~“Tymořina melodie.” 
+@8=~Příběh Currana Silného srdce - imunita: strach~
+@9=~Panika~
+@10=~Tymořina melodie~
+@11=~“Tymořina melodie.” 
 
 Všichni spojenci do 9 metrů od barda obdrží: +1 ke štěstí, +3 k záchraným hodům, +10 ke znalostem a +10 ke všem jejich zlodějským schopnostem.~
-@11=~Tymořina melodie - bonusy ke štěstí a dovednostem~
-@12=~Zpěv Kaudies~
-@13=~“Kaudiesova píseň.” 
+@12=~Tymořina melodie - bonusy ke štěstí a dovednostem~
+@13=~Zpěv Kaudies~
+@14=~“Kaudiesova píseň.” 
 
 Všichni spojenci do 9 metrů od barda omají 50% šanci zbavit se účinků kouzel jako je ticho, výkřik, mocný výkřik, příkaz, mocnější příkaz a dalších kouzel, které jsou založeny na zvuku.~
-@14=~Zpěv Kaudies - odolnost vůči zvukovým útokům~
-@15=~Kouzlo nepůsobí~
-@16=~Sirénina touha~
-@17=~“Volání Sirény” 
+@15=~Zpěv Kaudies - odolnost vůči zvukovým útokům~
+@16=~Kouzlo nepůsobí~
+@17=~Sirénina touha~
+@18=~“Volání Sirény” 
 
 Všichni nepřátelé do 9 metrů od barda musí uspět v záchraně proti kouzlu, jinak budou okouzleni a nebudou schopni žádné akce, dokud neuplyne 1 kolo, nebo na ně někdo nezaútočí.~
-@18=~Touha Sirény - okouzluje tvory~
-@19=~Omráčení~
-@20=~Očarován~
-@21=~Sithův válečný zpěv~
-@22=~“Válečná píseň Sithů.” 
+@19=~Touha Sirény - okouzluje tvory~
+@20=~Omráčení~
+@21=~Očarován~
+@22=~Sithův válečný zpěv~
+@23=~“Válečná píseň Sithů.” 
 
 Všichni spojenci do 9 metrů od barda obdrží: +2 k obrannému číslu, +10% k odolnosti vůči sečným, bodným a drtivým útokům, stejně jako střelám. Navíc získají regeneraci 2 životy za kolo.~
-@23=~Sithův válečný zpěv - bonusy k brnění a regenerace~
-@24=~Snillocův roj sněhových koulí~
-@25=~Snillocův roj sněhových koulí 
+@24=~Sithův válečný zpěv - bonusy k brnění a regenerace~
+@25=~Snillocův roj sněhových koulí~
+@26=~Snillocův roj sněhových koulí 
 (Vzývání)
 
 Úroveň: 2
@@ -46,10 +47,10 @@ Rozsah: okruh 7,5 metru
 Hod na záchranu: poloviční újma
 
 Toto kouzlo vyvolá spršku sněhových koulí, které vypadávají z místa v dosahu čaroděje a zasáhnou vše v oblasti účinku; působí ztrátu 1-3 životů/úroveň až do maximálních 8-24 životů na 8. úrovni. Ohnivé nebo oheň obývající bytosti pak připraví dokonce o 1-6 životů/úroveň.~
-@26=~Dekahůl~
 @27=~Dekahůl~
 @28=~Dekahůl~
-@29=~Dekahůl (vzývání)
+@29=~Dekahůl~
+@30=~Dekahůl (vzývání)
 Úroveň: 2
 Dosah: sesilatel
 Trvání: 1 kolo/úroveň
@@ -57,8 +58,8 @@ Doba kouzlení: 2
 Rozsah: sesilatel
 Hod na záchranu: žádný
 Toto kouzlo vytvoří v rukou čaroděje silovou hůl. Je považována za magickou zbraň, která při úspěšném zásahu své oběti ubere 1-6 životů a působí i na bytosti imunní vůči normálním zbraním. Je to však hůl, takže pokud mág nemá odbornost na hole, používá Dekahůl s postihem. Tato hůl má také moc při prvním úderu vysát z cíle 1-2 životy, které se přidají k uživatelovým. Ten si jimi však může pouze uzdravit zranění, která utrpěl; počet jeho životů nemůže v tomto případě převýšit normální maximum.~
-@30=~Kočičí mrštnost~
-@31=~Kočičí mrštnost (proměna)
+@31=~Kočičí mrštnost~
+@32=~Kočičí mrštnost (proměna)
 Úroveň: 2
 Dosah: dotyk
 Trvání: 1 hodina/úroveň
@@ -66,9 +67,9 @@ Doba kouzlení: 2
 Rozsah: 1 bytost
 Hod na záchranu: žádný
 Toto kouzlo magicky zvýší obratnost zvoleného tvora. Výše závisí na povolání dotyčného: zloději obdrží 1k8 bodů, bojovníci a mágové 1k6 a kněží 1k4 bodů. Kočičí mrštnost nemůže zvýšit obratnost na více než 20 bodů.~
-@32=~Úprava obratnosti~
-@33=~Ledový oštěp~
-@34=~Ledový oštěp (vzývání)
+@33=~Úprava obratnosti~
+@34=~Ledový oštěp~
+@35=~Ledový oštěp (vzývání)
 Úroveň: 3
 Dosah: dohled sesilatele
 Trvání: okamžité
@@ -76,9 +77,9 @@ Doba kouzlení: 3
 Rozsah: 1 bytost
 Hod na záchranu: zvláštní
 Toto kouzlo vrhne na určený cíl magický ledový oštěp, který zasahuje automaticky, působí zranění za 5-30 životů a donutí oběť k hodu na záchranu, jinak bude na 1-4 kola omráčena.~
-@35=~Omráčen~
-@36=~Ničivý oštěp~
-@37=~Ničivý oštěp (vzývání)
+@36=~Omráčen~
+@37=~Ničivý oštěp~
+@38=~Ničivý oštěp (vzývání)
 Úroveň: 3
 Dosah: 18 metrů
 Trvání: okamžité
@@ -86,9 +87,9 @@ Doba kouzlení: 3
 Rozsah: zvláštní
 Hod na záchranu: poloviční újma
 Tímto kouzlem vyšle sesilatel na zvolený cíl do vzdálenosti 18 metrů silový oštěp. Každý v dráze jeho letu utrpí drtivá zranění ve výši 5k4 +2 na úroveň sesilatele (maximum +30). Oběti si mohou hodit na záchranu proti kouzlu a pokud uspějí, přijdou jen o polovinu životů.~
-@38=~Berserk~
-@39=~Beltynova žhavá krev~
-@40=~Beltynova žhavá krev (nekromancie)
+@39=~Berserk~
+@40=~Beltynova žhavá krev~
+@41=~Beltynova žhavá krev (nekromancie)
 Úroveň: 4
 Dosah: dohled sesilatele
 Trvání: 2 kola
@@ -96,8 +97,8 @@ Doba kouzlení: 4
 Rozsah: 1 bytost
 Hod na záchranu: zruší kouzlo
 Beltynova žhavá krev změní krev cíle v oheň a v každém kole mu způsobí zranění za 3-12 životů. Nepřítel má v každém kole k dispozici hod na záchranu před kouzlem s penalizací -3; je-li úspěšný, kouzlo se ruší. Toto zaklínadlo nemá vliv na nemrtvé nebo astrální bytosti (jako jsou elementálové), které krev nemají. Je-li zasažený tvor odolný vůči ohni, účinky kouzla tuto odolnost snižují nebo úplně anulují.~
-@41=~Emoce: Odvaha~
-@42=~Emoce: odvaha 
+@42=~Emoce: Odvaha~
+@43=~Emoce: odvaha 
 (Zaříkávání/Očarování)
 
 Úroveň: 4
@@ -108,8 +109,8 @@ Rozsah: poloměr 3 metry
 Hod na záchranu: zruší kouzlo
 
 Toto kouzlo dodá všem tvorům v dané oblasti velkou odvahu. Všechny jím ovlivněné bytosti získávají +1 na útok, +3 k hodu na zranění a +5 dočasných životů (které mohou přesahovat maximální zdraví osoby). Toto kouzlo anuluje všechny účinky strachu, které snad byly při jeho seslání v oblasti působení přítomny.~
-@43=~Emoce: Naděje~
-@44=~Emoce: Naděje 
+@44=~Emoce: Naděje~
+@45=~Emoce: Naděje 
 (Zaříkávání/Očarování)
 
 Úroveň: 4
@@ -120,8 +121,8 @@ Rozsah: poloměr 3 metry
 Hod na záchranu: zruší kouzlo
 
 Toto kouzlo probudí v oblasti svého působení pocit naděje. Všichni jím ovlivnění tvorové získají posílenou morálku a +2 k hodu na záchranu, hodu na útok a hodu na působené zranění.~
-@45=~Emoce: Strach~
-@46=~Emoce: Strach 
+@46=~Emoce: Strach~
+@47=~Emoce: Strach 
 (Zaříkávání)
 
 Úroveň: 4
@@ -132,8 +133,8 @@ Rozsah: okruh 3 metry
 Hod na záchranu: zruší kouzlo
 
 Toto kouzlo vzbudí u všech tvorů v dané oblasti pocit strachu. Všechna jím ovlivněná stvoření prchají po dobu 5 kol. Toto kouzlo odstraní účinky kouzla "Odvaha".~
-@47=~Emoce: Beznaděj~
-@48=~Emoce: Beznaděj 
+@48=~Emoce: Beznaděj~
+@49=~Emoce: Beznaděj 
 (Zaříkávání)
 
 Úroveň: 4
@@ -144,8 +145,8 @@ Rozsah: okruh 3 metry
 Hod na záchranu: zruší kouzlo
 
 Toto kouzlo vzbudí u všech tvorů v dané oblasti pocit beznaděje. Všechny jím ovlivněné bytosti zůstanou po dobu trvání nečinně stát a nebudou se nijak projevovat.~
-@49=~Beznaděj~
-@50=~Mordenkainenovy silové střely 
+@50=~Beznaděj~
+@51=~Mordenkainenovy silové střely 
 (Vzývání)
 
 Úroveň: 4
@@ -156,9 +157,9 @@ Rozsah: zvláštní
 Hod na záchranu: zvláštní
 
 Toto kouzlo vytvoří blyštivou kouli magické energie, která vytryskne z uživatelovy ruky a okamžitě zasáhne cíl, podobně jako kouzlo 'magická střela'. Mág na 7. úrovni vytvoří jednu střelu, k níž se přidávají další na každé tři úrovně uživatele - takže dvě střely na 10. úrovni, tři na 13., čtyři na 16. atd., až do maxima sedmi střel na 25. úrovni. Každá z nich způsobí zranění 2k4 a posléze vybuchne do okruhu 1,5 metru, přičemž způsobí další bod zranění na úroveň sesilatele - například čaroděj na 12. úrovni může vyvolat dvě silové střely, z nichž každá způsobí újmu 2k4 +12. Zasažení tvorové si mohou hodit na záchranu proti kouzlu a vyhnout se tak zranění od výbuchu, ale účinek střely samotné nelze nijak zvrátit. Mágovo kouzlo 1. úrovně "štít" však tyto střely zcela zneškodňuje, včetně následné újmy od exploze.~
-@51=~Mordenkainenovy silové střely~
-@52=~Výkřik~
-@53=~Výkřik 
+@52=~Mordenkainenovy silové střely~
+@53=~Výkřik~
+@54=~Výkřik 
 (Vzývání)
 
 Úroveň: 4
@@ -169,9 +170,9 @@ Rozsah: elipsa 9 metrů dlouhá a 3 metry široká
 Hod na záchranu: poloviční újma
 
 Toto kouzlo mága obdaří strašlivými hlasovými schopnostmi, díky nimž může vydat ohlušující výkřik, který se rozlehne v oblasti o délce 9 metrů, s průměrem 3 metry ve svém nejzazším bodě. Každý, kdo se nachází na kritickém území, bude na 2k6 kol ohlušen a utrpí zranění 4k6 životů. Úspěšný hod na záchranu proti kouzlu hluchotu zruší a omezí veškerou újmu na polovinu.~
-@54=~Hluchota~
-@55=~Žíravá koule~
-@56=~Žíravá koule 
+@55=~Hluchota~
+@56=~Žíravá koule~
+@57=~Žíravá koule 
 (Vyvolávání)
 
 Úroveň: 4
@@ -184,8 +185,8 @@ Hod na záchranu: zvláštní
 Jedná se o zářivou smaragdovou kouli kyseliny, kterou může sesilatel nasměrovat na zvolené místo v dohledu. Když koule dorazí k cíli, vybuchne a smáčí nepřítele mocnou žíravinou. Dotyčný tak utrpí 1k4 zranění kyselinou na úroveň sesilatele, až do maxima 12k4. Po prvotním zasažení si musí oběť hodit na záchranu, aby se vyhnula dalšímu zranění. Pokud se vrh nezdaří, bude v následujících kolech opět zraňována kyselinou, v každém kole vždy o dva hody méně. Například čaroděj na 8. úrovni způsobí tímto kouzlem v prvním kole zranění 8k4, ve druhém kole 6k4, ve třetím 4k4, ve čtvrtém 2k4 a v kole pátém kouzlo vyprší. V každém kole má protivník k dispozici hod na záchranu proti kouzlu, čímž se může další újmě vyhnout. 
 
 Žíravá koule svou kyselinu rozstříkne též v poloměru 1,5 metru kolem primárního cíle. Každá bytost v dané oblasti si musí hodit na záchranu proti přeměně/znehybnění, nebo utrpí zranění 1k4 na každých pět úrovní sesilatele. Tyto "stříkance" však již žádnou následnou újmu nepůsobí.~
-@57=~Plamenný rubáš~
-@58=~Plamenný rubáš 
+@58=~Plamenný rubáš~
+@59=~Plamenný rubáš 
 (Vzývání)
 
 Úroveň: 5
@@ -196,7 +197,6 @@ Rozsah: 1 bytost
 Hod na záchranu: zruší kouzlo
 
 Toto kouzlo zapříčiní vzplanutí bytosti, pokud se jí nepodaří záchranný hod proti kouzlu. Stvoření je v každém kole spalováno za 2-12 životů (ačkoliv je mu v každém následujícím kole umožněn nový záchranný hod, jímž se může vyhnout dalším zraněním) a dokud je magie aktivní, způsobuje proud plamenů vycházející z hořícího cíle každému do tří metrů od něj zranění ohněm za 1-4 životy. Plamenný rubáš se zvlášť vyplatí používat na rozptýlené skupinky trolů či ledových salamandrů.~
-@59=~<NO TEXT>~
 @60=~Otilukova zmrazující koule~
 @61=~Otilukova zmrazující koule (proměna, vzývání)
 Úroveň: 6

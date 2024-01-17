@@ -5,37 +5,38 @@
 
 Tous les alliés à 9 mètres de distance gagnent un bonus de +1 à l'attaque, aux dégâts et aux jets de sauvegarde.~
 @4=~Ballade des Trois Héros - bonus au combat~
-@5=~Ballade de Curran Cœurvaillant~
-@6=~"La ballade de Curran Cœurvaillant"
+@5=~<NO TEXT>~
+@6=~Ballade de Curran Cœurvaillant~
+@7=~"La ballade de Curran Cœurvaillant"
 
 Tous les alliés à 9 mètres de distance sont immunisés à la terreur aussi longtemps que dure la musique, et tout effet de terreur est dissipé instantanément.~
-@7=~Ballade de Curran Cœurvaillant - immunité contre la terreur~
-@8=~Panique~
-@9=~Mélodie de Tymora~
-@10=~"La mélodie de Tymora"
+@8=~Ballade de Curran Cœurvaillant - immunité contre la terreur~
+@9=~Panique~
+@10=~Mélodie de Tymora~
+@11=~"La mélodie de Tymora"
 
 Tous les alliés à 9 mètres de distance gagnent un bonus de +1 à la chance, +3 aux jets de sauvegarde, +10 au score de connaissance et +10% aux talents de voleur.~
-@11=~Mélodie de Tymora - bonus de chance et de compétence~
-@12=~Chant de Kaudiès~
-@13=~"Le chant de Kaudiès"
+@12=~Mélodie de Tymora - bonus de chance et de compétence~
+@13=~Chant de Kaudiès~
+@14=~"Le chant de Kaudiès"
 
 Tous les alliés à 9 mètres de distance ont 50% de chances de résister aux effets des sorts de Silence, Cri, Grand Cri, Injonction, Injonction majeure et tout autre attaque à base de son.~
-@14=~Chant de Kaudiès - résistance aux attaques soniques~
-@15=~Sort inefficace~
-@16=~Chant des sirènes~
-@17=~"Le chant des Sirènes"
+@15=~Chant de Kaudiès - résistance aux attaques soniques~
+@16=~Sort inefficace~
+@17=~Chant des sirènes~
+@18=~"Le chant des Sirènes"
 
 Tous les adversaires à 9 mètres de distance doivent réussir un jet de sauvegarde contre les sorts ou perdre leur action pendant un round, ou jusqu'à ce qu'ils subissent des dégâts.~
-@18=~Chant des sirènes - fascine qui l'entend~
-@19=~Étourdi~
-@20=~Captivé~
-@21=~Chant de guerre de Sith~
-@22=~"Le chant de Guerre de Sith"
+@19=~Chant des sirènes - fascine qui l'entend~
+@20=~Étourdi~
+@21=~Captivé~
+@22=~Chant de guerre de Sith~
+@23=~"Le chant de Guerre de Sith"
 
 Tous les alliés à 9 mètres de distance gagnent un bonus de +2 à la classe d'armure, 10% de résistance aux dégâts tranchants, perforants, contondants et projectiles, ainsi qu'une capacité de régénération de 2 points de vie par round.~
-@23=~Chant de guerre de Sith - bonus à l'armure et régénération~
-@24=~Nuée de boules de neige de Snilloc~
-@25=~Nuée de boules de neige de Snilloc
+@24=~Chant de guerre de Sith - bonus à l'armure et régénération~
+@25=~Nuée de boules de neige de Snilloc~
+@26=~Nuée de boules de neige de Snilloc
 (Invocation)
 
 Niveau : 2
@@ -46,10 +47,10 @@ Zone d'effet : 4,50 mètres de rayon
 Jet de sauvegarde : demi-dégâts
 
 Ce sort fait apparaître un déluge de boules de neige à partir du point choisi par le magicien. Ces projectiles touchent toutes les créatures prises dans la zone d'effet et leur infligent 1d3 points de dégâts de froid par niveau du personnage, jusqu'à un maximum de 8d3 au niveau 8. Contre les créatures à base de feu (ou qui l'utilisent), le sort cause 1d6 points de dégâts de froid par niveau, jusqu'à un maximum de 8d6 au niveau 8.~
-@26=~Bâton décuplé~
 @27=~Bâton décuplé~
 @28=~Bâton décuplé~
-@29=~Bâton décuplé
+@29=~Bâton décuplé~
+@30=~Bâton décuplé
 (Invocation)
 
 Niveau : 2
@@ -60,8 +61,8 @@ Zone d'effet : le lanceur
 Jet de sauvegarde : aucun
 
 Ce sort fait apparaître un bâton d'énergie dans la main du magicien. Il est considéré comme une arme magique infligeant 1d6 points de dégâts par coup et pouvant toucher les créatures comme s'il était une arme +1. Mais il reste un bâton, que son utilisateur doit savoir manier pour ne pas encourir de pénalité à l'attaque. Au premier coup porté, le bâton a également la possibilité d'absorber 1d2 points de vie de la cible, qui sont aussitôt transférés au mage, mais uniquement pour le soigner (pas pour augmenter ses points de vie au-dessus du maximum).~
-@30=~Grâce féline~
-@31=~Grâce féline
+@31=~Grâce féline~
+@32=~Grâce féline
 (Transmutation)
 
 Niveau : 2
@@ -72,9 +73,9 @@ Zone d'effet : 1 créature
 Jet de sauvegarde : aucun
 
 Ce sort augmente la Dextérité du sujet en fonction de la classe de ce dernier : 1d8 points pour un voleur, 1d6 points pour un guerrier ou un mage et 1d4 points pour un prêtre. Grâce féline ne permet pas d'avoir plus de 20 en Dextérité.~
-@32=~Modification de la dextérité~
-@33=~Lance de glace~
-@34=~Lance de glace
+@33=~Modification de la dextérité~
+@34=~Lance de glace~
+@35=~Lance de glace
 (Invocation)
 
 Niveau : 3
@@ -85,9 +86,9 @@ Zone d'effet : 1 créature
 Jet de sauvegarde : spécial
 
 Ce sort projette une lance de glace sur la cible choisie. Elle touche automatiquement, inflige 5d6 points de dégâts et oblige la victime à réussir un jet de sauvegarde contre les sorts pour ne pas être étourdie pendant 3 rounds.~
-@35=~Étourdi(e)~
-@36=~Lance de destruction~
-@37=~Lance de destruction
+@36=~Étourdi(e)~
+@37=~Lance de destruction~
+@38=~Lance de destruction
 (Évocation)
 
 Niveau : 3
@@ -98,9 +99,9 @@ Zone d'effet : spéciale
 Jet de sauvegarde : demi-dégâts
 
 Ce sort fait apparaître une lance de force partant du doigt du personnage et pouvant être lancée jusqu'à 30 mètres. Toute créature touchée par le rayon d'énergie subit 5d4 points de dégâts, +2 par niveau du magicien (jusqu'à un maximum de +30). Un jet de sauvegarde réussi contre les sorts réduit les dégâts de moitié.~
-@38=~Berserk~
-@39=~Sang brûlant de Beltyn~
-@40=~Sang brûlant de Beltyn
+@39=~Berserk~
+@40=~Sang brûlant de Beltyn~
+@41=~Sang brûlant de Beltyn
 (Nécromancie)
 
 Niveau : 4
@@ -111,8 +112,8 @@ Zone d'effet : 1 créature
 Jet de sauvegarde : annule
 
 Le sort fait brûler le sang de la cible, ce qui lui inflige 3d4 points de dégâts par round et rend la victime folle de douleur. Chaque round, la victime a droit à un jet de sauvegarde contre les sorts (à -3). Dès qu'elle en réussit un, le sort cesse de faire effet. Il ne fonctionne pas contre les morts-vivants ou les créatures natives des autres plans qui n'ont pas de sang dans les veines (comme les élémentaires). Si la cible résiste au feu, cela réduit ou annule les dégâts provoqués par le sort.~
-@41=~Émotion, courage~
-@42=~Émotion, courage 
+@42=~Émotion, courage~
+@43=~Émotion, courage 
 (Enchantement/Charme)
 
 Niveau : 4
@@ -123,8 +124,8 @@ Zone d'effet : 2,10 mètres de rayon
 Jet de sauvegarde : aucun
 
 Ce sort génère un grand courage chez toutes les créatures comprises dans la zone d'effet. Ces dernières bénéficient alors des bonus suivants : +1 à l'attaque, +3 aux dégâts et +5 points de vie temporaires (ce qui peut leur permettre de dépasser leur maximum). Enfin, le sort dissipe automatiquement la terreur dans la zone d'effet.~
-@43=~Émotion, espoir~
-@44=~Émotion, espoir
+@44=~Émotion, espoir~
+@45=~Émotion, espoir
 (Enchantement/Charme)
 
 Niveau : 4
@@ -135,8 +136,8 @@ Zone d'effet : 2,10 mètres de rayon
 Jet de sauvegarde : aucun
 
 Ce sort génère l'espoir chez les créatures comprises dans la zone d'effet. Leur moral s'en ressent et elles bénéficient d'un bonus de +2 à tous leurs jets d'attaque, de dégâts et de sauvegarde. Ce sort dissipe tout sentiment de désespoir dans la zone d'effet au moment où il est lancé.~
-@45=~Émotion, terreur~
-@46=~Émotion, terreur
+@46=~Émotion, terreur~
+@47=~Émotion, terreur
 (Enchantement/Charme)
 
 Niveau : 4
@@ -147,8 +148,8 @@ Zone d'effet : 2,10 mètres de rayon
 Jet de sauvegarde : annule
 
 Ce sort terrifie les créatures comprises dans la zone d'effet. En cas de jet de sauvegarde raté, elles s'enfuient pendant 5 rounds. Ce sort dissipe Émotion, courage dans la zone d'effet au moment où il est lancé.~
-@47=~Émotion, désespoir~
-@48=~Émotion, désespoir
+@48=~Émotion, désespoir~
+@49=~Émotion, désespoir
 (Enchantement/Charme)
 
 Niveau : 4
@@ -159,8 +160,8 @@ Zone d'effet : 2,10 mètres de rayon
 Jet de sauvegarde : annule
 
 Ce sort fait naître un grand désespoir dans la zone d'effet. Tous les ennemis échouant leur jet de sauvegarde contre les sorts restent immobiles et ne font rien pendant 1 tour. Au moment du lancement, ce sort annule Émotion, espoir dans la zone d'effet.~
-@49=~Désespoir~
-@50=~Projectiles de force de Mordenkainen
+@50=~Désespoir~
+@51=~Projectiles de force de Mordenkainen
 (Évocation)
 
 Niveau : 4
@@ -171,9 +172,9 @@ Zone d'effet : rayon de 60 centimètres
 Jet de sauvegarde : spécial
 
 Ce sort fait apparaître un petit globe d'énergie magique filant de la main tendue du mage pour aller frapper à coup sûr la cible désignée, un peu comme un sort Projectiles magiques. Le personnage crée un projectile au niveau 7, plus un autre tous les trois niveaux supplémentaires (deux au niveau 10, trois au niveau 13, quatre au niveau 16, et ainsi de suite jusqu'à un maximum de sept au niveau 25). Chaque projectile cause 2d4 points de dégâts puis explose, la détonation infligeant 1 point de dégât de commotion par niveau du magicien dans un rayon de 60 centimètres. Par exemple, un mage de niveau 12 ferait apparaître deux projectiles de force, infligeant chacun 2d4+12 points de dégâts magiques. Les créatures touchées ont droit à un jet de sauvegarde contre les sorts pour éviter les dégâts de commotion mais l'impact du projectile lui-même n'est pas soumis à un jet de sauvegarde. Le sort de mage de niveau 1 Bouclier absorbe les projectiles de force sans dommage, y compris les dégâts de commotion.~
-@51=~Projectiles de force de Mordenkainen~
-@52=~Cri~
-@53=~Cri
+@52=~Projectiles de force de Mordenkainen~
+@53=~Cri~
+@54=~Cri
 (Évocation)
 
 Niveau : 4
@@ -184,9 +185,9 @@ Zone d'effet : cône de 5,10 mètres de long et de 15 degrés d'angle
 Jet de sauvegarde : demi-dégâts
 
 Ce sort confère un pouvoir vocal terrifiant au personnage, lequel peut laisser fuser un cri à déchirer les tympans affectant une zone d'effet en forme de cône. Toute créature prise dans la zone d'effet perd 4d6 points de vie et se retrouve assourdie pendant 9 rounds. Un jet de sauvegarde réussi contre les sorts annule la surdité et réduit les dégâts de moitié.~
-@54=~Surdité~
-@55=~Sphère acide~
-@56=~Sphère acide
+@55=~Surdité~
+@56=~Sphère acide~
+@57=~Sphère acide
 (Conjuration)
 
 Niveau : 4
@@ -199,8 +200,8 @@ Jet de sauvegarde : spécial
 Cette incantation fait apparaître une sphère d'acide vert émeraude, que le personnage peut lancer sur la cible de son choix. La sphère explose et inonde d'acide la créature choisie. Celle-ci perd 1d4 points de vie par niveau du magicien, jusqu'à un maximum de 12d4. Une fois les premiers dégâts encaissés, la victime doit réussir un jet de sauvegarde contre les sorts si elle ne veut pas en subir davantage. En cas d'échec, l'acide continue de la ronger round après round, les dégâts diminuant de deux dés par round. Par exemple, un magicien de niveau 8 inflige 8d4 points de dégâts grâce à ce sort au cours du premier round, 6d4 au deuxième, 4d4 au troisième, 2d4 au quatrième et le sort s'arrête au cinquième round. À chaque round après le premier, la victime a droit à un jet de sauvegarde contre les sorts pour éviter des dégâts supplémentaires.
 
 L'acide asperge toutes les créatures situées à moins de 1,50 mètre de la cible. Toutes doivent réussir un jet de sauvegarde contre la pétrification/métamorphose si elles ne veulent pas subir 1d4 points de dégâts par cinq niveaux du lanceur. Ces dégâts d'aspersion ne sont pas continus.~
-@57=~Linceul de flammes~
-@58=~Linceul de flammes
+@58=~Linceul de flammes~
+@59=~Linceul de flammes
 (Évocation)
 
 Niveau : 5
@@ -211,7 +212,6 @@ Zone d'effet : rayon de 1,5 mètres
 Jet de sauvegarde : annule
 
 La créature affectée par ce sort s'enflamme si elle rate son jet de sauvegarde. Elle subit 2d6 points de dégâts de feu par round et des langues de feu projetées par la victime atteignent toutes les créatures distantes de moins de 1,50 mètres et leur infligent 1d4 points de dégâts de feu (si elles ratent leur jet de sauvegarde, ces dernières se retrouvent également dévorées par les flammes). Le linceul se dissipe si le jeteur de sorts et sa cible ne sont plus dans la même zone. Ce sort est particulièrement utile pour disperser un groupe de trolls ou de salamandres du givre.~
-@59=~<NO TEXT>~
 @60=~Sphère glaciale d'Otiluke~
 @61=~Sphère glaciale d'Otiluke
 (Transmutation, Invocation)

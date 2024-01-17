@@ -5,37 +5,38 @@
 
 Tutti gli alleati nel raggio di 9 metri ottengono un bonus pari a +1 ai tiri per colpire, +1 al danno e +1 a tutti i tiri-salvezza.~
 @4=~La Ballata dei Tre Eroi - Bonus in Combattimento~
-@5=~La Storia di Curran Strongheart~
-@6=~"La Leggenda di Curran Strongheart"
+@5=~<NO TEXT>~
+@6=~La Storia di Curran Strongheart~
+@7=~"La Leggenda di Curran Strongheart"
 
 Tutti gli alleati nel raggio di 9 metri ottengono l'immunità agli effetti della paura per la durata della canzone ed è rimosso qualsiasi effetto della paura attualmente attivo.~
-@7=~La storia di Curran Strongheart - Immunità alla paura~
-@8=~Panico~
-@9=~Melodia di Tymora~
-@10=~"Melodia di Tymora"
+@8=~La storia di Curran Strongheart - Immunità alla paura~
+@9=~Panico~
+@10=~Melodia di Tymora~
+@11=~"Melodia di Tymora"
 
 Tutti gli alleati nel raggio di 9 metri ottengono un bonus pari a +1 alla fortuna, +3 ai tiri-salvezza, +10 alla conoscenza e un bonus del 10% a tutte le abilità da ladro.~
-@11=~Melodia di Tymora - Fortuna e bonus alle abilità~
-@12=~Canzone di Kaudies~
-@13=~"La Canzone di Kaudies"
+@12=~Melodia di Tymora - Fortuna e bonus alle abilità~
+@13=~Canzone di Kaudies~
+@14=~"La Canzone di Kaudies"
 
 Tutti gli alleati nel raggio di 9 metri hanno il 50% di possibilità di liberarsi dell'effetto di incantesimi come Silenzio, Grido, Grido Potente, Comando, Comando Maggiore o qualsiasi altro attacco basato sul suono.~
-@14=~Canzone di Kaudies - Resistenza agli attacchi sonori~
-@15=~Incantesimo Inefficace~
-@16=~Struggimento della Sirena~
-@17=~"La Brama della Sirena"
+@15=~Canzone di Kaudies - Resistenza agli attacchi sonori~
+@16=~Incantesimo Inefficace~
+@17=~Struggimento della Sirena~
+@18=~"La Brama della Sirena"
 
 Tutti i nemici nel raggio di 9 metri devono effettuare con successo un tiro-salvezza contro Incantesimi o rimanere affascinati, incapaci di agire per 1 round o finché non subiscono un danno.~
-@18=~Struggimento della sirena - Affascina le creature~
-@19=~Stordito~
-@20=~Affascinato~
-@21=~Canto di Guerra di Sith~
-@22=~"Canto di Guerra di Sith"
+@19=~Struggimento della sirena - Affascina le creature~
+@20=~Stordito~
+@21=~Affascinato~
+@22=~Canto di Guerra di Sith~
+@23=~"Canto di Guerra di Sith"
 
 Tutti gli alleati nel raggio di 9 metri ottengono un bonus pari a +2 alla Classe Armatura, 10% di resistenza al danno da taglio, perforante, contundente e da proiettile, e l'abilità di rigenerare 2 Punti Ferita per round.~
-@23=~Canto di guerra di Sith- Bonus all'Armatura e Rigenerazione~
-@24=~Sciame di Palle di Neve di Snilloc~
-@25=~Sciame di Palle di Neve di Snilloc
+@24=~Canto di guerra di Sith- Bonus all'Armatura e Rigenerazione~
+@25=~Sciame di Palle di Neve di Snilloc~
+@26=~Sciame di Palle di Neve di Snilloc
 (Apparizione)
 Livello: 2
 Raggio d'azione: Visuale del lanciatore
@@ -45,10 +46,10 @@ Area d'effetto: Raggio di 4,5 metri
 Tiro-salvezza: 1/2
 
 Questo incantesimo fa sì che uno spruzzo di palle di neve esploda in un punto entro il raggio d'azione. Le palle di neve colpiranno ogni cosa all'interno dell'area d'effetto, provocando 1d3 punti di danno da freddo per livello del personaggio, fino a un massimo di 8d3 punti di danno all'8° livello. Contro le creature del fuoco infligge 1d6 punti di danno da freddo per livello, sino ad un massimo di 8d6 punti di danno all'8° livello.~
-@26=~Bastone d'Energia~
 @27=~Bastone d'Energia~
 @28=~Bastone d'Energia~
-@29=~Bastone d'Energia
+@29=~Bastone d'Energia~
+@30=~Bastone d'Energia
 (Apparizione)
 Livello: 2
 Raggio d'azione: 0
@@ -58,8 +59,8 @@ Area d'effetto: Il lanciatore
 Tiro-salvezza: Nessuno
 
 Questo incantesimo crea un bastone di energia magica nelle mani del personaggio. Viene considerato un'arma magica che infligge 1d6 punti di danno per colpo e che può ferire le creature che richiedono armi +1 per essere colpite. Resta comunque un bastone, pertanto se il lanciatore non è competente nell'uso di queste armi, allora il Bastone d'Energia viene usato con una penalità. Il bastone ha anche il potere di risucchiare 1d2 Punti Ferita al bersaglio ad ogni colpo messo a segno. Questi Punti Ferita vengono aggiunti a quelli del personaggio, ma possono solo curare il danno che ha subito; non aumenteranno i suoi Punti Ferita oltre il valore massimo.~
-@30=~Grazia del Gatto~
-@31=~Grazia del Gatto
+@31=~Grazia del Gatto~
+@32=~Grazia del Gatto
 (Alterazione)
 Livello: 2
 Raggio d'azione: Tocco
@@ -69,9 +70,9 @@ Area d'effetto: 1 creatura
 Tiro-salvezza: Nessuno
 
 Questo incantesimo aumenta magicamente la Destrezza del bersaglio. L'ammontare dipende dalla classe del bersaglio: i furfanti ricevono 1d8 punti, i combattenti e i maghi 1d6 punti e i sacerdoti 1d4 punti. Se il personaggio ha più di una classe, viene utilizzata quella con il dado-vita maggiore. Grazia del Gatto non può aumentare la Destrezza del bersaglio oltre il 20.~
-@32=~Modificatore alla Destrezza~
-@33=~Lancia di Ghiaccio~
-@34=~Lancia di Ghiaccio
+@33=~Modificatore alla Destrezza~
+@34=~Lancia di Ghiaccio~
+@35=~Lancia di Ghiaccio
 (Apparizione)
 Livello: 3
 Raggio d'azione: Visuale del lanciatore
@@ -81,9 +82,9 @@ Area d'effetto: 1 creatura
 Tiro-salvezza: Speciale
 
 Questo incantesimo scaglia una lancia magica di ghiaccio contro un bersaglio scelto dal personaggio. Colpisce automaticamente infliggendo 5d6 punti di danno da freddo e costringendo la vittima ad effettuare un tiro-salvezza contro Incantesimi con successo per evitare di essere stordita per 3 round.~
-@35=~Stordito~
-@36=~Lancia di Distruzione~
-@37=~Lancia di Distruzione
+@36=~Stordito~
+@37=~Lancia di Distruzione~
+@38=~Lancia di Distruzione
 (Invocazione)
 Livello: 3
 Raggio d'azione: 30 metri
@@ -93,9 +94,9 @@ Area di effetto: Speciale
 Tiro-salvezza: 1/2
 
 Questo incantesimo scaglia una lancia di forza che si estende dal lanciatore fino ad un punto a 30 metri di distanza. Qualsiasi creatura lungo il percorso della lancia subisce 5d4 punti di danno contundente più 2 punti di danno per livello del lanciatore (sino a un massimo di 30). Le vittime possono dimezzare il danno effettuando con successo un tiro-salvezza contro Incantesimi.~
-@38=~Berserk~
-@39=~Sangue Bruciante di Beltyn~
-@40=~Sangue Bruciante di Beltyn
+@39=~Berserk~
+@40=~Sangue Bruciante di Beltyn~
+@41=~Sangue Bruciante di Beltyn
 (Necromanzia)
 Livello: 4
 Raggio d'azione: Visuale del lanciatore
@@ -105,8 +106,8 @@ Area d'effetto: 1 creatura
 Tiro-salvezza: Neg.
 
 Questo incantesimo trasforma il sangue di un bersaglio in fiamma, causando 3d4 punti di danno per round e mandando in stato berserk il nemico per il dolore. L'avversario ottiene un tiro-salvezza contro Incantesimi ad ogni round; se lo effettua con successo, i danni e lo stato berserk vengono negati. Questo incantesimo non funziona contro i non morti e le creature extraplanari che non hanno sangue (come gli elementali). Se la vittima è resistente al fuoco, tale resistenza abbasserà o annullerà il danno causato da questo incantesimo.~
-@41=~Emozione: Coraggio~
-@42=~Emozione: Coraggio
+@42=~Emozione: Coraggio~
+@43=~Emozione: Coraggio
 (Incantamento/Charme)
 Livello: 4
 Raggio d'azione: Visuale del lanciatore
@@ -116,8 +117,8 @@ Area d'effetto: Raggio di 2 metri
 Tiro-salvezza: Nessuno
 
 Questo incantesimo crea un'emozione di coraggio all'interno dell'area d'effetto. Tutte le creature influenzate dall'incantesimo ottengono un bonus pari a +1 ai tiri per colpire, +3 ai danni e 5 Punti Ferita temporanei (che possono essere aggiunti ai Punti Ferita Massimi). Questo incantesimo annulla tutti gli effetti di Paura presenti nell'area d'effetto al momento del lancio.~
-@43=~Emozione: Speranza~
-@44=~Emozione: Speranza
+@44=~Emozione: Speranza~
+@45=~Emozione: Speranza
 (Incantamento/Charme)
 Livello: 4
 Raggio d'azione: Visuale del lanciatore
@@ -127,8 +128,8 @@ Area d'effetto: Raggio di 2 metri
 Tiro-salvezza: Nessuno
 
 Questo incantesimo crea un'emozione di speranza all'interno dell'area d'effetto. Tutte le creature influenzate dall'incantesimo ottengono un aumento del morale e un bonus pari a +2 ai loro tiri per colpire, ai danni e ai tiri-salvezza. Questo incantesimo annulla tutti gli effetti di disperazione se lanciato nell'area in cui essi hanno effetto.~
-@45=~Emozione: Paura~
-@46=~Emozione: Paura
+@46=~Emozione: Paura~
+@47=~Emozione: Paura
 (Incantamento/Charme)
 Livello: 4
 Raggio d'azione: Visuale del lanciatore
@@ -138,8 +139,8 @@ Area d'effetto: Raggio di 2 metri
 Tiro-salvezza: Neg.
 
 Questo incantesimo crea un'emozione di paura all'interno dell'area d'effetto. Tutte i nemici che non effettuano con successo il proprio tiro-salvezza contro Incantesimi fuggiranno per 5 round. Questo incantesimo annulla gli effetti di Emozione: Disperazione se lanciato nell'area in cui esso ha effetto.~
-@47=~Emozione: Disperazione~
-@48=~Emozione: Disperazione
+@48=~Emozione: Disperazione~
+@49=~Emozione: Disperazione
 (Incantamento/Charme)
 Livello: 4
 Raggio d'azione: Visuale del lanciatore
@@ -149,8 +150,8 @@ Area d'effetto: Raggio di 2 metri
 Tiro-salvezza: Neg.
 
 Questo incantesimo crea un'emozione di disperazione all'interno dell'area d'effetto. Tutti i nemici che falliscono un tiro-salvezza contro Incantesimi staranno fermi senza far nulla per 1 turno. Questo incantesimo annulla gli effetti di Emozione: Speranza se lanciato nell'area in cui esso ha effetto.~
-@49=~Disperazione~
-@50=~Proiettili di Forza di Mordenkainen
+@50=~Disperazione~
+@51=~Proiettili di Forza di Mordenkainen
 (Invocazione)
 Livello: 4
 Raggio d'azione: Visuale del lanciatore
@@ -160,9 +161,9 @@ Area d'effetto: Raggio di mezzo metro
 Tiro-salvezza: Speciale
 
 Questo incantesimo crea una lucente sfera di energia magica che parte dalle mani del lanciatore per colpire un bersaglio, proprio come l'incantesimo Dardo Incantato. Il personaggio crea un proiettile al 7° livello e un proiettile addizionale ogni tre livelli dopo il 7° - in pratica, due proiettili al 10° livello, tre al 13°, quattro al 16° e così via, fino ad un massimo di sette proiettili al 25° livello. Ogni proiettile infligge 2d4 punti di danno ad un bersaglio e poi scoppia in un'esplosione concussiva dal raggio di mezzo metro, infliggendo 1 punto di danno per livello del lanciatore - per esempio, un personaggio di 12° livello potrebbe evocare 2 proiettili di forza, ognuno dei quali infliggerebbe 2d4+12 punti di danno. Le creature che subiscono danni possono tentare un tiro-salvezza contro Incantesimi per evitare il danno da concussione, ma l'impatto iniziale del proiettile non permette alcun tiro-salvezza. L'incantesimo di 1° livello da stregone "Scudo" assorbirà i proiettili di forza, compresi i danni da concussione.~
-@51=~Proiettili di Forza di Mordenkainen~
-@52=~Grido~
-@53=~Grido
+@52=~Proiettili di Forza di Mordenkainen~
+@53=~Grido~
+@54=~Grido
 (Invocazione)
 Livello: 4
 Raggio d'azione: 0
@@ -172,9 +173,9 @@ Area d'effetto: Cono di 5 metri con arco di 15°
 Tiro-salvezza: Speciale
 
 Grido conferisce al lanciatore enormi poteri vocali, permettendogli di emettere dalla sua bocca un ruggito spaccatimpani in un'area d'effetto a cono. Qualsiasi creatura all'interno di quest'area viene assordata per 2d6 round e subisce 4d6 punti di danno da magia. Un tiro-salvezza contro Incantesimi effettuato con successo nega la sordità e dimezza i danni.~
-@54=~Assordare~
-@55=~Sfera al Vetriolo~
-@56=~Sfera al Vetriolo
+@55=~Assordare~
+@56=~Sfera al Vetriolo~
+@57=~Sfera al Vetriolo
 (Evocazione)
 Livello: 4
 Raggio d'azione: Visuale del lanciatore
@@ -185,8 +186,8 @@ Tiro-salvezza: Speciale
 
 Questo incantesimo evoca una sfera di un brillante acido smeraldino che il lanciatore può indirizzare per colpire qualsiasi bersaglio entro il raggio di azione. Quando raggiunge il suo bersaglio, la sfera esplode e ricopre la vittima di un potente acido. La vittima subisce 1d4 punti di danno da acido per livello del lanciatore, fino ad un massimo di 12d4 punti di danno. Dopo il danno iniziale, la vittima deve effettuare un tiro-salvezza contro Incantesimi per evitare ulteriori danni. Se non viene effettuato con successo, la vittima continua a subire danni da acido nei round seguenti, subendo due dadi in meno di danno ad ogni round. Per esempio, con questo incantesimo un personaggio di 8° livello infligge 8d4 punti di danno il primo round, 6d4 il secondo round, 4d4 il terzo round, 2d4 il quarto round; l'incantesimo termina al quinto round. Ogni round la vittima ha diritto ad un tiro-salvezza contro Incantesimi per evitare ulteriori punti di danno.
 La sfera al vetriolo spruzza inoltre acido in un raggio di 3 metri intorno al bersaglio primario. Qualsiasi creatura entro il raggio dello spruzzo deve effettuare con successo un tiro-salvezza contro Pietrificazione/Metamorfosi o subire 1d4 punti di danno ogni 5 livelli dell'incantatore. Lo spruzzo non causa danno continuativo.~
-@57=~Sudario Fiammeggiante~
-@58=~Sudario Fiammeggiante
+@58=~Sudario Fiammeggiante~
+@59=~Sudario Fiammeggiante
 (Invocazione)
 Livello: 5
 Raggio d'azione: Visuale del lanciatore
@@ -196,7 +197,6 @@ Area d'effetto: Raggio di 1,5 metri
 Tiro-salvezza: Neg.
 
 Questo incantesimo fa sì che una creatura sia avviluppata dalle fiamme a meno che non effettui con successo un tiro-salvezza contro Incantesimi. La creatura brucia, subendo 2d6 punti di danno da fuoco ad ogni round, e lingue di fiamme si sprigionano dalla essa, facendo sì che qualsiasi creatura in un raggio di 1,5 metri subisca 1d4 punti di danno da fuoco derivante dalle fiamme. Chiunque venga colpito dalle fiamme della vittima deve a sua volta effettuare con successo un tiro-salvezza contro Incantesimi per evitare di acquisire lui stesso il sudario. Questo incantesimo è particolarmente utile per disperdere gruppi di troll o di salamandre del gelo.~
-@59=~<NO TEXT>~
 @60=~Sfera Congelante di Otiluke~
 @61=~Sfera Congelante di Otiluke
 (Alterazione, Apparizione)

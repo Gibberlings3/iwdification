@@ -10,6 +10,8 @@ DEFINE_ACTION_FUNCTION iwd_arcane_spells_postproduction BEGIN
 			LAF run STR_VAR file=elemental_summoning location=lib END
 			LAF truncate_force_missile_description END
 			LAF expeditious_retreat_icon END
+		END ELSE BEGIN
+			LAF run STR_VAR file=elemental_summoning_sr location=lib END		
 		END
 		LAF run STR_VAR file=force_blade location=lib END
 		LAF beholder_protections END

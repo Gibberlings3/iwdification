@@ -311,9 +311,9 @@ opcodes to oBG2 counterparts.
 
     // all damage is 1dX, so the CD_SPLIT_SAVE_DAMAGE can't split into separate dice; we manually halve the die size and dupe
     COPY_EXISTING ~%WIZARD_ACID_STORM%.spl~ ~override~ 
-      LPF ALTER_EFFECT INT_VAR match_opcode = 12 match_dicesize = 4 dicesize = 2 END
-      LPF ALTER_EFFECT INT_VAR match_opcode = 12 match_dicesize = 6 dicesize = 3 END
-      LPF ALTER_EFFECT INT_VAR match_opcode = 12 match_dicesize = 8 dicesize = 4 END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 12 match_dicesize = 4 dicesize = 2 special = 0 END // also clear out bit8
+      LPF ALTER_EFFECT INT_VAR match_opcode = 12 match_dicesize = 6 dicesize = 3 special = 0 END // also clear out bit8
+      LPF ALTER_EFFECT INT_VAR match_opcode = 12 match_dicesize = 8 dicesize = 4 special = 0 END // also clear out bit8
       LPF CLONE_EFFECT INT_VAR match_opcode = 12 savingthrow = BIT24 END
       PATCH_FOR_EACH res IN 0 1 2 3 4 5 6 7 8 9 x y z BEGIN // simulating clouds in bg2 sucks
         LPF ADD_SPELL_EFFECT INT_VAR opcode = 215 target = 1 parameter2 = 2 resist_dispel = 3 STR_VAR resource = EVAL ~cdia724%res%~ END
@@ -1159,7 +1159,7 @@ opcodes to oBG2 counterparts.
     COPY_EXISTING ~%WIZARD_VITRIOLIC_SPHERE%.spl~ ~override~
       LPF DELETE_EFFECT INT_VAR match_opcode =  12 match_timing = 4 END // delete any delayed damage
       LPF DELETE_EFFECT INT_VAR match_opcode = 326 END // to be replaced with dual-146s
-      LPF ALTER_EFFECT INT_VAR match_opcode = 318 opcode = 146 parameter2 = 1 timing = 1 resist_dispel = 3 duration = 0 END // change to straight cast for splash damage
+      LPF ALTER_EFFECT INT_VAR match_opcode = 318 opcode = 146 parameter2 = 0 timing = 1 resist_dispel = 3 duration = 0 END // change to straight cast for splash damage
       READ_SHORT 0x68 abil_num ELSE 0
       FOR (index = 0 ; index < abil_num ; ++index) BEGIN
         LPF CLONE_EFFECT INT_VAR header = index match_opcode = 146 parameter1 = (index + 5) timing = 4 duration = 6 STR_VAR resource = EVAL ~%WIZARD_VITRIOLIC_SPHERE%z~ END

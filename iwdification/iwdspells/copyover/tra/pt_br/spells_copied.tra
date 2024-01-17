@@ -5,37 +5,38 @@
 
 Todos os aliados a 9m ganham +1 para atingir, +1 para dano e +1 para todas as Jogadas de Salvamento.~
 @4=~A Balada dos Três Heróis--Bônus de Combate~
-@5=~O Conto de Curran Coração-forte~
-@6=~"O Conto de Curran Coração-forte"
+@5=~<NO TEXT>~
+@6=~O Conto de Curran Coração-forte~
+@7=~"O Conto de Curran Coração-forte"
 
 Todos os aliados a 9m ganham imunidade a medo enquanto a canção durar, e quaisquer efeitos de medo em vigor são removidos.~
-@7=~O Conto de Curran Coração-forte--Imunidade a Medo~
-@8=~Pânico~
-@9=~Melodia de Tymora~
-@10=~"Melodia de Tymora"
+@8=~O Conto de Curran Coração-forte--Imunidade a Medo~
+@9=~Pânico~
+@10=~Melodia de Tymora~
+@11=~"Melodia de Tymora"
 
 Todos os aliados a 9m ganham +1 para sorte, +3 para Jogadas de Salvamento, +10 para conhecimento e um bônus de 10% para todas as habilidades de ladrão.~
-@11=~Melodia de Tymora--Bônus de Sorte e Habilidades de Ladrão~
-@12=~A Canção de Kaudies~
-@13=~"A Canção de Kaudies"
+@12=~Melodia de Tymora--Bônus de Sorte e Habilidades de Ladrão~
+@13=~A Canção de Kaudies~
+@14=~"A Canção de Kaudies"
 
 Todos os aliados a 9m têm 50% de chance de ignorar os efeitos de feitiços como Silêncio, Grito, Grito Formidável, Comando, Comando Maior, ou qualquer ataque baseado em som.~
-@14=~A Canção de Kaudies--Resistência a Ataques Sonoros~
-@15=~Feitiço Ineficaz~
-@16=~O Anseio da Sirena~
-@17=~"O Anseio da Sirena"
+@15=~A Canção de Kaudies--Resistência a Ataques Sonoros~
+@16=~Feitiço Ineficaz~
+@17=~O Anseio da Sirena~
+@18=~"O Anseio da Sirena"
 
 Todos os inimigos a 9m devem Salvar contra Feitiço ou ficarem fascinados, incapazes de agirem até passar 1 rodada ou sofrerem dano.~
-@18=~O Anseio da Sirena--Fascina Criaturas~
-@19=~Atordoado(a)~
-@20=~Fascinado(a)~
-@21=~Cântico de Guerra de Sith~
-@22=~"Cântico de Guerra de Sith"
+@19=~O Anseio da Sirena--Fascina Criaturas~
+@20=~Atordoado(a)~
+@21=~Fascinado(a)~
+@22=~Cântico de Guerra de Sith~
+@23=~"Cântico de Guerra de Sith"
 
 Todos os aliados a 9m ganham um bônus de +2 para Classe de Armadura, +10% de resistência a dano de corte, perfuração, esmagamento e projétil, e a habilidade de regenerarem 2 Pontos de Vida por rodada.~
-@23=~Cântico de Guerra de Sith--Bônus de Armadura e Regeneração~
-@24=~Bolas de Neve de Snilloc~
-@25=~Bolas de Neve de Snilloc
+@24=~Cântico de Guerra de Sith--Bônus de Armadura e Regeneração~
+@25=~Bolas de Neve de Snilloc~
+@26=~Bolas de Neve de Snilloc
 (Evocação)
 
 Nível: 2
@@ -46,10 +47,10 @@ Tempo de Lançamento: 2
 Jogada de Salvamento: 1/2
 
 Este feitiço faz um turbilhão de bolas de neve irromper de um ponto dentro do alcance do feitiço. Essas bolas de neve atingirão tudo que estiver dentro da área, causando 1d3 pontos de dano de frio por nível até um máximo de 8d3 no nível 8. Contra criaturas de fogo ou que lidam com fogo, elas causarão 1d6 pontos de dano por nível até um máximo de 8d6 no nível 8.~
-@26=~Bastão Mágico~
 @27=~Bastão Mágico~
 @28=~Bastão Mágico~
-@29=~Bastão Mágico
+@29=~Bastão Mágico~
+@30=~Bastão Mágico
 (Evocação)
 
 Nível: 2
@@ -60,8 +61,8 @@ Tempo de Lançamento: 2
 Jogada de Salvamento: Nenhuma
 
 Este feitiço cria um bastão mágico na mão do lançador. Ele obviamente é tratado como uma arma mágica que causa 1d6 de dano e que pode atingir criaturas que precisam de armas +1 para serem atingidas. Como ele é uma arma, se o lançador não tiver proficiência em cajados, o bastão mágico é usado com penalidade. O bastão também tem o poder de drenar 1d2 Pontos de Vida do alvo a cada acerto. Esses Pontos de Vida são adicionados aos do lançador, mas eles só podem curar o dano que o lançador sofreu; eles não aumentarão os Pontos de Vida para além do limite máximo permitido.~
-@30=~Graça Felina~
-@31=~Graça Felina
+@31=~Graça Felina~
+@32=~Graça Felina
 (Alteração)
 
 Nível: 2
@@ -72,9 +73,9 @@ Tempo de Lançamento: 2
 Jogada de Salvamento: Nenhuma
 
 Este feitiço aumenta magicamente a Destreza de um alvo. A quantidade depende da classe do alvo: Ladinos ganham 1d8 pontos, guerreiros e lançadores arcanos 1d6, e sacerdotes ganham 1d4 pontos. Se um personagem possui mais de uma classe, o maior dado é usado. Graça Felina não pode aumentar a Destreza do alvo para além de 20.~
-@32=~Modificação de Destreza~
-@33=~Lança de Gelo~
-@34=~Lança de Gelo
+@33=~Modificação de Destreza~
+@34=~Lança de Gelo~
+@35=~Lança de Gelo
 (Evocação)
 
 Nível: 3
@@ -85,9 +86,9 @@ Tempo de Lançamento: 3
 Jogada de Salvamento: Especial
 
 Este feitiço arremessa uma lança de gelo mágica em um alvo à escolha do lançador. Ela o atinge automaticamente, causando 5d6 pontos de dano de frio e obriga o alvo a fazer uma Jogada de Salvamento contra Feitiço ou ser atordoado por 3 rodadas.~
-@35=~Atordoado(a)~
-@36=~Lança de Ruptura~
-@37=~Lança de Ruptura
+@36=~Atordoado(a)~
+@37=~Lança de Ruptura~
+@38=~Lança de Ruptura
 (Invocação)
 
 Nível: 3
@@ -98,9 +99,9 @@ Tempo de Lançamento: 3
 Jogada de Salvamento: 1/2
 
 Este feitiço atira uma lança de força que viaja do lançador até um ponto específico dentro de 30 metros. Todas as criaturas atingidas pela lança sofrem 5d4 pontos de dano de esmagamento mais 2 pontos de dano por nível do lançador (máximo de +30). As vítimas podem Salvar contra Feitiço para metade do dano.~
-@38=~Em Fúria~
-@39=~Sangue Ardente de Beltyn~
-@40=~Sangue Ardente de Beltyn
+@39=~Em Fúria~
+@40=~Sangue Ardente de Beltyn~
+@41=~Sangue Ardente de Beltyn
 (Necromancia)
 
 Nível: 4
@@ -111,8 +112,8 @@ Tempo de Lançamento: 4
 Jogada de Salvamento: Anula
 
 Este feitiço transforma o sangue do alvo em fogo, causando 3d4 pontos de dano a cada rodada e deixando a vítima em loucura furiosa em razão da dor. O alvo tem que Salvar contra Feitiço a cada rodada; se for bem-sucedido, o dano e a condição de furioso são anulados. Este feitiço não funciona contra mortos-vivos ou criaturas extraplanares que não têm sangue (como os elementais). Se a criatura for resistente a fogo, essa resistência diminuirá ou anulará o dano do feitiço.~
-@41=~Emoção: Coragem~
-@42=~Emoção: Coragem
+@42=~Emoção: Coragem~
+@43=~Emoção: Coragem
 (Encantamento)
 
 Nível: 4
@@ -123,8 +124,8 @@ Tempo de Lançamento: 4
 Jogada de Salvamento: Nenhuma
 
 Este feitiço cria a emoção de coragem dentro da área de efeito. Todas as criaturas afetadas pelo feitiço ganham +1 para atingir, +3 para dano, e +5 Pontos de Vida temporários (o que pode fazer o personagem ultrapassar seus Pontos de Vida máximos). Este feitiço anula todos os efeitos de medo dentro da área de efeito no momento do lançamento.~
-@43=~Emoção: Esperança~
-@44=~Emoção: Esperança
+@44=~Emoção: Esperança~
+@45=~Emoção: Esperança
 (Encantamento)
 
 Nível: 4
@@ -135,8 +136,8 @@ Tempo de Lançamento: 4
 Jogada de Salvamento: Nenhuma
 
 Este feitiço cria a emoção de esperança dentro da área de efeito. Todas as criaturas afetadas pelo feitiço ganham um bônus de moral de +2 em suas Jogadas de Salvamento, ataque e dano. Este feitiço anula todos os efeitos de desesperança dentro da área de efeito no momento do lançamento.~
-@45=~Emoção: Medo~
-@46=~Emoção: Medo
+@46=~Emoção: Medo~
+@47=~Emoção: Medo
 (Encantamento)
 
 Nível: 4
@@ -147,8 +148,8 @@ Tempo de Lançamento: 4
 Jogada de Salvamento: Anula
 
 Este feitiço cria a emoção de medo dentro da área de efeito. Todos os inimigos que falham numa Jogada de Salvamento contra Feitiço fogem por 5 rodadas.~
-@47=~Emoção: Desesperança~
-@48=~Emoção: Desesperança
+@48=~Emoção: Desesperança~
+@49=~Emoção: Desesperança
 (Encantamento)
 
 Nível: 4
@@ -159,8 +160,8 @@ Tempo de Lançamento: 4
 Jogada de Salvamento: Anula
 
 Este feitiço cria desesperança dentro da área de efeito. Todos os inimigos que não Salvarem contra Feitiço ficarão parados por 1 turno.~
-@49=~Desesperança~
-@50=~Projéteis Potentes de Mordenkainen
+@50=~Desesperança~
+@51=~Projéteis Potentes de Mordenkainen
 (Invocação)
 
 Nível: 4
@@ -171,9 +172,9 @@ Tempo de Lançamento: 4
 Jogada de Salvamento: Especial
 
 Este feitiço cria um globo brilhante de energia mágica que se solta da mão do do lançador para atingir violentamente seu alvo, da mesma forma que um feitiço Projétil Mágico. O lançador cria um projétil no nível 7 e um projétil adicional para cada três níveis seguintes. Em outros palavras, dois projéteis no nível 10, três projéteis no nível 13, quatro projéteis no nível 16 e assim por diante, para um máximo de sete projéteis no nível 25. Cada projétil inflige 2d4 pontos de dano mágico ao alvo e então explode em um raio de 1,5 metros para causar 1 ponto de dano por nível do lançador--por exemplo, um Mago de nível 12 poderia conjurar dois projéteis potentes e cada um causaria 2d4+12 pontos de dano mágico. Criaturas atingidas podem tentam se Salvarem contra Feitiço para anularem o dano de concussão, mas o impacto do projétil em si não permite Jogada de Salvamento. O feitiço Escudo de nível 1 absorverá os projéteis potentes, incluindo o dano de concussão.~
-@51=~Projéteis Potentes de Mordenkainen~
-@52=~Grito~
-@53=~Grito
+@52=~Projéteis Potentes de Mordenkainen~
+@53=~Grito~
+@54=~Grito
 (Invocação)
 
 Nível: 4
@@ -184,9 +185,9 @@ Tempo de Lançamento: 1
 Jogada de Salvamento: Especial
 
 Grito concede ao lançador poderosos vocais, permitindo que ele emita um berro ensurdecedor da boca em uma área cônica de efeito. Qualquer criatura pega dentro dessa área é ensurdecida por 9 rodadas e sofre 4d6 pontos de dano mágico. Uma Jogada de Salvamento contra Feitiço bem-sucedida aluna a surdez e reduz o dano pela metade.~
-@54=~Surdez~
-@55=~Esfera Vitriólica~
-@56=~Esfera Vitriólica
+@55=~Surdez~
+@56=~Esfera Vitriólica~
+@57=~Esfera Vitriólica
 (Conjuração)
 
 Nível: 4
@@ -199,8 +200,8 @@ Jogada de Salvamento: Especial
 Este feitiço conjura uma esfera de ácido esmeralda brilhante que o lançador pode direcionar para atingir qualquer alvo dentro do alcance do feitiço. Quando ele atinge seu alvo, a esfera explode e encharca a vítima com um ácido potente. A vítima sofre 1d4 pontos de dano ácido por nível do conjurador, para um máximo de 12d4 pontos de dano. Após o dano inicial, a vítima deve Salvar contra Feitiço para evitar mais dano. Se não tiver sucesso, a vítima continuará a sofrer dano ácido nas rodadas seguintes, suportando dois danos de dano a menos a cada rodada. Por exemplo, um mago de nível 8 cau 8d4 pontos de dano com este feitiço na primeira rodada, 6d4 na segunda rodada, 4d4 na terceira rodada, 2d4 na quarta rodada, e o feitiço termina na quinta rodada. A cada rodada é permitido à vitima se Salvar contra Feitiço para evitar danos posteriores.
 
 A esfera vitriólica também espirra ácido em um raio de 2,5 metros em torno do alvo principal. As criaturas atingidas devem Salvar contra Petrificação/Transmutação ou sofrerem 1d4 pontos de dano para cada cinco níveis do lançador. Esse respingo não causa dano continuado.~
-@57=~Mortalha de Fogo~
-@58=~Mortalha de Fogo
+@58=~Mortalha de Fogo~
+@59=~Mortalha de Fogo
 (Invocação)
 
 Nível: 5
@@ -211,7 +212,6 @@ Tempo de Lançamento: 5
 Jogada de Salvamento: Anula
 
 Este feitiço faz uma criatura arder em chamas se falhar em uma Jogada de Salvamento contra Feitiço. A criatura queimará por 2d6 pontos de dano de fogo por rodada, e podagras de fogo saem do corpo do alvo, causando 1d4 pontos de dano de fogo a todas as criaturas num raio de 3,5 metros dela. As criaturas atingidas pelas chamas da vítima também devem fazer uma Jogada de Salvamento contra Feitiço para evitarem contrair a mortalha. A mortalha de fogo se dissipa se o lançador e o alvo não mais estiverem na mesma área. Este feitiço é particularmente útil contra bandos de trolls e salamandras do gelo.~
-@59=~<NO TEXT>~
 @60=~Esfera Congelante de Otiluke~
 @61=~Esfera Congelante de Otiluke
 (Alteração, Evocação)

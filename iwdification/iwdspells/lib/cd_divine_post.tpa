@@ -179,5 +179,7 @@ DEFINE_ACTION_FUNCTION cd_divine_post BEGIN
       WRITE_LONG 0x30 acidic
       
   END    
+  
+  INCLUDE "%MOD_FOLDER%/%component_loc%/lib/cd_divine_compat.tpa" // generates file for other mods to use for compatibility
     
 END

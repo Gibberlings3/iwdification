@@ -24,5 +24,7 @@ DEFINE_ACTION_FUNCTION cd_bardic_post BEGIN
       IF_EXISTS      
 
   END 
+
+  INCLUDE "%MOD_FOLDER%/%component_loc%/lib/cd_bardic_compat.tpa" // generates file for other mods to use for compatibility
  
 END

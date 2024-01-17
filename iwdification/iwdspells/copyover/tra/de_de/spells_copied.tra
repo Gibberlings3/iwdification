@@ -5,37 +5,38 @@
 
 Alle Verbündeten im Umkreis von 10 Metern erhalten +1 auf Ihre Angriffs-, Schadens- und Rettungswürfe.~
 @4=~Die Ballade von den drei Helden - Kampfbonus~
-@5=~Die Geschichte von Curran Starkherz~
-@6=~"Die Geschichte des Curran Starkherz"
+@5=~<NO TEXT>~
+@6=~Die Geschichte von Curran Starkherz~
+@7=~"Die Geschichte des Curran Starkherz"
 
 Alle Verbündeten im Umkreis von 10 Metern erhalten Immunität gegen Furcht für die Dauer des Liedes, und alle bereits bestehenden auferlegten Furcht-Zauber werden augenblicklich unwirksam.~
-@7=~Die Geschichte von Curran Starkherz - Immunität gegen Angst~
-@8=~Panik~
-@9=~Tymoras Melodie~
-@10=~"Tymoras Melodie"
+@8=~Die Geschichte von Curran Starkherz - Immunität gegen Angst~
+@9=~Panik~
+@10=~Tymoras Melodie~
+@11=~"Tymoras Melodie"
 
 Alle Verbündeten im Umkreis von 10 Metern erhalten +1 zu Glück, +3 zu Rettungswürfen, +10 zu Sagenkunde, und einen 10% Bonus zu allen Diebesfähigkeiten.~
-@11=~Tymoras Melodie - Glücksbonus und Geschicklichkeitsbonus~
-@12=~Das Lied von Kaudies~
-@13=~"Das Lied von Kaudies"
+@12=~Tymoras Melodie - Glücksbonus und Geschicklichkeitsbonus~
+@13=~Das Lied von Kaudies~
+@14=~"Das Lied von Kaudies"
 
 Alle Verbündeten im Umkreis von 10 Metern erhalten eine 50% Chance, die Effekte von Zaubern wie Stille, Brüllen, Mächtiges Brüllen, Befehl, Höherer Befehl, oder sonstige auf Akkustik basierende Zauber abzuwenden.~
-@14=~Das Lied von Kaudies - widersteht Geräuschangriffen~
-@15=~Zauber wirkungslos~
-@16=~Das Verlangen der Sirene~
-@17=~"Die Sehnsucht der Sirene"
+@15=~Das Lied von Kaudies - widersteht Geräuschangriffen~
+@16=~Zauber wirkungslos~
+@17=~Das Verlangen der Sirene~
+@18=~"Die Sehnsucht der Sirene"
 
 Alle Verbündeten im Umkreis von 10 Metern müssen einen Rettungswurf gegen Zauber bestehen, sonst werden sie verzaubert und sind für die Dauer einer Runde oder bis sie Schaden erleiden unfähig eine Aktion zu vollführen.~
-@18=~Das Verlangen der Sirene - verzaubert Wesen~
-@19=~Betäubt~
-@20=~Verzaubert~
-@21=~Kriegsgesang von Sith~
-@22=~"Der Kriegsgesang von Sith"
+@19=~Das Verlangen der Sirene - verzaubert Wesen~
+@20=~Betäubt~
+@21=~Verzaubert~
+@22=~Kriegsgesang von Sith~
+@23=~"Der Kriegsgesang von Sith"
 
 Alle Verbündeten im Umkreis von 10 Metern erhalten einen +2 Bonus zur Rüstungsklasse, +10% Resistenz gegen Klingen-, Stich-, Wucht- und Geschoßschäden, und die Fähigkeit 2 Trefferpunkte pro Runde zu regenerieren.~
-@23=~Kriegsgesang von Sith - Rüstungsbonus und Regeneration~
-@24=~Snillocs Schneeballschwarm~
-@25=~Snillocs Schneeballschwarm
+@24=~Kriegsgesang von Sith - Rüstungsbonus und Regeneration~
+@25=~Snillocs Schneeballschwarm~
+@26=~Snillocs Schneeballschwarm
 (Hervorrufung)
 
 Grad: 2
@@ -46,10 +47,10 @@ Wirkungsbereich: 4,5 m Radius
 Rettungswurf: 1/2
 
 Dieser Zauberspruch bewirkt, dass von einem bestimmten Punkt aus eine Ladung Schneebälle abgeschossen wird. Diese treffen alles, was sich im Wirkungsbereich befindet, und verursachen 1W3 Schadenspunkte durch Kälte pro Stufe bis zu maximal 8W3 Schadenspunkte auf Stufe 8. Gegen feuerspeiende oder feuerbewohnende Wesen erzielen sie 1W6 Schadenspunkte durch Kälte pro Stufe bis zu maximal 8W6 Schadenspunkte auf Stufe 8.~
-@26=~Dekastab~
 @27=~Dekastab~
 @28=~Dekastab~
-@29=~Dekastab
+@29=~Dekastab~
+@30=~Dekastab
 (Hervorrufung)
 Grad: 2
 Reichweite: Anwender
@@ -58,8 +59,8 @@ Zeitaufwand: 2
 Wirkungsbereich: Anwender
 Rettungswurf: Nein
 Dieser Zauberspruch legt einen Kraftstab in die Hand des Anwenders. Dieser wird als magische Waffe benutzt, die 1-6 Schadenspunkte pro Treffer verursacht; außerdem kann er Wesen treffen, die gegen normale Waffen immun sind. Es handelt sich jedoch um einen Stab, für den Fertigkeiten im Umgang mit Stabwaffen erforderlich sind. Andernfalls führt die Verwendung des Dekastabs zu Strafpunkten. Der Stab kann seinem Ziel auch 1-2 Trefferpunkte auf einen Schlag entziehen. Diese Punkte gehen auf das Konto des Anwenders, können aber nur Schaden heilen; die Trefferpunkte werden nicht über die normale Höchstzahl hinaus erhöht.~
-@30=~Katzenanmut~
-@31=~Katzenanmut (Veränderung)
+@31=~Katzenanmut~
+@32=~Katzenanmut (Veränderung)
 Grad: 2
 Reichweite: Berührung
 Wirkungsdauer: 1 Stunde/Stufe
@@ -67,9 +68,9 @@ Zeitaufwand: 2
 Wirkungsbereich: 1 Wesen
 Rettungswurf: Nein
 Dieser Zauber erhöht auf magische Weise die Geschicklichkeit des Empfängers. In welchem Ausmaß, hängt von der Klasse des Ziels ab: Diebe gewinnen 1-8 Punkte hinzu, Kämpfer und Magier 1-6 Punkte, und Kleriker 1-4 Punkte. Die "Katzenanmut" kann die Geschicklichkeit des Ziels nicht auf mehr als 20 erhöhen.~
-@32=~Geschicklichkeits-Modifikation~
-@33=~Eislanze~
-@34=~Eislanze
+@33=~Geschicklichkeits-Modifikation~
+@34=~Eislanze~
+@35=~Eislanze
 (Hervorrufung)
 Grad: 3
 Reichweite: Sichtweite des Anwenders
@@ -78,9 +79,9 @@ Zeitaufwand: 3
 Wirkungsbereich: 1 Lanze
 Rettungswurf: Speziell
 Dieser Zauberspruch feuert eine Eislanze auf ein vom Anwender bestimmtes Ziel. Die Lanze trifft automatisch, verursacht 5-30 Schadenspunkte und zwingt das Ziel, einen Rettungswurf gegen Zauber auszuführen, wenn es nicht 1-4 Runden lang betäubt bleiben will.~
-@35=~Betäubt~
-@36=~Lanze der Zerschlagung~
-@37=~Lanze der Zerschlagung (Anrufung)
+@36=~Betäubt~
+@37=~Lanze der Zerschlagung~
+@38=~Lanze der Zerschlagung (Anrufung)
 Grad: 3
 Reichweite: 20 Meter
 Wirkungsdauer: Augenblicklich
@@ -88,9 +89,9 @@ Zeitaufwand: 3
 Wirkungsbereich: Speziell
 Rettungswurf: 1/2
 Dieser Zauber erzeugt eine Kraftlanze, die vom Anwender bis zu einem angegebenen Punkt in 18 Metern Entfernung reicht. Wesen, die in den Weg der Lanze geraten, erleiden 5-20 Schadenspunkte durch Wucht, +2 Schadenspunkte pro Stufe des Anwenders (maximal +30). Die Opfer können einen Rettungswurf gegen Zauber durchführen und den Schaden so halbieren.~
-@38=~Tobend~
-@39=~Beltyns Brennendes Blut~
-@40=~Beltyns Brennendes Blut
+@39=~Tobend~
+@40=~Beltyns Brennendes Blut~
+@41=~Beltyns Brennendes Blut
 (Nekromantie)
 Grad: 4
 Reichweite:  Sichtweite des Anwenders
@@ -99,8 +100,8 @@ Zeitaufwand: 4
 Wirkungsbereich: 1 Wesen
 Rettungswurf: Keine Wirkung
 Dieser Zauberspruch entzündet das Blut des Ziels und verursacht pro Runde 3-12 Schadenspunkte und raubt dem Opfer die Sinne vor Schmerz. Das Ziel kann jede Runde einen Rettungswurf gegen Zauber anwenden; gelingt dieser, werden Schaden und Berserkerzustand annulliert. Der Zauberspruch zeigt keine Wirkung bei Untoten oder Wesen von anderen Existenzebenen, die kein Blut haben (zum Beispiel Elementare). Bei Wesen, die gegen Feuer widerstandsfähig sind, wird der Schaden durch diesen Zauberspruch reduziert oder annulliert.~
-@41=~Gefühl: Mut~
-@42=~Gefühl: Mut
+@42=~Gefühl: Mut~
+@43=~Gefühl: Mut
 (Verzauberung/Bezauberung)
 
 Grad: 4
@@ -111,8 +112,8 @@ Wirkungsbereich: Radius von 2 Metern
 Rettungswurf: Nein
 
 Dieser Zauberspruch ruft im Wirkungsbereich ein Gefühl des Mutes hervor. Alle betroffenen Wesen bekommen +1 auf ihre Trefferwürfe, +3 auf die Schadenswürfe und +5 auf die vorübergehenden Trefferpunkte (dadurch können sie ihre maximale Trefferpunktzahl überschreiten). Dieser Zauber annulliert alle Ängste im Wirkungsbereich, die wirkten, während der Zauber ausgesprochen wurde.~
-@43=~Gefühl: Hoffnung~
-@44=~Gefühl: Hoffnung
+@44=~Gefühl: Hoffnung~
+@45=~Gefühl: Hoffnung
 (Verzauberung/Bezauberung)
 
 Grad: 4
@@ -123,8 +124,8 @@ Wirkungsbereich: Radius von 2 Metern
 Rettungswurf: Nein
 
 Dieser Zauberspruch ruft im Wirkungsbereich ein Gefühl der Hoffnung hervor. Alle betroffenen Wesen erhalten einen Moralschub und einen Zugewinn von +2 auf ihre Rettungs-, Angriffs- und Schadenswürfe. Dieser Zauber annulliert jede Hoffnungslosigkeit im Wirkungsbereich, die wirkte, während der Zauber ausgesprochen wurde.~
-@45=~Gefühl: Furcht~
-@46=~Gefühl: Furcht
+@46=~Gefühl: Furcht~
+@47=~Gefühl: Furcht
 (Verzauberung/Bezauberung)
 
 Grad: 4
@@ -135,8 +136,8 @@ Wirkungsbereich: Radius von 2 Metern
 Rettungswurf: keine Wirkung
 
 Dieser Zauberspruch ruft im Wirkungsbereich ein Gefühl der Furcht hervor. Alle Feinde, denen ein Rettungswurf gegen Zauber misslingt, fliehen 5 Runden lang. Der Zauber hebt die Auswirkungen von „Gefühl: Mut“ im Wirkungsbereich auf, die wirkten, während der Zauber ausgesprochen wurde.~
-@47=~Gefühl: Hoffnungslosigkeit~
-@48=~Gefühl: Hoffnungslosigkeit
+@48=~Gefühl: Hoffnungslosigkeit~
+@49=~Gefühl: Hoffnungslosigkeit
 (Verzauberung/Bezauberung)
 
 Grad: 4
@@ -147,8 +148,8 @@ Wirkungsbereich: Radius von 2 Metern
 Rettungswurf: keine Wirkung
 
 Dieser Zauberspruch bewirkt, dass sich innerhalb des Wirkungsbereiches ein Gefühl der Hoffnungslosigkeit ausbreitet. Alle Feinde, denen ein Rettungswurf gegen Zauber misslingt, bleiben einfach stehen und rühren sich 1 Phase lang nicht. Der Zauber hebt die Auswirkungen von „Gefühl: Hoffnung“ im Wirkungsbereich auf, die wirkten, während der Zauber ausgesprochen wurde.~
-@49=~Hoffnungslosigkeit~
-@50=~Mordenkainens Kraftgeschosse
+@50=~Hoffnungslosigkeit~
+@51=~Mordenkainens Kraftgeschosse
 (Anrufung)
 Grad: 4
 Reichweite: Sichtweite des Anwenders
@@ -157,9 +158,9 @@ Zeitaufwand: 4
 Wirkungsbereich: Speziell
 Rettungswurf: Speziell
 Dieser Zauber erzeugt eine leuchtende Kugel magischer Energie, die aus der Hand des Anwenders hervorschießt und das Ziel unfehlbar erreicht, wie ein magischer Geschosszauber. Der Zauberer kann auf der 7. Stufe ein Geschoss und für jede 3. nach der 7. Stufe ein weiteres Geschoss erzeugen. Mit anderen Worten erzeugt er zwei Geschosse auf der 10. Stufe, drei auf der 13., vier auf der 16. usw., bis zu einem Maximum von sieben Geschossen auf der 25. Stufe. Jedes Geschoss fügt dem Opfer 2-8 Schadenspunkte zu und bricht dann in einen Erschütterungsstoß mit einem Radius von 1,5 Meter auseinander, der pro Stufe des Anwenders 1 Schadenspunkt anrichtet. Ein Zauberer der 12. Stufe könnte beispielsweise zwei Kraftgeschosse herbeirufen, von denen jedes beim Treffer 2-8+12 Schadenspunkte anrichtet. Getroffene Wesen können einen Rettungswurf gegen Zauber versuchen, um den Schaden durch Erschütterung unwirksam zu machen; bei einem Treffer durch das Geschoss selbst ist jedoch kein Rettungswurf möglich. Der Magier-Zauber 1. Gra~
-@51=~Mordenkainens Kraftgeschosse~
-@52=~Brüllen~
-@53=~Brüllen (Anrufung)
+@52=~Mordenkainens Kraftgeschosse~
+@53=~Brüllen~
+@54=~Brüllen (Anrufung)
 Grad: 4
 Reichweite: Anwender
 Wirkungsdauer: Augenblicklich
@@ -167,9 +168,9 @@ Zeitaufwand: 1
 Wirkungsbereich: 10 Meter lang, Umkreis von 3 Metern
 Rettungswurf: 1/2
 Der Zauber "Brüllen" verleiht dem Anwender eine unglaubliche Stimmkraft. Er kann ein ohrenbetäubendes Gebrüll ausstoßen, das sich von seinem Mund in einem kegelförmigen Bereich von 10 Metern Länge und bis zu 3 Metern Durchmesser ausbreitet. Jedes Wesen in diesem Wirkungsbereich wird 2-12 Runden lang taub und erleidet 4-24 Schadenspunkte. Ein erfolgreicher Rettungswurf gegen Zauber vermeidet die Taubheit und halbiert die Zahl der Schadenspunkte.~
-@54=~Taubheit~
-@55=~Vitriolkugel~
-@56=~Vitriolkugel (Herbeirufung)
+@55=~Taubheit~
+@56=~Vitriolkugel~
+@57=~Vitriolkugel (Herbeirufung)
 Grad: 4
 Reichweite: Sichtweite des Anwenders
 Wirkungsdauer: Speziell
@@ -177,8 +178,8 @@ Zeitaufwand: 4
 Wirkungsbereich: Speziell
 Rettungswurf: Speziell
 Mit diesem Zauber wird eine Kugel leuchtend-smaragdgrüner Säure herbeigerufen, die der Anwender auf ein beliebiges Ziel im Wirkungsbereich richten kann. Erreicht die Kugel das Ziel, explodiert sie und tränkt das Opfer in starker Säure. Das Opfer erleidet 1-4 Schadenspunkte durch Säure pro Stufe des Anwenders bis zu einem Maximum von 12-48 Schadenspunkten. Nach dem anfänglichen Schaden muss dem Opfer ein Rettungswurf gelingen, um noch mehr Schaden abzuwenden. Wenn der Rettungswurf fehlschlägt, erleidet das Opfer auch in den folgenden Runden Säureschaden, wobei in jeder Runde die Würfelzahl jeweils um zwei reduziert wird. Beispielsweise fügt ein Zauberer der 8. Stufe seinem Opfer mit diesem Zauber in der ersten Runde 8-32 Schadenspunkte, in der zweiten Runde 6-24 Schadenspunkte, in der dritten Runde 4-16 Schadenspunkte und in der vierten Runde 2-8 Schadenspunkte zu; in der fünften Runde verliert der Zauber dann seine Wirkung. Dem Opfer steht jede Runde ein Rettungswurf gegen Zauber zu, um weitere Schäden zu ver~
-@57=~Flammenschleier~
-@58=~Flammenschleier (Hervorrufung)
+@58=~Flammenschleier~
+@59=~Flammenschleier (Hervorrufung)
 Grad: 5
 Reichweite: Sichtweite des Anwenders
 Wirkungsdauer: 1 Runde/2 Stufen (speziell)
@@ -186,7 +187,6 @@ Zeitaufwand: 5
 Wirkungsbereich: 1 Wesen
 Rettungswurf: Keine Wirkung
 Dieser Zauberspruch lässt ein Wesen in Flammen aufgehen, wenn ihm der Rettungswurf gegen Zauber misslingt. Durch die Flammen erleidet das angegriffene Wesen 2-12 Schadenspunkte pro Runde. Außerdem schnellen aus dem brennenden Ziel während der gesamten Wirkungsdauer des Zaubers Flammen hervor, die bewirken, dass alle Wesen im Umkreis von 3 Metern 1-4 Schadenspunkte durch die Flammen erleiden. Zusätzlich müssen alle von den Flammen getroffenen Wesen einen Rettungszauber gegen Zauber ausführen, damit der Zauber nicht auf sie übergreift. Dieser Zauber ist besonders nützlich, um ganze Banden von Trollen und Frostsalamandern zu zerstreuen.~
-@59=~<NO TEXT>~
 @60=~Otilukes Frostsphäre~
 @61=~Otilukes Frostsphäre
 (Veränderung, Hervorrufung)

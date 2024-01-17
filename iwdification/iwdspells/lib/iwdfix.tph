@@ -361,18 +361,19 @@ COPY_EXISTING ~dobone.itm~ ~override~
   - Make sure `op78` displays the `Diseased` portrait icon
     - function "remove_redundant_effects" won't be able to properly deal with this file because there are multiple op78 effects and just one op142 effect
   */
-  WITH_SCOPE BEGIN
     COPY_EXISTING "%CLERIC_CAUSE_DISEASE%.spl" "override" // sppr320
       LAUNCH_PATCH_FUNCTION "ALTER_EFFECT" INT_VAR "match_opcode" = 78 "special" = 7 END // Disease
       LAUNCH_PATCH_FUNCTION "DELETE_EFFECT" INT_VAR "match_opcode" = 142 "match_parameter2" = 7 END // op78 can naturally provide the "Diseased" portrait icon
     BUT_ONLY_IF_IT_CHANGES
-  END
 
+  
   // tbd, cam
   // broken sound reference in lance of disruption projectile
   COPY_EXISTING ~idpro313.pro~ ~override~
     WRITE_ASCII 0x18 ~#tra_59~ #8
 
+
+  END
 END
 
 DEFINE_ACTION_FUNCTION iwd_misc_fixes BEGIN
