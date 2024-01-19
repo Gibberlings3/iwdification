@@ -450,13 +450,16 @@ COPY_EXISTING ~#rdremov.spl~ ~override~ // resurrection subspell (2.6)
 // add new forms to poly self
 COPY_EXISTING ~spwi416.spl~  ~override~ // poly self
   PATCH_IF anim_beetle BEGIN
-    LPF CLONE_EFFECT STR_VAR match_resource = spwi499 resource = cdia480 END // boring beetle
+    LPF CLONE_EFFECT STR_VAR silent = 1 match_resource = spwi499 resource = cdia480 END // boring beetle
+    LPF CLONE_EFFECT STR_VAR silent = 1 match_resource = spwi461 resource = cdia480 END // boring beetle (SR)
     SAY 0x50 @9004
   END ELSE BEGIN
     SAY 0x50 @9002
   END
-  LPF CLONE_EFFECT STR_VAR match_resource = spwi499 resource = cdia481 END // polar bear
-  LPF CLONE_EFFECT STR_VAR match_resource = spwi499 resource = cdia482 END // winter wolf
+  LPF CLONE_EFFECT STR_VAR silent = 1 match_resource = spwi499 resource = cdia481 END // polar bear
+  LPF CLONE_EFFECT STR_VAR silent = 1 match_resource = spwi499 resource = cdia482 END // winter wolf
+  LPF CLONE_EFFECT STR_VAR silent = 1 match_resource = spwi461 resource = cdia481 END // polar bear (SR)
+  LPF CLONE_EFFECT STR_VAR silent = 1 match_resource = spwi461 resource = cdia482 END // winter wolf (SR)
 
 COPY_EXISTING ~spwi499.spl~ ~override/cdia480.spl~ // shapeshift: boring beetle
               ~spwi499.spl~ ~override/cdia481.spl~ // shapeshift: polar bear
