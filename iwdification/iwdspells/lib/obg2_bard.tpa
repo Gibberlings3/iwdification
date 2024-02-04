@@ -41,6 +41,7 @@ DEFINE_ACTION_FUNCTION obg2_bard BEGIN
   ACTION_PHP_EACH cd_bard_icons AS song => new_icon BEGIN  
 
     COPY_EXISTING ~%song%~ ~override~
+      WRITE_SHORT 0x1c 4 // set type to innate (4), not the EE-only bard song (5)
       PATCH_IF icons BEGIN SET icon = new_icon END ELSE BEGIN SET icon = 40 END 
       LPF DELETE_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 66 END // oBG2 can't stop deafened characters from hearing
       LPF DELETE_EFFECT INT_VAR match_opcode = 321 END // remove EE no-stacking
