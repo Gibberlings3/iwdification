@@ -12,15 +12,16 @@ DEFINE_ACTION_FUNCTION iwd_divine_spells_postproduction BEGIN
   LAF monster_summoning_divine_cosmetic END
   LAF no_chant_spell_failure END
   LAF patch_cures_into_stores END
+  ACTION_IF !MOD_IS_INSTALLED "spell_rev/setup-spell_rev.tp2" 0 BEGIN
+    LAF bg2ify_cure_moderate_wounds END
+    LAF hide_old_cause_wounds END
+  END
   LAF cre_set_joinable_priest_spells END
   LAF clearair_divine END
   LAF surplus_cleric_protections END
   LAF run STR_VAR file=summoned_monsters_divine location=lib END
   LAF run STR_VAR file=dealign_cleric_spells version=1 location=lib END
-  ACTION_IF !MOD_IS_INSTALLED "spell_rev/setup-spell_rev.tp2" 0 BEGIN
-    LAF bg2ify_cure_moderate_wounds END
-    LAF hide_old_cause_wounds END
-  END
+
   INCLUDE "%MOD_FOLDER%/%component_loc%/lib/cd_divine_post.tpa" // just in case Cam's code isn't SFO-sugar-compliant
   LAF cd_divine_post END
   ACTION_IF !enhanced_edition BEGIN
