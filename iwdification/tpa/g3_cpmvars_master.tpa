@@ -1,0 +1,6 @@
+// setting up CPM vars
+ACTION_IF GAME_IS ~bgee~            BEGIN INCLUDE ~iwdification/tpa/g3_bgee_cpmvars.tpa~  END ELSE       // bgee
+ACTION_IF GAME_IS ~eet~             BEGIN INCLUDE ~eet/other/cpmvars/eet_cpmvars.tpa~     END ELSE       // eet
+ACTION_IF GAME_IS ~bgt~             BEGIN INCLUDE ~iwdification/tpa/g3_bgt_cpmvars.tpa~   END ELSE       // bgt
+ACTION_IF GAME_IS ~tutu tutu_totsc~ BEGIN INCLUDE ~iwdification/tpa/g3_tutu_cpmvars.tpa~  END ELSE BEGIN // tutu
+                                          INCLUDE ~iwdification/tpa/g3_bg_cpmvars.tpa~    END            // obg

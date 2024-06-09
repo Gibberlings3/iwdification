@@ -17,6 +17,8 @@ ALWAYS
     OUTER_SPRINT sfo_library_path "sfo" // the path (relative to your mod directory) to the directory SFO is in. Usually 'sfo'.
     OUTER_SPRINT sfo_tra_path "languages" // the path (relative to your mod directory) to the directory in which you keep tra files. Usually 'lang' or 'tra'.
     INCLUDE "%MOD_FOLDER%/%sfo_library_path%/sfo_init.tpc"
+    
+    INCLUDE ~iwdification/tpa/g3_cpmvars_master.tpa~ // cpm variables
   
     ACTION_IF !GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ THEN BEGIN
 
