@@ -3,16 +3,23 @@ DEFINE_ACTION_FUNCTION cd_arcane_post BEGIN
   INCLUDE "%MOD_FOLDER%/%component_loc%/lib/cdfunctions.tpa"
 
   ACTION_IF enhanced_edition AND VARIABLE_IS_SET $IWD_spell_installed("WIZARD_LANCE_OF_DISRUPTION") BEGIN
-
-    COPY ~%MOD_FOLDER%/%component_loc%/resource/0105.ini~    ~override~ // lance of disruption animation
-         ~%MOD_FOLDER%/%component_loc%/resource/lodisru.bam~ ~override~
-
-    APPEND ~animate.ids~ ~0x0105 LANCE_OF_DISRUPTION~   UNLESS ~^0x0105~ 
-    
-    OUTER_SET proj = (IDS_OF_SYMBOL ("projectl" "lodisr") + 1)
+  
     COPY_EXISTING ~idpro313.pro~ ~override~ // LoD projectile; lodisr should be the explosion projectile, not secondary
-      WRITE_SHORT 0x214 0    // blank secondary projectile
-      WRITE_SHORT 0x21a proj // assign lodisr as explosion
+      PATCH_IF SOURCE_SIZE > 0x200 BEGIN SET idpro313_proceed = 1 END ELSE BEGIN SET idpro313_proceed = 0 END 
+      
+    ACTION_IF idpro313_proceed BEGIN 
+
+      COPY ~%MOD_FOLDER%/%component_loc%/resource/0105.ini~    ~override~ // lance of disruption animation
+           ~%MOD_FOLDER%/%component_loc%/resource/lodisru.bam~ ~override~
+
+      APPEND ~animate.ids~ ~0x0105 LANCE_OF_DISRUPTION~   UNLESS ~^0x0105~ 
+      
+      OUTER_SET proj = (IDS_OF_SYMBOL ("projectl" "lodisr") + 1)
+      COPY_EXISTING ~idpro313.pro~ ~override~ // LoD projectile; lodisr should be the explosion projectile, not secondary
+        WRITE_SHORT 0x214 0    // blank secondary projectile
+        WRITE_SHORT 0x21a proj // assign lodisr as explosion
+        
+    END    
 
   END  
 
