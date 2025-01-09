@@ -1050,7 +1050,7 @@ COPY ~iwdification/2da/iwd_mxsplran.2da~ ~override/mxsplran.2da~
 ///// evasion: include kits                            \\\\\
 /////                                                  \\\\\
 
-BEGIN @12001 DESIGNATED 120
+BEGIN @12005 DESIGNATED 120
 SUBCOMPONENT @12000
 REQUIRE_PREDICATE !GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ @997
 REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40450 @998
