@@ -1,0 +1,287 @@
+/*
+describe-library{
+A few UI-editing functions used by multiple other SFO-LUA functions.
+}
+brief-desc{functions used by multiple other SFO-LUA functions}
+
+*/
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+////	
+/*
+document{shared_color_changes}
+{
+Installs the LUA function 'dwUpdateColors' into m_dw_shr.lua (this function is used to force the starting
+colors during CHARGEN, e.g. for subrace or portrait-match purposes)
+}
+*/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE_ACTION_FUNCTION shared_color_changes BEGIN
+
+	// install shared functions
+	
+	LAF UI_install_function INT_VAR inline=1 STR_VAR new_function_path=".../stratagems-inline/update_colors.lua" lua_file="m_dw_shr" search_string=dwUpdateColors END
+	
+END
+
+<<<<<<<<.../stratagems-inline/update_colors.lua
+
+
+function dwUpdateColors()
+
+	 if currentChargenSubrace and currentChargenRace then
+	 		subcol=subraceList(dwRaces[currentChargenRace].id)[currentChargenSubrace].color
+			if subcol.hair~=-1 then
+				Infinity_SetHairColor(subcol.hair)
+			end
+			if subcol.skin~=-1 then
+				Infinity_SetSkinColor(subcol.skin)
+			end
+			if subcol.major~=-1 then
+				Infinity_SetMajorColor(subcol.major)
+			end
+			if subcol.minor~=-1 then
+				Infinity_SetMinorColor(subcol.minor)
+			end
+	end
+
+
+	 -- see if portrait has set colors (later, b/c higher priority)
+	 if chargen.portrait and dwPortraitList and dwPortraitColorsActivated then
+		if dwPortraitList[chargen.portrait] then
+			portrait_data=dwPortraitList[chargen.portrait]
+			Infinity_SetHairColor(portrait_data.hair)		
+			Infinity_SetSkinColor(portrait_data.skin)		
+			Infinity_SetMajorColor(portrait_data.major)		
+			Infinity_SetMinorColor(portrait_data.minor)		
+		end
+	 end
+	 
+
+end
+
+>>>>>>>>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+document{detect_chargen_status}
+{
+Install the detect_chargen_status LUA functions in m_dw_shr.lua (these functions are used by other SFO functions (and elsewhere in ToF) to detect whether a given menu is being called as part of chargen)
+
+}
+*/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+DEFINE_ACTION_FUNCTION detect_chargen_status BEGIN
+	
+	// install shared functions
+	
+	LAF UI_install_function INT_VAR inline=1 STR_VAR new_function_path=".../stratagems-inline/detect_chargen_status.lua" lua_file="m_dw_shr" search_string=dwStatusIsLevelling END
+
+END
+
+<<<<<<<<.../stratagems-inline/detect_chargen_status.lua
+
+function dwStatusIsNeutral()
+
+	dwIsChargen=false
+	dwIsLevelling=false
+	dwIsDualClassing=false
+
+end
+
+function dwStatusIsChargen()
+
+	dwIsChargen=true
+	dwIsLevelling=false
+	dwIsDualClassing=false
+
+end
+
+function dwStatusIsLevelling()
+
+	dwIsChargen=false
+	dwIsLevelling=true
+	dwIsDualClassing=false
+	dw_first_level_profs=false
+	
+end
+
+function dwStatusIsDualclassing()
+	
+	dwIsChargen=false
+	dwIsLevelling=false
+	dwIsDualClassing=true
+
+end
+
+function dwNotInChargen()
+
+	dwIsChargen=false
+
+end
+
+>>>>>>>>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+document{hide_displayed_ability_setup}
+{
+Do the required setup for LUA hiding of abilities, via the m_dw_haf.lua function library and the m_dw_had.lua
+LUA data file. These resources are used to hide certain abilities from the character sheet.
+}
+*/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+DEFINE_ACTION_FUNCTION hide_displayed_ability_setup//internal 
+BEGIN
+
+
+
+	// setup the lua pages
+	
+	COPY ".../stratagems-inline/hide_ability_functions.lua" "override/m_dw_haf.lua"
+	COPY ".../stratagems-inline/hide_ability_data.lua" "override/m_dw_had.lua"
+
+	// make menu edit
+	
+	ACTION_IF is_iwd BEGIN
+		OUTER_SPRINT function buildCharacterDetails
+	END ELSE BEGIN
+		OUTER_SPRINT function updateAttrTable
+	END
+	COPY_EXISTING "ui.menu" override
+		LPF UI_alter_function STR_VAR function patch=add_dwHideAbility END
+	BUT_ONLY
+
+END
+
+DEFINE_PATCH_FUNCTION add_dwHideAbility//internal 
+BEGIN
+
+	start = INDEX_BUFFER (EXACT_MATCH "for k, v in ipairs(characters[currentID].proficiencies.ability)")
+	end = INDEX_BUFFER ("end" start) + 3
+	READ_ASCII start data_old (end - start)
+	INNER_PATCH_SAVE data_new "%data_old%" BEGIN
+		PATCH_IF is_iwd BEGIN
+			REPLACE_TEXTUALLY EXACT_MATCH "addCharacterDetail(nil,nil,v.current)" "if not dwHideAbility(v.current) then %WNL% addCharacterDetail(nil,nil,v.current) %WNL%end"
+		END ELSE BEGIN
+			REPLACE_TEXTUALLY "--.*" ""
+			REPLACE_TEXTUALLY "\(table\.insert.*\)" "if not dwHideAbility(v.current) then %WNL% \1 %WNL%end"
+		END
+	END
+	DELETE_BYTES start (STRING_LENGTH "%data_old%")
+	INSERT_BYTES start (STRING_LENGTH "%data_new%")
+	WRITE_ASCIIE start "%data_new%"
+
+
+
+END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+document{hide_this_displayed_ability}
+{
+Mark a specific ability (or space-separated list of abilities) to be hidden on the character sheet. Abilities are identified by their enginst.2da ID.}
+*/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+DEFINE_ACTION_FUNCTION hide_this_displayed_ability STR_VAR string="" BEGIN
+	ACTION_IF !FILE_EXISTS_IN_GAME "m_dw_haf.lua" BEGIN
+		
+		LAF hide_displayed_ability_setup END
+	END
+	OUTER_WHILE "%string%" STRING_COMPARE "" BEGIN
+		LAF return_first_entry STR_VAR list="%string%" RET entry string=list END
+		COPY_EXISTING "enginest.2da" "%workspace%"
+			REPLACE_EVALUATE "%entry%[ %TAB%]+\([0-9]+\)" BEGIN
+				strref="%MATCH1%"
+			END
+			""
+		BUT_ONLY
+		APPEND "m_dw_had.lua" "dwHiddenAbilityText[%strref%]=true"
+	END
+	
+
+
+END
+
+
+/*
+document{ui_stress_test}
+{
+Run a bunch of SFO-LUA's core UI edits and report when each is installed. For use in testing SFO-LUA on different UI mods.
+
+}
+
+*/
+
+
+DEFINE_ACTION_FUNCTION ui_stress_test BEGIN
+
+	// subraces
+	
+	LAF add_to_subrace_tables END
+	LAF build_subraces END
+	PRINT "1"
+	// extra spells 
+	
+	
+	LAF spell_system_extension_setup END
+	PRINT "2"
+	
+	// spell system
+	LAF ui_spell_system_setup END
+	PRINT "3"
+
+	// virtual class system
+	
+	LAF virtual_class_setup END
+	PRINT "4"
+	
+	// bonus spells
+	
+	LAF ui_bonus_spells_setup END
+	PRINT "5"
+
+
+	// HLAs
+	
+	LAF ui_externalize_hlas END
+	PRINT "6"
+	
+
+	
+	// profs
+	
+	LAF set_up_externalized_proficiencies END
+	PRINT "8"
+	
+
+END
+
+
+<<<<<<<< .../stratagems-inline/hide_ability_functions.lua
+function dwHideAbility(text)
+
+	value=nil
+	for k,_ in pairs(dwHiddenAbilityText) do
+		if string.find(text,Infinity_FetchString(k)) then
+			value=true
+		end
+	end
+	
+	return value
+
+end
+>>>>>>>>
+
+<<<<<<<< .../stratagems-inline/hide_ability_data.lua
+dwHiddenAbilityText={}
+>>>>>>>>
+

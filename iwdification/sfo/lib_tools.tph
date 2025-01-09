@@ -4,8 +4,11 @@ describe-library
 Functions here do simple, IE-independent tasks. (If they're pure functions without side effects they should be in lib_fn instead.)
 No special naming conventions. (Be cautious!)
 
-Functions here should have no dependencies outside lib_tools.
+Functions here should have no dependencies outside lib_tools, except that they can have an *ignorable* dependency on sfo_path.
 }
+
+ignore-dependencies{sfo_path}
+brief-desc{functions to do simple IE-independent tasks}
 */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -13,17 +16,23 @@ Functions here should have no dependencies outside lib_tools.
 document{data_lines}
 {
 Given either 'data' (a string) or a path to a file, return either the string or the file separated into an array of lines, separated by line-breaks.
+If 'data' and 'file' are both blank, use the contents of the current file (if in patch context) as input (override this by setting the default_to_current_file INT_VAR to 0)
 }
 */
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-DEFINE_DIMORPHIC_FUNCTION data_lines
+DEFINE_ACTION_FUNCTION data_lines
 	STR_VAR data="" path="" file=""
 	RET_ARRAY lines
 BEGIN
 	ACTION_IF !("%file%" STR_EQ "") BEGIN
-		COPY - "%path%/%file%" "%workspace%"
+		ACTION_IF "%path%" STR_CMP "" BEGIN
+			OUTER_SPRINT file_path "%file%"
+		END ELSE BEGIN
+			OUTER_SPRINT file_path "%path%/%file%"		
+		END
+		COPY - "%file_path%" "%workspace%"
 			READ_ASCII 0x0 data (BUFFER_LENGTH)
 	END
 	OUTER_PATCH "%data%" BEGIN
@@ -34,6 +43,19 @@ BEGIN
 			++count
 		END	
 		""
+	END
+END
+
+DEFINE_PATCH_FUNCTION data_lines
+	INT_VAR default_to_current_file=1
+	STR_VAR data="" path="" file=""
+	RET_ARRAY lines
+BEGIN
+	PATCH_IF "%data%" STR_EQ "" && "%file%" STR_EQ "" && default_to_current_file BEGIN
+		READ_ASCII 0x0 data (BUFFER_LENGTH)
+	END
+	INNER_ACTION BEGIN
+		LAF data_lines STR_VAR data path file RET_ARRAY lines END
 	END
 END
 
@@ -103,16 +125,16 @@ END
 document{find_parenthesis_range}
 {
 given an index in a file, a left string, and a right string, extract the
-index number of the left string and the matching right string
+index number of the first left string after that index and the matching right string
 }
 */
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 DEFINE_PATCH_FUNCTION find_parenthesis_range
-     STR_VAR left="{"
+     INT_VAR index=0
+	 STR_VAR left="{"
              right="}"
-             index=0
      RET     start
              end
 BEGIN
@@ -148,16 +170,17 @@ END
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
-document{GET_UNIQUE_FILE_NAME}
-{
+
 A temporary fix for the WEIDU version, until Wisp fixes it.
-}
+
+(deprecated as of WEIDU v248, which fixes the bug.)
+
 */
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-DEFINE_PATCH_FUNCTION ~GET_UNIQUE_FILE_NAME~
+/*
+DEFINE_PATCH_FUNCTION GET_UNIQUE_FILE_NAME//ignore
   STR_VAR
           extension = ""
           base = ""
@@ -199,11 +222,23 @@ DEFINE_PATCH_FUNCTION ~GET_UNIQUE_FILE_NAME~
     SPRINT filename ~__%maybe%~
 END
 
+DEFINE_ACTION_FUNCTION GET_UNIQUE_FILE_NAME//ignore
+  STR_VAR
+          extension = ""
+          base = ""
+  RET filename
+  BEGIN
+	OUTER_PATCH "" BEGIN
+		LPF GET_UNIQUE_FILE_NAME STR_VAR extension base RET filename END
+	END
+END
+*/
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 document{append}
 {
-Append the string 'arguments' at the end of the file 'file' at locations given by location/locbase/path (or, in patch context, at the end of the current file), with no spacing or line breaks
+Append the string 'arguments' at the end of the file 'file' at locations given by location/locbase/path (only use 'path' if you want to run self-contained), or, in patch context, at the end of the current file, with no spacing or line breaks
 }
 */
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -224,7 +259,15 @@ DEFINE_ACTION_FUNCTION append
 			locbase=""
 			path=""
 BEGIN
-	LAF sfo_path STR_VAR file path location locbase RET file_path END
+	ACTION_IF "%location%%locbase%" STR_CMP "" BEGIN
+		LAF sfo_path STR_VAR file path location locbase RET file_path END
+	END ELSE BEGIN
+		ACTION_IF "%path%" STR_EQ "" BEGIN
+			OUTER_SPRINT "%file_path%" "%file%"
+		END ELSE BEGIN
+			OUTER_SPRINT "%file_path%" "%path%/%file%"
+		END
+	END
 	ACTION_IF no_log BEGIN
 		COPY + "%file_path%" "%file_path%"
 			LPF append STR_VAR arguments END	
@@ -238,13 +281,13 @@ END
 /*
 document{new_file}
 {
-Create a new file 'file' at locations given by location/locbase/path, containing only the string 'arguments' with no spacing or line breaks
+Create a new file 'file' at locations given by location/locbase/path (use only 'path' if you want to run self-contained), containing only the string 'arguments' with no spacing or line breaks
 }
 */
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-DEFINE_ACTION_FUNCTION new_file
+DEFINE_DIMORPHIC_FUNCTION new_file
 	INT_VAR no_log=0
 	STR_VAR arguments=""
 			file=""
@@ -252,7 +295,15 @@ DEFINE_ACTION_FUNCTION new_file
 			locbase=""
 			path=""
 BEGIN
-	LAF sfo_path STR_VAR file path location locbase RET file_path END
+	ACTION_IF "%location%%locbase%" STR_CMP "" BEGIN
+		LAF sfo_path STR_VAR file path location locbase RET file_path END
+	END ELSE BEGIN
+		ACTION_IF "%path%" STR_EQ "" BEGIN
+			OUTER_SPRINT "file_path" "%file%"
+		END ELSE BEGIN
+			OUTER_SPRINT "file_path" "%path%/%file%"
+		END
+	END
 	ACTION_IF no_log BEGIN
 		COPY + ".../stratagems-inline/blank" "%file_path%"
 			LPF append STR_VAR arguments END	

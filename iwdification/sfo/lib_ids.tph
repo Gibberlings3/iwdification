@@ -1,9 +1,17 @@
+
+/*
+describe-library{Functions to manipulate ids files and entries.}
+brief-desc{functions to manipulate ids files and entries}
+*/
+
+
 /*
 document{ids_resolve}
 {
 Given an ids file and an ids symbol, return its int value, adding it if necessary. min and max are the minimum and maximum values to try.
 }
 */
+
 
 DEFINE_DIMORPHIC_FUNCTION ids_resolve
 	INT_VAR min="0"
@@ -13,6 +21,9 @@ DEFINE_DIMORPHIC_FUNCTION ids_resolve
 	RET 	value
 BEGIN
 	// start by checking for it
+	ACTION_IF "%idsfile%" STR_EQ "" BEGIN
+		FAIL "ids_resolve needs a non-null value of the 'idsfile' variable"
+	END
 	OUTER_SET value=IDS_OF_SYMBOL ("%idsfile%" "%ids%")
 	ACTION_IF value<0 BEGIN
 		LAF 2da_read STR_VAR file="%idsfile%.ids" RET_ARRAY idsarray=array END

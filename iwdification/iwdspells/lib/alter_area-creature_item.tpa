@@ -10,13 +10,9 @@ used:
   BG2 Fixpack, as bg2fixpack/lib/alter_area-creature_item.tpa [symbolic link]
   IWDification, as iwdification/iwdspells/lib/alter_area-creature_item.tpa [symbolic link]
   IWDSpells library, as dw_iwdspells/iwdspells/lib/alter_area-creature_item.tpa [symbolic link]
-  EE Fixpack, as eefixpack/files/lib/alter_area-creature_item.tpa [symbolic link]
  
 version history: 
   unknown
-
-platform:
-  bg2-based engines
 
 */
 

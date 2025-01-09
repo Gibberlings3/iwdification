@@ -78,12 +78,10 @@ DEFINE_ACTION_FUNCTION cd_arcane_post BEGIN
   
     // Iron Body: Spell should protect against a wider range of petrification i.e. Basilisk Stare BASIGAZE.itm 
     // delete three specific protections against flesh-to-stone spells with general petrification immunity  
-    COPY_EXISTING ~ibody.itm~              ~override~ // to eefp
-                  ~%WIZARD_IRON_BODY%.spl~ ~override~ // or not to eefp
+    COPY_EXISTING ~ibody.itm~ ~override~
       //LPF DELETE_EFFECT INT_VAR silent = 1 match_opcode = 318 STR_VAR match_resource = spwi604 END
-      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 318 opcode = 101 parameter2 =   134 STR_VAR match_resource = spwi053 END // immunity: petrification
-      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 318 opcode = 267 parameter1 = 14665 STR_VAR match_resource = spwi604 END // prevent "petrified" string
-      BUT_ONLY IF_EXISTS
+      LPF ALTER_EFFECT INT_VAR match_opcode = 318 opcode = 101 parameter2 =   134 STR_VAR match_resource = spwi053 END // immunity: petrification
+      LPF ALTER_EFFECT INT_VAR match_opcode = 318 opcode = 267 parameter1 = 14665 STR_VAR match_resource = spwi604 END // prevent "petrified" string
  
   END
 

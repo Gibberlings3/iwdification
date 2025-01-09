@@ -2,17 +2,19 @@
 *
 						offset      type
 opcode					0x10		long
-target					0x14		lookup4_fx_target_type
+target[2]				0x14		lookup4_fx_target_type
 power					0x18		long
 parameter1				0x1c		long
 parameter2				0x20		long
+parameter2a				0x20		short
+parameter2b				0x22		short
 timing					0x24		lookup2_fx_timing
 duration				0x28		long
-probability1 			0x2c		short
+probability1[100]		0x2c		short
 probability2			 0x2e		short
 resource				0x30		ascii_8
 dicenumber  			0x38		long
-dicesize				0x34		long
+dicesize				0x3c		long
 save_vs_spells 			0x40		flag_0
 save_vs_breath 			0x40		flag_1
 save_vs_poison 			0x40		flag_2
@@ -35,5 +37,6 @@ resource2				0x70		ascii_8
 resource3				0x78		ascii_8
 parent_type				0x90		lookup4_fx_parent_type
 parent_resource			0x94		ascii_8
+variable_name			0xa8		ascii_32
 sectype					0xd0		long
 header_length			0x110		special

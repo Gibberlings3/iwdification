@@ -1,3 +1,20 @@
+// this file includes inline documentation to be processed by DavidW's 'SFO' library.
+
+// Detectable Spells v 4.03
+// September 2023 - DavidW
+//
+// Changes: 
+//	- fixed a bug where the 'duration' field wasn't being written
+//  - added an 'exaltation' spellstate to detect Exaltation (this would arguably be wasteful just on BG/BG2, but there's an IWD Exaltation cleric spell)
+// - added an 'entropy_shield' spellstate to detect Entropy Shield
+
+// Detectable Spells v 4.02
+// July 2022 - DavidW
+//
+// Changes: 
+//	- we now have a 'skip_legacy' option in the main detectable_spells function. Set it to 1 and CLERIC_CHAOTIC_COMMANDS, WIZARD_FIRE_SHIELD, and WIZARD_SPELL_IMMUNITY
+//    are skipped. (All are redundant given splstates.)
+
 // Detectable Spells v 4.01
 // August 2020 - DavidW
 //
@@ -21,6 +38,12 @@
 // Detectable Spells v3.95
 // February 3rd, 2016 - Yaroslav "Ardanis/GeN1e" Kalyuzhnyy
 
+/*
+describe-library{Detectable Spells (a shared library with many contributors, developed over many years; see in the file for detailed changelog). Edits spells to set various stats/spellstates, so that
+AI can detect it.}
+
+brief-desc{shared library to let AI detect various spells}
+*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,8 +51,16 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/*
+document{detectable_spells}
+{
+Set up detectable spells (allows AI to detect spells; this is a shared set of conventions developed by the modding community). By default, fixes legacy issues in Khelben's Warding Whip caused by (ancient) mods; skip by setting fix_khelben=0. By default, addresses some legacy issues; set skip_legacy=1 to skip.
+}
+*/
+
 DEFINE_ACTION_FUNCTION detectable_spells 
    INT_VAR fix_khelben=1
+			skip_legacy=0
 BEGIN
 	// make sure stats.ids is properly set
    LAF ds_stat_entries END
@@ -40,9 +71,16 @@ BEGIN
    ACTION_FOR_EACH table_name IN ds_simple ds_142_variable ds_other_clone buff_misc special BEGIN
       LAF ds_process_table INT_VAR complain=0 STR_VAR table=EVAL ".../ds-inline/%table_name%.2da" RET_ARRAY ds_ids_map_stats ds_ids_map_splstate END
    END
+   ACTION_IF !skip_legacy BEGIN
+	   ACTION_FOR_EACH table_name IN ds_simple_legacy ds_142_variable_legacy ds_other_clone_legacy BEGIN
+		  LAF ds_process_table INT_VAR complain=0 STR_VAR table=EVAL ".../ds-inline/%table_name%.2da" RET_ARRAY ds_ids_map_stats ds_ids_map_splstate END
+	   END
+   
+   END
    ACTION_FOR_EACH table_name IN BUFF_PRO_WEAPONS BUFF_PRO_DAMAGE BUFF_PRO_SPELLS BUFF_PRO_EFFECTS BUFF_ENHANCEMENT STATE_ENRAGED BEGIN
       LAF ds_process_table INT_VAR complain=0 STR_VAR table=EVAL ".../ds-inline/%table_name%.2da" default_stat=EVAL "%table_name%" RET_ARRAY ds_ids_map_stats ds_ids_map_splstate END
    END
+
    ACTION_IF fix_khelben BEGIN
       LAF ds_fix_khelben END
    END
@@ -59,11 +97,15 @@ END
 //// The bulk of entries are simple 142-clones
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+<<<<<<<< .../ds-inline/ds_simple_legacy.2da
+resource                                stat
+CLERIC_CHAOTIC_COMMANDS                 CLERIC_CHAOTIC_COMMANDS
+>>>>>>>>
+
 <<<<<<<< .../ds-inline/ds_simple.2da
 resource                                stat
 CLERIC_ARMOR_OF_FAITH                   ARMOR_OF_FAITH
 CLERIC_CHAOTIC_COMMANDS                 CHAOTIC_COMMANDS
-CLERIC_CHAOTIC_COMMANDS                 CLERIC_CHAOTIC_COMMANDS
 BARBARIAN_RAGE                          BARBARIAN_RAGE
 BERSERKER_RAGE                          BERSERKER_RAGE
 MINSC_BERSERK                           MINSC_BERSERK
@@ -135,11 +177,13 @@ WIZARD_IMPROVED_ALUCRITY                WIZARD_IMPROVED_ALACRITY
 SPWISH17                                WIZARD_IMPROVED_ALACRITY
 WIZARD_GLITTERDUST                      CANNOT_TURN_INVISIBLE
 WIZARD_SHIELD                           WIZARD_SHIELD
+OHTYR1									EXALTATION
+CLERIC_ENTROPY_SHIELD					ENTROPY_SHIELD
 >>>>>>>>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-//// These all use opcode 142, but have variable values. Most are legacy.
+//// These all use opcode 142, but have variable values. Many are legacy.
 ////
 //// The protection_from_weapons spells, being mutually incompatible, can share slots
 //// The Fire Shield effects have a legacy detection that shares WIZARD_FIRE_SHIELD
@@ -148,13 +192,8 @@ WIZARD_SHIELD                           WIZARD_SHIELD
 //// powers
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-<<<<<<<< .../ds-inline/ds_142_variable.2da
+<<<<<<<< .../ds-inline/ds_142_variable_legacy.2da
 resource                                stat                                 stat_value
-WIZARD_MANTLE                           WIZARD_PROTECTION_FROM_MAGIC_WEAPONS 1
-WIZARD_IMPROVED_MANTLE                  WIZARD_PROTECTION_FROM_MAGIC_WEAPONS 2
-WIZARD_ABSOLUTE_IMMUNITY                WIZARD_PROTECTION_FROM_MAGIC_WEAPONS 3
-WIZARD_PROTECTION_FROM_MAGIC_WEAPONS    WIZARD_PROTECTION_FROM_MAGIC_WEAPONS 4
-PROTECTION_MAGIC_WEAPON_NOEFF           WIZARD_PROTECTION_FROM_MAGIC_WEAPONS 4
 WIZARD_FIRE_SHIELD_RED                  WIZARD_FIRE_SHIELD                   1
 WIZARD_FIRE_SHIELD_BLUE                 WIZARD_FIRE_SHIELD                   2
 CLERIC_AURA_OF_FLAMING_DEATH            WIZARD_FIRE_SHIELD                   1
@@ -167,6 +206,15 @@ WIZARD_SPELL_IMMUNITY_ILLUSIONIST       WIZARD_SPELL_IMMUNITY                5
 WIZARD_SPELL_IMMUNITY_INVOCATION        WIZARD_SPELL_IMMUNITY                6
 WIZARD_SPELL_IMMUNITY_NECROMANCY        WIZARD_SPELL_IMMUNITY                7
 WIZARD_SPELL_IMMUNITY_ALTERATION        WIZARD_SPELL_IMMUNITY                8
+>>>>>>>>
+
+<<<<<<<< .../ds-inline/ds_142_variable.2da
+resource                                stat                                 stat_value
+WIZARD_MANTLE                           WIZARD_PROTECTION_FROM_MAGIC_WEAPONS 1
+WIZARD_IMPROVED_MANTLE                  WIZARD_PROTECTION_FROM_MAGIC_WEAPONS 2
+WIZARD_ABSOLUTE_IMMUNITY                WIZARD_PROTECTION_FROM_MAGIC_WEAPONS 3
+WIZARD_PROTECTION_FROM_MAGIC_WEAPONS    WIZARD_PROTECTION_FROM_MAGIC_WEAPONS 4
+PROTECTION_MAGIC_WEAPON_NOEFF           WIZARD_PROTECTION_FROM_MAGIC_WEAPONS 4
 WIZARD_TENSERS_TRANSFORMATION           OFFENSIVE_MODIFIER                   1
 CLERIC_CHAMPIONS_STRENGTH               OFFENSIVE_MODIFIER                   1
 BARBARIAN_RAGE                          OFFENSIVE_MODIFIER                   1
@@ -219,10 +267,14 @@ MELIS02                                 CLERIC_BLADE_BARRIER                 2
 //// Some NPC fire shield effects also need detection directly on the condition
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+<<<<<<<<.../ds-inline/ds_other_clone_legacy.2da
+resource                           stat                           stat_value           match_opcode
+BALSHLD                            WIZARD_FIRE_SHIELD             1                    232
+>>>>>>>>
+
 <<<<<<<< .../ds-inline/ds_other_clone.2da
 resource                           stat                           stat_value           match_opcode
 BALSHLD                            RED_FIRESHIELD                 1                    232
-BALSHLD                            WIZARD_FIRE_SHIELD             1                    232
 CLERIC_SUMMON_INSECTS              CLERIC_INSECT_PLAGUE           1                    215
 CLERIC_INSECT_PLAGUE               CLERIC_INSECT_PLAGUE           2                    215
 CLERIC_CREEPING_DOOM               CLERIC_INSECT_PLAGUE           3                    215
@@ -383,18 +435,22 @@ SPWI609D                     CANNOT_TURN_INVISIBLE          221                 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//// Process a table of DS instructions
-//// possible columns are:
-//// - resource (the thing being patched; compulsory; can be a spell.ids ref, a full resource name, or the
-////   resref of a spell or item. If the latter, and if both resref.spl and resref.itm exist, spl is default)
-//// - stat (the stat being assigned; defaults to the default_stat variable)
-//// - stat_value (the value assigned to the stat; defaults to 1)
-//// - match_opcode (the opcode to clone; defaults to 142)
-//// - match_parameter2 (a restriction on which opcode is cloned; defaults to -1, clone all)
-//// - match_resource (a restriction on which opcode is cloned; defaults to SAME, clone all)
-//// columns can be in any order, but first row must be column headers. Other columns are ignored
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+document{ds_process_table}
+{
+Process a table of DS instructions. Possible columns are:
+<ul>
+<li>resource (the thing being patched; compulsory; can be a spell.ids ref, a full resource name, or the
+resref of a spell or item. If the latter, and if both resref.spl and resref.itm exist, spl is default)</li>
+<li>stat (the stat being assigned; defaults to the default_stat variable)</li>
+<li>stat_value (the value assigned to the stat; defaults to 1)</li>
+<li>match_opcode (the opcode to clone; defaults to 142)</li>
+<li>match_parameter2 (a restriction on which opcode is cloned; defaults to -1, clone all)</li>
+<li>match_resource (a restriction on which opcode is cloned; defaults to SAME, clone all)</li>
+</ul>
+Columns can be in any order, but first row must be column headers. Other columns are ignored/
+}
+*/
 
 DEFINE_ACTION_FUNCTION ds_process_table
    INT_VAR complain=0
@@ -447,7 +503,7 @@ BEGIN
                  END
               END
               INNER_ACTION BEGIN
-                 LAF ds_make_detectable INT_VAR complain match_opcode match_parameter2 stat_value STR_VAR id=EVAL "%stat%" resource match_resource RET_ARRAY ds_ids_map_stats ds_ids_map_splstate END
+                 LAF ds_make_detectable INT_VAR complain match_opcode match_parameter2 stat_value duration STR_VAR id=EVAL "%stat%" resource match_resource RET_ARRAY ds_ids_map_stats ds_ids_map_splstate END
               END
            END
         END ELSE BEGIN
@@ -462,11 +518,20 @@ END
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/*
+document{ds_make_detectable}
+{
+The core function in the 'detectable_spells' library. The resource called out is marked so that a given opcode (by default, the icon opcode)
+is accompanied by a spellstate specified in 'id'.
+}
+*/
+
 DEFINE_ACTION_FUNCTION ds_make_detectable
    INT_VAR match_opcode="142"
            match_parameter2="-1"
            stat_value=1
            complain=1
+		   duration="-1"
    STR_VAR id=""
            resource=""
            match_resource="SAME"
@@ -517,7 +582,11 @@ BEGIN
       ACTION_IF stat_opcode>=0 BEGIN // return value of -1 means we can't patch this (probably because TOBEX is missing)
         COPY_EXISTING "%filespec%" override
               LPF DELETE_EFFECT INT_VAR match_opcode=stat_opcode match_parameter2=stat_param END // clear out any previous version
-              LPF CLONE_EFFECT INT_VAR silent=!complain multi_match=1 match_opcode match_parameter2 opcode=stat_opcode parameter1=stat_value parameter2=stat_param special=(opcode=328) STR_VAR match_resource END
+			  PATCH_IF duration>=0 BEGIN
+				 LPF CLONE_EFFECT INT_VAR silent=!complain multi_match=1 match_opcode match_parameter2 opcode=stat_opcode parameter1=stat_value parameter2=stat_param special=(opcode=328) timing=0 duration STR_VAR match_resource END			 
+			  END ELSE BEGIN
+				 LPF CLONE_EFFECT INT_VAR silent=!complain multi_match=1 match_opcode match_parameter2 opcode=stat_opcode parameter1=stat_value parameter2=stat_param special=(opcode=328) STR_VAR match_resource END
+			  END
         BUT_ONLY
       END
 
@@ -532,7 +601,8 @@ END
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-DEFINE_ACTION_FUNCTION ds_set_vars RET is_tobex enhanced_edition BEGIN
+DEFINE_ACTION_FUNCTION ds_set_vars//internal
+ RET is_tobex enhanced_edition BEGIN
    OUTER_SET is_tobex=FILE_EXISTS "tobex.dll"
    OUTER_SET enhanced_edition=GAME_IS "BGEE BG2EE EET IWDEE"
 END
@@ -542,7 +612,7 @@ END
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // having already checked it's not, add an entry to a 2da
 
-DEFINE_ACTION_FUNCTION ds_add_entry
+DEFINE_ACTION_FUNCTION ds_add_entry//internal
   INT_VAR min=0
   STR_VAR id="" file=""
   RET stat_ind
@@ -565,7 +635,7 @@ END
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-DEFINE_PATCH_FUNCTION ds_add_entry
+DEFINE_PATCH_FUNCTION ds_add_entry//internal
   INT_VAR min=0
   STR_VAR id="" file=""
   RET stat_ind
@@ -579,7 +649,28 @@ END
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-DEFINE_PATCH_FUNCTION ds_resolve_stat STR_VAR id="" RET stat_ind stat_param stat_opcode stat_type RET_ARRAY ds_ids_map_stats ds_ids_map_splstate
+/*
+document{ds_resolve_stat}
+{
+Take the stat 'id' and see if it's already present. If not, add it. Either way, return its value as stat_ind.</p>
+<p>
+By default, we work out where to find/put it heuristically:
+<ul>
+<li>If it's already in stats.ids, we assume it's there and return that value.</li>
+<li>If not, and we're on EE, we return it in splstate.ids.</li>
+<li>If not, and we're on ToBEx, we return it in stats. ids.</li>
+<li>If not, and we're not on EE or ToBex, we give up.</li>
+</ul>
+The function gives a little more data: stat_opcode is the opcode used to apply the stat; stat_param is the parameter value used to apply the stat; stat_type is 'stat', 'splstate' or 'null' depending where we put it. (The array returns are for internal use.)
+</p>
+<p>If you enter id as 'splstate:blah' then 'blah' will always be resolved as a splstate (use this when the same id is in stats.ids and splstate.ids)
+}
+*/
+
+DEFINE_PATCH_FUNCTION ds_resolve_stat 
+	STR_VAR id="" 
+	RET stat_ind stat_param stat_opcode stat_type 
+	RET_ARRAY ds_ids_map_stats ds_ids_map_splstate
 BEGIN
    // initialise
    INNER_ACTION BEGIN
@@ -616,7 +707,6 @@ BEGIN
    END ELSE BEGIN
 	SET check_stats="-1"
    END
-   SET check_stats = IDS_OF_SYMBOL (stats "%id%")
    PATCH_IF (!enforce_splstate && ( check_stats >=89 && (check_stats<=134 || check_stats>=156) && ( check_stats<256 || is_tobex ) )) BEGIN
        SET stat_ind=check_stats
        SPRINT stat_type stats
@@ -684,7 +774,8 @@ END
 //// make sure the required entries in stats.ids are present
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-DEFINE_ACTION_FUNCTION ds_stat_entries BEGIN
+DEFINE_ACTION_FUNCTION ds_stat_entries//internal 
+BEGIN
 
 LAF ds_set_vars RET is_tobex enhanced_edition END
 // first, fix issue with Paladin_protection_from_evil
@@ -815,7 +906,8 @@ END
 /////  and some EVALs to function in a non-AUTO_EVAL_STRINGS environment)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-DEFINE_ACTION_FUNCTION ds_sort_ids STR_VAR ids="" BEGIN
+DEFINE_ACTION_FUNCTION ds_sort_ids//internal 
+STR_VAR ids="" BEGIN
    ACTION_CLEAR_ARRAY ids_entries
    OUTER_SET max=0
    COPY_EXISTING "%ids%.ids" override
@@ -867,7 +959,7 @@ DEFINE_ACTION_FUNCTION ds_sort_ids STR_VAR ids="" BEGIN
        REPLACE_TEXTUALLY "DW_SORT_IDS_PLACEHOLDER" "%top_row%"
 END
 
-DEFINE_PATCH_FUNCTION ds_return_first_entry
+DEFINE_PATCH_FUNCTION ds_return_first_entry//internal
    STR_VAR list=""
    RET entry
        list
@@ -906,7 +998,8 @@ END
 // While it likely is possible to write sufficiently sophisticated code to reanimate the file even if it has
 // suffered the most dire kind of abuse, I feel that's rather excessive to do so.
 
-DEFINE_ACTION_FUNCTION ds_fix_khelben BEGIN
+DEFINE_ACTION_FUNCTION ds_fix_khelben//internal 
+BEGIN
 
 COPY_EXISTING ~spwi705.spl~ override
   READ_LONG  0x64 ab_off
@@ -1057,7 +1150,8 @@ END // end of function
 
 // Since SCS occupies one of DS slots for weapons, I see no reason not to include it
 
-DEFINE_ACTION_FUNCTION ds_detectable_weapon_enchantment BEGIN
+DEFINE_ACTION_FUNCTION ds_detectable_weapon_enchantment//internal 
+BEGIN
 
 LAF ds_resolve_stat STR_VAR id=~WEAPON_ENCHANTMENT~ END
 
@@ -1129,7 +1223,8 @@ END // end of function
 
 // Tightly based on Nythrun's ~fj_spl_itm_reindex~ patch 
 
-DEFINE_PATCH_FUNCTION ~FJ_SPL_ITM_REINDEX~ BEGIN
+DEFINE_PATCH_FUNCTION FJ_SPL_ITM_REINDEX//internal
+BEGIN
 
 PATCH_IF !(~%SOURCE_FILE%~ STRING_MATCHES_REGEXP ~^.+\.spl~) BEGIN
   hs = 0x28
@@ -1187,7 +1282,7 @@ END // end of function
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 
-DEFINE_ACTION_FUNCTION ds_load_ids
+DEFINE_ACTION_FUNCTION ds_load_ids//internal
 	STR_VAR ids=""
 	RET_ARRAY ids_map
 BEGIN

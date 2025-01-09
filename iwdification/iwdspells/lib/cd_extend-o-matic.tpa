@@ -4,20 +4,12 @@
 
 /*
 
-DEPRECATED. 
-Use the broader cd_level_select-o-matic.tpa instead. Existing mods that use this library will
-be migrated over to cd_level_select-o-matic.tpa as time allows. 
-
 this function creates headers and does basic duration extensions to level 30; written for iwd-in-bg2 ages ago
 
 used:
   bg2 fixpack, as bg2fixpack/lib/cd_extend-o-matic.tpa [symbolic link]
   IWDification, as iwdification/iwdspells/lib/cd_extend-o-matic.tpa [symbolic link]
   IWDSpells library, as dw_iwdspells/iwdspells/lib/cd_extend-o-matic.tpa [symbolic link]
-  EE Fixpack, as eefixpack/files/lib/cd_extend-o-matic.tpa [symbolic link]
-
-platform:
-  all except iwd2
  
 version history: 
   unknown
