@@ -1046,99 +1046,35 @@ COPY ~iwdification/2da/iwd_mxsplran.2da~ ~override/mxsplran.2da~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @12000 DESIGNATED 120
+/////                                                  \\\\\
+///// evasion: include kits                            \\\\\
+/////                                                  \\\\\
+
+BEGIN @12001 DESIGNATED 120
+SUBCOMPONENT @12000
 REQUIRE_PREDICATE !GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ @997
 REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40450 @998
 REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40460 @998
 GROUP @995
 LABEL ~cd_iwdification_thief_evasion~
 
-OUTER_SET default_thief = 9561
-ACTION_CLEAR_ARRAY  cd_thief_clabs
-ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_thief_clabs BEGIN // start with base class tables
-  ~%default_thief%~, clabth01 => clabth01 // generic thief abilities
-END
-  
-// add kit tables dynamically by reading kitlist
-COPY_EXISTING ~kitlist.2da~ ~override~
-  COUNT_2DA_ROWS 9 rows
-  FOR (index = 2 ; index < rows ; ++index) BEGIN // skip reserve row
-    READ_2DA_ENTRY index 8 9 class
-    PATCH_IF class = 4 BEGIN
-      READ_2DA_ENTRY index 4 9 desc
-      READ_2DA_ENTRY index 5 9 clab
-      DEFINE_ASSOCIATIVE_ARRAY cd_thief_clabs BEGIN "%desc%", "%clab%" => "%clab%" END
-    END  
-  END
+OUTER_SET evasion_kits = 1 
+INCLUDE ~iwdification/evasion/evasion_main.tpa~ 
 
-  
-ACTION_PHP_EACH cd_thief_clabs AS params => file BEGIN
-  
-  ACTION_IF FILE_EXISTS_IN_GAME ~%file%.2da~ BEGIN 
+/////                                                  \\\\\
+///// evasion: exclude kits                            \\\\\
+/////                                                  \\\\\
 
-    APPEND ~%file%.2da~ ~ABILITYX **** **** **** **** **** **** AP_CDIEVAD  CDREPLACE~ UNLESS ~AP_CDIEVAD~
+BEGIN @12100 DESIGNATED 121
+SUBCOMPONENT @12000
+REQUIRE_PREDICATE !GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ @997
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40450 @998
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40460 @998
+GROUP @995
+LABEL ~cd_iwdification_thief_evasion_no_kits~
 
-    COPY_EXISTING ~%file%.2da~ ~override~
-      COUNT_2DA_COLS cols
-      FOR (index = 9 ; index < cols ; ++index) BEGIN
-        REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
-      END
-      REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
-      PRETTY_PRINT_2DA
-      BUT_ONLY
-  
-  END
- 
-  ACTION_GET_STRREF params_0 desc
-  OUTER_PATCH_SAVE desc "%desc%" BEGIN
-    PATCH_IF params_0 = default_thief BEGIN
-      SPRINT old @12004 // main thief descript doesn't have 'disadvantages' line
-    END ELSE BEGIN  
-      SPRINT old @12003
-    END  
-    SPRINT new @12002
-    REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
-    REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
-  END
-  STRING_SET_EVALUATE params_0 "%desc%"  
-
-END
-
-COPY ~iwdification/spl/cdievad.spl~ ~override~
-  SAY 0x9e @12001
-
-INCLUDE ~iwdification/evasion/evasion.tpa~
-LAF cd_add_evasion STR_VAR 2da_file = ~iwdification/evasion/evasion.2da~ END
-LAF cd_add_evasion STR_VAR 2da_file = ~iwdification/evasion/evasion_arcane.2da~ END
-LAF cd_add_evasion STR_VAR 2da_file = ~iwdification/evasion/evasion_divine.2da~ END
-
-COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
-  SET add = 0
-  READ_LONG 0x010 dual   // block of flags including the dual-class bits
-  READ_BYTE 0x234 level1 // If dual-classed, this value is put in the next field, and this field is set to 1.
-  READ_BYTE 0x235 level2 // Highest attained level in secondary class (0-100)
-  READ_BYTE 0x236 level3 // Highest attained level in tertiary class (0-100)
-  READ_BYTE 0x273 class  // V1.0
-  PATCH_IF (((class =  4) AND (level1 > 6)) OR     // single class thief, level > 6
-            ((class = 10) AND (level3 > 6))) BEGIN // f/m/t, thief level > 6
-    SET add = 1 
-  END ELSE 
-  PATCH_IF ((class = 9) OR (class = 13) OR (class = 15)) BEGIN // ft, mt, or ct
-    PATCH_IF (((dual & BIT3) = BIT3) OR     // f > t
-              ((dual & BIT4) = BIT4) OR     // m > t dual 
-              ((dual & BIT5) = BIT5)) BEGIN // c > t dual
-      PATCH_IF level1 > 6 BEGIN SET add = 1 END
-    END ELSE
-    PATCH_IF ((dual & BIT6) = BIT6) BEGIN // t > X dual  
-      PATCH_IF ((level2 > 6) AND (level1 > level2)) BEGIN SET add = 1 END // only if thief lev > 6 and re-activated
-    END ELSE BEGIN // true multiclass  
-      PATCH_IF level2 > 6 BEGIN SET add = 1 END
-    END
-  END 
-  PATCH_IF add BEGIN
-    LPF ADD_CRE_EFFECT INT_VAR opcode = 328 target = 1 parameter2 = 252 timing = 1 special = 1 STR_VAR effsource = cdievad END
-  END
-  BUT_ONLY  
+OUTER_SET evasion_kits = 0 
+INCLUDE ~iwdification/evasion/evasion_main.tpa~ 
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
