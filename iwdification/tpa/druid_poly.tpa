@@ -108,7 +108,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   COUNT_2DA_ROWS 9 rows
   FOR (index = 2 ; index < rows ; ++index) BEGIN // skip reserve row
     READ_2DA_ENTRY index 8 9 class
-    PATCH_IF class = 11 BEGIN
+    PATCH_IF ((class = 11) OR (class = 16)) BEGIN
       READ_2DA_ENTRY index 0 9 kitid
       READ_2DA_ENTRY index 5 9 clab
       SET kitid = (kitid + 16384)

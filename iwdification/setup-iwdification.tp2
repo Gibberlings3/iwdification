@@ -924,7 +924,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   COUNT_2DA_ROWS 9 rows
   FOR (index = 2 ; index < rows ; ++index) BEGIN // skip reserve row
     READ_2DA_ENTRY index 8 9 class
-    PATCH_IF class = 12 BEGIN
+    PATCH_IF ((class = 12) OR (class = 18)) BEGIN
       READ_2DA_ENTRY index 1 9 kitname
       READ_2DA_ENTRY index 4 9 desc
       READ_2DA_ENTRY index 5 9 clab
