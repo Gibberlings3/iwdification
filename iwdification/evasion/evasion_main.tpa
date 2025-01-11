@@ -12,50 +12,48 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   FOR (index = 2 ; index < rows ; ++index) BEGIN // skip reserve row
     READ_2DA_ENTRY index 8 9 class
     PATCH_IF ((class = 4) OR (class = 9) OR (class = 10) OR (class = 13)) BEGIN
-      READ_2DA_ENTRY index 4 9 desc
-      READ_2DA_ENTRY index 5 9 clab
       READ_2DA_ENTRY index 0 9 kitid
       SET kitid += 0x4000
-      DEFINE_ASSOCIATIVE_ARRAY cd_thief_clabs BEGIN "%desc%", "%clab%" => "%clab%" END
       DEFINE_ASSOCIATIVE_ARRAY cd_thief_kits  BEGIN "%kitid%" => "%kitid%" END
+      PATCH_IF evasion_kits BEGIN 
+        READ_2DA_ENTRY index 4 9 desc
+        READ_2DA_ENTRY index 5 9 clab
+        DEFINE_ASSOCIATIVE_ARRAY cd_thief_clabs BEGIN "%desc%", "%clab%" => "%clab%" END
+      END  
     END  
   END
-
-ACTION_IF evasion_kits BEGIN 
   
-  ACTION_PHP_EACH cd_thief_clabs AS params => file BEGIN
-    
-    ACTION_IF FILE_EXISTS_IN_GAME ~%file%.2da~ BEGIN 
+ACTION_PHP_EACH cd_thief_clabs AS params => file BEGIN
+  
+  ACTION_IF FILE_EXISTS_IN_GAME ~%file%.2da~ BEGIN 
 
-      APPEND ~%file%.2da~ ~ABILITYX **** **** **** **** **** **** AP_CDIEVAD  CDREPLACE~ UNLESS ~AP_CDIEVAD~
+    APPEND ~%file%.2da~ ~ABILITYX **** **** **** **** **** **** AP_CDIEVAD  CDREPLACE~ UNLESS ~AP_CDIEVAD~
 
-      COPY_EXISTING ~%file%.2da~ ~override~
-        COUNT_2DA_COLS cols
-        FOR (index = 9 ; index < cols ; ++index) BEGIN
-          REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
-        END
-        REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
-        PRETTY_PRINT_2DA
-        BUT_ONLY
-    
-    END
-   
-    ACTION_GET_STRREF params_0 desc
-    OUTER_PATCH_SAVE desc "%desc%" BEGIN
-      PATCH_IF params_0 = default_thief BEGIN
-        SPRINT old @12004 // main thief descript doesn't have 'disadvantages' line
-      END ELSE BEGIN  
-        SPRINT old @12003
-      END  
-      SPRINT new @12002
-      REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
-      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
-    END
-    STRING_SET_EVALUATE params_0 "%desc%"  
-
+    COPY_EXISTING ~%file%.2da~ ~override~
+      COUNT_2DA_COLS cols
+      FOR (index = 9 ; index < cols ; ++index) BEGIN
+        REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
+      END
+      REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
+      PRETTY_PRINT_2DA
+      BUT_ONLY
+  
   END
+ 
+  ACTION_GET_STRREF params_0 desc
+  OUTER_PATCH_SAVE desc "%desc%" BEGIN
+    PATCH_IF params_0 = default_thief BEGIN
+      SPRINT old @12004 // main thief descript doesn't have 'disadvantages' line
+    END ELSE BEGIN  
+      SPRINT old @12003
+    END  
+    SPRINT new @12002
+    REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
+    REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
+  END
+  STRING_SET_EVALUATE params_0 "%desc%"  
 
-END 
+END
 
 COPY ~iwdification/spl/cdievad.spl~ ~override~
   SAY 0x9e @12001
