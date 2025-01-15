@@ -900,7 +900,7 @@ COPY ~iwdification/2da/iwd_mxsplpal.2da~ ~override/mxsplpal.2da~
 /////                                                  \\\\\
 
 BEGIN @11000 DESIGNATED 110
-REQUIRE_PREDICATE GAME_IS ~bgee eet tutu tutu_totsc bgt~ @991                          // only bg content at the moment
+//REQUIRE_PREDICATE GAME_IS ~bgee eet tutu tutu_totsc bgt~ @991                          // only bg content at the moment
 REQUIRE_PREDICATE FILE_EXISTS ~iwdification/languages/%LANGUAGE%/tracking_bg.tra~ @992 // language check; can't use tra_location yet since it may not have been set
 GROUP @995
 
@@ -1018,6 +1018,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~luabbr.2da~ BEGIN // if game has HLA tables (ever
 END
 
 // ok, so now we finally add tracking entries
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_tracking_area BEGIN END 
 ACTION_IF ((GAME_IS ~bgee eet tutu tutu_totsc bgt~) AND (FILE_EXISTS ~%tra_location%/%LANGUAGE%/tracking_bg.tra~)) BEGIN
   WITH_TRA ~%tra_location%/english/tracking_bg.tra~ ~%tra_location%/%LANGUAGE%/tracking_bg.tra~BEGIN
     OUTER_SET default_track = RESOLVE_STR_REF (@0)
