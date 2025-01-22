@@ -889,7 +889,7 @@ ACTION_IF include_hq AND FILE_EXISTS_IN_GAME ~cd5108.are~ BEGIN // swap items in
 
   INCLUDE ~iwdification/iwdspells/lib/alter_area-creature_item.tpa~
   COPY_EXISTING ~cd5108.are~ ~override~
-    LPF ALTER_AREA_ITEM STR_VAR item = "cdhqsw2h" match_item = EVAL "%tutu_var%sw2h01"
+    LPF ALTER_AREA_ITEM STR_VAR item = "cdhqsw2h" match_item = EVAL "%tutu_var%sw2h01" END
     BUT_ONLY
     
 END
