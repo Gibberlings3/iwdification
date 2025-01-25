@@ -125,83 +125,87 @@ ACTION_IF GAME_IS bgee BEGIN OUTER_SET sod_exception = 1 END
 
 ACTION_PHP_EACH cd_druid_kits AS clab => kitno BEGIN
 
-  // means testing the clab
-  COPY_EXISTING ~%clab%.2da~ ~override~
-    SET spcl611 = 0
-    SET spcl612 = 0
-    SET spcl613 = 0
-    SET spcl924 = 0
-    SET spcl925 = 0
-    SET spcl926 = 0
-    SET spcl927 = 0
-    SET shapeshifting = 0 
-    SET druid_abils = 0   
-    COUNT_2DA_ROWS 30 rows
-    FOR (index = 0 ; index < rows ; ++index) BEGIN
-      READ_2DA_ENTRY index  7 30 lev7
-      READ_2DA_ENTRY index 15 30 lev15
-      READ_2DA_ENTRY index 18 30 lev18
-      READ_2DA_ENTRY index 21 30 lev21
-      READ_2DA_ENTRY index 24 30 lev24
-      PATCH_IF ("%lev7%"  STRING_COMPARE_CASE "GA_SPCL611" = 0) BEGIN SET spcl611 = 1 END 
-      PATCH_IF ("%lev7%"  STRING_COMPARE_CASE "GA_SPCL612" = 0) BEGIN SET spcl612 = 1 END 
-      PATCH_IF ("%lev7%"  STRING_COMPARE_CASE "GA_SPCL613" = 0) BEGIN SET spcl613 = 1 END  
-      PATCH_IF ("%lev15%" STRING_COMPARE_CASE "AP_SPCL924" = 0) BEGIN SET spcl924 = 1 END 
-      PATCH_IF ("%lev18%" STRING_COMPARE_CASE "AP_SPCL925" = 0) BEGIN SET spcl925 = 1 END 
-      PATCH_IF ("%lev21%" STRING_COMPARE_CASE "AP_SPCL926" = 0) BEGIN SET spcl926 = 1 END 
-      PATCH_IF ("%lev24%" STRING_COMPARE_CASE "AP_SPCL927" = 0) BEGIN SET spcl927 = 1 END 
-    END 
-    PATCH_IF (spcl611 + spcl612 + spcl613 = 3) BEGIN // if normal shapeshifting 
-      SET shapeshifting = 1
-      REPLACE_TEXTUALLY ~[ %TAB%]GA_SPCL611[ %TAB%]~ ~ GA_%first_ss% ~ EVALUATE_BUFFER
-      PATCH_FOR_EACH res IN SPCL612 SPCL613 BEGIN
-        REPLACE_TEXTUALLY ~[ %TAB%]\(GA\|AP\)_%res%[ %TAB%]~ ~ **** ~
-      END  
-    END
-    PATCH_IF ((spcl924 + spcl925 + spcl926 + spcl927 = 4) OR // if normal abilities  
-              ((sod_exception) AND 
-                (("%clab%" STRING_COMPARE_REGEXP "^[Cc][Ll][Aa][Bb][Dd][Rr]0[1-4]$" = 0) OR         // uses clabdr01 - clabdr04
-                ((kitid = 16384) OR (kitid = 16400) OR (kitid = 16401) OR (kitid = 16402))))) BEGIN // or one of the default kits on pure SoD game
-      SET druid_abils = 1   
-      PATCH_FOR_EACH res IN SPCL924 SPCL925 SPCL926 SPCL927 BEGIN
-        REPLACE_TEXTUALLY ~[ %TAB%]\(GA\|AP\)_%res%[ %TAB%]~ ~ **** ~
-      END 
-    END
+  ACTION_IF FILE_EXISTS_IN_GAME ~%clab%.2da~ BEGIN
 
-  ACTION_IF shapeshifting BEGIN    
-
-    APPEND ~%clab%.2da~
-    ~ABILITYX   ****       ****       ****       ****       GA_cdidrww ****       ****       ****       GA_cdidrpb ****       GA_cdidrfe ****       GA_cdidree ****       GA_cdidrwe CDREPLACE~
-    
-  END  
-
-  ACTION_IF druid_abils BEGIN    
-
-    APPEND ~%clab%.2da~
-    ~ABILITYY   ****       ****       ****       ****       ****       ****       ****       ****       AP_cdidrps ****       ****       ****       ****       ****       AP_cdidrif CDREPLACE~
-
-  END 
-  
-  ACTION_IF shapeshifting OR druid_abils BEGIN
-  
+    // means testing the clab
     COPY_EXISTING ~%clab%.2da~ ~override~
-      COUNT_2DA_COLS cols
-      FOR (index = 17 ; index < cols ; ++index) BEGIN
-        REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
+      SET spcl611 = 0
+      SET spcl612 = 0
+      SET spcl613 = 0
+      SET spcl924 = 0
+      SET spcl925 = 0
+      SET spcl926 = 0
+      SET spcl927 = 0
+      SET shapeshifting = 0 
+      SET druid_abils = 0   
+      COUNT_2DA_ROWS 30 rows
+      FOR (index = 0 ; index < rows ; ++index) BEGIN
+        READ_2DA_ENTRY index  7 30 lev7
+        READ_2DA_ENTRY index 15 30 lev15
+        READ_2DA_ENTRY index 18 30 lev18
+        READ_2DA_ENTRY index 21 30 lev21
+        READ_2DA_ENTRY index 24 30 lev24
+        PATCH_IF ("%lev7%"  STRING_COMPARE_CASE "GA_SPCL611" = 0) BEGIN SET spcl611 = 1 END 
+        PATCH_IF ("%lev7%"  STRING_COMPARE_CASE "GA_SPCL612" = 0) BEGIN SET spcl612 = 1 END 
+        PATCH_IF ("%lev7%"  STRING_COMPARE_CASE "GA_SPCL613" = 0) BEGIN SET spcl613 = 1 END  
+        PATCH_IF ("%lev15%" STRING_COMPARE_CASE "AP_SPCL924" = 0) BEGIN SET spcl924 = 1 END 
+        PATCH_IF ("%lev18%" STRING_COMPARE_CASE "AP_SPCL925" = 0) BEGIN SET spcl925 = 1 END 
+        PATCH_IF ("%lev21%" STRING_COMPARE_CASE "AP_SPCL926" = 0) BEGIN SET spcl926 = 1 END 
+        PATCH_IF ("%lev24%" STRING_COMPARE_CASE "AP_SPCL927" = 0) BEGIN SET spcl927 = 1 END 
+      END 
+      PATCH_IF (spcl611 + spcl612 + spcl613 = 3) BEGIN // if normal shapeshifting 
+        SET shapeshifting = 1
+        REPLACE_TEXTUALLY ~[ %TAB%]GA_SPCL611[ %TAB%]~ ~ GA_%first_ss% ~ EVALUATE_BUFFER
+        PATCH_FOR_EACH res IN SPCL612 SPCL613 BEGIN
+          REPLACE_TEXTUALLY ~[ %TAB%]\(GA\|AP\)_%res%[ %TAB%]~ ~ **** ~
+        END  
       END
-      REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
-      PRETTY_PRINT_2DA
-      BUT_ONLY
-     
-    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_druid_kits_annotated BEGIN "%clab%", "%shapeshifting%", "%druid_abils%" => "%kitno%" END
-    
-    ACTION_IF ("%clab%" STRING_COMPARE_CASE "clabdr01" = 0) BEGIN // special vars for trueclass
-      OUTER_SET shapeshifting_tc = shapeshifting
-      OUTER_SET druid_abils_tc = druid_abils
-      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_druid_kits_annotated BEGIN "true", "%shapeshifting%", "%druid_abils%" => 0 END // add extra entry so we get both kit = 0 and 0x4000
-    END
+      PATCH_IF ((spcl924 + spcl925 + spcl926 + spcl927 = 4) OR // if normal abilities  
+                ((sod_exception) AND 
+                  (("%clab%" STRING_COMPARE_REGEXP "^[Cc][Ll][Aa][Bb][Dd][Rr]0[1-4]$" = 0) OR         // uses clabdr01 - clabdr04
+                  ((kitid = 16384) OR (kitid = 16400) OR (kitid = 16401) OR (kitid = 16402))))) BEGIN // or one of the default kits on pure SoD game
+        SET druid_abils = 1   
+        PATCH_FOR_EACH res IN SPCL924 SPCL925 SPCL926 SPCL927 BEGIN
+          REPLACE_TEXTUALLY ~[ %TAB%]\(GA\|AP\)_%res%[ %TAB%]~ ~ **** ~
+        END 
+      END
 
-  END  
+    ACTION_IF shapeshifting BEGIN    
+
+      APPEND ~%clab%.2da~
+      ~ABILITYX   ****       ****       ****       ****       GA_cdidrww ****       ****       ****       GA_cdidrpb ****       GA_cdidrfe ****       GA_cdidree ****       GA_cdidrwe CDREPLACE~
+      
+    END  
+
+    ACTION_IF druid_abils BEGIN    
+
+      APPEND ~%clab%.2da~
+      ~ABILITYY   ****       ****       ****       ****       ****       ****       ****       ****       AP_cdidrps ****       ****       ****       ****       ****       AP_cdidrif CDREPLACE~
+
+    END 
+    
+    ACTION_IF shapeshifting OR druid_abils BEGIN
+    
+      COPY_EXISTING ~%clab%.2da~ ~override~
+        COUNT_2DA_COLS cols
+        FOR (index = 17 ; index < cols ; ++index) BEGIN
+          REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
+        END
+        REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
+        PRETTY_PRINT_2DA
+        BUT_ONLY
+       
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_druid_kits_annotated BEGIN "%clab%", "%shapeshifting%", "%druid_abils%" => "%kitno%" END
+      
+      ACTION_IF ("%clab%" STRING_COMPARE_CASE "clabdr01" = 0) BEGIN // special vars for trueclass
+        OUTER_SET shapeshifting_tc = shapeshifting
+        OUTER_SET druid_abils_tc = druid_abils
+        ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_druid_kits_annotated BEGIN "true", "%shapeshifting%", "%druid_abils%" => 0 END // add extra entry so we get both kit = 0 and 0x4000
+      END
+
+    END  
+
+  END
 
 END    
   
