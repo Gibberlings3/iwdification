@@ -52,6 +52,8 @@ to look it over if you wish.
 @10000 = ~IWD Class Updates: Paladin: IWD Abilities and Skills~
 
 @11000 = ~IWD Class Updates: Ranger: Tracking~
+@11001 = ~Change Tracking for all rangers and ranger kits~
+@11100 = ~Change Tracking only for non-kitted rangers~
 
 @12000 = ~IWD Class Updates: Thief: Evasion~
 @12005 = ~Add evasion to thieves and all thief kits~

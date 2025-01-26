@@ -896,137 +896,30 @@ COPY ~iwdification/2da/iwd_mxsplpal.2da~ ~override/mxsplpal.2da~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 /////                                                  \\\\\
-///// IWD Class Updates: Ranger: Tracking              \\\\\
+///// IWD Class Updates: Ranger: Tracking for all      \\\\\
 /////                                                  \\\\\
 
-BEGIN @11000 DESIGNATED 110
+BEGIN @11001 DESIGNATED 110
+SUBCOMPONENT @11000
 //REQUIRE_PREDICATE GAME_IS ~bgee eet tutu tutu_totsc bgt~ @991                          // only bg content at the moment
 REQUIRE_PREDICATE FILE_EXISTS ~iwdification/languages/%LANGUAGE%/tracking_bg.tra~ @992 // language check; can't use tra_location yet since it may not have been set
 GROUP @995
 
-ACTION_IF !FILE_EXISTS_IN_GAME ~spcl922.spl~ BEGIN // bgee or sod
+OUTER_SET tracking_kits = 1
+INCLUDE ~iwdification/tpa/tracking.tpa~
 
-  COPY ~iwdification/spl/spcl922.spl~ ~override~ // tracking
-    SAY 0x08 @11001
-    SAY 0x50 @11002
+/////                                                  \\\\\
+///// IWD Class Updates: Ranger: Tracking for unkitted \\\\\
+/////                                                  \\\\\
 
-END
+BEGIN @11100 DESIGNATED 111
+SUBCOMPONENT @11000
+//REQUIRE_PREDICATE GAME_IS ~bgee eet tutu tutu_totsc bgt~ @991                          // only bg content at the moment
+REQUIRE_PREDICATE FILE_EXISTS ~iwdification/languages/%LANGUAGE%/tracking_bg.tra~ @992 // language check; can't use tra_location yet since it may not have been set
+GROUP @995
 
-OUTER_SET default_ranger = 9557
-ACTION_CLEAR_ARRAY  cd_ranger_clabs
-ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_ranger_clabs BEGIN // start with base class tables
-  clabrn01,~%default_ranger%~ => RANGER        // generic ranger
-  clabrn01,9580               => CLERIC_RANGER // cleric/ranger
-END
-    
-// add kit tables dynamically by reading kitlist
-COPY_EXISTING ~kitlist.2da~ ~override~
-  COUNT_2DA_ROWS 9 rows
-  FOR (index = 2 ; index < rows ; ++index) BEGIN // skip reserve row
-    READ_2DA_ENTRY index 8 9 class
-    PATCH_IF ((class = 12) OR (class = 18)) BEGIN
-      READ_2DA_ENTRY index 1 9 kitname
-      READ_2DA_ENTRY index 4 9 desc
-      READ_2DA_ENTRY index 5 9 clab
-      DEFINE_ASSOCIATIVE_ARRAY cd_ranger_clabs BEGIN "%clab%","%desc%" => "%kitname%" END
-    END  
-  END
-  BUT_ONLY
-
-ACTION_PHP_EACH cd_ranger_clabs AS params => kit BEGIN
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~%params_0%.2da~ BEGIN 
-
-    APPEND ~%params_0%.2da~ ~ABILITYX GA_SPCL922 CDREPLACE~ UNLESS ~GA_SPCL922~
-
-    COPY_EXISTING ~%params_0%.2da~ ~override~
-      COUNT_2DA_COLS cols
-      FOR (index = 3 ; index < cols ; ++index) BEGIN
-        REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
-      END
-      REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
-      PRETTY_PRINT_2DA
-      BUT_ONLY
-  
-  END
- 
-  ACTION_GET_STRREF params_1 desc
-  OUTER_PATCH_SAVE desc "%desc%" BEGIN
-    PATCH_IF params_1 = default_ranger BEGIN
-      SPRINT old @11004 // main ranger descript doesn't have 'disadvantages' line
-    END ELSE BEGIN  
-      SPRINT old @12003
-    END  
-    SPRINT new @11003
-    REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
-    REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%\2~ // swap text
-  END
-  STRING_SET_EVALUATE params_1 "%desc%" 
-
-END // ACTION_PHP_EACH
-
-ACTION_IF FILE_EXISTS_IN_GAME ~luabbr.2da~ BEGIN // if game has HLA tables (everything but bgee/sod)  
-
-  ACTION_CLEAR_ARRAY cd_ranger_hlas
-  COPY_EXISTING ~luabbr.2da~ ~override~
-    COUNT_2DA_ROWS 2 rows
-    FOR (index = 0 ; index < rows ; ++index) BEGIN // skip reserve row
-      READ_2DA_ENTRY index 0 2 kitcheck
-      PATCH_PHP_EACH cd_ranger_clabs AS params => kit BEGIN
-        PATCH_IF ("%kitcheck%" STRING_COMPARE_CASE "%kit%" = 0) BEGIN // match kit
-          READ_2DA_ENTRY index 1 2 table
-          DEFINE_ASSOCIATIVE_ARRAY cd_ranger_hlas BEGIN "%kit%" => "%table%" END
-        END  
-      END 
-    END
-    BUT_ONLY   
-
-  ACTION_PHP_EACH cd_ranger_hlas AS kit => table BEGIN   
-
-    ACTION_IF (RESOURCE_CONTAINS ~lu%table%.2da~ ~[ %TAB%]GA_SPCL922[ %TAB%]~) BEGIN // returns false if non-existant or doesn't contain text   
-
-      COPY_EXISTING ~lu%table%.2da~ ~override~
-        COUNT_2DA_ROWS 10 rows
-        SET found = 0
-        FOR (index = 0 ; index < rows ; ++index) BEGIN 
-          PATCH_IF found BEGIN // if we're in a row after we've found tracking, re-index  
-            READ_2DA_ENTRY index 0 10 abil_num
-            SET abil_num -= 1
-            SET_2DA_ENTRY index 0 10 abil_num
-          END ELSE BEGIN 
-            READ_2DA_ENTRY index 1 10 ability
-            PATCH_IF ("%ability%" STRING_COMPARE_CASE "GA_SPCL922" = 0) BEGIN // match_duration
-              READ_2DA_ENTRY index 0 10 found
-            END    
-          END
-        END
-        PATCH_IF found BEGIN
-          REPLACE_TEXTUALLY ~^%found%[ %TAB%]+GA_SPCL922.+$[%MNL%%LNL%%WNL%]+~ ~~ // delete tracking line
-        END
-        BUT_ONLY 
-      
-      ACTION_IF found BEGIN // add blank line at end if replacement made
-          
-        APPEND ~lu%table%.2da~ ~24         *           *          *         *         *          *            *            *             *~
-      
-      END
-
-    END
-  
-  END   
-  
-END
-
-// ok, so now we finally add tracking entries
-ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_tracking_area BEGIN END 
-ACTION_IF ((GAME_IS ~bgee eet tutu tutu_totsc bgt~) AND (FILE_EXISTS ~%tra_location%/%LANGUAGE%/tracking_bg.tra~)) BEGIN
-  WITH_TRA ~%tra_location%/english/tracking_bg.tra~ ~%tra_location%/%LANGUAGE%/tracking_bg.tra~BEGIN
-    OUTER_SET default_track = RESOLVE_STR_REF (@0)
-    INCLUDE ~iwdification/tpa/tracking_bg.tpa~ // array of bg areas and strings
-  END  
-END  
-
-INCLUDE ~iwdification/tpa/tracking_gen.tpa~ // puts array to use, finally
+OUTER_SET tracking_kits = 0
+INCLUDE ~iwdification/tpa/tracking.tpa~
 
 /////                                                  \\\\\
 ///// IWD Spell Progression                            \\\\\
