@@ -67,6 +67,11 @@ END // ACTION_PHP_EACH
 ACTION_IF FILE_EXISTS_IN_GAME ~luabbr.2da~ BEGIN // if game has HLA tables (everything but bgee/sod)  
 
   ACTION_CLEAR_ARRAY cd_ranger_hlas
+  
+  ACTION_IF FILE_EXISTS_IN_GAME ~lucdselu.2da~ BEGIN // heartwarder HLAs from DR
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_ranger_hlas BEGIN cdselune => cdselu END
+  END   
+  
   COPY_EXISTING ~luabbr.2da~ ~override~
     COUNT_2DA_ROWS 2 rows
     FOR (index = 0 ; index < rows ; ++index) BEGIN // skip reserve row
@@ -94,13 +99,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~luabbr.2da~ BEGIN // if game has HLA tables (ever
             SET_2DA_ENTRY index 0 10 abil_num
           END ELSE BEGIN 
             READ_2DA_ENTRY index 1 10 ability
-            PATCH_IF ("%ability%" STRING_COMPARE_CASE "GA_SPCL922" = 0) BEGIN // match_duration
+            PATCH_IF (("%ability%" STRING_COMPARE_CASE "GA_SPCL922" = 0) OR
+                      ("%ability%" STRING_COMPARE_CASE "GA_CDPRTRK" = 0)) BEGIN // match_duration
               READ_2DA_ENTRY index 0 10 found
             END    
           END
         END
         PATCH_IF found BEGIN
           REPLACE_TEXTUALLY ~^%found%[ %TAB%]+GA_SPCL922.+$[%MNL%%LNL%%WNL%]+~ ~~ // delete tracking line
+          REPLACE_TEXTUALLY ~^%found%[ %TAB%]+GA_CDPRTRK.+$[%MNL%%LNL%%WNL%]+~ ~~ // delete tracking line
         END
         BUT_ONLY 
       
