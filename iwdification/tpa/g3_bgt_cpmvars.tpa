@@ -16,6 +16,7 @@ https://github.com/Gibberlings3/Tweaks-Anthology/blob/master/cdtweaks/lib/g3_cpm
 
 used:
   gavin, as gavin/lib/g3_bgt_cpmvars.tpa [symbolic link]
+  Glam's NPC Pack, as glamnpcpack/libraries/g3_bgt_cpmvars.tph [local symlink]
   IWDification, as iwdification/tpa/g3_bgt_cpmvars.tpa [symbolic link]
   Lore from Learning, as cdlore/lib/g3_bgt_cpmvars.tpa [symbolic link]
   mur'neth, as mur'neth/lib/g3_bgt_cpmvars.tpa [symbolic link]

@@ -1,0 +1,14 @@
+IF
+  InParty(Myself)
+  Global("ENDOFBG1","GLOBAL",0)
+  HasItemEquipedReal("CD_REPLACE_ME",Myself) // Bastard Sword
+  Global("CD_REPLACE_ME","LOCALS",1)
+THEN
+  RESPONSE #50
+    DisplayStringHead(Myself,74447) // My weapon has shattered!
+    SetGlobal("CD_REPLACE_ME","LOCALS",0)
+    TakeItemReplace("BGMISC56","CD_REPLACE_ME",Myself) // Bastard Sword
+  RESPONSE #50
+    SetGlobal("CD_REPLACE_ME","LOCALS",0)
+    Continue()
+END
