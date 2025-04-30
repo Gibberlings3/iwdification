@@ -351,3 +351,5 @@ EVASION: When a Thief is hit by a spell that can be evaded (Fireball, Lightning 
   1st level: Enemies must save vs. Spell with a +2 bonus or be confused.
   15th level: Enemies must save vs. Spell with a +2 bonus or be confused, and must save vs. Spell or be slowed.
   20th level: Enemies must save vs. Spell with a +2 bonus or be confused, must save vs. Spell at +2 or be knocked unconscious, and must save vs. Spell or be slowed.~
+  
+@19001 = ~^[ %TAB%]*Damage[ %TAB%]*:?[ %TAB%]*[0-9]+[ %TAB%]*[Dd][ %TAB%]*~

@@ -603,6 +603,55 @@ LABEL ~cd_iwdification_randomized_equipment~
 
 OUTER_SET include_hq = 0
 INCLUDE ~iwdification/tpa/random.tpa~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// base spear damage                                \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @19000 DESIGNATED 190
+GROUP @994  
+LABEL ~cd_iwdification_spear_damage~
+
+OUTER_SPRINT damage_match @19001
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  READ_SHORT 0x1c itype
+  PATCH_IF itype = 29 BEGIN // spear
+    READ_LONG  0x64 abil_off
+    READ_SHORT 0x68 abil_num
+    SET altered = 0
+    FOR (index = 0 ; index < abil_num ; ++index) BEGIN
+      READ_BYTE (abil_off + 0x00 + (index * 0x38)) type
+      PATCH_IF ((type = 1) OR (type = 2)) BEGIN // melee or ranged header
+        READ_BYTE (abil_off + 0x16 + (index * 0x38)) dicesize
+        PATCH_IF dicesize BEGIN // don't update if no damage
+          SET altered = 1
+          WRITE_BYTE (abil_off + 0x16 + (index * 0x38)) THIS + 2
+        END
+      END
+    END      
+    PATCH_IF altered BEGIN // update descript if altered
+      PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
+        READ_STRREF ~%offset%~ desc
+        PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+            REPLACE_EVALUATE ~\(%damage_match%\)\([0-9]+\)~ BEGIN 
+              SET MATCH2 += 2
+            END ~%MATCH1%%MATCH2%~
+          END
+          SAY_EVALUATED ~%offset%~ ~%desc%~ // write changes
+        END
+      END
+    END
+  END
+  BUT_ONLY   
+        
+  
+  
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
