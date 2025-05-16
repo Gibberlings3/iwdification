@@ -67,9 +67,17 @@ LANGUAGE ~Russian (by Arkie)~ ~russian~
   ~iwdification/languages/english/game_strings.tra~ // strings for the tlk
   ~iwdification/languages/russian/game_strings.tra~ // strings for the tlk
 
-LANGUAGE ~Simplified Chinese~ ~Schinese~ 
-  ~iwdification/languages/Schinese/setup.tra~        // installer strings
-  ~iwdification/languages/Schinese/game_strings.tra~ // strings for the tlk
+LANGUAGE ~Simplified Chinese~ ~schinese~ 
+  ~iwdification/languages/english/setup.tra~         // installer strings
+  ~iwdification/languages/schinese/setup.tra~        // installer strings
+  ~iwdification/languages/english/game_strings.tra~  // strings for the tlk
+  ~iwdification/languages/schinese/game_strings.tra~ // strings for the tlk
+
+LANGUAGE ~Polish (by Patricida)~ ~polish~ 
+  ~iwdification/languages/english/setup.tra~        // installer strings
+  ~iwdification/languages/polish/setup.tra~         // installer strings
+  ~iwdification/languages/english/game_strings.tra~ // strings for the tlk
+  ~iwdification/languages/polish/game_strings.tra~  // strings for the tlk
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

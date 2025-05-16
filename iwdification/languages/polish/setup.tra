@@ -1,0 +1,74 @@
+/* TRANSLATORS NOTE:
+
+There are three tra files in this directory. This setup.tra file contains only strings used by 
+WeiDU for installation. It's in UTF-8 and does not get converted. The other two are for strings that will
+actually make it into the game, with game_strings_ee overriding game_strings on EE games. game_strings 
+will get converted to UTF-8 only on EE games. Since game_strings_ee will only be used on EE games, it is
+in UTF-8 already and will not be converted. 
+
+In addition to this folder, there are another two tra files used only for the new spells and bard songs,
+located in iwdification/iwdspells/copyover/tra/en_us/spells_copied.tra and
+iwdification/iwdspells/lang/english/dw_iwdspells.tra. The good news is that the largest one, spells_copied.tra,
+is automatically generated when we pull resources from IWDEE. While dw_iwdspells.tra is new, it's also
+short.
+
+In the main, automatically generated spells_copied.tra, one manual change is required: in string @216, Cause Disease
+is an Abjuration, not Necromancy, and its sphere is Necromantic, not Healing. The rest of the file should
+already be pulled directly from your language on IWDEE and should not need translation, though you're welcome
+to look it over if you wish.
+*/
+
+
+// this file contains strings only used by the WeiDU installer and does not get converted to UTF-8 for EE games.
+  @991 = ~Ten komponent nie jest dostępny dla twojej gry.~
+  @992 = ~Ten komponent nie jest dostępny w twoim języku.~
+  @993 = ~Dodatkowe zaklęcia~
+  @994 = ~Pozostałe zmiany~
+  @995 = ~Zmiany klas w stylu IWD~
+  @996 = ~Ten komponent jest dostępny tylko dla oryginalnych odsłon gier (bez Edycji Rozszerzonej)~
+  @997 = ~Ten komponent jest dostępny tylko dla gier z Edycji Rozszerzonej~
+  @998 = ~Ta funkcjonalność została już zainstalowana przez inną modyfikację.~
+  @999 = ~DLC Merger jest wymagany, aby modyfikacje mogły być instalowane dla tej gry. Sprawdź readme w celu uzyskania więcej informacji oraz linku do pobrania DLC Mergera~
+
+ @1000 = ~Efekty rzucania zakleć z Icewind Dale (Andyr)~
+
+ @2000 = ~Mieszczanie noszą ubrania w bladych odcieniach~
+
+ @3000 = ~Paczka zaklęć magii wtajemniczeń/tajemnej z IWD~
+
+ @4000 = ~Paczka zaklęć magii objawień z IWD~
+
+ @5000 = ~Zmiany klas w stylu IWD: Bard: Dodaj bardowskie pieśni z IWD~
+
+ @6000 = ~Paczka Toporów Oburęcznych~
+
+ @7000 = ~Zmiany klas w stylu IWD: Zmiennokształtność i rozwój cech z IWD~
+ @7100 = ~Zmiany klas w stylu IWD: Druid: Pozwól elfom wybrać klasę Druida~
+
+ @8000 = ~Dodatkowe ikony portretów~
+
+ @9000 = ~Rozszerzone Polimorfowanie Siebie~
+
+@10000 = ~Zmiany klas w stylu IWD: Paladyn: Cechy i Umiejetności z IWD~
+
+@11000 = ~Zmiany klas w stylu IWD: Łowca: Tropienie~
+@11001 = ~Zmień Tropienie dla Łowcy i jego podklas~
+@11100 = ~Zmień Tropienie wyłącznie dla Łowców bez podklasy~
+
+@12000 = ~Zmiany klas w stylu IWD: Złodziej: Odskok~
+@12005 = ~Dodaj Odskok dla Złodzieja i jego podklas~
+@12100 = ~Dodaj Odskok wyłącznie dla Złodziei bez podklasy~
+
+@13000 = ~Użyj efektów obrażeń z IWD~
+
+@14000 = ~Losowy ekwipunek przeciwników~
+@14001 = ~Dodaj wysokiej jakości niemagiczny ekwipunek~
+@14002 = ~Nie dodawaj wysokiej jakości niemagicznego ekwipunku~
+
+@15000 = ~Zmiany klas w stylu IWD: Bard: Użyj progresji zaklęć z IWD~
+
+@16000 = ~Zmiany klas w stylu IWD: Paladyn: Użyj progresji zaklęć z IWD~
+
+@17000 = ~Zmiany klas w stylu IWD: Łowca: Użyj progresji zaklęć z IWD~
+
+@18000 = ~Zmiany klas w stylu IWD: Bard: Możliwy wybór bardowskich pieśni dla Błaznów i Skaldów~
