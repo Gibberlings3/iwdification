@@ -344,7 +344,6 @@ Les paladins ont la capacité d'invoquer une colonne de lumière sacrée une foi
 - Au niveau 3, reçoit la capacité de Courage Divin, ce qui l'immunise contre la terreur.
 - Immunité complète aux maladies, magiques ou non.~ // grab text from iwdee 9558
 @10009 = ~Capacité passive obtenue : Courage divin~ // iwdee 40025
-@11001 = ~Pistage~ // bg2ee 70494
 @11002 = ~Pistage
 Grâce à son intime connaissance des milieux naturels et des créatures qui y vivent, un rôdeur peut utiliser cette faculté pour avoir une idée générale des créatures présentes dans une zone donnée, ainsi que de la direction dans laquelle ils se trouvent. Des flèches rouges indiquent à l'écran la direction générale des créatures de la zone.~ // bg2ee 71467
 @11003 = ~- Peut avoir recours à la capacité spéciale de Pistage, une fois par round
@@ -353,6 +352,7 @@ PISTAGE : Le rôdeur recherche des traces afin de savoir quel type de créatures
 
 ~ // from iwdee 37106, keep these extra linebreaks
 @11004 = ~- Doit être d'alignement bon.~
+@11005 = ~Pistage~ // bg2ee 70494
 @12001 = ~capacité passive obtenue : Esquive totale~ // string 40024 in IWDEE
 @12002 = ~- Au niveau 7, il gagne l'esquive totale.
 

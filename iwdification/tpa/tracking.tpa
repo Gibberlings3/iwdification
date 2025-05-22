@@ -2,7 +2,7 @@
 ACTION_IF !FILE_EXISTS_IN_GAME ~spcl922.spl~ BEGIN // bgee or sod
 
   COPY ~iwdification/spl/spcl922.spl~ ~override~ // tracking
-    SAY 0x08 @11001
+    SAY 0x08 @11005
     SAY 0x50 @11002
 
 END

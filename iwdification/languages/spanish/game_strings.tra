@@ -323,7 +323,6 @@ El paladín gana la capacidad de conjurar una columna de luz divina una vez al d
 - A nivel 3 ganan la habilidad Coraje Divino volviéndose inmunes al pánico.
 - Los paladines son completamente inmunes a todas las clases de enfermedad, mágica o mundana.~ // grab text from iwdee 9558
 @10009 = ~Habilidad pasiva ganada: Coraje Divino~ // iwdee 40025
-@11001 = ~Rastrear~ // bg2ee 70494
 @11002 = ~Rastrear
 Gracias a su profundo conocimiento de su entorno y las criaturas que viven en él, el explorador puede utilizar la aptitud Rastrear para hacerse una idea general de qué criaturas hay en la zona y en qué dirección se encuentran. Las flechas rojas del borde de la pantalla señalarán hacia la dirección general en que se encuentren las criaturas del área.~ // bg2ee 71467
 @11003 = ~- Pueden usar la habilidad Rastrear a voluntad (una vez por asalto).
@@ -332,6 +331,7 @@ RASTREAR: El explorador puede intentar buscar huellas y obtener información sob
 
 ~ // from iwdee 37106, keep these extra linebreaks
 @11004 = ~- Alineamiento restringido a bueno.~
+@11005 = ~Rastrear~ // bg2ee 70494
 @12001 = ~Habilidad pasiva ganada: Evasión~ // string 40024 in IWDEE
 @12002 = ~- A nivel 7 ganan la habilidad Evasión.
 

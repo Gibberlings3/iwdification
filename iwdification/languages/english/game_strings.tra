@@ -306,7 +306,6 @@ Paladins have the ability to call down a column of holy light once per day. This
 - 3rd level: Gains the Divine Courage ability becoming immune to fear.
 - Paladins are completely immune to all forms of disease, magical or mundane.~ // grab text from iwdee 9558
 @10009 = ~Gained Passive Ability: Divine Courage~ // iwdee 40025
-@11001 = ~Tracking~ // bg2ee 70494
 @11002 = ~Tracking
 With an intimate knowledge of <PRO_HISHER> surroundings and the creatures that live within them, a ranger can use the Tracking ability to give <PRO_HIMHER>self a general idea of what creatures are in an area and which direction they are. Red arrows at the edge of the screen will point in the general direction of the creatures in the area.~ // bg2ee 71467
 @11003 = ~- May use the Tracking ability at will (once per round).
@@ -315,6 +314,7 @@ TRACKING: The ranger can attempt to look for tracks and gain information on what
 
 ~ // from iwdee 37106, keep these extra linebreaks
 @11004 = ~- Alignment restricted to good.~
+@11005 = ~Tracking~ // bg2ee 70494
 @12001 = ~Gained Passive Ability: Evasion~ // string 40024 in IWDEE
 @12002 = ~- 7th level: Gains the Evasion ability.
 
