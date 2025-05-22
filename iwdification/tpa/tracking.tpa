@@ -124,12 +124,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~luabbr.2da~ BEGIN // if game has HLA tables (ever
 END
 
 // ok, so now we finally add tracking entries
-ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_tracking_area BEGIN END 
 ACTION_IF ((GAME_IS ~bgee eet tutu tutu_totsc bgt~) AND (FILE_EXISTS ~%tra_location%/%LANGUAGE%/tracking_bg.tra~)) BEGIN
-  WITH_TRA ~%tra_location%/english/tracking_bg.tra~ ~%tra_location%/%LANGUAGE%/tracking_bg.tra~BEGIN
+
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_tracking_area BEGIN END
+ 
+  WITH_TRA ~%tra_location%/english/tracking_bg.tra~ ~%tra_location%/%LANGUAGE%/tracking_bg.tra~ BEGIN
     OUTER_SET default_track = RESOLVE_STR_REF (@0)
     INCLUDE ~iwdification/tpa/tracking_bg.tpa~ // array of bg areas and strings
   END  
+  
+  INCLUDE ~iwdification/tpa/tracking_gen.tpa~ // puts array to use, finally
+  
 END  
-
-INCLUDE ~iwdification/tpa/tracking_gen.tpa~ // puts array to use, finally
