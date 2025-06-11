@@ -31,7 +31,7 @@ Weight: 9~
 STATISTICS:
 
 Combat abilities:
-- 10% chance of knocking down opponent for one round on each hit
+– 10% chance of knocking down opponent for one round on each hit
 
 THAC0: +2
 Damage: 1d10+2 (slashing)
@@ -60,7 +60,9 @@ Weight: 7~
 STATISTICS:
 
 Combat abilities:
-- Battle Standard twice per day - The axe can knock back foes in a small radius and grant allies +1 THAC0 and damage for two rounds
+– Battle Standard twice per day
+  The axe can knock back foes in a small radius and grant allies +1 THAC0 and 
+  damage for two rounds
 
 THAC0: +4
 Damage: 1d10+4 (slashing)
@@ -76,7 +78,9 @@ Weight: 6~
 STATISTICS:
 
 Combat abilities:
-- Enhanced Battle Standard twice per day - By spiking the haft into the ground, the wielder can knock back foes in a small radius and grant allies +2 to saves, THAC0 and damage for two rounds
+– Enhanced Battle Standard twice per day
+  By spiking the haft into the ground, the wielder can knock back foes in a small 
+  radius and grant allies +2 to saves, THAC0 and damage for two rounds
 
 THAC0: +5
 Damage: 1d10+5 (slashing)
