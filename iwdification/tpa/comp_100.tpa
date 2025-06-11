@@ -1,0 +1,57 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Commoners use drab colors                        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+// maintenance note: this is crosslinked; use mod-agnostic paths
+// * cdtweaks/lib/comp_100.tpa
+// * iwdification/tpa/comp_100.tpa
+
+COPY_EXISTING ~randcolr.2da~ ~override~
+  REPLACE_TEXTUALLY ~HairSet1~ ~CD_DELETE_ME HairSet1~
+  SET_2DA_ENTRY  2  9 15 114 // AthPeasantMajor (208)
+  SET_2DA_ENTRY  3  9 15 107
+  SET_2DA_ENTRY  4  9 15  36
+  SET_2DA_ENTRY  5  9 15  37
+  SET_2DA_ENTRY  6  9 15  38
+  SET_2DA_ENTRY  7  9 15  39
+  SET_2DA_ENTRY  8  9 15  40
+  SET_2DA_ENTRY  9  9 15  41
+  SET_2DA_ENTRY 10  9 15  42
+  SET_2DA_ENTRY 11  9 15  43
+  SET_2DA_ENTRY  2 10 15  63 // AthPeasantMinor (209)
+  SET_2DA_ENTRY  3 10 15  64
+  SET_2DA_ENTRY  4 10 15  65
+  SET_2DA_ENTRY  5 10 15  66
+  SET_2DA_ENTRY  6 10 15  87
+  SET_2DA_ENTRY  7 10 15  91
+  SET_2DA_ENTRY  8 10 15  92
+  SET_2DA_ENTRY  9 10 15  93
+  SET_2DA_ENTRY 10 10 15  94
+  SET_2DA_ENTRY 11 10 15  95
+  SET_2DA_ENTRY  2 13 15 114 // TradePeasantMajor (212)
+  SET_2DA_ENTRY  3 13 15 107
+  SET_2DA_ENTRY  4 13 15  36
+  SET_2DA_ENTRY  5 13 15  37
+  SET_2DA_ENTRY  6 13 15  38
+  SET_2DA_ENTRY  7 13 15  39
+  SET_2DA_ENTRY  8 13 15  40
+  SET_2DA_ENTRY  9 13 15  41
+  SET_2DA_ENTRY 10 13 15  42
+  SET_2DA_ENTRY 11 13 15  43
+  SET_2DA_ENTRY  2 14 15  63 // TradePeasantMinor (213)
+  SET_2DA_ENTRY  3 14 15  64
+  SET_2DA_ENTRY  4 14 15  65
+  SET_2DA_ENTRY  5 14 15  66
+  SET_2DA_ENTRY  6 14 15  87
+  SET_2DA_ENTRY  7 14 15  91
+  SET_2DA_ENTRY  8 14 15  92
+  SET_2DA_ENTRY  9 14 15  93
+  SET_2DA_ENTRY 10 14 15  94
+  SET_2DA_ENTRY 11 14 15  95
+  REPLACE_TEXTUALLY ~CD_DELETE_ME~ ~~
+  PRETTY_PRINT_2DA
+  BUT_ONLY
