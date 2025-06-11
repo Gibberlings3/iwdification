@@ -52,7 +52,7 @@ DEFINE_ACTION_FUNCTION cd_arcane_post BEGIN
     
     ACTION_IF ms2table>=0 BEGIN // guard against no 331 in MS2, e.g. because of Spell Revisions (theoretically also user edit)
       COPY_EXISTING ~wand10.itm~ ~override~
-        LPF ALTER_EFFECT INT_VAR match_opcode = 127 opcode = 331 parameter1 = 12 parameter2 = ms2table END // six creatures
+        LPF ALTER_EFFECT INT_VAR match_opcode = 127 opcode = 331 parameter1 = 6 parameter2 = ms2table END // six creatures
     END
     
   END  
