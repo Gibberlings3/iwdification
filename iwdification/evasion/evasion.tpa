@@ -7,7 +7,7 @@ BEGIN
     COUNT_2DA_ROWS 6 rows
     FOR (row = 1 ; row < rows ; ++row) BEGIN
       READ_2DA_ENTRY row 0 6 block
-      READ_2DA_ENTRY row 1 6 new_op
+      //READ_2DA_ENTRY row 1 6 new_op // deprecated - use 318/324 dynamically
       READ_2DA_ENTRY row 2 6 placement
       READ_2DA_ENTRY row 3 6 clone_op
       READ_2DA_ENTRY row 4 6 subspell
@@ -16,11 +16,13 @@ BEGIN
 
         ACTION_IF IS_AN_INT block BEGIN
           OUTER_SET num = IDS_OF_SYMBOL (~spell~ ~%file%~)
-          ACTION_IF num > 3999 BEGIN OUTER_SET num -= 4000 OUTER_SPRINT prefix spcl END
-          ACTION_IF num > 2999 BEGIN OUTER_SET num -= 3000 OUTER_SPRINT prefix spin END
-          ACTION_IF num > 1999 BEGIN OUTER_SET num -= 2000 OUTER_SPRINT prefix spwi END
-          ACTION_IF num >  999 BEGIN OUTER_SET num -= 1000 OUTER_SPRINT prefix sppr END
-          ACTION_IF num > 0 BEGIN
+          ACTION_IF num > 3999 BEGIN OUTER_SET num -= 4000 OUTER_SPRINT prefix spcl END ELSE
+          ACTION_IF num > 2999 BEGIN OUTER_SET num -= 3000 OUTER_SPRINT prefix spin END ELSE
+          ACTION_IF num > 1999 BEGIN OUTER_SET num -= 2000 OUTER_SPRINT prefix spwi END ELSE BEGIN
+                                     OUTER_SET num -= 1000 OUTER_SPRINT prefix sppr END
+          ACTION_IF ((num > 0) AND (num < 1000)) BEGIN
+            ACTION_IF num < 100 BEGIN OUTER_SPRINT prefix ~%prefix%0~ END // add leading zero, e.g. 9 -> 09 or 42 -> 042
+            ACTION_IF num < 10  BEGIN OUTER_SPRINT prefix ~%prefix%0~ END // add another zero, e.g. 09 -> 009
             ACTION_IF IS_AN_INT subspell BEGIN OUTER_SPRINT subspell ~~ END
             OUTER_SPRINT file  ~%prefix%%num%%subspell%.spl~
             OUTER_SPRINT block ~%prefix%%num%%subspell%~
@@ -30,6 +32,11 @@ BEGIN
         ACTION_IF !IS_AN_INT block BEGIN // is an IDS reference and not found, block will still be 0
         
           COPY_EXISTING ~%file%~ ~override~ // clone so as to inherit target and power
+            READ_STRREF 0x08 name
+            SET new_op = 318
+            PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // use string with feedback if it has a valid name
+              SET new_op = 324
+            END   
             LPF CLONE_EFFECT INT_VAR multi_match = 1 match_opcode = clone_op opcode = new_op parameter1 = 0 parameter2 = 63 timing = 0 duration = 0 probability1 = 100 
               probability2 = 0  dicenumber = 0 dicesize = 0 savingthrow = 0 special = 0 silent = 1 STR_VAR resource = EVAL ~%block%~ insert = EVAL ~%placement%~ END
             BUT_ONLY IF_EXISTS 
