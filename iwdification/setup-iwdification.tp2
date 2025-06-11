@@ -910,7 +910,7 @@ REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2390~ @998
 GROUP @995
 LABEL ~cd_tweaks_paladin_spell_progression_iwd~
 
-COPY ~iwdification/2da/iwd_mxsplpal.2da~ ~override/mxsplpal.2da~
+INCLUDE ~iwdification/tpa/comp_2390.tpa~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
