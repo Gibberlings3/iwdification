@@ -955,7 +955,8 @@ REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2400~ @998
 GROUP @995
 LABEL ~cd_tweaks_ranger_spell_progression_iwd~
 
-COPY ~iwdification/2da/iwd_mxsplran.2da~ ~override/mxsplran.2da~
+OUTER_SET game_is_iwd2 = 0
+INCLUDE ~iwdification/tpa/comp_2400.tpa~
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
