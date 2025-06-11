@@ -33,7 +33,7 @@
         <strong> On the web: </strong><a href="https://www.gibberlings3.net/mods/spells/iwdification/">Home
         page</a>, <a href="https://www.gibberlings3.net/forums/forum/185-iwdification/">discussion
         forum</a>, and <a href="https://discord.gg/yTzjMTb">Discord</a></p>
-      <p><strong>Version 7</strong><br />
+      <p><strong>Version 8 WIP</strong><br />
         <strong> Languages:</strong> English, Chinese (Simplified), French, Russian, Spanish<br />
         <strong>Platforms: </strong>Windows, macOS<acronym title="Operating System 10"></acronym>, and Linux<br />
         <strong>GitHub: </strong><a href="https://github.com/Gibberlings3/iwdification">Gibberlings3/iwdification</a></p>
@@ -134,6 +134,8 @@
         <em>Enhanced Editions Only</em></p>
       <p>Icewind Dale routinely randomized the weapons and other equipment of enemy mobs, e.g. skeletons in IWD could attack with just about any melee or ranged weapon in the game. This component does the same for BG and BG2 random enemies. It is limited somewhat by the animation system of the game:  gnolls, for example, only support weapon animations for long swords and halberds so the randomization is limited. You can optionally install high-quality items&mdash;these are non-magical items that provide an additional +1 to-hit over their normal counterparts&mdash;to provide a little more variation. If the<strong> Two-Handed Axes</strong> component is installed, these will also be added to the mix. </p>
       <p>At present, this component only randomizes equipment on truly random mobs, e.g. most hobgoblins in BG will get randomized equipment but special, fixed groups (such as the ones with Joia's ring at the Friendly Arms Inn) will not. This is done primarily to avoid conflicts with other mods which may alter equipment. You can read more details about this on the <a href="https://www.gibberlings3.net/forums/topic/33232-randomized-enemy-equipment-details/">relevant forum thread</a>. </p>
+      <p><strong>Increase Spear Damage</strong></p>
+      <p>In Icewind Dale spears do 1d8 as base damage instead of BG/BG2's  1d6 base damage. This component will increase the damage die size of all spears by two, e.g. spears that were doing xd6+y damage now do xd8+y; spears that were doing xd10+y damage are updated to xd12+y. This will affect melee and ranged abilities (if another mod provides ranged spears like Ashes of Embers), and update the item descriptions as appropriate. </p>
     </div>
     <div class="ribbon_rectangle_h3">
       <h3>IWD Class Updates</h3>
@@ -288,7 +290,7 @@
       <p><strong>IWD Class Updates: Thief: Evasion</strong><br />
         <em>Enhanced Edition Only</em></p>
       <p>At level seven, thieves earn the Evasion perk. When a thief is hit by a spell that can be evaded (Fireball, Lightning Bolt, &amp;c.), the thief is allowed a Save vs. Breath to completely avoid the effects. If the Saving Throw is failed, the spell works normally, including a save for half damage if the spell allows for it. A helpless thief (e.g. held, stunned, or asleep) cannot use Evasion.</p>
-      <p>As of version 6 this component has two options: apply the bonus to all thieves (including kits), or just to un-kitted thieves. </p>
+      <p>As of version 6 this component has two options: apply the bonus to all thieves (including kits), or just to un-kitted thieves. This will include mod thief kits, but only if they're installed prior to this component. </p>
     </div>
     <div class="ribbon_rectangle_h3">
       <h3>Spell Packs</h3>
@@ -394,6 +396,28 @@
     <div class="ribbon_triangle_h2-r"></div>
     <div class="section">
       <div>
+        <p><strong>Version 8 - WIP build, release tbd</strong></p>
+        <ul>
+          <li>Added new component: <strong>Increase Spear Damage</strong></li>
+          <li>Updated Polish translation from Patricida</li>
+          <li>Some updates for <strong>IWD Class Updates: Ranger: Tracking [Lava]</strong>:
+            <ul>
+              <li>Added some compatibility code for Divine Remix's Heartwarder kit, which also gets ranger tracking as an HLA</li>
+              <li>Fixed a bug where the installer would present the wrong names for the various Tracking subcomponents</li>
+              <li>Fixed a bug where the default tracking message on BG2EE was incorrect</li>
+            </ul>
+          </li>
+          <li>Basic <strong>Two-Handed Axes</strong> will now break due to the Iron Crisis in the BG part of the game. Also touched up some formatting issues in the regular and upgraded Battle Standard axes</li>
+          <li><strong>IWD Class Updates: Thief: Evasion</strong> will now provide better feedback if somethign was dodged with evasion</li>
+          <li>Some fixes for the <strong>Divine Spell Pack</strong>
+            <ul>
+              <li>Adding Energy Drain will now also update the arcane version, namely, that it cannot target undead or extra-planars like the divine version</li>
+              <li>Joinable NPCs should no longer get duplicate spells, specifically Physical Mirror, Cause Critical or Serious Wounds</li>
+            </ul>
+          </li>
+          <li><strong>IWD Class Updates: Bard: Add IWD Bard Songs</strong> was overwriting the bard kit descriptions on oBG2 </li>
+          <li>The <strong>Arcane Spell Pack</strong> updates the Wand of Monster Summoning to better match the new Monster Summoning spells. The wand was summoning 12 monsters on a single charge, instead of the correct six, if the summoning cap was removed</li>
+        </ul>
         <p><strong>Version 7 - January 27, 2025</strong></p>
         <ul>
           <li>The <strong>IWD Class Updates: Ranger: Tracking [Lava]</strong> changes can now be applied to all rangers or limited to un-kitted rangers</li>
