@@ -34,13 +34,16 @@ DEFINE_ACTION_FUNCTION iwd_bardsong_postproduction BEGIN
 	]
 	
 	// update bard kit descriptions
-	
-	kit.edit_all[bard|edit_strrefs_in_place:i=1 skip_trueclass:i=1]
-	[
-		INNER_PATCH_SAVE k_desc "%k_clastext_descstr%" BEGIN
-			LPF bard_kit_desc_helper END
-		END	
-	]
+  ACTION_IF enhanced_edition BEGIN 
+    
+    kit.edit_all[bard|edit_strrefs_in_place:i=1 skip_trueclass:i=1]
+    [
+      INNER_PATCH_SAVE k_desc "%k_clastext_descstr%" BEGIN
+        LPF bard_kit_desc_helper END
+      END	
+    ]
+  
+  END 
 
 	// sort out Enhanced Bard Song HLA; deprecated, see below
 /*	
