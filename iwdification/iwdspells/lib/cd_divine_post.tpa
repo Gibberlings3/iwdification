@@ -60,6 +60,17 @@ DEFINE_ACTION_FUNCTION cd_divine_post BEGIN
       
   END      
 
+  // divine energy drain doesn't work on outer planars, &c. so apply the same restrictions for arcane energy drain
+  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_ENERGY_DRAIN") BEGIN  
+  
+    COPY_EXISTING ~%WIZARD_ENERGY_DRAIN%.spl~ ~override~
+      LPF CLONE_EFFECT INT_VAR match_opcode = 216 opcode = 324 parameter1 = 0 parameter2 = 55 timing = 0 duration = 1 STR_VAR insert = first resource = EVAL ~%SOURCE_RES%~ END
+      PATCH_FOR_EACH race IN 121 139 145 147 156 157 158 159 169 BEGIN 
+        LPF CLONE_EFFECT INT_VAR match_opcode = 324 multi_match = 1 parameter1 = race parameter2 = 104 END
+      END
+
+  END      
+
   /////                                                  \\\\\
   ///// cosmetic suggestions - thanks, Galactygon!       \\\\\
   /////                                                  \\\\\

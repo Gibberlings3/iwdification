@@ -423,13 +423,20 @@ opcodes to oBG2 counterparts.
   ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_ENERGY_DRAIN") BEGIN  
   
     COPY ~%obg2_res_path%/immunity.eff~ ~override/cdixd739.eff~ // generating immunity EFFs for various 324 replacements
-      WRITE_ASCIIE 0x30 ~%CLERIC_ENERGY_DRAIN%~ #8  
+      WRITE_ASCIIE 0x30 ~%CLERIC_ENERGY_DRAIN%~ #8   
+  
+    COPY ~%obg2_res_path%/immunity.eff~ ~override/cdixa914.eff~ // generating immunity EFFs for various 324 replacements
+      WRITE_ASCIIE 0x30 ~%WIZARD_ENERGY_DRAIN%~ #8  
+
+    COPY_EXISTING ~%CLERIC_ENERGY_DRAIN%.spl~ ~override~ 
+                  ~%WIZARD_ENERGY_DRAIN%.spl~ ~override~
+      LPF CLONE_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdixa914 END // race = golem
+      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 =   4 parameter2 = 3 STR_VAR resource = cdixa914 END // general = undead
+      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 104 opcode = 177                  parameter2 = 4 STR_VAR resource = cdixa914 END // race = parameter1
 
     COPY_EXISTING ~%CLERIC_ENERGY_DRAIN%.spl~ ~override~ 
       LPF CD_CONVERT_61 END // op 61 crashes oBG2, so convert it to seven op 50s for body glow 
-      LPF CLONE_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 = 144 parameter2 = 4 STR_VAR resource = cdixd739 END // race = golem
-      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 =  55 opcode = 177 parameter1 =   4 parameter2 = 3 STR_VAR resource = cdixd739 END // general = undead
-      LPF ALTER_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 104 opcode = 177                  parameter2 = 4 STR_VAR resource = cdixd739 END // race = parameter1
+      LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = cdixa914 resource = cdixd739 END // swap to correct eff
 
   END
 
