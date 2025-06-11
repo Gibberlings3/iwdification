@@ -525,3 +525,100 @@ INCLUDE ~%MOD_FOLDER%/%component_loc%/lib/cd_extend-o-matic.tpa~
 /////                                                  \\\\\
 
 INCLUDE ~%MOD_FOLDER%/%component_loc%/lib/alter_area-creature_item.tpa~
+
+/////                                                  \\\\\
+///// spell sub, from divine remix                     \\\\\
+/////                                                  \\\\\
+
+DEFINE_PATCH_MACRO cd_spell_sub BEGIN
+
+  READ_BYTE 0x273 class
+  READ_LONG 0x2ac minfo_num
+  PATCH_IF ((minfo_num = 17) AND // sanity check - don't proceed unless the full memorization array is present
+            ((class =  3) OR      // cleric
+             (class =  6) OR      // paladin
+             (class =  8) OR      // fighter-cleric
+             (class = 11) OR      // druid
+             (class = 12) OR      // ranger
+             (class = 14) OR      // cleric-mage
+             (class = 15) OR      // cleric-thief
+             (class = 16) OR      // fighter-druid
+             (class = 17) OR      // f-m-c
+             (class = 18) OR      // cleric-ranger
+             (class = 21))) BEGIN // shaman
+    READ_LONG 0x2a0 known_off // basic offsets and info
+    READ_LONG 0x2a4 known_num
+    READ_LONG 0x2a8 minfo_off
+    READ_LONG 0x2b0 mem_off
+    READ_LONG 0x2b4 mem_num
+    CLEAR_ARRAY cd_spell_new_working // reset vars
+    SET new_known = 0
+    // go through memorized spells
+    // first, add new spells to known
+    SET maxlevel = "-1"
+    FOR (index = 6 ; index >= 0 ; --index) BEGIN 
+      READ_SHORT (minfo_off + 0x02 + (index * 0x10)) check
+      PATCH_IF check BEGIN 
+        SET maxlevel = index + 1
+        SET index = 0 // kill loop
+      END
+    END
+    // params_1 is meant to check for restrictions, but none of these have restrictions, so
+    PATCH_IF maxlevel >= 0 BEGIN 
+      PATCH_PHP_EACH cd_spell_new AS params => level BEGIN
+        PATCH_IF maxlevel >= level BEGIN
+          DEFINE_ASSOCIATIVE_ARRAY cd_spell_new_working BEGIN ~%params_0%~ => ~%level%~ END
+        END
+      END
+    END
+    // next, sub changed spells
+    PATCH_PHP_EACH cd_spell_sub AS params => old BEGIN
+      SET matched = 0
+      READ_LONG (minfo_off + 0x08 + (params_1 * 0x10)) mem_tbl_idx
+      READ_LONG (minfo_off + 0x0c + (params_1 * 0x10)) mem_tbl_num
+      FOR (index = 0 ; index < mem_tbl_num ; ++index) BEGIN
+        READ_ASCII (mem_off + 0x00 + ((index + mem_tbl_idx) * 0x0c)) spell
+        PATCH_IF ("%old%" STRING_COMPARE_CASE "%spell%" = 0) BEGIN // matched
+          WRITE_ASCIIE (mem_off + 0x00 + ((index + mem_tbl_idx) * 0x0c)) ~%params_3%~ #8 // replacement spell at old level
+          SET matched = 1
+        END
+      END        
+      PATCH_IF matched BEGIN // if they had the old spell memorized, add it to the new level's memorization
+        READ_LONG (minfo_off + 0x0c + (params_2 * 0x10)) mem_tbl_num
+        PATCH_IF mem_tbl_num BEGIN // sanity check, make sure they actually know some spells here
+          SET select = RANDOM(0 (mem_tbl_num - 1))
+          READ_LONG (minfo_off + 0x08 + (params_2 * 0x10)) mem_tbl_idx
+          WRITE_ASCIIE (mem_off + 0x00 + ((select + mem_tbl_idx) * 0x0c)) ~%params_0%~ #8 // replace a random spell at the new level with the new spell
+        END
+      END 
+    END
+  
+    // go through known spells and sub new for old
+    FOR (index = 0 ; index < known_num ; ++index) BEGIN
+      READ_ASCII (known_off + 0x00 + (index * 0x0c)) spell
+      PATCH_PHP_EACH cd_spell_sub AS params => old BEGIN
+        PATCH_IF ("%old%" STRING_COMPARE_CASE "%spell%" = 0) BEGIN // matched
+          WRITE_ASCIIE (known_off + 0x00 + (index * 0x0c)) ~%params_0%~ #8 // updated resref
+          WRITE_SHORT  (known_off + 0x08 + (index * 0x0c)) ~%params_2%~    // updated level
+        END
+      END
+    END
+    // now add new known spells
+    PATCH_PHP_EACH cd_spell_new_working AS spell => level BEGIN
+      INSERT_BYTES known_off 0x0c
+      WRITE_ASCIIE (known_off + 0x00) ~%spell%~
+      WRITE_SHORT  (known_off + 0x08) (level - 1) // last short is type, but 0 = priest
+      SET new_known += 1
+    END 
+    PATCH_IF new_known BEGIN
+      WRITE_LONG 0x2a4 known_num + new_known
+      PATCH_FOR_EACH off IN 0x2a8 0x2b0 0x2b8 0x2bc 0x2c4 BEGIN
+        READ_LONG off offcheck
+        PATCH_IF offcheck > known_off BEGIN
+          WRITE_LONG off (THIS + (0x0c * new_known))
+        END
+      END
+    END    
+  END
+      
+END       

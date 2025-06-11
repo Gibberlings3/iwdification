@@ -187,7 +187,24 @@ DEFINE_ACTION_FUNCTION make_physical_mirror_level_5 BEGIN
        REPLACE_TEXTUALLY 6 5
      END
    ]
-   
+  
+  // update spellbooks for joinables
+  LAF RES_NUM_OF_SPELL_NAME STR_VAR spell_name=CLERIC_PHYSICAL_MIRROR RET resref_new=spell_res END
+  INCLUDE "%MOD_FOLDER%/%component_loc%/lib/joinable_npc_array_custom.tpa" // get joinable npc files for spellbook updates
+  ACTION_CLEAR_ARRAY cd_spell_sub
+  ACTION_CLEAR_ARRAY cd_spell_new
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spell_sub BEGIN ~%resref_new%~, 5, 4, sppr603 => ~%resref_old%~ END // sub blade barrier
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN END // for spellbook updates
+  ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
+    ACTION_IF !IS_AN_INT dv BEGIN // joinable NPC
+    
+      COPY_EXISTING ~%file%~ ~override~
+        LPM cd_spell_sub
+        BUT_ONLY
+
+    END
+  END
+  
 END
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -300,6 +317,25 @@ DEFINE_ACTION_FUNCTION hide_old_cause_wounds BEGIN
       m_unusable_cleric=1
     ]
    END
+  
+  // update spellbooks for joinables
+  INCLUDE "%MOD_FOLDER%/%component_loc%/lib/joinable_npc_array_custom.tpa" // get joinable npc files for spellbook updates
+  ACTION_CLEAR_ARRAY cd_spell_sub
+  ACTION_CLEAR_ARRAY cd_spell_new
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spell_sub BEGIN 
+    ~%CLERIC_CAUSE_SERIOUS_WOUNDS_IWD%~,  3, 3, ~%CLERIC_CAUSE_SERIOUS_WOUNDS_IWD%~  => ~%CLERIC_CAUSE_SERIOUS_WOUNDS%~ 
+    ~%CLERIC_CAUSE_CRITICAL_WOUNDS_IWD%~, 4, 4, ~%CLERIC_CAUSE_CRITICAL_WOUNDS_IWD%~ => ~%CLERIC_CAUSE_CRITICAL_WOUNDS%~ 
+  END // sub new refs for old
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN END // for spellbook updates
+  ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
+    ACTION_IF !IS_AN_INT dv BEGIN // joinable NPC
+    
+      COPY_EXISTING ~%file%~ ~override~
+        LPM cd_spell_sub
+        BUT_ONLY
+
+    END
+  END
 
 
 END
