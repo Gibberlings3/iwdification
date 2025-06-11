@@ -1,7 +1,7 @@
 BACKUP ~weidu_external/iwdification/backup~ // location to store files for uninstall purposes
 SUPPORT ~https://www.gibberlings3.net/forums/forum/185-iwdification/~ 
 
-VERSION ~v7~
+VERSION ~v8~
 
 AUTO_EVAL_STRINGS
 
@@ -92,26 +92,7 @@ GROUP @994
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~70~ @998
 LABEL ~cd_tweaks_iwd_casting_graphics~
 
-ACTION_IF enhanced_edition BEGIN
-
-  ACTION_FOR_EACH file IN cgabjura cgaltera cgconjur cgdivina cgenchan cgillusi cginvoca cgnecrom BEGIN
-
-    COPY ~iwdification/bam/%file%_ee.bam~ ~override/%file%.bam~
-         ~iwdification/pro/%file%.pro~    ~override~
-         
-  END
-
-END ELSE BEGIN
-
-  ACTION_FOR_EACH file IN cgabjura cgaltera cgconjur cgdivina cgenchan cgillusi cginvoca cgnecrom BEGIN
-
-    COPY ~iwdification/bam/%file%.bam~ ~override~
-         
-  END
-
-END  
-
-LAF HANDLE_AUDIO STR_VAR audio_path = ~iwdification/wav/casting~ oggdec_path = ~iwdification/wav~ END
+INCLUDE ~iwdification/tpa/comp_70.tpa~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
