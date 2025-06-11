@@ -671,25 +671,8 @@ BEGIN @15000 DESIGNATED 150 // bard spell table
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2270~ @998
 GROUP @995
 LABEL ~cd_tweaks_bard_spell_progression_unnerfed~
-  
-COPY ~iwdification/2da/un_mxsplbrd.2da~ ~override/mxsplbrd.2da~
 
-ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~95~) BEGIN
-
-  COPY_EXISTING ~mxsplbrd.2da~ ~override~
-    COUNT_2DA_COLS cols
-    READ_2DA_ENTRIES_NOW rows cols
-    FOR (row = 0; row < rows; ++row) BEGIN
-      FOR (col = 1; col < 7; ++col) BEGIN
-        READ_2DA_ENTRY_FORMER rows row col slots
-        PATCH_IF (slots > 0) BEGIN
-          SET_2DA_ENTRY row col cols (slots + 2)
-        END
-      END
-    END
-    IF_EXISTS BUT_ONLY
-    
-END
+INCLUDE ~iwdification/tpa/comp_2270.tpa~
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

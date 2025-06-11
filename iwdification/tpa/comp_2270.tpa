@@ -1,0 +1,29 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Alter bard Spell Progression Table                         \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+// maintenance note: this is crosslinked; use mod-agnostic paths
+// * cdtweaks/lib/comp_2270.tpa
+// * iwdification/tpa/comp_2270.tpa
+
+/////                                                            \\\\\
+///// un-nerfed                                                  \\\\\
+/////                                                            \\\\\
+
+COPY ~%MOD_FOLDER%/2da/un_mxsplbrd.2da~ ~override/mxsplbrd.2da~
+  PATCH_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~95~) BEGIN
+    COUNT_2DA_COLS cols
+    READ_2DA_ENTRIES_NOW rows cols
+    FOR (row = 0; row < rows; ++row) BEGIN
+      FOR (col = 1; col < 7; ++col) BEGIN
+        READ_2DA_ENTRY_FORMER rows row col slots
+        PATCH_IF (slots > 0) BEGIN
+          SET_2DA_ENTRY row col cols (slots + 2)
+        END
+      END
+    END
+  END
