@@ -38,24 +38,24 @@ to look it over if you wish.
 
  @4000 = ~IWD Divine Spell Pack~
 
- @5000 = ~IWD Class Updates: Bard: Add IWD Bard Songs~
+ @5000 = ~Bard Class Update: Add IWD Bard Songs~
 
  @6000 = ~Two-Handed Axe Item Pack~
 
- @7000 = ~IWD Class Updates: Druid: Use IWD Shapeshifting and Ability Progression~
- @7100 = ~IWD Class Updates: Druid: Allow Elves to be Druids~
+ @7000 = ~Druid Class Update: Use IWD Shapeshifting and Ability Progression~
+ @7100 = ~Druid Class Update: Allow Elves to be Druids~
 
  @8000 = ~Additional Portrait Icons~
 
  @9000 = ~Expanded Polymorph Self~
 
-@10000 = ~IWD Class Updates: Paladin: IWD Abilities and Skills~
+@10000 = ~Paladin Class Update: IWD Abilities and Skills~
 
-@11000 = ~IWD Class Updates: Ranger: Tracking~
+@11000 = ~Ranger Class Update: Tracking~
 @11001 = ~Change Tracking for all rangers and ranger kits~
 @11100 = ~Change Tracking only for non-kitted rangers~
 
-@12000 = ~IWD Class Updates: Thief: Evasion~
+@12000 = ~Thief Class Update: Evasion~
 @12005 = ~Add evasion to thieves and all thief kits~
 @12100 = ~Add evasion only to non-kitted thieves~
 
@@ -65,12 +65,12 @@ to look it over if you wish.
 @14001 = ~Add High Quality Items~
 @14002 = ~Do Not Add High Quality Items~
 
-@15000 = ~IWD Class Updates: Bard: Use IWD Spell Progression~
+@15000 = ~Bard Class Update: Use IWD Spell Progression~
 
-@16000 = ~IWD Class Updates: Paladin: Use IWD Spell Progression~
+@16000 = ~Paladin Class Update: Use IWD Spell Progression~
 
-@17000 = ~IWD Class Updates: Ranger: Use IWD Spell Progression~
+@17000 = ~Ranger Class Update: Use IWD Spell Progression~
 
-@18000 = ~IWD Class Updates: Bard: Selectable Bard Songs for Jesters and Skalds~
+@18000 = ~Bard Class Update: Selectable Bard Songs for Jesters and Skalds~
 
 @19000 = ~Increase Spear Damage~
