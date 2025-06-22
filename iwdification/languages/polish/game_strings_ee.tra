@@ -4,7 +4,9 @@
 // strings in this file will be used exclusively for EE games and override similar strings in game_strings
 // this file is UTF-8 and does not get converted.
   @6002 = ~Ta potężna broń składa się z trzonka o długości od stu dwudziestu do stu pięćdziesięciu centymetrów i bardzo ciężkiego ostrza. Topór ten może mieć jedno żeleźce z jednej strony trzonka lub dwa, po obu stronach. Jest to nieporęczna broń, ale doświadczony wojownik może nim zadawać straszliwe ciosy.
+
 PARAMETRY:
+
 Obrażenia: 1k10
 Typ obrażeń: sieczne
 Opóźnienie: 9

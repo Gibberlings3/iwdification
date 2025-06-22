@@ -1256,3 +1256,249 @@ Nie może używać:
   @6015 = ~Uuu, ale wielki topór! Masz drewna do porąbania? Świecuszko, świecuszko!~
   @6016 = ~Przepis uczyni Bitewny Sztandar bardziej Sztandarowym. Pięć tysięcy sztuk złota i załatwione.~
   @6017 = ~To zobaczmy co jeszcze masz ciekawego.~
+  @6018 = ~Oburęczny topór wysokiej jakości~
+  
+  @7002 = ~Zmiana kształtu: żywiołak ognia~ // iwdee 25824
+  @7003 = ~Zmiana kształtu: żywiołak ziemi~ // iwdee 25823
+  @7004 = ~Zmiana kształtu: żywiołak wody~ // iwdee 25822
+
+  @7005 = ~Zmiana kształtu: żywiołak ognia
+
+Siła: 19
+Zręczność: 9
+
+Bazowa Klasa Pancerza: 2
+LIczba ataków: 1
+Obrażenia: 1k8, +1k4 obrażeń od ognia
+Typ obrażeń: obuchowe
+
+Zdolności:
+– Odporność na zimno: -50%
+– Odporność na ogień: 100%
+– Odporność na obrażenia sieczne: 15%
+– Odporność na obrażenia obuchowe: 15%
+– Odporność na obrażenia kłute: 15%
+– Odporność na pociski: 15%~
+
+  @7006 = ~Zmiana kształtu: żywiołak ziemi
+
+Siła: 23
+Zręczność: 5
+
+Bazowa Klasa Pancerza: -2
+Liczba ataków: 1
+Obrażenia: 4k8
+Typ obrażeń: obuchowe
+
+Zdolności:
+– Odporność na zimno: 25%
+– Odporność na ogień: 25%
+– Odporność na obrażenia sieczne: 50%
+– Odporność na obrażenia obuchowe: -50%
+– Odporność na obrażenia kłute: 50%
+– Odporność na pociski: 75%~
+
+  @7007 = ~Zmiana kształtu: żywiołak wody
+
+Siła: 18
+Zręczność: 14
+
+Bazowa Klasa Pancerza: -2
+Liczba ataków: 1
+Obrażenia: 4k8
+Typ obrażeń: obuchowe
+
+Zdolności:
+– Odporność na zimno: -25%
+– Odporność na elektryczność: -75%
+– Odporność na kwas: 75%
+– Odporność na obrażenia sieczne: 75%
+– Odporność na obrażenia obuchowe: 75%
+– Odporność na obrażenia kłute: 75%
+– Odporność na pociski: 75%~
+  @7008 = ~Zmiana kształtu: niedźwiedź brunatny
+
+Siła: 18/00
+Zręczność: 12
+
+Bazowa Klasa Pancerza: 6
+Liczba ataków: 3
+Obrażenia: 1k6, traktowane jak uderzenia bronią +1
+Typ obrażeń: kłute
+
+Zdolności:
+– Zwiększona prędkość poruszania się~
+  @7009 = ~Żywiołak wody~
+  @7010 = ~Uzyskano zdolność pasywną: Ponadczasowe ciało~ // iwdee string: 40026
+  @7011 = ~DRUID: Druid jest sługą natury i neutralności oraz tego, co dzikie we wspólnocie. Wykorzystuje swe moce do chronienia i zachowania równowagi w świecie.
+
+CECHY KLASOWE:
+
+– Może nosić tylko niemetalowe zbroje.
+– Może używać tylko puklerzy i niemetalowych tarcz.
+– Może używać tylko następujących typów broni: sejmitar, sztylet, maczuga, włócznia, kij, strzałka, proca.
+– Może osiągnąć Wyszkolenie (jeden punkt biegłości) w dowolnym rodzaju broni, którą może się posługiwać.
+– Może osiągnąć Wyszkolenie (jeden punkt biegłości) w każdym stylu walki.
+– Może rzucać zaklęcia druida.
+– 5. poziom: raz dziennie może przemienić się w śnieżnego wilka.
+– 7. poziom: raz dziennie może przemienić się w nudnożuka.
+– 9. poziom: staje się niewrażliwy na trucizny. Raz dziennie może przemienić się w niedźwiedzia polarnego.
+– 11. poziom: raz dziennie może przemienić się w żywiołaka ognia.
+– 13. poziom: raz dziennie może przemienić się w żywiołaka ziemi.
+– 15. poziom: zyskuje zdolność Ponadczasowe ciało, dzięki której staje się niepodatny na efekty zmęczenia. Raz dziennie może przemieniać się w żywiołaka wody.
+– Musi mieć charakter neutralny.
+– Kostka Wytrzymałości: k8
+
+Podstawowe cechy potrzebne przy dwuklasowości: Mądrość i Charyzma~ // iwdee string: 9560
+
+  @9001 = ~Nudnożuk~  
+  @9002 = ~Polimorfowanie siebie 
+(Przemiany)
+
+Poziom: 4
+Zasięg: 0
+Czas działania: 1 tura + 3 rundy/poziom
+Czas rzucania: 4
+Obszar działania: rzucający czar
+Rzut obronny: brak
+
+Po rzuceniu tego zaklęcia czarujący może przybrać formę innej istoty, dzięki czemu może poruszać się w sposób naturalny dla nowej formy i oddychać tak, jak ona. Czar nie przekazuje jednak innych zdolności nowej formy, takich jak specjalne ataki i magia, nie grozi również czarującemu zmianą osobowości i zdolności umysłowych.
+
+Po rzuceniu zaklęcia i podczas jego trwania czarujący może w każdej chwili przybrać dowolną nową formę i zmieniać ją tyle razy, ile sobie życzy. W niektórych przypadkach zyskuje możliwość posługiwania się naturalnymi dla nowej formy sposobami ataku, w innych zaś może posługiwać się bronią. Jego zdolności umysłowe nie ulegają zmianie, odpowiednio zmieniają się jednak jego cechy fizyczne. Czarujący zyskuje również wszelkie naturalne dla nowej formy rodzaje ochrony, takie np. jak odporność na pociski i broń obuchową, charakterystyczne dla szlamów, śluzów i galaret.
+
+Polimorfowanie siebie pozwala przyjąć czarującemu między innymi następujące formy:
+– Flind: włada magiczną halabardą (+1 obrażenie od ognia, traktowana jak broń +3)
+– Galareta musztardowa: może zatruć lub spowolnić ofiarę, jeśli ta nie wykona rzutu obronnego przeciw śmierci
+– Ogr: zdolny zadawać duże obrażenia pięściami
+– Pająk: zatruwa ofiarę po trafieniu.
+
+Ponadto, czarujący może polimorfować się w: niedźwiedzia brunatnego, niedźwiedzia czarnego, niedźwiedzia polarnego, wilka oraz śnieżnego wilka~
+  @9003 = ~Niedźwiedź polarny~
+  @9004 = ~Polimorfowanie siebie 
+(Przemiany)
+
+Poziom: 4
+Zasięg: 0
+Czas działania: 1 tura + 3 rundy/poziom
+Czas rzucania: 4
+Obszar działania: rzucający czar
+Rzut obronny: brak
+
+Po rzuceniu tego zaklęcia czarujący może przybrać formę innej istoty, dzięki czemu może poruszać się w sposób naturalny dla nowej formy i oddychać tak, jak ona. Czar nie przekazuje jednak innych zdolności nowej formy, takich jak specjalne ataki i magia, nie grozi również czarującemu zmianą osobowości i zdolności umysłowych.
+
+Po rzuceniu zaklęcia i podczas jego trwania czarujący może w każdej chwili przybrać dowolną nową formę i zmieniać ją tyle razy, ile sobie życzy. W niektórych przypadkach zyskuje możliwość posługiwania się naturalnymi dla nowej formy sposobami ataku, w innych zaś może posługiwać się bronią. Jego zdolności umysłowe nie ulegają zmianie, odpowiednio zmieniają się jednak jego cechy fizyczne. Czarujący zyskuje również wszelkie naturalne dla nowej formy rodzaje ochrony, takie np. jak odporność na pociski i broń obuchową, charakterystyczne dla szlamów, śluzów i galaret.
+
+Polimorfowanie siebie pozwala przyjąć czarującemu między innymi następujące formy:
+– Flind: włada magiczną halabardą (+1 obrażenie od ognia, traktowana jak broń +3)
+– Galareta musztardowa: może zatruć lub spowolnić ofiarę, jeśli ta nie wykona rzutu obronnego przeciw śmierci
+– Ogr: zdolny zadawać duże obrażenia pięściami
+– Pająk: zatruwa ofiarę po trafieniu.
+
+Ponadto, czarujący może polimorfować się w: niedźwiedzia brunatnego, niedźwiedzia czarnego, niedźwiedzia polarnego, wilka oraz śnieżnego wilka~
+  @9005 = ~Zmiana kształtu: Nudnożuk~
+  @9006 = ~Zmiana kształtu: nudnożuk
+
+Siła: 18/51
+Zręczność: 7
+
+Bazowa Klasa Pancerza: -2
+Liczba ataków: 1
+Obrażenia: 5k4
+Typ obrażeń: sieczne
+
+Zdolności:
+– Odporność na obrażenia sieczne: 50%
+– Odporność na obrażenia kłute: 50%
+– Odporność na pociski: 50%~
+
+  @9007 = ~Zmiana kształtu: niedźwiedź polarny~
+  @9008 = ~Zmiana kształtu: niedźwiedź polarny
+
+Siła: 18/00
+Zręczność: 10
+
+Bazowa Klasa Pancerza: 4
+Liczba ataków: 3
+Obrażenia: 1k12
+Typ obrażeń: sieczne
+
+Zdolności:
+– Odporność na zimno: 75%
+– Odporność na ogień: -25%~
+  @9009 = ~Zmiana kształtu: śnieżny wilk~
+  @9010 = ~Zmiana kształtu: śnieżny wilk
+
+Siła: 18
+Zręczność: 13
+
+Bazowa Klasa Pancerza: 2
+Liczba ataków: 2
+Obrażenia: 1k6
+Typ obrażeń: sieczne
+
+Zdolności:
+– Odporność na zimno: 75%
+– Odporność na ogień: -25%~  
+
+@10001 = ~Ugodzenie zła~ // iwdee 26267
+@10002 = ~Ugodzenie zła
+
+Paladyni potrafią raz dziennie sprowadzić kolumnę świętego światła. Zdolność ta zadaje jednej istocie o złym charakterze, znajdującej się w polu widzenia paladyna, 1k6 obrażeń + 1k6 magicznych obrażeń na każde trzy poziomy.~ // iwdee 40020
+@10003 = ~– Może rzucić Wykrycie zła, raz dziennie na poziom (zaczynając od czterech użyć na 1. poziomie).~ // match exact from bg2ee strref 9558
+@10004 = ~– Może rzucić Ochronę przed złem, raz dziennie na poziom (zaczynając od jednego użycia na 1. poziomie).~ // match exact from bg2ee strref 9558
+@10005 = ~– Może rzucać czary kapłana, począwszy od 9. poziomu.~ // match exact from bg2ee strref 9558
+@10006 = ~– Może rzucić Leczenie chorób, raz dziennie.
+– Może rzucić Wykrycie zła, raz na rundę.~ // grab text from iwdee 9558
+@10007 = ~– Może rzucić specjalną wersję Ochrony przed złem, raz dziennie. Zdolność ta działa tylko na paladyna i trwa dwadzieścia cztery tury.
+– Może użyć zdolności Ugodzenie zła, raz dziennie, zadając jednej istocie o złym charakterze dodatkowe 1k6 + 1k6 obrażeń na każde trzy poziomy w klasie paladyna.~  // grab text from iwdee 9558
+@10008 = ~– Może rzucać czary kapłana, począwszy od 6. poziomu.
+– 3. poziom: otrzymuje zdolność Boska odwaga, stając się niewrażliwym na strach.
+– Paladyni są całkowicie niewrażliwi na wszelakie choroby, magiczne czy zwyczajne.~ // grab text from iwdee 9558
+@10009 = ~Uzyskano zdolność pasywną: Boska odwaga~ // iwdee 40025
+
+@11002 = ~Tropienie
+
+Dzięki doskonałej znajomości swojego otoczenia i istot, które w nim żyją, łowca może użyć zdolności Tropienie, by dowiedzieć się, jakie istoty zamieszkują w danym obszarze i gdzie się one w danej chwili znajdują. Czerwone strzałki przy krawędziach ekranu wskazują ogólnie kierunek, w którym znajdują się stwory przebywające w danej okolicy.~ // bg2ee 71467
+@11003 = ~– Może korzystać z umiejętności Tropienie, raz na rundę.
+
+TROPIENIE: Łowca może poszukać śladów istot, przez co potrafi wywnioskować czy i jakie stwory przechodziły w okolicy. Informacje, jakie można zdobyć przez tę umiejętność, to liczba istot, kierunek, w jakim się udały i jak dawno temu zostawiły ślady.~ // from iwdee 37106
+@11004 = ~– Musi mieć charakter dobry.~
+
+@12001 = ~Uzyskano zdolność pasywną: Odskok~ // string 40024 in IWDEE
+
+@12002 = ~– 7 poziom: Otrzymuje zdolność Odskok.
+
+ODSKOK: Na 7. poziomie złodziej otrzymuje zdolność unikania niebezpieczeństw, które normalnie zraniłyby inne postacie. Gdy tylko zostaje uderzony czarem, który jest możliwy do uniknięcia (jak Ognista kula czy Błyskawica), może wykonać rzut obronny przeciw zionięciom i zupełnie zignorować jego efekty. W przypadku, gdy rzut się nie powiedzie, czar działa normalnie. Możliwy jest jednak rzut obronny na uniknięcie połowy obrażeń, jeśli czar na niego pozwala. Bezbronny (czyli np. unieruchomiony, ogłuszony, czy uśpiony) złodziej nie może korzystać z umiejętności Odskoku.
+
+~ // keep these extra linebreaks
+@12004 = ~– Nie może być praworządny dobry~ // match this exactly to main thief description (strref 9561), as this is used as a text-match
+
+// 14003 is used as a prefix, and 14004 as a suffix, to the existing item name; remember spaces
+@14003 = ~~
+@14004 = ~ wysokiej jakości~
+// these two strings are used to change the description for high-quality weapons by adding THAC0: +1 to the descript
+// the mod matches the contents of 14006 and adds 14005 as the line above it
+@14005 = ~TraK0: +~ 
+// if the line doesn't have an existing THAC0 line, we match the STATISTICS: line and add it underneath
+// the ? makes the : match optional, e.g. this will match "STATISTICS" or "STATISTICS:"
+// the horrible mess at the end is to capture and preserve the existing whitespace and line breaks
+@14006 = ~^PARAMETRY:?[ %TAB%%LNL%%MNL%%WNL%]+~ 
+// if the descript has an existing THAC0 bonus line, instead we need to match and replace
+// matches THAC0 or the mistaken THACO; matches an optional +
+@14007 = ~^TraK[0O]:?[ %TAB%]+\+?[0-9]+~
+
+
+// 18002 and 18004 are copied directly from the kit descriptions, strref #25220 and #25219 on bg2ee
+@18001 = ~Pieśń skalda~
+@18002 = ~Pieśń skalda różni się od pieśni typowego barda i w zależności od poziomu przynosi dodatkowe efekty:
+1. poziom: zapewnia sojusznikom +2 do testów trafienia i obrażeń oraz +2 do Klasy Pancerza.
+15. poziom: zapewnia sojusznikom +4 do testów trafienia i obrażeń oraz +4 do Klasy Pancerza, a także niewrażliwość na strach.
+20. poziom: zapewnia sojusznikom +4 do testów trafienia i obrażeń oraz +4 do Klasy Pancerza, a także niewrażliwość na strach, ogłuszenie i zamęt.~
+
+@18003 = ~Pieśń błazna~
+@18004 = ~Pieśń błazna wpływa na wszystkich przeciwników w promieniu 10 metrów, na skutek czego muszą oni raz na rundę wykonać rzut obronny lub znajdą się pod wpływem jednego z następujących efektów:
+1. poziom: wrogowie muszą wykonać rzut obronny przeciw czarom z modyfikatorem +2 albo zostaną poddani zamętowi.
+15. poziom: wrogowie muszą wykonać rzut obronny przeciw czarom z modyfikatorem +2 albo zostaną poddani zamętowi i kolejny rzut obronny przeciw czarom albo zostaną spowolnieni.
+20. poziom: wrogowie muszą wykonać rzut obronny przeciw czarom z modyfikatorem +2 albo zostaną poddani zamętowi, drugi rzut obronny przeciw czarom z modyfikatorem +2 albo stracą przytomność i trzeci rzut obronny przeciw czarom albo zostaną spowolnieni.~
+  
+@19001 = ~^[ %TAB%]*Damage[ %TAB%]*:?[ %TAB%]*[0-9]+[ %TAB%]*[Dd][ %TAB%]*~
