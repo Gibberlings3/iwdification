@@ -18,13 +18,13 @@ used:
   gavin, as gavin/lib/g3_bgee_cpmvars.tpa [symbolic link]
   Glam's NPC Pack, as glamnpcpack/libraries/g3_bgee_cpmvars.tph [local symlink]
   IWDification, as iwdification/tpa/g3_bgee_cpmvars.tpa [symbolic link]
+  Javelins, as cd_javelins/lib/g3_bgee_cpmvars.tpa [symbolic link]
   Lore from Learning, as cdlore/lib/g3_bgee_cpmvars.tpa [symbolic link]
   mur'neth, as mur'neth/lib/g3_bgee_cpmvars.tpa [symbolic link]
   Plasmocat's BG NPC Portraits in BG2 Style, as plasmobg1bg2/lib/g3_bgee_cpmvars.tph [local symlink]
   RoorenArt's Portrait Pack, as roorenart_bg2/lib/g3_bgee_cpmvars.tpa [local symlink]
   The Calling, as thecalling/lib/g3_bgee_cpmvars.tpa [symbolic link]
   Tweaks Anthology, as cdtweaks/lib/g3_bgee_cpmvars.tpa [symbolic link]
-  IWDification, as iwdification/tpa/g3_bgee_cpmvars.tpa [symbolic link]
 
 platform:
   bgee

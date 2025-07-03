@@ -15,12 +15,13 @@ from a GAME_IS check, for example Tweaks:
 https://github.com/Gibberlings3/Tweaks-Anthology/blob/master/cdtweaks/lib/g3_cpmvars_master.tpa
 
 used:
+  IWDification, as iwdification/tpa/g3_bg_cpmvars.tpa [symbolic link]
+  Javelins, as cd_javelins/lib/g3_bg_cpmvars.tpa [symbolic link]
   mur'neth, as mur'neth/lib/g3_bg_cpmvars.tpa [symbolic link]
   Plasmocat's BG NPC Portraits in BG2 Style, as plasmobg1bg2/lib/g3_bg_cpmvars.tph [local symlink]
   RoorenArt's Portrait Pack, as roorenart_bg2/lib/g3_bg_cpmvars.tpa [local symlink]
   The Calling, as thecalling/lib/g3_bg_cpmvars.tpa [symbolic link]
   Tweaks Anthology, as cdtweaks/lib/g3_bg_cpmvars.tpa [symbolic link]
-  IWDification, as iwdification/tpa/g3_bg_cpmvars.tpa [symbolic link]
 
 platform:
   obg
