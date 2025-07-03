@@ -595,8 +595,17 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   END
   BUT_ONLY   
         
-  
-  
+// project javelin: evergreen lance double/quad damage effs
+COPY_EXISTING ~cdjav3e0.eff~ ~override~ // +3 melee double 
+              ~cdjav3e1.eff~ ~override~ // +3 melee quadruple 
+              ~cdjav3e2.eff~ ~override~ // +3 ranged double
+              ~cdjav3e3.eff~ ~override~ // +3 ranged quadruple 
+              ~cdjav4e0.eff~ ~override~ // +4 ranged quadruple 
+              ~cdjav4e1.eff~ ~override~ // +4 ranged double
+              ~cdjav4e2.eff~ ~override~ // +4 melee quadruple 
+              ~cdjav4e3.eff~ ~override~ // +4 melee double 
+  WRITE_LONG  0x3c (THIS + 2) // base die size
+  BUT_ONLY IF_EXISTS  
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
