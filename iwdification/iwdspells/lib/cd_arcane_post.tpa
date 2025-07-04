@@ -2,6 +2,19 @@ DEFINE_ACTION_FUNCTION cd_arcane_post BEGIN
 
   INCLUDE "%MOD_FOLDER%/%component_loc%/lib/cdfunctions.tpa"
 
+  ACTION_IF enhanced_edition AND VARIABLE_IS_SET $IWD_spell_installed("WIZARD_SEVEN_EYES") BEGIN
+  
+    COPY_EXISTING ~%WIZARD_SEVEN_EYES%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 STR_VAR match_resource = ~spin113~ resource = EVAL ~%SEVEN_EYES_STONE%~     END // stone
+      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 STR_VAR match_resource = ~spin112~ resource = EVAL ~%SEVEN_EYES_FORTITUDE%~ END // fortitude
+      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 STR_VAR match_resource = ~spin111~ resource = EVAL ~%SEVEN_EYES_SPIRIT%~    END // spirit
+      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 STR_VAR match_resource = ~spin110~ resource = EVAL ~%SEVEN_EYES_VENOM%~     END // venom
+      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 STR_VAR match_resource = ~spin109~ resource = EVAL ~%SEVEN_EYES_MAGE%~      END // mage
+      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 STR_VAR match_resource = ~spin108~ resource = EVAL ~%SEVEN_EYES_SWORD%~     END // sword
+      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 STR_VAR match_resource = ~spin107~ resource = EVAL ~%SEVEN_EYES_MIND%~      END // mind
+      
+  END    
+
   ACTION_IF enhanced_edition AND VARIABLE_IS_SET $IWD_spell_installed("WIZARD_LANCE_OF_DISRUPTION") BEGIN
   
     COPY_EXISTING ~idpro313.pro~ ~override~ // LoD projectile; lodisr should be the explosion projectile, not secondary
