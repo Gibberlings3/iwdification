@@ -2,16 +2,15 @@ DEFINE_ACTION_FUNCTION cd_arcane_post BEGIN
 
   INCLUDE "%MOD_FOLDER%/%component_loc%/lib/cdfunctions.tpa"
 
-  ACTION_IF enhanced_edition AND VARIABLE_IS_SET $IWD_spell_installed("WIZARD_SEVEN_EYES") BEGIN
+  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_SEVEN_EYES") BEGIN
   
     COPY_EXISTING ~%WIZARD_SEVEN_EYES%.spl~ ~override~
-      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 STR_VAR match_resource = ~spin113~ resource = EVAL ~%SEVEN_EYES_STONE%~     END // stone
-      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 STR_VAR match_resource = ~spin112~ resource = EVAL ~%SEVEN_EYES_FORTITUDE%~ END // fortitude
-      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 STR_VAR match_resource = ~spin111~ resource = EVAL ~%SEVEN_EYES_SPIRIT%~    END // spirit
-      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 STR_VAR match_resource = ~spin110~ resource = EVAL ~%SEVEN_EYES_VENOM%~     END // venom
-      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 STR_VAR match_resource = ~spin109~ resource = EVAL ~%SEVEN_EYES_MAGE%~      END // mage
-      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 STR_VAR match_resource = ~spin108~ resource = EVAL ~%SEVEN_EYES_SWORD%~     END // sword
-      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 STR_VAR match_resource = ~spin107~ resource = EVAL ~%SEVEN_EYES_MIND%~      END // mind
+      SPRINT the ~~
+      PATCH_FOR_EACH eye IN STONE FORTITUDE SPIRIT VENOM MAGE SWORD MIND BEGIN 
+        PATCH_IF ("%eye%" STRING_COMPARE_CASE "MAGE" = 0) BEGIN SPRINT the ~THE_~ END 
+        LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 match_parameter1 = IDS_OF_SYMBOL(~splstate~ ~EYE_OF_%the%%eye%~) 
+          STR_VAR resource = EVAL ~%SEVEN_EYES_%eye%%~ END
+      END     
       
   END    
 
