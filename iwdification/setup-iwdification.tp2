@@ -1,7 +1,7 @@
 BACKUP ~weidu_external/iwdification/backup~ // location to store files for uninstall purposes
 SUPPORT ~https://www.gibberlings3.net/forums/forum/185-iwdification/~ 
 
-VERSION ~v9~
+VERSION ~v10~
 
 AUTO_EVAL_STRINGS
 
