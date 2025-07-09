@@ -6,8 +6,8 @@ DEFINE_ACTION_FUNCTION cd_arcane_post BEGIN
   
     COPY_EXISTING ~%WIZARD_SEVEN_EYES%.spl~ ~override~
       SPRINT the ~~
-      PATCH_FOR_EACH eye IN STONE FORTITUDE SPIRIT VENOM MAGE SWORD MIND BEGIN 
-        PATCH_IF ("%eye%" STRING_COMPARE_CASE "MAGE" = 0) BEGIN SPRINT the ~THE_~ END 
+      PATCH_FOR_EACH eye IN STONE FORTITUDE VENOM MAGE SPIRIT SWORD MIND BEGIN 
+        PATCH_IF ("%eye%" STRING_COMPARE_CASE "MAGE" = 0) BEGIN SPRINT the ~THE_~ END // mage spirit sword and mind are all EYE_OF_THE_foo instead of EYE_OF_foo
         LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 335 match_parameter1 = IDS_OF_SYMBOL(~splstate~ ~EYE_OF_%the%%eye%~) 
           STR_VAR resource = EVAL ~%SEVEN_EYES_%eye%%~ END
       END     
