@@ -607,7 +607,7 @@ BEGIN
 			scrl_unusable_druid=1
 		END
 		priest BEGIN
-			scrl_min_wis=9
+			scrl_min_int=9
 			scrl_unusable_fighter_mage=1
 			scrl_unusable_mage_thief=1
 			scrl_unusable_fighter_mage_thief=1
