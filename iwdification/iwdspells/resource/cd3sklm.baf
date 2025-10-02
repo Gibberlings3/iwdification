@@ -6,57 +6,59 @@ THEN
     Continue()
   RESPONSE #10
     TransformItem("sw1h01","ax1h01")
+    EquipMostDamagingMelee()
     SetGlobal("cd_weapon","LOCALS",1)
     Continue()
   RESPONSE #10
     TransformItem("sw1h01","blun02")
+    EquipMostDamagingMelee()
     SetGlobal("cd_weapon","LOCALS",1)
     Continue()
   RESPONSE #10
     TransformItem("sw1h01","blun06")
+    EquipMostDamagingMelee()
     SetGlobal("cd_weapon","LOCALS",1)
     Continue()
   RESPONSE #10
     TransformItem("sw1h01","sw1h04")
+    EquipMostDamagingMelee()
     SetGlobal("cd_weapon","LOCALS",1)
     Continue()
   RESPONSE #10
     TransformItem("sw1h01","sw1h07")
+    EquipMostDamagingMelee()
     SetGlobal("cd_weapon","LOCALS",1)
     Continue()
   RESPONSE #5
     TransformItem("sw1h01","dagg01")
+    EquipMostDamagingMelee()
     SetGlobal("cd_weapon","LOCALS",1)
     Continue()
   RESPONSE #5
     TransformItem("sw1h01","hamm01")
+    EquipMostDamagingMelee()
     SetGlobal("cd_weapon","LOCALS",1)
     Continue()
   RESPONSE #5
     TransformItem("sw1h01","staf01")
+    EquipMostDamagingMelee()
     SetGlobal("cd_weapon","LOCALS",1)
     Continue()
   RESPONSE #5
     TransformItem("sw1h01","sw2h01")
+    EquipMostDamagingMelee()
     SetGlobal("cd_weapon","LOCALS",1)
     Continue()
   RESPONSE #5
     TransformItem("sw1h01","blun04") // faking hqmace
+    EquipMostDamagingMelee()
     ChangeStat(Myself,THAC0,-1,ADD)
     SetGlobal("cd_weapon","LOCALS",1)
     Continue()
   RESPONSE #5
     TransformItem("sw1h01","sw1h04") // faking hqlswrd
+    EquipMostDamagingMelee()
     ChangeStat(Myself,THAC0,-1,ADD)
     SetGlobal("cd_weapon","LOCALS",1)
-    Continue()
-END
-
-IF
-  Global("cd_weapon","LOCALS",1)
-THEN
-  RESPONSE #100
-    EquipMostDamagingMelee()
-    SetGlobal("cd_weapon","LOCALS",2)
     Continue()
 END
