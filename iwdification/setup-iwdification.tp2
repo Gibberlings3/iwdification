@@ -824,11 +824,11 @@ ACTION_PHP_EACH cd_pal_clabs AS params => update BEGIN
         REPLACE_TEXTUALLY ~\([ %TAB%]\)GA_SPCL212\([ %TAB%%LNL%%MNL%%WNL%]\)~ ~\1****\2~
         REPLACE_TEXTUALLY ~\([ %TAB%]\)GA_SPCL213\([ %TAB%%LNL%%MNL%%WNL%]\)~ ~\1****\2~
 
-      APPEND ~%params_1%.2da~ ~ABILITY    AP_cdiplid  ****        AP_cdiplif  CDREPLACE
-ABILITY    GA_SPCL212  ****        ****        CDREPLACE
-ABILITY    GA_SPCL213  ****        ****        CDREPLACE
-ABILITY    GA_cdiplse  ****        ****        CDREPLACE
-ABILITY    GA_cdiplcd  ****        ****        CDREPLACE~
+      APPEND ~%params_1%.2da~ ~CDIWDAB1    AP_cdiplid  ****        AP_cdiplif  CDREPLACE
+CDIWDAB2    GA_SPCL212  ****        ****        CDREPLACE
+CDIWDAB3    GA_SPCL213  ****        ****        CDREPLACE
+CDIWDAB4    GA_cdiplse  ****        ****        CDREPLACE
+CDIWDAB5    GA_cdiplcd  ****        ****        CDREPLACE~
     
       COPY_EXISTING ~%params_1%.2da~ ~override~
         COUNT_2DA_COLS cols
