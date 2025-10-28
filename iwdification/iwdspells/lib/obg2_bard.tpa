@@ -11,7 +11,7 @@ DEFINE_ACTION_FUNCTION obg2_bard BEGIN
     COPY ~%obg2_res_path%/cdibard.spl~ ~override~ 
       WRITE_ASCIIE 0xae ~%BARD_SONG_BALLAD%~ #8
 
-    APPEND ~clabba01.2da~ ~ABILITYX AP_CDIBARD CDREPLACE~
+    APPEND ~clabba01.2da~ ~ABILITY0 AP_CDIBARD CDREPLACE~
 
     COPY_EXISTING ~clabba01.2da~ ~override~
       COUNT_2DA_COLS cols
@@ -19,6 +19,7 @@ DEFINE_ACTION_FUNCTION obg2_bard BEGIN
         REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
       END
       REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
+      LPM ~reindex_clab~
       PRETTY_PRINT_2DA
 
   END  

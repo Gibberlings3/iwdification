@@ -34,7 +34,7 @@ ACTION_PHP_EACH cd_ranger_clabs AS params => kit BEGIN
 
     ACTION_IF FILE_EXISTS_IN_GAME ~%params_0%.2da~ BEGIN 
 
-      APPEND ~%params_0%.2da~ ~ABILITYX GA_SPCL922 CDREPLACE~ UNLESS ~GA_SPCL922~
+      APPEND ~%params_0%.2da~ ~ABILITY0 GA_SPCL922 CDREPLACE~ UNLESS ~GA_SPCL922~
 
       COPY_EXISTING ~%params_0%.2da~ ~override~
         COUNT_2DA_COLS cols
@@ -42,6 +42,7 @@ ACTION_PHP_EACH cd_ranger_clabs AS params => kit BEGIN
           REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
         END
         REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
+        LPM ~reindex_clab~
         PRETTY_PRINT_2DA
         BUT_ONLY
     

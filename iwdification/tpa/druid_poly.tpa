@@ -173,14 +173,14 @@ ACTION_PHP_EACH cd_druid_kits AS clab => kitno BEGIN
     ACTION_IF shapeshifting BEGIN    
 
       APPEND ~%clab%.2da~
-      ~ABILITYX   ****       ****       ****       ****       GA_cdidrww ****       ****       ****       GA_cdidrpb ****       GA_cdidrfe ****       GA_cdidree ****       GA_cdidrwe CDREPLACE~
+      ~ABILITY0   ****       ****       ****       ****       GA_cdidrww ****       ****       ****       GA_cdidrpb ****       GA_cdidrfe ****       GA_cdidree ****       GA_cdidrwe CDREPLACE~
       
     END  
 
     ACTION_IF druid_abils BEGIN    
 
       APPEND ~%clab%.2da~
-      ~ABILITYY   ****       ****       ****       ****       ****       ****       ****       ****       AP_cdidrps ****       ****       ****       ****       ****       AP_cdidrif CDREPLACE~
+      ~ABILITY0   ****       ****       ****       ****       ****       ****       ****       ****       AP_cdidrps ****       ****       ****       ****       ****       AP_cdidrif CDREPLACE~
 
     END 
     
@@ -192,6 +192,7 @@ ACTION_PHP_EACH cd_druid_kits AS clab => kitno BEGIN
           REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
         END
         REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
+        LPM ~reindex_clab~
         PRETTY_PRINT_2DA
         BUT_ONLY
        

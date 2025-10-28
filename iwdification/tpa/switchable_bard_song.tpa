@@ -137,6 +137,7 @@ ACTION_IF (~%ebs%~ STRING_COMPARE_CASE ~~) BEGIN // sanity check: if no 251 was 
               REPLACE_TEXTUALLY ~AP_%new_abil%~ ~AP_%new_abil% ****~
             END
           END  
+          LPM ~reindex_clab~
           PRETTY_PRINT_2DA      
           BUT_ONLY
           

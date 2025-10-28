@@ -11,7 +11,9 @@ ALWAYS
 
   ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN FAIL @999 END // DLC Merger check
 
-  ACTION_IF !VARIABLE_IS_SET enhanced_edition THEN BEGIN
+  ACTION_IF !VARIABLE_IS_SET iwdification_always THEN BEGIN
+  
+    OUTER_SET iwdification_always = 1
 
     // usual SFO loading - usually done in ALWAYS
     OUTER_SPRINT sfo_library_path "sfo" // the path (relative to your mod directory) to the directory SFO is in. Usually 'sfo'.
@@ -19,6 +21,7 @@ ALWAYS
     INCLUDE "%MOD_FOLDER%/%sfo_library_path%/sfo_init.tpc"
     
     INCLUDE ~iwdification/tpa/g3_cpmvars_master.tpa~ // cpm variables
+    INCLUDE ~iwdification/iwdspells/lib/clab_reindex.tpa~ // clab stuff
   
     ACTION_IF !GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ THEN BEGIN
 
@@ -824,11 +827,11 @@ ACTION_PHP_EACH cd_pal_clabs AS params => update BEGIN
         REPLACE_TEXTUALLY ~\([ %TAB%]\)GA_SPCL212\([ %TAB%%LNL%%MNL%%WNL%]\)~ ~\1****\2~
         REPLACE_TEXTUALLY ~\([ %TAB%]\)GA_SPCL213\([ %TAB%%LNL%%MNL%%WNL%]\)~ ~\1****\2~
 
-      APPEND ~%params_1%.2da~ ~ABILITY    AP_cdiplid  ****        AP_cdiplif  CDREPLACE
-ABILITY    GA_SPCL212  ****        ****        CDREPLACE
-ABILITY    GA_SPCL213  ****        ****        CDREPLACE
-ABILITY    GA_cdiplse  ****        ****        CDREPLACE
-ABILITY    GA_cdiplcd  ****        ****        CDREPLACE~
+      APPEND ~%params_1%.2da~ ~ABILITY0   AP_cdiplid  ****        AP_cdiplif  CDREPLACE
+ABILITY0   GA_SPCL212  ****        ****        CDREPLACE
+ABILITY0   GA_SPCL213  ****        ****        CDREPLACE
+ABILITY0   GA_cdiplse  ****        ****        CDREPLACE
+ABILITY0   GA_cdiplcd  ****        ****        CDREPLACE~
     
       COPY_EXISTING ~%params_1%.2da~ ~override~
         COUNT_2DA_COLS cols
@@ -836,6 +839,7 @@ ABILITY    GA_cdiplcd  ****        ****        CDREPLACE~
           REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
         END
         REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
+        LPM ~reindex_clab~
         PRETTY_PRINT_2DA
         BUT_ONLY
         
