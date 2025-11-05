@@ -27,7 +27,7 @@ ACTION_PHP_EACH cd_thief_clabs AS params => file BEGIN
   
   ACTION_IF FILE_EXISTS_IN_GAME ~%file%.2da~ BEGIN 
 
-    APPEND ~%file%.2da~ ~ABILITYX **** **** **** **** **** **** AP_CDIEVAD  CDREPLACE~ UNLESS ~AP_CDIEVAD~
+    APPEND ~%file%.2da~ ~ABILITY0 **** **** **** **** **** **** AP_CDIEVAD  CDREPLACE~ UNLESS ~AP_CDIEVAD~
 
     COPY_EXISTING ~%file%.2da~ ~override~
       COUNT_2DA_COLS cols
@@ -35,6 +35,7 @@ ACTION_PHP_EACH cd_thief_clabs AS params => file BEGIN
         REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
       END
       REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
+      LPM ~reindex_clab~
       PRETTY_PRINT_2DA
       BUT_ONLY
   
