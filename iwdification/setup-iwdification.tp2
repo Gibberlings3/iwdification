@@ -858,8 +858,6 @@ END
 
 ACTION_PHP_EACH cd_pal_desc AS string => loh BEGIN
 
-  PRINT ~processing %string%...~
-
   ACTION_GET_STRREF string desc
   OUTER_PATCH_SAVE desc "%desc%" BEGIN
     SPRINT old @10003
