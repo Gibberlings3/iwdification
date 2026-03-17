@@ -29,7 +29,8 @@ platform:
   obg
  
 version history: 
-  unknown
+  unknown - creation
+  12/4/25 - added bg_rndtre0X variables
 
 */
 
@@ -122,7 +123,7 @@ version history:
 	OUTER_SET firebeadstate2 = 1
 	OUTER_SET hentolstate1 = 12
 	OUTER_SET housg3state0 = 1
-    OUTER_SET housg3state5 = 0
+	OUTER_SET housg3state5 = 0
 	OUTER_SET xanpstate3 = 1
 	OUTER_SET xanpstate4 = 0
 
@@ -268,6 +269,13 @@ version history:
 	OUTER_SPRINT "tutu_chapter_5" "5"
 	OUTER_SPRINT "tutu_chapter_6" "6"
 	OUTER_SPRINT "tutu_chapter_7" "7"
+
+	/* random treasures */
+	OUTER_SPRINT bg_rndtre01 "rndtre01"
+	OUTER_SPRINT bg_rndtre02 "rndtre02"
+	OUTER_SPRINT bg_rndtre03 "rndtre03"
+	OUTER_SPRINT bg_rndtre04 "rndtre04"
+	OUTER_SPRINT bg_rndtre05 "rndtre05"
 
 	/* NPC override script compilation */
 	OUTER_SPRINT "AJANTIS_BCS" "AJANTIS"
