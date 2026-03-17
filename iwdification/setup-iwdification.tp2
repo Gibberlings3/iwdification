@@ -763,8 +763,6 @@ COPY ~iwdification/spl/cdiplif.spl~ ~override~ // fear immunity
 COPY ~iwdification/spl/cdiplse.spl~ ~override~ // smite evil
   SAY 0x08 @10001
   SAY 0x50 @10002
-  WRITE_ASCII 0x3a cdiplsec
-  LPF ALTER_SPELL_HEADER STR_VAR icon = cdiplseb END // location: ability
   
 COPY_EXISTING ~sppr317.spl~ ~override/cdiplcd.spl~
   WRITE_SHORT 0x1c 4 // innate  
