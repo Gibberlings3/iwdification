@@ -824,12 +824,19 @@ ACTION_PHP_EACH cd_pal_clabs AS params => update BEGIN
       COPY_EXISTING ~%params_1%.2da~ ~override~
         REPLACE_TEXTUALLY ~\([ %TAB%]\)GA_SPCL212\([ %TAB%%LNL%%MNL%%WNL%]\)~ ~\1****\2~
         REPLACE_TEXTUALLY ~\([ %TAB%]\)GA_SPCL213\([ %TAB%%LNL%%MNL%%WNL%]\)~ ~\1****\2~
+        SET loh = 0
+        REPLACE_EVALUATE ~\([ %TAB%]GA_SPCL211[ %TAB%%LNL%%MNL%%WNL%]\)~ BEGIN
+          SET loh = 1
+        END ~%MATCH1%~  
 
       APPEND ~%params_1%.2da~ ~ABILITY0   AP_cdiplid  ****        AP_cdiplif  CDREPLACE
 ABILITY0   GA_SPCL212  ****        ****        CDREPLACE
 ABILITY0   GA_SPCL213  ****        ****        CDREPLACE
-ABILITY0   GA_cdiplse  ****        ****        CDREPLACE
-ABILITY0   GA_cdiplcd  ****        ****        CDREPLACE~
+ABILITY0   GA_cdiplse  ****        ****        CDREPLACE~
+
+      ACTION_IF loh = 1 BEGIN // only add cure disease if lay on hands is present
+        APPEND ~%params_1%.2da~ ~ABILITY0   GA_cdiplcd  ****        ****        CDREPLACE~
+      END   
     
       COPY_EXISTING ~%params_1%.2da~ ~override~
         COUNT_2DA_COLS cols
@@ -841,28 +848,40 @@ ABILITY0   GA_cdiplcd  ****        ****        CDREPLACE~
         PRETTY_PRINT_2DA
         BUT_ONLY
         
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_pal_desc BEGIN ~%params_0%~ => ~%loh%~ END // for updating descriptions
+        
     END    
- 
-    ACTION_GET_STRREF params_0 desc
-    OUTER_PATCH_SAVE desc "%desc%" BEGIN
-      SPRINT old @10003
-      SPRINT new @10006
-      REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
-      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%~ // swap text
-      SPRINT old @10004
-      SPRINT new @10007
-      REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
-      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%~ // swap text
-      SPRINT old @10005
-      SPRINT new @10008
-      REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
-      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%~ // swap text
-    END
-    STRING_SET_EVALUATE params_0 "%desc%"  
 
   END
 
 END
+
+ACTION_PHP_EACH cd_pal_desc AS string => loh BEGIN
+
+  PRINT ~processing %string%...~
+
+  ACTION_GET_STRREF string desc
+  OUTER_PATCH_SAVE desc "%desc%" BEGIN
+    SPRINT old @10003
+    PATCH_IF loh = 1 BEGIN // added cure disease since they have lay on hands
+      SPRINT new @10006
+    END ELSE BEGIN         // no cure disease
+      SPRINT new @10010
+    END   
+    REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
+    REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%~ // swap text
+    SPRINT old @10004
+    SPRINT new @10007
+    REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
+    REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%~ // swap text
+    SPRINT old @10005
+    SPRINT new @10008
+    REPLACE_TEXTUALLY ~%new%~ ~~ // purge in case the text is already there
+    REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]*\([%LNL%%MNL%%WNL%]\)\(%old%\)~ ~\1%new%~ // swap text
+  END
+  STRING_SET_EVALUATE string "%desc%"  
+  
+END 
   
 // handing out some abilities
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~

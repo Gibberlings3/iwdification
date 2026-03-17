@@ -221,6 +221,7 @@ Special Abilities:
 @10008 = ~– May cast priest spells starting at level 6.
 – 3rd level: Gains the Divine Courage ability becoming immune to fear.
 – Paladins are completely immune to all forms of disease, magical or mundane.~ // grab text from iwdee 9558
+@10010 = ~– May use the Detect Evil ability at will (once per round).~ // duplicate of @10006 but without the cure disease line
 
 @11003 = ~– May use the Tracking ability at will (once per round).~ // from iwdee 37106
 @11004 = ~– Alignment restricted to good.~

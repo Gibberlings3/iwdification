@@ -244,6 +244,9 @@ Capacités spéciales :
 
 @10009 = ~Capacité passive obtenue : Courage divin~ // iwdee 40025
 
+// REPLACEMENT - duplicate of @10006 but without the cure disease line
+@10010 = ~- Peut lancer « Détection du mal » une fois par round.~
+
 // REPLACEMENT
 @11003 = ~- Peut avoir recours à la capacité spéciale de Pistage, une fois par round~ // from iwdee 37106
 // LOOKUP

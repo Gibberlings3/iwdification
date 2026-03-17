@@ -1455,6 +1455,7 @@ Paladyni potrafią raz dziennie sprowadzić kolumnę świętego światła. Zdoln
 – 3. poziom: otrzymuje zdolność Boska odwaga, stając się niewrażliwym na strach.
 – Paladyni są całkowicie niewrażliwi na wszelakie choroby, magiczne czy zwyczajne.~ // grab text from iwdee 9558
 @10009 = ~Uzyskano zdolność pasywną: Boska odwaga~ // iwdee 40025
+@10010 = ~– Może rzucić Wykrycie zła, raz na rundę.~ // duplicate of @10006 but without the cure disease line
 
 @11002 = ~Tropienie
 

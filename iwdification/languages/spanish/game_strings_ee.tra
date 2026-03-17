@@ -210,6 +210,7 @@ Habilidades especiales:
 @10008 = ~- Pueden lanzar conjuros de sacerdote a partir del nivel 6.
 - A nivel 3 ganan la habilidad Coraje Divino volviéndose inmunes al pánico.
 - Los Paladines son completamente inmunes a todas las clases de enfermedad, mágica o mundana.~ // grab text from iwdee 9558
+@10010 = ~- Pueden usar la habilidad Detectar el Mal a voluntad (una vez por asalto).~ // duplicate of @10006 but without the cure disease line
 
 @11003 = ~- Pueden usar la habilidad Rastrear a voluntad (una vez por asalto).~ // from iwdee 37106
 @11004 = ~- Alineamiento restringido a bueno.~

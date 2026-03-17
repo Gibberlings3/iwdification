@@ -344,6 +344,10 @@ Les paladins ont la capacité d'invoquer une colonne de lumière sacrée une foi
 - Au niveau 3, reçoit la capacité de Courage Divin, ce qui l'immunise contre la terreur.
 - Immunité complète aux maladies, magiques ou non.~ // grab text from iwdee 9558
 @10009 = ~Capacité passive obtenue : Courage divin~ // iwdee 40025
+
+// REPLACEMENT - duplicate of @10006 but without the cure disease line
+@10010 = ~- Peut lancer 'Détection du mal' une fois par round.~
+
 @11002 = ~Pistage
 Grâce à son intime connaissance des milieux naturels et des créatures qui y vivent, un rôdeur peut utiliser cette faculté pour avoir une idée générale des créatures présentes dans une zone donnée, ainsi que de la direction dans laquelle ils se trouvent. Des flèches rouges indiquent à l'écran la direction générale des créatures de la zone.~ // bg2ee 71467
 @11003 = ~- Peut avoir recours à la capacité spéciale de Pistage, une fois par round
