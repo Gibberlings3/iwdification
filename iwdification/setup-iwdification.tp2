@@ -942,6 +942,7 @@ SUBCOMPONENT @11000
 //REQUIRE_PREDICATE GAME_IS ~bgee eet tutu tutu_totsc bgt~ @991                          // only bg content at the moment
 REQUIRE_PREDICATE FILE_EXISTS ~iwdification/languages/%LANGUAGE%/tracking_bg.tra~ @992 // language check; can't use tra_location yet since it may not have been set
 GROUP @995
+LABEL ~cd_iwdification_ranger_tracking_all~
 
 OUTER_SET tracking_kits = 1
 INCLUDE ~iwdification/tpa/tracking.tpa~
@@ -955,6 +956,7 @@ SUBCOMPONENT @11000
 //REQUIRE_PREDICATE GAME_IS ~bgee eet tutu tutu_totsc bgt~ @991                          // only bg content at the moment
 REQUIRE_PREDICATE FILE_EXISTS ~iwdification/languages/%LANGUAGE%/tracking_bg.tra~ @992 // language check; can't use tra_location yet since it may not have been set
 GROUP @995
+LABEL ~cd_iwdification_ranger_tracking_trueclass~
 
 OUTER_SET tracking_kits = 0
 INCLUDE ~iwdification/tpa/tracking.tpa~
