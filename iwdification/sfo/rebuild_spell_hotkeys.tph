@@ -86,13 +86,13 @@ BEGIN
 		""
 	// now patch the original
 	COPY_EXISTING "bgee.lua" override
-		REPLACE_TEXTUALLY ".*%first_priest_spell%.*" "DW_INSERT_POINT_1"
-		REPLACE_TEXTUALLY ".*%last_priest_spell%.*" "DW_INSERT_POINT_PRIEST_SPELLS"
+		REPLACE_TEXTUALLY ".*'%first_priest_spell%'.*" "DW_INSERT_POINT_1"
+		REPLACE_TEXTUALLY ".*'%last_priest_spell%'.*" "DW_INSERT_POINT_PRIEST_SPELLS"
 		start_point = INDEX_BUFFER ("DW_INSERT_POINT_1")
 		end_point = INDEX_BUFFER ("DW_INSERT_POINT_PRIEST_SPELLS")
 		DELETE_BYTES start_point (end_point - start_point)
-		REPLACE_TEXTUALLY ".*%first_mage_spell%.*" "DW_INSERT_POINT_2"
-		REPLACE_TEXTUALLY ".*%last_mage_spell%.*" "DW_INSERT_POINT_MAGE_SPELLS"
+		REPLACE_TEXTUALLY ".*'%first_mage_spell%'.*" "DW_INSERT_POINT_2"
+		REPLACE_TEXTUALLY ".*'%last_mage_spell%'.*" "DW_INSERT_POINT_MAGE_SPELLS"
 		start_point = INDEX_BUFFER ("DW_INSERT_POINT_2")
 		end_point = INDEX_BUFFER ("DW_INSERT_POINT_MAGE_SPELLS")
 		DELETE_BYTES start_point (end_point - start_point)
