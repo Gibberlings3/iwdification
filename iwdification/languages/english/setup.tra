@@ -74,3 +74,10 @@ to look it over if you wish.
 @18000 = ~Bard Class Update: Selectable Bard Songs for Jesters and Skalds~
 
 @19000 = ~Increase Spear Damage~
+
+@20000 = ~Deaf/Blind Protects Against Sonic/Visual Abilities and Spells~
+@20001 = ~Sonic spells and abilities do not affect deafened creatures~
+
+@21000 = ~Visual spells, gazes, and abilities do not affect blinded creatures~
+
+@22000 = ~Apply both of the above~

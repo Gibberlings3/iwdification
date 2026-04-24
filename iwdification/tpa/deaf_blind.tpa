@@ -1,0 +1,163 @@
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_deaf_blind_array BEGIN END 
+ACTION_IF cd_deaf BEGIN 
+
+  ACTION_FOR_EACH spell IN 
+    spcl908 // war cry
+    spin789 // demilich howl
+    spin891 // moon dog howl
+    sppr102 // command
+    sppr512 // greater command
+    spwi913 // wail of the banshee
+  BEGIN
+
+    ACTION_IF FILE_EXISTS_IN_GAME ~%spell%.spl~ BEGIN   
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_deaf_blind_array BEGIN ~%spell%~ => 80 END 
+    END   
+    
+  END 
+
+END 
+
+ACTION_IF cd_blind BEGIN 
+
+  ACTION_FOR_EACH item IN 
+    ~%tutu_var%basilg1~ // greater basilisk gaze
+    ~%tutu_var%basill1~ // lesser basilisk gaze
+  BEGIN   
+    
+    ACTION_IF FILE_EXISTS_IN_GAME ~%item%.itm~ BEGIN  
+    
+      COPY_EXISTING ~%item%.itm~ ~override~
+        READ_SHORT 0x68 abil_num ELSE 0
+        PATCH_IF abil_num = 1 BEGIN // if multiple (or zero) abilities, something's already altered this item beyond detection
+          READ_LONG  0x64 abil_off ELSE 0
+          READ_LONG  0x6a fx_off   ELSE 0
+          READ_SHORT  (abil_off + 0x1e) abil_fx_num
+          READ_SHORT  (abil_off + 0x20) abil_fx_idx
+          READ_ASCII   (fx_off + (0x30 * abil_fx_idx)) clone (48 * abil_fx_num) // clone entire block of effects
+          DELETE_BYTES (fx_off + (0x30 * 1)) (48 * (abil_fx_num - 1)) // delete all effects except one
+            WRITE_ASCII  (fx_off +        (0x30 * abil_fx_idx)) ~~ #48 // blank all fields
+            WRITE_SHORT  (fx_off +        (0x30 * abil_fx_idx)) 146                  // cast spell
+            WRITE_BYTE   (fx_off + 0x02 + (0x30 * abil_fx_idx)) 2                    // target
+            WRITE_LONG   (fx_off + 0x08 + (0x30 * abil_fx_idx)) 1                    // cast instantly
+            WRITE_BYTE   (fx_off + 0x0c + (0x30 * abil_fx_idx)) 1                    // instant/perm
+            WRITE_BYTE   (fx_off + 0x12 + (0x30 * abil_fx_idx)) 100                  // probability
+            WRITE_ASCIIE (fx_off + 0x14 + (0x30 * abil_fx_idx)) ~%item%~ #8          // spell
+          WRITE_SHORT  (abil_off + 0x1e) 1 // one effect left on the ability
+        END 
+        BUT_ONLY
+        
+      ACTION_IF abil_num = 1 BEGIN // if spell altered
+        
+        ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_deaf_blind_array BEGIN ~%item%~ => 74 END 
+
+        CREATE SPL ~%item%~
+          WRITE_SHORT 0x1c 4   // innate
+          WRITE_SHORT 0x68 1   // one ablility
+          WRITE_LONG 0x6a 0x9a // fx offset
+          // insert new ability
+          INSERT_BYTES 0x72 0x28
+          WRITE_BYTE   (0x72 + 0x00)  1          // type: melee
+          WRITE_SHORT  (0x72 + 0x02)  1          // location: weapon
+          WRITE_BYTE   (0x72 + 0x0c)  1          // target: living actor
+          WRITE_BYTE   (0x72 + 0x0d)  1          // num targets
+          WRITE_SHORT  (0x72 + 0x0e) 30          // range
+          WRITE_SHORT  (0x72 + 0x10)  1          // min level
+          WRITE_SHORT  (0x72 + 0x1e) abil_fx_num // fx transferred from item
+          WRITE_SHORT  (0x72 + 0x26)  1          // projectile
+          // insert cloned effects
+          INSERT_BYTES 0x9a (0x30 * abil_fx_num)
+          WRITE_ASCIIE 0x9a ~%clone%~ 
+
+      END
+    
+    END     
+
+  END      
+
+  ACTION_FOR_EACH spell IN 
+    beguile  // beguiling gaze [demogorgon]
+    insanity // insanity gaze [demogorgon]
+    ohbtgaze // terrifying gaze [erinyes]
+    spin784  // snake gaze [boalisk]
+    spin839  // confusion [umber hulk]
+    spin937  // color spray [mephit]
+    spin996  // death gaze (aka aec/general tanar'ri death gaze attack)
+    sppr704  // nature's beauty
+    spwi105  // color spray
+  BEGIN
+
+    ACTION_IF FILE_EXISTS_IN_GAME ~%spell%.spl~ BEGIN   
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_deaf_blind_array BEGIN ~%spell%~ => 74 END 
+    END   
+    
+  END 
+
+END 
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.\(itm\|spl\)$~ ~override~
+  SET abil_length = 0
+  PATCH_IF ("%SOURCE_EXT%" STRING_COMPARE_CASE "ITM" = 0) BEGIN
+    SET abil_length = 0x38
+  END ELSE
+  PATCH_IF ("%SOURCE_EXT%" STRING_COMPARE_CASE "SPL" = 0) BEGIN
+    SET abil_length = 0x28
+  END 
+  PATCH_IF abil_length = 0 BEGIN
+    PATCH_WARN ~WARNING: file type not recognized on %SOURCE_FILE% for blind/deaf component %COMPONENT_NUMBER%.~
+  END ELSE BEGIN
+    READ_LONG  0x64 abil_off ELSE 0
+    READ_SHORT 0x68 abil_num ELSE 0
+    READ_LONG  0x6a fx_off   ELSE 0
+    SET fx_delta = 0
+    FOR (index = 0 ; index < abil_num ; ++index) BEGIN // start iterating through abilities
+      READ_SHORT  (abil_off + 0x1e + (abil_length * index)) abil_fx_num
+      WRITE_SHORT (abil_off + 0x20 + (abil_length * index)) THIS + fx_delta
+      READ_SHORT  (abil_off + 0x20 + (abil_length * index)) abil_fx_idx
+      SET patch_blind = (1 - cd_blind) // skip patching if not specified
+      SET patch_deaf  = (1 - cd_deaf)  // skip patching if not specified
+      FOR (index2 = 0 ; index2 < abil_fx_num ; ++index2) BEGIN
+        READ_SHORT (fx_off +        (0x30 * (abil_fx_idx + index2))) opcode
+        PATCH_IF (((opcode = 74) AND (patch_blind = 0)) OR ((opcode = 80) AND (patch_deaf = 0))) BEGIN // if there's a deaf/blind opcode that hasn't been patched already
+          PATCH_IF (opcode = 80) BEGIN // if deaf
+            SET patch_deaf = 1
+          END ELSE BEGIN   
+            SET patch_blind = 1
+          END 
+          READ_ASCII  (fx_off + 0x00 + (0x30 * (abil_fx_idx + index2))) clone (48) // read entire effect
+          PATCH_PHP_EACH cd_deaf_blind_array AS res => op BEGIN 
+            PATCH_IF op = opcode BEGIN 
+              INSERT_BYTES   (fx_off +        (0x30 * (abil_fx_idx + index2 + 1))) 0x30                 // insert new effect at position 0
+                WRITE_ASCIIE (fx_off +        (0x30 * (abil_fx_idx + index2 + 1))) "%clone%"            // dupe effect
+                WRITE_SHORT  (fx_off +        (0x30 * (abil_fx_idx + index2 + 1))) 206                  // block spell
+                WRITE_LONG   (fx_off + 0x04 + (0x30 * (abil_fx_idx + index2 + 1))) 0                    // null param1
+                WRITE_LONG   (fx_off + 0x08 + (0x30 * (abil_fx_idx + index2 + 1))) 0                    // null param2
+                WRITE_ASCIIE (fx_off + 0x14 + (0x30 * (abil_fx_idx + index2 + 1))) ~%res%~ #8           // spell
+              SET fx_delta    += 1
+              SET index2      += 1
+              SET abil_fx_num += 1
+            END // op=opcode check  
+          END // php_each  
+        END // original patch check
+      END // index2 loop
+      WRITE_SHORT  (abil_off + 0x1e + (abil_length * index)) abil_fx_num
+    END // index loop
+  END // abil_length loop  
+  //PATCH_IF fx_delta BEGIN PATCH_PRINT ~ == added %fx_delta% effects to %SOURCE_FILE%~ END 
+  BUT_ONLY 
+
+ACTION_IF enhanced_edition BEGIN 
+
+  ACTION_PHP_EACH cd_deaf_blind_array AS res => op BEGIN 
+
+    COPY_EXISTING ~%res%.spl~ ~override~ 
+      PATCH_IF op = 80 BEGIN 
+        LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 324 target = 2 parameter2 = 66 STR_VAR resource = EVAL ~%res%~ END // splstate = deafened
+      END ELSE BEGIN   
+        LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 324 target = 2 parameter2 = 23 STR_VAR resource = EVAL ~%res%~ END // state bit_eq BLIND
+      END   
+      BUT_ONLY
+
+  END
+
+END   

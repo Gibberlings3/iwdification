@@ -609,6 +609,53 @@ COPY_EXISTING ~cdjav3e0.eff~ ~override~ // +3 melee double
               ~cdjav4e3.eff~ ~override~ // +4 melee double 
   WRITE_LONG  0x3c (THIS + 2) // base die size
   BUT_ONLY IF_EXISTS  
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// deaf/blind protects against sonic/visual         \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// Sonic spells do not affect deafened creatures    \\\\\
+/////                                                  \\\\\
+
+BEGIN @20001 DESIGNATED 200 // deafness
+SUBCOMPONENT @20000 // blind/deaf vs. sonic/visual
+GROUP @994  
+LABEL ~cd_iwdification_deafness_blocks_sonics~
+
+OUTER_SET cd_deaf  = 1
+OUTER_SET cd_blind = 0
+INCLUDE ~iwdification/tpa/deaf_blind.tpa~
+
+/////                                                  \\\\\
+///// blindness blocks gaze/visual attacks             \\\\\
+/////                                                  \\\\\
+
+BEGIN @21000 DESIGNATED 210
+SUBCOMPONENT @20000 // blind/deaf vs. sonic/visual
+GROUP @994
+LABEL ~cd_iwdification_blindness_blocks_gaze~
+
+OUTER_SET cd_deaf  = 0
+OUTER_SET cd_blind = 1
+INCLUDE ~iwdification/tpa/deaf_blind.tpa~
+
+/////                                                  \\\\\
+///// both of the above                                \\\\\
+/////                                                  \\\\\
+
+BEGIN @22000 DESIGNATED 220
+SUBCOMPONENT @20000 // blind/deaf vs. sonic/visual
+GROUP @994
+LABEL ~cd_iwdification_deafness_blocks_sonics_and_blindness_blocks_gaze~
+
+OUTER_SET cd_deaf  = 1
+OUTER_SET cd_blind = 1
+INCLUDE ~iwdification/tpa/deaf_blind.tpa~
   
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
