@@ -151,9 +151,12 @@ ACTION_IF enhanced_edition BEGIN
   ACTION_PHP_EACH cd_deaf_blind_array AS res => op BEGIN 
 
     COPY_EXISTING ~%res%.spl~ ~override~ 
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 324 target = 2 parameter1 = 119 parameter2 = 104 STR_VAR resource = EVAL ~%res%~ END // race: slime
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 324 target = 2 parameter1 = 201 parameter2 = 104 STR_VAR resource = EVAL ~%res%~ END // race: sword
       PATCH_IF op = 80 BEGIN 
         LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 324 target = 2 parameter2 = 66 STR_VAR resource = EVAL ~%res%~ END // splstate = deafened
       END ELSE BEGIN   
+        LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 324 target = 2 parameter1 = 167 parameter2 = 104 STR_VAR resource = EVAL ~%res%~ END // race: hook horror
         LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 324 target = 2 parameter2 = 23 STR_VAR resource = EVAL ~%res%~ END // state bit_eq BLIND
       END   
       BUT_ONLY
