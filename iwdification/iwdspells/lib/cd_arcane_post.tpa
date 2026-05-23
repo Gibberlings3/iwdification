@@ -162,6 +162,35 @@ DEFINE_ACTION_FUNCTION cd_arcane_post BEGIN
     END  
     
   END
+  
+  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_EMOTION_HOPELESSNESS") BEGIN 
+
+    OUTER_SET spwi411_proj = IDS_OF_SYMBOL (~projectl~ ~idpro255~)
+    ACTION_IF spwi411_proj > 0 BEGIN // sanity check
+    
+      COPY_EXISTING ~spwi411.spl~ ~override~ // emotion: hopelessness
+        LPF ALTER_SPELL_HEADER INT_VAR projectile = spwi411_proj + 1 END 
+        BUT_ONLY 
+        
+    END 
+
+    ACTION_IF FILE_EXISTS_IN_GAME ~#curestn.spl~ BEGIN   
+    
+      COPY_EXISTING ~#curestn.spl~ ~override~ // add emotion: hopelessness to generic stun cure to clear out hopelessness icon
+        LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 2 timing = 1 parameter2 = 2 STR_VAR resource = spwi411 END
+        BUT_ONLY   
+        
+    END     
+
+  END
+  
+  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("WIZARD_EMOTION_FEAR") BEGIN 
+    
+    COPY_EXISTING ~%WIZARD_EMOTION_FEAR%.spl~ ~override~ // emotion: hopelessness
+      LPF ALTER_EFFECT INT_VAR match_opcode = 324 STR_VAR resource = EVAL ~%WIZARD_EMOTION_FEAR%~ END 
+      BUT_ONLY 
+
+  END
     
   /////                                                  \\\\\
   ///// cosmetic suggestions - thanks, Galactygon!       \\\\\
