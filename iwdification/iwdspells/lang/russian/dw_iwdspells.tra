@@ -75,6 +75,7 @@
 @17="Гигантский тролль"
 @18="и так далее, до шести снарядов на 25-м уровне." // TO TRANSLATORS: must be verbatim from IWD 'Mordenkainen's Force Missiles' description
 @19="до пяти снарядов на 19-м уровне"
+@20="Выбранный персонаж исцеляется, восстановив 14 пунктов здоровья." // bg2ee strref #19314
 
 // encode in UTF-8
 

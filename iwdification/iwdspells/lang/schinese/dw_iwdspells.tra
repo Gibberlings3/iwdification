@@ -71,6 +71,7 @@
 @17="大巨魔"
 @18="以此类推，最高至25级七枚飞弹" // TO TRANSLATORS: must be verbatim from IWD 'Mordenkainen's Force Missiles' description
 @19="在第19级最多5枚飞弹"
+@20="指定的人物已经获得医治，回复14点生命。" // bg2ee strref #19314
 
 // encode in UTF-8
 

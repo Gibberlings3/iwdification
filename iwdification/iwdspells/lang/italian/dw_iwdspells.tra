@@ -70,6 +70,7 @@ Lanciando questo incantesimo, il personaggio apre uno speciale portale verso il 
 @17="Gigante Troll"
 @18="e così via, fino a un massimo di sette missili al 25° livello"
 @19="fino a un massimo di cinque missili al 19° livello" 
+@20="Questo incantesimo guarisce 14 Punti Ferita del personaggio." // bg2ee strref #19314
 
 // encode in UTF-8
 

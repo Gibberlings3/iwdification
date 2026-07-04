@@ -77,6 +77,7 @@ En jetant un sort de Conjuration d'élémentaire d'eau, le lanceur ouvre un port
 
 @18="et ainsi de suite jusqu'à un maximum de sept au niveau 25" // TO TRANSLATORS: must be verbatim from IWD 'Mordenkainen's Force Missiles' description
 @19="jusqu'à un maximum de cinq missiles au niveau 19"
+@20="Ce sort soigne le personnage sélectionné, qui récupère 14 points de vie." // bg2ee strref #19314
 
 // encode in UTF-8
 

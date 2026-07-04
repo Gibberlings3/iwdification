@@ -72,6 +72,7 @@ Po rzuceniu zaklęcia Sprowadzenie żywiołaka wody czarujący otwiera wrota do 
 
 @18 = ~ itd., aż do maksymalnej ilości siedmiu pocisków na 25. poziomie~ // TO TRANSLATORS: must be verbatim from IWD 'Mordenkainen's Force Missiles' description
 @19 = ~, do maksymalnej liczby pięciu pocisków na 19. poziomie~
+@20 = ~Ten czar leczy wybraną postać, przywracając jej 14 punktów życia.~ // bg2ee strref #19314
 
 // encode in UTF-8
 

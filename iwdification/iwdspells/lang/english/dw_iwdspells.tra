@@ -71,6 +71,7 @@ Upon casting a Conjure Water Elemental spell, the caster opens a special gate to
 @17="Giant Troll"
 @18="and so on, to a maximum of seven missiles at 25th level" // TO TRANSLATORS: must be verbatim from IWD 'Mordenkainen's Force Missiles' description
 @19="to a maximum of five missiles at 19th level"
+@20="This spell heals the character by 14 Hit Points." // bg2ee strref #19314
 
 // encode in UTF-8
 

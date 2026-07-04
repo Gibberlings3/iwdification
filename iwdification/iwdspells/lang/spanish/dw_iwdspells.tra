@@ -70,6 +70,7 @@ Al ejecutar este sortilegio, el lanzador abre un umbral especial con el Plano El
 @17="Troll gigante"
 @18="hasta un máximo de siete proyectiles a nivel 25" // TO TRANSLATORS: must be verbatim from IWD 'Mordenkainen's Force Missiles' description
 @19="hasta un máximo de cinco proyectiles a nivel 19"
+@20="El personaje seleccionado recupera catorce puntos de golpe." // bg2ee strref #19314
 
 // encode in UTF-8
 

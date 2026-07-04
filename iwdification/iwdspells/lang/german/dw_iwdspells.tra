@@ -70,6 +70,7 @@ Mit Hilfe dieses Zaubers öffnet der Magier ein spezielles Tor zur Wasserebene, 
 @17    = ~Riesen-Troll~
 @18    = "usw., bis zu einem Maximum von sieben Geschossen auf der 25. Stufe"
 @19    = "und maximal fünf Geschosse auf der 19. Stufe"
+@20    = "Dieser Zauber heilt den Charakter um 14 Trefferpunkte." // bg2ee strref #19314
 
 @101   = ~Gesang
 

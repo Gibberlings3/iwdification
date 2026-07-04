@@ -96,6 +96,8 @@ DEFINE_ACTION_FUNCTION patch_cures_into_stores BEGIN
     LAF array_read STR_VAR file=strref_map.txt path="%data_loc%" RET_ARRAY strref_map=array END
     OUTER_SET desc=$strref_map(19397)
     APPEND ~speldesc.2da~ ~%CLERIC_CURE_MODERATE_WOUNDS%%TAB%%desc%~
+    OUTER_SET cmw_desc = RESOLVE_STR_REF(@20)
+    APPEND ~speldesc.2da~ ~%CLERIC_CURE_MEDIUM_WOUNDS%%TAB%%cmw_desc%~ UNLESS ~%CLERIC_CURE_MEDIUM_WOUNDS%~
     ACTION_CLEAR_ARRAY has_light
     ACTION_CLEAR_ARRAY no_medium
     COPY_EXISTING_REGEXP GLOB ".*\.sto" "%workspace%"
@@ -108,7 +110,6 @@ DEFINE_ACTION_FUNCTION patch_cures_into_stores BEGIN
       BUT_ONLY
 
     // do the patching
-    
     ACTION_PHP_EACH no_medium AS sto=>discard BEGIN
       sto.edit["%sto%"]
       [
