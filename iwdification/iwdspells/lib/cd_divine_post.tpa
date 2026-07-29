@@ -179,6 +179,14 @@ DEFINE_ACTION_FUNCTION cd_divine_post BEGIN
       WRITE_LONG 0x30 acidic
       
   END    
+
+  ACTION_IF VARIABLE_IS_SET $IWD_spell_installed("CLERIC_CLOUD_OF_PESTILENCE") BEGIN
+  
+    // paladins in IWD are immune to disease, but not in bg/bg2
+    COPY_EXISTING ~%CLERIC_CLOUD_OF_PESTILENCE%.spl~ ~override~
+      LPF DELETE_EFFECT INT_VAR match_opcode = 324 match_parameter2 = 39 END 
+      
+  END    
   
   INCLUDE "%MOD_FOLDER%/%component_loc%/lib/cd_divine_compat.tpa" // generates file for other mods to use for compatibility
     
