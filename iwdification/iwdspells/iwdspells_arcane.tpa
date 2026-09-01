@@ -39,6 +39,37 @@ DEFINE_ACTION_FUNCTION iwdspells_arcane STR_VAR version="" BEGIN
 			OUTER_SPRINT overwrite_these_spells "overwrite.2da"
 			OUTER_SPRINT skip_these_spells ""
 		END
+
+		// EET's Spell Shield (SPWI519) can use SPWI801A/B/C for its
+		// scroll, memorized, and spellbook icons. If Mind Blank is
+		// remapped from SPWI802 to SPWI801, those resources would be
+		// overwritten by Mind Blank's icons. Preserve Spell Shield's
+		// existing artwork under unique resrefs before importing spells.
+		ACTION_IF GAME_IS ~eet~
+		&& FILE_EXISTS_IN_GAME ~spwi519.spl~
+		&& RESOURCE_CONTAINS ~spwi519.spl~ ~SPWI801C~
+		BEGIN
+			ACTION_IF FILE_EXISTS_IN_GAME ~spwi801a.bam~ BEGIN
+				COPY_EXISTING ~spwi801a.bam~ ~override/CDSS519A.bam~
+			END
+			ACTION_IF FILE_EXISTS_IN_GAME ~spwi801b.bam~ BEGIN
+				COPY_EXISTING ~spwi801b.bam~ ~override/CDSS519B.bam~
+			END
+			ACTION_IF FILE_EXISTS_IN_GAME ~spwi801c.bam~ BEGIN
+				COPY_EXISTING ~spwi801c.bam~ ~override/CDSS519C.bam~
+			END
+
+			COPY_EXISTING ~spwi519.spl~ ~override~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~SPWI801B~ ~CDSS519B~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~SPWI801C~ ~CDSS519C~
+			BUT_ONLY
+
+			ACTION_IF FILE_EXISTS_IN_GAME ~scrl8x.itm~ BEGIN
+				COPY_EXISTING ~scrl8x.itm~ ~override~
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~SPWI801A~ ~CDSS519A~
+				BUT_ONLY
+			END
+		END
 		
 		// main install
 		
